@@ -93,9 +93,11 @@ impl fmt::Display for Field {
                 let mut s = String::new();
                 s.push_str(&format!("\t///{}\n", self.description));
                 if let Some(sane_name) = &self.sanitized_name {
-                    s.push_str(&format!("\t#[serde(rename=\"{}\")]\n", sane_name));
+                    s.push_str(&format!("\t#[serde(rename=\"{}\")]\n", self.name));
+                    s.push_str(&format!("\tpub {}: {},\n", sane_name, self.field_type));
+                } else {
+                    s.push_str(&format!("\tpub {}: {},\n", self.name, self.field_type));
                 }
-                s.push_str(&format!("\tpub {}: {},\n", self.name, self.field_type));
                 write!(f, "{}", s)
             }
         }
@@ -121,40 +123,6 @@ struct JsonStruct {
     fields: Vec<Field>,
 }
 
-impl JsonStruct {
-    fn get_structs(&self) -> Vec<JsonStruct> {
-        let mut structs: Vec<JsonStruct> = Vec::new();
-        let mut stack: Vec<&Vec<Field>> = Vec::new();
-
-        // Setup
-        structs.push(self.clone());
-        stack.push(&self.fields);
-        // Search
-        loop {
-            match stack.pop() {
-                Some(fields) => {
-                    println!("searching: {:?}", fields);
-                    for field in fields {
-                        match &field.field_type {
-                            FieldType::Struct(ref s) => {
-                                structs.push(s.clone());
-                                stack.push(&s.fields);
-                            }
-                            _ => {
-                                continue;
-                            }
-                        }
-                    }
-                }
-                None => {
-                    break;
-                }
-            }
-        }
-        structs
-    }
-}
-
 impl Default for JsonStruct {
     fn default() -> Self {
         JsonStruct {
@@ -171,16 +139,32 @@ impl fmt::Display for JsonStruct {
         // Need to recurse and find all the structs.
         // Need to provide field names for the linked structs
         // That should fix the nested struct printing problem
+        let mut defer_printing: Vec<&JsonStruct> = Vec::new();
+
         let mut s = String::new();
         s.push_str(&format!("///{}\n", self.description));
         if let Some(sane_name) = &self.sanitized_name {
-            s.push_str(&format!("#[serde(rename=\"{}\")]\n", sane_name));
+            s.push_str(&format!("#[serde(rename=\"{}\")]\n", self.name));
+            s.push_str(&format!("pub struct {} {{\n", sane_name));
+        } else {
+            s.push_str(&format!("pub struct {} {{\n", self.name));
         }
-        s.push_str(&format!("pub struct {} {{\n", self.name));
         for field in &self.fields {
-            s.push_str(&format!("{}\n", field));
+            match field.field_type {
+                FieldType::Struct(ref j_s) => {
+                    // Don't print nested structs
+                    s.push_str(&format!("\tpub {}: {}\n", j_s.name, j_s.name));
+                    defer_printing.push(j_s);
+                }
+                _ => {
+                    s.push_str(&format!("{}\n", field));
+                }
+            }
         }
         s.push_str("}\n");
+        for d in defer_printing {
+            s.push_str(&format!("{}", d));
+        }
         write!(f, "{}", s)
     }
 }
@@ -195,6 +179,7 @@ impl fmt::Display for FieldType {
             FieldType::Option(t) => write!(f, "Option<{}>", t),
             FieldType::String => write!(f, "String"),
             FieldType::Struct(s) => write!(f, "{}", s),
+            //FieldType::StructRef(s) => write!(f, "{}", s),
             FieldType::Vector(s) => write!(f, "Vec<{}>", s),
         }
     }
@@ -268,8 +253,8 @@ fn print_fields(name: &str, v: &Value, schema: &Value) -> Result<Vec<Field>, Str
             // Ignore the rest
         }
     }
-    if let Some(params) = v["properties"].as_object() {
-        for (key, value) in params {
+    if let Some(properties) = v["properties"].as_object() {
+        for (key, value) in properties {
             let mut next_field = Field::default();
             match sanitize_name(key) {
                 Some(new_name) => {
@@ -353,18 +338,17 @@ fn parse_schema(schema: &str) -> Result<(), String> {
     for (key, value) in definitions {
         structs.insert(print_struct(key, &value, &v)?);
     }
-    //println!("{:?}", structs);
 
     for s in &structs {
         println!("{}", s);
     }
 
-    let mut final_structs: HashSet<JsonStruct> = HashSet::new();
-    for s in structs {
-        final_structs.extend(s.get_structs());
-        //println!("get_structs: {:?}", s.get_structs());
-    }
-    println!("final structs: {:?}", final_structs);
+    //let mut final_structs: HashSet<JsonStruct> = HashSet::new();
+    //for mut s in structs {
+    //final_structs.extend(s.get_structs());
+    //}
+    //println!("final structs: {:?}", final_structs);
+    //println!("{:?}", structs);
 
     Ok(())
 }
