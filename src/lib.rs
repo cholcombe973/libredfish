@@ -2,7 +2,9 @@
 extern crate serde_derive;
 
 pub mod manager;
+pub mod one_or_many;
 pub mod power;
+pub mod schema;
 pub mod storage;
 pub mod thermal;
 
