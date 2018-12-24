@@ -10,25 +10,58 @@ use reqwest::{header::HeaderValue, header::ACCEPT, header::CONTENT_TYPE, Client}
 use serde::de::DeserializeOwned;
 
 pub struct Config {
-    user: String,
-    password: String,
-    endpoint: String,
+    pub user: Option<String>,
+    pub endpoint: String,
+    pub password: Option<String>,
+    pub port: Option<u16>,
 }
 
-pub fn get<T>(client: &reqwest::Client, config: &Config, url: &str) -> Result<T, reqwest::Error>
+fn get<T>(client: &reqwest::Client, config: &Config, api: &str) -> Result<T, reqwest::Error>
 where
-    T: DeserializeOwned,
+    T: DeserializeOwned + ::std::fmt::Debug,
 {
-    let url = format!("https://{}/redfish/v1/{}", config.endpoint, url);
-    let j: T = client
-        .get(&url)
-        .basic_auth(&config.user, Some(&config.password))
-        .header(ACCEPT, HeaderValue::from_static("application/json"))
-        .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
-        .send()?
-        .error_for_status()?
-        .json()?;
-    Ok(j)
+    let url = match config.port {
+        Some(p) => format!("https://{}:{}/{}", config.endpoint, p, api),
+        None => format!("https://{}/{}", config.endpoint, api),
+    };
+
+    let res: T = match &config.user {
+        Some(user) => client
+            .get(&url)
+            .header(ACCEPT, HeaderValue::from_static("application/json"))
+            .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
+            .basic_auth(&user, config.password.as_ref())
+            .send()?
+            .error_for_status()?
+            .json()?,
+        None => client
+            .get(&url)
+            .header(ACCEPT, HeaderValue::from_static("application/json"))
+            .header(CONTENT_TYPE, HeaderValue::from_static("application/json"))
+            .send()?
+            .error_for_status()?
+            .json()?,
+    };
+    Ok(res)
+}
+
+pub fn get_array_controller(
+    c: &Client,
+    config: &Config,
+    controller_id: u64,
+) -> Result<storage::ArrayController, reqwest::Error> {
+    let url = format!("Systems/1/SmartStorage/ArrayControllers/{}/", controller_id);
+    let s: storage::ArrayController = get(c, &config, &url)?;
+    Ok(s)
+}
+
+pub fn get_array_controllers(
+    c: &Client,
+    config: &Config,
+) -> Result<storage::ArrayControllers, reqwest::Error> {
+    let url = "Systems/1/SmartStorage/ArrayControllers/";
+    let s: storage::ArrayControllers = get(c, &config, &url)?;
+    Ok(s)
 }
 
 /// Query the manager status from the server
@@ -56,8 +89,9 @@ pub fn get_thermal_status(c: &Client, config: &Config) -> Result<thermal::Therma
 pub fn get_smart_array_status(
     c: &Client,
     config: &Config,
+    controller_id: u64,
 ) -> Result<storage::SmartArray, reqwest::Error> {
-    let url = "Systems/1/SmartStorage/ArrayControllers/1/";
+    let url = format!("Systems/1/SmartStorage/ArrayControllers/{}/", controller_id);
     let s: storage::SmartArray = get(c, &config, &url)?;
     Ok(s)
 }
@@ -65,8 +99,12 @@ pub fn get_smart_array_status(
 pub fn get_logical_drives(
     c: &Client,
     config: &Config,
+    controller_id: u64,
 ) -> Result<storage::LogicalDrives, reqwest::Error> {
-    let url = "Systems/1/SmartStorage/ArrayControllers/1/LogicalDrives/";
+    let url = format!(
+        "Systems/1/SmartStorage/ArrayControllers/{}/LogicalDrives/",
+        controller_id
+    );
     let s: storage::LogicalDrives = get(c, &config, &url)?;
     Ok(s)
 }
@@ -75,10 +113,11 @@ pub fn get_physical_drive(
     c: &Client,
     config: &Config,
     drive_id: u64,
+    controller_id: u64,
 ) -> Result<storage::DiskDrive, reqwest::Error> {
     let url = format!(
-        "Systems/1/SmartStorage/ArrayControllers/1/DiskDrives/{}/",
-        drive_id,
+        "Systems/1/SmartStorage/ArrayControllers/{}/DiskDrives/{}/",
+        controller_id, drive_id,
     );
     let d: storage::DiskDrive = get(c, &config, &url)?;
     Ok(d)
@@ -87,8 +126,12 @@ pub fn get_physical_drive(
 pub fn get_physical_drives(
     c: &Client,
     config: &Config,
+    controller_id: u64,
 ) -> Result<storage::DiskDrives, reqwest::Error> {
-    let url = "Systems/1/SmartStorage/ArrayControllers/1/DiskDrives/";
+    let url = format!(
+        "Systems/1/SmartStorage/ArrayControllers/{}/DiskDrives/",
+        controller_id
+    );
     let d: storage::DiskDrives = get(c, &config, &url)?;
     Ok(d)
 }
@@ -96,8 +139,12 @@ pub fn get_physical_drives(
 pub fn get_storage_enclosures(
     c: &Client,
     config: &Config,
+    controller_id: u64,
 ) -> Result<storage::StorageEnclosures, reqwest::Error> {
-    let url = "Systems/1/SmartStorage/ArrayControllers/1/StorageEnclosures/";
+    let url = format!(
+        "Systems/1/SmartStorage/ArrayControllers/{}/StorageEnclosures/",
+        controller_id
+    );
     let s: storage::StorageEnclosures = get(c, &config, &url)?;
     Ok(s)
 }
@@ -105,11 +152,12 @@ pub fn get_storage_enclosures(
 pub fn get_storage_enclosure(
     c: &Client,
     config: &Config,
+    controller_id: u64,
     enclosure_id: u64,
 ) -> Result<storage::StorageEnclosure, reqwest::Error> {
     let url = format!(
-        "Systems/1/SmartStorage/ArrayControllers/1/StorageEnclosures/{}/",
-        enclosure_id,
+        "Systems/1/SmartStorage/ArrayControllers/{}/StorageEnclosures/{}/",
+        controller_id, enclosure_id,
     );
     let s: storage::StorageEnclosure = get(c, &config, &url)?;
     Ok(s)
