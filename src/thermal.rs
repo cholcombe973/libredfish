@@ -54,6 +54,8 @@ pub struct Temperature {
     pub current_reading: i64,
     pub name: String,
     pub number: i64,
+    pub lower_threshold_critical: Option<i64>,
+    pub lower_threshold_fatal: Option<i64>,
     pub oem: TemperaturesOem,
     pub physical_context: String,
     pub reading_celsius: i64,
