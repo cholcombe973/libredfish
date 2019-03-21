@@ -1,3 +1,20 @@
+pub trait Hardware {
+    fn get_heath(&self) -> String;
+    fn get_odata_context(&self) -> String;
+    fn get_odata_id(&self) -> String;
+    fn get_odata_type(&self) -> String;
+    fn get_description(&self) -> String;
+    fn get_firmware_version(&self) -> FirmwareVersion;
+    fn get_id(&self) -> String;
+    fn get_location(&self) -> String;
+    fn get_location_format(&self) -> String;
+    fn get_model(&self) -> String;
+    fn get_name(&self) -> String;
+    fn get_serial_number(&self) -> String;
+    fn get_status(&self) -> Status;
+    fn get_state(&self) -> String;
+}
+
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct ArrayController {
@@ -32,6 +49,51 @@ pub struct ArrayController {
     pub controller_type: String,
     #[serde(rename = "links")]
     pub links: serde_json::Value,
+}
+
+impl Hardware for ArrayController {
+    fn get_heath(&self) -> String {
+        self.status.health.to_owned()
+    }
+    fn get_odata_context(&self) -> String {
+        self.odata_context.to_owned()
+    }
+    fn get_odata_id(&self) -> String {
+        self.odata_id.to_owned()
+    }
+    fn get_odata_type(&self) -> String {
+        self.odata_type.to_owned()
+    }
+    fn get_description(&self) -> String {
+        self.description.to_owned()
+    }
+    fn get_firmware_version(&self) -> FirmwareVersion {
+        self.firmware_version.clone()
+    }
+    fn get_id(&self) -> String {
+        self.id.to_owned()
+    }
+    fn get_location(&self) -> String {
+        self.location.to_owned()
+    }
+    fn get_location_format(&self) -> String {
+        self.location_format.to_owned()
+    }
+    fn get_model(&self) -> String {
+        self.model.to_owned()
+    }
+    fn get_name(&self) -> String {
+        self.name.to_owned()
+    }
+    fn get_serial_number(&self) -> String {
+        self.serial_number.to_owned()
+    }
+    fn get_status(&self) -> Status {
+        self.status.to_owned()
+    }
+    fn get_state(&self) -> String {
+        self.status.state.to_owned()
+    }
 }
 
 #[test]
