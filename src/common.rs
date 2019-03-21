@@ -32,6 +32,8 @@ pub struct ODataLinks {
     pub odata_id: String,
     #[serde(rename = "@odata.type")]
     pub odata_type: String,
+    #[serde(rename = "links")]
+    pub links: SelfLink,
 }
 
 #[derive(Debug, Deserialize, Clone)]
