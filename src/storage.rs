@@ -18,13 +18,25 @@ pub trait Hardware {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct ArrayController {
+pub struct HardwareCommon {
     #[serde(flatten)]
     pub odata: OData,
+    pub description: String,
+    pub id: String,
+    pub location: String,
+    pub location_format: String,
+    pub model: String,
+    pub name: String,
+    pub serial_number: String,
+    pub status: AllStatus,
+}
+
+#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Deserialize, Clone)]
+pub struct ArrayController {
     pub adapter_type: String,
     pub backup_power_source_status: String,
     pub current_operating_mode: String,
-    pub description: String,
     pub encryption_crypto_officer_password_set: bool,
     pub encryption_enabled: bool,
     pub encryption_fw_locked: bool,
@@ -33,15 +45,11 @@ pub struct ArrayController {
     pub encryption_standalone_mode_enabled: bool,
     pub external_port_count: i64,
     pub firmware_version: Firmware,
+    #[serde(flatten)]
+    pub hardware_common: HardwareCommon,
     pub hardware_revision: String,
-    pub id: String,
     pub internal_port_count: i64,
-    pub location: String,
-    pub location_format: String,
-    pub model: String,
-    pub name: String,
-    pub serial_number: String,
-    pub status: AllStatus,
+
     #[serde(rename = "Type")]
     pub controller_type: String,
     #[serde(rename = "links")]
@@ -50,46 +58,46 @@ pub struct ArrayController {
 
 impl Hardware for ArrayController {
     fn get_heath(&self) -> String {
-        self.status.health.to_owned()
+        self.hardware_common.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata.odata_context.to_owned()
+        self.hardware_common.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata.odata_id.to_owned()
+        self.hardware_common.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata.odata_type.to_owned()
+        self.hardware_common.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
-        self.description.to_owned()
+        self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
-        self.id.to_owned()
+        self.hardware_common.id.to_owned()
     }
     fn get_location(&self) -> String {
-        self.location.to_owned()
+        self.hardware_common.location.to_owned()
     }
     fn get_location_format(&self) -> String {
-        self.location_format.to_owned()
+        self.hardware_common.location_format.to_owned()
     }
     fn get_model(&self) -> String {
-        self.model.to_owned()
+        self.hardware_common.model.to_owned()
     }
     fn get_name(&self) -> String {
-        self.name.to_owned()
+        self.hardware_common.name.to_owned()
     }
     fn get_serial_number(&self) -> String {
-        self.serial_number.to_owned()
+        self.hardware_common.serial_number.to_owned()
     }
     fn get_status(&self) -> AllStatus {
-        self.status.to_owned()
+        self.hardware_common.status.to_owned()
     }
     fn get_state(&self) -> String {
-        self.status.state.to_owned()
+        self.hardware_common.status.state.to_owned()
     }
 }
 
@@ -139,12 +147,9 @@ pub struct Link {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct SmartArray {
-    #[serde(flatten)]
-    pub odata: OData,
     pub adapter_type: String,
     pub backup_power_source_status: String,
     pub current_operating_mode: String,
-    pub description: String,
     pub encryption_crypto_officer_password_set: bool,
     pub encryption_enabled: bool,
     pub encryption_fw_locked: bool,
@@ -154,14 +159,9 @@ pub struct SmartArray {
     pub external_port_count: i64,
     pub firmware_version: Firmware,
     pub hardware_revision: String,
-    pub id: String,
+    #[serde(flatten)]
+    pub hardware_common: HardwareCommon,
     pub internal_port_count: i64,
-    pub location: String,
-    pub location_format: String,
-    pub model: String,
-    pub name: String,
-    pub serial_number: String,
-    pub status: AllStatus,
     #[serde(rename = "Type")]
     pub array_type: String,
     #[serde(rename = "links")]
@@ -170,46 +170,46 @@ pub struct SmartArray {
 
 impl Hardware for SmartArray {
     fn get_heath(&self) -> String {
-        self.status.health.to_owned()
+        self.hardware_common.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata.odata_context.to_owned()
+        self.hardware_common.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata.odata_id.to_owned()
+        self.hardware_common.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata.odata_type.to_owned()
+        self.hardware_common.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
-        self.description.to_owned()
+        self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
-        self.id.to_owned()
+        self.hardware_common.id.to_owned()
     }
     fn get_location(&self) -> String {
-        self.location.to_owned()
+        self.hardware_common.location.to_owned()
     }
     fn get_location_format(&self) -> String {
-        self.location_format.to_owned()
+        self.hardware_common.location_format.to_owned()
     }
     fn get_model(&self) -> String {
-        self.model.to_owned()
+        self.hardware_common.model.to_owned()
     }
     fn get_name(&self) -> String {
-        self.name.to_owned()
+        self.hardware_common.name.to_owned()
     }
     fn get_serial_number(&self) -> String {
-        self.serial_number.to_owned()
+        self.hardware_common.serial_number.to_owned()
     }
     fn get_status(&self) -> AllStatus {
-        self.status.to_owned()
+        self.hardware_common.status.to_owned()
     }
     fn get_state(&self) -> String {
-        self.status.state.to_owned()
+        self.hardware_common.status.state.to_owned()
     }
 }
 
@@ -223,18 +223,10 @@ fn test_smart_array_parser() {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosure {
-    #[serde(flatten)]
-    pub odata: OData,
-    pub description: String,
     pub drive_bay_count: i64,
     pub firmware_version: Firmware,
-    pub id: String,
-    pub location: String,
-    pub location_format: String,
-    pub model: String,
-    pub name: String,
-    pub serial_number: String,
-    pub status: AllStatus,
+    #[serde(flatten)]
+    pub hardware_common: HardwareCommon,
     #[serde(rename = "Type")]
     pub enclosure_type: String,
     #[serde(rename = "links")]
@@ -243,46 +235,46 @@ pub struct StorageEnclosure {
 
 impl Hardware for StorageEnclosure {
     fn get_heath(&self) -> String {
-        self.status.health.to_owned()
+        self.hardware_common.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata.odata_context.to_owned()
+        self.hardware_common.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata.odata_id.to_owned()
+        self.hardware_common.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata.odata_type.to_owned()
+        self.hardware_common.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
-        self.description.to_owned()
+        self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
-        self.id.to_owned()
+        self.hardware_common.id.to_owned()
     }
     fn get_location(&self) -> String {
-        self.location.to_owned()
+        self.hardware_common.location.to_owned()
     }
     fn get_location_format(&self) -> String {
-        self.location_format.to_owned()
+        self.hardware_common.location_format.to_owned()
     }
     fn get_model(&self) -> String {
-        self.model.to_owned()
+        self.hardware_common.model.to_owned()
     }
     fn get_name(&self) -> String {
-        self.name.to_owned()
+        self.hardware_common.name.to_owned()
     }
     fn get_serial_number(&self) -> String {
-        self.serial_number.to_owned()
+        self.hardware_common.serial_number.to_owned()
     }
     fn get_status(&self) -> AllStatus {
-        self.status.to_owned()
+        self.hardware_common.status.to_owned()
     }
     fn get_state(&self) -> String {
-        self.status.state.to_owned()
+        self.hardware_common.status.state.to_owned()
     }
 }
 
@@ -336,8 +328,6 @@ fn test_storage_enclosures_parser() {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrive {
-    #[serde(flatten)]
-    pub odata: OData,
     pub block_size_bytes: i64,
     #[serde(rename = "CapacityGB")]
     pub capacity_gb: i64,
@@ -346,24 +336,18 @@ pub struct DiskDrive {
     pub carrier_application_version: String,
     pub carrier_authentication_status: String,
     pub current_temperature_celsius: i64,
-    pub description: String,
     pub disk_drive_status_reasons: Vec<String>,
     pub encrypted_drive: bool,
     pub firmware_version: Firmware,
-    pub id: String,
+    #[serde(flatten)]
+    pub hardware_common: HardwareCommon,
     pub interface_speed_mbps: i64,
     pub interface_type: String,
-    pub location: String,
-    pub location_format: String,
     pub maximum_temperature_celsius: i64,
     pub media_type: String,
-    pub model: String,
-    pub name: String,
     pub power_on_hours: Option<i64>,
     pub rotational_speed_rpm: i64,
     pub ssd_endurance_utilization_percentage: Option<f64>,
-    pub serial_number: String,
-    pub status: AllStatus,
     #[serde(rename = "Type")]
     pub drive_type: String,
     #[serde(rename = "links")]
@@ -372,46 +356,46 @@ pub struct DiskDrive {
 
 impl Hardware for DiskDrive {
     fn get_heath(&self) -> String {
-        self.status.health.to_owned()
+        self.hardware_common.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata.odata_context.to_owned()
+        self.hardware_common.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata.odata_id.to_owned()
+        self.hardware_common.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata.odata_type.to_owned()
+        self.hardware_common.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
-        self.description.to_owned()
+        self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
-        self.id.to_owned()
+        self.hardware_common.id.to_owned()
     }
     fn get_location(&self) -> String {
-        self.location.to_owned()
+        self.hardware_common.location.to_owned()
     }
     fn get_location_format(&self) -> String {
-        self.location_format.to_owned()
+        self.hardware_common.location_format.to_owned()
     }
     fn get_model(&self) -> String {
-        self.model.to_owned()
+        self.hardware_common.model.to_owned()
     }
     fn get_name(&self) -> String {
-        self.name.to_owned()
+        self.hardware_common.name.to_owned()
     }
     fn get_serial_number(&self) -> String {
-        self.serial_number.to_owned()
+        self.hardware_common.serial_number.to_owned()
     }
     fn get_status(&self) -> AllStatus {
-        self.status.to_owned()
+        self.hardware_common.status.to_owned()
     }
     fn get_state(&self) -> String {
-        self.status.state.to_owned()
+        self.hardware_common.status.state.to_owned()
     }
 }
 
