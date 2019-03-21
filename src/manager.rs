@@ -103,27 +103,6 @@ pub struct OemHpIloselftestresult {
     pub status: String,
 }
 
-#[derive(Debug, Deserialize)]
-pub struct ExtRef {
-    pub extref: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct OemHpLink {
-    pub active_health_system: Href,
-    pub date_time_service: Href,
-    pub embedded_media_service: Href,
-    pub federation_dispatch: ExtRef,
-    pub federation_groups: Href,
-    pub federation_peers: Href,
-    pub license_service: Href,
-    pub security_service: Href,
-    pub update_service: Href,
-    #[serde(rename = "VSPLogLocation")]
-    pub vsp_log_location: ExtRef,
-}
-
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct OemHp {
@@ -145,8 +124,8 @@ pub struct OemHp {
     pub vsp_log_download_enabled: bool,
     #[serde(rename = "iLOSelfTestResults")]
     pub i_lo_self_test_results: Vec<OemHpIloselftestresult>,
-    #[serde(rename = "links")]
-    pub links: OemHpLink,
+    #[serde(rename = "links", flatten)]
+    pub links: LinkType,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -159,20 +138,6 @@ pub struct Oem {
 #[derive(Debug, Deserialize)]
 pub struct Status {
     pub state: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct Link {
-    #[serde(rename = "EthernetNICs")]
-    pub ethernet_nics: Href,
-    pub logs: Href,
-    pub manager_for_chassis: Vec<Href>,
-    pub manager_for_servers: Vec<Href>,
-    pub network_service: Href,
-    pub virtual_media: Href,
-    #[serde(flatten)]
-    pub self_url: SelfLink,
 }
 
 #[serde(rename_all = "PascalCase")]

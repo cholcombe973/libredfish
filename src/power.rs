@@ -7,21 +7,14 @@ pub struct OemHpSnmppowerthresholdalert {
     pub trigger: String,
 }
 
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct OemHpLink {
-    pub fast_power_meter: Href,
-    pub federated_group_capping: Href,
-    pub power_meter: Href,
-}
-
 #[derive(Debug, Deserialize)]
 pub struct OemHp {
     #[serde(flatten)]
     pub oem_type: HpType,
     #[serde(rename = "SNMPPowerThresholdAlert")]
     pub snmp_power_threshold_alert: OemHpSnmppowerthresholdalert,
-    pub links: OemHpLink,
+    #[serde(flatten)]
+    pub links: LinkType,
 }
 
 #[serde(rename_all = "PascalCase")]

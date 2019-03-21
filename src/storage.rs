@@ -20,7 +20,7 @@ pub trait Hardware {
 #[derive(Debug, Deserialize, Clone)]
 pub struct HardwareCommon {
     #[serde(flatten)]
-    pub odata: OData,
+    pub odata: ODataLinks,
     pub description: String,
     pub id: String,
     pub firmware_version: Firmware,
@@ -52,8 +52,6 @@ pub struct ArrayController {
 
     #[serde(rename = "Type")]
     pub controller_type: String,
-    #[serde(rename = "links")]
-    pub links: serde_json::Value,
 }
 
 impl Hardware for ArrayController {
@@ -112,7 +110,7 @@ fn test_array_controller_parser() {
 #[derive(Debug, Deserialize, Clone)]
 pub struct MultHardware {
     #[serde(flatten)]
-    pub odata: OData,
+    pub odata: ODataLinks,
     pub description: String,
     pub member_type: String,
     pub members: Vec<ODataId>,
@@ -129,8 +127,6 @@ pub struct ArrayControllers {
     pub mult_hardware: MultHardware,
     #[serde(rename = "Type")]
     pub controller_type: String,
-    #[serde(rename = "links")]
-    pub links: serde_json::Value,
 }
 
 #[test]
@@ -138,17 +134,6 @@ fn test_array_controllers_parser() {
     let test_data = include_str!("../tests/array-controllers.json");
     let result: ArrayControllers = serde_json::from_str(&test_data).unwrap();
     println!("result: {:#?}", result);
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
-pub struct Link {
-    pub logical_drives: Href,
-    pub physical_drives: Href,
-    pub storage_enclosures: Href,
-    pub unconfigured_drives: Href,
-    #[serde(flatten)]
-    pub self_url: SelfLink,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -170,8 +155,6 @@ pub struct SmartArray {
     pub internal_port_count: i64,
     #[serde(rename = "Type")]
     pub array_type: String,
-    #[serde(rename = "links")]
-    pub links: Link,
 }
 
 impl Hardware for SmartArray {
@@ -234,8 +217,6 @@ pub struct StorageEnclosure {
     pub hardware_common: HardwareCommon,
     #[serde(rename = "Type")]
     pub enclosure_type: String,
-    #[serde(rename = "links")]
-    pub links: serde_json::Value,
 }
 
 impl Hardware for StorageEnclosure {
@@ -292,21 +273,11 @@ fn test_storage_enclosure_parser() {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct EnclosuresLinks {
-    pub member: Vec<Href>,
-    #[serde(flatten)]
-    pub self_url: SelfLink,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosures {
     #[serde(flatten)]
     pub mult_hardware: MultHardware,
     #[serde(rename = "Type")]
     pub enclosure_type: String,
-    #[serde(rename = "links")]
-    pub links: EnclosuresLinks,
 }
 
 #[test]
@@ -340,8 +311,6 @@ pub struct DiskDrive {
     pub ssd_endurance_utilization_percentage: Option<f64>,
     #[serde(rename = "Type")]
     pub drive_type: String,
-    #[serde(rename = "links")]
-    pub links: SelfLink,
 }
 
 impl Hardware for DiskDrive {
@@ -398,21 +367,11 @@ fn test_storage_drive_parser() {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct JsonLink {
-    pub member: Vec<Href>,
-    #[serde(flatten)]
-    pub self_url: SelfLink,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrives {
     #[serde(flatten)]
     pub mult_hardware: MultHardware,
     #[serde(rename = "Type")]
     pub drive_type: String,
-    #[serde(rename = "links")]
-    pub links: JsonLink,
 }
 
 #[test]
@@ -426,7 +385,7 @@ fn test_storage_drives_parser() {
 #[derive(Debug, Deserialize, Clone)]
 pub struct LogicalDrives {
     #[serde(flatten)]
-    pub odata: OData,
+    pub odata: ODataLinks,
     pub description: String,
     pub member_type: String,
     #[serde(rename = "Members@odata.count")]
@@ -435,8 +394,6 @@ pub struct LogicalDrives {
     pub total: i64,
     #[serde(rename = "Type")]
     pub drive_type: String,
-    #[serde(rename = "links")]
-    pub links: SelfLink,
 }
 
 #[test]
