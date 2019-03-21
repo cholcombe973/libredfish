@@ -59,12 +59,6 @@ pub struct Temperature {
     pub upper_threshold_fatal: i64,
 }
 
-#[derive(Debug, Deserialize)]
-pub struct Link {
-    #[serde(rename = "self")]
-    pub self_url: Href,
-}
-
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct Thermal {

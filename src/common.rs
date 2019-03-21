@@ -55,3 +55,10 @@ pub struct SomeStatus {
     pub health: Option<String>,
     pub state: String,
 }
+
+#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Deserialize, Clone)]
+pub struct Link {
+    #[serde(rename = "self")]
+    pub self_url: Href,
+}

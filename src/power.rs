@@ -123,13 +123,6 @@ pub struct Redundancy {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
-pub struct Link {
-    #[serde(rename = "self")]
-    pub self_url: Href,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
 pub struct Power {
     #[serde(flatten)]
     pub odata: OData,

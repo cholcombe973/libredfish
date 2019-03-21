@@ -180,8 +180,8 @@ pub struct Link {
     pub manager_for_servers: Vec<Href>,
     pub network_service: Href,
     pub virtual_media: Href,
-    #[serde(rename = "self")]
-    pub self_url: Href,
+    #[serde(flatten)]
+    pub self_url: crate::common::Link,
 }
 
 #[serde(rename_all = "PascalCase")]
