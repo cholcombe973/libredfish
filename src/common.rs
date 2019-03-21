@@ -25,12 +25,6 @@ pub struct OData {
 }
 
 #[derive(Debug, Deserialize, Clone)]
-pub struct ODataType {
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
-}
-
-#[derive(Debug, Deserialize, Clone)]
 pub struct ODataLinks {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,

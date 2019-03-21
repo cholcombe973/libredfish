@@ -27,13 +27,6 @@ pub struct Commandshell {
     pub service_enabled: bool,
 }
 
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct Ethernetinterface {
-    #[serde(flatten)]
-    pub odata_id: ODataId,
-}
-
 #[derive(Debug, Deserialize)]
 pub struct OemHpActionshpiloResetToFactoryDefault {
     #[serde(rename = "ResetType@Redfish.AllowableValues")]
@@ -191,15 +184,15 @@ pub struct Manager {
     pub available_actions: Vec<Availableaction>,
     pub command_shell: Commandshell,
     pub description: String,
-    pub ethernet_interfaces: Ethernetinterface,
+    pub ethernet_interfaces: ODataId,
     pub firmware: Firmware,
     pub firmware_version: String,
     pub graphical_console: Commandshell,
     pub id: String,
-    pub log_services: Ethernetinterface,
+    pub log_services: ODataId,
     pub manager_type: String,
     pub name: String,
-    pub network_protocol: Ethernetinterface,
+    pub network_protocol: ODataId,
     pub oem: Oem,
     pub serial_console: Commandshell,
     pub status: Status,
@@ -207,7 +200,7 @@ pub struct Manager {
     pub root_type: String,
     #[serde(rename = "UUID")]
     pub uuid: String,
-    pub virtual_media: Ethernetinterface,
+    pub virtual_media: ODataId,
 }
 
 #[test]

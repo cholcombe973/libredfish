@@ -64,15 +64,13 @@ pub struct PowersuppliesOemHpPowersupplystatus {
 #[derive(Debug, Deserialize)]
 pub struct PowersuppliesOemHp {
     #[serde(flatten)]
-    pub odata_type: ODataType,
+    pub power_type: HpType,
     pub average_power_output_watts: i64,
     pub bay_number: i64,
     pub hotplug_capable: bool,
     pub max_power_output_watts: i64,
     pub mismatched: bool,
     pub power_supply_status: PowersuppliesOemHpPowersupplystatus,
-    #[serde(rename = "Type")]
-    pub power_type: String,
     #[serde(rename = "iPDUCapable")]
     pub i_pdu_capable: bool,
 }
@@ -103,20 +101,13 @@ pub struct Powersupply {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
-pub struct RedundancyRedundancyset {
-    #[serde(flatten)]
-    pub odata_id: ODataId,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
 pub struct Redundancy {
     pub max_num_supported: i64,
     pub member_id: String,
     pub min_num_needed: i64,
     pub mode: String,
     pub name: String,
-    pub redundancy_set: Vec<RedundancyRedundancyset>,
+    pub redundancy_set: Vec<ODataId>,
 }
 
 #[serde(rename_all = "PascalCase")]

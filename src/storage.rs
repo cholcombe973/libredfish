@@ -115,7 +115,7 @@ pub struct ArrayControllers {
     pub odata: OData,
     pub description: String,
     pub member_type: String,
-    pub members: Vec<Member>,
+    pub members: Vec<ODataId>,
     #[serde(rename = "Members@odata.count")]
     pub members_odata_count: i64,
     pub name: String,
@@ -285,13 +285,6 @@ fn test_storage_enclosure_parser() {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct Member {
-    #[serde(flatten)]
-    pub odata_id: ODataId,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
 pub struct EnclosuresLinks {
     pub member: Vec<Href>,
     #[serde(flatten)]
@@ -305,7 +298,7 @@ pub struct StorageEnclosures {
     pub odata: OData,
     pub description: String,
     pub member_type: String,
-    pub members: Vec<Member>,
+    pub members: Vec<ODataId>,
     #[serde(rename = "Members@odata.count")]
     pub members_odata_count: i64,
     pub name: String,
@@ -418,7 +411,7 @@ pub struct DiskDrives {
     pub odata: OData,
     pub description: String,
     pub member_type: String,
-    pub members: Vec<Member>,
+    pub members: Vec<ODataId>,
     #[serde(rename = "Members@odata.count")]
     pub members_odata_count: i64,
     pub name: String,
