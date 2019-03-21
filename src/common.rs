@@ -62,3 +62,12 @@ pub struct Link {
     #[serde(rename = "self")]
     pub self_url: Href,
 }
+
+#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Deserialize, Clone)]
+pub struct HpType {
+    #[serde(rename = "@odata.type")]
+    pub odata_type: String,
+    #[serde(rename = "Type")]
+    pub hp_type: String,
+}

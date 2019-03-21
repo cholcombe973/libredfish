@@ -3,10 +3,8 @@ use crate::common::*;
 #[derive(Debug, Deserialize)]
 pub struct FansOemHp {
     #[serde(flatten)]
-    pub odata_type: ODataType,
+    pub fan_type: HpType,
     pub location: String,
-    #[serde(rename = "Type")]
-    pub fan_type: String,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -29,11 +27,9 @@ pub struct Fan {
 #[derive(Debug, Deserialize)]
 pub struct TemperaturesOemHp {
     #[serde(flatten)]
-    pub odata_type: ODataType,
+    pub temp_type: HpType,
     pub location_xmm: i64,
     pub location_ymm: i64,
-    #[serde(rename = "Type")]
-    pub temp_type: String,
 }
 
 #[serde(rename_all = "PascalCase")]

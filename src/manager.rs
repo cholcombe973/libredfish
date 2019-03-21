@@ -135,7 +135,7 @@ pub struct OemHpLink {
 #[derive(Debug, Deserialize)]
 pub struct OemHp {
     #[serde(flatten)]
-    pub odata_type: ODataType,
+    pub oem_type: HpType,
     pub actions: OemHpAction,
     pub available_actions: Vec<OemHpAvailableaction>,
     pub clear_rest_api_status: String,
@@ -148,8 +148,6 @@ pub struct OemHp {
     pub serial_cli_speed: i64,
     #[serde(rename = "SerialCLIStatus")]
     pub serial_cli_status: String,
-    #[serde(rename = "Type")]
-    pub oem_type: String,
     #[serde(rename = "VSPLogDownloadEnabled")]
     pub vsp_log_download_enabled: bool,
     #[serde(rename = "iLOSelfTestResults")]

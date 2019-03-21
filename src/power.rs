@@ -18,11 +18,9 @@ pub struct OemHpLink {
 #[derive(Debug, Deserialize)]
 pub struct OemHp {
     #[serde(flatten)]
-    pub odata_type: ODataType,
+    pub oem_type: HpType,
     #[serde(rename = "SNMPPowerThresholdAlert")]
     pub snmp_power_threshold_alert: OemHpSnmppowerthresholdalert,
-    #[serde(rename = "Type")]
-    pub oem_type: String,
     pub links: OemHpLink,
 }
 
