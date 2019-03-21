@@ -1,8 +1,9 @@
+use crate::common::*;
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct FansOemHp {
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata_type: ODataType,
     pub location: String,
     #[serde(rename = "Type")]
     pub fan_type: String,
@@ -34,8 +35,8 @@ pub struct Fan {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct TemperaturesOemHp {
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata_type: ODataType,
     pub location_xmm: i64,
     pub location_ymm: i64,
     #[serde(rename = "Type")]
@@ -66,11 +67,6 @@ pub struct Temperature {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Href {
-    pub href: String,
-}
-
-#[derive(Debug, Deserialize)]
 pub struct Link {
     #[serde(rename = "self")]
     pub self_url: Href,
@@ -79,12 +75,8 @@ pub struct Link {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct Thermal {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub fans: Vec<Fan>,
     pub id: String,
     pub name: String,

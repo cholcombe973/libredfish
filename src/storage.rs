@@ -1,10 +1,11 @@
+use crate::common::*;
 pub trait Hardware {
     fn get_heath(&self) -> String;
     fn get_odata_context(&self) -> String;
     fn get_odata_id(&self) -> String;
     fn get_odata_type(&self) -> String;
     fn get_description(&self) -> String;
-    fn get_firmware_version(&self) -> FirmwareVersion;
+    fn get_firmware_version(&self) -> Firmware;
     fn get_id(&self) -> String;
     fn get_location(&self) -> String;
     fn get_location_format(&self) -> String;
@@ -18,12 +19,8 @@ pub trait Hardware {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct ArrayController {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub adapter_type: String,
     pub backup_power_source_status: String,
     pub current_operating_mode: String,
@@ -35,7 +32,7 @@ pub struct ArrayController {
     pub encryption_mixed_volumes_enabled: bool,
     pub encryption_standalone_mode_enabled: bool,
     pub external_port_count: i64,
-    pub firmware_version: FirmwareVersion,
+    pub firmware_version: Firmware,
     pub hardware_revision: String,
     pub id: String,
     pub internal_port_count: i64,
@@ -56,18 +53,18 @@ impl Hardware for ArrayController {
         self.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata_context.to_owned()
+        self.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata_id.to_owned()
+        self.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata_type.to_owned()
+        self.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
         self.description.to_owned()
     }
-    fn get_firmware_version(&self) -> FirmwareVersion {
+    fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
@@ -106,12 +103,8 @@ fn test_array_controller_parser() {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct ArrayControllers {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub description: String,
     pub member_type: String,
     pub members: Vec<Member>,
@@ -134,26 +127,9 @@ fn test_array_controllers_parser() {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct FirmwareVersionCurrent {
-    pub version_string: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
-pub struct FirmwareVersion {
-    pub current: FirmwareVersionCurrent,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
 pub struct Status {
     pub health: String,
     pub state: String,
-}
-
-#[derive(Debug, Deserialize, Clone)]
-pub struct Href {
-    pub href: String,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -170,12 +146,8 @@ pub struct Link {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct SmartArray {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub adapter_type: String,
     pub backup_power_source_status: String,
     pub current_operating_mode: String,
@@ -187,7 +159,7 @@ pub struct SmartArray {
     pub encryption_mixed_volumes_enabled: bool,
     pub encryption_standalone_mode_enabled: bool,
     pub external_port_count: i64,
-    pub firmware_version: FirmwareVersion,
+    pub firmware_version: Firmware,
     pub hardware_revision: String,
     pub id: String,
     pub internal_port_count: i64,
@@ -208,18 +180,18 @@ impl Hardware for SmartArray {
         self.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata_context.to_owned()
+        self.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata_id.to_owned()
+        self.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata_type.to_owned()
+        self.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
         self.description.to_owned()
     }
-    fn get_firmware_version(&self) -> FirmwareVersion {
+    fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
@@ -258,15 +230,11 @@ fn test_smart_array_parser() {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosure {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub description: String,
     pub drive_bay_count: i64,
-    pub firmware_version: FirmwareVersion,
+    pub firmware_version: Firmware,
     pub id: String,
     pub location: String,
     pub location_format: String,
@@ -285,18 +253,18 @@ impl Hardware for StorageEnclosure {
         self.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata_context.to_owned()
+        self.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata_id.to_owned()
+        self.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata_type.to_owned()
+        self.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
         self.description.to_owned()
     }
-    fn get_firmware_version(&self) -> FirmwareVersion {
+    fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
@@ -335,8 +303,8 @@ fn test_storage_enclosure_parser() {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct Member {
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
+    #[serde(flatten)]
+    pub odata_id: ODataId,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -350,12 +318,8 @@ pub struct EnclosuresLinks {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosures {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub description: String,
     pub member_type: String,
     pub members: Vec<Member>,
@@ -385,12 +349,8 @@ pub struct DriveLinks {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrive {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub block_size_bytes: i64,
     #[serde(rename = "CapacityGB")]
     pub capacity_gb: i64,
@@ -402,7 +362,7 @@ pub struct DiskDrive {
     pub description: String,
     pub disk_drive_status_reasons: Vec<String>,
     pub encrypted_drive: bool,
-    pub firmware_version: FirmwareVersion,
+    pub firmware_version: Firmware,
     pub id: String,
     pub interface_speed_mbps: i64,
     pub interface_type: String,
@@ -428,18 +388,18 @@ impl Hardware for DiskDrive {
         self.status.health.to_owned()
     }
     fn get_odata_context(&self) -> String {
-        self.odata_context.to_owned()
+        self.odata.odata_context.to_owned()
     }
     fn get_odata_id(&self) -> String {
-        self.odata_id.to_owned()
+        self.odata.odata_id.to_owned()
     }
     fn get_odata_type(&self) -> String {
-        self.odata_type.to_owned()
+        self.odata.odata_type.to_owned()
     }
     fn get_description(&self) -> String {
         self.description.to_owned()
     }
-    fn get_firmware_version(&self) -> FirmwareVersion {
+    fn get_firmware_version(&self) -> Firmware {
         self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
@@ -486,12 +446,8 @@ pub struct JsonLink {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrives {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub description: String,
     pub member_type: String,
     pub members: Vec<Member>,
@@ -515,12 +471,8 @@ fn test_storage_drives_parser() {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
 pub struct LogicalDrives {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub description: String,
     pub member_type: String,
     #[serde(rename = "Members@odata.count")]

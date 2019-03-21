@@ -1,3 +1,5 @@
+use crate::common::*;
+
 #[derive(Debug, Deserialize)]
 pub struct ActionsManagerReset {
     pub target: String,
@@ -28,20 +30,8 @@ pub struct Commandshell {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct Ethernetinterface {
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct FirmwareCurrent {
-    #[serde(rename = "VersionString")]
-    pub version: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct Firmware {
-    pub current: FirmwareCurrent,
+    #[serde(flatten)]
+    pub odata_id: ODataId,
 }
 
 #[derive(Debug, Deserialize)]
@@ -121,11 +111,6 @@ pub struct OemHpIloselftestresult {
 }
 
 #[derive(Debug, Deserialize)]
-pub struct Href {
-    pub href: String,
-}
-
-#[derive(Debug, Deserialize)]
 pub struct ExtRef {
     pub extref: String,
 }
@@ -149,8 +134,8 @@ pub struct OemHpLink {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct OemHp {
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata_type: ODataType,
     pub actions: OemHpAction,
     pub available_actions: Vec<OemHpAvailableaction>,
     pub clear_rest_api_status: String,
@@ -202,12 +187,8 @@ pub struct Link {
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct Manager {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: OData,
     pub actions: Action,
     pub available_actions: Vec<Availableaction>,
     pub command_shell: Commandshell,
