@@ -58,7 +58,7 @@ pub struct SomeStatus {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct Link {
+pub struct SelfLink {
     #[serde(rename = "self")]
     pub self_url: Href,
 }

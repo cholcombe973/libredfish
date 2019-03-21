@@ -67,7 +67,7 @@ pub struct Thermal {
     #[serde(rename = "Type")]
     pub thermal_type: String,
     #[serde(rename = "links")]
-    pub links: Link,
+    pub links: SelfLink,
 }
 
 #[test]

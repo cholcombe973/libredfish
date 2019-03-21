@@ -141,7 +141,7 @@ pub struct Link {
     pub storage_enclosures: Href,
     pub unconfigured_drives: Href,
     #[serde(flatten)]
-    pub self_url: crate::common::Link,
+    pub self_url: SelfLink,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -297,7 +297,7 @@ pub struct Member {
 pub struct EnclosuresLinks {
     pub member: Vec<Href>,
     #[serde(flatten)]
-    pub self_url: crate::common::Link,
+    pub self_url: SelfLink,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -351,7 +351,7 @@ pub struct DiskDrive {
     #[serde(rename = "Type")]
     pub drive_type: String,
     #[serde(rename = "links")]
-    pub links: crate::common::Link,
+    pub links: SelfLink,
 }
 
 impl Hardware for DiskDrive {
@@ -411,7 +411,7 @@ fn test_storage_drive_parser() {
 pub struct JsonLink {
     pub member: Vec<Href>,
     #[serde(flatten)]
-    pub self_url: crate::common::Link,
+    pub self_url: SelfLink,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -453,7 +453,7 @@ pub struct LogicalDrives {
     #[serde(rename = "Type")]
     pub drive_type: String,
     #[serde(rename = "links")]
-    pub links: crate::common::Link,
+    pub links: SelfLink,
 }
 
 #[test]

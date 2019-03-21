@@ -137,7 +137,7 @@ pub struct Power {
     #[serde(rename = "Type")]
     pub power_type: String,
     #[serde(rename = "links")]
-    pub links: Link,
+    pub links: SelfLink,
 }
 
 #[test]
