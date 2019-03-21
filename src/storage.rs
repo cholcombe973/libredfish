@@ -110,7 +110,7 @@ fn test_array_controller_parser() {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct ArrayControllers {
+pub struct MultHardware {
     #[serde(flatten)]
     pub odata: OData,
     pub description: String,
@@ -120,6 +120,13 @@ pub struct ArrayControllers {
     pub members_odata_count: i64,
     pub name: String,
     pub total: i64,
+}
+
+#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Deserialize, Clone)]
+pub struct ArrayControllers {
+    #[serde(flatten)]
+    pub mult_hardware: MultHardware,
     #[serde(rename = "Type")]
     pub controller_type: String,
     #[serde(rename = "links")]
@@ -295,14 +302,7 @@ pub struct EnclosuresLinks {
 #[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosures {
     #[serde(flatten)]
-    pub odata: OData,
-    pub description: String,
-    pub member_type: String,
-    pub members: Vec<ODataId>,
-    #[serde(rename = "Members@odata.count")]
-    pub members_odata_count: i64,
-    pub name: String,
-    pub total: i64,
+    pub mult_hardware: MultHardware,
     #[serde(rename = "Type")]
     pub enclosure_type: String,
     #[serde(rename = "links")]
@@ -408,14 +408,7 @@ pub struct JsonLink {
 #[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrives {
     #[serde(flatten)]
-    pub odata: OData,
-    pub description: String,
-    pub member_type: String,
-    pub members: Vec<ODataId>,
-    #[serde(rename = "Members@odata.count")]
-    pub members_odata_count: i64,
-    pub name: String,
-    pub total: i64,
+    pub mult_hardware: MultHardware,
     #[serde(rename = "Type")]
     pub drive_type: String,
     #[serde(rename = "links")]
