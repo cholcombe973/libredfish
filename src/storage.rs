@@ -23,6 +23,7 @@ pub struct HardwareCommon {
     pub odata: OData,
     pub description: String,
     pub id: String,
+    pub firmware_version: Firmware,
     pub location: String,
     pub location_format: String,
     pub model: String,
@@ -44,7 +45,6 @@ pub struct ArrayController {
     pub encryption_mixed_volumes_enabled: bool,
     pub encryption_standalone_mode_enabled: bool,
     pub external_port_count: i64,
-    pub firmware_version: Firmware,
     #[serde(flatten)]
     pub hardware_common: HardwareCommon,
     pub hardware_revision: String,
@@ -73,7 +73,7 @@ impl Hardware for ArrayController {
         self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
-        self.firmware_version.to_owned()
+        self.hardware_common.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
         self.hardware_common.id.to_owned()
@@ -157,7 +157,6 @@ pub struct SmartArray {
     pub encryption_mixed_volumes_enabled: bool,
     pub encryption_standalone_mode_enabled: bool,
     pub external_port_count: i64,
-    pub firmware_version: Firmware,
     pub hardware_revision: String,
     #[serde(flatten)]
     pub hardware_common: HardwareCommon,
@@ -185,7 +184,7 @@ impl Hardware for SmartArray {
         self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
-        self.firmware_version.to_owned()
+        self.hardware_common.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
         self.hardware_common.id.to_owned()
@@ -224,7 +223,6 @@ fn test_smart_array_parser() {
 #[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosure {
     pub drive_bay_count: i64,
-    pub firmware_version: Firmware,
     #[serde(flatten)]
     pub hardware_common: HardwareCommon,
     #[serde(rename = "Type")]
@@ -250,7 +248,7 @@ impl Hardware for StorageEnclosure {
         self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
-        self.firmware_version.to_owned()
+        self.hardware_common.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
         self.hardware_common.id.to_owned()
@@ -338,7 +336,6 @@ pub struct DiskDrive {
     pub current_temperature_celsius: i64,
     pub disk_drive_status_reasons: Vec<String>,
     pub encrypted_drive: bool,
-    pub firmware_version: Firmware,
     #[serde(flatten)]
     pub hardware_common: HardwareCommon,
     pub interface_speed_mbps: i64,
@@ -371,7 +368,7 @@ impl Hardware for DiskDrive {
         self.hardware_common.description.to_owned()
     }
     fn get_firmware_version(&self) -> Firmware {
-        self.firmware_version.to_owned()
+        self.hardware_common.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
         self.hardware_common.id.to_owned()

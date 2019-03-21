@@ -59,15 +59,13 @@ pub struct Temperature {
 #[derive(Debug, Deserialize)]
 pub struct Thermal {
     #[serde(flatten)]
-    pub odata: OData,
+    pub odata: ODataLinks,
     pub fans: Vec<Fan>,
     pub id: String,
     pub name: String,
     pub temperatures: Vec<Temperature>,
     #[serde(rename = "Type")]
     pub thermal_type: String,
-    #[serde(rename = "links")]
-    pub links: SelfLink,
 }
 
 #[test]

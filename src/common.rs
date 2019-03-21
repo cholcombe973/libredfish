@@ -31,6 +31,16 @@ pub struct ODataType {
 }
 
 #[derive(Debug, Deserialize, Clone)]
+pub struct ODataLinks {
+    #[serde(rename = "@odata.context")]
+    pub odata_context: String,
+    #[serde(rename = "@odata.id")]
+    pub odata_id: String,
+    #[serde(rename = "@odata.type")]
+    pub odata_type: String,
+}
+
+#[derive(Debug, Deserialize, Clone)]
 pub struct ODataId {
     #[serde(rename = "@odata.id")]
     pub odata_id: String,
@@ -40,6 +50,8 @@ pub struct ODataId {
 pub struct ODataContext {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
+    #[serde(rename = "links")]
+    pub links: SelfLink,
 }
 
 #[serde(rename_all = "PascalCase")]

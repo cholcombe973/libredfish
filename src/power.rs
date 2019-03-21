@@ -123,7 +123,7 @@ pub struct Redundancy {
 #[derive(Debug, Deserialize)]
 pub struct Power {
     #[serde(flatten)]
-    pub odata: OData,
+    pub odata: ODataLinks,
     pub id: String,
     pub name: String,
     pub oem: Oem,
@@ -136,8 +136,6 @@ pub struct Power {
     pub redundancy: Vec<Redundancy>,
     #[serde(rename = "Type")]
     pub power_type: String,
-    #[serde(rename = "links")]
-    pub links: SelfLink,
 }
 
 #[test]

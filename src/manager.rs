@@ -186,7 +186,7 @@ pub struct Link {
 #[derive(Debug, Deserialize)]
 pub struct Manager {
     #[serde(flatten)]
-    pub odata: OData,
+    pub odata: ODataLinks,
     pub actions: Action,
     pub available_actions: Vec<Availableaction>,
     pub command_shell: Commandshell,
@@ -208,8 +208,6 @@ pub struct Manager {
     #[serde(rename = "UUID")]
     pub uuid: String,
     pub virtual_media: Ethernetinterface,
-    #[serde(rename = "links")]
-    pub links: Link,
 }
 
 #[test]
