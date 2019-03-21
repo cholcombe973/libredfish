@@ -41,3 +41,17 @@ pub struct ODataContext {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
 }
+
+#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Deserialize, Clone)]
+pub struct AllStatus {
+    pub health: String,
+    pub state: String,
+}
+
+#[serde(rename_all = "PascalCase")]
+#[derive(Debug, Deserialize, Clone)]
+pub struct SomeStatus {
+    pub health: Option<String>,
+    pub state: String,
+}

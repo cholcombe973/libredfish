@@ -17,18 +17,11 @@ pub struct FansOem {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
-pub struct FansStatus {
-    pub health: Option<String>,
-    pub state: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
 pub struct Fan {
     pub current_reading: i64,
     pub fan_name: String,
     pub oem: FansOem,
-    pub status: FansStatus,
+    pub status: SomeStatus,
     pub units: String,
 }
 
@@ -60,7 +53,7 @@ pub struct Temperature {
     pub oem: TemperaturesOem,
     pub physical_context: String,
     pub reading_celsius: i64,
-    pub status: FansStatus,
+    pub status: SomeStatus,
     pub units: String,
     pub upper_threshold_critical: i64,
     pub upper_threshold_fatal: i64,

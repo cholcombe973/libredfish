@@ -87,13 +87,6 @@ pub struct PowersuppliesOem {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
-pub struct PowersuppliesStatus {
-    pub health: String,
-    pub state: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
 pub struct Powersupply {
     pub firmware_version: String,
     pub last_power_output_watts: i64,
@@ -106,7 +99,8 @@ pub struct Powersupply {
     pub power_supply_type: String,
     pub serial_number: String,
     pub spare_part_number: String,
-    pub status: PowersuppliesStatus,
+
+    pub status: AllStatus,
 }
 
 #[serde(rename_all = "PascalCase")]

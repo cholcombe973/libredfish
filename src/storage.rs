@@ -12,7 +12,7 @@ pub trait Hardware {
     fn get_model(&self) -> String;
     fn get_name(&self) -> String;
     fn get_serial_number(&self) -> String;
-    fn get_status(&self) -> Status;
+    fn get_status(&self) -> AllStatus;
     fn get_state(&self) -> String;
 }
 
@@ -41,7 +41,7 @@ pub struct ArrayController {
     pub model: String,
     pub name: String,
     pub serial_number: String,
-    pub status: Status,
+    pub status: AllStatus,
     #[serde(rename = "Type")]
     pub controller_type: String,
     #[serde(rename = "links")]
@@ -85,7 +85,7 @@ impl Hardware for ArrayController {
     fn get_serial_number(&self) -> String {
         self.serial_number.to_owned()
     }
-    fn get_status(&self) -> Status {
+    fn get_status(&self) -> AllStatus {
         self.status.to_owned()
     }
     fn get_state(&self) -> String {
@@ -127,13 +127,6 @@ fn test_array_controllers_parser() {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
-pub struct Status {
-    pub health: String,
-    pub state: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize, Clone)]
 pub struct Link {
     pub logical_drives: Href,
     pub physical_drives: Href,
@@ -168,7 +161,7 @@ pub struct SmartArray {
     pub model: String,
     pub name: String,
     pub serial_number: String,
-    pub status: Status,
+    pub status: AllStatus,
     #[serde(rename = "Type")]
     pub array_type: String,
     #[serde(rename = "links")]
@@ -212,7 +205,7 @@ impl Hardware for SmartArray {
     fn get_serial_number(&self) -> String {
         self.serial_number.to_owned()
     }
-    fn get_status(&self) -> Status {
+    fn get_status(&self) -> AllStatus {
         self.status.to_owned()
     }
     fn get_state(&self) -> String {
@@ -241,7 +234,7 @@ pub struct StorageEnclosure {
     pub model: String,
     pub name: String,
     pub serial_number: String,
-    pub status: Status,
+    pub status: AllStatus,
     #[serde(rename = "Type")]
     pub enclosure_type: String,
     #[serde(rename = "links")]
@@ -285,7 +278,7 @@ impl Hardware for StorageEnclosure {
     fn get_serial_number(&self) -> String {
         self.serial_number.to_owned()
     }
-    fn get_status(&self) -> Status {
+    fn get_status(&self) -> AllStatus {
         self.status.to_owned()
     }
     fn get_state(&self) -> String {
@@ -376,7 +369,7 @@ pub struct DiskDrive {
     pub rotational_speed_rpm: i64,
     pub ssd_endurance_utilization_percentage: Option<f64>,
     pub serial_number: String,
-    pub status: Status,
+    pub status: AllStatus,
     #[serde(rename = "Type")]
     pub drive_type: String,
     #[serde(rename = "links")]
@@ -420,7 +413,7 @@ impl Hardware for DiskDrive {
     fn get_serial_number(&self) -> String {
         self.serial_number.to_owned()
     }
-    fn get_status(&self) -> Status {
+    fn get_status(&self) -> AllStatus {
         self.status.to_owned()
     }
     fn get_state(&self) -> String {
