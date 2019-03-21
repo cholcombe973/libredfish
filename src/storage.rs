@@ -16,7 +16,7 @@ pub trait Hardware {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct ArrayController {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -68,7 +68,7 @@ impl Hardware for ArrayController {
         self.description.to_owned()
     }
     fn get_firmware_version(&self) -> FirmwareVersion {
-        self.firmware_version.clone()
+        self.firmware_version.to_owned()
     }
     fn get_id(&self) -> String {
         self.id.to_owned()
@@ -104,7 +104,7 @@ fn test_array_controller_parser() {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct ArrayControllers {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -133,31 +133,31 @@ fn test_array_controllers_parser() {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct FirmwareVersionCurrent {
     pub version_string: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct FirmwareVersion {
     pub current: FirmwareVersionCurrent,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Status {
     pub health: String,
     pub state: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Href {
     pub href: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Link {
     pub logical_drives: Href,
     pub physical_drives: Href,
@@ -168,7 +168,7 @@ pub struct Link {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct SmartArray {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -203,6 +203,51 @@ pub struct SmartArray {
     pub links: Link,
 }
 
+impl Hardware for SmartArray {
+    fn get_heath(&self) -> String {
+        self.status.health.to_owned()
+    }
+    fn get_odata_context(&self) -> String {
+        self.odata_context.to_owned()
+    }
+    fn get_odata_id(&self) -> String {
+        self.odata_id.to_owned()
+    }
+    fn get_odata_type(&self) -> String {
+        self.odata_type.to_owned()
+    }
+    fn get_description(&self) -> String {
+        self.description.to_owned()
+    }
+    fn get_firmware_version(&self) -> FirmwareVersion {
+        self.firmware_version.to_owned()
+    }
+    fn get_id(&self) -> String {
+        self.id.to_owned()
+    }
+    fn get_location(&self) -> String {
+        self.location.to_owned()
+    }
+    fn get_location_format(&self) -> String {
+        self.location_format.to_owned()
+    }
+    fn get_model(&self) -> String {
+        self.model.to_owned()
+    }
+    fn get_name(&self) -> String {
+        self.name.to_owned()
+    }
+    fn get_serial_number(&self) -> String {
+        self.serial_number.to_owned()
+    }
+    fn get_status(&self) -> Status {
+        self.status.to_owned()
+    }
+    fn get_state(&self) -> String {
+        self.status.state.to_owned()
+    }
+}
+
 #[test]
 fn test_smart_array_parser() {
     let test_data = include_str!("../tests/smart-array.json");
@@ -211,7 +256,7 @@ fn test_smart_array_parser() {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosure {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -235,6 +280,51 @@ pub struct StorageEnclosure {
     pub links: serde_json::Value,
 }
 
+impl Hardware for StorageEnclosure {
+    fn get_heath(&self) -> String {
+        self.status.health.to_owned()
+    }
+    fn get_odata_context(&self) -> String {
+        self.odata_context.to_owned()
+    }
+    fn get_odata_id(&self) -> String {
+        self.odata_id.to_owned()
+    }
+    fn get_odata_type(&self) -> String {
+        self.odata_type.to_owned()
+    }
+    fn get_description(&self) -> String {
+        self.description.to_owned()
+    }
+    fn get_firmware_version(&self) -> FirmwareVersion {
+        self.firmware_version.to_owned()
+    }
+    fn get_id(&self) -> String {
+        self.id.to_owned()
+    }
+    fn get_location(&self) -> String {
+        self.location.to_owned()
+    }
+    fn get_location_format(&self) -> String {
+        self.location_format.to_owned()
+    }
+    fn get_model(&self) -> String {
+        self.model.to_owned()
+    }
+    fn get_name(&self) -> String {
+        self.name.to_owned()
+    }
+    fn get_serial_number(&self) -> String {
+        self.serial_number.to_owned()
+    }
+    fn get_status(&self) -> Status {
+        self.status.to_owned()
+    }
+    fn get_state(&self) -> String {
+        self.status.state.to_owned()
+    }
+}
+
 #[test]
 fn test_storage_enclosure_parser() {
     let test_data = include_str!("../tests/storage-enclosure.json");
@@ -243,14 +333,14 @@ fn test_storage_enclosure_parser() {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Member {
     #[serde(rename = "@odata.id")]
     pub odata_id: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct EnclosuresLinks {
     pub member: Vec<Href>,
     #[serde(rename = "self")]
@@ -258,7 +348,7 @@ pub struct EnclosuresLinks {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct StorageEnclosures {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -286,14 +376,14 @@ fn test_storage_enclosures_parser() {
     println!("result: {:#?}", result);
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct DriveLinks {
     #[serde(rename = "self")]
     pub self_url: Href,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrive {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -333,6 +423,51 @@ pub struct DiskDrive {
     pub links: DriveLinks,
 }
 
+impl Hardware for DiskDrive {
+    fn get_heath(&self) -> String {
+        self.status.health.to_owned()
+    }
+    fn get_odata_context(&self) -> String {
+        self.odata_context.to_owned()
+    }
+    fn get_odata_id(&self) -> String {
+        self.odata_id.to_owned()
+    }
+    fn get_odata_type(&self) -> String {
+        self.odata_type.to_owned()
+    }
+    fn get_description(&self) -> String {
+        self.description.to_owned()
+    }
+    fn get_firmware_version(&self) -> FirmwareVersion {
+        self.firmware_version.to_owned()
+    }
+    fn get_id(&self) -> String {
+        self.id.to_owned()
+    }
+    fn get_location(&self) -> String {
+        self.location.to_owned()
+    }
+    fn get_location_format(&self) -> String {
+        self.location_format.to_owned()
+    }
+    fn get_model(&self) -> String {
+        self.model.to_owned()
+    }
+    fn get_name(&self) -> String {
+        self.name.to_owned()
+    }
+    fn get_serial_number(&self) -> String {
+        self.serial_number.to_owned()
+    }
+    fn get_status(&self) -> Status {
+        self.status.to_owned()
+    }
+    fn get_state(&self) -> String {
+        self.status.state.to_owned()
+    }
+}
+
 #[test]
 fn test_storage_drive_parser() {
     let test_data = include_str!("../tests/disk-drive.json");
@@ -341,7 +476,7 @@ fn test_storage_drive_parser() {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct JsonLink {
     pub member: Vec<Href>,
     #[serde(rename = "self")]
@@ -349,7 +484,7 @@ pub struct JsonLink {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct DiskDrives {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
@@ -378,7 +513,7 @@ fn test_storage_drives_parser() {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct LogicalDrives {
     #[serde(rename = "@odata.context")]
     pub odata_context: String,
