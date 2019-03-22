@@ -1,3 +1,5 @@
+use crate::common::*;
+
 #[derive(Debug, Deserialize)]
 pub struct ActionsManagerReset {
     pub target: String,
@@ -23,25 +25,6 @@ pub struct Commandshell {
     pub enabled: bool,
     pub max_concurrent_sessions: i64,
     pub service_enabled: bool,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct Ethernetinterface {
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct FirmwareCurrent {
-    #[serde(rename = "VersionString")]
-    pub version: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct Firmware {
-    pub current: FirmwareCurrent,
 }
 
 #[derive(Debug, Deserialize)]
@@ -120,37 +103,11 @@ pub struct OemHpIloselftestresult {
     pub status: String,
 }
 
-#[derive(Debug, Deserialize)]
-pub struct Href {
-    pub href: String,
-}
-
-#[derive(Debug, Deserialize)]
-pub struct ExtRef {
-    pub extref: String,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
-pub struct OemHpLink {
-    pub active_health_system: Href,
-    pub date_time_service: Href,
-    pub embedded_media_service: Href,
-    pub federation_dispatch: ExtRef,
-    pub federation_groups: Href,
-    pub federation_peers: Href,
-    pub license_service: Href,
-    pub security_service: Href,
-    pub update_service: Href,
-    #[serde(rename = "VSPLogLocation")]
-    pub vsp_log_location: ExtRef,
-}
-
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct OemHp {
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub oem_type: HpType,
     pub actions: OemHpAction,
     pub available_actions: Vec<OemHpAvailableaction>,
     pub clear_rest_api_status: String,
@@ -163,14 +120,12 @@ pub struct OemHp {
     pub serial_cli_speed: i64,
     #[serde(rename = "SerialCLIStatus")]
     pub serial_cli_status: String,
-    #[serde(rename = "Type")]
-    pub oem_type: String,
     #[serde(rename = "VSPLogDownloadEnabled")]
     pub vsp_log_download_enabled: bool,
     #[serde(rename = "iLOSelfTestResults")]
     pub i_lo_self_test_results: Vec<OemHpIloselftestresult>,
-    #[serde(rename = "links")]
-    pub links: OemHpLink,
+    #[serde(rename = "links", flatten)]
+    pub links: LinkType,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -187,40 +142,22 @@ pub struct Status {
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
-pub struct Link {
-    #[serde(rename = "EthernetNICs")]
-    pub ethernet_nics: Href,
-    pub logs: Href,
-    pub manager_for_chassis: Vec<Href>,
-    pub manager_for_servers: Vec<Href>,
-    pub network_service: Href,
-    pub virtual_media: Href,
-    #[serde(rename = "self")]
-    pub self_url: Href,
-}
-
-#[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
 pub struct Manager {
-    #[serde(rename = "@odata.context")]
-    pub odata_context: String,
-    #[serde(rename = "@odata.id")]
-    pub odata_id: String,
-    #[serde(rename = "@odata.type")]
-    pub odata_type: String,
+    #[serde(flatten)]
+    pub odata: ODataLinks,
     pub actions: Action,
     pub available_actions: Vec<Availableaction>,
     pub command_shell: Commandshell,
     pub description: String,
-    pub ethernet_interfaces: Ethernetinterface,
+    pub ethernet_interfaces: ODataId,
     pub firmware: Firmware,
     pub firmware_version: String,
     pub graphical_console: Commandshell,
     pub id: String,
-    pub log_services: Ethernetinterface,
+    pub log_services: ODataId,
     pub manager_type: String,
     pub name: String,
-    pub network_protocol: Ethernetinterface,
+    pub network_protocol: ODataId,
     pub oem: Oem,
     pub serial_console: Commandshell,
     pub status: Status,
@@ -228,9 +165,7 @@ pub struct Manager {
     pub root_type: String,
     #[serde(rename = "UUID")]
     pub uuid: String,
-    pub virtual_media: Ethernetinterface,
-    #[serde(rename = "links")]
-    pub links: Link,
+    pub virtual_media: ODataId,
 }
 
 #[test]
