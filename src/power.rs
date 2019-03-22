@@ -92,6 +92,16 @@ pub struct Powersupply {
     pub status: AllStatus,
 }
 
+impl Status for Powersupply {
+    fn health(&self) -> String {
+        self.status.health()
+    }
+
+    fn state(&self) -> String {
+        self.status.state()
+    }
+}
+
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
 pub struct Redundancy {

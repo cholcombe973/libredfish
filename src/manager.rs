@@ -102,6 +102,15 @@ pub struct OemHpIloselftestresult {
     pub self_test_name: String,
     pub status: String,
 }
+impl crate::common::Status for OemHpIloselftestresult {
+    fn health(&self) -> String {
+        self.status.to_owned()
+    }
+
+    fn state(&self) -> String {
+        String::new()
+    }
+}
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]

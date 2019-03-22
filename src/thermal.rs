@@ -22,6 +22,15 @@ pub struct Fan {
     pub status: SomeStatus,
     pub units: String,
 }
+impl Status for Fan {
+    fn health(&self) -> String {
+        self.status.health()
+    }
+
+    fn state(&self) -> String {
+        self.status.state()
+    }
+}
 
 #[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize)]
@@ -53,6 +62,15 @@ pub struct Temperature {
     pub units: String,
     pub upper_threshold_critical: i64,
     pub upper_threshold_fatal: i64,
+}
+impl Status for Temperature {
+    fn health(&self) -> String {
+        self.status.health()
+    }
+
+    fn state(&self) -> String {
+        self.status.state()
+    }
 }
 
 #[serde(rename_all = "PascalCase")]

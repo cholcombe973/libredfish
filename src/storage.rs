@@ -1,19 +1,26 @@
 use crate::common::*;
 pub trait Hardware {
-    fn get_heath(&self) -> String;
-    fn get_odata_context(&self) -> String;
-    fn get_odata_id(&self) -> String;
-    fn get_odata_type(&self) -> String;
-    fn get_description(&self) -> String;
-    fn get_firmware_version(&self) -> Firmware;
-    fn get_id(&self) -> String;
-    fn get_location(&self) -> String;
-    fn get_location_format(&self) -> String;
-    fn get_model(&self) -> String;
-    fn get_name(&self) -> String;
-    fn get_serial_number(&self) -> String;
-    fn get_status(&self) -> AllStatus;
-    fn get_state(&self) -> String;
+    fn odata_context(&self) -> String;
+    fn odata_id(&self) -> String;
+    fn odata_type(&self) -> String;
+    fn description(&self) -> String;
+    fn firmware_version(&self) -> Firmware;
+    fn id(&self) -> String;
+    fn location(&self) -> String;
+    fn location_format(&self) -> String;
+    fn model(&self) -> String;
+    fn name(&self) -> String;
+    fn serial_number(&self) -> String;
+    fn status(&self) -> AllStatus;
+    fn get_type(&self) -> HardwareType;
+}
+
+#[derive(Debug, Clone, Copy)]
+pub enum HardwareType {
+    ArrayController,
+    DiskDrive,
+    SmartArray,
+    StorageEnclosure,
 }
 
 #[serde(rename_all = "PascalCase")]
@@ -53,49 +60,55 @@ pub struct ArrayController {
     #[serde(rename = "Type")]
     pub controller_type: String,
 }
-
-impl Hardware for ArrayController {
-    fn get_heath(&self) -> String {
+impl Status for ArrayController {
+    fn health(&self) -> String {
         self.hardware_common.status.health.to_owned()
     }
-    fn get_odata_context(&self) -> String {
+
+    fn state(&self) -> String {
+        self.hardware_common.status.state.to_owned()
+    }
+}
+
+impl Hardware for ArrayController {
+    fn odata_context(&self) -> String {
         self.hardware_common.odata.odata_context.to_owned()
     }
-    fn get_odata_id(&self) -> String {
+    fn odata_id(&self) -> String {
         self.hardware_common.odata.odata_id.to_owned()
     }
-    fn get_odata_type(&self) -> String {
+    fn odata_type(&self) -> String {
         self.hardware_common.odata.odata_type.to_owned()
     }
-    fn get_description(&self) -> String {
+    fn description(&self) -> String {
         self.hardware_common.description.to_owned()
     }
-    fn get_firmware_version(&self) -> Firmware {
+    fn firmware_version(&self) -> Firmware {
         self.hardware_common.firmware_version.to_owned()
     }
-    fn get_id(&self) -> String {
+    fn id(&self) -> String {
         self.hardware_common.id.to_owned()
     }
-    fn get_location(&self) -> String {
+    fn location(&self) -> String {
         self.hardware_common.location.to_owned()
     }
-    fn get_location_format(&self) -> String {
+    fn location_format(&self) -> String {
         self.hardware_common.location_format.to_owned()
     }
-    fn get_model(&self) -> String {
+    fn model(&self) -> String {
         self.hardware_common.model.to_owned()
     }
-    fn get_name(&self) -> String {
+    fn name(&self) -> String {
         self.hardware_common.name.to_owned()
     }
-    fn get_serial_number(&self) -> String {
+    fn serial_number(&self) -> String {
         self.hardware_common.serial_number.to_owned()
     }
-    fn get_status(&self) -> AllStatus {
+    fn status(&self) -> AllStatus {
         self.hardware_common.status.to_owned()
     }
-    fn get_state(&self) -> String {
-        self.hardware_common.status.state.to_owned()
+    fn get_type(&self) -> HardwareType {
+        HardwareType::ArrayController
     }
 }
 
@@ -156,49 +169,55 @@ pub struct SmartArray {
     #[serde(rename = "Type")]
     pub array_type: String,
 }
-
-impl Hardware for SmartArray {
-    fn get_heath(&self) -> String {
+impl Status for SmartArray {
+    fn health(&self) -> String {
         self.hardware_common.status.health.to_owned()
     }
-    fn get_odata_context(&self) -> String {
+
+    fn state(&self) -> String {
+        self.hardware_common.status.state.to_owned()
+    }
+}
+
+impl Hardware for SmartArray {
+    fn odata_context(&self) -> String {
         self.hardware_common.odata.odata_context.to_owned()
     }
-    fn get_odata_id(&self) -> String {
+    fn odata_id(&self) -> String {
         self.hardware_common.odata.odata_id.to_owned()
     }
-    fn get_odata_type(&self) -> String {
+    fn odata_type(&self) -> String {
         self.hardware_common.odata.odata_type.to_owned()
     }
-    fn get_description(&self) -> String {
+    fn description(&self) -> String {
         self.hardware_common.description.to_owned()
     }
-    fn get_firmware_version(&self) -> Firmware {
+    fn firmware_version(&self) -> Firmware {
         self.hardware_common.firmware_version.to_owned()
     }
-    fn get_id(&self) -> String {
+    fn id(&self) -> String {
         self.hardware_common.id.to_owned()
     }
-    fn get_location(&self) -> String {
+    fn location(&self) -> String {
         self.hardware_common.location.to_owned()
     }
-    fn get_location_format(&self) -> String {
+    fn location_format(&self) -> String {
         self.hardware_common.location_format.to_owned()
     }
-    fn get_model(&self) -> String {
+    fn model(&self) -> String {
         self.hardware_common.model.to_owned()
     }
-    fn get_name(&self) -> String {
+    fn name(&self) -> String {
         self.hardware_common.name.to_owned()
     }
-    fn get_serial_number(&self) -> String {
+    fn serial_number(&self) -> String {
         self.hardware_common.serial_number.to_owned()
     }
-    fn get_status(&self) -> AllStatus {
+    fn status(&self) -> AllStatus {
         self.hardware_common.status.to_owned()
     }
-    fn get_state(&self) -> String {
-        self.hardware_common.status.state.to_owned()
+    fn get_type(&self) -> HardwareType {
+        HardwareType::SmartArray
     }
 }
 
@@ -218,49 +237,55 @@ pub struct StorageEnclosure {
     #[serde(rename = "Type")]
     pub enclosure_type: String,
 }
-
-impl Hardware for StorageEnclosure {
-    fn get_heath(&self) -> String {
+impl Status for StorageEnclosure {
+    fn health(&self) -> String {
         self.hardware_common.status.health.to_owned()
     }
-    fn get_odata_context(&self) -> String {
+
+    fn state(&self) -> String {
+        self.hardware_common.status.state.to_owned()
+    }
+}
+
+impl Hardware for StorageEnclosure {
+    fn odata_context(&self) -> String {
         self.hardware_common.odata.odata_context.to_owned()
     }
-    fn get_odata_id(&self) -> String {
+    fn odata_id(&self) -> String {
         self.hardware_common.odata.odata_id.to_owned()
     }
-    fn get_odata_type(&self) -> String {
+    fn odata_type(&self) -> String {
         self.hardware_common.odata.odata_type.to_owned()
     }
-    fn get_description(&self) -> String {
+    fn description(&self) -> String {
         self.hardware_common.description.to_owned()
     }
-    fn get_firmware_version(&self) -> Firmware {
+    fn firmware_version(&self) -> Firmware {
         self.hardware_common.firmware_version.to_owned()
     }
-    fn get_id(&self) -> String {
+    fn id(&self) -> String {
         self.hardware_common.id.to_owned()
     }
-    fn get_location(&self) -> String {
+    fn location(&self) -> String {
         self.hardware_common.location.to_owned()
     }
-    fn get_location_format(&self) -> String {
+    fn location_format(&self) -> String {
         self.hardware_common.location_format.to_owned()
     }
-    fn get_model(&self) -> String {
+    fn model(&self) -> String {
         self.hardware_common.model.to_owned()
     }
-    fn get_name(&self) -> String {
+    fn name(&self) -> String {
         self.hardware_common.name.to_owned()
     }
-    fn get_serial_number(&self) -> String {
+    fn serial_number(&self) -> String {
         self.hardware_common.serial_number.to_owned()
     }
-    fn get_status(&self) -> AllStatus {
+    fn status(&self) -> AllStatus {
         self.hardware_common.status.to_owned()
     }
-    fn get_state(&self) -> String {
-        self.hardware_common.status.state.to_owned()
+    fn get_type(&self) -> HardwareType {
+        HardwareType::StorageEnclosure
     }
 }
 
@@ -312,49 +337,55 @@ pub struct DiskDrive {
     #[serde(rename = "Type")]
     pub drive_type: String,
 }
-
-impl Hardware for DiskDrive {
-    fn get_heath(&self) -> String {
+impl Status for DiskDrive {
+    fn health(&self) -> String {
         self.hardware_common.status.health.to_owned()
     }
-    fn get_odata_context(&self) -> String {
+
+    fn state(&self) -> String {
+        self.hardware_common.status.state.to_owned()
+    }
+}
+
+impl Hardware for DiskDrive {
+    fn odata_context(&self) -> String {
         self.hardware_common.odata.odata_context.to_owned()
     }
-    fn get_odata_id(&self) -> String {
+    fn odata_id(&self) -> String {
         self.hardware_common.odata.odata_id.to_owned()
     }
-    fn get_odata_type(&self) -> String {
+    fn odata_type(&self) -> String {
         self.hardware_common.odata.odata_type.to_owned()
     }
-    fn get_description(&self) -> String {
+    fn description(&self) -> String {
         self.hardware_common.description.to_owned()
     }
-    fn get_firmware_version(&self) -> Firmware {
+    fn firmware_version(&self) -> Firmware {
         self.hardware_common.firmware_version.to_owned()
     }
-    fn get_id(&self) -> String {
+    fn id(&self) -> String {
         self.hardware_common.id.to_owned()
     }
-    fn get_location(&self) -> String {
+    fn location(&self) -> String {
         self.hardware_common.location.to_owned()
     }
-    fn get_location_format(&self) -> String {
+    fn location_format(&self) -> String {
         self.hardware_common.location_format.to_owned()
     }
-    fn get_model(&self) -> String {
+    fn model(&self) -> String {
         self.hardware_common.model.to_owned()
     }
-    fn get_name(&self) -> String {
+    fn name(&self) -> String {
         self.hardware_common.name.to_owned()
     }
-    fn get_serial_number(&self) -> String {
+    fn serial_number(&self) -> String {
         self.hardware_common.serial_number.to_owned()
     }
-    fn get_status(&self) -> AllStatus {
+    fn status(&self) -> AllStatus {
         self.hardware_common.status.to_owned()
     }
-    fn get_state(&self) -> String {
-        self.hardware_common.status.state.to_owned()
+    fn get_type(&self) -> HardwareType {
+        HardwareType::DiskDrive
     }
 }
 
