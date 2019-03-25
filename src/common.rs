@@ -149,3 +149,7 @@ impl Status for AllStatus {
         self.state.clone()
     }
 }
+
+pub trait StatusVec {
+    fn get_vec(&self) -> Vec<Box<Status>>;
+}
