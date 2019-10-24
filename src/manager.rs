@@ -1,25 +1,25 @@
 use crate::common::*;
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct ActionsManagerReset {
     pub target: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Action {
     #[serde(rename = "#Manager.Reset")]
     pub manager_reset: ActionsManagerReset,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Availableaction {
     pub action: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Commandshell {
     pub connect_types_supported: Vec<String>,
     pub enabled: bool,
@@ -27,14 +27,14 @@ pub struct Commandshell {
     pub service_enabled: bool,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpActionshpiloResetToFactoryDefault {
     #[serde(rename = "ResetType@Redfish.AllowableValues")]
     pub reset_type_redfish_allowable_values: Vec<String>,
     pub target: String,
 }
 
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpAction {
     #[serde(rename = "#HpiLO.ClearRestApiState")]
     pub hpi_lo_clear_rest_api_state: ActionsManagerReset,
@@ -45,21 +45,21 @@ pub struct OemHpAction {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpAvailableactionsCapability {
     pub allowable_values: Vec<String>,
     pub property_name: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpAvailableaction {
     pub action: String,
     pub capabilities: Vec<OemHpAvailableactionsCapability>,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpFederationconfig {
     #[serde(rename = "IPv6MulticastScope")]
     pub i_pv6_multicast_scope: String,
@@ -71,7 +71,7 @@ pub struct OemHpFederationconfig {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpFirmwareCurrent {
     pub date: String,
     pub debug_build: bool,
@@ -82,13 +82,13 @@ pub struct OemHpFirmwareCurrent {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpFirmware {
     pub current: OemHpFirmwareCurrent,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpLicense {
     pub license_key: String,
     pub license_string: String,
@@ -96,15 +96,24 @@ pub struct OemHpLicense {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHpIloselftestresult {
     pub notes: String,
     pub self_test_name: String,
     pub status: String,
 }
+impl crate::common::Status for OemHpIloselftestresult {
+    fn health(&self) -> String {
+        self.status.to_owned()
+    }
+
+    fn state(&self) -> String {
+        String::new()
+    }
+}
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct OemHp {
     #[serde(flatten)]
     pub oem_type: HpType,
@@ -129,19 +138,19 @@ pub struct OemHp {
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Oem {
     pub hp: OemHp,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Status {
     pub state: String,
 }
 
 #[serde(rename_all = "PascalCase")]
-#[derive(Debug, Deserialize)]
+#[derive(Debug, Deserialize, Clone)]
 pub struct Manager {
     #[serde(flatten)]
     pub odata: ODataLinks,
@@ -166,6 +175,16 @@ pub struct Manager {
     #[serde(rename = "UUID")]
     pub uuid: String,
     pub virtual_media: ODataId,
+}
+
+impl StatusVec for Manager {
+    fn get_vec(&self) -> Vec<Box<crate::common::Status>> {
+        let mut v: Vec<Box<crate::common::Status>> = Vec::new();
+        for res in &self.oem.hp.i_lo_self_test_results {
+            v.push(Box::new(res.clone()))
+        }
+        v
+    }
 }
 
 #[test]

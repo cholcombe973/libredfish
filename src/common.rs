@@ -123,3 +123,33 @@ pub struct HpType {
     #[serde(rename = "Type")]
     pub hp_type: String,
 }
+
+pub trait Status {
+    fn health(&self) -> String;
+    fn state(&self) -> String;
+}
+
+impl Status for SomeStatus {
+    fn health(&self) -> String {
+        match &self.health {
+            Some(s) => s.clone(),
+            None => "OK".to_string(),
+        }
+    }
+    fn state(&self) -> String {
+        self.state.clone()
+    }
+}
+
+impl Status for AllStatus {
+    fn health(&self) -> String {
+        self.health.clone()
+    }
+    fn state(&self) -> String {
+        self.state.clone()
+    }
+}
+
+pub trait StatusVec {
+    fn get_vec(&self) -> Vec<Box<Status>>;
+}
