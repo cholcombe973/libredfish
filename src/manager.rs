@@ -178,8 +178,8 @@ pub struct Manager {
 }
 
 impl StatusVec for Manager {
-    fn get_vec(&self) -> Vec<Box<crate::common::Status>> {
-        let mut v: Vec<Box<crate::common::Status>> = Vec::new();
+    fn get_vec(&self) -> Vec<Box<dyn crate::common::Status>> {
+        let mut v: Vec<Box<dyn crate::common::Status>> = Vec::new();
         for res in &self.oem.hp.i_lo_self_test_results {
             v.push(Box::new(res.clone()))
         }

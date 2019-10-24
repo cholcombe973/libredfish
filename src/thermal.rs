@@ -87,8 +87,8 @@ pub struct Thermal {
 }
 
 impl StatusVec for Thermal {
-    fn get_vec(&self) -> Vec<Box<Status>> {
-        let mut v: Vec<Box<Status>> = Vec::new();
+    fn get_vec(&self) -> Vec<Box<dyn Status>> {
+        let mut v: Vec<Box<dyn Status>> = Vec::new();
         for res in &self.fans {
             v.push(Box::new(res.clone()))
         }

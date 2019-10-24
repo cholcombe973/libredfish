@@ -133,8 +133,8 @@ pub struct Power {
 }
 
 impl StatusVec for Power {
-    fn get_vec(&self) -> Vec<Box<Status>> {
-        let mut v: Vec<Box<Status>> = Vec::new();
+    fn get_vec(&self) -> Vec<Box<dyn Status>> {
+        let mut v: Vec<Box<dyn Status>> = Vec::new();
         for res in &self.power_supplies {
             v.push(Box::new(res.clone()))
         }
