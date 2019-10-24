@@ -151,5 +151,5 @@ impl Status for AllStatus {
 }
 
 pub trait StatusVec {
-    fn get_vec(&self) -> Vec<Box<Status>>;
+    fn get_vec(&self) -> Vec<Box<dyn Status>>;
 }
