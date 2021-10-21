@@ -5,21 +5,21 @@ pub struct ActionsManagerReset {
     pub target: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Action {
     #[serde(rename = "#Manager.Reset")]
     pub manager_reset: ActionsManagerReset,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Availableaction {
     pub action: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Commandshell {
     pub connect_types_supported: Vec<String>,
     pub enabled: bool,
@@ -44,22 +44,22 @@ pub struct OemHpAction {
     pub hpi_lo_i_lo_functionality: ActionsManagerReset,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpAvailableactionsCapability {
     pub allowable_values: Vec<String>,
     pub property_name: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpAvailableaction {
     pub action: String,
     pub capabilities: Vec<OemHpAvailableactionsCapability>,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpFederationconfig {
     #[serde(rename = "IPv6MulticastScope")]
     pub i_pv6_multicast_scope: String,
@@ -70,8 +70,8 @@ pub struct OemHpFederationconfig {
     pub i_lo_federation_management: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpFirmwareCurrent {
     pub date: String,
     pub debug_build: bool,
@@ -81,22 +81,22 @@ pub struct OemHpFirmwareCurrent {
     pub version_string: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpFirmware {
     pub current: OemHpFirmwareCurrent,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpLicense {
     pub license_key: String,
     pub license_string: String,
     pub license_type: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpIloselftestresult {
     pub notes: String,
     pub self_test_name: String,
@@ -112,8 +112,8 @@ impl crate::common::Status for OemHpIloselftestresult {
     }
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHp {
     #[serde(flatten)]
     pub oem_type: HpType,
@@ -137,20 +137,20 @@ pub struct OemHp {
     pub links: LinkType,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Oem {
     pub hp: OemHp,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Status {
     pub state: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Manager {
     #[serde(flatten)]
     pub odata: ODataLinks,

@@ -23,8 +23,8 @@ pub enum HardwareType {
     StorageEnclosure,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct HardwareCommon {
     #[serde(flatten)]
     pub odata: ODataLinks,
@@ -39,8 +39,8 @@ pub struct HardwareCommon {
     pub status: AllStatus,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct ArrayController {
     pub adapter_type: String,
     pub backup_power_source_status: String,
@@ -119,8 +119,8 @@ fn test_array_controller_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct MultHardware {
     #[serde(flatten)]
     pub odata: ODataLinks,
@@ -133,8 +133,8 @@ pub struct MultHardware {
     pub total: i64,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct ArrayControllers {
     #[serde(flatten)]
     pub mult_hardware: MultHardware,
@@ -149,8 +149,8 @@ fn test_array_controllers_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct SmartArray {
     pub adapter_type: String,
     pub backup_power_source_status: String,
@@ -228,8 +228,8 @@ fn test_smart_array_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct StorageEnclosure {
     pub drive_bay_count: i64,
     #[serde(flatten)]
@@ -296,8 +296,8 @@ fn test_storage_enclosure_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct StorageEnclosures {
     #[serde(flatten)]
     pub mult_hardware: MultHardware,
@@ -312,8 +312,8 @@ fn test_storage_enclosures_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct DiskDrive {
     pub block_size_bytes: i64,
     #[serde(rename = "CapacityGB")]
@@ -396,8 +396,8 @@ fn test_storage_drive_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct DiskDrives {
     #[serde(flatten)]
     pub mult_hardware: MultHardware,
@@ -412,8 +412,8 @@ fn test_storage_drives_parser() {
     println!("result: {:#?}", result);
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct LogicalDrives {
     #[serde(flatten)]
     pub odata: ODataLinks,

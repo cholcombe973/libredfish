@@ -4,8 +4,8 @@ pub struct FirmwareCurrent {
     pub version: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Firmware {
     pub current: FirmwareCurrent,
 }
@@ -20,8 +20,8 @@ pub struct ExtRef {
     pub extref: String,
 }
 
-#[serde(untagged, rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(untagged, rename_all = "PascalCase")]
 pub enum LinkType {
     SelfLink {
         #[serde(rename = "self")]
@@ -101,22 +101,22 @@ pub struct ODataContext {
     pub links: LinkType,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct AllStatus {
     pub health: String,
     pub state: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct SomeStatus {
     pub health: Option<String>,
     pub state: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct HpType {
     #[serde(rename = "@odata.type")]
     pub odata_type: String,
