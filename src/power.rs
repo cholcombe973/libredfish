@@ -1,6 +1,7 @@
 use crate::common::*;
-#[serde(rename_all = "PascalCase")]
+
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct OemHpSnmppowerthresholdalert {
     pub duration_in_min: i64,
     pub threshold_watts: i64,
@@ -17,20 +18,20 @@ pub struct OemHp {
     pub links: LinkType,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Oem {
     pub hp: OemHp,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct PowercontrolPowerlimit {
     pub limit_in_watts: Option<i64>,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct PowercontrolPowermetric {
     pub average_consumed_watts: i64,
     pub interval_in_min: i64,
@@ -38,8 +39,8 @@ pub struct PowercontrolPowermetric {
     pub min_consumed_watts: i64,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Powercontrol {
     pub power_capacity_watts: i64,
     pub power_consumed_watts: i64,
@@ -47,14 +48,14 @@ pub struct Powercontrol {
     pub power_metrics: PowercontrolPowermetric,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct PowersuppliesOemHpPowersupplystatus {
     pub state: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct PowersuppliesOemHp {
     #[serde(flatten)]
     pub power_type: HpType,
@@ -68,14 +69,14 @@ pub struct PowersuppliesOemHp {
     pub i_pdu_capable: bool,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct PowersuppliesOem {
     pub hp: PowersuppliesOemHp,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Powersupply {
     pub firmware_version: String,
     pub last_power_output_watts: i64,
@@ -102,8 +103,8 @@ impl Status for Powersupply {
     }
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Redundancy {
     pub max_num_supported: i64,
     pub member_id: String,
@@ -113,8 +114,8 @@ pub struct Redundancy {
     pub redundancy_set: Vec<ODataId>,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Power {
     #[serde(flatten)]
     pub odata: ODataLinks,

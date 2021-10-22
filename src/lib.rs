@@ -68,28 +68,28 @@ impl Redfish {
     }
     pub fn get_array_controllers(&self) -> Result<storage::ArrayControllers, reqwest::Error> {
         let url = "Systems/1/SmartStorage/ArrayControllers/";
-        let s: storage::ArrayControllers = self.get(&url)?;
+        let s: storage::ArrayControllers = self.get(url)?;
         Ok(s)
     }
 
     /// Query the manager status from the server
     pub fn get_manager_status(&self) -> Result<manager::Manager, reqwest::Error> {
         let url = "Managers/";
-        let m: manager::Manager = self.get(&url)?;
+        let m: manager::Manager = self.get(url)?;
         Ok(m)
     }
 
     /// Query the power status from the server
     pub fn get_power_status(&self) -> Result<power::Power, reqwest::Error> {
         let url = "Chassis/1/Power/";
-        let p: power::Power = self.get(&url)?;
+        let p: power::Power = self.get(url)?;
         Ok(p)
     }
 
     /// Query the thermal status from the server
     pub fn get_thermal_status(&self) -> Result<thermal::Thermal, reqwest::Error> {
         let url = "Chassis/1/Thermal/";
-        let t: thermal::Thermal = self.get(&url)?;
+        let t: thermal::Thermal = self.get(url)?;
         Ok(t)
     }
 

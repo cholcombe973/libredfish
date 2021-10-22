@@ -1,20 +1,21 @@
 use crate::common::*;
-#[serde(rename_all = "PascalCase")]
+
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct FansOemHp {
     #[serde(flatten)]
     pub fan_type: HpType,
     pub location: String,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct FansOem {
     pub hp: FansOemHp,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Fan {
     pub current_reading: i64,
     pub fan_name: String,
@@ -32,8 +33,8 @@ impl Status for Fan {
     }
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct TemperaturesOemHp {
     #[serde(flatten)]
     pub temp_type: HpType,
@@ -41,14 +42,14 @@ pub struct TemperaturesOemHp {
     pub location_ymm: i64,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct TemperaturesOem {
     pub hp: TemperaturesOemHp,
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Temperature {
     pub current_reading: i64,
     pub name: String,
@@ -73,8 +74,8 @@ impl Status for Temperature {
     }
 }
 
-#[serde(rename_all = "PascalCase")]
 #[derive(Debug, Deserialize, Clone)]
+#[serde(rename_all = "PascalCase")]
 pub struct Thermal {
     #[serde(flatten)]
     pub odata: ODataLinks,
