@@ -7,7 +7,7 @@ pub mod power;
 pub mod storage;
 pub mod thermal;
 
-use reqwest::{header::HeaderValue, header::ACCEPT, header::CONTENT_TYPE, Client};
+use reqwest::{header::HeaderValue, header::ACCEPT, header::CONTENT_TYPE, blocking::Client};
 use serde::de::DeserializeOwned;
 
 pub struct Config {
