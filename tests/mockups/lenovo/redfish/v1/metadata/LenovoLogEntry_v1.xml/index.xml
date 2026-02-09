@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoLogEntry  v1.0.0                                       -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLogEntry">
+      <ComplexType Name="LenovoLogEntry" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoLogEntry resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLogEntry.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <ComplexType Name="LenovoLogEntryProperties" BaseType="LenovoLogEntry.LenovoLogEntry">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is Lenovo extended properties of Lenovo extended log entries information."/>
+        <Property Name="Source" Type="LenovoLogEntry.v1_0_0.Source">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the origin of the event leading to the log entry."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the origin of the event leading to the log entry."/>
+        </Property>
+        <Property Name="Serviceable" Type="Collection(LenovoLogEntry.v1_0_0.Serviceable)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents whether the event should be Serviced by Lenovo, by the customer, or neither."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent whether the event should be Serviced by Lenovo, by the customer, or neither."/>
+        </Property>
+        <Property Name="CommonEventID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the unified event ID across all Lenovo products, including Power, System x and Storage."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the unified event ID across all Lenovo products, including Power, System x and Storage."/>
+        </Property>
+        <Property Name="LenovoMessageID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the unified message ID which is defined by Lenovo."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the unified message ID which is defined by Lenovo."/>
+        </Property>
+        <Property Name="Hidden" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents whether the log entry is intended to be displayed to normal users."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents whether the log entry is intended to be displayed to normal users."/>
+        </Property>
+        <Property Name="FailingFRU" Type="Collection(LenovoLogEntry.v1_0_0.FailingFRUItem)">
+          <Annotation Term="OData.Description" String="Represents List of FRU information for the Failing FRU(s)."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent list of FRU(s). May be null if not known or if event was not caused by a failing FRU."/>
+        </Property>
+        <Property Name="EventSequenceNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Provides a unique, monotonically increasing sequence number for each standard event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides a unique, monotonically increasing sequence number for each standard event log."/>
+        </Property>
+        <Property Name="AuxiliaryData" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents additional details that may be provided for some events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array used to represent additional details that may be provided for some events. May be null if not available."/>
+        </Property>
+        <Property Name="AffectedIndicatorLEDs" Type="Collection(LenovoLogEntry.v1_0_0.AffectedIndicatorLED)">
+          <Annotation Term="OData.Description" String="Represents list of LED Identifiers for the LEDs affected by this logged event."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents list of LED Identifiers for the LEDs affected by this logged event."/>
+        </Property>
+        <Property Name="EventFlag" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the event characteristics."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the event characteristics. Curently, Only two bits are defined :bit0 indicate to move VM away from this server; bit1 is Event indication processing flag."/>
+        </Property>
+        <Property Name="EventType" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describe how the system was impacted."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall describe how the system was impacted."/>
+        </Property>
+        <Property Name="IsLocalEvent" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the event occurred at the local node or from other node."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the event occurred at the local node or from other node."/>
+        </Property>
+        <Property Name="EventID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents an 8-byte binary Event ID. Its format shall be 0xhhhhhhhhhhhhhhhh."/>
+          <Annotation Term="OData.LongDescription" String="The value of property shall represent an 8-byte binary Event ID. Its format shall be 0xhhhhhhhhhhhhhhhh."/>
+        </Property>
+        <Property Name="ReportingChain" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the path which the event was reported through."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the path which the event was reported through. Each management stack adds a tag so the reporting chain is understood and can be expanded to cover the reporting path using two consecutive colons as a delimiter."/>
+        </Property>
+        <Property Name="RelatedEventID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains one or multiple related event IDs."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain one or multiple related event IDs."/>
+        </Property>
+        <Property Name="RawDebugLogURL" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains a URL of HTTPS where stores the raw debug data for Trust Source Log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a URL of HTTPS where stores the raw debug data for Trust Source Log"/>
+        </Property>
+        <Property Name="TSLVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the Version filed in TSL information."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the Version filed in TSL information."/>
+        </Property>
+        <Property Name="TotalSequenceNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The total sequence number in both audit and platform log entries."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the total sequence number in both audit and platform log entries."/>
+        </Property>
+        <Property Name="EventSeverity" Type="LenovoLogEntry.v1_0_0.SaEventSeverity">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The severity of this event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the severity of this event log. This property only available in SaLog log service."/>
+        </Property>
+        <Property Name="EventStatus" Type="LenovoLogEntry.v1_0_0.SaEventStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of this event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the status of this event log. This property only available in SaLog log service."/>
+        </Property>
+        <Property Name="CaseNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The case number of this event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the case number of this event log. This property only available in SaLog log service."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="Source">
+        <Member Name="Unknown"/>
+        <Member Name="Other"/>
+        <Member Name="Audit"/>
+        <Member Name="Cooling"/>
+        <Member Name="Power"/>
+        <Member Name="Disks"/>
+        <Member Name="Memory"/>
+        <Member Name="Processors"/>
+        <Member Name="System"/>
+        <Member Name="Test"/>
+      </EnumType>
+      
+      <EnumType Name="Serviceable">
+        <Member Name="Not Serviceable"/>
+        <Member Name="ServiceableByLenovo"/>
+        <Member Name="ServiceableByCustomer"/>
+      </EnumType>
+      
+      <ComplexType Name="FailingFRUItem">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent FRU Identifier information."/>
+        <Property Name="FRUNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents list of LED Identifiers for the LEDs affected by this logged event."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents list of LED Identifiers for the LEDs affected by this logged event."/>
+        </Property>
+        <Property Name="FRUSerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents list of Serial Numbers for the Failing FRU(s)."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents list of Serial Numbers for the Failing FRU(s). Order of entries in the list corresponds to order in the FailingFRUNumber list."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="AffectedIndicatorLED">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent affected indicator LED information."/>
+        <Property Name="LEDIdentifier" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents LED Identifier"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent LED identifier."/>
+        </Property>
+        <Property Name="LEDState" Type="LenovoLogEntry.v1_0_0.LEDState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the LED state."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents the LED state."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="LEDState">
+        <Member Name="Lit">
+          <Annotation Term="OData.Description" String="LED state is lit"/>
+        </Member>
+        <Member Name="Blinking">
+          <Annotation Term="OData.Description" String="LED state is blinking"/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="LED state is off"/>
+        </Member>
+        <Member Name="ControlPattern">
+          <Annotation Term="OData.Description" String="LED state is control pattern"/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="SaEventSeverity">
+        <Member Name="RESERVED"/>
+        <Member Name="INFO"/>
+        <Member Name="WARNING"/>
+        <Member Name="ERROR"/>
+      </EnumType>
+      
+      <EnumType Name="SaEventStatus">
+        <Member Name="Pending"/>
+        <Member Name="ACTIVE"/>
+        <Member Name="FAILED"/>
+        <Member Name="CLOSE"/>
+        <Member Name="CANCEL"/>
+      </EnumType>
+      
+      <ComplexType Name="StandardLogEntry">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to be a reference to Event resource."/>
+        <Property Name="Source" Type="LenovoLogEntry.v1_0_0.Source">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the origin of the event leading to the log entry."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the origin of the event leading to the log entry."/>
+        </Property>
+        <Property Name="Serviceable" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents whether the event should be Serviced by Lenovo, by the customer, or neither."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent whether the event should be Serviced by Lenovo, by the customer, or neither."/>
+        </Property>
+        <Property Name="CommonEventID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the unified event ID across all Lenovo products, including Power, System x and Storage."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the unified event ID across all Lenovo products, including Power, System x and Storage."/>
+        </Property>
+        <Property Name="LenovoMessageID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the unified message ID which is defined by Lenovo."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the unified message ID which is defined by Lenovo."/>
+        </Property>
+        <Property Name="Hidden" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents whether the log entry is intended to be displayed to normal users."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents whether the log entry is intended to be displayed to normal users."/>
+        </Property>
+        <Property Name="FailingFRU" Type="Collection(LenovoLogEntry.v1_0_0.FailingFRUItem)">
+          <Annotation Term="OData.Description" String="Represents List of FRU information for the Failing FRU(s)."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent list of FRU(s). May be null if not known or if event was not caused by a failing FRU."/>
+        </Property>
+        <Property Name="EventSequenceNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Provides a unique, monotonically increasing sequence number for each standard event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides a unique, monotonically increasing sequence number for each standard event log."/>
+        </Property>
+        <Property Name="AuxiliaryData" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents additional details that may be provided for some events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array used to represent additional details that may be provided for some events. May be null if not available."/>
+        </Property>
+        <Property Name="AffectedIndicatorLEDs" Type="Collection(LenovoLogEntry.v1_0_0.AffectedIndicatorLED)">
+          <Annotation Term="OData.Description" String="Represents list of LED Identifiers for the LEDs affected by this logged event."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represents list of LED Identifiers for the LEDs affected by this logged event."/>
+        </Property>
+        <Property Name="EventFlag" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the event characteristics."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the event characteristics. Curently, Only two bits are defined :bit0 indicate to move VM away from this server; bit1 is Event indication processing flag."/>
+        </Property>
+        <Property Name="EventType" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Describe how the system was impacted."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall describe how the system was impacted."/>
+        </Property>
+        <Property Name="IsLocalEvent" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the event occurred at the local node or from other node."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the event occurred at the local node or from other node."/>
+        </Property>
+        <Property Name="EventID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents an 8-byte binary Event ID. Its format shall be 0xhhhhhhhhhhhhhhhh."/>
+          <Annotation Term="OData.LongDescription" String="The value of property shall represent an 8-byte binary Event ID. Its format shall be 0xhhhhhhhhhhhhhhhh."/>
+        </Property>
+        <Property Name="ReportingChain" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the path which the event was reported through."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the path which the event was reported through. Each management stack adds a tag so the reporting chain is understood and can be expanded to cover the reporting path using two consecutive colons as a delimiter."/>
+        </Property>
+        <Property Name="RelatedEventID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains one or multiple related event IDs."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain one or multiple related event IDs."/>
+        </Property>
+        <Property Name="RawDebugLogURL" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains a URL of HTTPS where stores the raw debug data for Trust Source Log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain a URL of HTTPS where stores the raw debug data for Trust Source Log"/>
+        </Property>
+        <Property Name="TSLVersion" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the Version filed in TSL information."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the Version filed in TSL information."/>
+        </Property>
+        <Property Name="TotalSequenceNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The total sequence number in both audit and platform log entries."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the total sequence number in both audit and platform log entries."/>
+        </Property>
+        <Property Name="EventSeverity" Type="LenovoLogEntry.v1_0_0.SaEventSeverity">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The severity of this event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the severity of this event log. This property only available in SaLog log service."/>
+        </Property>
+        <Property Name="EventStatus" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of this event log."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall provides the status of this event log. This property only available in SaLog log service."/>
+        </Property>
+      </ComplexType>
+     
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

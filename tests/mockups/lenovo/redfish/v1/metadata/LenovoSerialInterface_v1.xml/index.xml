@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoSerialInterface  v1.0.0                                -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoSerialInterface">
+      <ComplexType Name="LenovoSerialInterface" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoSerialInterface resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoSerialInterface.v1_0_0">
+      <ComplexType Name="LenovoSerialInterfaceProperties" BaseType="LenovoSerialInterface.LenovoSerialInterface">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo Serial Interface resource. It represents the additional properties of a serial interface of a System."/>
+        <Property Name="CLIMode" Type="LenovoSerialInterface.v1_0_0.CLIModeType" Nullable="false"/>
+        <Property Name="EnterCLIKeySequence" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The key sequence to exit serial redirection and enter CLI."/>
+          <Annotation Term="OData.LongDescription" String="When the exit key sequence is typed, serial redirection stops and you are returned to the command mode in the Telnet or SSH session."/>
+        </Property>
+        <Property Name="TextFlowType" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Specify the type of the text stream supported on the serial interface."/>
+        </Property>
+        <Property Name="SerialInterfaceState" Type="LenovoSerialInterface.v1_0_0.SerialInterfaceState" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Specify the enabled and disabled state of the serial interface."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="CLIModeType">
+        <Member Name="Compatible">
+          <Annotation Term="OData.Description" String="CLI with compatible keystroke sequences"/>
+        </Member>
+        <Member Name="UserDefined">
+          <Annotation Term="OData.Description" String="CLI with user defined keystroke sequences"/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="SerialInterfaceState">
+        <Member Name="Enabled"/>
+        <Member Name="Offline"/>
+      </EnumType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

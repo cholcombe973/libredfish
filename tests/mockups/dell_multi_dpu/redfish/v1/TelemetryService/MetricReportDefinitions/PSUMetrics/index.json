@@ -1,0 +1,87 @@
+{
+    "@odata.type": "#MetricReportDefinition.v1_4_2.MetricReportDefinition",
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PSUMetrics",
+    "Id": "PSUMetrics",
+    "Name": "PSU Metric Report",
+    "Description": "Power supply metrics",
+    "AppendLimit": 2400,
+    "MetricReportDefinitionEnabled": false,
+    "MetricReportDefinitionType": "Periodic",
+    "MetricReportHeartbeatInterval": "PT0H0M0S",
+    "SuppressRepeatedMetricValue": false,
+    "ReportTimespan": "PT0H0M0S",
+    "ReportUpdates": "Overwrite",
+    "Wildcards": [],
+    "MetricReportDefinitionType@Redfish.AllowableValues": [
+        "Periodic",
+        "OnChange",
+        "OnRequest"
+    ],
+    "ReportUpdates@Redfish.AllowableValues": [
+        "AppendStopsWhenFull",
+        "AppendWrapsWhenFull",
+        "NewReport",
+        "Overwrite"
+    ],
+    "ReportActions": [
+        "RedfishEvent",
+        "LogToMetricReportsCollection"
+    ],
+    "ReportActions@Redfish.AllowableValues": [
+        "LogToMetricReportsCollection",
+        "RedfishEvent"
+    ],
+    "Status": {
+        "State": "Disabled"
+    },
+    "Schedule": {
+        "RecurrenceInterval": "PT0H1M0S"
+    },
+    "Metrics": [
+        {
+            "MetricId": "PSURPMReading",
+            "MetricProperties": [],
+            "CollectionFunction": null,
+            "CollectionDuration": null,
+            "CollectionTimeScope": "Point",
+            "Oem": {
+                "Dell": {
+                    "@odata.type": "#DellMetric.v1_1_0.DellMetric",
+                    "CustomLabel": null,
+                    "FQDD": null,
+                    "Source": "psu-sensor"
+                }
+            }
+        },
+        {
+            "MetricId": "PSUTemperatureReading",
+            "MetricProperties": [],
+            "CollectionFunction": null,
+            "CollectionDuration": null,
+            "CollectionTimeScope": "Point",
+            "Oem": {
+                "Dell": {
+                    "@odata.type": "#DellMetric.v1_1_0.DellMetric",
+                    "CustomLabel": null,
+                    "FQDD": null,
+                    "Source": "psu-sensor"
+                }
+            }
+        }
+    ],
+    "Links": {
+        "Triggers": [
+            {
+                "@odata.id": "/redfish/v1/TelemetryService/Triggers/VLTCriticalTrigger"
+            }
+        ]
+    },
+    "Oem": {
+        "Dell": {
+            "@odata.type": "#DellMetricReportDefinition.v1_1_0.DellMetricReportDefinition",
+            "Digest": "e14806f604e6461b868af983edd940d0eb113d3ce4b582350bf88c0a2226ff93",
+            "iDRACFirmwareVersion": "7.10.30.00"
+        }
+    }
+}

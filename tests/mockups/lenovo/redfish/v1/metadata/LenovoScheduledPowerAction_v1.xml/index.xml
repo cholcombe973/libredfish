@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  LenovoScheduledPowerAction  v1.0.0                                  -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoScheduledPowerAction">
+      <EntityType Name="LenovoScheduledPowerAction" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoScheduledPowerAction.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <EntityType Name="LenovoScheduledPowerAction" BaseType="LenovoScheduledPowerAction.LenovoScheduledPowerAction">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the watch dog resource. It represents the properties of a watch dog of a System."/>
+        <Property Name="Type" Type="LenovoScheduledPowerAction.v1_0_0.ScheduleType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="It indicates the schedule type for this power action."/>
+        </Property>
+        <Property Name="Activated" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="It indicates whether the scheduled power action is activated."/>
+        </Property>
+        <Property Name="Interval" Type="LenovoScheduledPowerAction.v1_0_0.IntervalType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicate the frequency how often automatically have a new power action.The value maybe 'Daily' or 'Weekly'."/>
+        </Property>
+        <Property Name="Time" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The time to take the scheduled power action."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="ScheduleType">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="Power on server"/>
+        </Member>
+        <Member Name="GracefulShutdown">
+          <Annotation Term="OData.Description" String="Shut down OS and power off server"/>
+        </Member>
+        <Member Name="GracefulRestart">
+          <Annotation Term="OData.Description" String="Shut down OS and restart server"/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="IntervalType">
+        <Member Name="Daily"/>
+        <Member Name="Weekly"/>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

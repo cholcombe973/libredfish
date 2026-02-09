@@ -1,0 +1,219 @@
+{
+    "$ref": "#/definitions/HpeKmsConfig",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "definitions": {
+        "HpeKmsConfig": {
+            "additionalProperties": false,
+            "description": "The schema definition for Key Management Service configuration.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@Redfish.Settings": {
+                    "$ref": "HpeBiosExt.v2_0_0.json#/definitions/Settings"
+                },
+                "@odata.context": {
+                    "description": "The OData description of a payload.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.etag": {
+                    "longDescription": "The value of this property is the Etag of the resource.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "description": "The unique identifier for a resource.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.type": {
+                    "description": "The type of a resource.",
+                    "longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "additionalProperties": true,
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                    "patternProperties": {
+                        "[A-Za-z0-9_.:]+": {
+                            "additionalProperties": true,
+                            "description": "Base type for an Oem object.",
+                            "longDescription": "This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "description": "This property shall specify a valid odata or Redfish property.",
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ]
+                                }
+                            },
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "description": "This property shall specify a valid odata or Redfish property.",
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ]
+                        }
+                    },
+                    "properties": {},
+                    "type": "object"
+                },
+                "KeyManagementType": {
+                    "description": "Key Management Type.",
+                    "long description": "Select this option to manage device encryption of Intel(R) Optane(TM) DC Persistent Memory and other supported Self Encrypting Devices. Users can choose either Local or Remote Key Management. A Trusted Platform Module (TPM 2.0) is needed for managing the Device Encryption Passphrases locally (Local Key Management). If the platform does not have a Discrete TPM 2.0 device, the option for Local Key Management will not be available. The iLO on this system should be configured to use an ESKM server for Remote Key Management support.",
+                    "readonly": false,
+                    "type": "string",
+                    "enum": [
+                        "Disabled",
+                        "Local",
+                        "Remote"
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "Key Management is Disabled",
+                        "Local": "Key Management Type is Local",
+                        "Remote": "Key Management Type is Remote"
+                    }
+                },
+                "EncryptableDevices": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "description": "The array of encryptable devices that is supported in the Server is listed. Each device if encrypted would be having a Passphrase provided either by the system or user.If the Password for the Encrypted devices is known, then it is displayed. Else the Passphrase is shown as Unknown Key. If the Passphrase is displayed as Unknown Key, this indicates that the device was encrypted on another platform and the User needs to provide the Passphrase using the Unlock option.",
+                        "properties": {
+                            "DeviceName": {
+                                "type": "string",
+                                "description": "Name of the encryptable device.",
+                                "readonly": true
+                            },
+                            "EncryptionStatus": {
+                                "type": "string",
+                                "description": "Encryption status of the device.",
+                                "readonly": true,
+                                "enum": [
+                                    "EncryptionStatusUnknown",
+                                    "Encrypted",
+                                    "Decrypted"
+                                ],
+                                "enumDescriptions": {
+                                    "EncryptionStatusUnknown": "Device is encrypted, but Passphrase is unknown.",
+                                    "Encrypted": "Device is Encrypted.",
+                                    "Decrypted": "Device is Unencrypted."
+                                }
+                            },
+                            "EncryptionPhrase": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "Encryption Passphrase would show up if the device is encrypted and be modified as well.",
+                                "pattern": "^[\\ -\\~]{32}$",
+                                "readonly": false
+                            },
+                            "EncryptionAction": {
+                                "type": "string",
+                                "description": "Devices can take two types of action for encrypting namely, enable and disable. If user would like to modify the Passphrase, then User can opt to change encryption",
+                                "readonly": false,
+                                "enum": [
+                                    "Enable",
+                                    "Disable",
+                                    "Change",
+                                    "Unlock",
+                                    "Undefined"
+                                ],
+                                "enumDescriptions": {
+                                    "Enable": "Enable Encryption for the device.",
+                                    "Disable": "Disable Encryption for the device.",
+                                    "Change": "Modify the Encryption Passphrase.",
+                                    "Unlock": "Unlock the Encrypted device.",
+                                    "Undefined": "Encryption action is Undefined."
+                                }
+                            },
+                            "PassphraseType": {
+                                "type": "string",
+                                "description": "Passphrase can be either entered manually or auto generated",
+                                "readonly": false,
+                                "enum": [
+                                    "Auto",
+                                    "Manual"
+                                ],
+                                "enumDescriptions": {
+                                    "Auto": "Passphrase is generated from the system.",
+                                    "Manual": "Passphrase is entered manually."
+                                }
+                            }
+                        },
+                        "required": [
+                            "DeviceName",
+                            "EncryptionStatus",
+                            "EncryptionPhrase",
+                            "EncryptionAction",
+                            "PassphraseType"
+                        ]
+                    },
+                    "description": "The array of encryptable devices available on this server. Each entry holds the configuration of an encryptable device."
+                },
+                "OpalBlockSid": {
+                    "description": "TCG Block SID.",
+                    "long description": "Select this option to enable or disable TCG Block SID feature. Enable this feature to prevent default password set by the manufacturer from being changed during runtime.",
+                    "readonly": false,
+                    "type": "string",
+                    "enum": [
+                        "Disabled",
+                        "Enabled"
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "Disable TCG Block SID feature.",
+                        "Enabled": "Enable TCG Block SID feature."
+                    }
+                },
+                "DeleteUnusedEncryptionKeys": {
+                    "description": "Removes unused encryption keys.",
+                    "long description": "Clears key management information of the devices currently not present in the system during the next boot, this option automatically reverts to Disabled after the operation.",
+                    "readonly": false,
+                    "type": "string",
+                    "enum": [
+                        "Disabled",
+                        "Enabled"
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "Do not removed unused encryption keys.",
+                        "Enabled": "Remove unused encryption keys."
+                    }
+                }
+            },
+            "required": [],
+            "type": "object"
+        }
+    },
+    "title": "#HpeKmsConfig.v1_0_0.HpeKmsConfig"
+}

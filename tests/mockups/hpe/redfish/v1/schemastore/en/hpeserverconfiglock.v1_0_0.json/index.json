@@ -1,0 +1,284 @@
+{
+    "$ref": "#/definitions/HpeServerConfigLock",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "definitions": {
+        "HpeServerConfigLock": {
+            "additionalProperties": false,
+            "description": "The schema definition for Server Configuration Lock configuration.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@Redfish.Settings": {
+                    "$ref": "HpeBiosExt.v2_0_0.json#/definitions/Settings"
+                },
+                "@odata.context": {
+                    "description": "The OData description of a payload.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.etag": {
+                    "longDescription": "The value of this property is the Etag of the resource.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "description": "The unique identifier for a resource.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.type": {
+                    "description": "The type of a resource.",
+                    "longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "additionalProperties": true,
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                    "patternProperties": {
+                        "[A-Za-z0-9_.:]+": {
+                            "additionalProperties": true,
+                            "description": "Base type for an Oem object.",
+                            "longDescription": "This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "description": "This property shall specify a valid odata or Redfish property.",
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ]
+                                }
+                            },
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "description": "This property shall specify a valid odata or Redfish property.",
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ]
+                        }
+                    },
+                    "properties": {},
+                    "type": "object"
+                },
+                "Id": {
+                    "description": "Uniquely identifies the resource within the collection of like resources.",
+                    "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The name of the resource or array element.",
+                    "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ServerConfigLockState": {
+                    "description": "Enabled/Disabled state of the Server Configuration Lock Feature.",
+                    "enum": [
+                        "Disabled",
+                        "Enabled"
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "The Server Configuration Lock feature is disabled.",
+                        "Enabled": "The Server Configuration Lock feature is enabled."
+                    },
+                    "type": "string",
+                    "readonly": true
+                },
+                "ServerConfigLockLogStored": {
+                    "description": "Has a Server Configuration Lock failure log been stored?",
+                    "enum": [
+                        "True",
+                        "False"
+                    ],
+                    "enumDescriptions": {
+                        "True": "A Server Configuration Lock failure has been logged.",
+                        "False": " A Server Configuration Lock failure has not been logged."
+                    },
+                    "type": "string",
+                    "readonly": true
+                },
+                "ServerConfigLockPassword": {
+                    "type": [
+                        "string",
+                        null
+                    ],
+                    "description": "The Server Configuration Lock password.  If Server Configuration Lock is currently enabled, this field is used to convey the current Server Configuration Lock password and is required to make any Server Configuration Lock configuration changes.  If Server Configuration Lock is currently disabled, this field is used to set the Server Configuration Lock password, and to digitally fingerprint the system to enable Server Configuration Lock.",
+                    "MinLength": 16,
+                    "MaxLength": 31,
+                    "ValueExpression": "^[\\ -\\~]*$",
+                    "Type": "Password",
+                    "WriteOnly": true
+                },
+                "NewServerConfigLockPassword": {
+                    "type": [
+                        "string",
+                        null
+                    ],
+                    "description": "The new Server Configuration Lock password.  This field is used to update the current Server Configuration Lock password and force the system configuration digital fingerprint to be recalculated.",
+                    "MinLength": 16,
+                    "MaxLength": 31,
+                    "ValueExpression": "^[\\ -\\~]*$",
+                    "Type": "Password",
+                    "WriteOnly": true
+                },
+                "ServerConfigLockDisable": {
+                    "description": "Select this option to disable Server Configuration Lock.",
+                    "enum": [
+                        "False",
+                        "True",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "False": "Don't disable Server Configuration Lock.",
+                        "True": "Disable Server Configuration Lock."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockChallenge": {
+                    "description": "Select this option to enable or disable a Server Configuration Lock password challenge on every boot.",
+                    "enum": [
+                        "Disabled",
+                        "Enabled",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "Disable Server Configuration Lock password challenge on every boot.",
+                        "Enabled": "Enable Server Configuration Lock password challenge on every boot."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockTransport": {
+                    "description": "Select this option to enable or disable Server Configuration Lock \"first-boot\" behaviors.  This option is expected to be enabled just prior to shipping the server.  When the server arrives at its destination and is first powered on, Server Configuration Lock will require the Server Configuration Lock password in order to boot.  Server Configuration Lock will also indicate if someone attempted to change the system configuration during the shipment process.",
+                    "enum": [
+                        "Disabled",
+                        "Enabled",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "Disable Server Configuration Lock \"first-boot\" behaviors.",
+                        "Enabled": "Enable Server Configuration Lock \"first-boot\" behaviors."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockTamperHalt": {
+                    "description": "Select this option to enable or disable the Server Configuration Lock behavior to halt on a configuration change detection.",
+                    "enum": [
+                        "Disabled",
+                        "Enabled",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "Disabled": "Disable Server Configuration Lock behavior to halt on configuration changes.",
+                        "Enabled": "Enable Server Configuration Lock behavior to halt on configuration changes."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockExcludeDimms": {
+                    "description": "Select this option to exclude DIMM information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.",
+                    "enum": [
+                        "False",
+                        "True",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "False": "Do not exclude DIMM information from the Digital Fingerprint.",
+                        "True": "Exclude DIMM information from the Digital Fingerprint."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockExcludeCpus": {
+                    "description": "Select this option to exclude CPU information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.",
+                    "enum": [
+                        "False",
+                        "True",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "False": "Do not exclude CPU information from the Digital Fingerprint.",
+                        "True": "Exclude CPU information from the Digital Fingerprint."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockExcludePciSlots": {
+                    "description": "Select this option to exclude PCIe slot information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.",
+                    "enum": [
+                        "False",
+                        "True",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "False": "Do not exclude PCIe slot information from the Digital Fingerprint.",
+                        "True": "Exclude PCIe slot information from the Digital Fingerprint."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockExcludeSecurity": {
+                    "description": "Select this option to exclude security configuration information from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.",
+                    "enum": [
+                        "False",
+                        "True",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "False": "Do not exclude security configuration information from the Digital Fingerprint.",
+                        "True": "Exclude security configuration information from the Digital Fingerprint."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ServerConfigLockExcludeFwRevs": {
+                    "description": "Select this option to exclude system firmware revisions from the Digital Fingerprint. Note that this setting only takes effect when Server Configuration Lock is enabled/reenabled.",
+                    "enum": [
+                        "False",
+                        "True",
+                        null
+                    ],
+                    "enumDescriptions": {
+                        "False": "Do not exclude system firmware revision information from the Digital Fingerprint.",
+                        "True": "Exclude system firmware revision information from the Digital Fingerprint."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "required": [],
+            "type": "object"
+        }
+    },
+    "title": "#HpeServerConfigLock.v1_0_0.HpeServerConfigLock"
+}

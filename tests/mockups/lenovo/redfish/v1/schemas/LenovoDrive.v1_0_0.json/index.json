@@ -1,0 +1,91 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoDrive.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "DriveStatus": {
+            "enum": [
+                "UnconfiguredGood",
+                "UnconfiguredBad",
+                "HotSpare",
+                "Offline",
+                "Failed",
+                "Rebuild",
+                "Online",
+                "Copyback",
+                "JBOD",
+                "ShieldUnconfigured",
+                "ShieldHotSpare",
+                "ShieldConfigured",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Copyback": "The disk state is copyback",
+                "Failed": "The disk state is failed",
+                "HotSpare": "The disk state is hot spare",
+                "JBOD": "The disk state is JBOD",
+                "Offline": "The disk state is offline",
+                "Online": "The disk state is online",
+                "Rebuild": "The disk state is rebuild",
+                "ShieldConfigured": "The disk state is shield configured",
+                "ShieldHotSpare": "The disk state is shield hot spare",
+                "ShieldUnconfigured": "The disk state is shield unconfigured",
+                "UnconfiguredBad": "The disk state is unconfigured bad",
+                "UnconfiguredGood": "The disk state is unconfigured good",
+                "Unknown": "The disk state is unknown"
+            },
+            "type": "string"
+        },
+        "LenovoDriveProperties": {
+            "additionalProperties": true,
+            "description": "This is the schema definition for the LenovoDrive resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DriveStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DriveStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Lenovo defined status of this drive.",
+                    "readonly": true
+                },
+                "SMARTData": {
+                    "description": "The raw SMART data of this Drive, base64 encoded.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Temperature": {
+                    "description": "The temperature of this drive.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoDrive.v1_0_0"
+}

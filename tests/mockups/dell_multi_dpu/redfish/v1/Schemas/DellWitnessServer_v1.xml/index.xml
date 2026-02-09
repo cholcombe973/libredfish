@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellWitnessServer v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellWitnessServer">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <ComplexType Name="DellWitnessServer" Abstract="true">
+                <Annotation String="An Oem extension to represent Witness Server Node related properties in the chassis." Term="OData.Description"/>
+                <Annotation String="An Oem extension to represent Witness Server Node related properties in the chassis." Term="OData.LongDescription"/>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellWitnessServer.v1_0_0">
+            <ComplexType Name="DellWitnessServer" BaseType="DellWitnessServer.DellWitnessServer">
+                <Annotation Term="OData.Description" String="An Oem extension to represent Witness Server Node related properties in the chassis."/>
+                <Annotation Term="OData.LongDescription" String="An Oem extension to represent Witness Server Node related properties in the chassis."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DellWitnessServer" Type="DellWitnessServer.v1_0_0.DellWitnessServerObject">
+                    <Annotation Term="OData.Description" String="Oem properties for representing Witness Server properties."/>
+                    <Annotation Term="OData.LongDescription" String="Oem properties for representing Witness Server properties."/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="DellWitnessServerObject">
+                <Annotation Term="OData.Description" String="An Oem extension to represent Witness Server Node related properties in the chassis."/>
+                <Annotation Term="OData.LongDescription" String="An Oem extension to represent Witness Server Node related properties in the chassis."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Eppid" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the EPPID of the Witness Server."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the EPPID of the Witness Server."/>
+                </Property>
+                <Property Name="HeartBeat" Type="DellWitnessServer.v1_0_0.HeartBeatStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the policy for physical disks included in the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the policy for physical disks included in the virtual disk."/>
+                </Property>
+                <Property Name="Mac1" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the MAC address of port 1 of witness server."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the MAC address of port 1 of witness server."/>
+                </Property>
+                <Property Name="Mac2" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the MAC address of port 2 of witness server."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the MAC address of port 2 of witness server."/>
+                </Property>
+                <Property Name="POSTCode" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the BIOS POST code of witness server."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the BIOS POST code of witness server."/>
+                </Property>
+                <Property Name="PowerConsumptioninWatts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Power Consumption of Witness server in Watts."/>
+                    <Annotation Term="OData.LongDescription" String="Power Consumption of witness server in Watts."/>
+                </Property>
+                <Property Name="Status" Type="Collection(DellWitnessServer.v1_0_0.WitnessStatus)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="An array of status values of witness server."/>
+                    <Annotation Term="OData.LongDescription" String="An array of status values of witness server."/>
+                </Property>
+                <Property Name="SystemID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the SystemID of witness server."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the SystemID of witness server."/>
+                </Property>
+            </ComplexType>
+            <EnumType Name="HeartBeatStatus">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="WitnessStatus">
+                <Member Name="FanMismatch">
+                    <Annotation String="Fan Mismatch" Term="OData.Description"/>
+                    <Annotation String="Witness FAN Airflow mismatch" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PGFailure">
+                    <Annotation String="PG Failure" Term="OData.Description"/>
+                    <Annotation String="Witness Server Power Good Failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="POSTError">
+                    <Annotation String="POST Error" Term="OData.Description"/>
+                    <Annotation String="Witness BIOS POST error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FanAbsent">
+                    <Annotation String="Fan Absent" Term="OData.Description"/>
+                    <Annotation String="Witness FAN is not installed" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="HeartbeatFailure">
+                    <Annotation String="Heartbeat Failure" Term="OData.Description"/>
+                    <Annotation String="Witness Server OS Heart Beat failed" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Throttle">
+                    <Annotation String="Throttle" Term="OData.Description"/>
+                    <Annotation String="Witness CPU Throttled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Thermtrip">
+                    <Annotation String="Thermal Trip " Term="OData.Description"/>
+                    <Annotation String="Witness CPU Thermal Trip occurred" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Absent">
+                    <Annotation String="Absent" Term="OData.Description"/>
+                    <Annotation String="Witness Server is Absent" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Present">
+                    <Annotation String="Present" Term="OData.Description"/>
+                    <Annotation String="Witness Server is Present" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <Member Name="HeartbeatWarning">
+                    <Annotation String="HeartBeatWarning" Term="OData.Description"/>
+                    <Annotation String="Witness Server OS Heart Beat Warning" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                      <Collection>
+                        <Record>
+                          <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                          <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                      </Collection>
+                    </Annotation>
+                </Member>
+        </Schema>
+
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellWitnessServer.v1_0_1">
+            <Annotation Term="OData.Description" String="This version was created to add the correct the DellWitnessServer complextype."/>
+            <Annotation Term="OData.LongDescription" String="This version was created to add the correct the DellWitnessServer complextype."/>
+            <ComplexType Name="DellWitnessServer" BaseType="DellWitnessServer.v1_0_0.DellWitnessServer">
+                <Annotation Term="OData.Description" String="An Oem extension to represent Witness Server Node related properties in the chassis."/>
+                <Annotation Term="OData.LongDescription" String="An Oem extension to represent Witness Server Node related properties in the chassis."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DellWitnessServer" Type="DellWitnessServer.v1_0_0.DellWitnessServerObject">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Oem properties for representing Witness Server properties."/>
+                    <Annotation Term="OData.LongDescription" String="Oem properties for representing Witness Server properties."/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellWitnessServer.v1_1_0">
+            <Annotation Term="OData.Description" String="This version was created to update the WitnessStatus enums."/>
+            <Annotation Term="OData.Description" String="This version was created to update WitnessStatus enums."/>
+            <ComplexType Name="DellWitnessServer" BaseType="DellWitnessServer.v1_0_1.DellWitnessServer"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

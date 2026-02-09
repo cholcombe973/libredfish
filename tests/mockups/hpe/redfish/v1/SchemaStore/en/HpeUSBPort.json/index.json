@@ -1,0 +1,135 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeUSBPort",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeUSBPort resource describes the properties of USB ports.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "InstanceNumber": {
+            "description": "Instance number of the USB Port",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Location": {
+            "description": "Location of the USB Device on the server",
+            "enum": [
+                null,
+                "Back",
+                "Front",
+                "Internal",
+                "InternalManagement",
+                "InternalSDCard",
+                "iLOManagement"
+            ],
+            "enumDescriptions": {
+                "Back": "Located on the rear panel of the server.",
+                "Front": "Located on the front bezel of the server.",
+                "Internal": "Located internally within the server chassis.",
+                "InternalManagement": "Internal management media.",
+                "InternalSDCard": "The internal SD-Card slot.",
+                "iLOManagement": "iLO virtual USB devices."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "PCIBusNumber": {
+            "description": "PCI Bus number of the USB controller that controls this USB port ",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "PCIDeviceNumber": {
+            "description": "PCI Device Number of the USB Controller that controls this USB Port.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "PCIFunctionNumber": {
+            "description": "PCI Function Number of the USB Controller that controls this USB Port.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "ParentHubInstance": {
+            "description": "Parent Hub Instance that provides an instance number of the internal hub this USB Port is connected to.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "SharedCapability": {
+            "description": "Shared Capability of the USB Port",
+            "enum": [
+                null,
+                "UnsharedManagement",
+                "SharedManagementPhysicalSwitch",
+                "SharedManagementPortAutomaticControl"
+            ],
+            "enumDescriptions": {
+                "SharedManagementAutomaticControl": "Shared management port w/ automatic control of whether muxed to iLO or host.",
+                "SharedManagementPhysicalSwitch": "Shared management port w/ physical switch to control whether muxed to iLO or host.",
+                "UnsharedManagement": "Not shared as a Management Port."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SpeedCapability": {
+            "description": "USB speed capability of the USB port as configured by the BIOS during POST.",
+            "enum": [
+                null,
+                "USB1FullSpeed",
+                "USB2HighSpeed",
+                "USB3SuperSpeed"
+            ],
+            "enumDescriptions": {
+                "USB1FullSpeed": "USB 1.0 Full Speed",
+                "USB2HighSpeed": "USB 2.0 High Speed",
+                "USB3SuperSpeed": "USB 3.x SuperSpeed"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "UEFIDevicePath": {
+            "description": "UEFI Device Path of USB Endpoint. Standardized text representation of the UEFI device path, in UTF-8 format",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeUSBPort.v2_0_0.HpeUSBPort",
+    "type": "object"
+}

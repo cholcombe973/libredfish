@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  LenovoLDAPClient   v1.0.0                                           -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLDAPClient">
+      <EntityType Name="LenovoLDAPClient" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLDAPClient.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoLDAPClient" BaseType="LenovoLDAPClient.LenovoLDAPClient">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the FoDKey resource. It represents the properties of a FoDKey."/>
+        <Property Name="ProtocolEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates if the protocol is enabled or disabled"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall contain the enabled status of the protocol. The value shall be true if enabled and false if disabled."/>
+        </Property>
+        <Property Name="Authorization" Type="LenovoLDAPClient.v1_0_0.AuthorizationType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP authorization setting."/>
+          <Annotation Term="OData.LongDescription" String="Indicate whether the LDAP client is to be authorized by the LDAP server or locally."/>
+        </Property>
+        <Property Name="LDAPServers" Type="LenovoLDAPClient.v1_0_0.LDAPServersConfiguration" Nullable="false">
+          <Annotation Term="OData.Description" String="This used for configure LDAP servers."/>
+          <Annotation Term="OData.LongDescription" String="Users can configure the LDAP servers."/>
+        </Property>
+        <Property Name="RootDN" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Root distinguished name setting."/>
+          <Annotation Term="OData.LongDescription" String="IMM uses the 'ROOT DN' field in Distinguished Name format as root entry of directory tree.This DN will be used as the base object for all searches."/>
+        </Property>
+        <Property Name="UIDSearchAttribute" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP UID search attribute setting."/>
+          <Annotation Term="OData.LongDescription" String="This search request must specify the attribute name used to represent user IDs on that server.On Active Directory servers, this attribute name is usually sAMAccountName. On Novell eDirectory and OpenLDAP servers, it is usually uid. If this field is left blank, it defaults to uid."/>
+        </Property>
+        <Property Name="BindingMethod" Type="LenovoLDAPClient.v1_0_0.BindingMethod" Nullable="false">
+          <Annotation Term="OData.Description" String="Before the LDAP server can be searched or queried, a bind request must be sent. This parameter controls how this initial bind to the LDAP server is performed."/>
+          <Annotation Term="OData.LongDescription" String="Users can configure the LDAP servers."/>
+        </Property>
+        <Property Name="ActiveDirectory" Type="LenovoLDAPClient.v1_0_0.ActiveDirectory" Nullable="false">
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP active directory setting."/>
+          <Annotation Term="OData.LongDescription" String="Configure the IMM LDAP active directory setting."/>
+        </Property>
+        <Property Name="GroupFilter" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Group Filter setting."/>
+          <Annotation Term="OData.LongDescription" String="This field is used for group authentication, limited to 511 characters, and consists of one or more group names. Note that Enhanced role-based security for Active Directory Users must be disabled for this setting to take effect."/>
+        </Property>
+        <Property Name="GroupSearchAttribute" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Group Search Attribute setting."/>
+          <Annotation Term="OData.LongDescription" String="This field is used by the search algorithm to find group membership infomation for a specific user. Note that Enhanced role-based security for Active Directory Users must be disabled for this setting to take effect. If this field is left blank, it will default to memberof."/>
+        </Property>
+        <Property Name="LoginPermissionAttribute" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Login Permission Attribute setting."/>
+          <Annotation Term="OData.LongDescription" String="When a user successfully authenticates via a LDAP server, it is necessary to retrieve the login permissions for this user. In other to retrieve these permissions, the search filter sent to the server must specify the attribute name associated with login permissions. Note that Enhanced role-based security for Active Directory Users must be disabled for this setting to take effect. If this field is left blank, the user will be assigned a default of read-only permissions, assuming user and group authertication passes."/>
+        </Property>
+      </EntityType>
+      
+      <ComplexType Name="LDAPServersConfiguration">
+        <Property Name="Method" Type="LenovoLDAPClient.v1_0_0.LDAPServersConfigurationMethodType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This setting affects how LDAP Servers are found, either using DNS or pre-configured servers."/>
+          <Annotation Term="OData.LongDescription" String="The LDAP servers to be used for authentication can either be manually configured or discovered dynamically via DNS SRY records."/>
+        </Property>
+        <Property Name="Server1HostName_IPAddress" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 1 Host Name or IP Address."/>
+          <Annotation Term="OData.LongDescription" String="This is only active under using Pre-Configured LDAP servers. You must configure at least one LDAP server."/>
+        </Property>
+        <Property Name="Server1Port" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 1 Port number."/>
+          <Annotation Term="OData.LongDescription" String="The port number for each server is optional. If this field is left blank, the default value of 389 is used for nonsecured LDAP connections. For secured connections, the default value is 636. This is only active under using Pre-Configured LDAP servers."/>
+        </Property>
+        <Property Name="Server2HostName_IPAddress" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 2 Host Name or IP Address."/>
+          <Annotation Term="OData.LongDescription" String="This is only active under using Pre-Configured LDAP servers. You must configure at least one LDAP server."/>
+        </Property>
+        <Property Name="Server2Port" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 2 Port number."/>
+          <Annotation Term="OData.LongDescription" String="The port number for each server is optional. If this field is left blank, the default value of 389 is used for nonsecured LDAP connections. For secured connections, the default value is 636. This is only active under using Pre-Configured LDAP servers."/>
+        </Property>
+        <Property Name="Server3HostName_IPAddress" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 3 Host Name or IP Address."/>
+          <Annotation Term="OData.LongDescription" String="This is only active under using Pre-Configured LDAP servers. You must configure at least one LDAP server."/>
+        </Property>
+        <Property Name="Server3Port" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 3 Port number."/>
+          <Annotation Term="OData.LongDescription" String="The port number for each server is optional. If this field is left blank, the default value of 389 is used for nonsecured LDAP connections. For secured connections, the default value is 636. This is only active under using Pre-Configured LDAP servers."/>
+        </Property>
+        <Property Name="Server4HostName_IPAddress" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 4 Host Name or IP Address."/>
+          <Annotation Term="OData.LongDescription" String="This is only active under using Pre-Configured LDAP servers. You must configure at least one LDAP server."/>
+        </Property>
+        <Property Name="Server4Port" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure LDAP Server 4 Port number."/>
+          <Annotation Term="OData.LongDescription" String="The port number for each server is optional. If this field is left blank, the default value of 389 is used for nonsecured LDAP connections. For secured connections, the default value is 636. This is only active under using Pre-Configured LDAP servers."/>
+        </Property>
+        <Property Name="SearchDomain" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Client DNS Search Domain."/>
+          <Annotation Term="OData.LongDescription" String="This is only active under using DNS to find LDAP servers. If you choose to discover the LDAP servers dynamically, you will need to specify the search domain to be used."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="BindingMethod">
+        <Property Name="Method" Type="LenovoLDAPClient.v1_0_0.BindingMethodType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Binding Method setting."/>
+          <Annotation Term="OData.LongDescription" String="There are three options, Anonymous Bind, Bind with Configured Credentials or Bind using Login Credentials."/>
+        </Property>
+        <Property Name="ClientDN" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP Client distinguished name setting."/>
+          <Annotation Term="OData.LongDescription" String="Fill in the Client Distinguished Name(DN) to be used for the initial bind. Note that LDAP Binding Method must be set to 'Bind with Configured Credentials'."/>
+        </Property>
+        <Property Name="ClientPassword" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Enter a password for the distinguished client."/>
+          <Annotation Term="OData.LongDescription" String="Note that LDAP Binding Method must be set to 'Bind with Configured Credentials'."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="ActiveDirectory">
+        <Property Name="RoleBasedSecurity" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Enable enhanced role-based security for Active Directory Users."/>
+          <Annotation Term="OData.LongDescription" String="Indicate whether endable enhanced role-based security for Active Directory Users."/>
+        </Property>
+        <Property Name="ServerTargetName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP server Target Name setting."/>
+          <Annotation Term="OData.LongDescription" String="Note that Enhanced role-based security for Active Directory Users must be enabled for this setting to take effect."/>
+        </Property>
+        <Property Name="ForestName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Configure the IMM LDAP server Forest Name setting."/>
+          <Annotation Term="OData.LongDescription" String="In order to discover Global Catalogs (GC), the forest name must be configured."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="AuthorizationType">
+        <Member Name="LDAPServer">
+          <Annotation Term="OData.Description" String="Authorization will be done in LDAP Server."/>
+        </Member>
+        <Member Name="Locally">
+          <Annotation Term="OData.Description" String="Authorization will be done locally using AOM."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="LDAPServersConfigurationMethodType">
+        <Member Name="Pre_Configured">
+          <Annotation Term="OData.Description" String="Use Pre-Configured LDAP servers."/>
+        </Member>
+        <Member Name="DNS">
+          <Annotation Term="OData.Description" String="Use DNS to Find LDAP servers."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="BindingMethodType">
+        <Member Name="Anonymously">
+          <Annotation Term="OData.Description" String="Anonymous Bind."/>
+        </Member>
+        <Member Name="Configured">
+          <Annotation Term="OData.Description" String="Bind with Configured Credentials."/>
+        </Member>
+        <Member Name="Login">
+          <Annotation Term="OData.Description" String="Bind using Login Credentials"/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

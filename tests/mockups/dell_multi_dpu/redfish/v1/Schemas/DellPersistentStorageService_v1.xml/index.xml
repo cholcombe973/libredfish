@@ -1,0 +1,543 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellPersistentStorageService v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPersistentStorageService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellPersistentStorageService" Abstract="true">
+                <Annotation String="The DellPersistentStorageService resource provides some actions to support VFlash functionality." Term="OData.Description"/>
+                <Annotation String="The DellPersistentStorageService resource provides some actions to support VFlash functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellPersistentStorageService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="AttachPartition" IsBound="true">
+                <Annotation String="The AttachPartition() method exposes a partition as to the managed system's OS. Upon the successful execution of the AttachPartition() method, the partition, represented by the DellOpaqueManagementData instance with the PartitionIndex property equal to the Partition Index parameter, is exposed to the host OS." Term="OData.Description"/>
+                <Annotation String="The AttachPartition() method exposes a partition as to the managed system's OS. Upon the successful execution of the AttachPartition() method, the partition, represented by the DellOpaqueManagementData instance with the PartitionIndex property equal to the Partition Index parameter, is exposed to the host OS." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CreatePartition" IsBound="true">
+                <Annotation String="The CreatePartition() method is used for creating a new partition on a storage device. Upon successful invocation of the CreatePartition() method, a new instance of DellOpaqueManagementData is created with the PartitionIndex property equal to the PartitionIndex parameter, the Size property in MB equal to the Size parameter in the SizeUnit parameter specified units, the PartitionType property equal to the string representation of PartitionType parameter value map, and the Name property equal to the OSVolumeLabel parameter." Term="OData.Description"/>
+                <Annotation String="The CreatePartition() method is used for creating a new partition on a storage device. Upon successful invocation of the CreatePartition() method, a new instance of DellOpaqueManagementData is created with the PartitionIndex property equal to the PartitionIndex parameter, the Size property in MB equal to the Size parameter in the SizeUnit parameter specified units, the PartitionType property equal to the string representation of PartitionType parameter value map, and the Name property equal to the OSVolumeLabel parameter." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="OSVolumeLabel" Type="Edm.String" Nullable="false">
+                    <Annotation String="The value is limited to 6 characters. This is the same label which will be seen in the OS after attaching the partition." Term="OData.Description"/>
+                    <Annotation String="The value is limited to 6 characters. This is the same label which will be seen in the OS after attaching the partition." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionType" Type="DellPersistentStorageService.PartitionType" Nullable="false">
+                    <Annotation String="The Partition Type." Term="OData.Description"/>
+                    <Annotation String="The Partition Type." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Size" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The size of the partition that needs to be created in units specified by the SizeUnit parameter." Term="OData.Description"/>
+                    <Annotation String="The size of the partition that needs to be created in units specified by the SizeUnit parameter." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SizeUnit" Type="DellPersistentStorageService.SizeUnit" Nullable="false">
+                    <Annotation String="The value is 1(MB) or 2(GB)." Term="OData.Description"/>
+                    <Annotation String="The value is 1(MB) or 2(GB)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CreatePartitionUsingImage" IsBound="true">
+                <Annotation String="The CreatePartitionUsingImage() method is used to create a partition using an image provided by the user. Image may reside on (T)FTP or HTTP server, or on a CIFS or NFS share. Upon successful invocation of the CreatePartitionUsingImage() method, the image is downloaded and provisioned as a partition on a VFlash.Upon successful invocation of the CreatePartitionUsingImage() method, a new instance of DellOpaqueManagementData is created with the PartitionIndex property equal to the PartitionIndex parameter, the Size property in MB equal to the size of the remote image, the PartitionType property equal to the string representation of PartitionType parameter value map, and the Name property equal to the OSVolumeLabel parameter." Term="OData.Description"/>
+                <Annotation String="The CreatePartitionUsingImage() method is used to create a partition using an image provided by the user. Image may reside on (T)FTP or HTTP server, or on a CIFS or NFS share. Upon successful invocation of the CreatePartitionUsingImage() method, the image is downloaded and provisioned as a partition on a VFlash.Upon successful invocation of the CreatePartitionUsingImage() method, a new instance of DellOpaqueManagementData is created with the PartitionIndex property equal to the PartitionIndex parameter, the Size property in MB equal to the size of the remote image, the PartitionType property equal to the string representation of PartitionType parameter value map, and the Name property equal to the OSVolumeLabel parameter." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="HashType" Type="DellPersistentStorageService.HashType">
+                    <Annotation String="The value is 1 (MD5) or 2 (SHA1)." Term="OData.Description"/>
+                    <Annotation String="The value is 1 (MD5) or 2 (SHA1)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="HashValue" Type="Edm.String">
+                    <Annotation String="The HashValue parameter is set to the hash value of the image using the specified hash type in the HashType parameter." Term="OData.Description"/>
+                    <Annotation String="The HashValue parameter is set to the hash value of the image using the specified hash type in the HashType parameter." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.Description"/>
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ImageName" Type="Edm.String" Nullable="false">
+                    <Annotation String="Name of the image file." Term="OData.Description"/>
+                    <Annotation String="Name of the image file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="OSVolumeLabel" Type="Edm.String" Nullable="false">
+                    <Annotation String="The value is limited to 6 characters. This is the same label which will be seen in the OS after attaching the partition." Term="OData.Description"/>
+                    <Annotation String="The value is limited to 6 characters. This is the same label which will be seen in the OS after attaching the partition." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionType" Type="DellPersistentStorageService.PartitionType" Nullable="false">
+                    <Annotation String="The Partition Type." Term="OData.Description"/>
+                    <Annotation String="The Partition Type." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="The password for accessing the image on a remote node. This parameter is mandatory for CIFS ShareType." Term="OData.Description"/>
+                    <Annotation String="The password for accessing the image on a remote node. This parameter is mandatory for CIFS ShareType." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Port" Type="Edm.Int64">
+                    <Annotation String="If the ShareType parameter is set to 1 (TFTP, this parameter must be populated)." Term="OData.Description"/>
+                    <Annotation String="If the ShareType parameter is set to 1 (TFTP, this parameter must be populated)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SharePath" Type="Edm.String">
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.Description"/>
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellPersistentStorageService.ShareType" Nullable="false">
+                    <Annotation String="The parameter specifies the type of network share." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the type of network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="URI" Type="Edm.String">
+                    <Annotation String="The parameter is populated, if the ShareType parameter is set to 3(FTP), or 4 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The parameter is populated, if the ShareType parameter is set to 3(FTP), or 4 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Username" Type="Edm.String">
+                    <Annotation String="The username for accessing the image on a remote node. This parameter is mandatory for CIFS ShareType." Term="OData.Description"/>
+                    <Annotation String="The username for accessing the image on a remote node. This parameter is mandatory for CIFS ShareType." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share-optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share-optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DeletePartition" IsBound="true">
+                <Annotation String="The DeletePartition() method is used for deleting a partition on a vFlash.Upon the successful execution of the DeletePartition() method, the DDellOpaqueManagementData instance with PartitionIndex property equal to the PartitionIndex parameter is be deleted." Term="OData.Description"/>
+                <Annotation String="The DeletePartition() method is used for deleting a partition on a vFlash.Upon the successful execution of the DeletePartition() method, the DDellOpaqueManagementData instance with PartitionIndex property equal to the PartitionIndex parameter is be deleted." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DetachPartition" IsBound="true">
+                <Annotation String="The DetachPartition() method is used to remove a partition that was previously exposed to the managed system's OS. Upon the successful execution of the DetachPartition() method, the partition, represented by the DellOpaqueManagementData instance with the PartitionIndex property equal to the PartitionIndex parameter, is removed from the host OS." Term="OData.Description"/>
+                <Annotation String="The DetachPartition() method is used to remove a partition that was previously exposed to the managed system's OS. Upon the successful execution of the DetachPartition() method, the partition, represented by the DellOpaqueManagementData instance with the PartitionIndex property equal to the PartitionIndex parameter, is removed from the host OS." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportDataFromPartition" IsBound="true">
+                <Annotation String="The ExportDataFromPartition() method exports an image from a partition and transfers it to a (T)FTP or HTTP server, or on a CIFS or NFS share. Upon successful invocation of the ExportDataFromPartition() method, the image of the partition is exported from a vFlash to a remote endpoint." Term="OData.Description"/>
+                <Annotation String="The ExportDataFromPartition() method exports an image from a partition and transfers it to a (T)FTP or HTTP server, or on a CIFS or NFS share. Upon successful invocation of the ExportDataFromPartition() method, the image of the partition is exported from a vFlash to a remote endpoint." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="IPAddress" Type="Edm.String" Nullable="false">
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.Description"/>
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ImageName" Type="Edm.String" Nullable="false">
+                    <Annotation String="Name of the image file." Term="OData.Description"/>
+                    <Annotation String="Name of the image file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="The password for accessing the image on a remote node." Term="OData.Description"/>
+                    <Annotation String="The password for accessing the image on a remote node." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Port" Type="Edm.Int64">
+                    <Annotation String="If the ShareType parameter is set to 1 (TFTP, this parameter must be populated)." Term="OData.Description"/>
+                    <Annotation String="If the ShareType parameter is set to 1 (TFTP, this parameter must be populated)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SharePath" Type="Edm.String" Nullable="false">
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.Description"/>
+                    <Annotation String="If the ShareType parameter is set to 0 (NFS) or, 1 (TFTP), or 2 (CIFS), this parameter must be populated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellPersistentStorageService.ShareType" Nullable="false">
+                    <Annotation String="The parameter specifies the type of network share." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the type of network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Username" Type="Edm.String">
+                    <Annotation String="The username for accessing the image on a remote node." Term="OData.Description"/>
+                    <Annotation String="The username for accessing the image on a remote node." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="FormatPartition" IsBound="true">
+                <Annotation String="The FormatPartition() method is used for formatting a partition on a vFlash. Note: This method allows formatting the partitions with AccessType as Read-Only." Term="OData.Description"/>
+                <Annotation String="The FormatPartition() method is used for formatting a partition on a vFlash. Note: This method allows formatting the partitions with AccessType as Read-Only." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Parameter Name="FormatType" Type="DellPersistentStorageService.FormatType" Nullable="false">
+                    <Annotation String="The list of types to format to." Term="OData.Description"/>
+                    <Annotation String="The list of types to format to." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition that shall have value be between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition that shall have value be between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="InitializeMedia" IsBound="true">
+                <Annotation String="The InitializeMedia() method initializes or formats the vFlash media device. Upon successful invocation of the InitializeMedia() method, the DellVFlashView.InitializedState property has string value &quot;Initialized&quot;." Term="OData.Description"/>
+                <Annotation String="The InitializeMedia() method initializes or formats the vFlash media device. Upon successful invocation of the InitializeMedia() method, the DellVFlashView.InitializedState property has string value &quot;Initialized&quot;." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="ModifyPartition" IsBound="true">
+                <Annotation String="The ModifyPartition() method is used for modifying a partition on a vFlash. Upon the successful execution of the ModifyPartition() method, the partition, represented by the DellOpaqueManagementData instance with the PartitionIndex property equal to the PartitionIndex parameter, is modified to the access type specified in the AccessType parameter." Term="OData.Description"/>
+                <Annotation String="The ModifyPartition() method is used for modifying a partition on a vFlash. Upon the successful execution of the ModifyPartition() method, the partition, represented by the DellOpaqueManagementData instance with the PartitionIndex property equal to the PartitionIndex parameter, is modified to the access type specified in the AccessType parameter." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="AccessType" Type="DellPersistentStorageService.AccessType" Nullable="false">
+                    <Annotation String="Type of access level." Term="OData.Description"/>
+                    <Annotation String="Type of access level." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PartitionIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.Description"/>
+                    <Annotation String="The index of the partition, which is a value between 1 and 16." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="VFlashStateChange" IsBound="true">
+                <Annotation String="The VFlashStateChange() method is used to enable or disable the virtual flash media device.Upon successful invocation of the VFlashStateChange() method with RequestedState 1(Enable), the DellVFlashView. VFlashEnabledState property value changes to TRUE. Upon successful invocation of the VFlashStateChange() method with RequestedState 2 (Disable), the DellVFlashView. VFlashEnabledState property value changes to FALSE." Term="OData.Description"/>
+                <Annotation String="The VFlashStateChange() method is used to enable or disable the virtual flash media device.Upon successful invocation of the VFlashStateChange() method with RequestedState 1(Enable), the DellVFlashView. VFlashEnabledState property value changes to TRUE. Upon successful invocation of the VFlashStateChange() method with RequestedState 2 (Disable), the DellVFlashView. VFlashEnabledState property value changes to FALSE." Term="OData.LongDescription"/>
+                <Parameter Name="DellPersistentStorageService" Type="DellPersistentStorageService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="RequestedState" Type="DellPersistentStorageService.RequestedState" Nullable="false">
+                    <Annotation String="The state to set to." Term="OData.Description"/>
+                    <Annotation String="The state to set to." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="AccessType">
+                <Member Name="Read-Only">
+                    <Annotation String="Read-Only" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Read-Write">
+                    <Annotation String="Read-Write" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="FormatType">
+                <Member Name="EXT2">
+                    <Annotation String="EXT2" Term="OData.Description"/>
+                </Member>
+                <Member Name="EXT3">
+                    <Annotation String="EXT3" Term="OData.Description"/>
+                </Member>
+                <Member Name="FAT16">
+                    <Annotation String="FAT16" Term="OData.Description"/>
+                </Member>
+                <Member Name="FAT32">
+                    <Annotation String="FAT32" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="HashType">
+                <Member Name="MD5">
+                    <Annotation String="MD5" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SHA1">
+                    <Annotation String="SHA1" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="PartitionType">
+                <Member Name="CDROM">
+                    <Annotation String="CDROM" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Floppy">
+                    <Annotation String="Floppy" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="HardDisk">
+                    <Annotation String="Hard Disk" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RequestedState">
+                <Member Name="Disable">
+                    <Annotation String="Disable" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enable">
+                    <Annotation String="Enable" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="ShareType">
+                <Member Name="CIFS">
+                    <Annotation String="CIFS" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="FTP">
+                    <Annotation String="FTP" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NFS">
+                    <Annotation String="NFS" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="TFTP">
+                    <Annotation String="TFTP" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SizeUnit">
+                <Member Name="GB">
+                    <Annotation String="GB" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="MB">
+                    <Annotation String="MB" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPersistentStorageService.v1_0_0">
+            <EntityType Name="DellPersistentStorageService" BaseType="DellPersistentStorageService.DellPersistentStorageService">
+                <Annotation Term="OData.Description" String="The DellPersistentStorageService resource provides some actions to support VFlash functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellPersistentStorageService resource provides some actions to support VFlash functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellPersistentStorageService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPersistentStorageService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add AttachPartition, CreatePartition, CreatePartitionUsingImage, DeletePartition, DetachPartition, ExportDataFromPartition, InitializeMedia, ModifyPartition, VFlashStateChange actions."/>
+            <EntityType Name="DellPersistentStorageService" BaseType="DellPersistentStorageService.v1_0_0.DellPersistentStorageService">
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

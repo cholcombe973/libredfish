@@ -1,0 +1,2081 @@
+{
+    "$id": "/redfish/v1/Schemas/DellRaidService.v1_5_1.json",
+    "$ref": "#/definitions/DellRaidService",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellRaidService.AssignSpare": {
+                    "$ref": "#/definitions/AssignSpare"
+                },
+                "#DellRaidService.BlinkTarget": {
+                    "$ref": "#/definitions/BlinkTarget"
+                },
+                "#DellRaidService.CancelBackgroundInitialization": {
+                    "$ref": "#/definitions/CancelBackgroundInitialization"
+                },
+                "#DellRaidService.CancelCheckConsistency": {
+                    "$ref": "#/definitions/CancelCheckConsistency"
+                },
+                "#DellRaidService.CancelRebuildPhysicalDisk": {
+                    "$ref": "#/definitions/CancelRebuildPhysicalDisk"
+                },
+                "#DellRaidService.ChangePDState": {
+                    "$ref": "#/definitions/ChangePDState"
+                },
+                "#DellRaidService.CheckVDValues": {
+                    "$ref": "#/definitions/CheckVDValues"
+                },
+                "#DellRaidService.ClearControllerPreservedCache": {
+                    "$ref": "#/definitions/ClearControllerPreservedCache"
+                },
+                "#DellRaidService.ClearForeignConfig": {
+                    "$ref": "#/definitions/ClearForeignConfig"
+                },
+                "#DellRaidService.ConvertToNonRAID": {
+                    "$ref": "#/definitions/ConvertToNonRAID"
+                },
+                "#DellRaidService.ConvertToRAID": {
+                    "$ref": "#/definitions/ConvertToRAID"
+                },
+                "#DellRaidService.CryptographicEraseWithPSID": {
+                    "$ref": "#/definitions/CryptographicEraseWithPSID"
+                },
+                "#DellRaidService.DisableSecurity": {
+                    "$ref": "#/definitions/DisableSecurity"
+                },
+                "#DellRaidService.EnableControllerEncryption": {
+                    "$ref": "#/definitions/EnableControllerEncryption"
+                },
+                "#DellRaidService.EnableSecurity": {
+                    "$ref": "#/definitions/EnableSecurity"
+                },
+                "#DellRaidService.GetAvailableDisks": {
+                    "$ref": "#/definitions/GetAvailableDisks"
+                },
+                "#DellRaidService.GetDHSDisks": {
+                    "$ref": "#/definitions/GetDHSDisks"
+                },
+                "#DellRaidService.GetRAIDLevels": {
+                    "$ref": "#/definitions/GetRAIDLevels"
+                },
+                "#DellRaidService.ImportForeignConfig": {
+                    "$ref": "#/definitions/ImportForeignConfig"
+                },
+                "#DellRaidService.LockVirtualDisk": {
+                    "$ref": "#/definitions/LockVirtualDisk"
+                },
+                "#DellRaidService.OnlineCapacityExpansion": {
+                    "$ref": "#/definitions/OnlineCapacityExpansion"
+                },
+                "#DellRaidService.PrepareToRemove": {
+                    "$ref": "#/definitions/PrepareToRemove"
+                },
+                "#DellRaidService.RAIDLevelMigration": {
+                    "$ref": "#/definitions/RAIDLevelMigration"
+                },
+                "#DellRaidService.ReKey": {
+                    "$ref": "#/definitions/ReKey"
+                },
+                "#DellRaidService.RebuildPhysicalDisk": {
+                    "$ref": "#/definitions/RebuildPhysicalDisk"
+                },
+                "#DellRaidService.RemoveControllerKey": {
+                    "$ref": "#/definitions/RemoveControllerKey"
+                },
+                "#DellRaidService.RenameVD": {
+                    "$ref": "#/definitions/RenameVD"
+                },
+                "#DellRaidService.ReplacePhysicalDisk": {
+                    "$ref": "#/definitions/ReplacePhysicalDisk"
+                },
+                "#DellRaidService.ResetConfig": {
+                    "$ref": "#/definitions/ResetConfig"
+                },
+                "#DellRaidService.SetAssetName": {
+                    "$ref": "#/definitions/SetAssetName"
+                },
+                "#DellRaidService.SetBootVD": {
+                    "$ref": "#/definitions/SetBootVD"
+                },
+                "#DellRaidService.SetControllerKey": {
+                    "$ref": "#/definitions/SetControllerKey"
+                },
+                "#DellRaidService.StartPatrolRead": {
+                    "$ref": "#/definitions/StartPatrolRead"
+                },
+                "#DellRaidService.StopPatrolRead": {
+                    "$ref": "#/definitions/StopPatrolRead"
+                },
+                "#DellRaidService.UnBlinkTarget": {
+                    "$ref": "#/definitions/UnBlinkTarget"
+                },
+                "#DellRaidService.UnLockSecureForeignConfig": {
+                    "$ref": "#/definitions/UnLockSecureForeignConfig"
+                },
+                "#DellRaidService.UnassignSpare": {
+                    "$ref": "#/definitions/UnassignSpare"
+                }
+            },
+            "type": "object"
+        },
+        "AssignSpare": {
+            "additionalProperties": false,
+            "description": "The AssignSpare() method is used to assign a physical disk as a dedicated hot spare for a virtual disk, or as a global hot spare.",
+            "longDescription": "The AssignSpare() method is used to assign a physical disk as a dedicated hot spare for a virtual disk, or as a global hot spare.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This Parameter is the FQDD of the target device (physical disk).",
+                    "longDescription": "This Parameter is the FQDD of the target device (physical disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "VirtualDiskArray": {
+                    "description": "Array of ElementName(s) where each identifies a different VD Currently only one Vd can be passed. Array of ElementName(s) where each ElementName identifies a different virtual disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of ElementName(s) where each identifies a different VD Currently only one Vd can be passed. Array of ElementName(s) where each ElementName identifies a different virtual disk.",
+                    "type": "array"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "BlinkTarget": {
+            "additionalProperties": false,
+            "description": "The BlinkTarget() method is used to Identify a single physical disk by blinking the disk  slot LED for the physical disk / Virtual disk. The successful execution of this method results in setting the LED to blink the identify pattern or turns off the blinking of the identify pattern.  The method is real time, blink cannot be scheduled as part of a job.",
+            "longDescription": "The BlinkTarget() method is used to Identify a single physical disk by blinking the disk  slot LED for the physical disk / Virtual disk. The successful execution of this method results in setting the LED to blink the identify pattern or turns off the blinking of the identify pattern.  The method is real time, blink cannot be scheduled as part of a job.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This Parameter is the FQDD of the Physical Disk,SSD or Virtual Disk.",
+                    "longDescription": "This Parameter is the FQDD of the Physical Disk,SSD or Virtual Disk.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CancelBackgroundInitialization": {
+            "additionalProperties": false,
+            "description": "The CancelBackgroundInitialization() method cancels the background initialization of the virtual disk.",
+            "longDescription": "The CancelBackgroundInitialization() method cancels the background initialization of the virtual disk.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Virtual Disk).",
+                    "longDescription": "FQDD of target device (Virtual Disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "CancelCheckConsistency": {
+            "additionalProperties": false,
+            "description": "This method cancels Check Consistency operation that is in progress.",
+            "longDescription": "This method cancels Check Consistency operation that is in progress.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Virtual Disk).",
+                    "longDescription": "FQDD of target device (Virtual Disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "CancelRebuildPhysicalDisk": {
+            "additionalProperties": false,
+            "description": "The CancelRebuildPhysicalDisk() method cancel the rebuild or reconstruct operation of the failed disk to a new disk or a hot spare.",
+            "longDescription": "The CancelRebuildPhysicalDisk() method cancel the rebuild or reconstruct operation of the failed disk to a new disk or a hot spare.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk).",
+                    "longDescription": "FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "ChangePDState": {
+            "additionalProperties": false,
+            "description": "This method changes the state of physical disk that is part of virtual disk. Note:- This operation is not applicable on direct attached NVMe drives in Software RAID mode.",
+            "longDescription": "This method changes the state of physical disk that is part of virtual disk. Note:- This operation is not applicable on direct attached NVMe drives in Software RAID mode.",
+            "parameters": {
+                "State": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/State",
+                    "description": "The desired state of the Physical Disk.",
+                    "longDescription": "The desired state of the Physical Disk.",
+                    "requiredParameter": true
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of the physical disk.",
+                    "longDescription": "FQDD of the physical disk.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "CheckVDValues": {
+            "actionResponse": {
+                "$ref": "#/definitions/CheckVDValuesResponse"
+            },
+            "additionalProperties": false,
+            "description": "The CheckVDValues() method is used to determine the possible sizes of Virtual disks and the default settings, proviced a RAID level and set of physical disks. The VDPropArray property is filled with Size and other values, so that the method is successfully executed. If the SpanDepth is not provided, a default value of 2 shall be used for RAID levels 10, 50, and 60. NOTE: For certain numbers of disks such as nine or fifteen, it may be necessary for the user to provide another SpanDepth.",
+            "longDescription": "The CheckVDValues() method is used to determine the possible sizes of Virtual disks and the default settings, proviced a RAID level and set of physical disks. The VDPropArray property is filled with Size and other values, so that the method is successfully executed. If the SpanDepth is not provided, a default value of 2 shall be used for RAID levels 10, 50, and 60. NOTE: For certain numbers of disks such as nine or fifteen, it may be necessary for the user to provide another SpanDepth.",
+            "parameters": {
+                "PDArray": {
+                    "description": "Array of FQDDs where each identifies a physical disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of FQDDs where each identifies a physical disk.",
+                    "requiredParameter": true,
+                    "type": "array"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "VDPropNameArrayIn": {
+                    "description": "Indexed array of Virtual Disk property names. The property names can be Size, SpanDepth, SpanLength, RAIDLevel ,StartingLBA or T10PIStatus. The values for the property needs to be provided in VDPropValueArrayIn in the same order.",
+                    "items": {
+                        "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/VDPropNameArrayIn"
+                    },
+                    "longDescription": "Indexed array of Virtual Disk property names. The property names can be Size, SpanDepth, SpanLength, RAIDLevel ,StartingLBA or T10PIStatus. The values for the property needs to be provided in VDPropValueArrayIn in the same order.",
+                    "requiredParameter": true,
+                    "type": "array"
+                },
+                "VDPropValueArrayIn": {
+                    "description": "Indexed array of Virtual Disk property values for the respective VDPropNameArrayIn parameter.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Indexed array of Virtual Disk property values for the respective VDPropNameArrayIn parameter.",
+                    "requiredParameter": true,
+                    "type": "array"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CheckVDValuesResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the CheckVDValues action.",
+            "longDescription": "This type shall contain the properties found in the response body for the CheckVDValues action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "VDPropNameArray": {
+                    "description": "Indexed array of Virtual Disk property names with relative values contained in VDPropValueArray parameter.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Indexed array of Virtual Disk property names with relative values contained in VDPropValueArray parameter.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "VDPropValueArray": {
+                    "description": "Indexed array of Virtual Disk property values relative to VDPropValueName parameter.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Indexed array of Virtual Disk property values relative to VDPropValueName parameter.",
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "VDPropNameArray",
+                "VDPropValueArray"
+            ],
+            "type": "object"
+        },
+        "ClearControllerPreservedCache": {
+            "additionalProperties": false,
+            "description": "The ClearControllerPreservedCache() method clears the controller cache.",
+            "longDescription": "The ClearControllerPreservedCache() method clears the controller cache.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (FQDD of the controller).",
+                    "longDescription": "FQDD of target device (FQDD of the controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "ClearForeignConfig": {
+            "additionalProperties": false,
+            "description": "The ClearForeignConfig() method is used to prepare any foreign physical disks for inclusion in the local configuration.",
+            "longDescription": "The ClearForeignConfig() method is used to prepare any foreign physical disks for inclusion in the local configuration.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConvertToNonRAID": {
+            "additionalProperties": false,
+            "description": "The ConvertToNonRAID() method is used to convert a physical disks in RAID state of \"Ready\" to a Non-RAID state. After the method is successfully executed, the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state.",
+            "longDescription": "The ConvertToNonRAID() method is used to convert a physical disks in RAID state of \"Ready\" to a Non-RAID state. After the method is successfully executed, the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state.",
+            "parameters": {
+                "PDArray": {
+                    "description": "Array of FQDDs where each identifies a physical disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of FQDDs where each identifies a physical disk.",
+                    "requiredParameter": true,
+                    "type": "array"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ConvertToRAID": {
+            "additionalProperties": false,
+            "description": "The ConvertToRAID() method is used to convert a physical disks in Non-RAID state to a state usable for RAID. After the method is successfully executed the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state.",
+            "longDescription": "The ConvertToRAID() method is used to convert a physical disks in Non-RAID state to a state usable for RAID. After the method is successfully executed the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state.",
+            "parameters": {
+                "PDArray": {
+                    "description": "Array of FQDDs where each identifies a physical disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of FQDDs where each identifies a physical disk.",
+                    "requiredParameter": true,
+                    "type": "array"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CryptographicEraseWithPSID": {
+            "additionalProperties": false,
+            "description": "The CryptographicEraseWithPSID() method is used to enable secure erase drive using PSID.",
+            "longDescription": "The CryptographicEraseWithPSID() method is used to enable secure erase drive using PSID.",
+            "parameters": {
+                "DriveFQDD": {
+                    "description": "The string for the Drive Fqdd.",
+                    "longDescription": "The string for the Drive Fqdd.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "PSID": {
+                    "description": "The string for the PSID",
+                    "longDescription": "The string for the PSID",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_4_0"
+        },
+        "DellRaidService": {
+            "additionalProperties": false,
+            "description": "The DellRaidService resource provides some actions to support RAID functionality.",
+            "longDescription": "The DellRaidService resource provides some actions to support RAID functionality.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "DisableSecurity": {
+            "additionalProperties": false,
+            "description": "The DisableSecurity() method is used to disable secure mode on a controller other than PERC.",
+            "longDescription": "The DisableSecurity() method is used to disable secure mode on a controller other than PERC.",
+            "parameters": {
+                "ControllerFQDD": {
+                    "description": "The string for the ControllerFqdd.",
+                    "longDescription": "The string for the ControllerFqdd.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_4_0"
+        },
+        "EnableControllerEncryption": {
+            "additionalProperties": false,
+            "description": "The EnableControllerEncryption() method sets either Local Key Management (LKM) or Secure Enterprise Key Manager (SEKM) on controllers that support encryption of the drives.",
+            "longDescription": "The EnableControllerEncryption() method sets either Local Key Management (LKM) or Secure Enterprise Key Manager (SEKM) on controllers that support encryption of the drives.",
+            "parameters": {
+                "Key": {
+                    "description": "Key is the passcode. This parameter is required if the  mode is set to Local Key Management. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.  Upper Case,  Lower Case, Number,  Special Character. The special characters in the following set need to be passed as mentioned below. &->&amp;, < ->&lt;, >->&gt;,  \"->&quot;,  ' ->&apos;.",
+                    "longDescription": "Key is the passcode. This parameter is required if the  mode is set to Local Key Management. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.  Upper Case,  Lower Case, Number,  Special Character. The special characters in the following set need to be passed as mentioned below. &->&amp;, < ->&lt;, >->&gt;,  \"->&quot;,  ' ->&apos;.",
+                    "type": "string"
+                },
+                "Keyid": {
+                    "description": "Key Identifier describes the Key. This parameter is required if the mode is set to Local Key Management. The Keyid shall be maximum of 32 characters in length and shoutd not have any spaces.",
+                    "longDescription": "Key Identifier describes the Key. This parameter is required if the mode is set to Local Key Management. The Keyid shall be maximum of 32 characters in length and shoutd not have any spaces.",
+                    "type": "string"
+                },
+                "Mode": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/Mode",
+                    "description": "Mode of the controller 1 - Local Key Management (LKM), 2- Dell Key Management (DKM), 3 - Secure Enterprise Key Manager(SEKM). Note: DKM will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.50.50.50 or later.",
+                    "longDescription": "Mode of the controller 1 - Local Key Management (LKM), 2- Dell Key Management (DKM), 3 - Secure Enterprise Key Manager(SEKM). Note: DKM will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.50.50.50 or later.",
+                    "requiredParameter": true
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of of target device (Controller).",
+                    "longDescription": "FQDD of of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "EnableSecurity": {
+            "additionalProperties": false,
+            "description": "The EnableSecurity() method is used to enable secure mode on a drive or a controller.",
+            "longDescription": "The EnableSecurity() method is used to enable secure mode on a drive or a controller.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "The string for the Controller/Drive Fqdd.",
+                    "longDescription": "The string for the Controller/Drive Fqdd.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_4_0"
+        },
+        "GetAvailableDisks": {
+            "actionResponse": {
+                "$ref": "#/definitions/GetAvailableDisksResponse"
+            },
+            "additionalProperties": false,
+            "description": "The GetAvailableDisks () method is used to determine minimum number of drives required to create virtual disks.",
+            "longDescription": "The GetAvailableDisks () method is used to determine minimum number of drives required to create virtual disks.",
+            "parameters": {
+                "BlockSizeInBytes": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/BlockSizeInBytes",
+                    "description": "The parameter specifies the physical disk block size in bytes.",
+                    "longDescription": "The parameter specifies the physical disk block size in bytes."
+                },
+                "DiskEncrypt": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/DiskEncrypt",
+                    "description": "The parameter specifies the disk encryption capability.",
+                    "longDescription": "The parameter specifies the disk encryption capability."
+                },
+                "DiskType": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/DiskType",
+                    "description": "The property represents the disk type.",
+                    "longDescription": "The property represents the disk type.",
+                    "requiredParameter": true
+                },
+                "Diskprotocol": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/Diskprotocol",
+                    "description": "The parameter specifies the type of disk protocol.",
+                    "longDescription": "The parameter specifies the type of disk protocol.",
+                    "requiredParameter": true
+                },
+                "FormFactor": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/FormFactor",
+                    "description": "This parameter is used to specify the form factor of drives and shall be one of the following 0 - Include all 1 - Include only M.2.",
+                    "longDescription": "This parameter is used to specify the form factor of drives and shall be one of the following 0 - Include all 1 - Include only M.2."
+                },
+                "RaidLevel": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/RaidLevel",
+                    "description": "The parameter represents the type of RAID configuration.",
+                    "longDescription": "The parameter represents the type of RAID configuration."
+                },
+                "T10PIStatus": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/T10PIStatus",
+                    "description": "The parameter specifies the T10-Protection Information(PI) capability status.",
+                    "longDescription": "The parameter specifies the T10-Protection Information(PI) capability status."
+                },
+                "TargetFQDD": {
+                    "description": "This Parameter is the FQDD of the target device (Controller).",
+                    "longDescription": "This Parameter is the FQDD of the target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetAvailableDisksResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the GetAvailableDisks action.",
+            "longDescription": "This type shall contain the properties found in the response body for the GetAvailableDisks action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "PDArray": {
+                    "description": "Array of FQDD(s) identifies physical disk(s)..",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of FQDD(s) identifies physical disk(s)..",
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "PDArray"
+            ],
+            "type": "object"
+        },
+        "GetDHSDisks": {
+            "actionResponse": {
+                "$ref": "#/definitions/GetDHSDisksResponse"
+            },
+            "additionalProperties": false,
+            "description": "The GetDHSDisks() method is used to determine possible choices of physical drives that can used to set a dedicated hotspare for the identified virtual disk. GetDHSDisks() returns success if it has evaluated the physical disks for potential hot spares, the PDArray return list can be empty if no physical disks are suitable for hot spares.",
+            "longDescription": "The GetDHSDisks() method is used to determine possible choices of physical drives that can used to set a dedicated hotspare for the identified virtual disk. GetDHSDisks() returns success if it has evaluated the physical disks for potential hot spares, the PDArray return list can be empty if no physical disks are suitable for hot spares.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This Parameter is the FQDD of the target device (virtual disk).",
+                    "longDescription": "This Parameter is the FQDD of the target device (virtual disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetDHSDisksResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the GetDHSDisks action.",
+            "longDescription": "This type shall contain the properties found in the response body for the GetDHSDisks action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "PDArray": {
+                    "description": "Array of FQDDs where each entry identifies a physical disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of FQDDs where each entry identifies a physical disk.",
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "PDArray"
+            ],
+            "type": "object"
+        },
+        "GetRAIDLevels": {
+            "actionResponse": {
+                "$ref": "#/definitions/GetRAIDLevelsResponse"
+            },
+            "additionalProperties": false,
+            "description": "The GetRAIDLevels() method is used to determine the possible choices of RAID Levels to create virtual disks. If the list of physical disks is not provided, this method accesses information for all the connected disks.",
+            "longDescription": "The GetRAIDLevels() method is used to determine the possible choices of RAID Levels to create virtual disks. If the list of physical disks is not provided, this method accesses information for all the connected disks.",
+            "parameters": {
+                "BlockSizeInBytes": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/BlockSizeInBytes",
+                    "description": "The parameter specifies the physical disk block size in bytes.",
+                    "longDescription": "The parameter specifies the physical disk block size in bytes."
+                },
+                "DiskEncrypt": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/DiskEncrypt",
+                    "description": "The parameter specifies the disk encryption capability.",
+                    "longDescription": "The parameter specifies the disk encryption capability."
+                },
+                "DiskType": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/DiskType",
+                    "description": "The parameter specifies the type of the disk.",
+                    "longDescription": "The parameter specifies the type of the disk.",
+                    "requiredParameter": true
+                },
+                "Diskprotocol": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/Diskprotocol",
+                    "description": "The parameter specifies the type of disk protocol.",
+                    "longDescription": "The parameter specifies the type of disk protocol.",
+                    "requiredParameter": true
+                },
+                "FormFactor": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/FormFactor",
+                    "description": "This parameter is used to specify the form factor of drives 0 - Include all 1 - Include only M.2.",
+                    "longDescription": "This parameter is used to specify the form factor of drives 0 - Include all 1 - Include only M.2."
+                },
+                "PDArray": {
+                    "description": "Array of FQDDs where each identifies a physical disk.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Array of FQDDs where each identifies a physical disk.",
+                    "type": "array"
+                },
+                "T10PIStatus": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/T10PIStatus",
+                    "description": "The parameter specifies the T10-Protection Information(PI) capability status.",
+                    "longDescription": "The parameter specifies the T10-Protection Information(PI) capability status."
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetRAIDLevelsResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the GetRAIDLevels action.",
+            "longDescription": "This type shall contain the properties found in the response body for the GetRAIDLevels action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "VDRAIDEnumArray": {
+                    "description": "Indexed array of Virtual Disk RAID level enum values.",
+                    "items": {
+                        "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/GetRAIDLevelsResponseVDRAIDEnumArray"
+                    },
+                    "longDescription": "Indexed array of Virtual Disk RAID level enum values.",
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "required": [
+                "VDRAIDEnumArray"
+            ],
+            "type": "object"
+        },
+        "ImportForeignConfig": {
+            "additionalProperties": false,
+            "description": "This method imports or recovers a foreign configuration.",
+            "longDescription": "This method imports or recovers a foreign configuration.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "LockVirtualDisk": {
+            "additionalProperties": false,
+            "description": "The LockVirtualDisk() method encrypts the virtual disk.",
+            "longDescription": "The LockVirtualDisk() method encrypts the virtual disk.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Virtual Disk).",
+                    "longDescription": "FQDD of target device (Virtual Disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "OnlineCapacityExpansion": {
+            "additionalProperties": false,
+            "description": "Online Capacity Expansion feature enables you to increase the storage capacity of selected virtual disk by adding a new physical disk or with the existing physical disk if the virtual disk size is less than the actual size of physical disk size. This feature enables you to add new drives to the array while the system is in use. OCE feature are not available when the disk group has more than one VD. OCE feature is not supported on RAID 50 and RAID 60 virtual disks.",
+            "longDescription": "Online Capacity Expansion feature enables you to increase the storage capacity of selected virtual disk by adding a new physical disk or with the existing physical disk if the virtual disk size is less than the actual size of physical disk size. This feature enables you to add new drives to the array while the system is in use. OCE feature are not available when the disk group has more than one VD. OCE feature is not supported on RAID 50 and RAID 60 virtual disks.",
+            "parameters": {
+                "PDArray": {
+                    "description": "Specify the disks to increase the virtual disk capacity. Note: Either Size or NewPDArray input parameter is mandatory.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Specify the disks to increase the virtual disk capacity. Note: Either Size or NewPDArray input parameter is mandatory.",
+                    "type": "array"
+                },
+                "Size": {
+                    "description": "New VD size in MB. If a new drive is added for OCE, this parameter is not required. Note: 1. Minimum size must be greater than 100 MB. 2. Either Size or NewPDArray input parameter is mandatory.",
+                    "longDescription": "New VD size in MB. If a new drive is added for OCE, this parameter is not required. Note: 1. Minimum size must be greater than 100 MB. 2. Either Size or NewPDArray input parameter is mandatory.",
+                    "type": "integer"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Virtual Disk).",
+                    "longDescription": "FQDD of target device (Virtual Disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "PrepareToRemove": {
+            "additionalProperties": false,
+            "description": "PCIe SSDs support hot plug of devices allowing the user to add or remove a device without halting or rebooting the system. To prevent data loss when a PCIe SSDs device is being removed, it is mandatory to use the Prepare To Remove operation before physically removing a device. The CreateTargetedConfigJob() method is used to apply the pending values set by different methods under DellRAIDService class.",
+            "longDescription": "PCIe SSDs support hot plug of devices allowing the user to add or remove a device without halting or rebooting the system. To prevent data loss when a PCIe SSDs device is being removed, it is mandatory to use the Prepare To Remove operation before physically removing a device. The CreateTargetedConfigJob() method is used to apply the pending values set by different methods under DellRAIDService class.",
+            "parameters": {
+                "ForceRemove": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/ForceRemove",
+                    "description": "Indicates forcefuly doing PrepareToRemove operation or not,irrespective of the NVME sanitize status. The value is one of the following: Yes- forefully perform the operation without checking the NVMe sanitize status, No - perform the operation after checking the NVMe sanitize status and allow the operation only when the status is not in either NVME cryptographic erase in progress or failure. If this property is not given then as default the ForceRemove will be taken as ForceRemove=No",
+                    "longDescription": "Indicates forcefuly doing PrepareToRemove operation or not,irrespective of the NVME sanitize status. The value is one of the following: Yes- forefully perform the operation without checking the NVMe sanitize status, No - perform the operation after checking the NVMe sanitize status and allow the operation only when the status is not in either NVME cryptographic erase in progress or failure. If this property is not given then as default the ForceRemove will be taken as ForceRemove=No"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Physical Disk/SSD).",
+                    "longDescription": "FQDD of target device (Physical Disk/SSD).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "RAIDLevelMigration": {
+            "additionalProperties": false,
+            "description": "This feature enables you to add additional hard drives to the existing RAID-Level to migrate to a new RAID-level. This feature increases the data protection without any downtime. When VD is migrated to a different RAID level, the user data is redistributed in the new configuration. This redistribution is a background process. RLM feature is not available when the Disk group has more than one VD.",
+            "longDescription": "This feature enables you to add additional hard drives to the existing RAID-Level to migrate to a new RAID-level. This feature increases the data protection without any downtime. When VD is migrated to a different RAID level, the user data is redistributed in the new configuration. This redistribution is a background process. RLM feature is not available when the Disk group has more than one VD.",
+            "parameters": {
+                "NewRaidLevel": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/NewRaidLevel",
+                    "description": "The parameter specific the new RAID Level to be Migrated.",
+                    "longDescription": "The parameter specific the new RAID Level to be Migrated.",
+                    "requiredParameter": true
+                },
+                "PDArray": {
+                    "description": "Specify the disks to be included in the New RAID-Level.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Specify the disks to be included in the New RAID-Level.",
+                    "type": "array"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Virtual Disk).",
+                    "longDescription": "FQDD of target device (Virtual Disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "ReKey": {
+            "additionalProperties": false,
+            "description": "The ReKey () method resets the key on the controller that support encryption of the of drives.",
+            "longDescription": "The ReKey () method resets the key on the controller that support encryption of the of drives.",
+            "parameters": {
+                "Keyid": {
+                    "description": "Key identifier describes the key. The Keyid shall be maximum 32 characters in length and shoutd not have any spaces.",
+                    "longDescription": "Key identifier describes the key. The Keyid shall be maximum 32 characters in length and shoutd not have any spaces.",
+                    "type": "string"
+                },
+                "Mode": {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.json#/definitions/Mode",
+                    "description": "Mode of the controller: 1 - Local Key Management (LKM), 2 - Secure Enterprise Key Manager(SEKM).",
+                    "longDescription": "Mode of the controller: 1 - Local Key Management (LKM), 2 - Secure Enterprise Key Manager(SEKM).",
+                    "requiredParameter": true
+                },
+                "NewKey": {
+                    "description": "New controller key. The key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.Upper Case, Lower Case,  Number, Special Character. The special characters in the following set need to be passed as mentioned below and are counted as a single character for the maximum length of the key.  &->&amp;, < ->&lt;, >->&gt;,  \"->&quot;,  '->&apos;.",
+                    "longDescription": "New controller key. The key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.Upper Case, Lower Case,  Number, Special Character. The special characters in the following set need to be passed as mentioned below and are counted as a single character for the maximum length of the key.  &->&amp;, < ->&lt;, >->&gt;,  \"->&quot;,  '->&apos;.",
+                    "type": "string"
+                },
+                "OldKey": {
+                    "description": "Old controller key.",
+                    "longDescription": "Old controller key.",
+                    "type": "string"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of of target device (Controller).",
+                    "longDescription": "FQDD of of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RebuildPhysicalDisk": {
+            "additionalProperties": false,
+            "description": "The RebuildPhysicalDisk() method reconstructs the contents of failed disk of the virtual disk to a new disk or to a hot spare.",
+            "longDescription": "The RebuildPhysicalDisk() method reconstructs the contents of failed disk of the virtual disk to a new disk or to a hot spare.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk).",
+                    "longDescription": "FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "RemoveControllerKey": {
+            "additionalProperties": false,
+            "description": "The RemoveControllerKey() method erases the encryption key on controller. CAUTION: All encrypted drives shall be erased.",
+            "longDescription": "The RemoveControllerKey() method erases the encryption key on controller. CAUTION: All encrypted drives shall be erased.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of of target device (Controller).",
+                    "longDescription": "FQDD of of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "RenameVD": {
+            "additionalProperties": false,
+            "description": "The RenameVD() method renames the existing virtual disk name. Maximum length of the name is dependent on the PERC. Only System Privilege is required to change the name of the virtual disk.",
+            "longDescription": "The RenameVD() method renames the existing virtual disk name. Maximum length of the name is dependent on the PERC. Only System Privilege is required to change the name of the virtual disk.",
+            "parameters": {
+                "Name": {
+                    "description": "Name to be entered for the target device (Virtual Disk). The maximum length of name is 15 characters and it cannot start with a space, end with a space, or be blank.",
+                    "longDescription": "Name to be entered for the target device (Virtual Disk). The maximum length of name is 15 characters and it cannot start with a space, end with a space, or be blank.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Virtual Disk).",
+                    "longDescription": "FQDD of target device (Virtual Disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "ReplacePhysicalDisk": {
+            "additionalProperties": false,
+            "description": "This method replaces a physical disk in a virtual disk with a new Ready physical disk",
+            "longDescription": "This method replaces a physical disk in a virtual disk with a new Ready physical disk",
+            "parameters": {
+                "ReplacementDisk": {
+                    "description": "FQDD of the replacement physical disk.",
+                    "longDescription": "FQDD of the replacement physical disk.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of the physical disk to be replaced.",
+                    "longDescription": "FQDD of the physical disk to be replaced.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "ResetConfig": {
+            "additionalProperties": false,
+            "description": "The ResetConfig() method is used to delete all the virtual disks and unassign all hot spare physical disks.  CAUTION: All data on the existing virtual disks will be lost.",
+            "longDescription": "The ResetConfig() method is used to delete all the virtual disks and unassign all hot spare physical disks.  CAUTION: All data on the existing virtual disks will be lost.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SetAssetName": {
+            "additionalProperties": false,
+            "description": "The SetAssetName() method is used to set the Asset Name of the enclosure. Invoke the CreateTargetedConfigJob method to apply the pending changes performed by SetAssetName. The \"Set Asset Name\" operation is cancelled once the configuration job completes successfully.",
+            "longDescription": "The SetAssetName() method is used to set the Asset Name of the enclosure. Invoke the CreateTargetedConfigJob method to apply the pending changes performed by SetAssetName. The \"Set Asset Name\" operation is cancelled once the configuration job completes successfully.",
+            "parameters": {
+                "AssetName": {
+                    "description": "Asset Name value. This value can be maximum of 32 ASCII alpha-numeric characters long.",
+                    "longDescription": "Asset Name value. This value can be maximum of 32 ASCII alpha-numeric characters long.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (FQDD of enclosure) Note: Set Asset Name is applicable to the external enclosures and not for the internal enclosures.",
+                    "longDescription": "FQDD of target device (FQDD of enclosure) Note: Set Asset Name is applicable to the external enclosures and not for the internal enclosures.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "SetBootVD": {
+            "additionalProperties": false,
+            "description": "This method sets a virtual disk as boot virtual disk",
+            "longDescription": "This method sets a virtual disk as boot virtual disk",
+            "parameters": {
+                "ControllerFQDD": {
+                    "description": "FQDD of the Controller",
+                    "longDescription": "FQDD of the Controller",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "VirtualDiskFQDD": {
+                    "description": "FQDD of the virtual disk to be set as BootVD. Any existing configuration is overwritten.",
+                    "longDescription": "FQDD of the virtual disk to be set as BootVD. Any existing configuration is overwritten.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "SetControllerKey": {
+            "additionalProperties": false,
+            "description": "The SetControllerKey() method is used to set the key on controllers and set the controller in Local key Management (LKM) to encrypt the drives.",
+            "longDescription": "The SetControllerKey() method is used to set the key on controllers and set the controller in Local key Management (LKM) to encrypt the drives.",
+            "parameters": {
+                "Key": {
+                    "description": "The parameter specifies the key passcode. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have at least one character from each of the following sets.  Upper Case, Lower Case,  Number, Special Character, The special characters in the following set need to be passed as mentioned below. &->&amp;, < ->&lt;, >->&gt;,  \"->&quot;,  ' ->&apos;.",
+                    "longDescription": "The parameter specifies the key passcode. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have at least one character from each of the following sets.  Upper Case, Lower Case,  Number, Special Character, The special characters in the following set need to be passed as mentioned below. &->&amp;, < ->&lt;, >->&gt;,  \"->&quot;,  ' ->&apos;.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "Keyid": {
+                    "description": "Key Identifier that describes the key. The Keyid shall be maximum of 32 characters in length and should not have any spaces.",
+                    "longDescription": "Key Identifier that describes the key. The Keyid shall be maximum of 32 characters in length and should not have any spaces.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "StartPatrolRead": {
+            "additionalProperties": false,
+            "description": "This method is used to Start the Patrol Read Operation Manually.",
+            "longDescription": "This method is used to Start the Patrol Read Operation Manually.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This parameter is the FQDD of the RAID Controller Device.",
+                    "longDescription": "This parameter is the FQDD of the RAID Controller Device.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "StopPatrolRead": {
+            "additionalProperties": false,
+            "description": "StopPatrolRead() Method is used to Stop the Patrol Read Operation Manually.",
+            "longDescription": "StopPatrolRead() Method is used to Stop the Patrol Read Operation Manually.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This parameter is the FQDD of the RAID Controller Device.",
+                    "longDescription": "This parameter is the FQDD of the RAID Controller Device.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "UnBlinkTarget": {
+            "additionalProperties": false,
+            "description": "The UnblinkTarget () method is used to stop blinking the light present on the physical disk represented by the Target FQDD. The method is real time, unblink cannot be scheduled as part of a job.",
+            "longDescription": "The UnblinkTarget () method is used to stop blinking the light present on the physical disk represented by the Target FQDD. The method is real time, unblink cannot be scheduled as part of a job.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This Parameter is the FQDD of the Physical Disk, SSD and Virtual Disk.",
+                    "longDescription": "This Parameter is the FQDD of the Physical Disk, SSD and Virtual Disk.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UnLockSecureForeignConfig": {
+            "additionalProperties": false,
+            "description": "This method unlocks secured drives with passphrase and Keyid",
+            "longDescription": "This method unlocks secured drives with passphrase and Keyid",
+            "parameters": {
+                "Key": {
+                    "description": "Passphrase of the security key that is used to secure the drives on the source controller.",
+                    "longDescription": "Passphrase of the security key that is used to secure the drives on the source controller.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "Keyid": {
+                    "description": "Key Identifier that describes the key of the migrated secure foreign configuration on PERC controller.",
+                    "longDescription": "Key Identifier that describes the key of the migrated secure foreign configuration on PERC controller.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "TargetFQDD": {
+                    "description": "FQDD of target device (Controller).",
+                    "longDescription": "FQDD of target device (Controller).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "UnassignSpare": {
+            "additionalProperties": false,
+            "description": "The UnassignSpare() method is used to unassign a physical disk as a dedicated hot spare from a virtual disk, or as a global hot spare. After the method executes successfully, the physical disk is available for use.",
+            "longDescription": "The UnassignSpare() method is used to unassign a physical disk as a dedicated hot spare from a virtual disk, or as a global hot spare. After the method executes successfully, the physical disk is available for use.",
+            "parameters": {
+                "TargetFQDD": {
+                    "description": "This parameter is the FQDD of the target device (physical disk).",
+                    "longDescription": "This parameter is the FQDD of the target device (physical disk).",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellRaidService.v1_5_1.DellRaidService"
+}

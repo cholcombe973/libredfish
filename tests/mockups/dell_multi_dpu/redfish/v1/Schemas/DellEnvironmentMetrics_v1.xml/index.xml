@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellEnvironmentMetrics v1_1_0-->
+<!--# -->
+<!--# Copyright 2021-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Sensor_v1.xml">
+        <edmx:Include Namespace="Sensor"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="DellEnvironmentMetrics" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellEnvironmentMetrics" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="This property shall represent the Oem properties for a EnvironmentMetrics resource."/>
+                <Annotation Term="OData.LongDescription" String="This property shall represent the Oem properties for a EnvironmentMetrics resource."/>
+            </ComplexType>
+        </Schema>
+        <Schema Namespace="DellEnvironmentMetrics.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellEnvironmentMetrics" BaseType="DellEnvironmentMetrics.DellEnvironmentMetrics">
+                <Property Name="AverageFanPWM" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents average fan speed in PWM."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall represent average fan speed in PWM"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema Namespace="DellEnvironmentMetrics.v1_1_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellEnvironmentMetrics" BaseType="DellEnvironmentMetrics.v1_0_0.DellEnvironmentMetrics">
+                <NavigationProperty Name="PowerWatts" Type="Collection(Sensor.Sensor)">
+                    <Annotation Term="Redfish.ExcerptCopy" String="Power"/>
+                    <Annotation Term="OData.Description" String="Power consumption (W)."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the total power, in watt units, for this resource. The value of the DataSourceUri property, if present, shall reference a resource of type Sensor with the ReadingType property containing the value `Power`."/>
+                </NavigationProperty>
+                <NavigationProperty Name="TemperatureCelsius" Type="Collection(Sensor.Sensor)">
+                    <Annotation Term="Redfish.ExcerptCopy"/>
+                    <Annotation Term="OData.Description" String="Temperature (Celsius)."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the temperature, in degrees Celsius units, for this resource. The value of the DataSourceUri property, if present, shall reference a resource of type Sensor with the ReadingType property containing the value `Temperature`."/>
+                </NavigationProperty>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

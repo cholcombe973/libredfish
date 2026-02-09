@@ -1,0 +1,632 @@
+{
+    "@odata.type": "#MessageRegistry.v1_3_1.MessageRegistry",
+    "Description": "This registry defines messages for representing SyncAgent errors in Redfish",
+    "Id": "SyncAgent.1.0.0",
+    "Language": "en",
+    "Messages": {
+        "AddressDuplicatedInRequest": {
+            "Description": "IPv6 address already exists in request body",
+            "Message": "IPv6 address %1 is duplicated in request body",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide unique IPv6 Address for each IPv6 indexes",
+            "Severity": "Warning"
+        },
+        "AddressOrigin": {
+            "Description": "Indicates that address origin is tried for patch.",
+            "Message": "Cannot patch address origin",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Try patch for IPv4 properties other than address origin",
+            "Severity": "Warning"
+        },
+        "AddressOriginStatic": {
+            "Description": "Indicates that AddressOrigin is patched with other patchable properties.",
+            "Message": "AddressOrigin is patched with other patchable properties.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Try giving patch request removing AddressOrigin property",
+            "Severity": "Warning"
+        },
+        "AutoNegEnabled": {
+            "Description": "Indicates patch is applied for auto negotiation where mode is not supported",
+            "Message": "Cannot apply patch auto-negotiation for this interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Enable auto negotiation mode and apply patch for auto-neg",
+            "Severity": "Warning"
+        },
+        "AutoNegFalse": {
+            "Description": "Indicates that a patch is tried to set autoneg value to false without other required properties.",
+            "Message": "Required all AutoNeg,SpeedMbps and FullDuplex values to set AutoNeg to false",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Sent patch filling AutoNeg,SpeedMbps and FullDuplex values to set AutoNeg to false",
+            "Severity": "Warning"
+        },
+        "AutoNegTrue": {
+            "Description": "Indicates that a patch is tried  with all all AutoNeg,SpeedMbps and FullDuplex values to set autoneg to true.",
+            "Message": "Required only AutoNeg value to set AutoNeg to true",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Sent patch only with AutoNeg values to set AutoNeg to true",
+            "Severity": "Warning"
+        },
+        "AutoNegWithOtherProperties": {
+            "Description": "Indicates that a patch is tried with other allowed properties without autoneg value.",
+            "Message": "Required AutoNeg values to make any changes in negotiation values",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Sent patch filling AutoNeg values to make any changes in negotiation values",
+            "Severity": "Warning"
+        },
+        "BondEnabled": {
+            "Description": "Indicates that bond is enabled so patch cannot be tried for other interfaces.",
+            "Message": "Bond is enabled , Patch is not applicable for this interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Disable bond and apply patch for the interface",
+            "Severity": "Warning"
+        },
+        "BondEnabledAutoNeg": {
+            "Description": "Indicates that bond is enabled so we cannot change auto-neg values.",
+            "Message": "AutoNeg values cannot be changed when bond is enabled",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Disable Bond and after enabling eth0/eth1 try changing auto-neg values for the enabled interface",
+            "Severity": "Warning"
+        },
+        "ClearAllAddress": {
+            "Description": "Cannot Clear All IPv6Addresses",
+            "Message": "Cannot Clear All IPv6Addresses",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Do not clear All of the IPv6Addresses",
+            "Severity": "Warning"
+        },
+        "DHCPEnabled": {
+            "Description": "Indicates that DHCPv4 is enabled on the interface.",
+            "Message": "DHCPv4 is enabled on the interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Disable DHCP to perform this operation",
+            "Severity": "Warning"
+        },
+        "DHCPv6Enabled": {
+            "Description": "Indicates that DHCPv4 is enabled on the interface.",
+            "Message": "DHCPv6 is enabled on the interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Disable DHCP to perform this operation",
+            "Severity": "Warning"
+        },
+        "DeleteTimeout": {
+            "Description": "Indicates that the property was not changed or did not cause an error before a timeout occurred.",
+            "Message": "The timeout duration (%1s) was exceeded before the delete operation on %2 responded.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "number",
+                "string"
+            ],
+            "Resolution": "Verify the request is valid and resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "DisableDHCPv4": {
+            "Description": "Provide ipv4 static address to disable dhcpv4",
+            "Message": "To disable DHCPv4 provide %1 property along with DHCPEnabled",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide mandatory properties while disabling dhcpv4",
+            "Severity": "Warning"
+        },
+        "DisableDHCPv6": {
+            "Description": "Provide ipv6 static address to disable dhcpv6",
+            "Message": "To disable DHCPv6 provide %1 property along with OperatingMode",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide mandatory properties while disabling dhcpv6",
+            "Severity": "Warning"
+        },
+        "EjectMediaError": {
+            "Description": "Unable to stop media redirection",
+            "Message": "EjectMedia action is unsuccessful. IPMI Error code: %1 ",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please make sure all the required features are enabled and the given media instance in the URI is valid",
+            "Severity": "Critical"
+        },
+        "EnableAD": {
+            "Description": "Enable Active Directory authentication before creating role",
+            "Message": "Role can be created only if Active Directory authentication is enabled",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide Active Directory authentication before creating role",
+            "Severity": "Warning"
+        },
+        "EnableDHCP": {
+            "Description": "Provide only dhcpv6/v4 enabled property alone",
+            "Message": "dhcpv6/v4-enabled property is applied along with ipv6/ipv4 values while enabling dhcp",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide dhcpv6/v4-enabled property alone while enabling dhcp for ipv6/ipv4",
+            "Severity": "Warning"
+        },
+        "EnableLDAP": {
+            "Description": "Enable LDAP authentication before creating role",
+            "Message": "Role can be created only if LDAP authentication is enabled",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide LDAP authentication before creating role",
+            "Severity": "Warning"
+        },
+        "ExceedLimit": {
+            "Description": "Indicates applied patch value not within limit",
+            "Message": "Applied patch value not within limit",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide patch value within limit",
+            "Severity": "Warning"
+        },
+        "FQDNHostName": {
+            "Description": "Indicates that FQDN and HostName are not same.",
+            "Message": "%1-(HostName) and %3 values are not same",
+            "NumberOfArgs": 4,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "FQDN and HostName should be same",
+            "Severity": "Warning"
+        },
+        "IDOutOfRange": {
+            "Description": "Group ID value provided not supported",
+            "Message": "Group ID value %2 is out of range",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide valid Group Id value within range of 1 to 5",
+            "Severity": "Warning"
+        },
+        "IPAddressValueOutOfRange": {
+            "Description": "IP value provided not supported",
+            "Message": "IPAddress or Gateway value is out of range",
+            "NumberOfArgs": 0,
+            "Resolution": "Provide valid IPAddress or Gateway value within the range",
+            "Severity": "Warning"
+        },
+        "IPMISOLReadOnlyProperty": {
+            "Description": "Indicates that the serial interface property is defined by IPMI Serial-Over-LAN spec and is therefore read-only.",
+            "Message": "%1 is a property of an IPMI Serial-Over-LAN interface and is defined to be read-only.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Remove the property from the request and resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "IPv4Disabled": {
+            "Description": "IPv4 is disabled",
+            "Message": "IPv4 is disabled for the interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Enabled IPv4 for the interface and apply the patch",
+            "Severity": "Warning"
+        },
+        "IPv6Both": {
+            "Description": "Indicates patch is applied for both ipv6addresses and ipv6staticaddress at same time",
+            "Message": "Cannot try both the property (IPv6Addresses or Ipv6StaticAddress) in a single patch",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide IPv6Addresses or Ipv6StaticAddress",
+            "Severity": "Warning"
+        },
+        "IPv6Disabled": {
+            "Description": "IPv6 is disabled",
+            "Message": "IPv6 is disabled for the interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Enabled IPv6 for the interface and apply the patch",
+            "Severity": "Warning"
+        },
+        "InsertMediaError": {
+            "Description": "Unable to start media redirection",
+            "Message": "%1, hence InsertMedia action is unsuccessful ",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please make sure all the required features are enabled, provided data are valid and try again.",
+            "Severity": "Critical"
+        },
+        "InterfaceDisabled": {
+            "Description": "Indicates that the interface for given patch is disabled.",
+            "Message": "The interface for given patch is disabled",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Enable interface and try patch",
+            "Severity": "Warning"
+        },
+        "InvalidIP": {
+            "Description": "IP provided is invalid",
+            "Message": "IP provided is invalid",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide valid IP Address",
+            "Severity": "Warning"
+        },
+        "MACAddress": {
+            "Description": "PermanentMACAddress/MACAddress not patchable",
+            "Message": "Patching MACAddress or PermanentMACAddress not allowed",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Patching PermanentMACAddress/MACAddress not allowed",
+            "Severity": "Warning"
+        },
+        "MTUSize": {
+            "Description": "Indicates that value for MTU size given is out of range .",
+            "Message": "Value is less then 576 or more the 1500",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Set values greater then equal to 576 or less than equal to 1500",
+            "Severity": "Warning"
+        },
+        "MinimumNameServerRequired": {
+            "Description": "Indicates that all three name servers values not provided",
+            "Message": "All three nameservers are provided with null values",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Minimum one nameserver value needs to be provided",
+            "Severity": "Warning"
+        },
+        "MultipleArray": {
+            "Description": "Indicates patch is applied with multiple sets",
+            "Message": "Cannot apply patch with multiple sets,  patch is supported for only single set",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Apply patch with single set",
+            "Severity": "Warning"
+        },
+        "NCSIEnabled": {
+            "Description": "Indicates that a property was given a value in the request body, but the property is  not supported due to NCSI Port.",
+            "Message": "NCSI support is enabled for the interface. Configuring %1, %2 and %3 is forbidden",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "AutoNeg, SpeedMbps and FullDuplex are not writable due to NCSI Port",
+            "Severity": "Warning"
+        },
+        "OnePropertyAtATime": {
+            "Description": "Indicates patch cannot be applied for the given properties at same time",
+            "Message": "Value %1 for the property %2 cannot be applied  when %3 is given in the request body",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Remove one property and resubmit the request",
+            "Severity": "Warning"
+        },
+        "PartialPatch": {
+            "Description": "Indicates that a property was given a value in the request body, but the property is not implemented as a writable property.",
+            "Message": "Apart from read only properties, other properties are successful",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Try giving get request to see the changes for the successful patch",
+            "Severity": "Warning"
+        },
+        "PatchFormat": {
+            "Description": "Patch body format is not correct",
+            "Message": "Patch body format is not correct",
+            "NumberOfArgs": 0,
+            "Resolution": "Apply patch body in correct format",
+            "Severity": "Warning"
+        },
+        "PatchInProgress": {
+            "Description": "Indicates that the previous patch is in progress",
+            "Message": "Previous patch is in progress",
+            "NumberOfArgs": 0,
+            "Resolution": "Try applying new patch after the previous process is completed ",
+            "Severity": "Critical"
+        },
+        "PatchNotSupported": {
+            "Description": "Indicates that the selected interface cannot be disabled due to NCSI support enabled.",
+            "Message": "NCSI support is enabled for the interface %1, the interface cannot be disabled ",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Property is not writable due to NCSI support enabled and patch not supported for this property",
+            "Severity": "Warning"
+        },
+        "PatchTimeout": {
+            "Description": "Indicates that the property was not changed or did not cause an error before a timeout occurred.",
+            "Message": "The timeout duration (%1s) was exceeded before the patch operation on %2 responded.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Resource is taking more than the configured timeout seconds to respond. Please verify if the request is valid or check if the operation was successful using GET operation on the URI/resource. Resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "PatchValueAlreadyExists": {
+            "Description": "Indicates patch already exists",
+            "Message": "Cannot patch the value which already applied",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide other supported value then try patch again",
+            "Severity": "Warning"
+        },
+        "PostTimeout": {
+            "Description": "Indicates that the property was not changed or did not cause an error before a timeout occurred.",
+            "Message": "The timeout duration (%1s) was exceeded before the post operation on %2 responded.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "number",
+                "string"
+            ],
+            "Resolution": "Verify the request is valid and resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "PrefixLength": {
+            "Description": "PrefixLength is read-only property",
+            "Message": "PrefixLength is read-only property",
+            "NumberOfArgs": 0,
+            "Resolution": "Provide correct patch body without prefixlength",
+            "Severity": "Warning"
+        },
+        "PropertyModificationNotImplemented": {
+            "Description": "Indicates that a property was given a value in the request body, but the property is not implemented as a writable property.",
+            "Message": "Modifying property %1 is not possible in the current implementation and cannot be assigned a value.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Remove the property from the request body and resubmit the request if the operation failed.",
+            "Severity": "Warning"
+        },
+        "ProvideServiceEnabled": {
+            "Description": "Mandatory property is missing",
+            "Message": "Mandatory property is missing",
+            "NumberOfArgs": 0,
+            "Resolution": "Provide both ServiceEnalbed and Authntication property",
+            "Severity": "Warning"
+        },
+        "RelatedPropertyMissingorInvalid": {
+            "Description": "Indicates that the operation failed since some related properties were missing or is invalid",
+            "Message": "To set the value %1 to the property %2, the required property %3 is absent or is invalid in the request data",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Give all the valid inputs and resubmit the request",
+            "Severity": "Warning"
+        },
+        "RemGrpExits": {
+            "Description": "Remote group name already exits",
+            "Message": "Remote group name already exits",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide alternate remote group name",
+            "Severity": "Warning"
+        },
+        "SameIPv6Address": {
+            "Description": "IPv6 address already exists",
+            "Message": "Provided IPv6 address %1 in request already exists in index %2",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Provide IPv6 address which is not already available",
+            "Severity": "Warning"
+        },
+        "SameInterfaceEnabledState": {
+            "Description": "Indicates that same value is given for interfaceenabled property to patch.",
+            "Message": "Trying to patch already set value for interface state",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Change patch value other than already available value for interface state",
+            "Severity": "Warning"
+        },
+        "SingleEthernetEnabled": {
+            "Description": "Indicates that only one interface is enabled so we cannot disable both the ethernet interface.",
+            "Message": "Only one of the ethernet interface is enabled, Cannot disable both the ethernet interface",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Minimum one of available ethernet interface should be enabled",
+            "Severity": "Warning"
+        },
+        "SinglePortEnabled": {
+            "Description": "Indicates that the single port app feature prevented the action from being processed normally.",
+            "Message": "%1 cannot be changed when the single port app feature is enabled.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Disable single port app feature and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "SpeedMbps": {
+            "Description": "SpeedMbps value not supported",
+            "Message": "SpeedMbps value not supported",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide supported SpeedMbps value",
+            "Severity": "Warning"
+        },
+        "SpeedMbpsValueNotInList": {
+            "Description": "SpeedMbps value not supported for AutoNeg value false",
+            "Message": "SpeedMbps value not supported for AutoNeg false",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide supported SpeedMbps value 10 or 100",
+            "Severity": "Warning"
+        },
+        "StaticIPnotAssigned": {
+            "Description": "Indicates that the selected index does not have ip assigned",
+            "Message": "The selected one or more index does not have ip assigned to be cleared",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Try index where ip is assigned",
+            "Severity": "Warning"
+        },
+        "StaticIndexExist": {
+            "Description": "IPv6 Static Index already exits",
+            "Message": "Provided IPv6 Static Index in request already exits",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide IPv6 Static Index which is not exist",
+            "Severity": "Warning"
+        },
+        "TimeoutError": {
+            "Description": "Indicates that the property was not changed or did not cause an error before a timeout occurred.",
+            "Message": "The timeout duration (%1s) was exceeded before the operation on %2 responded.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "number",
+                "string"
+            ],
+            "Resolution": "Resource is taking more than 15 seconds to respond. Please verify if the request is valid or check if the operation was successful using GET operation on the URI/resource. Resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "UnspecifiedError": {
+            "Description": "Indicates that the attempt to update the property resulted in an error with and undetermined cause.",
+            "Message": "An unspecified error occurred while fulfilling the request, the value of %1 may have changed.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Verify the state of the resource and resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "VLANIdOutOfRange": {
+            "Description": "VLANId  value provided not supported",
+            "Message": "VLANId value %2 is out of range",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide valid VLANId value within range of 0 to 4095",
+            "Severity": "Warning"
+        },
+        "ValueNotSupported": {
+            "Description": "Indicates that the property was not changed because the value given was not supported by the backend implementation.",
+            "Message": "The value '%1' for property %2 is not supported by the backend implementation for this resource.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Verify the request is valid and resubmit the request if necessary.",
+            "Severity": "Critical"
+        },
+        "WaitTime": {
+            "Description": "Updating attributes, please try after some time",
+            "Message": "Attributes are updating, kindly try after 30 seconds",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Try GET after 30 seconds",
+            "Severity": "Warning"
+        },
+        "requestset": {
+            "Description": "Indicates patch is applied for different sets",
+            "Message": "Cannot apply patch for different sets",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide valid sets for patch {IPv4Addresses, IPv6Addresses/IPv6StaticAddresses, VLAN}, {FQDN, HostName}, {AutoNeg,SpeedMbps,FullDuplex,MTUSize} ,{InterfaceEnabled}",
+            "Severity": "Warning"
+        }
+    },
+    "Name": "SyncAgent Message Registry",
+    "OwningEntity": "AMI",
+    "RegistryPrefix": "SyncAgent",
+    "RegistryVersion": "1.0.0"
+}

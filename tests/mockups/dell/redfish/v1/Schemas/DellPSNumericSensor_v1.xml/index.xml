@@ -1,0 +1,1403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellPSNumericSensor v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/ComputerSystem_v1.xml">
+        <edmx:Include Namespace="ComputerSystem"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/DellPowerSupply_v1.xml">
+        <edmx:Include Namespace="DellPowerSupply"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPSNumericSensor">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellPSNumericSensor" Abstract="true">
+                <Annotation String="An instance of DellPSNumericSensor will have data specific to a power sensor device that returns only numeric readings and optionally supports of thresholds settings." Term="OData.Description"/>
+                <Annotation String="An instance of DellPSNumericSensor will have data specific to a power sensor device that returns only numeric readings and optionally supports of thresholds settings." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="true" Property="Updatable"/>
+                        <Annotation String="DellPSNumericSensor resources can be updated to change any writable properties." Term="OData.Description"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellPSNumericSensors/{PSNumericSensorId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="BaseUnits">
+                <Member Name="Amps">
+                    <Annotation String="Amps" Term="OData.Description"/>
+                    <Annotation String="Amps" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Becquerels">
+                    <Annotation String="Becquerels" Term="OData.Description"/>
+                    <Annotation String="Becquerels" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Bits">
+                    <Annotation String="Bits" Term="OData.Description"/>
+                    <Annotation String="Bits" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Bytes">
+                    <Annotation String="Bytes" Term="OData.Description"/>
+                    <Annotation String="Bytes" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="CFM">
+                    <Annotation String="CFM" Term="OData.Description"/>
+                    <Annotation String="CFM" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Candelas">
+                    <Annotation String="Candelas" Term="OData.Description"/>
+                    <Annotation String="Candelas" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ColorTemperatureDegreesK">
+                    <Annotation String="Color Temperature Degrees K" Term="OData.Description"/>
+                    <Annotation String="Color Temperature Degrees K" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Coulombs">
+                    <Annotation String="Coulombs" Term="OData.Description"/>
+                    <Annotation String="Coulombs" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="CubicCentimeters">
+                    <Annotation String="Cubic Centimeters" Term="OData.Description"/>
+                    <Annotation String="Cubic Centimeters" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="CubicFeet">
+                    <Annotation String="Cubic Feet" Term="OData.Description"/>
+                    <Annotation String="Cubic Feet" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="CubicInches">
+                    <Annotation String="Cubic Inches" Term="OData.Description"/>
+                    <Annotation String="Cubic Inches" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="CubicMeters">
+                    <Annotation String="Cubic Meters" Term="OData.Description"/>
+                    <Annotation String="Cubic Meters" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Cycles">
+                    <Annotation String="Cycles" Term="OData.Description"/>
+                    <Annotation String="Cycles" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Days">
+                    <Annotation String="Days" Term="OData.Description"/>
+                    <Annotation String="Days" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DbA">
+                    <Annotation String="DbA" Term="OData.Description"/>
+                    <Annotation String="DbA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DbC">
+                    <Annotation String="DbC" Term="OData.Description"/>
+                    <Annotation String="DbC" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Decibels">
+                    <Annotation String="Decibels" Term="OData.Description"/>
+                    <Annotation String="Decibels" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DegreesC">
+                    <Annotation String="Degrees C" Term="OData.Description"/>
+                    <Annotation String="Degrees C" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DegreesF">
+                    <Annotation String="Degrees F" Term="OData.Description"/>
+                    <Annotation String="Degrees F" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DegreesK">
+                    <Annotation String="Degrees K" Term="OData.Description"/>
+                    <Annotation String="Degrees K" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DoubleWords">
+                    <Annotation String="DoubleWords" Term="OData.Description"/>
+                    <Annotation String="DoubleWords" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Farads">
+                    <Annotation String="Farads" Term="OData.Description"/>
+                    <Annotation String="Farads" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Feet">
+                    <Annotation String="Feet" Term="OData.Description"/>
+                    <Annotation String="Feet" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FluidOunces">
+                    <Annotation String="Fluid Ounces" Term="OData.Description"/>
+                    <Annotation String="Fluid Ounces" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Foot-Pounds">
+                    <Annotation String="Foot-Pounds" Term="OData.Description"/>
+                    <Annotation String="Foot-Pounds" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Gauss">
+                    <Annotation String="Gauss" Term="OData.Description"/>
+                    <Annotation String="Gauss" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Gilberts">
+                    <Annotation String="Gilberts" Term="OData.Description"/>
+                    <Annotation String="Gilberts" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Gravities">
+                    <Annotation String="Gravities" Term="OData.Description"/>
+                    <Annotation String="Gravities" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Grays">
+                    <Annotation String="Grays" Term="OData.Description"/>
+                    <Annotation String="Grays" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Henries">
+                    <Annotation String="Henries" Term="OData.Description"/>
+                    <Annotation String="Henries" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Hertz">
+                    <Annotation String="Hertz" Term="OData.Description"/>
+                    <Annotation String="Hertz" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Hours">
+                    <Annotation String="Hours" Term="OData.Description"/>
+                    <Annotation String="Hours" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Inches">
+                    <Annotation String="Inches" Term="OData.Description"/>
+                    <Annotation String="Inches" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Joules">
+                    <Annotation String="Joules" Term="OData.Description"/>
+                    <Annotation String="Joules" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Liters">
+                    <Annotation String="Liters" Term="OData.Description"/>
+                    <Annotation String="Liters" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Lumens">
+                    <Annotation String="Lumens" Term="OData.Description"/>
+                    <Annotation String="Lumens" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Lux">
+                    <Annotation String="Lux" Term="OData.Description"/>
+                    <Annotation String="Lux" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Meters">
+                    <Annotation String="Meters" Term="OData.Description"/>
+                    <Annotation String="Meters" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Mils">
+                    <Annotation String="Mils" Term="OData.Description"/>
+                    <Annotation String="Mils" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Minutes">
+                    <Annotation String="Minutes" Term="OData.Description"/>
+                    <Annotation String="Minutes" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Moles">
+                    <Annotation String="Moles" Term="OData.Description"/>
+                    <Annotation String="Moles" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Newtons">
+                    <Annotation String="Newtons" Term="OData.Description"/>
+                    <Annotation String="Newtons" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Nits">
+                    <Annotation String="Nits" Term="OData.Description"/>
+                    <Annotation String="Nits" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Ohms">
+                    <Annotation String="Ohms" Term="OData.Description"/>
+                    <Annotation String="Ohms" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Ounce-Inches">
+                    <Annotation String="Ounce-Inches" Term="OData.Description"/>
+                    <Annotation String="Ounce-Inches" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Ounces">
+                    <Annotation String="Ounces" Term="OData.Description"/>
+                    <Annotation String="Ounces" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PPM(Parts/Million)">
+                    <Annotation String="PPM (parts/million)" Term="OData.Description"/>
+                    <Annotation String="PPM (parts/million)" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PSI">
+                    <Annotation String="PSI" Term="OData.Description"/>
+                    <Annotation String="PSI" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Pascals">
+                    <Annotation String="Pascals" Term="OData.Description"/>
+                    <Annotation String="Pascals" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Percentage">
+                    <Annotation String="Percentage" Term="OData.Description"/>
+                    <Annotation String="Percentage" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Pounds">
+                    <Annotation String="Pounds" Term="OData.Description"/>
+                    <Annotation String="Pounds" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="QuadWords">
+                    <Annotation String="QuadWords" Term="OData.Description"/>
+                    <Annotation String="QuadWords" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="RPM">
+                    <Annotation String="RPM" Term="OData.Description"/>
+                    <Annotation String="RPM" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Radians">
+                    <Annotation String="Radians" Term="OData.Description"/>
+                    <Annotation String="Radians" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Revolutions">
+                    <Annotation String="Revolutions" Term="OData.Description"/>
+                    <Annotation String="Revolutions" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Seconds">
+                    <Annotation String="Seconds" Term="OData.Description"/>
+                    <Annotation String="Seconds" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Siemens">
+                    <Annotation String="Siemens" Term="OData.Description"/>
+                    <Annotation String="Siemens" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Sieverts">
+                    <Annotation String="Sieverts" Term="OData.Description"/>
+                    <Annotation String="Sieverts" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Steradians">
+                    <Annotation String="Steradians" Term="OData.Description"/>
+                    <Annotation String="Steradians" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="VA">
+                    <Annotation String="VA" Term="OData.Description"/>
+                    <Annotation String="VA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Volts">
+                    <Annotation String="Volts" Term="OData.Description"/>
+                    <Annotation String="Volts" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Watts">
+                    <Annotation String="Watts" Term="OData.Description"/>
+                    <Annotation String="Watts" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Weeks">
+                    <Annotation String="Weeks" Term="OData.Description"/>
+                    <Annotation String="Weeks" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Words">
+                    <Annotation String="Words (data)" Term="OData.Description"/>
+                    <Annotation String="Words (data)" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="kPa">
+                    <Annotation String="kPa" Term="OData.Description"/>
+                    <Annotation String="kPa" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="EnabledState">
+                <Member Name="Deferred">
+                    <Annotation String="Deferred" Term="OData.Description"/>
+                    <Annotation String="Deferred" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EnabledButOffline">
+                    <Annotation String="Enabled but Offline" Term="OData.Description"/>
+                    <Annotation String="Enabled but Offline" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="InTest">
+                    <Annotation String="In Test" Term="OData.Description"/>
+                    <Annotation String="In Test" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Quiesce">
+                    <Annotation String="Quiesce" Term="OData.Description"/>
+                    <Annotation String="Quiesce" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ShuttingDown">
+                    <Annotation String="Shutting Down" Term="OData.Description"/>
+                    <Annotation String="Shutting Down" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Starting">
+                    <Annotation String="Starting" Term="OData.Description"/>
+                    <Annotation String="Starting" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="HealthState">
+                <Member Name="CriticalFailure">
+                    <Annotation String="Critical failure" Term="OData.Description"/>
+                    <Annotation String="Critical failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Degraded/Warning">
+                    <Annotation String="Degraded/Warning" Term="OData.Description"/>
+                    <Annotation String="Degraded/Warning" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="MajorFailure">
+                    <Annotation String="Major failure" Term="OData.Description"/>
+                    <Annotation String="Major failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="MinorFailure">
+                    <Annotation String="Minor failure" Term="OData.Description"/>
+                    <Annotation String="Minor failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NonRecoverableError">
+                    <Annotation String="Non-recoverable Error" Term="OData.Description"/>
+                    <Annotation String="Non-recoverable Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SensorType">
+                <Member Name="AirFlow">
+                    <Annotation String="Air Flow" Term="OData.Description"/>
+                    <Annotation String="Air Flow" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Counter">
+                    <Annotation String="Counter" Term="OData.Description"/>
+                    <Annotation String="Counter" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Current">
+                    <Annotation String="Current" Term="OData.Description"/>
+                    <Annotation String="Current" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Humidity">
+                    <Annotation String="Humidity" Term="OData.Description"/>
+                    <Annotation String="Humidity" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Intrusion">
+                    <Annotation String="Intrusion" Term="OData.Description"/>
+                    <Annotation String="Intrusion" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Lock">
+                    <Annotation String="Lock" Term="OData.Description"/>
+                    <Annotation String="Lock" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerConsumption">
+                    <Annotation String="Power Consumption" Term="OData.Description"/>
+                    <Annotation String="Power Consumption" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerProduction">
+                    <Annotation String="Power Production" Term="OData.Description"/>
+                    <Annotation String="Power Production" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Presence">
+                    <Annotation String="Presence" Term="OData.Description"/>
+                    <Annotation String="Presence" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Pressure">
+                    <Annotation String="Pressure" Term="OData.Description"/>
+                    <Annotation String="Pressure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SmokeDetection">
+                    <Annotation String="Smoke Detection" Term="OData.Description"/>
+                    <Annotation String="Smoke Detection" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Switch">
+                    <Annotation String="Switch" Term="OData.Description"/>
+                    <Annotation String="Switch" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Tachometer">
+                    <Annotation String="Tachometer" Term="OData.Description"/>
+                    <Annotation String="Tachometer" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Temperature">
+                    <Annotation String="Temperature" Term="OData.Description"/>
+                    <Annotation String="Temperature" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Voltage">
+                    <Annotation String="Voltage" Term="OData.Description"/>
+                    <Annotation String="Voltage" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="EnabledDefault">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="EnabledButOffline">
+                    <Annotation String="Enabled but Offline" Term="OData.Description"/>
+                    <Annotation String="Enabled but Offline" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NoDefault">
+                    <Annotation String="No Default" Term="OData.Description"/>
+                    <Annotation String="No Default" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Quiesce">
+                    <Annotation String="Quiesce" Term="OData.Description"/>
+                    <Annotation String="Quiesce" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="OperationalStatus">
+                <Member Name="Aborted">
+                    <Annotation String="Aborted" Term="OData.Description"/>
+                    <Annotation String="Aborted" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Completed">
+                    <Annotation String="Completed" Term="OData.Description"/>
+                    <Annotation String="Completed" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Dormant">
+                    <Annotation String="Dormant" Term="OData.Description"/>
+                    <Annotation String="Dormant" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="InService">
+                    <Annotation String="In Service" Term="OData.Description"/>
+                    <Annotation String="In Service" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="LostCommunication">
+                    <Annotation String="Lost Communication" Term="OData.Description"/>
+                    <Annotation String="Lost Communication" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NoContact">
+                    <Annotation String="No Contact" Term="OData.Description"/>
+                    <Annotation String="No Contact" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NonRecoverableError">
+                    <Annotation String="Non-Recoverable Error" Term="OData.Description"/>
+                    <Annotation String="Non-Recoverable Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PowerMode">
+                    <Annotation String="Power Mode" Term="OData.Description"/>
+                    <Annotation String="Power Mode" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PredictiveFailure">
+                    <Annotation String="Predictive Failure" Term="OData.Description"/>
+                    <Annotation String="Predictive Failure" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Relocating">
+                    <Annotation String="Relocating" Term="OData.Description"/>
+                    <Annotation String="Relocating" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Starting">
+                    <Annotation String="Starting" Term="OData.Description"/>
+                    <Annotation String="Starting" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Stopped">
+                    <Annotation String="Stopped" Term="OData.Description"/>
+                    <Annotation String="Stopped" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Stopping">
+                    <Annotation String="Stopping" Term="OData.Description"/>
+                    <Annotation String="Stopping" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Stressed">
+                    <Annotation String="Stressed" Term="OData.Description"/>
+                    <Annotation String="Stressed" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SupportingEntityInError">
+                    <Annotation String="Supporting Entity in Error" Term="OData.Description"/>
+                    <Annotation String="Supporting Entity in Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="PrimaryStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RateUnits">
+                <Member Name="None">
+                    <Annotation String="None" Term="OData.Description"/>
+                    <Annotation String="None" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerDay">
+                    <Annotation String="Per Day" Term="OData.Description"/>
+                    <Annotation String="Per Day" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerHour">
+                    <Annotation String="Per Hour" Term="OData.Description"/>
+                    <Annotation String="Per Hour" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerMicroSecond">
+                    <Annotation String="Per MicroSecond" Term="OData.Description"/>
+                    <Annotation String="Per MicroSecond" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerMilliSecond">
+                    <Annotation String="Per MilliSecond" Term="OData.Description"/>
+                    <Annotation String="Per MilliSecond" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerMinute">
+                    <Annotation String="Per Minute" Term="OData.Description"/>
+                    <Annotation String="Per Minute" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerMonth">
+                    <Annotation String="Per Month" Term="OData.Description"/>
+                    <Annotation String="Per Month" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerSecond">
+                    <Annotation String="Per Second" Term="OData.Description"/>
+                    <Annotation String="Per Second" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerWeek">
+                    <Annotation String="Per Week" Term="OData.Description"/>
+                    <Annotation String="Per Week" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PerYear">
+                    <Annotation String="Per Year" Term="OData.Description"/>
+                    <Annotation String="Per Year" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RequestedState">
+                <Member Name="Deferred">
+                    <Annotation String="Deferred" Term="OData.Description"/>
+                    <Annotation String="Deferred" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NoChange">
+                    <Annotation String="No Change" Term="OData.Description"/>
+                    <Annotation String="No Change" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Offline">
+                    <Annotation String="Offline" Term="OData.Description"/>
+                    <Annotation String="Offline" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Quiesce">
+                    <Annotation String="Quiesce" Term="OData.Description"/>
+                    <Annotation String="Quiesce" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Reboot">
+                    <Annotation String="Reboot" Term="OData.Description"/>
+                    <Annotation String="Reboot" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Reset">
+                    <Annotation String="Reset" Term="OData.Description"/>
+                    <Annotation String="Reset" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ShutDown">
+                    <Annotation String="Shut Down" Term="OData.Description"/>
+                    <Annotation String="Shut Down" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Test">
+                    <Annotation String="Test" Term="OData.Description"/>
+                    <Annotation String="Test" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="TransitioningToState">
+                <Member Name="Defer">
+                    <Annotation String="Defer" Term="OData.Description"/>
+                    <Annotation String="Defer" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NoChange">
+                    <Annotation String="No Change" Term="OData.Description"/>
+                    <Annotation String="No Change" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Offline">
+                    <Annotation String="Offline" Term="OData.Description"/>
+                    <Annotation String="Offline" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Quiesce">
+                    <Annotation String="Quiesce" Term="OData.Description"/>
+                    <Annotation String="Quiesce" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Reboot">
+                    <Annotation String="Reboot" Term="OData.Description"/>
+                    <Annotation String="Reboot" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Reset">
+                    <Annotation String="Reset" Term="OData.Description"/>
+                    <Annotation String="Reset" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ShutDown">
+                    <Annotation String="Shut Down" Term="OData.Description"/>
+                    <Annotation String="Shut Down" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Test">
+                    <Annotation String="Test" Term="OData.Description"/>
+                    <Annotation String="Test" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <ComplexType BaseType="Resource.Links" Name="Links">
+                <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                <Annotation String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <NavigationProperty Name="ComputerSystem" Type="ComputerSystem.ComputerSystem">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.LongDescription"/>
+                </NavigationProperty>
+                <NavigationProperty Name="DellPowerSupplyCollection" Type="Collection(DellPowerSupply.DellPowerSupply)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.LongDescription"/>
+                </NavigationProperty>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPSNumericSensor.v1_0_0">
+            <EntityType Name="DellPSNumericSensor" BaseType="DellPSNumericSensor.DellPSNumericSensor">
+                <Annotation Term="OData.Description" String="An instance of DellPSNumericSensor will have data specific to a power sensor device that returns only numeric readings and optionally supports of thresholds settings."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellPSNumericSensor will have data specific to a power sensor device that returns only numeric readings and optionally supports of thresholds settings."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <Property Name="ReadingUnits" Type="DellPSNumericSensor.BaseUnits">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The base unit of the values returned by the Sensor. All the values returned by the Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the UnitModifier is -6, then the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than &quot;None&quot;, then the units are further qualified as rate units. In the above example, if RateUnits is set to &quot;Per Second&quot;, then the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier."/>
+                    <Annotation Term="OData.LongDescription" String="The base unit of the values returned by the Sensor. All the values returned by the Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the UnitModifier is -6, then the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than &quot;None&quot;, then the units are further qualified as rate units. In the above example, if RateUnits is set to &quot;Per Second&quot;, then the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier."/>
+                </Property>
+                <Property Name="CurrentReading" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The current value indicated by the Sensor. The property value shall be in units specified by the BaseUnit property value multiplied by 10 to the power of the UnitModier property value."/>
+                    <Annotation Term="OData.LongDescription" String="The current value indicated by the Sensor. The property value shall be in units specified by the BaseUnit property value multiplied by 10 to the power of the UnitModier property value."/>
+                </Property>
+                <Property Name="CurrentState" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The current state indicated by the Sensor. This property value is always one of the &quot;PossibleStates&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="The current state indicated by the Sensor. This property value is always one of the &quot;PossibleStates&quot;."/>
+                </Property>
+                <Property Name="ElementName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The user-friendly name for the class instance.This value does not have to be unique within its namespace."/>
+                    <Annotation Term="OData.LongDescription" String="The user-friendly name for the class instance.This value does not have to be unique within its namespace."/>
+                </Property>
+                <Property Name="EnabledState" Type="DellPSNumericSensor.EnabledState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="EnabledState is an integer enumeration that indicates the enabled and disabled states of an element. It can also indicate the transitions between these requested states. For example, shutting down (value=4) and starting (value=10) are transient states between enabled and disabled. The following text briefly summarizes the various enabled and disabled states: Enabled (2) indicates that the element is or could be executing commands, will process any queued commands, and queues new requests. Disabled (3) indicates that the element will not execute commands and will drop any new requests. Shutting Down (4) indicates that the element is in the process of going to a Disabled state. Not Applicable (5) indicates the element does not support being enabled or disabled. Enabled but Offline (6) indicates that the element might be completing commands, and will drop any new requests. Test (7) indicates that the element is in a test state. Deferred (8) indicates that the element might be completing commands, but will queue any new requests. Quiesce (9) indicates that the element is enabled but in a restricted mode. Starting (10) indicates that the element is in the process of going to an Enabled state. New requests are queued."/>
+                    <Annotation Term="OData.LongDescription" String="EnabledState is an integer enumeration that indicates the enabled and disabled states of an element. It can also indicate the transitions between these requested states. For example, shutting down (value=4) and starting (value=10) are transient states between enabled and disabled. The following text briefly summarizes the various enabled and disabled states: Enabled (2) indicates that the element is or could be executing commands, will process any queued commands, and queues new requests. Disabled (3) indicates that the element will not execute commands and will drop any new requests. Shutting Down (4) indicates that the element is in the process of going to a Disabled state. Not Applicable (5) indicates the element does not support being enabled or disabled. Enabled but Offline (6) indicates that the element might be completing commands, and will drop any new requests. Test (7) indicates that the element is in a test state. Deferred (8) indicates that the element might be completing commands, but will queue any new requests. Quiesce (9) indicates that the element is enabled but in a restricted mode. Starting (10) indicates that the element is in the process of going to an Enabled state. New requests are queued."/>
+                </Property>
+                <Property Name="HealthState" Type="DellPSNumericSensor.HealthState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the current health of the element."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the current health of the element."/>
+                </Property>
+                <Property Name="SensorType" Type="DellPSNumericSensor.SensorType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The Type of the Sensor, e.g. Voltage or Temperature Sensor. If the type is set to &quot;Other&quot;, then the OtherSensorType Description can be used to further identify the type, or if the Sensor has numeric readings, then the type of the Sensor can be implicitly determined by the Units. A description of the different Sensor types is as follows: A Temperature Sensor measures the environmental temperature. Voltage and Current Sensors measure electrical voltage and current readings. A Tachometer measures speed/revolutions of a Device. For example, a Fan Device can have an associated Tachometer which measures its speed. A Counter is a general purpose Sensor that measures some numerical property of a Device. A Counter value can be cleared, but it never decreases. A Switch Sensor has states like Open/Close, On/Off, or Up/Down. A Lock has states of Locked/Unlocked. Humidity, Smoke Detection and Air Flow Sensors measure the equivalent environmental characteristics. A Presence Sensor detects the presence of a PhysicalElement. A Power Consumption Sensor measures the instantaneous power consumed by a managed element. A Power Production Sensor measures the instantaneous power produced by a managed element such as a power supply or a voltage regulator. A pressure sensor is used to report pressure. Intrusion sensor reports an intrusion of an enclosure regardless whether it was authorized or not."/>
+                    <Annotation Term="OData.LongDescription" String="The Type of the Sensor, e.g. Voltage or Temperature Sensor. If the type is set to &quot;Other&quot;, then the OtherSensorType Description can be used to further identify the type, or if the Sensor has numeric readings, then the type of the Sensor can be implicitly determined by the Units. A description of the different Sensor types is as follows: A Temperature Sensor measures the environmental temperature. Voltage and Current Sensors measure electrical voltage and current readings. A Tachometer measures speed/revolutions of a Device. For example, a Fan Device can have an associated Tachometer which measures its speed. A Counter is a general purpose Sensor that measures some numerical property of a Device. A Counter value can be cleared, but it never decreases. A Switch Sensor has states like Open/Close, On/Off, or Up/Down. A Lock has states of Locked/Unlocked. Humidity, Smoke Detection and Air Flow Sensors measure the equivalent environmental characteristics. A Presence Sensor detects the presence of a PhysicalElement. A Power Consumption Sensor measures the instantaneous power consumed by a managed element. A Power Production Sensor measures the instantaneous power produced by a managed element such as a power supply or a voltage regulator. A pressure sensor is used to report pressure. Intrusion sensor reports an intrusion of an enclosure regardless whether it was authorized or not."/>
+                </Property>
+                <Property Name="Links" Type="DellPSNumericSensor.Links" Nullable="false">
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPSNumericSensor.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add Description, EnabledDefault, LowerThresholdCritical, LowerThresholdNonCritical, OperationalStatus, PossibleStates, PrimaryStatus, RateUnits, RequestedState, Resolution, SystemName, TransitioningToState, UnitModifier, UpperThresholdCritical, UpperThresholdNonCritical, ValueFormulation properties."/>
+            <EntityType Name="DellPSNumericSensor" BaseType="DellPSNumericSensor.v1_0_0.DellPSNumericSensor">
+                <Property Name="Description" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A textual description of the object."/>
+                    <Annotation Term="OData.LongDescription" String="A textual description of the object."/>
+                </Property>
+                <Property Name="EnabledDefault" Type="DellPSNumericSensor.EnabledDefault">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="An enumerated value indicating an administrator's default or startup configuration for the Enabled State of an element. By default, the element is &quot;Enabled&quot; (value=2)."/>
+                    <Annotation Term="OData.LongDescription" String="An enumerated value indicating an administrator's default or startup configuration for the Enabled State of an element. By default, the element is &quot;Enabled&quot; (value=2)."/>
+                </Property>
+                <Property Name="LowerThresholdCritical" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is below LowerThresholdCritical, the CurrentState is Critical."/>
+                    <Annotation Term="OData.LongDescription" String="The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is below LowerThresholdCritical, the CurrentState is Critical."/>
+                </Property>
+                <Property Name="LowerThresholdNonCritical" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If Current Reading is between LowerThresholdNonCritical and Upper ThresholdNonCritical, the Sensor is reporting a normal value. If CurrentReading is between LowerThresholdNonCritical and LowerThresholdCritical, the CurrentState is NonCritical."/>
+                    <Annotation Term="OData.LongDescription" String="The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If Current Reading is between LowerThresholdNonCritical and Upper ThresholdNonCritical, the Sensor is reporting a normal value. If CurrentReading is between LowerThresholdNonCritical and LowerThresholdCritical, the CurrentState is NonCritical."/>
+                </Property>
+                <Property Name="OperationalStatus" Type="Collection(DellPSNumericSensor.OperationalStatus)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the operational status of the resource represented."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the operational status of the resource represented."/>
+                </Property>
+                <Property Name="PossibleStates" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="PossibleStates enumerates the string outputs of the Sensor. For example, a &quot;Switch&quot; Sensor may output the states &quot;On&quot;, or &quot;Off&quot;. Another implementation of the Switch may output the states &quot;Open&quot;, and &quot;Close&quot;. Another example is a NumericSensor supporting thresholds. This Sensor can report the states like &quot;Normal&quot;, &quot;Upper Fatal&quot;, &quot;Lower Non-Critical&quot;, and so on. A NumericSensor that does not publish readings and thresholds, but stores this data internally, can still report its states."/>
+                    <Annotation Term="OData.LongDescription" String="PossibleStates enumerates the string outputs of the Sensor. For example, a &quot;Switch&quot; Sensor may output the states &quot;On&quot;, or &quot;Off&quot;. Another implementation of the Switch may output the states &quot;Open&quot;, and &quot;Close&quot;. Another example is a NumericSensor supporting thresholds. This Sensor can report the states like &quot;Normal&quot;, &quot;Upper Fatal&quot;, &quot;Lower Non-Critical&quot;, and so on. A NumericSensor that does not publish readings and thresholds, but stores this data internally, can still report its states."/>
+                </Property>
+                <Property Name="PrimaryStatus" Type="DellPSNumericSensor.PrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="PrimaryStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status. It should be used to provide high-level and detailed health status of the ManagedElement and its subcomponents. PrimaryStatus consists of one of the following values: Unknown, OK, Degraded or Error. &quot;Unknown&quot; indicates the implementation is in general capable of returning this property, but is unable to do so at this time. &quot;OK&quot; indicates the ManagedElement is functioning normally. &quot;Degraded&quot; indicates the ManagedElement is functioning below normal. &quot;Error&quot; indicates the ManagedElement is in an Error condition."/>
+                    <Annotation Term="OData.LongDescription" String="PrimaryStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status. It should be used to provide high-level and detailed health status of the ManagedElement and its subcomponents. PrimaryStatus consists of one of the following values: Unknown, OK, Degraded or Error. &quot;Unknown&quot; indicates the implementation is in general capable of returning this property, but is unable to do so at this time. &quot;OK&quot; indicates the ManagedElement is functioning normally. &quot;Degraded&quot; indicates the ManagedElement is functioning below normal. &quot;Error&quot; indicates the ManagedElement is in an Error condition."/>
+                </Property>
+                <Property Name="RateUnits" Type="DellPSNumericSensor.RateUnits">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Specifies if the units returned by this Sensor are rate units. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). This is true unless this property (RateUnits) has a value different than &quot;None&quot;. For example, if BaseUnits is Volts and the UnitModifier is -6, the units of the values returned are MicroVolts. But, if the RateUnits property is set to a value other than &quot;None&quot;, the units are further qualified as rate units. In the above example, if RateUnits is set to &quot;Per Second&quot;, the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier. Any implementation of CurrentReading should be qualified with either a Counter or a Gauge qualifier, depending on the characteristics of the sensor being modeled."/>
+                    <Annotation Term="OData.LongDescription" String="Specifies if the units returned by this Sensor are rate units. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). This is true unless this property (RateUnits) has a value different than &quot;None&quot;. For example, if BaseUnits is Volts and the UnitModifier is -6, the units of the values returned are MicroVolts. But, if the RateUnits property is set to a value other than &quot;None&quot;, the units are further qualified as rate units. In the above example, if RateUnits is set to &quot;Per Second&quot;, the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier. Any implementation of CurrentReading should be qualified with either a Counter or a Gauge qualifier, depending on the characteristics of the sensor being modeled."/>
+                </Property>
+                <Property Name="RequestedState" Type="DellPSNumericSensor.RequestedState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="RequestedState is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested. The actual state of the element is represented by EnabledState. This property is provided to compare the last requested and current enabled or disabled states. When EnabledState is set to 5 (&quot;Not Applicable&quot;), this property is not applicable. For explanations of the values in the RequestedState enumeration, see the EnabledState property description. &quot;Unknown&quot; (0) indicates the last requested state for the element is unknown. The value &quot;No Change&quot; (5) has been deprecated in lieu of indicating the last requested state is &quot;Unknown&quot; (0). If the last requested or desired state is unknown, RequestedState has the value &quot;Unknown&quot; (0), but may have the value &quot;No Change&quot; (5). Offline (6) indicates that the element has been requested to transition to the Enabled but Offline EnabledState. There are two new values in RequestedState that build on the statuses of EnabledState. These values are &quot;Reboot&quot; (10) and &quot;Reset&quot; (11). Reboot refers to performing a &quot;Shut Down&quot; and then moving to an &quot;Enabled&quot; state. Reset indicates that the element is first &quot;Disabled&quot; and then &quot;Enabled&quot;. &quot;Shut Down&quot; and &quot;Disabled&quot; requests are different. Shut Down requests an orderly transition to the Disabled state and might involve removing power to completely erase any existing state. The Disabled state requests an immediate disabling of the element so that it does not execute or accept any commands or processing requests. This property is set as the result of a method invocation (such as Start or StopService) or can be overridden and defined as WRITEable in a subclass. The method approach is recommended because it explicitly invokes the operation and returns a result code. If determining the last RequestedState is not supported for the EnabledLogicalElement, the property must be NULL or have the value 12 &quot;Not Applicable&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="RequestedState is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested. The actual state of the element is represented by EnabledState. This property is provided to compare the last requested and current enabled or disabled states. When EnabledState is set to 5 (&quot;Not Applicable&quot;), this property is not applicable. For explanations of the values in the RequestedState enumeration, see the EnabledState property description. &quot;Unknown&quot; (0) indicates the last requested state for the element is unknown. The value &quot;No Change&quot; (5) has been deprecated in lieu of indicating the last requested state is &quot;Unknown&quot; (0). If the last requested or desired state is unknown, RequestedState has the value &quot;Unknown&quot; (0), but may have the value &quot;No Change&quot; (5). Offline (6) indicates that the element has been requested to transition to the Enabled but Offline EnabledState. There are two new values in RequestedState that build on the statuses of EnabledState. These values are &quot;Reboot&quot; (10) and &quot;Reset&quot; (11). Reboot refers to performing a &quot;Shut Down&quot; and then moving to an &quot;Enabled&quot; state. Reset indicates that the element is first &quot;Disabled&quot; and then &quot;Enabled&quot;. &quot;Shut Down&quot; and &quot;Disabled&quot; requests are different. Shut Down requests an orderly transition to the Disabled state and might involve removing power to completely erase any existing state. The Disabled state requests an immediate disabling of the element so that it does not execute or accept any commands or processing requests. This property is set as the result of a method invocation (such as Start or StopService) or can be overridden and defined as WRITEable in a subclass. The method approach is recommended because it explicitly invokes the operation and returns a result code. If determining the last RequestedState is not supported for the EnabledLogicalElement, the property must be NULL or have the value 12 &quot;Not Applicable&quot;."/>
+                </Property>
+                <Property Name="Resolution" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Resolution indicates the ability of the Sensor to resolve differences in the measured property. The units for this measurement are determined by BaseUnit*UnitModifier/RateUnit."/>
+                    <Annotation Term="OData.LongDescription" String="Resolution indicates the ability of the Sensor to resolve differences in the measured property. The units for this measurement are determined by BaseUnit*UnitModifier/RateUnit."/>
+                </Property>
+                <Property Name="SystemName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The Name of the scoping System."/>
+                    <Annotation Term="OData.LongDescription" String="The Name of the scoping System."/>
+                </Property>
+                <Property Name="TransitioningToState" Type="DellPSNumericSensor.TransitioningToState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="TransitioningToState indicates the target state to which the instance is transitioning. A value of 5 &quot;No Change&quot; indicates that no transition is in progress. A value of 12 &quot;Not Applicable&quot; indicates the implementation does not support representing ongoing transitions. A value other than 5 or 12 identifies the state to which the element is in the process of transitioning."/>
+                    <Annotation Term="OData.LongDescription" String="TransitioningToState indicates the target state to which the instance is transitioning. A value of 5 &quot;No Change&quot; indicates that no transition is in progress. A value of 12 &quot;Not Applicable&quot; indicates the implementation does not support representing ongoing transitions. A value other than 5 or 12 identifies the state to which the element is in the process of transitioning."/>
+                </Property>
+                <Property Name="UnitModifier" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The unit multiplier for the values returned by this Sensor. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the Unit Modifier is -6, the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than &quot;None&quot;, the units are further qualified as rate units. In the above example, if RateUnits is set to &quot;Per Second&quot;, the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier."/>
+                    <Annotation Term="OData.LongDescription" String="The unit multiplier for the values returned by this Sensor. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the Unit Modifier is -6, the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than &quot;None&quot;, the units are further qualified as rate units. In the above example, if RateUnits is set to &quot;Per Second&quot;, the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier."/>
+                </Property>
+                <Property Name="UpperThresholdCritical" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is above UpperThresholdCritical, the CurrentState is Critical."/>
+                    <Annotation Term="OData.LongDescription" String="The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is above UpperThresholdCritical, the CurrentState is Critical."/>
+                </Property>
+                <Property Name="UpperThresholdNonCritical" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is between LowerThresholdNonCritical and UpperThresholdNonCritical, the Sensor is reporting a normal value. If the CurrentReading is between UpperThreshold NonCritical and UpperThresholdCritical, the CurrentState is NonCritical."/>
+                    <Annotation Term="OData.LongDescription" String="The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is between LowerThresholdNonCritical and UpperThresholdNonCritical, the Sensor is reporting a normal value. If the CurrentReading is between UpperThreshold NonCritical and UpperThresholdCritical, the CurrentState is NonCritical."/>
+                </Property>
+                <Property Name="ValueFormulation" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property has the value 2 (Measured)."/>
+                    <Annotation Term="OData.LongDescription" String="The property has the value 2 (Measured)."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

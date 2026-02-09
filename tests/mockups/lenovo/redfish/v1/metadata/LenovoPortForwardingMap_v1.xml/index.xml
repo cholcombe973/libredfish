@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoPortForwardingMap  v1.0.0                                        -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPortForwardingMap">
+      <EntityType Name="LenovoPortForwardingMap" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoPortForwardingMap resource."/>
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPortForwardingMap.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      <EntityType Name="LenovoPortForwardingMap" BaseType="LenovoPortForwardingMap.LenovoPortForwardingMap">
+        <Annotation Term="OData.Description" String="This is Lenovo extended properties of USB port forwarding."/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Property Name="Initialized" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Identify whether the configuration data of the pass through functionality is initialized."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean identifying whether the configuration data of the pass through functionality is initialized."/>
+        </Property>
+        <Property Name="DefaultIPEnabled" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Identify whether the default CMM IP address is used."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean identifying whether the default CMM IP address is used."/>
+        </Property>
+        <Property Name="IPAddress" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The network IP address configured as the pass through external address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be network IP address configured as the pass through external address. The property shall not be present/used if Type is equal to 'EthtoUSB'."/>
+        </Property>
+        <Property Name="AddressMode" Type="LenovoPortForwardingMap.v1_0_0.AddressMode">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="External network address mode for IPv4 or IPv6."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be external network address mode for IPv4 or IPv6. Supported values are 1 (IPv4) and 2 (IPv6). The property shall not be present/used if Type is equal to 'EthtoUSB'."/>
+        </Property>
+        <Property Name="Type" Type="LenovoPortForwardingMap.v1_0_0.Type" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The type of network port forwarding."/>
+          <Annotation Term="OData.LongDescription" String="A connection direction between its external network interface and the server."/>
+        </Property>
+        <Property Name="USBPort" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The network IP port of ethernet over USB."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the network IP port of ethernet over USB."/>
+        </Property>
+        <Property Name="ExternalPort" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The network IP port of external address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the network IP port of external address."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="AddressMode">
+        <Member Name="IPv4"/>
+        <Member Name="IPv6"/>
+      </EnumType>
+      
+      <EnumType Name="Type">
+        <Member Name="EthtoUSB">
+          <Annotation Term="OData.Description" String="From external Ethernet to Ethernet over USB."/>
+        </Member>
+        <Member Name="USBtoEth">
+          <Annotation Term="OData.Description" String="From Ethernet over USB to external Ethernet."/>
+        </Member>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

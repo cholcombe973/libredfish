@@ -1,0 +1,312 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeHttpsCert",
+    "actions": {
+        "actions": {
+            "HpeHttpsCert.GenerateCSR": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeHttpsCert.GenerateCSR"
+                        ],
+                        "type": "string"
+                    },
+                    "City": {
+                        "additionalProperties": false,
+                        "description": "The city or locality where the company or organization that owns this iLO subsystem is located.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "CommonName": {
+                        "additionalProperties": false,
+                        "description": "The FQDN of this iLO subsystem.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Country": {
+                        "additionalProperties": false,
+                        "description": "The two-character country code where the company or organization that owns this Manager subsystem is located. Eg: US",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "IncludeIP": {
+                        "additionalProperties": false,
+                        "description": "Include the IP Addresses in the CSR.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "boolean"
+                    },
+                    "OrgName": {
+                        "additionalProperties": false,
+                        "description": "The name of the company or organization that owns this iLO subsystem.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "OrgUnit": {
+                        "additionalProperties": false,
+                        "description": "The unit within the company or organization that owns this iLO subsystem.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "State": {
+                        "additionalProperties": false,
+                        "description": "The state where the company or organization that owns this iLO subsystem is located.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "Country",
+                    "State",
+                    "City",
+                    "OrgName",
+                    "CommonName"
+                ],
+                "type": "object"
+            },
+            "HpeHttpsCert.ImportCertificate": {
+                "additionalProperties": false,
+                "description": "Imports a Trusted Certificate and iLO is reset.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeHttpsCert.ImportCertificate"
+                        ],
+                        "type": "string"
+                    },
+                    "Certificate": {
+                        "description": "Contains PEM formatted X509 certificate (Base64 encoded).",
+                        "etag": true,
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "Certificate"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Generating CSR and Importing the HTTPS Certificate."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeHttpsCert resource describes an X509 certificate.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeHttpsCert.GenerateCSR": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "City@Redfish.AllowableValues": {
+                            "description": "The supported values for the City parameter.",
+                            "etag": true,
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "The city or locality where the company or organization that owns this iLO subsystem is located.",
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the City parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "CommonName@Redfish.AllowableValues": {
+                            "description": "The supported values for the CommonName parameter.",
+                            "etag": true,
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "The FQDN of this iLO subsystem.",
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the CommonName parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "Country@Redfish.AllowableValues": {
+                            "description": "The supported values for the Country parameter.",
+                            "etag": true,
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "The two-character country code where the company or organization that owns this Manager subsystem is located. Eg: US",
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Country parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "OrgName@Redfish.AllowableValues": {
+                            "description": "The supported values for the OrgName parameter.",
+                            "etag": true,
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "The name of the company or organization that owns this iLO subsystem.",
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the OrgName parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "OrgUnit@Redfish.AllowableValues": {
+                            "description": "The supported values for the OrgUnit parameter.",
+                            "etag": true,
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "The unit within the company or organization that owns this iLO subsystem.",
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the OrgUnit parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "State@Redfish.AllowableValues": {
+                            "description": "The supported values for the State parameter.",
+                            "items": {
+                                "additionalProperties": false,
+                                "description": "The state where the company or organization that owns this iLO subsystem is located.",
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the State parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeHttpsCert.ImportCertificate": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Certificate@Redfish.AllowableValues": {
+                            "description": "The supported values for the Certificate parameter.",
+                            "etag": true,
+                            "items": {
+                                "description": "Contains PEM formatted X509 certificate (Base64 encoded).",
+                                "etag": true,
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Certificate parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CertificateSigningRequest": {
+            "additionalProperties": false,
+            "description": "GenerateCSR action, wait few minutes (upto 10), perform GET operation, fills CSR. Contains a public and private key pair.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "X509CertificateInformation": {
+            "description": "Contains the X509 Certificate Information.",
+            "etag": true,
+            "properties": {
+                "Issuer": {
+                    "additionalProperties": false,
+                    "description": "The Certificate Authority that issued the certificate.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SerialNumber": {
+                    "additionalProperties": false,
+                    "description": "The serial number that the Certificate Authority assigned to the certificate.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Subject": {
+                    "additionalProperties": false,
+                    "description": "The entity to which the certificate was issued.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ValidNotAfter": {
+                    "additionalProperties": false,
+                    "description": "The date on which the certificate validity period ends.",
+                    "etag": true,
+                    "format": "date-time",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ValidNotBefore": {
+                    "additionalProperties": false,
+                    "description": "The date on which the certificate validity period begins.",
+                    "etag": true,
+                    "format": "date-time",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeHttpsCert.v2_0_0.HpeHttpsCert",
+    "type": "object"
+}

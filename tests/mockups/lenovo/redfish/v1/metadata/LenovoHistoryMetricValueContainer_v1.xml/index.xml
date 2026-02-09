@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoHistoryMetricValueContainer   v1.0.0                   -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoHistoryMetricValueContainer">
+      <EntityType Name="LenovoHistoryMetricValueContainer" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="Represents history metric values which are contained in specified history metric value container."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/1/Oem/Lenovo/Metrics/{LenovoHistoryMetricValueContainerId}</String>
+          </Collection>
+        </Annotation>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoHistoryMetricValueContainer.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoHistoryMetricValueContainer" BaseType="LenovoHistoryMetricValueContainer.LenovoHistoryMetricValueContainer">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="An array represents history metric values which are contained in specified history metric value container."/>
+        <Property Name="ContainerName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The name of history metric values container."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the name of history metric values container."/>
+        </Property>
+        <Property Name="TimeScope" Type="LenovoHistoryMetricValueContainer.v1_0_0.TimeScopeItem" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Specifies the scope of time scope over which the function is applied."/>
+          <Annotation Term="OData.LongDescription" String="The value shall specify the scope of time over which the function is applied."/>
+        </Property>
+        <Property Name="Container" Type="Collection(LenovoHistoryMetricValueContainer.v1_0_0.HistoryMetricValueItem)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="A reference to history metric value array."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference used to indicating history metric array."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="TimeScopeItem">
+        <Member Name="Previous_hour">
+        </Member>
+        <Member Name="Previous_6_hours">
+        </Member>
+        <Member Name="Previous_12_hours">
+        </Member>
+        <Member Name="Previous_24_hours">
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="ContainerName">
+        <Member Name="SystemInputPower">
+        </Member>
+        <Member Name="SystemOutputPower">
+        </Member>
+        <Member Name="CPUSubsystemPower">
+        </Member>
+        <Member Name="MemorySubsystemPower">
+        </Member>
+        <Member Name="PowerSupplyInputPower">
+        </Member>
+        <Member Name="PowerSupplyOutputPower">
+        </Member>
+        <Member Name="SystemPerformance">
+        </Member>
+        <Member Name="CPUSubsystemPerformance">
+        </Member>
+        <Member Name="MemorySubsystemPerformance">
+        </Member>
+        <Member Name="IOSubsystemPerformance">
+        </Member>
+        <Member Name="InletAirTemp">
+        </Member>
+        <Member Name="OutletAirTemp">
+        </Member>
+        <Member Name="ExpansionInletAirTemp">
+        </Member>
+        <Member Name="ExpansionOutletAirTemp">
+        </Member>
+      </EnumType>
+      
+      <ComplexType Name="HistoryMetricValueItem">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="Lenovo extended history metric value definition. Each metric value is contained in history metric value array."/>
+        <Property Name="MetricType" Type="LenovoHistoryMetricValueContainer.v1_0_0.MetricType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Three types for metric value: max, avg, min."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the type of metric value."/>
+        </Property>
+        <Property Name="MetricValue" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Metric value."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the metric value."/>
+        </Property>
+        <Property Name="Duration" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The duration of this metric value. The precision of duration shall reach to second and the format shall be: mm:ss"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the duration of metric value. The precision of duration shall reach to second and  the format shall be: mm:ss"/>
+        </Property>
+        <Property Name="Timestamp" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The timestamp of this metric value. The precision of timestamp shall reach to millisecond and the format shall be: 14 Jan 2016, 10:00:00.123 AM"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the timestamp of this metric value. The precision of timestamp shall reach to millisecond and the format shall be: 14 Jan 2016, 10:00:00.123 AM"/>
+        </Property>
+        <Property Name="TimestampWithTZ" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The timestamp of this metric value, which connforms to the ISO 8601 extended format, with time offset or UTC suffix included."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the timestamp of this metric value, which connforms to the ISO 8601 extended format, with time offset or UTC suffix included. The time representing by this property is the same as property Timestamp, just format difference."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="MetricType">
+        <Member Name="Min">
+          <Annotation Term="OData.Description" String="The minimum metric value in duration."/>
+        </Member>
+        <Member Name="Avg">
+          <Annotation Term="OData.Description" String="The average metric value in duration."/>
+        </Member>
+        <Member Name="Max">
+          <Annotation Term="OData.Description" String="The maximal metric value in duration."/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

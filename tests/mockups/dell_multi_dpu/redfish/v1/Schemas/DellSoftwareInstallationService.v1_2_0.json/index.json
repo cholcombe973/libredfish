@@ -1,0 +1,782 @@
+{
+    "$id": "/redfish/v1/Schemas/DellSoftwareInstallationService.v1_2_0.json",
+    "$ref": "#/definitions/DellSoftwareInstallationService",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellSoftwareInstallationService.ClearUpdateSchedule": {
+                    "$ref": "#/definitions/ClearUpdateSchedule"
+                },
+                "#DellSoftwareInstallationService.GetRepoBasedUpdateList": {
+                    "$ref": "#/definitions/GetRepoBasedUpdateList"
+                },
+                "#DellSoftwareInstallationService.GetUpdateSchedule": {
+                    "$ref": "#/definitions/GetUpdateSchedule"
+                },
+                "#DellSoftwareInstallationService.InstallFromRepository": {
+                    "$ref": "#/definitions/InstallFromRepository"
+                },
+                "#DellSoftwareInstallationService.InstallFromURI": {
+                    "$ref": "#/definitions/InstallFromURI"
+                },
+                "#DellSoftwareInstallationService.SetUpdateSchedule": {
+                    "$ref": "#/definitions/SetUpdateSchedule"
+                }
+            },
+            "type": "object"
+        },
+        "ClearUpdateSchedule": {
+            "additionalProperties": false,
+            "description": "This method is used for clearing all the periodic updates from the repository.",
+            "longDescription": "This method is used for clearing all the periodic updates from the repository.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "DellSoftwareInstallationService": {
+            "additionalProperties": false,
+            "description": "The DellSoftwareInstallationService resource provides some actions to support software installation functionality.",
+            "longDescription": "The DellSoftwareInstallationService resource provides some actions to support software installation functionality.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "GetRepoBasedUpdateList": {
+            "actionResponse": {
+                "$ref": "#/definitions/GetRepoBasedUpdateListResponse"
+            },
+            "additionalProperties": false,
+            "description": "This method is used for getting the list of packages and a list of devices that will be updated when a particular repository is used. You must run InstallFromRespository command before running GetRepoBasedUpdateList. If Applyupdate is False, no updates are applied or scheduled. If ApplyUpdate is True, the list contains all the packages and devices info that will be updated.",
+            "longDescription": "This method is used for getting the list of packages and a list of devices that will be updated when a particular repository is used. You must run InstallFromRespository command before running GetRepoBasedUpdateList. If Applyupdate is False, no updates are applied or scheduled. If ApplyUpdate is True, the list contains all the packages and devices info that will be updated.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetRepoBasedUpdateListResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the GetRepoBasedUpdateList action.",
+            "longDescription": "This type shall contain the properties found in the response body for the GetRepoBasedUpdateList action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "PackageList": {
+                    "description": "This property provides all the packages and devices that will be updated when a particular repository is used.",
+                    "longDescription": "This property provides all the packages and devices that will be updated when a particular repository is used.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "PackageList"
+            ],
+            "type": "object"
+        },
+        "GetUpdateSchedule": {
+            "actionResponse": {
+                "$ref": "#/definitions/GetUpdateScheduleResponse"
+            },
+            "additionalProperties": false,
+            "description": "The GetUpdateSchedule() method is used for retrieving periodic updates from the repository. The property UpdateScheduler is the attribute value for the attribute of the same name.",
+            "longDescription": "The GetUpdateSchedule() method is used for retrieving periodic updates from the repository. The property UpdateScheduler is the attribute value for the attribute of the same name.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "GetUpdateScheduleResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the GetUpdateSchedule action.",
+            "longDescription": "This type shall contain the properties found in the response body for the GetUpdateSchedule action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ApplyReboot": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/GetUpdateScheduleResponseApplyReboot",
+                    "description": "This property indicates if a reboot is required after the update.",
+                    "longDescription": "This property indicates if a reboot is required after the update.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "CatalogID": {
+                    "description": "The ID of the catalog to use.",
+                    "longDescription": "The ID of the catalog to use.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "CatalogName": {
+                    "description": "The name of the catalog file. Default is Catalog.xml.",
+                    "longDescription": "The name of the catalog file. Default is Catalog.xml.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "DayofMonth": {
+                    "description": "This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-31. The default value is *.",
+                    "longDescription": "This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-31. The default value is *.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "DayofWeek": {
+                    "description": "This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *.",
+                    "longDescription": "This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "Domain": {
+                    "description": "The domain of the user name.",
+                    "longDescription": "The domain of the user name.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "IPAddress": {
+                    "description": "IP address for the remote share.",
+                    "longDescription": "IP address for the remote share.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "IgnoreCertWarning": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/GetUpdateScheduleResponseIgnoreCertWarning"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2(On).",
+                    "longDescription": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2(On).",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "JobType": {
+                    "description": "JobType specifies the type of the job. The value is Auto_Update.",
+                    "longDescription": "JobType specifies the type of the job. The value is Auto_Update.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "ProxyHostName": {
+                    "description": "The hostname of the proxy server.",
+                    "longDescription": "The hostname of the proxy server.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "ProxySupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/GetUpdateScheduleResponseProxySupport"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specifies if proxy should be used.",
+                    "longDescription": "Specifies if proxy should be used.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "ProxyUserName": {
+                    "description": "The user name for the proxy server.",
+                    "longDescription": "The user name for the proxy server.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "Repeat": {
+                    "description": "This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366",
+                    "longDescription": "This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "ShareName": {
+                    "description": "Share name for the network share.",
+                    "longDescription": "Share name for the network share.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "ShareType": {
+                    "description": "Type of the share or storage.",
+                    "longDescription": "Type of the share or storage.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "Time": {
+                    "description": "This parameter represents the hour and minute of the day when the update should be performed.",
+                    "longDescription": "This parameter represents the hour and minute of the day when the update should be performed.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "UserName": {
+                    "description": "User name for the remote share.",
+                    "longDescription": "User name for the remote share.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "WeekofMonth": {
+                    "description": "This parameter represents the week of month in which the update is scheduled. The possible value may be *(any) or number between 1 and 4 or L. The default value is *.",
+                    "longDescription": "This parameter represents the week of month in which the update is scheduled. The possible value may be *(any) or number between 1 and 4 or L. The default value is *.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "ApplyReboot",
+                "CatalogID",
+                "CatalogName",
+                "DayofMonth",
+                "DayofWeek",
+                "Domain",
+                "IPAddress",
+                "IgnoreCertWarning",
+                "JobType",
+                "ProxyHostName",
+                "ProxySupport",
+                "ProxyUserName",
+                "Repeat",
+                "ShareName",
+                "ShareType",
+                "Time",
+                "UserName",
+                "WeekofMonth"
+            ],
+            "type": "object"
+        },
+        "InstallFromRepository": {
+            "additionalProperties": false,
+            "description": "This method creates the list of the updates contained in the repository that are supported by LC and are applicable to the system and installed hardware. The successful execution of this method creates a job. The list is copied to a persistent location so that you can query for the updatable list by using GetRepoBasedUpdateList WSMan Command. If the input parameter ApplyUpdate value is True, only the applicable packages are applied and GetRepoBasedUpdateList gives the JOBIDs for all the jobs queued for the devices.",
+            "longDescription": "This method creates the list of the updates contained in the repository that are supported by LC and are applicable to the system and installed hardware. The successful execution of this method creates a job. The list is copied to a persistent location so that you can query for the updatable list by using GetRepoBasedUpdateList WSMan Command. If the input parameter ApplyUpdate value is True, only the applicable packages are applied and GetRepoBasedUpdateList gives the JOBIDs for all the jobs queued for the devices.",
+            "parameters": {
+                "ApplyUpdate": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ApplyUpdate",
+                    "description": "If ApplyUpdate is set to True, the updatable packages from Catalog XML are staged. If it is set to False, no updates are applied. The list of updatable packages can be seen by invoking the GetRepoBasedUpdateList. Default value is True.",
+                    "longDescription": "If ApplyUpdate is set to True, the updatable packages from Catalog XML are staged. If it is set to False, no updates are applied. The list of updatable packages can be seen by invoking the GetRepoBasedUpdateList. Default value is True."
+                },
+                "CatalogFile": {
+                    "description": "Name of the catalog file on the repository. Default is Catalog.xml.",
+                    "longDescription": "Name of the catalog file on the repository. Default is Catalog.xml.",
+                    "type": "string"
+                },
+                "IPAddress": {
+                    "description": "IP address for the remote share. If ShareType is FTP, default value is ftp.dell.com",
+                    "longDescription": "IP address for the remote share. If ShareType is FTP, default value is ftp.dell.com",
+                    "type": "string"
+                },
+                "IgnoreCertWarning": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/IgnoreCertWarning",
+                    "description": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On).",
+                    "longDescription": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)."
+                },
+                "Mountpoint": {
+                    "description": "The local directory where the share should be mounted. This is applicable for CIFS.",
+                    "longDescription": "The local directory where the share should be mounted. This is applicable for CIFS.",
+                    "type": "string"
+                },
+                "Password": {
+                    "description": "Password for the remote share. This parameter must be provided for CIFS.",
+                    "longDescription": "Password for the remote share. This parameter must be provided for CIFS.",
+                    "type": "string"
+                },
+                "ProxyPasswd": {
+                    "description": "The password for the proxy server.",
+                    "longDescription": "The password for the proxy server.",
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Port for the proxy server. Default is set to 80.",
+                    "longDescription": "Port for the proxy server. Default is set to 80.",
+                    "type": "integer"
+                },
+                "ProxyServer": {
+                    "description": "The IP address of the proxy server.",
+                    "longDescription": "The IP address of the proxy server.",
+                    "type": "string"
+                },
+                "ProxySupport": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ProxySupport",
+                    "description": "Specifies if a proxy should be used. Default is 1 (Off).",
+                    "longDescription": "Specifies if a proxy should be used. Default is 1 (Off)."
+                },
+                "ProxyType": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ProxyType",
+                    "description": "The proxy type of the proxy server. Default is 0 (HTTP).",
+                    "longDescription": "The proxy type of the proxy server. Default is 0 (HTTP)."
+                },
+                "ProxyUname": {
+                    "description": "The user name for the proxy server.",
+                    "longDescription": "The user name for the proxy server.",
+                    "type": "string"
+                },
+                "RebootNeeded": {
+                    "description": "This property indicates if a reboot should be performed. True indicates that the system (host) is rebooted during the update process. False indicates that the updates take effect after the system is rebooted the next time. Default value is set to False.",
+                    "longDescription": "This property indicates if a reboot should be performed. True indicates that the system (host) is rebooted during the update process. False indicates that the updates take effect after the system is rebooted the next time. Default value is set to False.",
+                    "type": "boolean"
+                },
+                "ShareName": {
+                    "description": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "longDescription": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "type": "string"
+                },
+                "ShareType": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ShareType",
+                    "description": "Type of the Network Share. Default value is NFS.",
+                    "longDescription": "Type of the Network Share. Default value is NFS."
+                },
+                "UserName": {
+                    "description": "User name for the remote share. This parameter must be provided for CIFS.",
+                    "longDescription": "User name for the remote share. This parameter must be provided for CIFS.",
+                    "type": "string"
+                },
+                "Workgroup": {
+                    "description": "Workgroup for the CIFS share - optional.",
+                    "longDescription": "Workgroup for the CIFS share - optional.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "InstallFromURI": {
+            "additionalProperties": false,
+            "description": "InstallFromURI method is used for creating a job for update service. The successful execution of this method creates a job.",
+            "longDescription": "InstallFromURI method is used for creating a job for update service. The successful execution of this method creates a job.",
+            "parameters": {
+                "IgnoreCertWarning": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/IgnoreCertWarning",
+                    "description": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On).",
+                    "longDescription": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)."
+                },
+                "ProxyPasswd": {
+                    "description": "The password for the proxy server.",
+                    "longDescription": "The password for the proxy server.",
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Port for the proxy server. Default is set to 80.",
+                    "longDescription": "Port for the proxy server. Default is set to 80.",
+                    "type": "string"
+                },
+                "ProxyServer": {
+                    "description": "The IP address of the proxy server.",
+                    "longDescription": "The IP address of the proxy server.",
+                    "type": "string"
+                },
+                "ProxySupport": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ProxySupport",
+                    "description": "Specifies if a proxy should be used. Default is 1 (Off).",
+                    "longDescription": "Specifies if a proxy should be used. Default is 1 (Off)."
+                },
+                "ProxyType": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ProxyType",
+                    "description": "The type of the proxy server. Default is 0 (HTTP).",
+                    "longDescription": "The type of the proxy server. Default is 0 (HTTP)."
+                },
+                "ProxyUname": {
+                    "description": "The user name for the proxy server.",
+                    "longDescription": "The user name for the proxy server.",
+                    "type": "string"
+                },
+                "TargetResource": {
+                    "description": "A Link to the DellSoftwareInventory resource whose firmware needs to be updated. It shall be the @odata.id of the DellSoftwareInventory Resource.",
+                    "longDescription": "A Link to the DellSoftwareInventory resource whose firmware needs to be updated. It shall be the @odata.id of the DellSoftwareInventory Resource.",
+                    "type": "string"
+                },
+                "URI": {
+                    "description": "Network file location of the firmware to be installed. Supported network share types are HTTP, HTTPS, CIFS, NFS, TFTP and FTP. Special characters must be encoded in URI format.",
+                    "longDescription": "Network file location of the firmware to be installed. Supported network share types are HTTP, HTTPS, CIFS, NFS, TFTP and FTP. Special characters must be encoded in URI format.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SetUpdateSchedule": {
+            "additionalProperties": false,
+            "description": "This method is used for setting up periodic updates from repository.",
+            "longDescription": "This method is used for setting up periodic updates from repository.",
+            "parameters": {
+                "ApplyReboot": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ApplyReboot",
+                    "description": "This parameter is used for specifying if a reboot is required. Default value is 0 (Reboot Required).",
+                    "longDescription": "This parameter is used for specifying if a reboot is required. Default value is 0 (Reboot Required)."
+                },
+                "CatalogID": {
+                    "description": "The ID of the catalog to be used.",
+                    "longDescription": "The ID of the catalog to be used.",
+                    "type": "string"
+                },
+                "CatalogName": {
+                    "description": "The name of the catalog file. Default is Catalog.xml.",
+                    "longDescription": "The name of the catalog file. Default is Catalog.xml.",
+                    "type": "string"
+                },
+                "Comment": {
+                    "description": "This is an optional text field that supports up to 1024 bytes. This parameter is deprecated.",
+                    "longDescription": "This is an optional text field that supports up to 1024 bytes. This parameter is deprecated.",
+                    "type": "string"
+                },
+                "DayofMonth": {
+                    "description": "This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-28. The default value is *.",
+                    "longDescription": "This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-28. The default value is *.",
+                    "type": "string"
+                },
+                "DayofWeek": {
+                    "description": "This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *.",
+                    "longDescription": "This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *.",
+                    "type": "string"
+                },
+                "Domain": {
+                    "description": "The domain of the user name for access to the share, if any. This is prefixed to the user name with a backslash. For example, \"DOMAIN\\\\user_name\".",
+                    "longDescription": "The domain of the user name for access to the share, if any. This is prefixed to the user name with a backslash. For example, \"DOMAIN\\\\user_name\".",
+                    "type": "string"
+                },
+                "IPAddress": {
+                    "description": "IP address for the remote share.",
+                    "longDescription": "IP address for the remote share.",
+                    "type": "string"
+                },
+                "IgnoreCertWarning": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/IgnoreCertWarning",
+                    "description": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On).",
+                    "longDescription": "Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)."
+                },
+                "Password": {
+                    "description": "Password for the remote share.",
+                    "longDescription": "Password for the remote share.",
+                    "type": "string"
+                },
+                "ProxyHostName": {
+                    "description": "The hostname of the proxy server.",
+                    "longDescription": "The hostname of the proxy server.",
+                    "type": "string"
+                },
+                "ProxyPassword": {
+                    "description": "The password for the proxy server.",
+                    "longDescription": "The password for the proxy server.",
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Port for the proxy server. Default is set to 80.",
+                    "longDescription": "Port for the proxy server. Default is set to 80.",
+                    "type": "string"
+                },
+                "ProxySupport": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ProxySupport",
+                    "description": "Specifies if proxy should be used. Default is 1 (Off).",
+                    "longDescription": "Specifies if proxy should be used. Default is 1 (Off)."
+                },
+                "ProxyType": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ProxyType",
+                    "description": "The proxy type of the proxy server. Default is 0 (HTTP).",
+                    "longDescription": "The proxy type of the proxy server. Default is 0 (HTTP)."
+                },
+                "ProxyUserName": {
+                    "description": "The user name for the proxy server.",
+                    "longDescription": "The user name for the proxy server.",
+                    "type": "string"
+                },
+                "Repeat": {
+                    "description": "This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366.",
+                    "longDescription": "This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366.",
+                    "type": "integer"
+                },
+                "ShareName": {
+                    "description": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "longDescription": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "type": "string"
+                },
+                "ShareType": {
+                    "$ref": "/redfish/v1/Schemas/DellSoftwareInstallationService.json#/definitions/ShareType",
+                    "description": "Type of the Network Share.",
+                    "longDescription": "Type of the Network Share."
+                },
+                "Time": {
+                    "description": "Represents the hour and minute of the day when the update should be performed. Format is hh:mm.",
+                    "longDescription": "Represents the hour and minute of the day when the update should be performed. Format is hh:mm.",
+                    "type": "string"
+                },
+                "URI": {
+                    "description": "The URI to the repository catalog file. This parameter is deprecated.",
+                    "longDescription": "The URI to the repository catalog file. This parameter is deprecated.",
+                    "type": "string"
+                },
+                "UserName": {
+                    "description": "User name for the remote share.",
+                    "longDescription": "User name for the remote share.",
+                    "type": "string"
+                },
+                "WeekofMonth": {
+                    "description": "This parameter represents the week of the month in which the update is scheduled. The possible values are * (Any), a number between 1 and 4, or L. The default value is *.",
+                    "longDescription": "This parameter represents the week of the month in which the update is scheduled. The possible values are * (Any), a number between 1 and 4, or L. The default value is *.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellSoftwareInstallationService.v1_2_0.DellSoftwareInstallationService"
+}

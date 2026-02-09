@@ -1,0 +1,404 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOLicense",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOLicense resource describes the properties for managing BMC licenses.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Confirmation": {
+            "description": "License confirmation summary.",
+            "etag": true,
+            "properties": {
+                "Code": {
+                    "description": "Confirmation service response code.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Message": {
+                    "description": "User-friendly confirmation information for the current managment processor license.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Service": {
+                    "description": "Confirmation service URI.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Status": {
+                    "description": "Confirmation status.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ConfirmationRequest": {
+            "description": "System details paired with license key during confirmation.",
+            "etag": true,
+            "properties": {
+                "EON": {
+                    "description": "Entitlement identification.",
+                    "etag": true,
+                    "properties": {
+                        "License": {
+                            "description": "The current license of this management processor.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "LicenseKey": {
+                            "description": "The license key installed on this management processor.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "Quantity": {
+                            "description": "The number of entitlements licensed.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "integer"
+                        },
+                        "State": {
+                            "description": "The current licensing state and behavior of the management processor.  This is affected by license installation, activation and confirmation.",
+                            "enum": [
+                                "unlicensed",
+                                "evaluation",
+                                "nfr",
+                                "expired",
+                                "unconfirmed",
+                                "timeout",
+                                "confirmed",
+                                "static",
+                                "err"
+                            ],
+                            "enumDescriptions": {
+                                "confirmed": "licensed functionality has been confirmed for use",
+                                "err": "error",
+                                "evaluation": "evaluation / demonstration temporary licensed functionality",
+                                "expired": "standard baseline functionality and evaluation licenses no longer accepted",
+                                "nfr": "not for resale experimental functionality",
+                                "static": "system has active built-in licensed functionality that does not require confirmation",
+                                "timeout": "licensed functionality is disabled until the license is confirmed",
+                                "unconfirmed": "licensed functionality that has not been confirmed",
+                                "unlicensed": "standard baseline functionality"
+                            },
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Signer": {
+                    "description": "Source of confirmation request.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "System": {
+                    "description": "System details for license confirmation.",
+                    "etag": true,
+                    "properties": {
+                        "ChipId": {
+                            "description": "Management processor unique chip identifier.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "Product": {
+                            "description": "System housing management processor.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "SerialNumber": {
+                            "description": "System serial number.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "License": {
+            "description": "The current license of this management processor.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LicenseClass": {
+            "description": "The class of current license on this management processor.",
+            "enum": [
+                "FQL",
+                "BETA",
+                "EVALUATION",
+                "AKA",
+                "DL",
+                "FFQL",
+                "SL",
+                "SITE",
+                "EVAL",
+                "MLA"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "LicenseErr": {
+            "description": "Error information from the most recent attempt to alter the installed management processor license.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LicenseExpire": {
+            "description": "User-friendly expiration information of the installed management processor license. For example, for demo license, Evaluation period 2 months 5 days 6 hours remain.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LicenseFeatures": {
+            "description": "Features included with the current license tier.",
+            "etag": true,
+            "properties": {
+                "DirectoryAuth": {
+                    "description": "Directory integrated authentication.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "DowngradePolicy": {
+                    "description": "Firmware downgrade policy setting.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "EmailAlert": {
+                    "description": "Email based alerting.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "FWScan": {
+                    "description": "Runtime FW Integrity check.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Federation": {
+                    "description": "Distributed peer to peer management.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Jitter": {
+                    "description": "Jitter Control.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "KD": {
+                    "description": "Kernel Debugging (VSP raw mode).",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "KeyMgr": {
+                    "description": "Store and retrieve keys from an external key manager.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "MURC": {
+                    "description": "Shared Multi-User Remote Console.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "ODIM": {
+                    "description": "Open Distributed Infrastructure Management.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "PowerReg": {
+                    "description": "Power Regulator.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "RC": {
+                    "description": "Graphical Remote Console.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Recovery": {
+                    "description": "OS Recovery Event.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "RemoteSyslog": {
+                    "description": "Remote Syslog.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Scrncap": {
+                    "description": "Video Capture.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SecureErase": {
+                    "description": "Secure Erase of embedded media.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SmartCard": {
+                    "description": "2-Factor Authentication (Smart Card).",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SuiteB": {
+                    "description": "SuiteB/CNSA mode support.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "TextCons": {
+                    "description": "Text Console.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "VM": {
+                    "description": "Remote Console based Virtual Media.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "VMScript": {
+                    "description": "Scripted Virtual Media.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "VSPLogging": {
+                    "description": "Virtual Serial Port Logging and Playback.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "AutoCertEnroll": {
+                    "description": "Automatic Certificate Enrollment.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "LicenseInstallDate": {
+            "description": "User-friendly installation date information of the installed management processor license. For example, 19 May 2017",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LicenseKey": {
+            "description": "User-visible license key installed on this management processor. License keys are 25 or 29 characters and contain letters, numbers and hypens. Use POST method to collection of membertype HpeiLOLicense to install / update the license.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LicenseSeats": {
+            "description": "The number of systems authorized to use this activation key.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "LicenseTier": {
+            "description": "The licensed feature-set of the management processor.",
+            "enum": [
+                "STD",
+                "BLSTD",
+                "ADV",
+                "BLADV",
+                "ESS",
+                "SCALEOUT",
+                "APSE"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LicenseType": {
+            "description": "The type of current license activation on this management processor.",
+            "enum": [
+                "Unlicensed",
+                "Evaluation",
+                "Perpetual",
+                "Subscription",
+                "Internal",
+                "Duration",
+                "Expired"
+            ],
+            "enumDescription": {
+                "Duration": "Features licensed for a period",
+                "Evaluation": "Licensed for a temporary evaluation period",
+                "Expired": "Standard licensed features and evaluation keys not accepted",
+                "Internal": "internal use private license",
+                "Perpetual": "Features licensed",
+                "Subscription": "Subscribed features licensed",
+                "Unlicensed": "Standard licensed features"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOLicense.v2_3_0.HpeiLOLicense",
+    "type": "object"
+}

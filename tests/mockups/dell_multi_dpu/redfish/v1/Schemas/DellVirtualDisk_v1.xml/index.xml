@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellVirtualDisk v1_2_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVirtualDisk">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellVirtualDisk" Abstract="true">
+                <Annotation String="An instance of DellVirtualDisk will have data specific to the Virtual Disks in the system." Term="OData.Description"/>
+                <Annotation String="An instance of DellVirtualDisk will have data specific to the Virtual Disks in the system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes/Oem/Dell/DellVolumes/{VirtualDiskId}</String>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes/{VolumeId}/Oem/Dell/DellVolumes/{VirtualDiskId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="BusProtocol">
+                <Member Name="FIBRE">
+                    <Annotation String="FIBRE" Term="OData.Description"/>
+                    <Annotation String="FIBRE" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PATA">
+                    <Annotation String="PATA" Term="OData.Description"/>
+                    <Annotation String="PATA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIE">
+                    <Annotation String="PCIE" Term="OData.Description"/>
+                    <Annotation String="PCIE" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SAS">
+                    <Annotation String="SAS" Term="OData.Description"/>
+                    <Annotation String="SAS" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SATA">
+                    <Annotation String="SATA" Term="OData.Description"/>
+                    <Annotation String="SATA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SCSI">
+                    <Annotation String="SCSI" Term="OData.Description"/>
+                    <Annotation String="SCSI" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="USB">
+                    <Annotation String="USB" Term="OData.Description"/>
+                    <Annotation String="USB" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="Cachecade">
+                <Member Name="CachecadeVD">
+                    <Annotation String="Cachecade Virtual Disk" Term="OData.Description"/>
+                    <Annotation String="Cachecade Virtual Disk" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NonCachecadeVD">
+                    <Annotation String="Not a Cachecade Virtual Disk" Term="OData.Description"/>
+                    <Annotation String="Not a Cachecade Virtual Disk" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DiskCachePolicy">
+                <Member Name="Default">
+                    <Annotation String="Default" Term="OData.Description"/>
+                    <Annotation String="Default" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="LockStatus">
+                <Member Name="Locked">
+                    <Annotation String="Locked" Term="OData.Description"/>
+                    <Annotation String="Locked" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unlocked">
+                    <Annotation String="Unlocked" Term="OData.Description"/>
+                    <Annotation String="Unlocked" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="MediaType">
+                <Member Name="HardDiskDrive">
+                    <Annotation String="Hard Disk Drive" Term="OData.Description"/>
+                    <Annotation String="Hard Disk Drive" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SolidStateDrive">
+                    <Annotation String="Solid State Drive" Term="OData.Description"/>
+                    <Annotation String="Solid State Drive" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ReadCachePolicy">
+                <Member Name="AdaptiveReadAhead">
+                    <Annotation String="Adaptive Read Ahead" Term="OData.Description"/>
+                    <Annotation String="Adaptive Read Ahead" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NoReadAhead">
+                    <Annotation String="No Read Ahead" Term="OData.Description"/>
+                    <Annotation String="No Read Ahead" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ReadAhead">
+                    <Annotation String="Read Ahead" Term="OData.Description"/>
+                    <Annotation String="Read Ahead" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="WriteCachePolicy">
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="WriteBack">
+                    <Annotation String="Write Back" Term="OData.Description"/>
+                    <Annotation String="Write Back" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="WriteBackForce">
+                    <Annotation String="Write Back Force" Term="OData.Description"/>
+                    <Annotation String="Write Back Force" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="WriteThrough">
+                    <Annotation String="Write Through" Term="OData.Description"/>
+                    <Annotation String="Write Through" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ObjectStatus">
+                <Member Name="Current">
+                    <Annotation String="Current" Term="OData.Description"/>
+                    <Annotation String="Current" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="CurrentVirtualDiskPendingDelete">
+                    <Annotation String="Current Virtual Disk Pending Delete" Term="OData.Description"/>
+                    <Annotation String="Current Virtual Disk Pending Delete" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Pending">
+                    <Annotation String="Pending" Term="OData.Description"/>
+                    <Annotation String="Pending" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PendingCreate">
+                    <Annotation String="Pending Create" Term="OData.Description"/>
+                    <Annotation String="Pending Create" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="PrimaryStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RaidStatus">
+                <Member Name="Blocked">
+                    <Annotation String="Blocked" Term="OData.Description"/>
+                    <Annotation String="Blocked" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Failed">
+                    <Annotation String="Failed" Term="OData.Description"/>
+                    <Annotation String="Failed" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Foreign">
+                    <Annotation String="Foreign" Term="OData.Description"/>
+                    <Annotation String="Foreign" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Offline">
+                    <Annotation String="Offline" Term="OData.Description"/>
+                    <Annotation String="Offline" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Online">
+                    <Annotation String="Online" Term="OData.Description"/>
+                    <Annotation String="Online" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Ready">
+                    <Annotation String="Ready" Term="OData.Description"/>
+                    <Annotation String="Ready" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="StripeSize">
+                <Member Name="128KB">
+                    <Annotation String="128KB" Term="OData.Description"/>
+                    <Annotation String="128KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="16KB">
+                    <Annotation String="16KB" Term="OData.Description"/>
+                    <Annotation String="16KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="16MB">
+                    <Annotation String="16MB" Term="OData.Description"/>
+                    <Annotation String="16MB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="1KB">
+                    <Annotation String="1KB" Term="OData.Description"/>
+                    <Annotation String="1KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="1MB">
+                    <Annotation String="1MB" Term="OData.Description"/>
+                    <Annotation String="1MB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="256KB">
+                    <Annotation String="256KB" Term="OData.Description"/>
+                    <Annotation String="256KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="2KB">
+                    <Annotation String="2KB" Term="OData.Description"/>
+                    <Annotation String="2KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="2MB">
+                    <Annotation String="2MB" Term="OData.Description"/>
+                    <Annotation String="2MB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="32KB">
+                    <Annotation String="32KB" Term="OData.Description"/>
+                    <Annotation String="32KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="4KB">
+                    <Annotation String="4KB" Term="OData.Description"/>
+                    <Annotation String="4KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="4MB">
+                    <Annotation String="4MB" Term="OData.Description"/>
+                    <Annotation String="4MB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="512B">
+                    <Annotation String="512B" Term="OData.Description"/>
+                    <Annotation String="512B" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="512KB">
+                    <Annotation String="512KB" Term="OData.Description"/>
+                    <Annotation String="512KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="64KB">
+                    <Annotation String="64KB" Term="OData.Description"/>
+                    <Annotation String="64KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="8KB">
+                    <Annotation String="8KB" Term="OData.Description"/>
+                    <Annotation String="8KB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="8MB">
+                    <Annotation String="8MB" Term="OData.Description"/>
+                    <Annotation String="8MB" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Default">
+                    <Annotation String="Default" Term="OData.Description"/>
+                    <Annotation String="Default" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="T10PIStatus">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVirtualDisk.v1_0_0">
+            <EntityType Name="DellVirtualDisk" BaseType="DellVirtualDisk.DellVirtualDisk">
+                <Annotation Term="OData.Description" String="An instance of DellVirtualDisk will have data specific to the Virtual Disks in the system."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellVirtualDisk will have data specific to the Virtual Disks in the system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BusProtocol" Type="DellVirtualDisk.BusProtocol">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the bus protocol."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the bus protocol."/>
+                </Property>
+                <Property Name="Cachecade" Type="DellVirtualDisk.Cachecade">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the Cachecade property can have following values and shall be one of the following values:0-Not a cachecade Virtual Disk,  1-Cachecade Virtual Disk."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the Cachecade property can have following values and shall be one of the following values:0-Not a cachecade Virtual Disk,  1-Cachecade Virtual Disk."/>
+                </Property>
+                <Property Name="DiskCachePolicy" Type="DellVirtualDisk.DiskCachePolicy">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the policy for physical disks included in the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the policy for physical disks included in the virtual disk."/>
+                </Property>
+                <Property Name="LockStatus" Type="DellVirtualDisk.LockStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent if this Virtual Disk is locked."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent if this Virtual Disk is locked."/>
+                </Property>
+                <Property Name="MediaType" Type="DellVirtualDisk.MediaType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the drive media type."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the drive media type."/>
+                </Property>
+                <Property Name="ReadCachePolicy" Type="DellVirtualDisk.ReadCachePolicy">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the current read policy."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the current read policy."/>
+                </Property>
+                <Property Name="SpanDepth" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the number of spans in virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the number of spans in virtual disk."/>
+                </Property>
+                <Property Name="SpanLength" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the number of physical disks per span."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the number of physical disks per span."/>
+                </Property>
+                <Property Name="VirtualDiskTargetID" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the virtual disk target number."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the virtual disk target number."/>
+                </Property>
+                <Property Name="WriteCachePolicy" Type="DellVirtualDisk.WriteCachePolicy">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the current write policy."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the current write policy."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVirtualDisk.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add LastSystemInventoryTime, LastUpdateTime, ObjectStatus, OperationName, OperationPercentComplete, PrimaryStatus, RaidStatus, RemainingRedundancy, StartingLBAinBlocks, StripeSize, T10PIStatus properties."/>
+            <EntityType Name="DellVirtualDisk" BaseType="DellVirtualDisk.v1_0_0.DellVirtualDisk">
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="ObjectStatus" Type="DellVirtualDisk.ObjectStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the virtual disk configuration state."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the virtual disk configuration state."/>
+                </Property>
+                <Property Name="OperationName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the operation that is running on a virtual disk in background. If no operation is running, the value is &quot;None&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the operation that is running on a virtual disk in background. If no operation is running, the value is &quot;None&quot;."/>
+                </Property>
+                <Property Name="OperationPercentComplete" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the percentage of completion of the operation that is represented by the OperationName property."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the percentage of completion of the operation that is represented by the OperationName property."/>
+                </Property>
+                <Property Name="PrimaryStatus" Type="DellVirtualDisk.PrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the status of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the status of the device."/>
+                </Property>
+                <Property Name="RaidStatus" Type="DellVirtualDisk.RaidStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the RAID specific status."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the RAID specific status."/>
+                </Property>
+                <Property Name="RemainingRedundancy" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides information about the remaining redundancy of the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides information about the remaining redundancy of the virtual disk."/>
+                </Property>
+                <Property Name="StartingLBAinBlocks" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the starting logical block address in blocks for virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the starting logical block address in blocks for virtual disk."/>
+                </Property>
+                <Property Name="StripeSize" Type="DellVirtualDisk.StripeSize">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the current strip size."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the current strip size."/>
+                </Property>
+                <Property Name="T10PIStatus" Type="DellVirtualDisk.T10PIStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="T10PIStatus indicates whether T10 Protection Information is enabled on the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="T10PIStatus indicates whether T10 Protection Information is enabled on the virtual disk."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVirtualDisk.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable value PCIE for BusProtocol property."/>
+            <EntityType Name="DellVirtualDisk" BaseType="DellVirtualDisk.v1_1_0.DellVirtualDisk">
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

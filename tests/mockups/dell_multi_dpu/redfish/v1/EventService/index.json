@@ -1,0 +1,68 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#EventService.EventService",
+    "@odata.id": "/redfish/v1/EventService",
+    "@odata.type": "#EventService.v1_10_0.EventService",
+    "Actions": {
+        "#EventService.SubmitTestEvent": {
+            "EventType@Redfish.AllowableValues": [
+                "Alert"
+            ],
+            "target": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent"
+        }
+    },
+    "DeliveryRetryAttempts": 3,
+    "DeliveryRetryIntervalSeconds": 5,
+    "Description": "Event Service represents the properties for the service",
+    "EventFormatTypes": [
+        "Event",
+        "MetricReport"
+    ],
+    "EventFormatTypes@odata.count": 2,
+    "EventTypesForSubscription": [
+        "Alert",
+        "MetricReport",
+        "Other"
+    ],
+    "EventTypesForSubscription@odata.count": 3,
+    "Id": "EventService",
+    "Name": "Event Service",
+    "SMTP": {
+        "Authentication": "None",
+        "ConnectionProtocol": "StartTLS",
+        "FromAddress": "",
+        "Password": null,
+        "Port": 25,
+        "ServerAddress": "0.0.0.0",
+        "Username": ""
+    },
+    "SSEFilterPropertiesSupported": {
+        "EventFormatType": true,
+        "EventType": true,
+        "MessageId": true,
+        "MetricReportDefinition": true,
+        "OriginResource": true,
+        "RegistryPrefix": true,
+        "ResourceType": true,
+        "SubordinateResources": false
+    },
+    "ServerSentEventUri": "/redfish/v1/SSE",
+    "ServiceEnabled": true,
+    "Status": {
+        "Conditions": [
+            {
+                "Message": "The Redfish EventService feature is partially enabled because the IPMILan.1.AlertEnable property is disabled in the URI /redfish/v1/Managers/iDRAC.Embedded.1/Oem/Dell/DellAttributes/iDRAC.Embedded.1.",
+                "MessageArgs": [],
+                "MessageArgs@odata.count": 0,
+                "MessageId": "SYS553",
+                "Resolution": "Enable the IPMILan.1.AlertEnable property in the following URI: /redfish/v1/Managers/iDRAC.Embedded.1/Oem/Dell/DellAttributes/iDRAC.Embedded.1.",
+                "Severity": "Warning"
+            }
+        ],
+        "Health": "Warning",
+        "HealthRollup": "Warning",
+        "State": "Enabled"
+    },
+    "Subscriptions": {
+        "@odata.id": "/redfish/v1/EventService/Subscriptions"
+    }
+}

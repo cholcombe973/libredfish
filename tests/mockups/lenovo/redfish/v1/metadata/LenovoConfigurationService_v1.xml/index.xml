@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoConfigurationService  v1.0.0                           -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices> 
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoConfigurationService">
+      <EntityType Name="LenovoConfigurationService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoConfigService resource."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a Lenovo Configuration service."/>
+      </EntityType>
+      
+      <Action Name="BackupConfiguration" IsBound="true">
+        <Parameter Name="LenovoConfigurationService" Type="LenovoConfigurationService.v1_0_0.Actions"/>
+        <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The passphrase is used to encrypt values in the file. When the user restores a configuration, the password will be asked."/>
+        </Parameter>
+        <Parameter Name="EncryptScope" Type="LenovoConfigurationService.v1_0_0.EncryptScopeItem">
+          <Annotation Term="OData.Description" String="Indicates the scope of encrypt the configuration. Default value is whole file."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="BackupConfigurationDescriptor" IsBound="true">
+        <Parameter Name="LenovoConfigurationService" Type="LenovoConfigurationService.v1_0_0.Actions"/>       
+      </Action>
+      
+      <Action Name="RestoreConfiguration" IsBound="true">
+        <Parameter Name="LenovoConfigurationService" Type="LenovoConfigurationService.v1_0_0.Actions"/>
+        <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The passphrase is used to encrypt values in the file. When the user restores a configuration, the password will be asked."/>
+        </Parameter>
+        <Parameter Name="ConfigContent" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Content of configuration file to be restored."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="GetRestoreConfigurationDetails" IsBound="true">
+        <Parameter Name="LenovoConfigurationService" Type="LenovoConfigurationService.v1_0_0.Actions"/>
+      </Action>
+      
+      <Action Name="ResetToDefault" IsBound="true">
+        <Parameter Name="LenovoConfigurationService" Type="LenovoConfigurationService.v1_0_0.Actions"/>
+      </Action>
+    </Schema>
+        
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoConfigurationService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoConfigurationService" BaseType="LenovoConfigurationService.LenovoConfigurationService">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This resource represents the configuration  service for the resource or service to which it is associated."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a configuration service for a Redfish implementation."/>
+        <Property Name="BackupStatus" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The detailed status of backup operation."/>
+        </Property>
+        <Property Name="RestoreStatus" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The detailed status of restore operation."/>
+        </Property>
+        
+        <Property Name="Actions" Type="LenovoConfigurationService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+      </ComplexType>
+      
+      <EnumType Name="EncryptScopeItem">
+        <Member Name="WholeFile">
+          <Annotation Term="OData.Description" String="full configurarion data."/>
+        </Member>
+        <Member Name="SensitiveInfo">
+          <Annotation Term="OData.Description" String="part sensitive configurarion data."/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+
+
+
+    

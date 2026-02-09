@@ -1,0 +1,319 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "definitions": {
+        "Message": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "MessageId": {
+                    "type": "string",
+                    "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                    "longDescription": "This property shall be a key into message registry as described in the Redfish specification."
+                },
+                "Message": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This is the human readable message, if provided.",
+                    "longDescription": "This property shall contain an optional human readable message."
+                },
+                "RelatedProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "This is an array of properties described by the message.",
+                    "longDescription": "This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message."
+                },
+                "MessageArgs": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    },
+                    "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
+                    "longDescription": "This property shall contain the message substitution arguments for the specific message referenced by the MessageId and shall only be included if the MessageId is present."
+                },
+                "Severity": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This is the severity of the errors.",
+                    "longDescription": "The value of this property shall be the severity of the error, as defined in the Status section of the Redfish specificaiton."
+                },
+                "Resolution": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
+                    "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present."
+                },
+                "Oem": {
+                    "type": "object",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        },
+                        "[A-Za-z0-9_.:]+": {
+                            "type": "object",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "additionalProperties": true,
+                            "properties": {},
+                            "description": "Base type for an Oem object.",
+                            "longDescription": "This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                        }
+                    },
+                    "additionalProperties": true,
+                    "properties": {},
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification."
+                }
+            }
+        },
+        "Settings": {
+            "type": "object",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "properties": {
+                "Time": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "format": "date-time",
+                    "readonly": true,
+                    "description": "Indicates the time the settings were applied.",
+                    "longDescription": "The value of this property shall indicate the time that the settings object was applied to the resource."
+                },
+                "ETag": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "readonly": true,
+                    "description": "The ETag of the resource to which the settings were applied, after the application.",
+                    "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource."
+                },
+                "Messages": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Message"
+                    },
+                    "readonly": true,
+                    "description": "This is an array of messages associated with the task.",
+                    "longDescription": "The value of this property shall be an array of messages associated with the task."
+                },
+                "SettingsObject": {
+                    "additionalProperties": false,
+                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object",
+                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource."
+                }
+            }
+        }
+    },
+    "additionalProperties": false,
+    "properties": {
+        "@odata.type": {
+            "description": "The type of a resource.",
+            "longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the Redfish specification.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "properties": {
+                "BaseConfigs": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Boot": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Mappings": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "TlsConfig": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "KmsConfig": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "description": "Contains references to other resources that are related to this resource.",
+                "iScsi": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "ServerConfigLock": {
+                    "additionalProperties": false,
+                    "description": "The URI.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "description": "The unique identifier for a resource.",
+                            "format": "uri",
+                            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+                "readonly": true
+            },
+            "type": "object"
+        },
+        "SettingsObject": {
+            "additionalProperties": false,
+            "etag": false,
+            "properties": {
+                "UnmodifiedETag": {
+                    "description": "The #/@Refish.Settings/SettingsObject/@odata.id resource ETag as set by UEFI BIOS on the last boot.",
+                    "etag": false,
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "title": "#HpeBiosExt.v2_0_0.HpeBiosExt",
+    "type": "object"
+}

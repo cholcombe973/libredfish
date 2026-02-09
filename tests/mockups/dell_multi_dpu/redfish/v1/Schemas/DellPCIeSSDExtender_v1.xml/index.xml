@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellPCIeSSDExtender v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPCIeSSDExtender">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellPCIeSSDExtender" Abstract="true">
+                <Annotation String="An instance of DellPCIeSSDExtender will have data specific to the PCIeSSD extender in the managed system." Term="OData.Description"/>
+                <Annotation String="An instance of DellPCIeSSDExtender will have data specific to the PCIeSSD extender in the managed system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Oem/Dell/DellPCIeSSDExtenders/{PCIeSSDExtenderId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="RollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPCIeSSDExtender.v1_0_0">
+            <EntityType Name="DellPCIeSSDExtender" BaseType="DellPCIeSSDExtender.DellPCIeSSDExtender">
+                <Annotation Term="OData.Description" String="An instance of DellPCIeSSDExtender will have data specific to the PCIeSSD extender in the managed system."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellPCIeSSDExtender will have data specific to the PCIeSSD extender in the managed system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string containing the friendly Fully Qualified Device Description,a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string containing the friendly Fully Qualified Device Description,a property that describes the device and its location."/>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="RollupStatus" Type="DellPCIeSSDExtender.RollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="RollupStatus provides overall health status of the system by considering their sub-component health statuses, e.g RollupStatus will be degraded if any one of the sub-component is degraded."/>
+                    <Annotation Term="OData.LongDescription" String="RollupStatus provides overall health status of the system by considering their sub-component health statuses, e.g RollupStatus will be degraded if any one of the sub-component is degraded."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

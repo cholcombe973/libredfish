@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellSensor v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/ComputerSystem_v1.xml">
+        <edmx:Include Namespace="ComputerSystem"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSensor">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellSensor" Abstract="true">
+                <Annotation String="An instance of DellSensor will represent a sensor, a hardware device that is capable of measuring the characteristics of a physical property." Term="OData.Description"/>
+                <Annotation String="An instance of DellSensor will represent a sensor, a hardware device that is capable of measuring the characteristics of a physical property." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellSensors/{SensorId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="EnabledState">
+                <Member Name="Deferred">
+                    <Annotation String="Deferred" Term="OData.Description"/>
+                    <Annotation String="Deferred" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EnabledButOffline">
+                    <Annotation String="Enabled but Offline" Term="OData.Description"/>
+                    <Annotation String="Enabled but Offline" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="InTest">
+                    <Annotation String="In Test" Term="OData.Description"/>
+                    <Annotation String="In Test" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Quiesce">
+                    <Annotation String="Quiesce" Term="OData.Description"/>
+                    <Annotation String="Quiesce" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ShuttingDown">
+                    <Annotation String="Shutting Down" Term="OData.Description"/>
+                    <Annotation String="Shutting Down" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Starting">
+                    <Annotation String="Starting" Term="OData.Description"/>
+                    <Annotation String="Starting" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="HealthState">
+                <Member Name="CriticalFailure">
+                    <Annotation String="Critical failure" Term="OData.Description"/>
+                    <Annotation String="Critical failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Degraded/Warning">
+                    <Annotation String="Degraded/Warning" Term="OData.Description"/>
+                    <Annotation String="Degraded/Warning" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="MajorFailure">
+                    <Annotation String="Major failure" Term="OData.Description"/>
+                    <Annotation String="Major failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="MinorFailure">
+                    <Annotation String="Minor failure" Term="OData.Description"/>
+                    <Annotation String="Minor failure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NonRecoverableError">
+                    <Annotation String="Non-recoverable Error" Term="OData.Description"/>
+                    <Annotation String="Non-recoverable Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SensorType">
+                <Member Name="AirFlow">
+                    <Annotation String="Air Flow" Term="OData.Description"/>
+                    <Annotation String="Air Flow" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Counter">
+                    <Annotation String="Counter" Term="OData.Description"/>
+                    <Annotation String="Counter" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Current">
+                    <Annotation String="Current" Term="OData.Description"/>
+                    <Annotation String="Current" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Humidity">
+                    <Annotation String="Humidity" Term="OData.Description"/>
+                    <Annotation String="Humidity" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Intrusion">
+                    <Annotation String="Intrusion" Term="OData.Description"/>
+                    <Annotation String="Intrusion" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Lock">
+                    <Annotation String="Lock" Term="OData.Description"/>
+                    <Annotation String="Lock" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerConsumption">
+                    <Annotation String="Power Consumption" Term="OData.Description"/>
+                    <Annotation String="Power Consumption" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerProduction">
+                    <Annotation String="Power Production" Term="OData.Description"/>
+                    <Annotation String="Power Production" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Presence">
+                    <Annotation String="Presence" Term="OData.Description"/>
+                    <Annotation String="Presence" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Pressure">
+                    <Annotation String="Pressure" Term="OData.Description"/>
+                    <Annotation String="Pressure" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SmokeDetection">
+                    <Annotation String="Smoke Detection" Term="OData.Description"/>
+                    <Annotation String="Smoke Detection" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Switch">
+                    <Annotation String="Switch" Term="OData.Description"/>
+                    <Annotation String="Switch" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Tachometer">
+                    <Annotation String="Tachometer" Term="OData.Description"/>
+                    <Annotation String="Tachometer" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Temperature">
+                    <Annotation String="Temperature" Term="OData.Description"/>
+                    <Annotation String="Temperature" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Voltage">
+                    <Annotation String="Voltage" Term="OData.Description"/>
+                    <Annotation String="Voltage" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <ComplexType BaseType="Resource.Links" Name="Links">
+                <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                <Annotation String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <NavigationProperty Name="ComputerSystem" Type="ComputerSystem.ComputerSystem">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.LongDescription"/>
+                </NavigationProperty>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSensor.v1_0_0">
+            <EntityType Name="DellSensor" BaseType="DellSensor.DellSensor">
+                <Annotation Term="OData.Description" String="An instance of DellSensor will represent a sensor, a hardware device that is capable of measuring the characteristics of a physical property."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellSensor will represent a sensor, a hardware device that is capable of measuring the characteristics of a physical property."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <Property Name="CurrentState" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The current state indicated by the Sensor. This is always one of the &quot;PossibleStates&quot;. The property may have &quot;Unknown&quot; value."/>
+                    <Annotation Term="OData.LongDescription" String="The current state indicated by the Sensor. This is always one of the &quot;PossibleStates&quot;. The property may have &quot;Unknown&quot; value."/>
+                </Property>
+                <Property Name="ElementName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The user-friendly name for the class instance.This value does not have to be unique within its namespace."/>
+                    <Annotation Term="OData.LongDescription" String="The user-friendly name for the class instance.This value does not have to be unique within its namespace."/>
+                </Property>
+                <Property Name="EnabledState" Type="DellSensor.EnabledState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="EnabledState is an integer enumeration that indicates the enabled and disabled states of an element. It can also indicate the transitions between these requested states."/>
+                    <Annotation Term="OData.LongDescription" String="EnabledState is an integer enumeration that indicates the enabled and disabled states of an element. It can also indicate the transitions between these requested states."/>
+                </Property>
+                <Property Name="HealthState" Type="DellSensor.HealthState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the current health of the element."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the current health of the element."/>
+                </Property>
+                <Property Name="SensorType" Type="DellSensor.SensorType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The Type of the Sensor, e.g. Voltage or Temperature Sensor. If the type is set to &quot;Other&quot;, then the OtherSensorType Description can be used to further identify the type, or if the Sensor has numeric readings, then the type of the Sensor can be implicitly determined by the Units. A description of the different Sensor types is as follows: A Temperature Sensor measures the environmental temperature. Voltage and Current Sensors measure electrical voltage and current readings. A Tachometer measures speed/revolutions of a Device. For example, a Fan Device can have an associated Tachometer which measures its speed. A Counter is a general purpose Sensor that measures some numerical property of a Device. A Counter value can be cleared, but it never decreases. A Switch Sensor has states like Open/Close, On/Off, or Up/Down. A Lock has states of Locked/Unlocked. Humidity, Smoke Detection and Air Flow Sensors measure the equivalent environmental characteristics. A Presence Sensor detects the presence of a PhysicalElement. A Power Consumption Sensor measures the instantaneous power consumed by a managed element. A Power Production Sensor measures the instantaneous power produced by a managed element such as a power supply or a voltage regulator. A pressure sensor is used to report pressure. Intrusion sensor reports an intrusion of an enclosure regardless whether it was authorized or not."/>
+                    <Annotation Term="OData.LongDescription" String="The Type of the Sensor, e.g. Voltage or Temperature Sensor. If the type is set to &quot;Other&quot;, then the OtherSensorType Description can be used to further identify the type, or if the Sensor has numeric readings, then the type of the Sensor can be implicitly determined by the Units. A description of the different Sensor types is as follows: A Temperature Sensor measures the environmental temperature. Voltage and Current Sensors measure electrical voltage and current readings. A Tachometer measures speed/revolutions of a Device. For example, a Fan Device can have an associated Tachometer which measures its speed. A Counter is a general purpose Sensor that measures some numerical property of a Device. A Counter value can be cleared, but it never decreases. A Switch Sensor has states like Open/Close, On/Off, or Up/Down. A Lock has states of Locked/Unlocked. Humidity, Smoke Detection and Air Flow Sensors measure the equivalent environmental characteristics. A Presence Sensor detects the presence of a PhysicalElement. A Power Consumption Sensor measures the instantaneous power consumed by a managed element. A Power Production Sensor measures the instantaneous power produced by a managed element such as a power supply or a voltage regulator. A pressure sensor is used to report pressure. Intrusion sensor reports an intrusion of an enclosure regardless whether it was authorized or not."/>
+                </Property>
+                <Property Name="Links" Type="DellSensor.Links" Nullable="false">
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

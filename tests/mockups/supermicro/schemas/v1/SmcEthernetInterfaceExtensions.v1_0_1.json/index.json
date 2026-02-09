@@ -1,0 +1,124 @@
+{
+    "definitions": {
+        "IPProtocolStatus": {
+            "enumDescriptions": {
+                "IPv4": "The IPv4 assigned to this interface.",
+                "Dual": "The IPv4 and IPv6 assigned to this interface.",
+                "IPv6": "The IPv6 assigned to this interface."
+            },
+            "enum": [
+                "IPv4",
+                "IPv6",
+                "Dual"
+            ],
+            "type": "string"
+        },
+        "LANInterface": {
+            "enumDescriptions": {
+                "Dedicated": "This interface is using dedicated.",
+                "Shared-Onboard": "This interface is using share that uses onboard.",
+                "Shared-AIOM": "This interface is using share that uses AIOM NIC card.",
+                "Failover-Onboard": "This interface is using failover that uses dedicated and onboard.",
+                "Failover": "This interface is using failover that uses dedicated, onboard and other NIC cards.",
+                "Failover-AOC": "This interface is using failover that uses dedicated and AOC NIC card.",
+                "Shared": "This interface is using share that uses onboard and other NIC cards.",
+                "Failover-AIOM": "This interface is using failover that uses dedicated and AIOM NIC card.",
+                "Shared-AOC": "This interface is using share that uses AOC NIC card."
+            },
+            "enum": [
+                "Dedicated",
+                "Shared",
+                "Failover",
+                "Shared-AOC",
+                "Failover-AOC",
+                "Shared-AIOM",
+                "Failover-AIOM",
+                "Shared-Onboard",
+                "Failover-Onboard"
+            ],
+            "type": "string"
+        },
+        "ActiveInterface": {
+            "enumDescriptions": {
+                "Shared": "This interface is using Share mode.",
+                "Dedicated": "This interface is using Dedicated mode.",
+                "Failover": "This interface is using Failover mode."
+            },
+            "enum": [
+                "Dedicated",
+                "Shared",
+                "Failover"
+            ],
+            "type": "string"
+        },
+        "EthernetInterface": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "IPProtocolStatus": {
+                    "readonly": false,
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IPProtocolStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This indicates the status of IP protocol.",
+                    "longDescription": "The value of this property shall indicate which IP protocol can be accessed."
+                },
+                "LANInterface": {
+                    "readonly": false,
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/LANInterface"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This indicates the interface of LAN.",
+                    "longDescription": "The value of this property shall indicate which the interface is used."
+                },
+                "ActiveInterface": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ActiveInterface"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This indicates the status of IP protocol.",
+                    "longDescription": "The value of this property shall indicate which the interface is actived."
+                },
+                "DUID": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "This indicates the DHCP unique identifier."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcEthernetInterfaceExtensions.v1_0_1"
+}

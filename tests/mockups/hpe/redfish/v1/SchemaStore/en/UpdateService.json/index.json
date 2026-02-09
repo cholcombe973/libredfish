@@ -1,0 +1,209 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "UpdateService",
+    "actions": {
+        "actions": {
+            "UpdateService.SimpleUpdate": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "UpdateService.SimpleUpdate"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ImageURI": {
+                        "format": "uri-reference",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "TransferProtocol": {
+                        "enum": [
+                            "HTTP",
+                            "HTTPS"
+                        ],
+                        "enumDescriptions": {
+                            "HTTP": "Hypertext Transfer Protocol",
+                            "HTTPS": "HTTP Secure protocol"
+                        },
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Targets": {
+                        "description": "Target Redfish URI ",
+                        "format": "uri-reference",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "Username": {
+                        "description": "The username credential required for authentication to fetch image.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Password": {
+                        "description": "The password credential required for authentication to fetch image.",
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "ImageURI"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "POST custom actions defined for this type. (The implemented actions may be a subset of these.)"
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2021 Distributed Management Task Force. All rights reserved.",
+    "description": "The UpdateService resource describes the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#UpdateService.SimpleUpdate": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "ImageURI@Redfish.AllowableValues": {
+                            "description": "The URI of the software image to be installed.",
+                            "items": {
+                                "format": "uri-reference",
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "This parameter shall contain a URI referencing a software image to be retreived by the UpdateService for the purpose of installing software contained within the image.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "TransferProtocol@Redfish.AllowableValues": {
+                            "description": "The network protocol used by the Update Service to retrieve the software image file located at the URI provided in ImageURI, if the URI does not contain a scheme.",
+                            "items": {
+                                "enum": [
+                                    "HTTP",
+                                    "HTTPS"
+                                ],
+                                "enumDescriptions": {
+                                    "HTTP": "Hypertext Transfer Protocol",
+                                    "HTTPS": "HTTP Secure protocol"
+                                },
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "This parameter shall contain the network protocol that the Update Service shall use to retreive the software image located at the ImageURI.  If this parameter is not provided (or supported), and a transfer protocol is not specified by a scheme contained within ImageURI, the Update Service shall use HTTP to retrieve the image.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        },
+                        "Targets": {
+                            "description": "Target Redfish URI ",
+                            "format": "uri-reference",
+                            "items": {
+                                "type": "string"
+                            },
+                            "etag": true,
+                            "readonly": true,
+                            "type": "array"
+                        },
+                        "Username": {
+                            "description": "The username credential required for authentication to fetch image.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "Password": {
+                            "description": "The password credential required for authentication to fetch image.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "FirmwareInventory": {
+            "additionalProperties": false,
+            "description": "Link to Firmware Inventory.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "HttpPushUri": {
+            "description": "The URI to which a client may POST an update image.",
+            "format": "uri-reference",
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOUpdateServiceExt.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "ServiceEnabled": {
+            "description": "Indicates if the Update Service is enabled.",
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "SoftwareInventory": {
+            "additionalProperties": false,
+            "description": "Link to Software Inventory.  This is only available when the Agentless Management Service is running.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "title": "#UpdateService.v1_2_1.UpdateService",
+    "type": "object"
+}

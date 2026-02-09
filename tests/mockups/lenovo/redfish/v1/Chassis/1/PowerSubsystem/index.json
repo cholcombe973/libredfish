@@ -1,0 +1,67 @@
+{
+    "@odata.id": "/redfish/v1/Chassis/1/PowerSubsystem",
+    "Allocation": {
+        "AllocatedWatts": 1547,
+        "RequestedWatts": 1547
+    },
+    "PowerSupplies": {
+        "@odata.id": "/redfish/v1/Chassis/1/PowerSubsystem/PowerSupplies"
+    },
+    "Description": "This resource shall represent a power subsystem for a Redfish implementation.",
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    },
+    "PowerSupplyRedundancy": [
+        {
+            "MinNeededInGroup": 2,
+            "MaxSupportedInGroup": 4,
+            "Oem": {
+                "Lenovo": {
+                    "NonRedundantAvailablePower": 5760,
+                    "PowerRedundancySettings": {
+                        "EstimatedUsage": "23.80%",
+                        "PowerFailureLimit": 2,
+                        "MaxPowerLimitWatts": 5760,
+                        "PowerRedundancyPolicy": "RedundantWithThrottling"
+                    },
+                    "@odata.type": "#LenovoRedundancy.v1_0_0.LenovoRedundancy"
+                }
+            },
+            "RedundancyGroup": [
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/PowerSubsystem/PowerSupplies/PSU1"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/PowerSubsystem/PowerSupplies/PSU2"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/PowerSubsystem/PowerSupplies/PSU3"
+                },
+                {
+                    "@odata.id": "/redfish/v1/Chassis/1/PowerSubsystem/PowerSupplies/PSU4"
+                }
+            ],
+            "Status": {
+                "Health": "OK",
+                "State": "Enabled"
+            },
+            "RedundancyType": "NPlusM"
+        }
+    ],
+    "CapacityWatts": 5760,
+    "@odata.context": "/redfish/v1/$metadata#PowerSubsystem.PowerSubsystem",
+    "Oem": {
+        "Lenovo": {
+            "LocalPowerControlEnabled": true,
+            "PowerOnPermissionEnabled": true,
+            "WakeOnLANEnabled": true,
+            "PowerRestorePolicy": "Restore",
+            "@odata.type": "#LenovoPowerSubsystem.v1_0_0.LenovoPowerSubsystem"
+        }
+    },
+    "@odata.etag": "\"a30560f9f27d2d24f9016\"",
+    "Id": "PowerSubsystem",
+    "Name": "Power Subsystem",
+    "@odata.type": "#PowerSubsystem.v1_1_0.PowerSubsystem"
+}

@@ -1,0 +1,160 @@
+{
+    "$id": "/redfish/v1/Schemas/DellComponentIntegrity.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "SPDM": {
+            "additionalProperties": false,
+            "description": "An Oem extension to represent SPDM related properties.",
+            "longDescription": "An Oem extension to represent SPDM related properties.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "SPDM": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SPDMObject"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Oem properties for representing SPDM properties.",
+                    "longDescription": "Oem properties for representing SPDM properties."
+                }
+            },
+            "type": "object"
+        },
+        "SPDMObject": {
+            "additionalProperties": false,
+            "description": "An Oem extension to represent SPDM related properties.",
+            "longDescription": "An Oem extension to represent SPDM related properties.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ChallengeAuthResponseSupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Support"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent support for challenge auth response.",
+                    "longDescription": "The property shall represent support for challenge auth response.",
+                    "readonly": true
+                },
+                "DeviceChallengeStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Status"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the device challenge status.",
+                    "longDescription": "The property shall represent the device challenge status.",
+                    "readonly": true
+                },
+                "DigestAndCertificateSupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Support"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the support for digest.",
+                    "longDescription": "The property shall represent the support for digest.",
+                    "readonly": true
+                },
+                "EncryptionSupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Support"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the support for encryption.",
+                    "longDescription": "The property shall represent the support for encryption.",
+                    "readonly": true
+                },
+                "MeasurementsSupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Support"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the support for measurement.",
+                    "longDescription": "The property shall represent the support for measurement.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "enum": [
+                "Failed",
+                "Success"
+            ],
+            "enumDescriptions": {
+                "Failed": "Failed",
+                "Success": "Success"
+            },
+            "enumLongDescriptions": {
+                "Failed": "Failed",
+                "Success": "Success"
+            },
+            "type": "string"
+        },
+        "Support": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellComponentIntegrity.v1_0_0"
+}

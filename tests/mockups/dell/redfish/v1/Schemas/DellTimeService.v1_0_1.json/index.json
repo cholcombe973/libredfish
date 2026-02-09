@@ -1,0 +1,148 @@
+{
+    "$id": "/redfish/v1/Schemas/DellTimeService.v1_0_1.json",
+    "$ref": "#/definitions/DellTimeService",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellTimeService.ManageTime": {
+                    "$ref": "#/definitions/ManageTime"
+                }
+            },
+            "type": "object"
+        },
+        "DellTimeService": {
+            "additionalProperties": false,
+            "description": "DellTimeService provides actions to manage time (retrieve or set time) for the service processor.",
+            "longDescription": "DellTimeService provides actions to manage time (retrieve or set time) for the service processor.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "ManageTime": {
+            "additionalProperties": false,
+            "description": "The DellTimeService.ManageTime() method is used to query the service processor time and to set the service processor time during the host system reboots and service processor resets. The service processor time set through the successful execution of this method is volatile and does not persist. The service processor time resets to the BIOS time at every reset of the host system or the service processor. Note: ManageTime method not supported on modular servers(MX840, MX740, etc) and also servers with NTP mode enabled.",
+            "longDescription": "The DellTimeService.ManageTime() method is used to query the service processor time and to set the service processor time during the host system reboots and service processor resets. The service processor time set through the successful execution of this method is volatile and does not persist. The service processor time resets to the BIOS time at every reset of the host system or the service processor. Note: ManageTime method not supported on modular servers(MX840, MX740, etc) and also servers with NTP mode enabled.",
+            "parameters": {
+                "GetRequest": {
+                    "description": "The parameter is set to TRUE to request the time for the iDRAC and is set to FALSE for setting the time for iDRAC.",
+                    "longDescription": "The parameter is set to TRUE to request the time for the iDRAC and is set to FALSE for setting the time for iDRAC.",
+                    "type": "boolean"
+                },
+                "TimeData": {
+                    "description": "On input, this is the desired value for the service processor time. On output, this is the service processor time.",
+                    "format": "date-time",
+                    "longDescription": "On input, this is the desired value for the service processor time. On output, this is the service processor time.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellTimeService.v1_0_1.DellTimeService"
+}

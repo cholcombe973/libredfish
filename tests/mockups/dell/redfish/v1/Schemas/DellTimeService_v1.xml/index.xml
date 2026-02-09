@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellTimeService v1_0_1-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellTimeService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellTimeService" Abstract="true">
+                <Annotation String="DellTimeService provides actions to manage time (retrieve or set time) for the service processor." Term="OData.Description"/>
+                <Annotation String="DellTimeService provides actions to manage time (retrieve or set time) for the service processor." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellTimeService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="ManageTime" IsBound="true">
+                <Annotation String="The DellTimeService.ManageTime() method is used to query the service processor time and to set the service processor time during the host system reboots and service processor resets. The service processor time set through the successful execution of this method is volatile and does not persist. The service processor time resets to the BIOS time at every reset of the host system or the service processor. Note: ManageTime method not supported on modular servers(MX840, MX740, etc) and also servers with NTP mode enabled." Term="OData.Description"/>
+                <Annotation String="The DellTimeService.ManageTime() method is used to query the service processor time and to set the service processor time during the host system reboots and service processor resets. The service processor time set through the successful execution of this method is volatile and does not persist. The service processor time resets to the BIOS time at every reset of the host system or the service processor. Note: ManageTime method not supported on modular servers(MX840, MX740, etc) and also servers with NTP mode enabled." Term="OData.LongDescription"/>
+                <Parameter Name="DellTimeService" Type="DellTimeService.v1_0_0.Actions"/>
+                <Parameter Name="GetRequest" Type="Edm.Boolean">
+                    <Annotation String="The parameter is set to TRUE to request the time for the iDRAC and is set to FALSE for setting the time for iDRAC." Term="OData.Description"/>
+                    <Annotation String="The parameter is set to TRUE to request the time for the iDRAC and is set to FALSE for setting the time for iDRAC." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TimeData" Type="Edm.DateTimeOffset">
+                    <Annotation String="On input, this is the desired value for the service processor time. On output, this is the service processor time." Term="OData.Description"/>
+                    <Annotation String="On input, this is the desired value for the service processor time. On output, this is the service processor time." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellTimeService.v1_0_0">
+            <EntityType Name="DellTimeService" BaseType="DellTimeService.DellTimeService">
+                <Annotation Term="OData.Description" String="DellTimeService provides actions to manage time (retrieve or set time) for the service processor."/>
+                <Annotation Term="OData.LongDescription" String="DellTimeService provides actions to manage time (retrieve or set time) for the service processor."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellTimeService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellTimeService.v1_0_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for ManageTime action."/>
+            <EntityType Name="DellTimeService" BaseType="DellTimeService.v1_0_0.DellTimeService"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

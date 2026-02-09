@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellOemStorageController v1_0_0-->
+<!--# -->
+<!--# Copyright 2021-2022 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/DellController_v1.xml">
+        <edmx:Include Namespace="DellController"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="DellOemStorageController" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellOemStorageController" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="Oem data related to the Storage Controller."/>
+                <Annotation Term="OData.LongDescription" String="Oem data related to the Storage Controller."/>
+            </ComplexType>
+            <EnumType Name="RAIDMode">
+              <Member Name="Linux">
+                <Annotation Term="OData.Description" String="Current RAID Mode is Linux."/>
+                <Annotation Term="OData.LongDescription" String="Current RAID Mode is Linux."/>
+              </Member>
+              <Member Name="Windows">
+                <Annotation Term="OData.Description" String="Current RAID Mode is Windows."/>
+                <Annotation Term="OData.LongDescription" String="Current RAID Mode is Windows."/>
+              </Member>
+              <Member Name="Mixed">
+                <Annotation Term="OData.Description" String="Current RAID Mode is Mixed."/>
+                <Annotation Term="OData.LongDescription" String="Current RAID Mode is Mixed."/>
+              </Member>
+              <Member Name="None">
+                <Annotation Term="OData.Description" String="Current RAID Mode is None."/>
+                <Annotation Term="OData.LongDescription" String="Current RAID Mode is None."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="CopybackMode">
+              <Member Name="Off">
+                <Annotation Term="OData.Description" String="The Copy Back function is turned off in the RAID Adapter."/>
+                <Annotation Term="OData.LongDescription" String="The Copy Back function is turned off in the RAID Adapter."/>
+              </Member>
+              <Member Name="On">
+                <Annotation Term="OData.Description" String="The RAID Adapter will perform a Copy Back after driver replacement."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter will perform a Copy Back after driver replacement."/>
+              </Member>
+              <Member Name="OnWithSMART">
+                <Annotation Term="OData.Description" String="The RAID Adapter will perform a Copy Back to a hotspare when a SMART alert is detected."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter will perform a Copy Back to a hotspare when a SMART alert is detected."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="PatrolReadUnconfiguredAreaMode">
+              <Member Name="Disabled">
+                <Annotation Term="OData.Description" String="Patrol Read unconfigured mode disabled."/>
+                <Annotation Term="OData.LongDescription" String="Patrol Read unconfigured mode disabled."/>
+              </Member>
+              <Member Name="Enabled">
+                <Annotation Term="OData.Description" String="Patrol Read unconfigured mode enabled."/>
+                <Annotation Term="OData.LongDescription" String="Patrol Read unconfigured mode enabled."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="PatrolReadMode">
+              <Member Name="Disabled">
+                <Annotation Term="OData.Description" String="Patrol Read Mode is disabled."/>
+                <Annotation Term="OData.LongDescription" String="Patrol Read Mode is disabled."/>
+              </Member>
+              <Member Name="Automatic">
+                <Annotation Term="OData.Description" String="Patrol Read is automatically started and stopped by the RAID Adapter."/>
+                <Annotation Term="OData.LongDescription" String="Patrol Read is automatically started and stopped by the RAID Adapter."/>
+              </Member>
+              <Member Name="Manual">
+                <Annotation Term="OData.Description" String="Patrol Read must be manually started and stopped on the RAID Adapter."/>
+                <Annotation Term="OData.LongDescription" String="Patrol Read must be manually started and stopped on the RAID Adapter."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="CheckConsistencyMode">
+              <Member Name="Normal">
+                <Annotation Term="OData.Description" String="The RAID Adapter supports normal Check Consistency operation."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter supports normal Check Consistency operation."/>
+              </Member>
+              <Member Name="StopOnError">
+                <Annotation Term="OData.Description" String="The RAID Adapter supports Check Consistency in which the operation will stop on an error."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter supports Check Consistency in which the operation will stop on an error."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="BatteryLearnMode">
+              <Member Name="Automatic">
+                <Annotation Term="OData.Description" String="The RAID Adapter will perform a Battery Learn Cycle as needed."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter will perform a Battery Learn Cycle as needed."/>
+              </Member>
+              <Member Name="WarnOnly">
+                <Annotation Term="OData.Description" String="The RAID Adapter will issue a warning when a Battery Learn Cycle is needed, otherwise no action."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter will issue a warning when a Battery Learn Cycle is needed, otherwise no action."/>
+              </Member>
+              <Member Name="Disabled">
+                <Annotation Term="OData.Description" String="The RAID Adapter will take no action when a Battery Learn Cycle is needed."/>
+                <Annotation Term="OData.LongDescription" String="The RAID Adapter will take no action when a Battery Learn Cycle is needed."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="LoadBalanceMode">
+              <Member Name="Disabled">
+                <Annotation Term="OData.Description" String="Load Balancing is inactive."/>
+                <Annotation Term="OData.LongDescription" String="Load Balancing is inactive."/>
+              </Member>
+              <Member Name="Automatic">
+                <Annotation Term="OData.Description" String="Automatic Load Balancing is active."/>
+                <Annotation Term="OData.LongDescription" String="Automatic Load Balancing is active."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="SupportedInitializationTypes">
+              <Member Name="Fast">
+                <Annotation Term="OData.Description" String="Volume preparation mode is Fast."/>
+                <Annotation Term="OData.LongDescription" String="Volume preparation mode is Fast."/>
+              </Member>
+              <Member Name="Slow">
+                <Annotation Term="OData.Description" String="Volume preparation mode is Slow."/>
+                <Annotation Term="OData.LongDescription" String="Volume preparation mode is Slow."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="EnhancedAutoImportForeignConfigurationMode">
+              <Member Name="Disabled">
+                <Annotation Term="OData.Description" String="Enhanced auto import disabled."/>
+                <Annotation Term="OData.LongDescription" String="Enhanced auto import disabled."/>
+              </Member>
+              <Member Name="Enabled">
+                <Annotation Term="OData.Description" String="Enhanced auto import enabled."/>
+                <Annotation Term="OData.LongDescription" String="Enhanced auto import enabled."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="PersistentHotspareMode">
+              <Member Name="Disabled">
+                <Annotation Term="OData.Description" String="Persistent hotspare mode is disabled."/>
+                <Annotation Term="OData.LongDescription" String="Persistent hotspare mode is disabled."/>
+              </Member>
+              <Member Name="Enabled">
+                <Annotation Term="OData.Description" String="Persistent hotspare mode is enabled."/>
+                <Annotation Term="OData.LongDescription" String="Persistent hotspare mode is enabled."/>
+              </Member>
+            </EnumType>
+            <EnumType Name="ControllerMode">
+                <Member Name="EnhancedHBA">
+                    <Annotation Term="OData.Description" String="Controller mode is EnhancedHBA."/>
+                    <Annotation Term="OData.LongDescription" String="Controller mode is EnhancedHBA."/>
+                </Member>
+                <Member Name="HBA">
+                    <Annotation Term="OData.Description" String="Controller mode is HBA."/>
+                    <Annotation Term="OData.LongDescription" String="Controller mode is HBA."/>
+                </Member>
+                <Member Name="None">
+                    <Annotation Term="OData.Description" String="Controller mode is None."/>
+                    <Annotation Term="OData.LongDescription" String="Controller mode is None."/>
+                </Member>
+                <Member Name="RAID">
+                    <Annotation Term="OData.Description" String="Controller mode is RAID."/>
+                    <Annotation Term="OData.LongDescription" String="Controller mode is RAID."/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ControllerBootMode">
+              <Member Name="UserMode">
+                <Annotation Term="OData.Description" String="Boot Mode is User."/>
+                <Annotation Term="OData.LongDescription" String="Boot Mode is User."/>
+              </Member>
+              <Member Name="ContinueBootOnError">
+                <Annotation Term="OData.Description" String="Boot Mode is Continue Boot On Error."/>
+                <Annotation Term="OData.LongDescription" String="Boot Mode is Continue Boot On Error."/>
+              </Member>
+              <Member Name="HeadlessModeContinueOnError">
+                <Annotation Term="OData.Description" String="Boot Mode is Headless."/>
+                <Annotation Term="OData.LongDescription" String="Boot Mode is Headless."/>
+              </Member>
+              <Member Name="HeadlessSafeMode">
+                <Annotation Term="OData.Description" String="Boot Mode is Headless Safe."/>
+                <Annotation Term="OData.LongDescription" String="Boot Mode is Headless Safe."/>
+              </Member>
+            </EnumType>
+        </Schema>
+
+        <Schema Namespace="DellOemStorageController.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellOemStorageController" BaseType="DellOemStorageController.DellOemStorageController">
+                <Property Name="DellStorageController" Type="DellOemStorageController.v1_0_0.DellStorageControllerInfo">>
+                    <Annotation Term="OData.Description" String="Oem data related to the Storage Controller."/>
+                    <Annotation Term="OData.LongDescription" String="Oem data related to the Storage Controller."/>
+                </Property>
+                <NavigationProperty Name="DellController" Type="DellController.DellController" ContainsTarget="true" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A resource representation of DellController."/>
+                    <Annotation Term="OData.LongDescription" String="A resource representation of DellController."/>
+                    <Annotation Term="OData.AutoExpand"/>
+                </NavigationProperty>
+            </ComplexType>
+            <ComplexType Name="DellStorageControllerInfo">
+                <Property Name="CacheSizeInMB" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property shall represent the controller cache size in MB."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall represent the controller cache size in MB."/>
+                    <Annotation Term="Measures.Unit" String="MB"/>
+                </Property>
+                <Property Name="CachecadeCapability" Type="DellController.CachecadeCapability">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the controllers support of cachecade virtual disk creation."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the controllers support of cachecade virtual disk creation."/>
+                </Property>
+                <Property Name="ControllerFirmwareVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property gives information about the Firmware Version installed on the Controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property gives information about the Firmware Version installed on the Controller."/>
+                </Property>
+                <Property Name="DeviceCardSlotType" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the controller slot type. The possible values of the string can be Other, Unknown, PCI Express x8, PCI Express Gen 3, PCI Express Gen 3x1, PCI Express Gen 3x2, PCI Express Gen 3x4, PCI Express Gen 3x8, PCI Express Gen 3x16, or PCI Express Gen4."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the controller slot type. The possible values of the string can be Other, Unknown, PCI Express x8, PCI Express Gen 3, PCI Express Gen 3x1, PCI Express Gen 3x2, PCI Express Gen 3x4, PCI Express Gen 3x8, PCI Express Gen 3x16, or PCI Express Gen4."/>
+                </Property>
+                <Property Name="DriverVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property shall represent the controller driver version."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall represent the controller driver version."/>
+                </Property>
+                <Property Name="EncryptionCapability" Type="DellController.EncryptionCapability">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the possible encryption states on the controller."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the possible encryption states on the controller."/>
+                </Property>
+                <Property Name="EncryptionMode" Type="DellController.EncryptionMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the current encryption state on the controller."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the current encryption state on the controller."/>
+                </Property>
+                <Property Name="PCISlot" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the associated PCI slot."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the associated PCI slot."/>
+                </Property>
+                <Property Name="PatrolReadState" Type="DellController.PatrolReadState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property shall represent the current state of the patrol read operation."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall represent the current state of the patrol read operation."/>
+                </Property>
+                <Property Name="RollupStatus" Type="DellController.RollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="RollupStatus provides overall health status of the system by considering their sub-component health statuses, e.g RollupStatus will be degraded if any one of the sub-component is degraded."/>
+                    <Annotation Term="OData.LongDescription" String="RollupStatus provides overall health status of the system by considering their sub-component health statuses, e.g RollupStatus will be degraded if any one of the sub-component is degraded."/>
+                </Property>
+                <Property Name="SecurityStatus" Type="DellController.SecurityStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the controller security configuration information."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the controller security configuration information."/>
+                </Property>
+                <Property Name="SlicedVDCapability" Type="DellController.SlicedVDCapability">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the controllers support of sliced virtual disk creation and shall have one of the following values:0 - Sliced Virtual Disk not supported, 1-Sliced Virtual Disk supported."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the controllers support of sliced virtual disk creation and shall have one of the following values:0 - Sliced Virtual Disk not supported, 1-Sliced Virtual Disk supported."/>
+                </Property>
+                <Property Name="AlarmState" Type="DellController.AlarmState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the state of Alarm if it is present."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the state of Alarm if it is present."/>
+                </Property>
+                <Property Name="BootVirtualDiskFQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates FQDD of BootVD. If no VD is set as BootVD in the controller, this property is an empty string."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates FQDD of BootVD. If no VD is set as BootVD in the controller, this property is an empty string."/>
+                </Property>
+                <Property Name="ConnectorCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the count of SAS connectors."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the count of SAS connectors."/>
+                </Property>
+                <Property Name="Device" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the PCI device."/>
+                </Property>
+                <Property Name="DeviceCardDataBusWidth" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the bus width."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the bus width."/>
+                </Property>
+                <Property Name="DeviceCardSlotLength" Type="DellController.DeviceCardSlotLength">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the controller slot length."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the controller slot length."/>
+                </Property>
+                <Property Name="KeyID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="KeyID provides details about the Key identification on the controller when the controller is in Local Key Management mode."/>
+                    <Annotation Term="OData.LongDescription" String="KeyID provides details about the Key identification on the controller when the controller is in Local Key Management mode."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when System Inventory Collection On Reboot(CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when System Inventory Collection On Reboot(CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="MaxAvailablePCILinkSpeed" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the maximum PCI link speed that the controller is set to allow."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the maximum PCI link speed that the controller is set to allow."/>
+                </Property>
+                <Property Name="MaxPossiblePCILinkSpeed" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the maximum possible PCI link speed, which is the speed this device is capable of."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the maximum possible PCI link speed, which is the speed this device is capable of."/>
+                </Property>
+                <Property Name="PersistentHotspare" Type="DellController.PersistentHotspare">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates status of the persistent hotspare slot of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates status of the persistent hotspare slot of the controller."/>
+                </Property>
+                <Property Name="RealtimeCapability" Type="DellController.RealtimeCapability">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether this controller supports Realtime."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether this controller supports Realtime."/>
+                </Property>
+                <Property Name="SASAddress" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property provides the unique ID of the controller and is in hexadecimal form."/>
+                    <Annotation Term="OData.LongDescription" String="The property provides the unique ID of the controller and is in hexadecimal form."/>
+                </Property>
+                <Property Name="SharedSlotAssignmentAllowed" Type="DellController.SharedSlotAssignmentAllowed">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether the controller allows shared assignments of slots, that is, whether the controller can access slots that are shared with other controllers."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether the controller allows shared assignments of slots, that is, whether the controller can access slots that are shared with other controllers."/>
+                </Property>
+                <Property Name="SupportControllerBootMode" Type="DellController.SupportControllerBootMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether this controller supports setting of controller boot mode."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether this controller supports setting of controller boot mode."/>
+                </Property>
+                <Property Name="SupportEnhancedAutoForeignImport" Type="DellController.SupportEnhancedAutoForeignImport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the controller supports automatic foreign import operation when the device is in foreign import mode."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the controller supports automatic foreign import operation when the device is in foreign import mode."/>
+                </Property>
+                <Property Name="SupportRAID10UnevenSpans" Type="DellController.SupportRAID10UnevenSpans">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether this controller supports uneven spans for RAID 10."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether this controller supports uneven spans for RAID 10."/>
+                </Property>
+                <Property Name="T10PICapability" Type="DellController.T10PICapability">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether this controller supports T10 Protection Information (T10 PI)."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether this controller supports T10 Protection Information (T10 PI)."/>
+                </Property>
+                <Property Name="AutoConfigBehavior" Type="DellController.AutoConfigBehavior">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the current Auto config behavior of the controller.RAID0 is applicble only for PERC 10.4.x or earlier releases."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the current Auto config behavior of the controller.RAID0 is applicble only for PERC 10.4.x or earlier releases."/>
+                </Property>
+                <Property Name="CurrentControllerMode" Type="DellController.CurrentControllerMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property of the controller provides information to the user regarding the mode in which the controller is currently on."/>
+                    <Annotation Term="OData.LongDescription" String="This property of the controller provides information to the user regarding the mode in which the controller is currently on."/>
+                </Property>
+                <Property Name="SupportsLKMtoSEKMTransition" Type="DellController.SupportsLKMtoSEKMTransition">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents whether a controller supports LKM to SEKM transition or not."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents whether a controller supports LKM to SEKM transition or not."/>
+                </Property>
+                <Property Name="BackgroundInitializationRatePercent" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The percentage of controller resources used for background initialization rate volumes."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the percentage of controller resources used for background initialization rate of volumes."/>
+                    <Annotation Term="Validation.Minimum" Int="0"/>
+                    <Annotation Term="Validation.Maximum" Int="100"/>
+                </Property>
+                <Property Name="ReconstructRatePercent" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The property specifies the reconstruction rate."/>
+                    <Annotation Term="OData.LongDescription" String="The property specifies the reconstruction rate."/>
+                    <Annotation Term="Validation.Minimum" Int="0"/>
+                    <Annotation Term="Validation.Maximum" Int="100"/>
+                </Property>
+                <Property Name="PatrolReadRatePercent" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The percentage of controller resources used for patrol read rate."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the percentage of controller resources used for patrol read rate."/>
+                    <Annotation Term="Validation.Minimum" Int="0"/>
+                    <Annotation Term="Validation.Maximum" Int="100"/>
+                </Property>
+                <Property Name="MaxSpansInVolumeCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the maximum number of Spans that a Volume can have in a multi-span Raid Level."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the maximum number of Spans that a Volume can have in a multi-span Raid Level."/>
+                </Property>
+                <Property Name="MaxDrivesInSpanCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the maximum number of drives that can be present in a Span."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the maximum number of drives that can be present in a Span."/>
+                </Property>
+                <Property Name="MaxSupportedVolumesCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the maximum number of Volumes that can be created and managed by adapter."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the maximum number of Volumes that can be created and managed by adapter."/>
+                </Property>
+                <Property Name="PatrolReadIterationsCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the number of patrol read runs performed by adapter."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the number of patrol read runs performed by adapter."/>
+                </Property>
+                <Property Name="SpindownIdleTimeSeconds" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the amount of inactive time before a drive is considered idle and the disk spin down occurs."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the amount of inactive time before a drive is considered idle and the disk spin down occurs."/>
+                </Property>
+                <Property Name="PersistentHotspareMode" Type="DellOemStorageController.PersistentHotspareMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property indicates mode of the persistent hotspare slot of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates mode of the persistent hotspare slot of the controller."/>
+                </Property>
+                <Property Name="EnhancedAutoImportForeignConfigurationMode" Type="DellOemStorageController.EnhancedAutoImportForeignConfigurationMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property represents the controller supports automatic foreign import operation when the device is in foreign import mode."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the controller supports automatic foreign import operation when the device is in foreign import mode."/>
+                </Property>
+                <Property Name="ControllerBootMode" Type="DellOemStorageController.ControllerBootMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property indicates the controller boot mode."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the controller boot mode."/>
+                </Property>
+                <Property Name="ControllerMode" Type="DellOemStorageController.ControllerMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the personality mode of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the personality mode of the controller."/>
+                </Property>
+                <Property Name="SupportedInitializationTypes" Type="Collection(DellOemStorageController.SupportedInitializationTypes)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property specifies the supported initialization types of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the supported initialization of the controller."/>
+                </Property>
+                <Property Name="LoadBalanceMode" Type="DellOemStorageController.LoadBalanceMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the load balancing mode of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the load balancing mode of the controller."/>
+                </Property>
+                <Property Name="BatteryLearnMode" Type="DellOemStorageController.BatteryLearnMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the Battery learning cycle mode of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the Battery learning cycle mode of the controller."/>
+                </Property>
+                <Property Name="CheckConsistencyMode" Type="DellOemStorageController.CheckConsistencyMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the check consistency mode of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the check consistency mode of the controller."/>
+                </Property>
+                <Property Name="PatrolReadMode" Type="DellOemStorageController.PatrolReadMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the patrol read mode of the controller."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the patrol read mode of the controller."/>
+                </Property>
+                <Property Name="PatrolReadUnconfiguredAreaMode" Type="DellOemStorageController.PatrolReadUnconfiguredAreaMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the patrol read unconfigured area setting mode on the adapter."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the patrol read unconfigured area setting mode on the adapter."/>
+                </Property>
+                <Property Name="CopybackMode" Type="DellOemStorageController.CopybackMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="This property specifies the copy back mode of the adapter."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the copy back mode of the adapter."/>
+                </Property>
+                <Property Name="RAIDMode" Type="DellOemStorageController.RAIDMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property specifies the current RAID mode."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the current RAID mode."/>
+                </Property>
+            </ComplexType>
+            </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

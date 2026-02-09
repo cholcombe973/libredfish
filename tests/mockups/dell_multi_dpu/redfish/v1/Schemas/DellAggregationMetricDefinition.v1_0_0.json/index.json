@@ -1,0 +1,176 @@
+{
+    "$id": "/redfish/v1/Schemas/DellAggregationMetricDefinition.v1_0_0.json",
+    "$ref": "#/definitions/DellAggregationMetricDefinition",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellAggregationMetricDefinition": {
+            "additionalProperties": false,
+            "description": "DellAggregationMetricDefinition represents the definitions-related information of a metric.",
+            "longDescription": "DellAggregationMetricDefinition represents the definitions-related information of a metric.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "ChangeType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellAggregationMetricDefinition.json#/definitions/ChangeType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "ChangeType indicates how the metric value changes, in the form of typical combinations of finer grain attributes such as direction change, minimum and maximum values, and wrapping semantics. 5=\"Simple Function\": The derived metric value is calculated by applying the basic mathematical function identified by the SimpleFunction property to the underlying metric values.",
+                    "longDescription": "ChangeType indicates how the metric value changes, in the form of typical combinations of finer grain attributes such as direction change, minimum and maximum values, and wrapping semantics. 5=\"Simple Function\": The derived metric value is calculated by applying the basic mathematical function identified by the SimpleFunction property to the underlying metric values.",
+                    "readonly": true
+                },
+                "DataType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellAggregationMetricDefinition.json#/definitions/DataType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "DataType identifies the data type of the metric. These types represent the data types defined for CIM.",
+                    "longDescription": "DataType identifies the data type of the metric. These types represent the data types defined for CIM.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "ElementName": {
+                    "description": "ElementName is the user-friendly name for the instance.",
+                    "longDescription": "ElementName is the user-friendly name for the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GatheringType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellAggregationMetricDefinition.json#/definitions/GatheringType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "GatheringType indicates how the metric values are gathered by the underlying instrumentation. This allows the client application to choose the right metric for the purpose. 0=\"Unknown\": The GatheringType is not known. 2=\"OnChange\": The CIM metric values get updated immediately when the values inside the measured resource change. The values of OnChange metrics truly reflect the current state within the resource. An example is the number of users logged on, which gets updated immediately as users log-on or log-off. 3=\"Periodic\": The CIM metric values get updated periodically. For example, to a client application, a metric value that applies to the current time appears constant during each gathering interval and changes to the new value at the end of each gathering interval. 4=\"OnRequest\": The CIM metric value is updated when a client application reads it. The values of OnRequest metrics return the current state within the resource when requested. However, the values do not change \"unobserved\" and therefore it is recommended that you do not subscribe for value changes of OnRequest metrics.",
+                    "longDescription": "GatheringType indicates how the metric values are gathered by the underlying instrumentation. This allows the client application to choose the right metric for the purpose. 0=\"Unknown\": The GatheringType is not known. 2=\"OnChange\": The CIM metric values get updated immediately when the values inside the measured resource change. The values of OnChange metrics truly reflect the current state within the resource. An example is the number of users logged on, which gets updated immediately as users log-on or log-off. 3=\"Periodic\": The CIM metric values get updated periodically. For example, to a client application, a metric value that applies to the current time appears constant during each gathering interval and changes to the new value at the end of each gathering interval. 4=\"OnRequest\": The CIM metric value is updated when a client application reads it. The values of OnRequest metrics return the current state within the resource when requested. However, the values do not change \"unobserved\" and therefore it is recommended that you do not subscribe for value changes of OnRequest metrics.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "IsContinuous": {
+                    "description": "IsContinuous indicates whether the metric value is continuous or scalar. The value of this property is TRUE.",
+                    "longDescription": "IsContinuous indicates whether the metric value is continuous or scalar. The value of this property is TRUE.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "ProgrammaticUnits": {
+                    "description": "ProgrammaticUnits identifies the specific units of a value.",
+                    "longDescription": "ProgrammaticUnits identifies the specific units of a value.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SampleInterval": {
+                    "description": "SampleInterval provides the sample interval so that client applications can determine the minimum time interval to retrieve new statistics. The property value is in W3C representation in WS-CIM with the corresponding value equal to CIM datetime.",
+                    "longDescription": "SampleInterval provides the sample interval so that client applications can determine the minimum time interval to retrieve new statistics. The property value is in W3C representation in WS-CIM with the corresponding value equal to CIM datetime.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SimpleFunction": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellAggregationMetricDefinition.json#/definitions/SimpleFunction"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The SimpleFunction property identifies the basic computation that is performed on an underlying metric for arriving at the value of this derived metric. This property is NULL when the ChangeType property has a value other than 5 \"Simple Function\". 2=\"Minimum\": The metric reports the lowest value detected for the monitored entity. This is also known as a low watermark. 3=\"Maximum\": The metric reports the maximum value detected for the monitored entity. This is also known as a high watermark. 4=\"Average\": The metric reports the average value of the underlying metric values. 5=\"Median\": The metric reports the median value of the underlying metric values. 6=\"Mode\": The metric reports the modal value of the underlying metric values.",
+                    "longDescription": "The SimpleFunction property identifies the basic computation that is performed on an underlying metric for arriving at the value of this derived metric. This property is NULL when the ChangeType property has a value other than 5 \"Simple Function\". 2=\"Minimum\": The metric reports the lowest value detected for the monitored entity. This is also known as a low watermark. 3=\"Maximum\": The metric reports the maximum value detected for the monitored entity. This is also known as a high watermark. 4=\"Average\": The metric reports the average value of the underlying metric values. 5=\"Median\": The metric reports the median value of the underlying metric values. 6=\"Mode\": The metric reports the modal value of the underlying metric values.",
+                    "readonly": true
+                },
+                "TimeScope": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellAggregationMetricDefinition.json#/definitions/TimeScope"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "TimeScope indicates the time scope to which the metric value applies. 0=\"Unknown\": The time scope is not qualified by the metric designer or is unknown to the provider. 2=\"Point\": The metric applies to a point in time. On the corresponding BaseMetricValue instances, TimeStamp specifies the point in time and Duration is always 0. 3=\"Interval\": The metric applies to a time interval. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval and Duration specifies its duration. 4=\"StartupInterval\": The metric applies to a time interval that began at the startup of the measured resource, that is, the ManagedElement associated by MetricDefForMe. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval. The Duration value specifies the duration between the time when the resource started and the TimeStamp value. A Duration value of 0 indicates that the startup time of the measured resource is unknown.",
+                    "longDescription": "TimeScope indicates the time scope to which the metric value applies. 0=\"Unknown\": The time scope is not qualified by the metric designer or is unknown to the provider. 2=\"Point\": The metric applies to a point in time. On the corresponding BaseMetricValue instances, TimeStamp specifies the point in time and Duration is always 0. 3=\"Interval\": The metric applies to a time interval. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval and Duration specifies its duration. 4=\"StartupInterval\": The metric applies to a time interval that began at the startup of the measured resource, that is, the ManagedElement associated by MetricDefForMe. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval. The Duration value specifies the duration between the time when the resource started and the TimeStamp value. A Duration value of 0 indicates that the startup time of the measured resource is unknown.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellAggregationMetricDefinition.v1_0_0.DellAggregationMetricDefinition"
+}

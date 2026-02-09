@@ -1,0 +1,122 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOFrus",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOFrus resource describes features of add-in adapters.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "FRU": {
+            "description": "The typename this FRU describes.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "FRULink": {
+            "description": "The aggregation of the Link signals for all ports on the FRU card.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "FRUType": {
+            "description": "The type of FRU that is installed, i.e. Base or Mezzanine FRU.",
+            "enum": [
+                "Base",
+                "Mezzanine"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Interlocked": {
+            "description": "Indicates if a PCIe card is installed in slot.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "Details": {
+                    "description": "The locally available URI for FRU Details.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "description": "The location where the FRU resides.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "PGood": {
+            "description": "The Power Good status.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "PhysicalSlot": {
+            "description": "The physical slot in which this FRU resides. 0 is for Base FRU, 1-N is for Mezzanine FRUs",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Seated": {
+            "description": "Indicates if the Base FRU is properly seated in the slot.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "SerialNumber": {
+            "description": "The system's serial number.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UEFIDeviceName": {
+            "description": "The Device Name in UTF-8 format.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UEFIDevicePaths": {
+            "description": "The standardized text representation of the UEFI device path, in UTF-8 format.",
+            "etag": true,
+            "items": {
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeiLOFrus.v2_0_0.HpeiLOFrus",
+    "type": "object"
+}

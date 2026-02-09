@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellOemChassis  v1.1.0 -->
+<!--# This schema complements to Oem section of Chassis Resource                   -->
+<!--# Copyright 2022 Dell, Inc. or its subsidiaries.All Rights Reserved.             -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/DellChassis_v1.xml">
+    <edmx:Include Namespace="DellChassis"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/DellSensor_v1.xml">
+    <edmx:Include Namespace="DellSensor"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/DellEnclosure_v1.xml">
+    <edmx:Include Namespace="DellEnclosure"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOemChassis">
+
+      <Action Name="ResetFilterLife" IsBound="true">
+        <Parameter Name="Chassis" Type="Chassis.v1_0_0.OemActions" Nullable="false"/>
+        <Annotation Term="OData.Description" String="This action is used to reset Bezel air filter."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform reset of Bezel air filter."/>
+      </Action>
+      <Action Name="ExtendedReset" IsBound="true">
+        <Parameter Name="Chassis" Type="Chassis.v1_0_0.OemActions" Nullable="false"/>
+        <Parameter Name="ResetType" Type="DellOemChassis.v1_2_0.ResetType" Nullable="false">
+          <Annotation Term="OData.Description" String="The type of reset."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of reset."/>
+        </Parameter>
+        <Parameter Name="FinalPowerState" Type="DellOemChassis.v1_2_0.FinalPowerState">
+          <Annotation Term="OData.Description" String="This parameter shall contain the final power state of the system. In case the parameter is not provided, the system will be set to the power 'Off' state by default."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the final power state of the system."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action performs an extended chassis reset action."/>
+        <Annotation Term="OData.LongDescription" String="This action performs a chassis reset. It let's the user set the targeted power state after the reset is completed."/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_2_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Action>
+
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <ComplexType Name="DellOemChassis" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="Oem data related to DellOemChassis."/>
+        <Annotation Term="OData.LongDescription" String="Oem data related to DellOemChassis."/>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOemChassis.v1_0_0">
+       <ComplexType Name="DellOemChassis" BaseType="DellOemChassis.DellOemChassis">
+         <NavigationProperty Name="DellChassis" Type="DellChassis.DellChassis" ContainsTarget="true" Nullable="false">
+           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+           <Annotation Term="OData.Description" String="A resource representation of DellChassis."/>
+           <Annotation Term="OData.LongDescription" String="A resource representation of DellChassis."/>
+           <Annotation Term="OData.AutoExpand"/>
+         </NavigationProperty>
+         <NavigationProperty Name="DellEnclosure" Type="DellEnclosure.DellEnclosure" ContainsTarget="true" Nullable="false">
+           <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+           <Annotation Term="OData.Description" String="A resource representation of DellEnclosure."/>
+           <Annotation Term="OData.LongDescription" String="A resource representation of DellEnclosure."/>
+           <Annotation Term="OData.AutoExpand"/>
+         </NavigationProperty>
+         <Property Name="BezelAirFilter" Type="DellOemChassis.v1_0_0.BezelAirFilter" Nullable="false">
+           <Annotation Term="OData.Description" String="Bezel Air Filter related properties."/>
+           <Annotation Term="OData.LongDescription" String="This property shall contain Bezel Air Filter related properties."/>
+         </Property>
+        </ComplexType>
+
+        <ComplexType Name="BezelAirFilter">
+          <Property Name="FilterChangeIntervalInMonths" Type="Edm.Int64" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="OData.Description" String="Specifies the air filter count down mode in months."/>
+                <Annotation Term="OData.LongDescription" String="This property shall contain the air filter count down mode in months."/>
+                <Annotation Term="Validation.Minimum" Int="1"/>
+                <Annotation Term="Validation.Maximum" Int="36"/>
+            </Property>
+            <Property Name="FilterLifeRemainingInDays" Type="Edm.Int64" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="Specifies the remaining life of the filter in days."/>
+                <Annotation Term="OData.LongDescription" String="This property shall contain the remaining life of the filter in days."/>
+                <Annotation Term="Validation.Minimum" Int="0"/>
+                <Annotation Term="Validation.Maximum" Int="864"/>
+            </Property>
+            <Property Name="FilterCheckInterval" Type="DellOemChassis.v1_0_0.FilterCheckIntervalDay" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="OData.Description" String="Active mode starting day."/>
+                <Annotation Term="OData.LongDescription" String="This property shall indicate the active mode starting day."/>
+            </Property>
+            <Property Name="FilterCheckIntervalTimeInHours" Type="Edm.Int64" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="OData.Description" String="Active mode starting hour."/>
+                <Annotation Term="OData.LongDescription" String="This property shall indicate the active mode starting hour."/>
+                <Annotation Term="Validation.Minimum" Int="0"/>
+                <Annotation Term="Validation.Maximum" Int="23"/>
+            </Property>
+            <Property Name="FilterMonitorMethod" Type="DellOemChassis.v1_0_0.FilterMonitorMethod" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                <Annotation Term="OData.Description" String="Air filter monitoring modes."/>
+                <Annotation Term="OData.LongDescription" String="This property shall indicate the air filter monitoring mode."/>
+            </Property>
+        </ComplexType>
+
+        <EnumType Name="FilterCheckIntervalDay">
+            <Member Name="Sunday">
+                <Annotation Term="OData.Description" String="Sunday"/>
+            </Member>
+            <Member Name="Monday">
+                <Annotation Term="OData.Description" String="Monday"/>
+            </Member>
+            <Member Name="Tuesday">
+                <Annotation Term="OData.Description" String="Tuesday"/>
+            </Member>
+            <Member Name="Wednesday">
+                <Annotation Term="OData.Description" String="Wednesday"/>
+            </Member>
+            <Member Name="Thursday">
+                <Annotation Term="OData.Description" String="Thursday"/>
+            </Member>
+             <Member Name="Friday">
+                <Annotation Term="OData.Description" String="Friday"/>
+            </Member>
+             <Member Name="Saturday">
+                <Annotation Term="OData.Description" String="Saturday"/>
+            </Member>
+        </EnumType>
+
+        <EnumType Name="FilterMonitorMethod">
+            <Member Name="CountDownMode">
+                <Annotation Term="OData.Description" String="Air filter monitoring mode is CountDown mode."/>
+            </Member>
+            <Member Name="ActiveSensingMode">
+                <Annotation Term="OData.Description" String="Air filter monitoring mode is Active Sensing mode."/>
+            </Member>
+        </EnumType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOemChassis.v1_1_0">
+            <Annotation Term="OData.Description" String="This version was created to add the Navigation property and Update the BezelAirFilter Property Names."/>
+            <Annotation Term="OData.LongDescription" String="This version was created to add the Navigation property and Update the BezelAirFilter Property Names."/>
+            <ComplexType Name="DellOemChassis" BaseType="DellOemChassis.v1_0_0.DellOemChassis">
+                <Annotation Term="OData.Description" String="An Oem extension to represent the Navigation Property and Updated BezelAirFilter Property Names."/>
+                <Annotation Term="OData.LongDescription" String="An Oem extension to represent the Navigation Property and Updated BezelAirFilter Property Names."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+              <Property Name="BezelAirFilter" Type="DellOemChassis.v1_1_0.BezelAirFilter" Nullable="false">
+                <Annotation Term="OData.Description" String="Bezel Air Filter related properties."/>
+                <Annotation Term="OData.LongDescription" String="This property shall contain Bezel Air Filter related properties."/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="BezelAirFilter" BaseType="DellOemChassis.v1_0_0.BezelAirFilter">
+              <NavigationProperty Name="Sensors" Type="DellSensor.DellSensor" ContainsTarget="true" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="A resource representation of DellSensor."/>
+                <Annotation Term="OData.LongDescription" String="A resource representation of DellSensor."/>
+                <Annotation Term="OData.AutoExpandReferences"/>
+              </NavigationProperty>
+            </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOemChassis.v1_2_0">
+      <Annotation Term="OData.Description" String="This version was created to add support for new action ExtendedReset."/>
+      <Annotation Term="OData.LongDescription" String="This version was created to add support for new action ExtendedReset."/>
+      <ComplexType Name="DellOemChassis" BaseType="DellOemChassis.v1_1_0.DellOemChassis"/>
+      <EnumType Name="ResetType">
+        <Member Name="PowerCycle">
+          <Annotation Term="OData.Description" String="Power cycle the unit. Behaves like a full power removal, followed by a power restore to the resource."/>
+          <Annotation Term="OData.LongDescription" String="This value shall indicate the resource will perform a power cycle. Resource needs to in power off state to perform full power removal follwed by power restore to the resource."/>
+        </Member>
+      </EnumType>
+      <EnumType Name="FinalPowerState">
+        <Member Name="On">
+          <Annotation Term="OData.Description" String="Turn on the unit."/>
+          <Annotation Term="OData.LongDescription" String="This value shall indicate the resource will transition to a power on state. Upon successful completion, the PowerState property, if supported, shall contain the value `On`."/>
+        </Member>
+        <Member Name="Off">
+          <Annotation Term="OData.Description" String="Turn off the unit."/>
+          <Annotation Term="OData.LongDescription" String="This value shall indicate the resource will transition to a power off state. The transition will start immediately. Upon successful completion, the PowerState property, if supported, shall contain the value `Off`."/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>

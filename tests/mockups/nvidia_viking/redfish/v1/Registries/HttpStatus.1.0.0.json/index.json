@@ -1,0 +1,174 @@
+{
+    "@odata.type": "#MessageRegistry.v1_3_1.MessageRegistry",
+    "Description": "This registry defines HTTP status messages that are not covered by the Base Message Registry",
+    "Id": "HttpStatus.1.0.0",
+    "Language": "en",
+    "Messages": {
+        "Conflict": {
+            "Description": "Indicates that the request could not be completed because it would cause a conflict in the current state of the resources supported by the platform",
+            "Message": "The request to %1 cannot be completed because it would cause a conflict in the current state of the resources supported by the platform",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Resolve conflict and try request again",
+            "Severity": "Critical"
+        },
+        "Gone": {
+            "Description": "Indicates that the requested resource is no longer available in the server. This condition is likely to be permanent.",
+            "Message": "The requested resource is no longer available in the server.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Warning"
+        },
+        "LengthRequired": {
+            "Description": "Indicates that request did not specify the length of its content using the Content-Length header and the resource requires the Content-Length header",
+            "Message": "The request to %1 cannot be completed because the requested resource requires the Content-Length header be present",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Include Content-Length header in request",
+            "Severity": "Critical"
+        },
+        "MethodNotAllowed": {
+            "Description": "Indicates that the HTTP method for the request is not supported for this request URI",
+            "Message": "The method %1 is not allowed for the URI %2",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Use a method listed in the Allow header",
+            "Severity": "Critical"
+        },
+        "MultipartBoundaryRequired": {
+            "Description": "Indicates that the request did not specify the boundary in Content-Type header.",
+            "Message": "The request to %1 is lacking boundary in Content-Type.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide boundary in Content-Type.",
+            "Severity": "Critical"
+        },
+        "MultipartFormatImcomplete": {
+            "Description": "Indicates that the multipart parser does not received close-delimiter.",
+            "Message": "The multipart body of request to %1 is incomplete.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Resend the proper multipart format body defined by RFC 7578.",
+            "Severity": "Critical"
+        },
+        "MultipartParseError": {
+            "Description": "Indicates that an error occurred during parsing multipart body.",
+            "Message": "The request to %1 cannot completed due to an error of parsing multipart body.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Resend the multipart body in well format defined in RFC 7578.",
+            "Severity": "Critical"
+        },
+        "MultipartPartHeaderTooLong": {
+            "Description": "Indicates that the header in part(s) is too long.",
+            "Message": "The header of part in request body to %1 is too long.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Change header(s) in part(s) only contains Content-Disposition and Content-Type without any others data.",
+            "Severity": "Critical"
+        },
+        "MultipartPartNameRequired": {
+            "Description": "Indicates that there is no name=\"xxxx\" in header of part(s).",
+            "Message": "The body of request to %1 is lacking in name=\"xxx\" in header of part(s).",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide name in header of each part.(RFC 7578)",
+            "Severity": "Critical"
+        },
+        "MultipartWritingFileFailed": {
+            "Description": "Indicates that server fail to write to file during parsing multipart body.",
+            "Message": "The request to %1 fail to write file during parsing multipart body.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "POST smaller size of body.",
+            "Severity": "Critical"
+        },
+        "NotAcceptable": {
+            "Description": "Indicates that the resource identified by this request is not capable of generating a representation corresponding to one of the media types in the Accept header",
+            "Message": "The resource at %1 cannot be represented as any of the media types in the request Accept header",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Verify that Accept header in request is correct",
+            "Severity": "Critical"
+        },
+        "NotImplemented": {
+            "Description": "Indicates that the server does not recognize the request method and is not capable of supporting the method for any resource",
+            "Message": "The request to %1 cannot be completed because the server does not support the %2 method for any resource",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Use a method listed in the Allow header",
+            "Severity": "Critical"
+        },
+        "PayloadTooLarge": {
+            "Description": "Indicates that the request entity is larger than limits defined by server.",
+            "Message": "The request size is %1 and the maximum size for this resource is %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Change request to be smaller.",
+            "Severity": "Critical"
+        },
+        "PreconditionFailed": {
+            "Description": "Indicates that the one or more of the precondition(s) in the request-header failed",
+            "Message": "The request to %1 cannot be completed because the %2 precondition failed",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "RequestBodyIncomplete": {
+            "Description": "Indicates that the received request body is shorter than Content-Length header.",
+            "Message": "The body of request to %1 is shorter than Content-Length header",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Provide correct Content-Length header in request.",
+            "Severity": "Critical"
+        },
+        "UnsupportedMediaType": {
+            "Description": "Indicates that the request specifies a Content-Type for the body that is not supported",
+            "Message": "The request to %1 cannot be completed because the Content-Type %2 is not supported",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Verify Content-Type header is correct and send request in a supported format",
+            "Severity": "Critical"
+        }
+    },
+    "Name": "HTTP Statuses Message Registry",
+    "OwningEntity": "AMI",
+    "RegistryPrefix": "HttpStatus",
+    "RegistryVersion": "1.0.0"
+}

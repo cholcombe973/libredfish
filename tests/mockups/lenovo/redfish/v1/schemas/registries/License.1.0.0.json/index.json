@@ -1,0 +1,137 @@
+{
+    "RegistryVersion": "1.0.0",
+    "Description": "This registry defines the license status and error messages.",
+    "Id": "License.1.0.0",
+    "@odata.type": "#MessageRegistry.v1_4_2.MessageRegistry",
+    "@Redfish.Copyright": "Copyright 2014-2021 DMTF. All rights reserved.",
+    "Language": "en",
+    "@Redfish.License": "Creative Commons Attribution 4.0 License.  For full text see link: https://creativecommons.org/licenses/by/4.0/",
+    "Messages": {
+        "InstallFailed": {
+            "ArgDescriptions": [
+                "The reason for the license installation failure."
+            ],
+            "LongDescription": "This message shall be used to indicate that the service failed to install the license.",
+            "ParamTypes": [
+                "String"
+            ],
+            "NumberOfArgs": "1",
+            "Description": "Indicates that the service failed to install the license.",
+            "MessageSeverity": "Critical",
+            "Resolution": "None.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the reason for the license installation failure."
+            ],
+            "Severity": "Critical",
+            "Message": "Failed to install the license.  Reason: %1."
+        },
+        "GracePeriod": {
+            "ArgDescriptions": [
+                "The name of the license.",
+                "The number day of grace period."
+            ],
+            "LongDescription": "This message shall be used to indicate that a license has expired and entered its grace period.",
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "NumberOfArgs": "2",
+            "Description": "Indicates that a license has expired and entered its grace period.",
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the human readable identifier of the license.",
+                "This argument shall contain the number day of grace period for the licensed functionality."
+            ],
+            "Severity": "Warning",
+            "Message": "The license '%1' has expired, %2 day grace period before licensed functionality is disabled."
+        },
+        "TargetsRequired": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "This message shall be used to indicate that one or more targets need to be specified with the license.",
+            "Resolution": "Add `AuthorizedDevices` to `Links` and resubmit the request.",
+            "NumberOfArgs": "0",
+            "Description": "Indicates that one or more targets need to be specified with the license.",
+            "Severity": "Critical",
+            "Message": "The license requires targets to be specified."
+        },
+        "Expired": {
+            "ArgDescriptions": [
+                "The name of the license."
+            ],
+            "LongDescription": "This message shall be used to indicate that a license has expired and its functionality has been disabled.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": "1",
+            "Description": "Indicates that a license has expired and its functionality has been disabled.",
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the human readable identifier of the license."
+            ],
+            "Severity": "Warning",
+            "Message": "The license '%1' has expired."
+        },
+        "LicenseInstalled": {
+            "ArgDescriptions": [
+                "The name of the license."
+            ],
+            "LongDescription": "This message shall be used to indicate that a license has been installed.  Existing licenses may have been updated or otherwise affected by the installation.",
+            "ParamTypes": [
+                "String"
+            ],
+            "NumberOfArgs": "1",
+            "Description": "Indicates that a license has been installed.",
+            "MessageSeverity": "OK",
+            "Resolution": "None.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the human readable identifier of the license."
+            ],
+            "Severity": "OK",
+            "Message": "The license '%1' has been installed."
+        },
+        "InvalidLicense": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "This message shall be used to indicate that the content of the license was not recognized, is corrupted, or is invalid.",
+            "Resolution": "Verify the license content is correct and resubmit the request.",
+            "NumberOfArgs": "0",
+            "Description": "Indicates that the license was not recognized, is corrupted, or is invalid.",
+            "Severity": "Critical",
+            "Message": "The content of the license was not recognized, is corrupted, or is invalid."
+        },
+        "NotApplicableToTarget": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "This message shall be used to indicate that the license is not applicable to the target.",
+            "Resolution": "Check the license compatibility or applicability to the specified target.",
+            "NumberOfArgs": "0",
+            "Description": "Indicates that the license is not applicable to the target.",
+            "Severity": "Critical",
+            "Message": "The license is not applicable to the target."
+        },
+        "DaysBeforeExpiration": {
+            "ArgDescriptions": [
+                "The name of the license.",
+                "The number of days before the license expires."
+            ],
+            "LongDescription": "This message shall be used to indicate the number of days remaining on a license before expiration.",
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "NumberOfArgs": "2",
+            "Description": "Indicates the number of days remaining on a license before expiration.",
+            "MessageSeverity": "OK",
+            "Resolution": "None.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the human readable identifier of the license.",
+                "This argument shall contain the number of days before the license expires."
+            ],
+            "Severity": "OK",
+            "Message": "The license '%1' will expire in %2 days."
+        }
+    },
+    "OwningEntity": "DMTF",
+    "Name": "License Message Registry",
+    "RegistryPrefix": "License"
+}

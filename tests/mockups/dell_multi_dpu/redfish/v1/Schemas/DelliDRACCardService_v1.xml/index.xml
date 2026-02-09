@@ -1,0 +1,930 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DelliDRACCardService v1_7_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DelliDRACCardService" Abstract="true">
+                <Annotation String="The DelliDRACCardService resource provides some actions to support iDRAC configurations." Term="OData.Description"/>
+                <Annotation String="The DelliDRACCardService resource provides some actions to support iDRAC configurations." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DelliDRACCardService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="DeleteCertificate" IsBound="true">
+                <Annotation String="This method is used to delete the certificate from iDRAC, on the basis of input parameter Type." Term="OData.Description"/>
+                <Annotation String="This method is used to delete the certificate from iDRAC, on the basis of input parameter Type." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="CertificateType" Type="DelliDRACCardService.CertificateType" Nullable="false">
+                    <Annotation String="The type of the certificate to be deleted." Term="OData.Description"/>
+                    <Annotation String="The type of the certificate to be deleted." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DeleteGroup" IsBound="true">
+                <Annotation String="The method is used delete the group." Term="OData.Description"/>
+                <Annotation String="The method is used delete the group." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="GroupName" Type="Edm.String" Nullable="false">
+                    <Annotation String="Name of group to be delete." Term="OData.Description"/>
+                    <Annotation String="Name of group to be delete." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DeleteSSLCertificate" IsBound="true">
+                <Annotation String="This method is used to delete the Custom Signing Certificate(CSC) from iDRAC, on the basis of input parameter Type. Reset iDRAC to complete the delete action of the certificate." Term="OData.Description"/>
+                <Annotation String="This method is used to delete the Custom Signing Certificate(CSC) from iDRAC, on the basis of input parameter Type. Reset iDRAC to complete the delete action of the certificate." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_7_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="CertificateType" Type="DelliDRACCardService.CertificateType" Nullable="false">
+                    <Annotation String="The type of the certificate to be deleted." Term="OData.Description"/>
+                    <Annotation String="The type of the certificate to be deleted." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DisableSEKM" IsBound="true">
+                <Annotation String="Disable SEKM on iDRAC" Term="OData.Description"/>
+                <Annotation String="Disable SEKM on iDRAC" Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="DisableiLKM" IsBound="true">
+                <Annotation String="This method is used to Disable iLKM." Term="OData.Description"/>
+                <Annotation String="This method is used to Disable iLKM." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="EnableSEKM" IsBound="true">
+                <Annotation String="Enable SEKM on iDRAC" Term="OData.Description"/>
+                <Annotation String="Enable SEKM on iDRAC" Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="EnableiLKM" IsBound="true">
+                <Annotation String="This method is used to Enable iLKM." Term="OData.Description"/>
+                <Annotation String="This method is used to Enable iLKM." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="KeyID" Type="Edm.String" Nullable="false">
+                    <Annotation String="Specifies the Key ID." Term="OData.Description"/>
+                    <Annotation String="Specifies the Key ID." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
+                    <Annotation String="Specifies the Passphrase." Term="OData.Description"/>
+                    <Annotation String="Specifies the Passphrase." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportCertificate" IsBound="true">
+                <Annotation String="This method is used to export the certificate from the idrac, based on input parameter CertificateType. ExportCertificate returns the certificate file path." Term="OData.Description"/>
+                <Annotation String="This method is used to export the certificate from the idrac, based on input parameter CertificateType. ExportCertificate returns the certificate file path." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="CertificateType" Type="DelliDRACCardService.CertificateType" Nullable="false">
+                    <Annotation String="The type of the certificate to be exported." Term="OData.Description"/>
+                    <Annotation String="The type of the certificate to be exported." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportSSLCertificate" IsBound="true">
+                <Annotation String="This method is used to export the ssl certificate from the idrac, based on input parameter Type. ExportSSLCertificate returns the certificate." Term="OData.Description"/>
+                <Annotation String="This method is used to export the ssl certificate from the idrac, based on input parameter Type. ExportSSLCertificate returns the certificate." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="SSLCertType" Type="DelliDRACCardService.SSLCertType" Nullable="false">
+                    <Annotation String="The type of the certificate to be exported." Term="OData.Description"/>
+                    <Annotation String="The type of the certificate to be exported." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DelliDRACCardService.v1_0_0.ExportSSLCertificateResponse" Nullable="false"/>
+            </Action>
+            <Action Name="FactoryIdentityCertificateGenerateCSR" IsBound="true">
+                <Annotation String="The FactoryIdentityCertificateGenerateCSR() method is used to Generate CSR for Factory Identity certificate." Term="OData.Description"/>
+                <Annotation String="The FactoryIdentityCertificateGenerateCSR() method is used to Generate CSR for Factory Identity certificate." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <ReturnType Type="DelliDRACCardService.v1_2_0.FactoryIdentityCertificateGenerateCSRResponse" Nullable="false"/>
+            </Action>
+            <Action Name="FactoryIdentityExportCertificate" IsBound="true">
+                <Annotation String="The FactoryIdentityExportCertificate() method is used to export factory identity certificate." Term="OData.Description"/>
+                <Annotation String="The FactoryIdentityExportCertificate() method is used to export factory identity certificate." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="FactoryIdentityImportCertificate" IsBound="true">
+                <Annotation String="The FactoryIdentityImportCertificate() method is used to import factory Identity certificate." Term="OData.Description"/>
+                <Annotation String="The FactoryIdentityImportCertificate() method is used to import factory Identity certificate." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="CertificateString" Type="Edm.String" Nullable="false">
+                    <Annotation String="A base 64 encoded string of the Certificate file." Term="OData.Description"/>
+                    <Annotation String="A base 64 encoded string of the Certificate file." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="GenerateSEKMCSR" IsBound="true">
+                <Annotation String="This method is used to create the SEKM certificate signing request(CSR) and return the certificate file. The certificate file should be signed by an authority. Note: For creating the CSR, the following DelliDRACCardString attributes under SEKMCert group must be configured. 1.CommonName, 2.OrganizationUnit, 3.LocalityName, 4.StateName, 5. CountryCode, 6. EmailAddress, 7.OrganizationName and optional attributes are 1.SubjectAltName 2.UserId." Term="OData.Description"/>
+                <Annotation String="This method is used to create the SEKM certificate signing request(CSR) and return the certificate file. The certificate file should be signed by an authority. Note: For creating the CSR, the following DelliDRACCardString attributes under SEKMCert group must be configured. 1.CommonName, 2.OrganizationUnit, 3.LocalityName, 4.StateName, 5. CountryCode, 6. EmailAddress, 7.OrganizationName and optional attributes are 1.SubjectAltName 2.UserId." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="GetKVMSession" IsBound="true">
+                <Annotation String="This method is used to get the Temporary credentials for the vKVM Session." Term="OData.Description"/>
+                <Annotation String="This method is used to get the Temporary credentials for the vKVM Session." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_3_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="SessionTypeName" Type="Edm.String" Nullable="false">
+                    <Annotation String="A random string value upto 32 bytes." Term="OData.Description"/>
+                    <Annotation String="A random string value upto 32 bytes." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DelliDRACCardService.v1_3_0.GetKVMSessionResponse" Nullable="false"/>
+            </Action>
+            <Action Name="ImportCertificate" IsBound="true">
+                <Annotation String="This method is used to import the certificate to iDRAC, on the basis of input parameter CertificateType." Term="OData.Description"/>
+                <Annotation String="This method is used to import the certificate to iDRAC, on the basis of input parameter CertificateType." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="CertificateFile" Type="Edm.String" Nullable="false">
+                    <Annotation String="A base 64 encoded string of the Certificate file." Term="OData.Description"/>
+                    <Annotation String="A base 64 encoded string of the Certificate file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="CertificateType" Type="DelliDRACCardService.CertificateType" Nullable="false">
+                    <Annotation String="Type of the certificate to be imported." Term="OData.Description"/>
+                    <Annotation String="Type of the certificate to be imported." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Instance" Type="Edm.Int64">
+                    <Annotation String="This parameter represent the instance number. Applicable only for CertificateType RSYSLOG_SERVER_CA and max 2 instance are allowed to store." Term="OData.Description"/>
+                    <Annotation String="This parameter represent the instance number. Applicable only for CertificateType RSYSLOG_SERVER_CA and max 2 instance are allowed to store." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Passphrase" Type="Edm.String">
+                    <Annotation String="A passphrase for certificate file." Term="OData.Description"/>
+                    <Annotation String="A passphrase for certificate file." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ImportSSLCertificate" IsBound="true">
+                <Annotation String="This method is used to import the ssl certificate to iDRAC, on the basis of input parameter Type. After importing the certificate, the iDRAC will automatically restart." Term="OData.Description"/>
+                <Annotation String="This method is used to import the ssl certificate to iDRAC, on the basis of input parameter Type. After importing the certificate, the iDRAC will automatically restart." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="CertificateType" Type="DelliDRACCardService.CertificateType" Nullable="false">
+                    <Annotation String="Type of the certificate to be imported." Term="OData.Description"/>
+                    <Annotation String="Type of the certificate to be imported." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Passphrase" Type="Edm.String">
+                    <Annotation String="A passphrase for certificate file. Note: This is optional parameter for CSC certificate, and not required for Server and CA certificates." Term="OData.Description"/>
+                    <Annotation String="A passphrase for certificate file. Note: This is optional parameter for CSC certificate, and not required for Server and CA certificates." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SSLCertificateFile" Type="Edm.String" Nullable="false">
+                    <Annotation String="A base 64 encoded string of the XML Certificate file. Note: For importing CSC certificate, user has to convert PKCS file to base64 format. Use the openssl command. The CTC file content has to be in PEM format (base 64 encoded)." Term="OData.Description"/>
+                    <Annotation String="A base 64 encoded string of the XML Certificate file. Note: For importing CSC certificate, user has to convert PKCS file to base64 format. Use the openssl command. The CTC file content has to be in PEM format (base 64 encoded)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="JoinGroup" IsBound="true">
+                <Annotation String="The method is used join an existing group providing the GroupPasscode." Term="OData.Description"/>
+                <Annotation String="The method is used join an existing group providing the GroupPasscode." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="CloneConfiguration" Type="DelliDRACCardService.CloneConfiguration" Nullable="false">
+                    <Annotation String="Clones email alert configuration from the group once joined.0-Disable, 1-Enable." Term="OData.Description"/>
+                    <Annotation String="Clones email alert configuration from the group once joined.0-Disable, 1-Enable." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="GroupName" Type="Edm.String" Nullable="false">
+                    <Annotation String="Name of the group to be joined." Term="OData.Description"/>
+                    <Annotation String="Name of the group to be joined." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="GroupPasscode" Type="Edm.String" Nullable="false">
+                    <Annotation String="Passcode of the group to be joined." Term="OData.Description"/>
+                    <Annotation String="Passcode of the group to be joined." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="GroupUUID" Type="Edm.String">
+                    <Annotation String="Unique Identifier of the group to be joined." Term="OData.Description"/>
+                    <Annotation String="Unique Identifier of the group to be joined." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="Rekey" IsBound="true">
+                <Annotation String="This method is used to Rekey all the secure capable devices in iDRAC." Term="OData.Description"/>
+                <Annotation String="This method is used to Rekey all the secure capable devices in iDRAC." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_3_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Mode" Type="DelliDRACCardService.Mode">
+                    <Annotation String="Specifies the security mode of iDRAC : 1 - iDrac Local Key Management (iLKM), 2 - Secure Enterprise Key Manager(SEKM)." Term="OData.Description"/>
+                    <Annotation String="Specifies the security mode of iDRAC : 1 - iDrac Local Key Management (iLKM), 2 - Secure Enterprise Key Manager(SEKM)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="NewKeyId" Type="Edm.String">
+                    <Annotation String="new security key identifier for iLKM " Term="OData.Description"/>
+                    <Annotation String="new security key identifier for iLKM " Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="NewPassphrase" Type="Edm.String">
+                    <Annotation String="new security key passphrase for ILKM " Term="OData.Description"/>
+                    <Annotation String="new security key passphrase for ILKM " Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="OldPassphrase" Type="Edm.String">
+                    <Annotation String="Old security key passphrase iLKM" Term="OData.Description"/>
+                    <Annotation String="Old security key passphrase iLKM" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="fqdd" Type="Edm.String" Nullable="false">
+                    <Annotation String="Specifies the fqdd of the component. currently it supports only &quot;iDRAC.Embedded.1&quot;." Term="OData.Description"/>
+                    <Annotation String="Specifies the fqdd of the component. currently it supports only &quot;iDRAC.Embedded.1&quot;." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="RemoveSelf" IsBound="true">
+                <Annotation String="The method is used to remove the iDRAC from a group, that the iDRAC is a member of." Term="OData.Description"/>
+                <Annotation String="The method is used to remove the iDRAC from a group, that the iDRAC is a member of." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="GroupName" Type="Edm.String" Nullable="false">
+                    <Annotation String="Name of the group which the iDRAC is a part of." Term="OData.Description"/>
+                    <Annotation String="Name of the group which the iDRAC is a part of." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SSLResetCfg" IsBound="true">
+                <Annotation String="This method is used to restores the web-server certificate to factory defaults." Term="OData.Description"/>
+                <Annotation String="This method is used to restores the web-server certificate to factory defaults." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="SendTestEmailAlert" IsBound="true">
+                <Annotation String="This method is used to to send a test email alert for a particular attribute." Term="OData.Description"/>
+                <Annotation String="This method is used to to send a test email alert for a particular attribute." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="InstanceID" Type="Edm.String" Nullable="false">
+                    <Annotation String="The property shall have the value of the InstanceID property of the attribute for which the test email alert is generated." Term="OData.Description"/>
+                    <Annotation String="The property shall have the value of the InstanceID property of the attribute for which the test email alert is generated." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SendTestSNMPTrap" IsBound="true">
+                <Annotation String="This method is used to to send a test snmp alert for a particular attribute." Term="OData.Description"/>
+                <Annotation String="This method is used to to send a test snmp alert for a particular attribute." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="InstanceID" Type="Edm.String" Nullable="false">
+                    <Annotation String="The property shall have the value of the InstanceID property of the attribute for which the test email alert is generated." Term="OData.Description"/>
+                    <Annotation String="The property shall have the value of the InstanceID property of the attribute for which the test email alert is generated." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="TestConnection" IsBound="true">
+                <Annotation String="This method is used to test server connection." Term="OData.Description"/>
+                <Annotation String="This method is used to test server connection." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_7_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ConnectionType" Type="DelliDRACCardService.ConnectionType" Nullable="false">
+                    <Annotation String="Type of the connection to test.." Term="OData.Description"/>
+                    <Annotation String="Type of the connection to test.." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="TestSEKMServerConnection" IsBound="true">
+                <Annotation String="This method is used to test SEKM server connection." Term="OData.Description"/>
+                <Annotation String="This method is used to test SEKM server connection." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ServerIndex" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="Specifies the SEKM server index value and the possible values for PrimaryServer is 1 and for SecondaryServer is 1-8." Term="OData.Description"/>
+                    <Annotation String="Specifies the SEKM server index value and the possible values for PrimaryServer is 1 and for SecondaryServer is 1-8." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ServerType" Type="DelliDRACCardService.ServerType" Nullable="false">
+                    <Annotation String="specifies the SEKM server type." Term="OData.Description"/>
+                    <Annotation String="specifies the SEKM server type." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="UploadSSLKey" IsBound="true">
+                <Annotation String="This API is used to upload the SSL key from the client to iDRAC." Term="OData.Description"/>
+                <Annotation String="This API is used to upload the SSL key from the client to iDRAC." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_5_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="SSLKeyString" Type="Edm.String" Nullable="false">
+                    <Annotation String="A SSL key used to generate the server certificate." Term="OData.Description"/>
+                    <Annotation String="A SSL key used to generate the server certificate." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="VerifyHWProofOfPossession" IsBound="true">
+                <Annotation String="This method is used to verify hardware identity certificate (Factory certificate)." Term="OData.Description"/>
+                <Annotation String="This method is used to verify hardware identity certificate (Factory certificate)." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Algorithm" Type="DelliDRACCardService.Algorithm" Nullable="false">
+                    <Annotation String="The algorithm used to encrypt EncryptedChallenge." Term="OData.Description"/>
+                    <Annotation String="The algorithm used to encrypt EncryptedChallenge." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="EncryptedChallenge" Type="Edm.String" Nullable="false">
+                    <Annotation String="A string encrypted with the public key of the certificate." Term="OData.Description"/>
+                    <Annotation String="A string encrypted with the public key of the certificate." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="HMAC" Type="Edm.String" Nullable="false">
+                    <Annotation String="The Hash-based Message Authentication Code for the EncryptedChallenge." Term="OData.Description"/>
+                    <Annotation String="The Hash-based Message Authentication Code for the EncryptedChallenge." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="InitialVector" Type="Edm.String" Nullable="false">
+                    <Annotation String="A hexidecimal representation of the initial vector used for the EncryptedChallenge." Term="OData.Description"/>
+                    <Annotation String="A hexidecimal representation of the initial vector used for the EncryptedChallenge." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="KeyDerivationFunction" Type="DelliDRACCardService.KeyDerivationFunction" Nullable="false">
+                    <Annotation String="The key derivation function used." Term="OData.Description"/>
+                    <Annotation String="The key derivation function used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PublicKey" Type="Edm.String" Nullable="false">
+                    <Annotation String="A hexidecimal representation of the public key used to encrypt the EncryptedChallenge." Term="OData.Description"/>
+                    <Annotation String="A hexidecimal representation of the public key used to encrypt the EncryptedChallenge." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DelliDRACCardService.v1_2_0.VerifyHWProofOfPossessionResponse" Nullable="false"/>
+            </Action>
+            <Action Name="iDRACReset" IsBound="true">
+                <Annotation String="This method is used to reset iDRAC ." Term="OData.Description"/>
+                <Annotation String="This method is used to reset iDRAC ." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="Force" Type="DelliDRACCardService.Force">
+                    <Annotation String="This option is used to reset the iDRAC by force or gracefully." Term="OData.Description"/>
+                    <Annotation String="This option is used to reset the iDRAC by force or gracefully." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="iDRACResetCfg" IsBound="true">
+                <Annotation String="This method is used to reset the iDRAC to factory default configurations." Term="OData.Description"/>
+                <Annotation String="This method is used to reset the iDRAC to factory default configurations." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Parameter Name="Force" Type="DelliDRACCardService.Force">
+                    <Annotation String="This option is used to reset the iDRAC to factory defaults by force or gracefully." Term="OData.Description"/>
+                    <Annotation String="This option is used to reset the iDRAC to factory defaults by force or gracefully." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Preserve" Type="DelliDRACCardService.Preserve">
+                    <Annotation String="Preserve= 0 (Default)-reset all configuration to default except network and users. Preserve=1 (All)-reset all configuration to default including network and users. Preserve=2 (ResetAllWithRootDefaults)  - reset all configuration to default including network preserve default user as root calvin." Term="OData.Description"/>
+                    <Annotation String="Preserve= 0 (Default)-reset all configuration to default except network and users. Preserve=1 (All)-reset all configuration to default including network and users. Preserve=2 (ResetAllWithRootDefaults)  - reset all configuration to default including network preserve default user as root calvin." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="iLKMToSEKMTransition" IsBound="true">
+                <Annotation String="This method is used to iLKM To SEKM Transition." Term="OData.Description"/>
+                <Annotation String="This method is used to iLKM To SEKM Transition." Term="OData.LongDescription"/>
+                <Parameter Name="DelliDRACCardService" Type="DelliDRACCardService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="KeyID" Type="Edm.String" Nullable="false">
+                    <Annotation String="Specifies the Key ID." Term="OData.Description"/>
+                    <Annotation String="Specifies the Key ID." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Passphrase" Type="Edm.String" Nullable="false">
+                    <Annotation String="Specifies the Passphrase." Term="OData.Description"/>
+                    <Annotation String="Specifies the Passphrase." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="Algorithm">
+                <Member Name="AES128CBC">
+                    <Annotation String="AES128CBC" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="CertificateType">
+                <Member Name="CA">
+                    <Annotation String="CA" Term="OData.Description"/>
+                </Member>
+                <Member Name="CSC">
+                    <Annotation String="CSC" Term="OData.Description"/>
+                </Member>
+                <Member Name="ClientTrustCertificate">
+                    <Annotation String="Client Trust Certificate" Term="OData.Description"/>
+                </Member>
+                <Member Name="CustomCertificate">
+                    <Annotation String="Custom Certificate" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_5_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="IEEE8021xCSC">
+                    <Annotation String="Base64 encoded PKCS12 IEEE 8021.x Custom Signing Certificate" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_6_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="IEEE8021xClient">
+                    <Annotation String="Base64 encoded PKCS12 Certificate for IEEE 8021.x Client" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_6_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="KMS_SERVER_CA">
+                    <Annotation String="KMS_SERVER_CA" Term="OData.Description"/>
+                </Member>
+                <Member Name="RSA_CA_CERT">
+                    <Annotation String="RSA_CA_CERT" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RSYSLOG_SERVER_CA">
+                    <Annotation String="RSYSLOG_SERVER_CA" Term="OData.Description"/>
+                </Member>
+                <Member Name="SCEP_CA_CERT">
+                    <Annotation String="SCEP_CA_CERT" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SEKM_SSL_CERT">
+                    <Annotation String="SEKM_SSL_CERT" Term="OData.Description"/>
+                </Member>
+                 <Member Name="SEKM_CUSTOM_CERT">
+                    <Annotation String="SEKM_CUSTOM_CERT" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_1"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SMARTCARD_CA_CERT">
+                    <Annotation String="SMARTCARD_CA_CERT" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SMARTCARD_USER_CERT">
+                    <Annotation String="SMARTCARD_USER_CERT" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Server">
+                    <Annotation String="Server" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="CloneConfiguration">
+                <Member Name="Disable">
+                    <Annotation String="Disable" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enable">
+                    <Annotation String="Enable" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="ConnectionType">
+                <Member Name="RSA_SERVER">
+                    <Annotation String="RSA_SERVER" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="Force">
+                <Member Name="Force">
+                    <Annotation String="Force" Term="OData.Description"/>
+                </Member>
+                <Member Name="Graceful">
+                    <Annotation String="Graceful" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="KeyDerivationFunction">
+                <Member Name="DellSHA256">
+                    <Annotation String="DellSHA256" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="Mode">
+                <Member Name="SEKM">
+                    <Annotation String="SEKM" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="iLKM">
+                    <Annotation String="iLKM" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="Preserve">
+                <Member Name="All">
+                    <Annotation String="All" Term="OData.Description"/>
+                </Member>
+                <Member Name="Default">
+                    <Annotation String="Default" Term="OData.Description"/>
+                </Member>
+                <Member Name="ResetAllWithRootDefaults">
+                    <Annotation String="ResetAllWithRootDefaults" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SSLCertType">
+                <Member Name="CA">
+                    <Annotation String="CA" Term="OData.Description"/>
+                </Member>
+                <Member Name="CSC">
+                    <Annotation String="CSC" Term="OData.Description"/>
+                </Member>
+                <Member Name="ClientTrustCertificate">
+                    <Annotation String="Client Trust Certificate" Term="OData.Description"/>
+                </Member>
+                <Member Name="CustomCertificate">
+                    <Annotation String="Custom Certificate" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_7_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Server">
+                    <Annotation String="Server" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ServerType">
+                <Member Name="Primary">
+                    <Annotation String="Primary" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Secondary">
+                    <Annotation String="Secondary" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_0_0">
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.DelliDRACCardService">
+                <Annotation Term="OData.Description" String="The DelliDRACCardService resource provides some actions to support iDRAC configurations."/>
+                <Annotation Term="OData.LongDescription" String="The DelliDRACCardService resource provides some actions to support iDRAC configurations."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DelliDRACCardService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+            <ComplexType Name="ExportSSLCertificateResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the ExportSSLCertificate action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the ExportSSLCertificate action."/>
+                <Property Name="CertificateFile" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Exported certificate file encoded in base64."/>
+                    <Annotation Term="OData.LongDescription" String="Exported certificate file encoded in base64."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DeleteGroup, GenerateSEKMCSR, JoinGroup, RemoveSelf, SSLResetCfg, SendTestEmailAlert, SendTestSNMPTrap actions."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_0_0.DelliDRACCardService">
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add FactoryIdentityCertificateGenerateCSR, FactoryIdentityExportCertificate, FactoryIdentityImportCertificate, TestSEKMServerConnection, VerifyHWProofOfPossession actions."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_1_0.DelliDRACCardService">
+</EntityType>
+            <ComplexType Name="FactoryIdentityCertificateGenerateCSRResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the FactoryIdentityCertificateGenerateCSR action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the FactoryIdentityCertificateGenerateCSR action."/>
+                <Property Name="CSRString" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property shall contain the Privacy Enhanced Mail (PEM)-encoded string, which contains RFC2986-specified structures, of the certificate signing request. The private key should not be part of the string."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the Privacy Enhanced Mail (PEM)-encoded string, which contains RFC2986-specified structures, of the certificate signing request. The private key should not be part of the string."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="VerifyHWProofOfPossessionResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the VerifyHWProofOfPossession action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the VerifyHWProofOfPossession action."/>
+                <Property Name="EncryptedResponse" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A base64 encoded string encrypted with the private key of the certificate."/>
+                    <Annotation Term="OData.LongDescription" String="A base64 encoded string encrypted with the private key of the certificate."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add GetKVMSession, Rekey actions."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_2_0.DelliDRACCardService">
+</EntityType>
+            <ComplexType Name="GetKVMSessionResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetKVMSession action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetKVMSession action."/>
+                <Property Name="TempPassword" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Temporary password credential."/>
+                    <Annotation Term="OData.LongDescription" String="Temporary password credential."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="TempUsername" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Temporary user name credential."/>
+                    <Annotation Term="OData.LongDescription" String="Temporary user name credential."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_4_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DisableSEKM, DisableiLKM, EnableSEKM, EnableiLKM, iLKMToSEKMTransition actions and to add the new input parameter Mode, NewKeyId, NewPassphrase, OldPassphrase for Rekey action."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_3_0.DelliDRACCardService">
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_5_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add UploadSSLKey action and to update the allowable value CustomCertificate for CertificateType parameter under ImportSSLCertificate action."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_4_0.DelliDRACCardService">
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_6_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable values IEEE8021xCSC,IEEE8021xClient for CertificateType parameter under ImportCertificate action."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_5_0.DelliDRACCardService">
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_7_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DeleteSSLCertificate, TestConnection actions and to remove the TestRsyslogServerConnection action and to update the allowable value CustomCertificate for SSLCertType parameter under ExportSSLCertificate action and to update the allowable values RSA_CA_CERT,SCEP_CA_CERT,SMARTCARD_CA_CERT,SMARTCARD_USER_CERT for CertificateType parameter under ImportCertificate action."/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_6_0.DelliDRACCardService">
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DelliDRACCardService.v1_7_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add certificatetype SEKM_CUSTOM_CERT for SEKM Certificate import"/>
+            <EntityType Name="DelliDRACCardService" BaseType="DelliDRACCardService.v1_7_0.DelliDRACCardService">
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

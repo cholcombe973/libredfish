@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoEvent  v1.0.0                                          -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+   <edmx:Reference Uri="/redfish/v1/metadata/LenovoLogEntry_v1.xml">
+    <edmx:Include Namespace="LenovoLogEntry"/>
+    <edmx:Include Namespace="LenovoLogEntry.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoEvent">
+      <ComplexType Name="LenovoEvent" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoEvent resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoEvent.v1_0_0">
+      <ComplexType Name="LenovoEventRecord" BaseType="LenovoEvent.LenovoEvent">
+        <Annotation Term="OData.Description" String="This is Lenovo extended details of event service properties."/>
+        <Annotation Term="OData.LongDescription" String="The value of this property shall be an object used to represent event details."/>
+        <Property Name="SystemUUID" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the UUID of the system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the UUID of the system."/>
+        </Property>
+        <Property Name="SystemSerialNumber" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the Serial Number of the system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the serial number of the system."/>
+        </Property>
+        <Property Name="SystemMachineTypeModel" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the Machine Type Model of the system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the machine type model of the system."/>
+        </Property>
+        <Property Name="EventInformation" Type="LenovoLogEntry.v1_0_0.StandardLogEntry" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is Lenovo extended Event Log Information."/>
+          <Annotation Term="OData.LongDescription" String="The event log information has two kinds: standard event log and active event log."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+
+

@@ -1,0 +1,91 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "ExtendedInfo",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "definitions": {
+        "Messages": {
+            "description": "The message entries.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "Message": {
+                        "description": "The human readable message, if provided.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "MessageArgs": {
+                        "description": "The message arguments array is substituted for the arguments in the message when looked up in the message registry.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "MessageId": {
+                        "description": "The key for this message that can be used to look up the message in a message registry.",
+                        "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "PropertiesInError": {
+                        "description": "The properties in the request body that caused the errors.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "Resolution": {
+                        "description": "Provides suggestions for how to resolve the situation that caused the error.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Severity": {
+                        "description": "The severity of the errors.",
+                        "enum": [
+                            "OK",
+                            "Warning",
+                            "Critical"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "description": "The ExtendedInfo resource describes Redfish responses.  ExtendedInfo can be returned in the body of operation responses.  They augment the HTTP error codes with more meaningful information about why the error occurred.",
+    "longDescription": "This resource shall be used to represent extended errors for a Redfish implementation.",
+    "properties": {
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "error": {
+            "properties": {
+                "@Message.ExtendedInfo": {
+                    "$ref": "#/definitions/Messages"
+                },
+                "code": {
+                    "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                    "longDescription": "This property shall be a key into message registry as described in the Redfish specification.",
+                    "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "message": {
+                    "description": "This is the human readable message, if provided.",
+                    "longDescription": "This property shall contain an optional human readable message.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "#ExtendedInfo.v1_0_0.ExtendedInfo",
+    "type": "object"
+}

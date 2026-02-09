@@ -1,0 +1,96 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+		<edmx:Include Namespace="Resource"/>
+		<edmx:Include Namespace="Resource.v1_0_0"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+		<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+		<edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/MetricReport_v1.xml">
+		<edmx:Include Namespace="MetricReport"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/Schedule_v1.xml">
+		<edmx:Include Namespace="Schedule"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/Triggers_v1.xml">
+		<edmx:Include Namespace="Triggers"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellD4DReport">
+			<Annotation Term="Redfish.OwningEntity" String="Dell"/>
+			  <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellD4DReport" Abstract="true">
+				<Annotation Term="OData.Description" String="The DellD4DReport schema represents a set of collected metrics."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall represent a metric report in a Redfish implementation. When a metric report is deleted, the historic metric data used to generate the report shall be deleted as well unless other metric reports are consuming the data."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Redfish.Uris">
+					<Collection>
+						<String>/redfish/v1/TelemetryService/Oem/Dell/D4D/Reports/{D4DReportId}</String>
+					</Collection>
+				</Annotation>
+			</EntityType>
+		</Schema>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellD4DReport.v1_0_0">
+    		  <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+	          <EntityType Name="DellD4DReport" BaseType="DellD4DReport.DellD4DReport" >
+				<Annotation Term="OData.Description" String="The DellD4DReport schema represents a set of collected metrics."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall represent a metric report in a Redfish implementation. When a metric report is deleted, the historic metric data used to generate the report shall be deleted as well unless other metric reports are consuming the data."/>
+		        	<Property Name="Data" Type="Collection(DellD4DReport.v1_0_0.Report)" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+		        		<Annotation Term="OData.Description" String="The list of Metric Reports."/>
+		        		<Annotation Term="OData.LongDescription" String="The property shall contain a list of metric reports."/>
+		        	</Property>
+				<Property Name="Timestamp" Type="Edm.DateTimeOffset">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation String="The date and time when the metric is obtained. A management application can establish a time series of metric data by retrieving the instances of metric value and sorting them according to their timestamp." Term="OData.Description"/>
+					<Annotation String="The value shall time when the metric value was obtained. Note that this value might be different from the time when this instance is created." Term="OData.LongDescription"/>
+				</Property>
+			</EntityType>
+			<ComplexType Name="Report">
+				<Property Name="Id" Type="Edm.String">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+		        		<Annotation Term="OData.Description" String="The Report metric ID."/>
+					<Annotation Term="OData.LongDescription" String="The Report's metric ID."/>
+			        </Property>
+				<Property Name="FQDD" Type="Edm.String">
+		        		<Annotation Term="OData.Description" String="Metric Id's FQDD."/>
+					<Annotation Term="OData.LongDescription" String="The FQDD is a hardware identifier.  One Metric Id can have many FQDD.  The Metric Report will contain a specific metric pertaining to one type of hardware"/>
+			        </Property>
+				<Property Name="Values" Type="Collection(DellD4DReport.v1_0_0.MetricValue)" Nullable="false">
+		        		<Annotation Term="OData.Description" String="The property shall contain a list of metric values."/>
+		        		<Annotation Term="OData.LongDescription" String="The property shall contain a list of metric values specific to the FQDD hardware component and Metric ID."/>
+				</Property>
+			</ComplexType>
+			<ComplexType Name="MetricValue">
+				<Property Name="T" Type="Edm.Int64">
+					<Annotation Term="OData.Description" String="The time in epoch when the metric is obtained. A management application can establish a time series of metric data by retrieving the instances of metric value and sorting them according to their timestamp."/>
+					<Annotation Term="OData.LongDescription" String="The value shall time when the metric value was obtained in epoch time. Note that this value might be different from the time when this instance is created."/>
+				</Property>
+				<Property Name="V" Type="Edm.String">
+					<Annotation Term="OData.Description" String="The metric value, as a string."/>
+					<Annotation Term="OData.LongDescription" String="This property shall contain the metric value, as a string."/>
+				</Property>
+			</ComplexType>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

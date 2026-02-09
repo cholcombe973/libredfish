@@ -1,0 +1,76 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/NVIDIAEventDestination.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "NVIDIAEventDestination": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the NVIDIAEventDestination.",
+            "longDescription": "This schemas defines the properties and actions which is used in the EventDestination.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "NvidiaEventProxyService": {
+                    "$ref": "#/definitions/NvidiaEventProxyService",
+                    "description": "Indicates the properties related to NvidiaEventProxyService",
+                    "longDescription": "Indicates the properties related to NvidiaEventProxyService",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "NvidiaEventProxyService": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Target": {
+                    "$ref": "#/definitions/Target",
+                    "description": "Target for the Destination."
+                }
+            },
+            "type": "object"
+        },
+        "Target": {
+            "enum": [
+                "BMC",
+                "HGX_BMC_0"
+            ],
+            "enumDescriptions": {
+                "BMC": "HOSTBMC Destination.",
+                "HGX_BMC_0": "HMC Destination."
+            },
+            "enumLongDescriptions": {
+                "BMC": "HOSTBMC Destination.",
+                "HGX_BMC_0": "HMC Destination."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "NVIDIA",
+    "title": "#NVIDIAEventDestination.v1_0_0"
+}

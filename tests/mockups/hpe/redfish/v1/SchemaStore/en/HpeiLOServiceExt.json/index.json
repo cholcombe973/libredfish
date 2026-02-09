@@ -1,0 +1,565 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOServiceExt",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOServiceExt object extends the Redfish ServiceRoot resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "DebugCode": {
+            "description": "Specifies whether the iLO has debug firmware flashed.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "DevSystem": {
+            "description": "Specifies whether the test key is enabled.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "ResourceDirectory": {
+                    "description": "The URI for the  resource directory.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "ViewClassService": {
+                    "description": "The URI for the  resource directory.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Manager": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "Blade": {
+                        "description": "Provides blade-related details if this is a blade server.",
+                        "properties": {
+                            "BayNumber": {
+                                "description": "Specifies the location of the blade in the enclosure.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "EnclosureName": {
+                                "description": "Specifies the name of the enclosure in which the blade is present.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "RackName": {
+                                "description": "Specifies the name of the rack in which the enclosure is present.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "DefaultLanguage": {
+                        "description": "Default language used for the Web interface.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "FQDN": {
+                        "description": "Fully qualified domain name of the management processor.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "HostName": {
+                        "description": "The name of management processor.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "ExternalManager": {
+                        "description": "Reports the current external manager of the system.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "IPManager": {
+                        "additionalProperties": true,
+                        "displayname": "IPManager",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "Languages": {
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "Language": {
+                                    "description": "Specifies one of the languages supported by the management processor.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                },
+                                "TranslationName": {
+                                    "description": "Specifies one of the languages supported by the management processor.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                },
+                                "Version": {
+                                    "description": "Specifies the version of the management processor in the respective language.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "type": "array"
+                    },
+                    "ManagerFirmwareVersion": {
+                        "description": "The major and minor management processor version numbers.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ManagerFirmwareVersionPass": {
+                        "description": "The build or pass number of the management processor version.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ManagerType": {
+                        "description": "The type of the service manager.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "SelfTestErrors": {
+                        "description": "iLO Self Test Results section displays the results of internal iLO diagnostics.",
+                        "etag": true,
+                        "items": {
+                            "properties": {
+                                "SelfTestName": {
+                                    "description": "iLO Self Test Name.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Moniker": {
+            "additionalProperties": false,
+            "properties": {
+                "ADVLIC": {
+                    "description": "Optional Licensed functionality tier name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "BMC": {
+                    "description": "Generic abbreviation for the management processor.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "BSYS": {
+                    "description": "Product category name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "CLASS": {
+                    "description": "Management processor product category.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "FEDGRP": {
+                    "description": "Default federation group name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "IPROV": {
+                    "description": "Product name for provisioning and deployment suite.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "PRODABR": {
+                    "description": "Abbreviated product name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "PRODFAM": {
+                    "description": "Full product family.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "PRODGEN": {
+                    "description": "Abbreviated product name and generation.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "PRODNAM": {
+                    "description": "Full product name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "PRODTAG": {
+                    "description": "Branded, abbreviated product name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "STDLIC": {
+                    "description": "Base licensed functionality tier name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SUMABR": {
+                    "description": "Acronym for update deployment suite.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SUMGR": {
+                    "description": "Product name for update deployment suite.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SYSFAM": {
+                    "description": "Host system product family.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "VENDABR": {
+                    "description": "Abbreviated vendor name (like stock ticker).",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "VENDNAM": {
+                    "description": "Full vendor name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWW": {
+                    "description": "Top level public internet vendor URI.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWAHSV": {
+                    "description": "Public internet vendor URI for Active Health viewer.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWBMC": {
+                    "description": "Public internet vendor URI for the management processor.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWDOC": {
+                    "description": "Public internet vendor URI for the management processor documentation / manuals.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWERS": {
+                    "description": "Public internet vendor URI for Embedded Remote Support.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWGLIS": {
+                    "description": "Public internet vendor URI for management processor licensing infrastructure.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWIOL": {
+                    "description": "Public internet vendor URI for Online Insight service.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWLIC": {
+                    "description": "Public internet vendor URI for the management processor.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWLML": {
+                    "description": "Public internet vendor URI for Learn More Links.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWPASS": {
+                    "description": "Public internet vendor URI for accessing support account.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWPRV": {
+                    "description": "Public internet vendor URI for privacy policy statement.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWQSPEC": {
+                    "description": "Public internet vendor URI for Quick Specs.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWRESTDOC": {
+                    "description": "Public internet vendor URI for REST API documentation.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWSUP": {
+                    "description": "Public internet vendor URI for management processor and product support.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWSWLIC": {
+                    "description": "Public internet vendor URI for vendor software licensing.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "WWWINFOSIGHT": {
+                    "description": "Public internet resource for active health.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "VNIC": {
+                    "description": "Virtual USB network interface to BMC name.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SYSMGMT": {
+                    "description": "System Management Experience.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PreProd": {
+            "description": "Specifies whether the system identifies as pre-production.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Sessions": {
+            "additionalProperties": false,
+            "properties": {
+                "CertCommonName": {
+                    "description": "The name of the management processor as it appears in the digital certificate when a secure web GUI session is established to the management processor.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "CertificateLoginEnabled": {
+                    "description": "Specifies whether Certificate login is enabled.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "KerberosEnabled": {
+                    "description": "Specifies whether Kerberos login is enabled.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "LDAPAuthLicenced": {
+                    "description": "Specifies whether a valid license is installed for LDAP use.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "LDAPEnabled": {
+                    "description": "Specifies whether LDAP login is enabled.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "LocalLoginEnabled": {
+                    "description": "Specifies whether local users can log in.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "LoginFailureDelay": {
+                    "description": "The delay (seconds) when a management processor login attempt has failed.",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "LoginHint": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Hint": {
+                            "description": "The information on how to log in to the management processor.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "HintPOSTData": {
+                            "additionalProperties": false,
+                            "description": "The POST information on how to log in to the management processor.",
+                            "properties": {
+                                "Password": {
+                                    "description": "The password for logging in to the management processor.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                },
+                                "UserName": {
+                                    "description": "The user name for logging in to the management processor.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SecurityMessage": {
+                    "description": "The login security banner message that is displayed on the management processor Login page.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SecurityOverride": {
+                    "description": "Specifies whether the security override switch is enabled.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "ServerName": {
+                    "description": "The name of the server that this management processor is managing.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "System": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Time": {
+            "description": "The current Redfish service time.",
+            "etag": false,
+            "format": "date-time",
+            "pattern": "^([\\+-]?\\d{4}(?!\\d{2}\\b))((-?)((0[1-9]|1[0-2])(\\3([12]\\d|0[1-9]|3[01]))?|W([0-4]\\d|5[0-2])(-?[1-7])?|(00[1-9]|0[1-9]\\d|[12]\\d{2}|3([0-5]\\d|6[1-6])))([T\\s]((([01]\\d|2[0-3])((:?)[0-5]\\d)?|24\\:?00)([\\.,]\\d+(?!:))?)?(\\17[0-5]\\d([\\.,]\\d+)?)?([zZ]|([\\+-])([01]\\d|2[0-3]):?([0-5]\\d)?)?)?)?$",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "CACLoginUri": {
+            "description": "URI for the CAC based authentication.",
+            "format": "uri-reference",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeiLOServiceExt.v2_4_0.HpeiLOServiceExt",
+    "type": "object"
+}

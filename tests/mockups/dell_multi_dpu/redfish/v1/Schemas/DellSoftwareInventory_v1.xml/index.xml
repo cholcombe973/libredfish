@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellSoftwareInventory v1_2_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInventory">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellSoftwareInventory" Abstract="true">
+                <Annotation String="The DellSoftwareInventory resource is a representation of an available device firmware in the managed system." Term="OData.Description"/>
+                <Annotation String="The DellSoftwareInventory resource is a representation of an available device firmware in the managed system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/UpdateService/FirmwareInventory/Oem/Dell/DellSoftwareInventory/{SoftwareInventoryId}</String>
+                        <String>/redfish/v1/UpdateService/FirmwareInventory/{InventoryId}/Oem/Dell/DellSoftwareInventory/{SoftwareInventoryId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="Status">
+                <Member Name="AvailableForInstallation">
+                    <Annotation String="Available for Installation" Term="OData.Description"/>
+                    <Annotation String="Available for Installation" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Installed">
+                    <Annotation String="Installed" Term="OData.Description"/>
+                    <Annotation String="Installed" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="Classifications">
+                <Member Name="ApplicationSoftware">
+                    <Annotation String="Application Software" Term="OData.Description"/>
+                    <Annotation String="Application Software" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="BIOS/FCode">
+                    <Annotation String="BIOS/FCode" Term="OData.Description"/>
+                    <Annotation String="BIOS/FCode" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ConfigurationSoftware">
+                    <Annotation String="Configuration Software" Term="OData.Description"/>
+                    <Annotation String="Configuration Software" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="DiagnosticSoftware">
+                    <Annotation String="Diagnostic Software" Term="OData.Description"/>
+                    <Annotation String="Diagnostic Software" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Driver">
+                    <Annotation String="Driver" Term="OData.Description"/>
+                    <Annotation String="Driver" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Firmware">
+                    <Annotation String="Firmware" Term="OData.Description"/>
+                    <Annotation String="Firmware" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Firmware/BIOS">
+                    <Annotation String="Firmware/BIOS" Term="OData.Description"/>
+                    <Annotation String="Firmware/BIOS" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Instrumentation">
+                    <Annotation String="Instrumentation" Term="OData.Description"/>
+                    <Annotation String="Instrumentation" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Middleware">
+                    <Annotation String="Middleware" Term="OData.Description"/>
+                    <Annotation String="Middleware" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OperatingSystem">
+                    <Annotation String="Operating System" Term="OData.Description"/>
+                    <Annotation String="Operating System" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SoftwareBundle">
+                    <Annotation String="Software Bundle" Term="OData.Description"/>
+                    <Annotation String="Software Bundle" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Support/ServicePack">
+                    <Annotation String="Support/Service Pack" Term="OData.Description"/>
+                    <Annotation String="Support/Service Pack" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInventory.v1_0_0">
+            <EntityType Name="DellSoftwareInventory" BaseType="DellSoftwareInventory.DellSoftwareInventory">
+                <Annotation Term="OData.Description" String="The DellSoftwareInventory resource is a representation of an available device firmware in the managed system."/>
+                <Annotation Term="OData.LongDescription" String="The DellSoftwareInventory resource is a representation of an available device firmware in the managed system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="ComponentID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property value, together with the ComponentType property value, uniquely identifies the system component the software is for."/>
+                    <Annotation Term="OData.LongDescription" String="The property value, together with the ComponentType property value, uniquely identifies the system component the software is for."/>
+                </Property>
+                <Property Name="ComponentType" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property has one of the following values: FRMW, BIOS, APAC."/>
+                    <Annotation Term="OData.LongDescription" String="This property has one of the following values: FRMW, BIOS, APAC."/>
+                </Property>
+                <Property Name="DeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents an address or other identifying information to uniquely name the LogicalDevice."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents an address or other identifying information to uniquely name the LogicalDevice."/>
+                </Property>
+                <Property Name="ElementName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="ElementName is the user-friendly name for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="ElementName is the user-friendly name for the instance."/>
+                </Property>
+                <Property Name="HashValue" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the SHA256 hash value of the component firmware."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the SHA256 hash value of the component firmware."/>
+                </Property>
+                <Property Name="InstallationDate" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the installation date, in string format. Note: For CPLD firmware on modular servers, the property is always set to Jan 1, 2000 regardless of the actual update date."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the installation date, in string format. Note: For CPLD firmware on modular servers, the property is always set to Jan 1, 2000 regardless of the actual update date."/>
+                </Property>
+                <Property Name="IsEntity" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The IsEntity property is used for indicating whether the SoftwareIdentity corresponds to a discrete copy of the software component or is being used to convey descriptive and identifying information about software that is not present in the management domain."/>
+                    <Annotation Term="OData.LongDescription" String="The IsEntity property is used for indicating whether the SoftwareIdentity corresponds to a discrete copy of the software component or is being used to convey descriptive and identifying information about software that is not present in the management domain."/>
+                </Property>
+                <Property Name="RevisionNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the revision number component of the software version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the revision number component of the software version."/>
+                </Property>
+                <Property Name="Status" Type="DellSoftwareInventory.Status">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether the software is installed or is available for installation."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether the software is installed or is available for installation."/>
+                </Property>
+                <Property Name="SubDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property is populated for the PCI Device software. This property represents the SubDeviceID from the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property is populated for the PCI Device software. This property represents the SubDeviceID from the PCI device."/>
+                </Property>
+                <Property Name="SubVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property is populated for the PCI Device software. The property represents the SubVendorID from the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property is populated for the PCI Device software. The property represents the SubVendorID from the PCI device."/>
+                </Property>
+                <Property Name="VendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property is populated for the PCI Device software. This property represents the VendorID from the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property is populated for the PCI Device software. This property represents the VendorID from the PCI device."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInventory.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add BuildNumber, Classifications, IdentityInfoType, IdentityInfoValue, MajorVersion, MinorVersion, RevisionString, impactsTPMmeasurements properties."/>
+            <EntityType Name="DellSoftwareInventory" BaseType="DellSoftwareInventory.v1_0_0.DellSoftwareInventory">
+                <Property Name="BuildNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the build number of the software."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the build number of the software."/>
+                </Property>
+                <Property Name="Classifications" Type="Collection(DellSoftwareInventory.Classifications)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="An array of enumerated integers that classify this software."/>
+                    <Annotation Term="OData.LongDescription" String="An array of enumerated integers that classify this software."/>
+                </Property>
+                <Property Name="IdentityInfoType" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property has the value OrgID:ComponentType:ComponentID for non-PCI device software and OrgID:ComponentType:VendorID:DeviceID:SubVendorID:SubDeviceID for PCI device software."/>
+                    <Annotation Term="OData.LongDescription" String="This property has the value OrgID:ComponentType:ComponentID for non-PCI device software and OrgID:ComponentType:VendorID:DeviceID:SubVendorID:SubDeviceID for PCI device software."/>
+                </Property>
+                <Property Name="IdentityInfoValue" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents an indexed array of fixed-form strings that provide the software descriptor in the form identified in the corresponding index of the IdentityInfoValue array."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents an indexed array of fixed-form strings that provide the software descriptor in the form identified in the corresponding index of the IdentityInfoValue array."/>
+                </Property>
+                <Property Name="MajorVersion" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the Major number component of the software version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the Major number component of the software version."/>
+                </Property>
+                <Property Name="MinorVersion" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the Minor number component of the software version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the Minor number component of the software version."/>
+                </Property>
+                <Property Name="RevisionString" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the revision number, in string format."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the revision number, in string format."/>
+                </Property>
+                <Property Name="impactsTPMmeasurements" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents if the software impacts the Trusted Platform Module (TPM) measurement and causes a lock-up if not performed with the TPM's knowledge."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents if the software impacts the Trusted Platform Module (TPM) measurement and causes a lock-up if not performed with the TPM's knowledge."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInventory.v1_1_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for IdentityInfoType property."/>
+            <EntityType Name="DellSoftwareInventory" BaseType="DellSoftwareInventory.v1_1_0.DellSoftwareInventory"/>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInventory.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add PLDMCapabilitiesDuringUpdate, PLDMFDPCapabilitiesDuringUpdate, SidebandUpdateCapable properties."/>
+            <EntityType Name="DellSoftwareInventory" BaseType="DellSoftwareInventory.v1_1_1.DellSoftwareInventory">
+                <Property Name="PLDMCapabilitiesDuringUpdate" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the PLDM capabilities during update in HEX string format"/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the PLDM capabilities during update in HEX string format"/>
+                </Property>
+                <Property Name="PLDMFDPCapabilitiesDuringUpdate" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the PLDM FDP capabilities during update in HEX string format"/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the PLDM FDP capabilities during update in HEX string format"/>
+                </Property>
+                <Property Name="SidebandUpdateCapable" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property identifies if the device supports sideband direct update or not"/>
+                    <Annotation Term="OData.LongDescription" String="This property identifies if the device supports sideband direct update or not"/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

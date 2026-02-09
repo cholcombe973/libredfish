@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerAccPowerNodesInfo",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerAccPowerNodesInfo resource describes the properties for management of shared power in an enclosure.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MaxSupportedNodes": {
+            "description": "Total Nodes supported in Chassis.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NodeInfoList": {
+            "items": {
+                "additionalProperties": false,
+                "description": "The list of nodes information.",
+                "etag": true,
+                "properties": {
+                    "NodeNumber": {
+                        "description": "The physical node number in chassis.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "Throttle": {
+                        "description": "It indicates the current throttle on the node. (PWM %)",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "WarningStatus": {
+                        "description": "Specifies whether the node is in warning status or not. WarningStatus indicates a node is over loading and chassis manager force it throttle at 50% for 5 mins",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerAccPowerNodesInfo.v1_0_0.HpeServerAccPowerNodesInfo",
+    "type": "object"
+}

@@ -1,0 +1,339 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoAlertRecipient.v1_0_0.json",
+    "$ref": "#/definitions/LenovoAlertRecipient",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AlertType": {
+            "enum": [
+                "Email",
+                "Syslog"
+            ],
+            "type": "string"
+        },
+        "CriticalEvent": {
+            "enum": [
+                "All",
+                "AllOtherCriticalEvents",
+                "CriticalTemperatureThresholdExceeded",
+                "CriticalVoltageThresholdExceeded",
+                "CriticalPowerFailure",
+                "HardDiskDriveFailure",
+                "FanFailure",
+                "CPUFailure",
+                "MemoryFailure",
+                "HardwareIncompatibility",
+                "PowerRedundancyFailure"
+            ],
+            "type": "string"
+        },
+        "CriticalEvents": {
+            "additionalProperties": false,
+            "description": "This object is used to represent the critical events.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AcceptedEvents": {
+                    "description": "Indicates whether the recipient receives critical events.",
+                    "items": {
+                        "$ref": "#/definitions/CriticalEvent"
+                    },
+                    "longDescription": "The value of this property shall be boolean indicating whether the recipient receives critical events.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "Enabled": {
+                    "description": "Indicates whether the recipient receives critical events.",
+                    "longDescription": "The value of this property shall be boolean indicating whether the recipient receives critical events.",
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "EnabledAlert": {
+            "additionalProperties": false,
+            "description": "This object is used to represent the enabled alert filters.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CriticalEvents": {
+                    "$ref": "#/definitions/CriticalEvents",
+                    "description": "Represents enabled critical events.",
+                    "longDescription": "The value of this property shall represent enabled critical events."
+                },
+                "SystemEvents": {
+                    "$ref": "#/definitions/SystemEvents",
+                    "description": "Represents enabled system events.",
+                    "longDescription": "The value of this property shall represent enabled system events."
+                },
+                "WarningEvents": {
+                    "$ref": "#/definitions/WarningEvents",
+                    "description": "Represents enabled warning events.",
+                    "longDescription": "The value of this property shall represent enabled warning events."
+                }
+            },
+            "type": "object"
+        },
+        "LenovoAlertRecipient": {
+            "additionalProperties": false,
+            "description": "This schema defines the group profiles to be used in conjunction with a manager.",
+            "longDescription": "This resource shall be used to represent resources that represent the group profiles for the manager.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "RecipientSettings": {
+                    "$ref": "#/definitions/RecipientSettings",
+                    "description": "This property contains the privilege for this group.",
+                    "longDescription": "The value of this property shall be settings for each alert recipient."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "RecipientSettings": {
+            "additionalProperties": false,
+            "description": "This object is used to represent recipient settings.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Address": {
+                    "description": "The address which alert service sends the alerts. The format of this property depends on the value of AlertType.",
+                    "longDescription": "The value of property shall be a string indicating the address which alert service sends the alerts. The format of this property should be email when AlertType is E-mail while the format should be ip:port or hostname:port when AlertType is Syslog.",
+                    "readonly": false,
+                    "type": "string"
+                },
+                "AlertType": {
+                    "$ref": "#/definitions/AlertType",
+                    "description": "Event notification have two types recipient including E-mail and Syslog.",
+                    "longDescription": "The value of this property shall be event notification have two types recipient including E-mail and Syslog.",
+                    "readonly": false
+                },
+                "EnabledAlerts": {
+                    "$ref": "#/definitions/EnabledAlert",
+                    "description": "Specifies the enabled OOB alerts enabled.",
+                    "longDescription": "The value of this property shall specifies the enabled OOB alerts enabled.",
+                    "readonly": false
+                },
+                "Enabledstate": {
+                    "description": "This property contains the user name for the group.",
+                    "longDescription": "The value of this property shall be the user name for this group.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "IncludeEventLog": {
+                    "description": "Whether send the event log with the OOB alert.",
+                    "longDescription": "The value of this property indicates whether send the event log with the OOB alert.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "RecipientName": {
+                    "description": "Identifies the name of recipient.",
+                    "longDescription": "The value of this property identifies the name of recipient.",
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "requiredOnCreate": [
+                "RecipientName",
+                "Enabledstate",
+                "AlertType",
+                "Address"
+            ],
+            "type": "object"
+        },
+        "SystemEvent": {
+            "enum": [
+                "All",
+                "AllOtherEvents",
+                "SuccessfulRemoteLogin",
+                "OperatingSystemTimeout",
+                "SystemPowerSwitch",
+                "OperatingSystemBootFailure",
+                "OperatingSystemLoaderWatchdogTimeout",
+                "PredictedFailure",
+                "EventLog75PercentFull",
+                "NetworkChange",
+                "AllAuditEvents"
+            ],
+            "type": "string"
+        },
+        "SystemEvents": {
+            "additionalProperties": false,
+            "description": "This object is used to represent the system events.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AcceptedEvents": {
+                    "description": "Indicates whether the recipient receives system events.",
+                    "items": {
+                        "$ref": "#/definitions/SystemEvent"
+                    },
+                    "longDescription": "The value of this property shall be boolean indicating whether the recipient receives system events.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "Enabled": {
+                    "description": "Indicates whether the recipient receives system events.",
+                    "longDescription": "The value of this property shall be boolean indicating whether the recipient receives system events.",
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "WarningEvent": {
+            "enum": [
+                "All",
+                "AllOtherWarningEvents",
+                "WarningTemperatureThresholdExceeded",
+                "WarningVoltageThresholdExceeded",
+                "WarningPowerThresholdExceeded",
+                "NoncriticalFanevents",
+                "CPUinDegradedState",
+                "MemoryWarning",
+                "PowerRedundancyWarning"
+            ],
+            "type": "string"
+        },
+        "WarningEvents": {
+            "additionalProperties": false,
+            "description": "This object is used to represent the warning events.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AcceptedEvents": {
+                    "description": "Indicates whether the recipient receives warning events.",
+                    "items": {
+                        "$ref": "#/definitions/WarningEvent"
+                    },
+                    "longDescription": "The value of this property shall be boolean indicating whether the recipient receives warning events.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "Enabled": {
+                    "description": "Indicates whether the recipient receives warning events.",
+                    "longDescription": "The value of this property shall be boolean indicating whether the recipient receives warning events.",
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoAlertRecipient.v1_0_0.LenovoAlertRecipient"
+}

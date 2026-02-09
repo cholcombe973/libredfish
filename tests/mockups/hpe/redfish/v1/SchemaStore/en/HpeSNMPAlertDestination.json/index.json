@@ -1,0 +1,79 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeSNMPAlertDestination",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeSNMPAlertDestination resource describes the properties for SNMP Alert Destinations.  The alert destination configuration up to 8 remote management systems that receive SNMP alerts from the BMC.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AlertDestination": {
+            "description": "The IP address or FQDN of remote management system that receive SNMP alerts.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "SNMPAlertProtocol": {
+            "description": "Indicate the SNMP protocol associated with the AlertDestination.",
+            "enum": [
+                "SNMPv1Trap",
+                "SNMPv3Trap",
+                "SNMPv3Inform",
+                null
+            ],
+            "enumDescriptions": {
+                "SNMPv1Trap": "Indicate SNMPv1 trap is enabled for the destination.",
+                "SNMPv3Inform": "Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.",
+                "SNMPv3Trap": "Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SNMPv3User": {
+            "description": "SNMPv3 User associated with the destination when SNMP alert protocol is SNMPv3trap.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SecurityName": {
+            "description": "Provides the SNMPv3 security name associated with SNMPv3trap or SNMPv3Inform set on SNMPAlertProtocol.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "TrapCommunity": {
+            "description": "The configured SNMPv1 trap community string.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeSNMPAlertDestination.v2_0_0.HpeSNMPAlertDestination",
+    "type": "object"
+}

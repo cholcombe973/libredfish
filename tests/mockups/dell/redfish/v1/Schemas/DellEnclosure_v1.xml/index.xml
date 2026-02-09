@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellEnclosure v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/DellEnclosureEMM_v1.xml">
+        <edmx:Include Namespace="DellEnclosureEMM"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEnclosure">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellEnclosure" Abstract="true">
+                <Annotation String="An instance of DellEnclosure will have storage enclosure specific data." Term="OData.Description"/>
+                <Annotation String="An instance of DellEnclosure will have storage enclosure specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Chassis/Oem/Dell/DellEnclosures/{EnclosureId}</String>
+                        <String>/redfish/v1/Chassis/{EnclosureId}/Oem/Dell/DellEnclosures/{EnclosureId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <ComplexType BaseType="Resource.Links" Name="Links">
+                <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                <Annotation String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <NavigationProperty Name="DellEnclosureEMMCollection" Type="Collection(DellEnclosureEMM.DellEnclosureEMM)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.LongDescription"/>
+                </NavigationProperty>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEnclosure.v1_0_0">
+            <EntityType Name="DellEnclosure" BaseType="DellEnclosure.DellEnclosure">
+                <Annotation Term="OData.Description" String="An instance of DellEnclosure will have storage enclosure specific data."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellEnclosure will have storage enclosure specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <Property Name="Connector" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the enclosure port connection."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the enclosure port connection."/>
+                </Property>
+                <Property Name="ServiceTag" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the service tag of the enclosure."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the service tag of the enclosure."/>
+                </Property>
+                <Property Name="SlotCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the number of drive slots in the enclosure."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the number of drive slots in the enclosure."/>
+                </Property>
+                <Property Name="Version" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the EMM or Backplane version."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the EMM or Backplane version."/>
+                </Property>
+                <Property Name="WiredOrder" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="For JBOD this property shall represent the enclosure position or connection sequence in a daisy chain of enclosures in the relation to the controller port. For internal backplane, the wiredorder is same as BayID."/>
+                    <Annotation Term="OData.LongDescription" String="For JBOD this property shall represent the enclosure position or connection sequence in a daisy chain of enclosures in the relation to the controller port. For internal backplane, the wiredorder is same as BayID."/>
+                </Property>
+                <Property Name="Links" Type="DellEnclosure.Links" Nullable="false">
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEnclosure.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add AssetName, LastSystemInventoryTime, LastUpdateTime, TempProbeCount properties."/>
+            <EntityType Name="DellEnclosure" BaseType="DellEnclosure.v1_0_0.DellEnclosure">
+                <Property Name="AssetName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property contains up to 32 ASCII alpha-numeric characters."/>
+                    <Annotation Term="OData.LongDescription" String="This property contains up to 32 ASCII alpha-numeric characters."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="TempProbeCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the number of temperature probes present."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the number of temperature probes present."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

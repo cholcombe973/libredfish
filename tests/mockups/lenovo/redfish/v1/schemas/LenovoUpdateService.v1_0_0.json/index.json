@@ -1,0 +1,53 @@
+{
+    "$id": "/redfish/v1/Schemas/LenovoUpdateService.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright (C) 2015 - present Lenovo.  All Rights reserved.",
+    "definitions": {
+        "LenovoUpdateService": {
+            "additionalProperties": false,
+            "description": "These properties shall be refered Lenovo Oem properties for update service schema.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FirmwareServices": {
+                    "$ref": "/redfish/v1/metadata/LenovoFirmwareServiceCollection.json#/definitions/LenovoFirmwareServiceCollection",
+                    "description": "This is a link to a collection of firmware services.",
+                    "longDescription": "This object shall only contain a reference to a collection of resources that comply to the LenovoFirmwareServices schema.",
+                    "readonly": true
+                },
+                "FirmwaresDataReady": {
+                    "description": "Get the status of firmwares data.",
+                    "longDescription": "This setting is to get the status of firmwares data.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "XCCBackupAutoPromote": {
+                    "description": "Auto promote primary xcc to backup.",
+                    "longDescription": "This setting is to control backup xcc auto sync with primary xcc.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "#LenovoUpdateService.v1_0_0"
+}

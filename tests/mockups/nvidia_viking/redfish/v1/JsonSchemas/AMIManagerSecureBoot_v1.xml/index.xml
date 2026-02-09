@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIManagerSecureBoot  v1.0.0                                          -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="AMIManagerSecureBoot" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="AMIManagerSecureBoot" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Annotation Term="OData.LongDescription" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+    </Schema>
+    <Schema Namespace="AMIManagerSecureBoot.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+      <EntityType Name="AMIManagerSecureBoot" BaseType="AMIManagerSecureBoot.AMIManagerSecureBoot">
+        <Annotation Term="OData.Description" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Annotation Term="OData.LongDescription" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Property Name="SocOtpVersion" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains the SOC Otp Version."/>
+          <Annotation Term="OData.LongDescription" String="This string contains the SOC Otp Version."/>
+        </Property>
+		<Property Name="OtpToolVersion" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains the Otp tool Version."/>
+          <Annotation Term="OData.LongDescription" String="This string contains the Otp tool Version."/>
+        </Property>
+		<Property Name="OtpInfoVersion" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains the Otp Info version."/>
+          <Annotation Term="OData.LongDescription" String="This string contains the Otp Info version."/>
+        </Property>
+		<Property Name="CurrentSoftwareRevision" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains the Current Software Revision."/>
+          <Annotation Term="OData.LongDescription" String="This string contains the Current Software Revision."/>
+        </Property>
+		<Property Name="CurrentOtpRevision" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains the Current Otp Revision."/>
+          <Annotation Term="OData.LongDescription" String="This string contains the Current Otp Revision."/>
+        </Property>
+		<Property Name="SecureBootEnabled" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shows the SecureBoot configuration."/>
+          <Annotation Term="OData.LongDescription" String="This property shows the SecureBoot configuration."/>
+        </Property>
+		<Property Name="OTPImageCheckSum" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains the MD5 CheckSum of the currently programmed otp image."/>
+          <Annotation Term="OData.LongDescription" String="This string contains the MD5 CheckSum of the currently programmed otp image."/>
+        </Property>
+		<Property Name="OTPProvisioningStatus" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This string contains message showing the status of the previous programing attempt."/>
+          <Annotation Term="OData.LongDescription" String="This string contains message showing the status of the previous programing attempt."/>
+        </Property>
+      </EntityType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

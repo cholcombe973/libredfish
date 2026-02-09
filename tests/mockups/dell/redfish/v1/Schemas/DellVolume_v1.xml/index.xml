@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellVolume v1_0_0-->
+<!--# -->
+<!--# Copyright 2021-2022 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/DellVirtualDisk_v1.xml">
+        <edmx:Include Namespace="DellVirtualDisk"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="DellVolume" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellVolume" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="Oem data related to the Volume Instance."/>
+                <Annotation Term="OData.LongDescription" String="Oem data related to the Volume Instance."/>
+            </ComplexType>
+        </Schema>
+
+        <Schema Namespace="DellVolume.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellVolume" BaseType="DellVolume.DellVolume">
+                <Property Name="DellVolume" Type="DellVolume.v1_0_0.DellVolumeInfo">
+                    <Annotation Term="OData.Description" String="Oem data related to the Volume Instance."/>
+                    <Annotation Term="OData.LongDescription" String="Oem data related to the Volume Instance."/>
+                </Property>
+                <NavigationProperty Name="DellVirtualDisk" Type="DellVirtualDisk.DellVirtualDisk" ContainsTarget="true" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A resource representation of DellVirtualDisk."/>
+                    <Annotation Term="OData.LongDescription" String="A resource representation of DellVirtualDisk."/>
+                    <Annotation Term="OData.AutoExpand"/>
+                </NavigationProperty>
+            </ComplexType>
+            <ComplexType Name="DellVolumeInfo">
+                <Property Name="BusProtocol" Type="DellVirtualDisk.BusProtocol">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the bus protocol."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the bus protocol."/>
+                </Property>
+                <Property Name="Cachecade" Type="DellVirtualDisk.Cachecade">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The property represents the Cachecade capabilities of a Controller. It can have a value of CachecadeVD or NonCachecadeVD. If a Controller is Cachecade Capable, for creating VD as CachecadeVD, only RAIDType = RAID0 or VolumeType = NonRedundant is supported. Only the properties RAIDType/VolumeType, Name/DisplayName, Links/Drives, Cachecade are consumed. Any other valid Schema supported property is ignored. During CachecadeVD creation, if the user passes any value other than RAIDType = RAID0 or VolumeType = NonRedundant, incoming values will get overwritten with RAIDType = RAID0 or VolumeType = NonRedundant."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the Cachecade capabilities of a Controller. It can have a value of CachecadeVD or NonCachecadeVD. If a Controller is Cachecade Capable, for creating VD as CachecadeVD, only RAIDType = RAID0 or VolumeType = NonRedundant is supported. Only the properties RAIDType/VolumeType, Name/DisplayName, Links/Drives, Cachecade are consumed. Any other valid Schema supported property is ignored. During CachecadeVD creation, if the user passes any value other than RAIDType = RAID0 or VolumeType = NonRedundant, incoming values will get overwritten with RAIDType = RAID0 or VolumeType = NonRedundant."/>
+                </Property>
+                <Property Name="DiskCachePolicy" Type="DellVirtualDisk.DiskCachePolicy">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the policy for physical disks included in the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the policy for physical disks included in the virtual disk."/>
+                </Property>
+                <Property Name="LockStatus" Type="DellVirtualDisk.LockStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent if this Virtual Disk is locked."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent if this Virtual Disk is locked."/>
+                </Property>
+                <Property Name="MediaType" Type="DellVirtualDisk.MediaType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the drive media type."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the drive media type."/>
+                </Property>
+                <Property Name="SpanDepth" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the number of spans in virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the number of spans in virtual disk."/>
+                </Property>
+                <Property Name="SpanLength" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the number of physical disks per span."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the number of physical disks per span."/>
+                </Property>
+                <Property Name="VirtualDiskTargetID" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the virtual disk target number."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the virtual disk target number."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="ObjectStatus" Type="DellVirtualDisk.ObjectStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the virtual disk configuration state."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the virtual disk configuration state."/>
+                </Property>
+                <Property Name="OperationName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the operation that is running on a virtual disk in background. If no operation is running, the value is &quot;None&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the operation that is running on a virtual disk in background. If no operation is running, the value is &quot;None&quot;."/>
+                </Property>
+                <Property Name="OperationPercentComplete" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the percentage of completion of the operation that is represented by the OperationName property."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the percentage of completion of the operation that is represented by the OperationName property."/>
+                </Property>
+                <Property Name="PrimaryStatus" Type="DellVirtualDisk.PrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the status of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the status of the device."/>
+                </Property>
+                <Property Name="RaidStatus" Type="DellVirtualDisk.RaidStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the RAID specific status."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the RAID specific status."/>
+                </Property>
+                <Property Name="RemainingRedundancy" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides information about the remaining redundancy of the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides information about the remaining redundancy of the virtual disk."/>
+                </Property>
+                <Property Name="StartingLBAinBlocks" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the starting logical block address in blocks for virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the starting logical block address in blocks for virtual disk."/>
+                </Property>
+                <Property Name="StripeSize" Type="DellVirtualDisk.StripeSize">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the current strip size."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the current strip size."/>
+                </Property>
+                <Property Name="T10PIStatus" Type="DellVirtualDisk.T10PIStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="T10PIStatus indicates whether T10 Protection Information is enabled on the virtual disk."/>
+                    <Annotation Term="OData.LongDescription" String="T10PIStatus indicates whether T10 Protection Information is enabled on the virtual disk."/>
+                </Property>
+                <!--END OF ALL WSMAN-PARITY OEM PROPERTIES-->
+                
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

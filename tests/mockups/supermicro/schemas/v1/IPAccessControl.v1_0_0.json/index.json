@@ -1,0 +1,85 @@
+{
+    "definitions": {
+        "IPAccessControl": {
+            "description": "This resource is used to obtain or modify the IP access control managed by a given manager.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This object shall be used to represent the IP access control settings for the manager.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "ServiceEnabled": {
+                    "readonly": false,
+                    "type": "boolean",
+                    "description": "Indicates if the IP access control is enabled for this manager.",
+                    "longDescription": "The value of this property shall contain the enabled status of the IP access control.  The value shall be true if enabled and false if disabled."
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "FilterRules": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/FilterRuleCollection.json#/definitions/FilterRuleCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This is a reference to a collection of IP access setting that this manager uses for IP access control.",
+                    "longDescription": "The value of this property shall be a link to a collection of type IPAccessControl which are for the use of this manager."
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/IPAccessControl",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#IPAccessControl.v1_0_0.IPAccessControl"
+}

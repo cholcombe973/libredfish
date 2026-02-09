@@ -1,0 +1,688 @@
+{
+    "$id": "/redfish/v1/Schemas/DellSystem.v1_4_0.json",
+    "$ref": "#/definitions/DellSystem",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellSystem": {
+            "additionalProperties": false,
+            "description": "An instance of DellSystem will have data representing the overall system devices in the managed system.",
+            "longDescription": "An instance of DellSystem will have data representing the overall system devices in the managed system.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "BIOSReleaseDate": {
+                    "description": "BIOSReleaseDate represents the BIOS release date. The date string, if supplied, is in mm/dd/yyyy format.",
+                    "longDescription": "BIOSReleaseDate represents the BIOS release date. The date string, if supplied, is in mm/dd/yyyy format.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BaseBoardChassisSlot": {
+                    "description": "This property represents the modular chassis slot numbers that the server blade occupies in the modular enclosure. This property is only applicable for modular server blades.",
+                    "longDescription": "This property represents the modular chassis slot numbers that the server blade occupies in the modular enclosure. This property is only applicable for modular server blades.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BatteryRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/BatteryRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "BatteryRollupStatus provides the battery rollup status of all the system components. This field is Null if the corresponding sensor is not supported. BatteryRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "BatteryRollupStatus provides the battery rollup status of all the system components. This field is Null if the corresponding sensor is not supported. BatteryRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "BladeGeometry": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/BladeGeometry"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property represents the geometric dimension of the server blade enclosure in modular enclosure described. The property defines value maps for the geometry description in slot height and width. This property is applicable only for modular server blades.",
+                    "longDescription": "The property represents the geometric dimension of the server blade enclosure in modular enclosure described. The property defines value maps for the geometry description in slot height and width. This property is applicable only for modular server blades.",
+                    "readonly": true
+                },
+                "CMCIP": {
+                    "description": "This property represents the IP address for the enclosures Chassis Management Controller (CMC). This property is represented for modular server blades.",
+                    "longDescription": "This property represents the IP address for the enclosures Chassis Management Controller (CMC). This property is represented for modular server blades.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "CMCRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/CMCRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property provides the aggregate status of the all the system components. This field is Null if the corresponding server is not supported. CMCRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "This property provides the aggregate status of the all the system components. This field is Null if the corresponding server is not supported. CMCRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_4_0"
+                },
+                "CPURollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/CPURollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property contains the rollup status of all the CPUs. This property is Null if the corresponding sensor is not supported. CPURollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "The property contains the rollup status of all the CPUs. This property is Null if the corresponding sensor is not supported. CPURollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "ChassisModel": {
+                    "description": "This property represents the chassis model for the modular enclosure chassis.",
+                    "longDescription": "This property represents the chassis model for the modular enclosure chassis.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ChassisName": {
+                    "description": "This property represents name of the Chassis.",
+                    "longDescription": "This property represents name of the Chassis.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ChassisServiceTag": {
+                    "description": "This property represents the Service Tag of the modular enclosure chassis. For monolithic servers, this shall be same as the ServiceTag property.",
+                    "longDescription": "This property represents the Service Tag of the modular enclosure chassis. For monolithic servers, this shall be same as the ServiceTag property.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChassisSystemHeightUnit": {
+                    "description": "The property represents the system height in units of rack space (U).Note: This property is deprecated, refer ManagedSystemSize property or System.Embedded.1#ServerTopology.1#ManagedSystemSizeInU attribute.",
+                    "longDescription": "The property represents the system height in units of rack space (U).Note: This property is deprecated, refer ManagedSystemSize property or System.Embedded.1#ServerTopology.1#ManagedSystemSizeInU attribute.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Unit",
+                    "versionAdded": "v1_1_0"
+                },
+                "CoolingRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/CoolingRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CoolingRollupStatus provides the rollup status of the cooling components in the systems. This property is Null if the corresponding sensor is not supported. CoolingRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "CoolingRollupStatus provides the rollup status of the cooling components in the systems. This property is Null if the corresponding sensor is not supported. CoolingRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_4_0"
+                },
+                "CurrentRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/CurrentRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "CurrentRollupStatus provides the current rollup status of all the system components. This property is Null if the corresponding sensor is not supported. CurrentRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "CurrentRollupStatus provides the current rollup status of all the system components. This property is Null if the corresponding sensor is not supported. CurrentRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "EstimatedExhaustTemperatureCelsius": {
+                    "description": "Calculated, not measured, exhaust temperature in Degree Celsius. A value of 255 indicates that the value is not applicable.",
+                    "longDescription": "Calculated, not measured, exhaust temperature in Degree Celsius. A value of 255 indicates that the value is not applicable.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Cel",
+                    "versionAdded": "v1_1_0"
+                },
+                "EstimatedSystemAirflowCFM": {
+                    "description": "EstimatedSystemAirflow provides the estimated airflow over the chassis in Cubic Feet per Minute (CFM). A value of 255 indicates that the value is not applicable.",
+                    "longDescription": "EstimatedSystemAirflow provides the estimated airflow over the chassis in Cubic Feet per Minute (CFM). A value of 255 indicates that the value is not applicable.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "CFM",
+                    "versionAdded": "v1_1_0"
+                },
+                "ExpressServiceCode": {
+                    "description": "ExpressServiceCode of the system.",
+                    "longDescription": "ExpressServiceCode of the system.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FanRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/FanRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "FanRollupStatus provides the fan rollup status of all the system components. This property is null if the corresponding sensor is not supported. FanRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "FanRollupStatus provides the fan rollup status of all the system components. This property is null if the corresponding sensor is not supported. FanRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "IDSDMRedundancyStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/IDSDMRedundancyStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This Property represents the current Redundancy status for IDSDM",
+                    "longDescription": "This Property represents the current Redundancy status for IDSDM",
+                    "readonly": true,
+                    "versionAdded": "v1_4_0"
+                },
+                "IDSDMRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/IDSDMRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "IDSDMRollupStatus provides the live status of IDSDM (Internal Dual SD Mode) sensors. This property is null if the corresponding sensor is not supported. IDSDMRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "IDSDMRollupStatus provides the live status of IDSDM (Internal Dual SD Mode) sensors. This property is null if the corresponding sensor is not supported. IDSDMRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "IntrusionRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/IntrusionRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "IntrusionRollupStatus provides the live status of chassis intrusion sensors. This property is null if the corresponding sensor is not supported. IntrusionRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "IntrusionRollupStatus provides the live status of chassis intrusion sensors. This property is null if the corresponding sensor is not supported. IntrusionRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "IsOEMBranded": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/IsOEMBranded"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property is used to identify if the system is OEM branded.",
+                    "longDescription": "This property is used to identify if the system is OEM branded.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property provides the last time System Inventory Collection On Reboot(CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the last time System Inventory Collection On Reboot(CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LastUpdateTime": {
+                    "description": "This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LicensingRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/LicensingRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "LicensingRollupStatus provides the licensing rollup status of all the system components. LicensingRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "LicensingRollupStatus provides the licensing rollup status of all the system components. LicensingRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "ManagedSystemSize": {
+                    "description": "The property represents the system height in units of rack space (U).",
+                    "longDescription": "The property represents the system height in units of rack space (U).",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_3_0"
+                },
+                "MaxCPUSockets": {
+                    "description": "Maximum CPU sockets in the system.",
+                    "longDescription": "Maximum CPU sockets in the system.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "MaxDIMMSlots": {
+                    "description": "The number of slots or sockets available for memory devices in the array. This value represents the number of memory device structures that comprise the memory array. Each memory device has a reference to the memory array that it belongs to.",
+                    "longDescription": "The number of slots or sockets available for memory devices in the array. This value represents the number of memory device structures that comprise the memory array. Each memory device has a reference to the memory array that it belongs to.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxPCIeSlots": {
+                    "description": "Maximum PCIe slots in the system.",
+                    "longDescription": "Maximum PCIe slots in the system.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxSystemMemoryMiB": {
+                    "description": "The maximum memory capacity, in MiB, that can be installed on the platform. Note: This property represents the sum of the memory that can be installed in each slot regardless of currently installed memory capacity.",
+                    "longDescription": "The maximum memory capacity, in MiB, that can be installed on the platform. Note: This property represents the sum of the memory that can be installed in each slot regardless of currently installed memory capacity.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "MiB",
+                    "versionAdded": "v1_4_0"
+                },
+                "MemoryOperationMode": {
+                    "description": "MemoryOperationMode denotes the mode of operation for system memory, such as mirrored, advanced ECC, or optimized mode. Note: \"Memory Operation mode is not supported by UDIMMs and the value displayed is Unknown\".",
+                    "longDescription": "MemoryOperationMode denotes the mode of operation for system memory, such as mirrored, advanced ECC, or optimized mode. Note: \"Memory Operation mode is not supported by UDIMMs and the value displayed is Unknown\".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "NodeID": {
+                    "description": "NodeID is a unique property of the blade, based on the Service Tag.",
+                    "longDescription": "NodeID is a unique property of the blade, based on the Service Tag.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "PSRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/PSRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property contains the power-supply rollup status of all the system components. This property is Null if the corresponding sensor is not supported. PSRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "The property contains the power-supply rollup status of all the system components. This property is Null if the corresponding sensor is not supported. PSRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "PlatformGUID": {
+                    "description": "System GUID.",
+                    "longDescription": "System GUID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                },
+                "PopulatedDIMMSlots": {
+                    "description": "This property indicates the memory sockets in the system that are populated.",
+                    "longDescription": "This property indicates the memory sockets in the system that are populated.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PopulatedPCIeSlots": {
+                    "description": "Populated PCIe slots in the system.",
+                    "longDescription": "Populated PCIe slots in the system.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PowerCapEnabledState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/PowerCapEnabledState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates the current state of the power-cap setting of the associated managed system element.",
+                    "longDescription": "This property indicates the current state of the power-cap setting of the associated managed system element.",
+                    "readonly": true
+                },
+                "SDCardRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SDCardRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "SDCardRollupStatus provides the SD-card rollup status.This property is Null if the corresponding sensor is not supported. SDCardRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "SDCardRollupStatus provides the SD-card rollup status.This property is Null if the corresponding sensor is not supported. SDCardRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "SELRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SELRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "SELRollupStatus provides the SEL rollup status. This property is Null if the corresponding sensor is not supported. SELRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "SELRollupStatus provides the SEL rollup status. This property is Null if the corresponding sensor is not supported. SELRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "ServerAllocationWatts": {
+                    "description": "This property represents the power, in Watt, that is allocated by the chassis manager to the blade systems. This property is applicable for modular server blades and AMD Roadster systems.",
+                    "longDescription": "This property represents the power, in Watt, that is allocated by the chassis manager to the blade systems. This property is applicable for modular server blades and AMD Roadster systems.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Watts",
+                    "versionAdded": "v1_1_0"
+                },
+                "StorageRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/StorageRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "StorageRollupStatus provides the storage rollup status of all the storage components. StorageRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "StorageRollupStatus provides the storage rollup status of all the storage components. StorageRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "SysMemErrorMethodology": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SysMemErrorMethodology"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The primary hardware error correction or detection method supported by the memory array.",
+                    "longDescription": "The primary hardware error correction or detection method supported by the memory array.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "SysMemFailOverState": {
+                    "description": "Represents the failover state of the system memory.",
+                    "longDescription": "Represents the failover state of the system memory.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "SysMemLocation": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SysMemLocation"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The physical location of the memory array; whether on the system board or on an add-in board.",
+                    "longDescription": "The physical location of the memory array; whether on the system board or on an add-in board.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "SysMemPrimaryStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SysMemPrimaryStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "SystemMemoryPrimaryStatus provides a high-level status value that is intended to align with Red-Yellow-Green type representation of status for the system memory.",
+                    "longDescription": "SystemMemoryPrimaryStatus provides a high-level status value that is intended to align with Red-Yellow-Green type representation of status for the system memory.",
+                    "readonly": true
+                },
+                "SystemGeneration": {
+                    "description": "SystemGeneration represents the generation of the Dell system.",
+                    "longDescription": "SystemGeneration represents the generation of the Dell system.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SystemHealthRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SystemHealthRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "SystemHealthRollupStatus provides the overall rollup status of all the systems components. This property is Null if the corresponding sensor is not supported. SystemHealthRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "SystemHealthRollupStatus provides the overall rollup status of all the systems components. This property is Null if the corresponding sensor is not supported. SystemHealthRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_4_0"
+                },
+                "SystemID": {
+                    "description": "System ID describes the model of the system in integer value. The SystemID property is generally used for identifying the compatibility of the updateable software and firmware.",
+                    "longDescription": "System ID describes the model of the system in integer value. The SystemID property is generally used for identifying the compatibility of the updateable software and firmware.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "SystemRevision": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/SystemRevision"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "System revision indicates the revision of the system from a hardware perspective.",
+                    "longDescription": "System revision indicates the revision of the system from a hardware perspective.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "TempRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/TempRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property contains the temperature rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "The property contains the temperature rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "TempStatisticsRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/TempStatisticsRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "TempStatisticsRollupStatus provides the temperature statistics rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempStatisticsRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "TempStatisticsRollupStatus provides the temperature statistics rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempStatisticsRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "UUID": {
+                    "description": "UUID uniquely identifies the system. The property is also known as BIOS GUID. The UUID value matches with the WMI representation of the UUID or GUID.",
+                    "longDescription": "UUID uniquely identifies the system. The property is also known as BIOS GUID. The UUID value matches with the WMI representation of the UUID or GUID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "VoltRollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSystem.json#/definitions/VoltRollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property contains the voltage rollup status of all the system components. This property is Null if the corresponding sensor is not supported. VoltRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "The property contains the voltage rollup status of all the system components. This property is Null if the corresponding sensor is not supported. VoltRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "smbiosGUID": {
+                    "description": "System GUID uniquely identifies the system. The property is also known as BIOS GUID. The smbiosGUID value matches exactly with the SMBIOS representation of the GUID.",
+                    "longDescription": "System GUID uniquely identifies the system. The property is also known as BIOS GUID. The smbiosGUID value matches exactly with the SMBIOS representation of the GUID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellSystem.v1_4_0.DellSystem"
+}

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellEnclosureEMM v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/DellEnclosure_v1.xml">
+        <edmx:Include Namespace="DellEnclosure"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEnclosureEMM">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellEnclosureEMM" Abstract="true">
+                <Annotation String="An instance of DellEnclosureEMM will have  Enclosure Management Module specific data." Term="OData.Description"/>
+                <Annotation String="An instance of DellEnclosureEMM will have  Enclosure Management Module specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Chassis/Oem/Dell/DellEnclosureEMM/{EnclosureEMMId}</String>
+                        <String>/redfish/v1/Chassis/{EnclosureId}/Oem/Dell/DellEnclosureEMM/{EnclosureEMMId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="PrimaryStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="State">
+                <Member Name="Blocked">
+                    <Annotation String="Blocked" Term="OData.Description"/>
+                    <Annotation String="Blocked" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Charging">
+                    <Annotation String="Charging" Term="OData.Description"/>
+                    <Annotation String="Charging" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Failed">
+                    <Annotation String="Failed" Term="OData.Description"/>
+                    <Annotation String="Failed" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Foreign">
+                    <Annotation String="Foreign" Term="OData.Description"/>
+                    <Annotation String="Foreign" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Learning">
+                    <Annotation String="Learning" Term="OData.Description"/>
+                    <Annotation String="Learning" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="LowPower">
+                    <Annotation String="Low Power" Term="OData.Description"/>
+                    <Annotation String="Low Power" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NonRAID">
+                    <Annotation String="Non-Raid" Term="OData.Description"/>
+                    <Annotation String="Non-Raid" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Offline">
+                    <Annotation String="Offline" Term="OData.Description"/>
+                    <Annotation String="Offline" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Online">
+                    <Annotation String="Online" Term="OData.Description"/>
+                    <Annotation String="Online" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OverTemp">
+                    <Annotation String="Over Temp" Term="OData.Description"/>
+                    <Annotation String="Over Temp" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Ready">
+                    <Annotation String="Ready" Term="OData.Description"/>
+                    <Annotation String="Ready" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Removed">
+                    <Annotation String="Removed" Term="OData.Description"/>
+                    <Annotation String="Removed" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="UnderTemp">
+                    <Annotation String="Under Temp" Term="OData.Description"/>
+                    <Annotation String="Under Temp" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <ComplexType BaseType="Resource.Links" Name="Links">
+                <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                <Annotation String="This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <NavigationProperty Name="DellEnclosureCollection" Type="Collection(DellEnclosure.DellEnclosure)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.LongDescription"/>
+                </NavigationProperty>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEnclosureEMM.v1_0_0">
+            <EntityType Name="DellEnclosureEMM" BaseType="DellEnclosureEMM.DellEnclosureEMM">
+                <Annotation Term="OData.Description" String="An instance of DellEnclosureEMM will have  Enclosure Management Module specific data."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellEnclosureEMM will have  Enclosure Management Module specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent Fully Qualified Device Description (FQDD)."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent Fully Qualified Device Description (FQDD)."/>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="PartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the part number of Enclosure management module, which is assigned by organization."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the part number of Enclosure management module, which is assigned by organization."/>
+                </Property>
+                <Property Name="PrimaryStatus" Type="DellEnclosureEMM.PrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the status of the device and shall be one of the following values:0 - Unknown,  1 - OK, 2 - Degraded, 3 - Error."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the status of the device and shall be one of the following values:0 - Unknown,  1 - OK, 2 - Degraded, 3 - Error."/>
+                </Property>
+                <Property Name="Revision" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the version of the EMM firmware."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the version of the EMM firmware."/>
+                </Property>
+                <Property Name="Links" Type="DellEnclosureEMM.Links" Nullable="false">
+                    <Annotation String="Contains references to other resources that are related to this resource." Term="OData.Description"/>
+                    <Annotation String="The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource." Term="OData.LongDescription"/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEnclosureEMM.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DeviceDescription, State properties."/>
+            <EntityType Name="DellEnclosureEMM" BaseType="DellEnclosureEMM.v1_0_0.DellEnclosureEMM">
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                </Property>
+                <Property Name="State" Type="DellEnclosureEMM.State">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the state of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the state of the device."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

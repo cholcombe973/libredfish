@@ -1,0 +1,101 @@
+{
+    "definitions": {
+        "BootErrorMode": {
+            "enumLongDescriptions": {
+                "StopOnError": "This value shall mean that this device stops while errors occurred during booting.",
+                "PauseOnError": "This value shall mean that this device pauses while errors occurred during booting.",
+                "SafeModeOnError": "This value shall mean that this device enters into safe mode while errors occurred during booting.",
+                "IgnoreError": "This value shall mean that this device ignores the error while errors occurred during booting."
+            },
+            "enumDescriptions": {
+                "StopOnError": "Stop on error",
+                "PauseOnError": "Pause on error",
+                "SafeModeOnError": "Safe mode on error",
+                "IgnoreError": "Ignore error"
+            },
+            "enum": [
+                "StopOnError",
+                "PauseOnError",
+                "IgnoreError",
+                "SafeModeOnError"
+            ],
+            "type": "string"
+        },
+        "Config": {
+            "description": "The base type for resources and members that can be linked to.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "JBODMode": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be the JBOD mode this storage controller.",
+                    "description": "This represents the JBOD mode.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/State"
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "BIOSBootMode": {
+                    "items": {
+                        "$ref": "#/definitions/BootErrorMode"
+                    },
+                    "readonly": false,
+                    "type": "array",
+                    "description": "This represents the BIOS boot mode while error occurred.",
+                    "longDescription": "The value of this property shall be the set of BIOS boot mode this storage controller can use to handle errors while BIOS booting."
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/Config",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#HARAIDController.v1_0_0.Config"
+}

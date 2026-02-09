@@ -1,0 +1,238 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/NodeManager.v1_0_0.json",
+    "$ref": "#/definitions/NodeManager",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#NodeManager.ChangeState": {
+                    "$ref": "#/definitions/ChangeState"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "The available OEM-specific actions for this resource.",
+                    "longDescription": "This property shall contain the available OEM-specific actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "ChangeState": {
+            "additionalProperties": false,
+            "parameters": {
+                "State": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/State",
+                    "description": "The state of the Resource to transition to. When policy control is disabled globally, no policy can enter 'Operating', 'Triggered', or 'Enabled' state.",
+                    "longDescription": "This parameter shall contain the state of the Resource to transition to. When policy control is disabled globally, no policy can enter 'Operating', 'Triggered', or 'Enabled' state."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "NodeManager": {
+            "additionalProperties": false,
+            "description": "The Node Manager schema describes metrics and control properties for Node Manager application.",
+            "longDescription": "The Node Manager schema contains resources describing objects used by Node Manager to monitor and control node's power and performance.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "This property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Domains": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/NmDomainCollection.json#/definitions/DomainCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Domain schema contains properties related to monitoring and control of the given power capping domain.",
+                    "longDescription": "The Domain schema contains properties related to monitoring and control of the given power capping domain.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "MaxNumberOfPolicies": {
+                    "description": "Maximal number of policies supported by this manager.",
+                    "longDescription": "This property shall contain a maximal number of policies of all types which can be created and maintained by this manager.",
+                    "maximum": 64,
+                    "readonly": true,
+                    "type": "number"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "NmVersion": {
+                    "description": "Application version running on this manager.",
+                    "longDescription": "This property shall contain the firmware version as defined by the manufacturer for the associated manager.",
+                    "maximum": 64,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Policies": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/NmPolicyCollection.json#/definitions/PolicyCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Policies created for this domain.",
+                    "longDescription": "This type shall contain policies created for this domain.",
+                    "readonly": true
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "The status and health of the Resource and its subordinate or dependent Resources.",
+                    "longDescription": "This property shall contain any status or health properties of the Resource.",
+                    "readonly": true
+                },
+                "ThrottlingStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/NmThrottlingStatus.json#/definitions/ThrottlingStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The link to the throttling status reported by this manager.",
+                    "longDescription": "This property shall contain a link to a Resource type ThrottlingStatus.",
+                    "readonly": true
+                },
+                "Triggers": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/NmTriggerCollection.json#/definitions/TriggerCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Policies created for this domain.",
+                    "longDescription": "This type shall contain available triggers for policies in a domain.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM-specific actions for this resource.",
+            "longDescription": "This type shall contain the available OEM-specific actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "release": "1.0",
+    "title": "#NodeManager.v1_0_0.NodeManager"
+}

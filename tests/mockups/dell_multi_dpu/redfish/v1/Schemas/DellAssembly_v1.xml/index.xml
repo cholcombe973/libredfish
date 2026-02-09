@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellAssembly v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellAssembly">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellAssembly" Abstract="true">
+                <Annotation String="This resource shall be used to represent an assembly information." Term="OData.Description"/>
+                <Annotation String="This resource shall be used to represent an assembly information." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/Oem/Dell/DellAssembly/{AssemblyId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="PackageType">
+                <Member Name="Battery">
+                    <Annotation String="Battery" Term="OData.Description"/>
+                    <Annotation String="Battery" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Blade">
+                    <Annotation String="Blade" Term="OData.Description"/>
+                    <Annotation String="Blade" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="BladeExpansion">
+                    <Annotation String="Blade Expansion" Term="OData.Description"/>
+                    <Annotation String="Blade Expansion" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Chassis/Frame">
+                    <Annotation String="Chassis/Frame" Term="OData.Description"/>
+                    <Annotation String="Chassis/Frame" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Container/FrameSlot">
+                    <Annotation String="Container/Frame Slot" Term="OData.Description"/>
+                    <Annotation String="Container/Frame Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="CrossConnect/Backplane">
+                    <Annotation String="Cross Connect/Backplane" Term="OData.Description"/>
+                    <Annotation String="Cross Connect/Backplane" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Fan">
+                    <Annotation String="Fan" Term="OData.Description"/>
+                    <Annotation String="Fan" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Memory">
+                    <Annotation String="Memory" Term="OData.Description"/>
+                    <Annotation String="Memory" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Module/Card">
+                    <Annotation String="Module/Card" Term="OData.Description"/>
+                    <Annotation String="Module/Card" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Port/Connector">
+                    <Annotation String="Port/Connector" Term="OData.Description"/>
+                    <Annotation String="Port/Connector" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerSource/Generator">
+                    <Annotation String="Power Source/Generator" Term="OData.Description"/>
+                    <Annotation String="Power Source/Generator" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerSupply">
+                    <Annotation String="Power Supply" Term="OData.Description"/>
+                    <Annotation String="Power Supply" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Processor">
+                    <Annotation String="Processor" Term="OData.Description"/>
+                    <Annotation String="Processor" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Rack">
+                    <Annotation String="Rack" Term="OData.Description"/>
+                    <Annotation String="Rack" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Sensor">
+                    <Annotation String="Sensor" Term="OData.Description"/>
+                    <Annotation String="Sensor" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="StorageMediaPackage(E.GDiskOrTapeDrive)">
+                    <Annotation String="Storage Media Package (e.g Disk or Tape Drive)" Term="OData.Description"/>
+                    <Annotation String="Storage Media Package (e.g Disk or Tape Drive)" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellAssembly.v1_0_0">
+            <EntityType Name="DellAssembly" BaseType="DellAssembly.DellAssembly">
+                <Annotation Term="OData.Description" String="This resource shall be used to represent an assembly information."/>
+                <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an assembly information."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DeviceFQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property has the value of the FQDD of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property has the value of the FQDD of the device."/>
+                </Property>
+                <Property Name="PackageType" Type="DellAssembly.PackageType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Enumeration that defines the type of the PhysicalPackage."/>
+                    <Annotation Term="OData.LongDescription" String="Enumeration that defines the type of the PhysicalPackage."/>
+                </Property>
+                <Property Name="SerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A manufacturer-allocated number used to identify the Physical Element."/>
+                    <Annotation Term="OData.LongDescription" String="A manufacturer-allocated number used to identify the Physical Element."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

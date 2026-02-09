@@ -1,0 +1,121 @@
+{
+    "definitions": {
+        "PCIeFunction": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "GPUDevice": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/GPUDeviceData"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "GPU data.",
+                    "longDescription": "GPU more data."
+                }
+            }
+        },
+        "GPUDeviceData": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "GPUSlot": {
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "GPU slot index.",
+                    "longDescription": "The physical location of GPU in the system."
+                },
+                "GPUCapacity2": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "GPU capacity 2.",
+                    "longDescription": "The bitmap for describing different GPU capacities."
+                },
+                "GPUVendor": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "GPU Vendor Name.",
+                    "longDescription": "GPU Vendor Name."
+                },
+                "GPUCapacity0": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "GPU capacity 0.",
+                    "longDescription": "The bitmap for describing different GPU capacities."
+                },
+                "GPUCapacity1": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "GPU capacity 1.",
+                    "longDescription": "The bitmap for describing different GPU capacities."
+                },
+                "GPUModel": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "GPU Model Name.",
+                    "longDescription": "GPU Model Name."
+                },
+                "GPUFWRevision": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "GPU Firmware Revision.",
+                    "longDescription": "GPU firmware revision number."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#GPUDevice.v1_0_0"
+}

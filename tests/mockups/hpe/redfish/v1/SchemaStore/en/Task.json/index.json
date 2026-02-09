@@ -1,0 +1,230 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Task",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2021 Distributed Management Task Force. All rights reserved.",
+    "description": "The Task resource describes a specific Task scheduled by or being executed by a Redfish service's Task Service.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "EndTime": {
+            "description": "The date-time stamp that the task was last completed.",
+            "format": "date-time",
+            "longDescription": "The value of this property shall indicate the time the task was completed.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Messages": {
+            "description": "This is an array of messages associated with the task.",
+            "items": {
+                "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously.",
+                "displayname": "Events Item",
+                "properties": {
+                    "Message": {
+                        "description": "This is the human readable message, if provided.",
+                        "displayname": "Message",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MessageArgs": {
+                        "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
+                        "displayname": "MessageArgs",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "MessageId": {
+                        "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                        "longDescription": "This property shall be a key into message registry as described in the Redfish specification.",
+                        "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "RelatedProperties": {
+                        "description": "This is an array of properties described by the message.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "longDescription": "This property shall contain an array of JSON Pointers indicating the properties described by the message, if appropriate for the message.",
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "Resolution": {
+                        "description": "Used to provide suggestions on how to resolve the situation that caused the error.",
+                        "longDescription": "This property shall contain an override of the Resolution of the message in message registry, if present.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Severity": {
+                        "description": "This is the severity of the event.",
+                        "displayname": "Severity",
+                        "enum": [
+                            "OK",
+                            "Warning",
+                            "Critical"
+                        ],
+                        "enumDescriptions": {
+                            "Critical": "A critical condition exists that requires immediate attention",
+                            "OK": "Normal",
+                            "Warning": "A condition exists that requires attention"
+                        },
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "longDescription": "The value of this property shall be an array of messages associated with the task.",
+            "readonly": true,
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Payload": {
+            "additionalProperties": false,
+            "description": "The HTTP and JSON payload details for this task.",
+            "longDescription": "This object shall contain information detailing the HTTP and JSON payload information for executing this task. This object shall not be included in the response if the HidePayload property is set to True.",
+            "properties": {
+                "HttpHeaders": {
+                    "description": "This represents the HTTP headers used in the operation of this Task.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "The value of this property shall be an array of HTTP headers used in the execution of this Task.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "HttpOperation": {
+                    "description": "The HTTP operation to perform to execute this Task.",
+                    "longDescription": "This property shall contain the HTTP operation to execute for this Task.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "JsonBody": {
+                    "description": "This property contains the JSON payload to use in the execution of this Task.",
+                    "longDescription": "The value of this property shall be JSON formatted payload used for this Task.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "TargetUri": {
+                    "description": "The URI of the target for this task.",
+                    "format": "uri-reference",
+                    "longDescription": "This property shall contain a URI referencing a location to be used as the target for an HTTP operation.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "StartTime": {
+            "description": "The date-time stamp that the task was last started.",
+            "format": "date-time",
+            "longDescription": "The value of this property shall indicate the time the task was started.",
+            "readonly": true,
+            "type": "string"
+        },
+        "TaskMonitor": {
+            "description": "The URI of the Task Monitor for this task.",
+            "format": "uri-reference",
+            "longDescription": "This property shall contain a URI to Task Monitor as defined in the Redfish Specification.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "TaskState": {
+            "description": "The state of the task.",
+            "enum": [
+                "New",
+                "Starting",
+                "Running",
+                "Suspended",
+                "Interrupted",
+                "Pending",
+                "Stopping",
+                "Completed",
+                "Killed",
+                "Exception",
+                "Service"
+            ],
+            "enumDescriptions": {
+                "Completed": "Task has completed.",
+                "Exception": "Task has stopped due to an exception condition.",
+                "Interrupted": "Task has been interrupted.",
+                "Killed": "Task was terminated.",
+                "New": "A new task.",
+                "Pending": "Task is pending and has not started.",
+                "Running": "Task is running normally.",
+                "Service": "Task is running as a service.",
+                "Starting": "Task is starting.",
+                "Stopping": "Task is in the process of stopping.",
+                "Suspended": "Task has been suspended."
+            },
+            "enumLongDescriptions": {
+                "Completed": "This value shall represent that the operation is complete and completed sucessfully or with warnings.",
+                "Exception": "This value shall represent that the operation is complete and completed with errors.",
+                "Interrupted": "This value shall represent that the operation has been interrupted but is expected to restart and is therefore not complete.",
+                "Killed": "This value shall represent that the operation is complete because the task was killed by an operator.",
+                "New": "This value shall represent that this task is newly created but the operation has not yet started.",
+                "Pending": "This value shall represent that the operation is pending some condition and has not yet begun to execute.",
+                "Running": "This value shall represent that the operation is executing.",
+                "Service": "This value shall represent that the operation is now running as a service and expected to continue operation until stopped or killed.",
+                "Starting": "This value shall represent that the operation is starting.",
+                "Stopping": "This value shall represent that the operation is stopping but is not yet complete.",
+                "Suspended": "This value shall represent that the operation has been suspended but is expected to restart and is therefore not complete."
+            },
+            "etag": true,
+            "longDescription": "The value of this property shall indicate the state of the task.  New shall be used to indicate that the task is a new task which has just been instantiated and is in the initial state and indicates it has never been started.  Starting shall be used to indicate that the task is moving from the New, Suspended, or Service states into the Running state.  Running shall be used to indicate that the Task is running.  Suspended shall be used to indicate  that the Task is stopped (e.g., by a user), but can be restarted in a seamless manner.  Interrupted shall be used to indicate  that the Task was interrupted (e.g., by a server crash) in the middle of processing, and the user should either re-run/restart the Task.  Pending shall be used to indicate  that the Task has been queued and will be scheduled for processing as soon as resources are available to handle the request.  Stopping shall be used to indicate that the Task is in the process of moving to a Completed, Killed, or Exception state.  Completed shall be used to indicate that the task has completed normally.  Killed shall be used to indicate  that the task has been stopped by a Kill state change request (non-graceful shutdown).  Exception shall be used to indicate  that the Task is in an abnormal state that might be indicative of an error condition.  Service shall be used to indicate that the Task is in a state that supports problem discovery, or resolution, or both.  This state is used when a corrective action is possible.",
+            "readonly": true,
+            "type": "string"
+        },
+        "TaskStatus": {
+            "description": "This is the completion status of the task.",
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ],
+            "enumDescriptions": {
+                "Critical": "A critical condition exists that requires immediate attention.",
+                "OK": "Normal.",
+                "Warning": "A condition exists that requires attention."
+            },
+            "etag": true,
+            "longDescription": "The value of this property shall be the completion status of the task, as defined in the Status section of the Redfish specification and shall not be set until the task has completed.",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#Task.v1_3_0.Task",
+    "type": "object"
+}

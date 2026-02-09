@@ -1,0 +1,211 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeAdvancedMemoryProtection",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeAdvancedMemoryProtection resource describes the Advanced Memory Protection feature on HPE Servers.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AmpModeActive": {
+            "enum": [
+                "Unknown",
+                "Other",
+                "None",
+                "Mirroring",
+                "OnlineSpare",
+                "RAIDXOR",
+                "AdvancedECC",
+                "Lockstep",
+                "A3DC",
+                "DIMMECC"
+            ],
+            "enumDescriptions": {
+                "A3DC": "The system is configured for AMP with A3DC.",
+                "AdvancedECC": "The system is configured for AMP with the Advanced ECC engine.",
+                "DIMMECC": "The system is configured for AMP with DIMM ECC (Error Correcting Code) only.",
+                "LockStep": "The system is configured for AMP with the LockStep engine",
+                "Mirroring": "The system is configured for mirrored memory protection. All memory banks are duplicated in mirrored memory, as opposed to only one for online spare memory. If enough ECC errors occur, the spare memory is activated and the memory that is experiencing the errors is disabled.",
+                "None": "The management software cannot determine the AMP, or the system is not configured for AMP.",
+                "OnlineSpare": "A single spare bank of memory is set aside at boot time. If enough ECC errors occur, the spare memory is activated and the memory that is experiencing the errors is disabled.",
+                "RAIDXOR": "The system is configured for AMP with the XOR engine.",
+                "Unknown": "The management software cannot determine the AMP, host OS may not have provided it yet."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "AmpModeStatus": {
+            "enum": [
+                "Unknown",
+                "Other",
+                "NotProtected",
+                "Protected",
+                "Degraded",
+                "DIMMECC",
+                "Mirroring",
+                "DegradedMirroring",
+                "OnlineSpare",
+                "DegradedOnlineSpare",
+                "RAIDXOR",
+                "DegradedRAIDXOR",
+                "AdvancedECC",
+                "DegradedAdvancedECC",
+                "Lockstep",
+                "DegradedLockstep",
+                "A3DC",
+                "DegradedA3DC"
+            ],
+            "enumDescriptions": {
+                "A3DC": "The system is protected by AMP in the A3DC mode.",
+                "AdvancedECC": "The system is protected by AMP in the Advanced ECC mode.",
+                "DIMMECC": "The system is protected by DIMM ECC (Error Correcting Code) only.",
+                "Degraded": "The system was protected, but AMP is engaged. Therefore, AMP is no longer available.",
+                "DegradedA3DC": "The system is protected by AMP in the A3DC mode. One or more DIMM faults have been deteced.",
+                "DegradedAdvancedECC": "The system is protected by AMP in the Advanced ECC mode. One or more DIMM faults have been detected.",
+                "DegradedLockStep": "The system is protected by AMP in the LockStep mode. One or more DIMM faults have been detected.",
+                "DegradedMirroring": "The system is protected by AMP in the mirrored mode. One or more DIMM faults have been detected.",
+                "DegradedOnline Spare": "The system is protected by AMP in the hot spare mode. One or more DIMM faults have been detected.",
+                "DegradedRAIDXOR": "The system is protected by AMP in the XOR memory mode. One or more DIMM faults have been detected.",
+                "LockStep": "The system is protected by AMP in the LockStep mode.",
+                "Mirroring": "The system is protected by AMP in the mirrored mode. No DIMM faults have been detected.",
+                "NotProtected": "The system supports AMP, but the feature is disabled.",
+                "OnlineSpare": "The system is protected by AMP in the hot spare mode. No DIMM faults have been detected.",
+                "Other": "The system does not support AMP, or the management software cannot determine the status.",
+                "Protected": "The system supports AMP. The feature is enabled but not engaged.",
+                "RAIDXOR": "The system is protected by AMP in the XOR memory mode. No DIMM faults have been detected.",
+                "Unknown": "The management software cannot determine the status, host OS may not have provided it yet."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "AmpModeSupported": {
+            "etag": true,
+            "items": {
+                "enum": [
+                    "RAIDXOR",
+                    "DualBoardMirroring",
+                    "SingleBoardMirroring",
+                    "AdvancedECC",
+                    "Mirroring",
+                    "OnlineSpare",
+                    "OnlineSpareRank",
+                    "OnlineSpareChannel",
+                    "IntersocketMirroring",
+                    "IntrasocketMirroring",
+                    "Lockstep",
+                    "A3DC",
+                    "None",
+                    "DIMMECC"
+                ],
+                "enumDescriptions": {
+                    "A3DC": "The system can be configured for A3DC.",
+                    "AdvancedECC": "The system can be configured for Advanced ECC.",
+                    "DIMMECC": "The system can be configured for DIMM ECC (Error Correcting Code) only.",
+                    "DualBoardMirroring": "The system can be configured for mirrored advanced memory protection in a dual memory board configuration. The mirrored memory can be swapped with memory on the same memory board or with memory on the second memory board.",
+                    "IntersocketMirroring": "The system can be configured for mirrored intersocket AMP between the memory of two processors or boards.",
+                    "IntrasocketMirroring": "The system can be configured for mirrored intrasocket AMP between the memory of a single processor or board.",
+                    "LockStep": "The system can be configured for LockStep AMP.",
+                    "Mirroring": "The system can be configured for mirrored AMP.",
+                    "None": "The system cannot be configured for AMP.",
+                    "OnlineSpare": "The system can be configured for online spare AMP.",
+                    "OnlineSpareChannel": "The system can be configured for Online Spare Channel AMP.",
+                    "OnlineSpareRank": "The system can be configured for Online Spare Rank AMP.",
+                    "RAIDXOR": "The system can be configured for AMP using the XOR engine.",
+                    "SingleBoardMirroring": "The system can be configured for mirrored advanced memory protection in a single memory board."
+                },
+                "etag": true,
+                "readonly": true,
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MemoryList": {
+            "description": "",
+            "items": {
+                "additionalProperties": false,
+                "description": "",
+                "etag": true,
+                "properties": {
+                    "BoardCpuNumber": {
+                        "description": "",
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "BoardNumberOfSockets": {
+                        "description": "The number of present memory module sockets.",
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "BoardOperationalFrequency": {
+                        "description": "The frequency at which memory on the board is operating in MHz.",
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "BoardOperationalVoltage": {
+                        "description": "The voltage at which memory on the board is operating in mV.",
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "BoardTotalMemorySize": {
+                        "description": "The total size of the memory populated on the board in MB.",
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeAdvancedMemoryProtection.v2_0_0.HpeAdvancedMemoryProtection",
+    "type": "object"
+}

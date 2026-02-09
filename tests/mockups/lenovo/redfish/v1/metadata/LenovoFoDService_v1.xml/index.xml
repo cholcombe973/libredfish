@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  LenovoFoDService   v1.0.0                                           -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoFoDKeyCollection_v1.xml">
+    <edmx:Include Namespace="LenovoFoDKeyCollection"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoFoDService">
+      <EntityType Name="LenovoFoDService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoFoDService resource."/>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoFoDService.v1_0_0">
+      <EntityType Name="LenovoFoDService" BaseType="LenovoFoDService.LenovoFoDService">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoFoDService resource."/>
+        <Property Name="Tier" Type="LenovoFoDService.v1_0_0.TierLevel" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="It describes the license supported tier level of the management module."/>
+        </Property>
+        <NavigationProperty Name="Keys" Type="LenovoFoDKeyCollection.LenovoFoDKeyCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The FoD activation keys."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+      
+      <EnumType Name="TierLevel">
+        <Member Name="Tier0">
+          <Annotation Term="OData.Description" String="Tier 0"/>
+        </Member>
+        <Member Name="Tier1">
+          <Annotation Term="OData.Description" String="Tier 1"/>
+        </Member>
+        <Member Name="Tier2">
+          <Annotation Term="OData.Description" String="Tier 2"/>
+        </Member>
+        <Member Name="Tier3">
+          <Annotation Term="OData.Description" String="Tier 3"/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

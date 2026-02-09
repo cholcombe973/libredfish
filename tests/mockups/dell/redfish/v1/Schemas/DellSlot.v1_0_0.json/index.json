@@ -1,0 +1,145 @@
+{
+    "$id": "/redfish/v1/Schemas/DellSlot.v1_0_0.json",
+    "$ref": "#/definitions/DellSlot",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellSlot": {
+            "additionalProperties": false,
+            "description": "DellSlot provides slot occupancy and device correlation information.",
+            "longDescription": "DellSlot provides slot occupancy and device correlation information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "ConnectorLayout": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSlot.json#/definitions/ConnectorLayout"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Describes the type of packaging normally associated with this type of connector. 16 (PCI) - Describes the generic PCI connector layout. 17 (PCI-X) - Describes the PCI Extended connector layout. 18 (PCI-E) - Describes the PCI Express connector layout, where the actual layout, as far as the length is concerned, is unknown. 19 - 25 (PCI-E xN) - Describes the PCI Express connector layout, where N is the lane count that appropriately describes the length of the PCI-E connector.",
+                    "longDescription": "Describes the type of packaging normally associated with this type of connector. 16 (PCI) - Describes the generic PCI connector layout. 17 (PCI-X) - Describes the PCI Extended connector layout. 18 (PCI-E) - Describes the PCI Express connector layout, where the actual layout, as far as the length is concerned, is unknown. 19 - 25 (PCI-E xN) - Describes the PCI Express connector layout, where N is the lane count that appropriately describes the length of the PCI-E connector.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DeviceFQDD": {
+                    "description": "The property represents the FQDD for the device that is plugged into the slot.",
+                    "longDescription": "The property represents the FQDD for the device that is plugged into the slot.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "EmptySlot": {
+                    "description": "The property represents whether the slot is empty. TRUE - Empty. FALSE - Occupied.",
+                    "longDescription": "The property represents whether the slot is empty. TRUE - Empty. FALSE - Occupied.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Number": {
+                    "description": "The property represents the numeric slot number. If the slot number contains alphabets, this property is NULL and the slot number is obtained from property NumberDescription.",
+                    "longDescription": "The property represents the numeric slot number. If the slot number contains alphabets, this property is NULL and the slot number is obtained from property NumberDescription.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "NumberDescription": {
+                    "description": "The property represents the slot number containing alphanumeric value.",
+                    "longDescription": "The property represents the slot number containing alphanumeric value.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "SlotEnabledState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellSlot.json#/definitions/SlotEnabledState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property represents whether the slot is enabled or disabled.",
+                    "longDescription": "The property represents whether the slot is enabled or disabled.",
+                    "readonly": true
+                },
+                "Tag": {
+                    "description": "This property is the key and has a unique value.",
+                    "longDescription": "This property is the key and has a unique value.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellSlot.v1_0_0.DellSlot"
+}

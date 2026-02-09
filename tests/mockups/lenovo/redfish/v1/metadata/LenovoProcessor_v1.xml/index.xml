@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoProcessor  v1.0.0                                      -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+  
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoProcessor">
+      <ComplexType Name="LenovoProcessor" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoProcessor resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoProcessor.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      <ComplexType Name="LenovoProcessor" BaseType="LenovoProcessor.LenovoProcessor">
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo Processor resource.  It represents the properties of a processor attached to a System."/>
+        <Property Name="NumberOfEnabledCores" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Number of processor cores enabled for processor."/>
+          <Annotation Term="OData.LongDescription" String="Number of processor cores enabled for processor."/>
+        </Property>
+        <Property Name="ExternalBusClockSpeedMHz" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The speed (in MHz) of the external bus interface."/>
+          <Annotation Term="OData.LongDescription" String="The speed (in MHz) of the external bus interface."/>
+        </Property>
+        <Property Name="CurrentClockSpeedMHz" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The current speed (in MHz) of this Processor."/>
+          <Annotation Term="OData.LongDescription" String="The current speed (in MHz) of this Processor."/>
+        </Property>
+        <Property Name="ProcessorFamily" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Family field for this processor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the Processor Family field."/>
+        </Property>
+        <Property Name="CacheInfo" Type="Collection(LenovoProcessor.v1_0_0.ProcessorCache)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The cache for this processor."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the attibutes of processor cache device. Processoy may have different level cache."/>
+        </Property>    
+      </ComplexType>
+
+      <ComplexType Name="ProcessorCache">
+        <Annotation Term="OData.Description" String="This includes the processor cache information"/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain cache of a processor resource."/>
+        <Property Name="CacheLevel" Type="LenovoProcessor.v1_0_0.ProcessorCacheLevel">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This includes the processor cache information"/>
+        </Property>
+        <Property Name="MaxCacheSizeKByte" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The maximum size that can be installed."/>
+        </Property>
+        <Property Name="InstalledSizeKByte" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The installed cache size. The value should be zero if no cache is installed."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="ProcessorCacheLevel">
+        <Member Name="L1">
+          <Annotation Term="OData.Description" String="L1 Cache of Processor."/>
+        </Member>
+        <Member Name="L2">
+          <Annotation Term="OData.Description" String="L2 Cache of Processor."/>
+        </Member>
+        <Member Name="L3">
+          <Annotation Term="OData.Description" String="L3 Cache of Processor."/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

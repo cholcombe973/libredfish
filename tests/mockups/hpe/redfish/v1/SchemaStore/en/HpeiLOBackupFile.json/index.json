@@ -1,0 +1,90 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOBackupFile",
+    "actions": {
+        "actions": {
+            "HpeiLOBackupFile.Restore": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOBackupFile.Restore"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            }
+        },
+        "description": "POST custom actions defined for this type. (The implemented actions may be a subset of these.)"
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOBackupFile resource describes the properties for managing BMC backup files.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOBackupFile.Restore": {
+                    "additionalProperties": false,
+                    "description": "Restores a backup file stored on the NAND.",
+                    "properties": {
+                        "target": {
+                            "description": "The URI of this action.",
+                            "format": "uri-reference",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Created": {
+            "description": "ISO-time of backup file creation (by whomever created this thing)",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "FileSize": {
+            "description": "Size of backup file.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "FirmwareVersion": {
+            "description": "iLO firmware version running when this backup file was created.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        }
+    },
+    "required": [
+        "Created",
+        "FileSize",
+        "Id"
+    ],
+    "title": "#HpeiLOBackupFile.v1_0_0.HpeiLOBackupFile",
+    "type": "object"
+}

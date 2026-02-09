@@ -1,0 +1,176 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_3_0.json",
+    "@odata.id": "HostInterface",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HostInterface resource describes a Redfish Host Interface, which is a method of accessing the Redfish API from the host computer system.",
+    "longDescription": "This resource shall be used to represent Host Interface resources as part of the Redfish specification.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AuthenticationModes": {
+            "description": "This indicates the authentication modes available on this interface.",
+            "items": {
+                "additionalProperties": false,
+                "description": "An authentication mode allowed by this interface.",
+                "properties": {
+                    "AuthenticationMode": {
+                        "enum": [
+                            "AuthNone",
+                            "BasicAuth",
+                            "RedfishSessionAuth",
+                            "OemAuth"
+                        ],
+                        "enumDescriptions": {
+                            "AuthNone": "Requests without any sort of authentication are allowed.",
+                            "BasicAuth": "Requests using HTTP Basic Authentication are allowed.",
+                            "OemAuth": "Requests using OEM authentication mechanisms are allowed.",
+                            "RedfishSessionAuth": "Requests using Redfish Session Authentication are allowed."
+                        },
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": false,
+                "type": "object"
+            },
+            "longDescription": "The value of this property shall be an array consisting of the authentication modes allowed on this interface.",
+            "readonly": false,
+            "type": "array"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "ExternallyAccessible": {
+            "description": "This indicates whether this interface is accessible by external entities.",
+            "longDescription": "The value of this property shall be a boolean indicating whether this interface is accessible by external (non-host) entities.",
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "FirmwareAuthEnabled": {
+            "description": "This indicates whether this firmware authentication is enabled for this interface.",
+            "longDescription": "The value of this property shall be a boolean indicating whether firmware authentication for this interface is enabled.",
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "FirmwareAuthRoleId": {
+            "description": "This property contains the Role for firmware authentication on this interface.",
+            "longDescription": "The value of this property shall be the ID of the Role resource that is configured for firmware authentication on this interface.",
+            "readonly": false,
+            "type": "string"
+        },
+        "HostEthernetInterfaces": {
+            "description": "This is a reference to a collection of NICs that Computer Systems use for network communication with this Host Interface.",
+            "longDescription": "The value of this property shall be a link to a collection of type EthernetInterfaceCollection that Computer Systems use as the Host Interface to this Manager.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "HostInterfaceType": {
+            "description": "This indicates the Host Interface type for this interface.",
+            "enum": [
+                "NetworkHostInterface"
+            ],
+            "enumDescriptions": {
+                "NetworkHostInterface": "This interface is a Network Host Interface."
+            },
+            "longDescription": "The value of this property shall be an enumeration describing type of the interface.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "InterfaceEnabled": {
+            "description": "This indicates whether this interface is enabled.",
+            "longDescription": "The value of this property shall be a boolean indicating whether this interface is enabled.",
+            "readonly": false,
+            "type": [
+                "boolean"
+            ]
+        },
+        "KernelAuthEnabled": {
+            "description": "This indicates whether this kernel authentication is enabled for this interface.",
+            "longDescription": "The value of this property shall be a boolean indicating whether kernel authentication for this interface is enabled.",
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "KernelAuthRoleId": {
+            "description": "This property contains the Role for kernel authentication on this interface.",
+            "longDescription": "The value of this property shall be the ID of the Role resource that is configured for kernel authentication on this interface.",
+            "readonly": false,
+            "type": "string"
+        },
+        "Links": {
+            "$ref": "Resource.json#/definitions/Oem",
+            "description": "Contains references to other resources that are related to this resource.",
+            "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+        },
+        "ManagerEthernetInterface": {
+            "description": "This is a reference to a single NIC that this Manager uses for network communication with this Host Interface.",
+            "longDescription": "The value of this property shall be a link to a resource of type EthernetInterface which represents the network interface used by this Manager as the HostInterface.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NetworkProtocol": {
+            "description": "This is a reference to the network services and their settings that the Manager controls.  It is here that clients will find network configuration options as well as network services.",
+            "longDescription": "The value of this property shall contain a reference to a resource of type ManagerNetworkProtocol which represents the network services for this Manager.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status",
+            "description": "Status"
+        }
+    },
+    "required": [
+        "Id",
+        "Name"
+    ],
+    "title": "#HostInterface.v1_1_1.HostInterface",
+    "type": "object"
+}

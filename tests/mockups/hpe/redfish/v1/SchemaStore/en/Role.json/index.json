@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Role",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This resource defines a user role to be used in conjunction with a Manager Account.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AssignedPrivileges": {
+            "description": "The redfish privileges that this role includes.",
+            "items": {
+                "enum": [
+                    "Login",
+                    "ConfigureManager",
+                    "ConfigureUsers",
+                    "ConfigureSelf",
+                    "ConfigureComponents"
+                ],
+                "enumDescriptions": {
+                    "ConfigureComponents": "Able to configure components managed by this service.",
+                    "ConfigureManager": "Able to configure Manager resources.",
+                    "ConfigureSelf": "Able to change the password for the current user Account.",
+                    "ConfigureUsers": "Able to configure Users and their Accounts.",
+                    "Login": "Able to log into the service and read resources."
+                },
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IsPredefined": {
+            "description": "This property is used to indicate if the Role is one of the Redfish Predefined Roles vs a Custom role.",
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeDirectoryGroup.json#",
+                    "readonly": true
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "OemPrivileges": {
+            "description": "The OEM privileges that this role includes.",
+            "items": {
+                "enum": [
+                    "RemoteConsolePriv",
+                    "VirtualMediaPriv",
+                    "VirtualPowerAndResetPriv",
+                    "HostBIOSConfigPriv",
+                    "HostNICConfigPriv",
+                    "HostStorageConfigPriv",
+                    "SystemRecoveryConfigPriv"
+                ],
+                "enumDescriptions": {
+                    "HostBIOSConfigPriv": "Able to configure Host BIOS Settings.",
+                    "HostNICConfigPriv": "Able to configure Host NIC Settings.",
+                    "HostStorageConfigPriv": "Able to configure Host Storage Settings.",
+                    "RemoteConsolePriv": "Able to remotely access the host system Remote Console, including video, keyboard, and mouse control.",
+                    "SystemRecoveryConfigPriv": "Able to manage the critical recovery firmware images on the Manager's Repository.",
+                    "VirtualMediaPriv": "Able to use the Virtual Media feature on the host system.",
+                    "VirtualPowerAndResetPriv": "Able to power-cycle or reset the host system. These activities interrupt system availability. A user with this privilege can diagnose the system by using the Generate NMI to System button."
+                },
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "RoleId": {
+            "description": "This property contains the name of the Role.",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "required": [
+        "Id",
+        "Name"
+    ],
+    "requiredOnCreate": [
+        "RoleId"
+    ],
+    "title": "#Role.v1_2_1.Role",
+    "type": "object"
+}

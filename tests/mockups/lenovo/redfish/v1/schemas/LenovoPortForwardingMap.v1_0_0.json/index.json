@@ -1,0 +1,133 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoPortForwardingMap.v1_0_0.json",
+    "$ref": "#/definitions/LenovoPortForwardingMap",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AddressMode": {
+            "enum": [
+                "IPv4",
+                "IPv6"
+            ],
+            "type": "string"
+        },
+        "LenovoPortForwardingMap": {
+            "additionalProperties": true,
+            "description": "This is Lenovo extended properties of USB port forwarding.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "AddressMode": {
+                    "$ref": "#/definitions/AddressMode",
+                    "description": "External network address mode for IPv4 or IPv6.",
+                    "longDescription": "The value of this property shall be external network address mode for IPv4 or IPv6. Supported values are 1 (IPv4) and 2 (IPv6). The property shall not be present/used if Type is equal to 'EthtoUSB'.",
+                    "readonly": false
+                },
+                "DefaultIPEnabled": {
+                    "description": "Identify whether the default CMM IP address is used.",
+                    "longDescription": "The value of this property shall be boolean identifying whether the default CMM IP address is used.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "ExternalPort": {
+                    "description": "The network IP port of external address.",
+                    "longDescription": "The value of this property shall be the network IP port of external address.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "IPAddress": {
+                    "description": "The network IP address configured as the pass through external address.",
+                    "longDescription": "The value of this property shall be network IP address configured as the pass through external address. The property shall not be present/used if Type is equal to 'EthtoUSB'.",
+                    "readonly": false,
+                    "type": "string"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Initialized": {
+                    "description": "Identify whether the configuration data of the pass through functionality is initialized.",
+                    "longDescription": "The value of this property shall be boolean identifying whether the configuration data of the pass through functionality is initialized.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Type": {
+                    "$ref": "#/definitions/Type",
+                    "description": "The type of network port forwarding.",
+                    "longDescription": "A connection direction between its external network interface and the server.",
+                    "readonly": false
+                },
+                "USBPort": {
+                    "description": "The network IP port of ethernet over USB.",
+                    "longDescription": "The value of this property shall be the network IP port of ethernet over USB.",
+                    "readonly": false,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "Type": {
+            "enum": [
+                "EthtoUSB",
+                "USBtoEth"
+            ],
+            "enumDescriptions": {
+                "EthtoUSB": "From external Ethernet to Ethernet over USB.",
+                "USBtoEth": "From Ethernet over USB to external Ethernet."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoPortForwardingMap.v1_0_0.LenovoPortForwardingMap"
+}

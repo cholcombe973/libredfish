@@ -1,0 +1,180 @@
+{
+    "$id": "/redfish/v1/Schemas/DellPowerSupplyView.v1_3_0.json",
+    "$ref": "#/definitions/DellPowerSupplyView",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellPowerSupplyView": {
+            "additionalProperties": false,
+            "description": "An instance of DellPowerSupplyView will have data specific to the Power Supply devices in the managed system.",
+            "longDescription": "An instance of DellPowerSupplyView will have data specific to the Power Supply devices in the managed system.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DetailedState": {
+                    "description": "This property describes the further status of the power supply as enumerated for IPMI power supply sensor such as: Predictive Failure, Power Supply AC lost, AC lost or out-of-range,  AC out-of-range, but present. Note: DetailedState can be combination of above mentioned power supply status.",
+                    "longDescription": "This property describes the further status of the power supply as enumerated for IPMI power supply sensor such as: Predictive Failure, Power Supply AC lost, AC lost or out-of-range,  AC out-of-range, but present. Note: DetailedState can be combination of above mentioned power supply status.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeviceDescription": {
+                    "description": "A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location.",
+                    "longDescription": "A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property indicates the time when Collection of System Inventory on Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property indicates the time when Collection of System Inventory on Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LastUpdateTime": {
+                    "description": "This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "PMBusMonitoring": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPowerSupplyView.json#/definitions/PMBusMonitoring"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether the PowerSupply is capable of Power Monitoring.",
+                    "longDescription": "This property indicates whether the PowerSupply is capable of Power Monitoring.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Range1MaxInputPowerWatts": {
+                    "description": "Represents the Input rated power of the PowerSupply in Watts. 0 denotes 'unknown'.",
+                    "longDescription": "Represents the Input rated power of the PowerSupply in Watts. 0 denotes 'unknown'.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Watts"
+                },
+                "RedMinNumberNeeded": {
+                    "description": "This property indicates the smallest number of elements that must be operational in order to function. For example, in an N+1 redundancy relationship, the RedMinNumberNeeded property is equal to N. In a 'LimitedSparing' environment, this property is not applicable and must be set to Zero.",
+                    "longDescription": "This property indicates the smallest number of elements that must be operational in order to function. For example, in an N+1 redundancy relationship, the RedMinNumberNeeded property is equal to N. In a 'LimitedSparing' environment, this property is not applicable and must be set to Zero.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_3_0"
+                },
+                "RedTypeOfSet": {
+                    "description": "RedTypeOfSet provides information on the type of redundancy. N+1 indicates all members are active, are unaware, and their functions do not dependent on each other. However, at least one extra member is present to achieve functionality. In this state, 'Sparing' is implied, and each member can be a spare for the other(s). An example of N+1 is a system that has 2 power supplies, but needs only 1 power supply to functioning properly. N+1 is a special case of N+M redundancy where M=1. A value of N+1 is used for N+M redundancy. Sparing indicates that all members are active and are aware of other members. However, their functionality is independent until failover. Each member can be a spare for the other(s). 'InputPowerRedundancy' indicates that the power supply redundancy policy is set to 'Input Power Redundancy'.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "/redfish/v1/Schemas/DellPowerSupplyView.json#/definitions/RedTypeOfSet"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "RedTypeOfSet provides information on the type of redundancy. N+1 indicates all members are active, are unaware, and their functions do not dependent on each other. However, at least one extra member is present to achieve functionality. In this state, 'Sparing' is implied, and each member can be a spare for the other(s). An example of N+1 is a system that has 2 power supplies, but needs only 1 power supply to functioning properly. N+1 is a special case of N+M redundancy where M=1. A value of N+1 is used for N+M redundancy. Sparing indicates that all members are active and are aware of other members. However, their functionality is independent until failover. Each member can be a spare for the other(s). 'InputPowerRedundancy' indicates that the power supply redundancy policy is set to 'Input Power Redundancy'.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_3_0"
+                },
+                "RedundancyStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPowerSupplyView.json#/definitions/RedundancyStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "RedundancyStatus provides information about the state of the redundancy group. 'FullyRedundant' indicates that all the configured redundancy is still available. 'DegradedRedundancy' indicates that some configured elements are degraded, missing, or failed but that the number of elements in the set is still greater than the minimum required ('RedMinNumberNeeded'). 'RedundancyLost' indicates that sufficient configured elements are missing or have failed, and no redundancy is available. In this state, the next failure causes overall failure. 'OverallFailure' indicates that there is an overall failure of the redundancy set.",
+                    "longDescription": "RedundancyStatus provides information about the state of the redundancy group. 'FullyRedundant' indicates that all the configured redundancy is still available. 'DegradedRedundancy' indicates that some configured elements are degraded, missing, or failed but that the number of elements in the set is still greater than the minimum required ('RedMinNumberNeeded'). 'RedundancyLost' indicates that sufficient configured elements are missing or have failed, and no redundancy is available. In this state, the next failure causes overall failure. 'OverallFailure' indicates that there is an overall failure of the redundancy set.",
+                    "readonly": true,
+                    "versionAdded": "v1_3_0"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellPowerSupplyView.v1_3_0.DellPowerSupplyView"
+}

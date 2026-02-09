@@ -1,0 +1,655 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Memory",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2020 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The Memory resource describes a memory module.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AllocationAlignmentMiB": {
+            "description": "The boundary which memory regions are allocated on, measured in MiB.",
+            "longDescription": "The value of this property shall be thealignment boundary on which memory regions are allocated, measured in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "AllocationIncrementMiB": {
+            "description": "The size of the smallest unit of allocation for a memory region, thus it is the multiple in which regions are actually reserved.",
+            "longDescription": "The value of this property shall be the allocation increment for regions, measured in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "BaseModuleType": {
+            "description": "The base module type of the memory.",
+            "longDescription": "This property shall contain the base module type of the memory.",
+            "readonly": true,
+            "enum": [
+                "RDIMM",
+                "UDIMM",
+                "SO_DIMM",
+                "LRDIMM",
+                "Mini_RDIMM",
+                "Mini_UDIMM",
+                "SO_RDIMM_72b",
+                "SO_UDIMM_72b",
+                "SO_DIMM_16b",
+                "SO_DIMM_32b",
+                "Die"
+            ],
+            "enumDescriptions": {
+                "Die": "A die within a package.",
+                "LRDIMM": "Load Reduced",
+                "Mini_RDIMM": "Mini_RDIMM",
+                "Mini_UDIMM": "Mini_UDIMM",
+                "RDIMM": "Registered DIMM",
+                "SO_DIMM": "SO_DIMM",
+                "SO_DIMM_16b": "SO_DIMM_16b",
+                "SO_DIMM_32b": "SO_DIMM_32b",
+                "SO_RDIMM_72b": "SO_RDIMM_72b",
+                "SO_UDIMM_72b": "SO_UDIMM_72b",
+                "UDIMM": "UDIMM"
+            },
+            "enumVersionAdded": {
+                "Die": "v1_7_0"
+            },
+            "type": "string"
+        },
+        "BusWidthBits": {
+            "description": "Bus Width in bits.",
+            "longDescription": "The value of this property shall be the bus width in bits.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "CacheSizeMiB": {
+            "description": "Total size of the cache portion memory in MiB.",
+            "longDescription": "The value of this property shall be the total size of the cache portion memory in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ],
+            "units": "MiBy"
+        },
+        "CapacityMiB": {
+            "description": "Memory Capacity in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "ConfigurationLocked": {
+            "description": "Indicates that the configuration of this memory has been locked",
+            "longDescription": "The value of this property shall be the current configuration lock state of this memory. True shall indicate that the configuration is locked and cannot be altered. False shall indicate that the configuration is not locked and may be altered.",
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "DataWidthBits": {
+            "description": "Data Width in bits.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "DeviceID": {
+            "deprecated": "This property has been Deprecated in favor of ModuleProductID.",
+            "description": "Device ID",
+            "longDescription": "The value of this property shall be the device ID of the Memory.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ],
+            "versionDeprecated": "v1_3_0"
+        },
+        "DeviceLocator": {
+            "description": "Location of the Memory in the platform",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ErrorCorrection": {
+            "enum": [
+                "NoECC",
+                "SingleBitECC",
+                "MultiBitECC",
+                "AddressParity"
+            ],
+            "enumDescriptions": {
+                "AddressParity": "Address Parity errors can be corrected",
+                "MultiBitECC": "Multi-bit Data errors can be corrected by ECC",
+                "NoECC": "No ECC available",
+                "SingleBitECC": "Single bit Data error can be corrected by ECC"
+            },
+            "type": "string"
+        },
+        "FirmwareApiVersion": {
+            "description": "Version of API supported by the firmware",
+            "longDescription": "The value of this property shall be the version of API supported by the firmware.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "FirmwareRevision": {
+            "description": "The firmware revision of this device",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "LogicalSizeMiB": {
+            "description": "Total size of the logical memory in MiB.",
+            "longDescription": "The value of this property shall be the total size of the logical memory in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ],
+            "units": "MiBy"
+        },
+        "Manufacturer": {
+            "description": "The Memory manufacturer",
+            "longDescription": "This property shall contain a string which identifies the manufacturer of the Memory.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MemoryDeviceType": {
+            "enum": [
+                "DDR",
+                "DDR2",
+                "DDR3",
+                "DDR4",
+                "DDR4_SDRAM",
+                "DDR4E_SDRAM",
+                "LPDDR4_SDRAM",
+                "DDR3_SDRAM",
+                "LPDDR3_SDRAM",
+                "DDR2_SDRAM",
+                "DDR2_SDRAM_FB_DIMM",
+                "DDR2_SDRAM_FB_DIMM_PROBE",
+                "DDR_SGRAM",
+                "DDR_SDRAM",
+                "ROM",
+                "SDRAM",
+                "EDO",
+                "FastPageMode",
+                "PipelinedNibble",
+                "Logical"
+            ],
+            "enumDescriptions": {
+                "DDR": "DDR",
+                "DDR2": "DDR2",
+                "DDR2_SDRAM": "DDR2 SDRAM",
+                "DDR2_SDRAM_FB_DIMM": "DDR2 SDRAM FB_DIMM",
+                "DDR2_SDRAM_FB_DIMM_PROBE": "DDR2 SDRAM FB_DIMM PROBE",
+                "DDR3": "DDR3",
+                "DDR3_SDRAM": "DDR3 SDRAM",
+                "DDR4": "DDR4",
+                "DDR4E_SDRAM": "DDR4E SDRAM",
+                "DDR4_SDRAM": "DDR4 SDRAM",
+                "DDR_SDRAM": "DDR SDRAM",
+                "DDR_SGRAM": "DDR SGRAM",
+                "EDO": "EDO",
+                "FastPageMode": "Fast Page Mode",
+                "LPDDR3_SDRAM": "LPDDR3 SDRAM",
+                "LPDDR4_SDRAM": "LPDDR4 SDRAM",
+                "Logical": "Logical Non-volatile device.",
+                "PipelinedNibble": "Pipelined Nibble",
+                "ROM": "ROM",
+                "SDRAM": "SDRAM"
+            },
+            "type": "string"
+        },
+        "MemoryLocation": {
+            "additionalProperties": false,
+            "description": "Memory Module Location",
+            "properties": {
+                "Channel": {
+                    "description": "Channel number in which Memory is connected",
+                    "longDescription": "Channel number in which Memory is connected.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MemoryController": {
+                    "description": "Memory controller number in which Memory is connected",
+                    "longDescription": "Memory controller number in which Memory is connected.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Slot": {
+                    "description": "Slot number in which Memory is connected",
+                    "longDescription": "Slot number in which Memory is connected.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Socket": {
+                    "description": "Socket number in which Memory is connected",
+                    "longDescription": "Socket number in which Memory is connected.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "MemoryMedia": {
+            "description": "Media  of this Memory",
+            "items": {
+                "enum": [
+                    "DRAM",
+                    "NAND",
+                    "Intel3DXPoint",
+                    "Proprietary"
+                ],
+                "enumDescriptions": {
+                    "DRAM": "DRAM media",
+                    "Intel3DXPoint": "Intel 3D XPoint media",
+                    "NAND": "NAND media",
+                    "Proprietary": "Proprietary media"
+                },
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "MemorySubsystemControllerManufacturerID": {
+            "description": "The manufacturer ID of the memory subsystem controller of this memory module.",
+            "longDescription": "The value of this property shall be the two byte manufacturer ID of the memory subsystem controller of this memory module as defined by JEDEC in JEP-106.",
+            "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MemorySubsystemControllerProductID": {
+            "description": "The product ID of the memory subsystem controller of this memory module.",
+            "longDescription": "The value of this property shall be the two byte product ID of the memory subsystem controller of this memory module as defined by the manufacturer.",
+            "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MemoryType": {
+            "enum": [
+                "DRAM",
+                "NVDIMM_N",
+                "NVDIMM_F",
+                "NVDIMM_P",
+                "IntelOptane"
+            ],
+            "enumDescriptions": {
+                "DRAM": "DRAM",
+                "IntelOptane": "The memory module is Intel Optane DC Persistent Memory and composed of a combination of non-volatile and volatile memory.",
+                "NVDIMM_F": "NVDIMM_F as defined by JEDEC.",
+                "NVDIMM_N": "NVDIMM_N as defined by JEDEC.",
+                "NVDIMM_P": "NVDIMM_P as defined by JEDEC."
+            },
+            "type": "string"
+        },
+        "ModuleManufacturerID": {
+            "description": "The manufacturer ID of this memory module.",
+            "longDescription": "The value of this property shall be the two byte manufacturer ID of this memory module as defined by JEDEC in JEP-106.",
+            "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ModuleProductID": {
+            "description": "The product ID of this memory module.",
+            "longDescription": "The value of this property shall be the two byte product ID of this memory module as defined by the manufacturer.",
+            "pattern": "^0[xX](([a-fA-F]|[0-9]){2}){2}$",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NonVolatileSizeMiB": {
+            "description": "Total size of the non-volatile portion memory in MiB.",
+            "longDescription": "The value of this property shall be the total size of the non-volatile portion memory in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ],
+            "units": "MiBy"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeMemoryExt.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "OperatingMemoryModes": {
+            "description": "Memory modes supported by the Memory",
+            "items": {
+                "enum": [
+                    "Volatile",
+                    "PMEM",
+                    "Block"
+                ],
+                "enumDescriptions": {
+                    "Block": "Block accessible system memory",
+                    "PMEM": "Persistent memory, byte accesible through system address space",
+                    "Volatile": "Volatile memory"
+                },
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "OperatingSpeedMhz": {
+            "description": "Operating speed of Memory in MHz",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "PartNumber": {
+            "description": "The product part number of this device",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PersistentRegionNumberLimit": {
+            "description": "Total number of persistent regions this Memory can support.",
+            "longDescription": "The value of this property shall be the total number of persistent regions this Memory can support.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "PersistentRegionSizeLimitMiB": {
+            "description": "Total size of persistent regions in MiB",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "PersistentRegionSizeMaxMiB": {
+            "description": "Maximum size of a single persistent region in MiB.",
+            "longDescription": "The value of this property shall be the maximum size of a single persistent regions in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "RankCount": {
+            "description": "Number of ranks available in the Memory",
+            "longDescription": "The value of this property shall be number of ranks available in the Memory. The ranks could be used for spare or interleave.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "Regions": {
+            "description": "Memory region information within the Memory",
+            "items": {
+                "additionalProperties": false,
+                "description": "Memory region information.",
+                "properties": {
+                    "MemoryClassification": {
+                        "description": "Classification of memory occupied by the given memory region",
+                        "enum": [
+                            "Volatile",
+                            "ByteAccessiblePersistent",
+                            "Block"
+                        ],
+                        "enumDescriptions": {
+                            "Block": "Block accesible memory",
+                            "ByteAccessiblePersistent": "Byte accessible persistent memory",
+                            "Volatile": "Volatile memory"
+                        },
+                        "longDescription": "Classification of memory occupied by the given memory region.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "PassphraseEnabled": {
+                        "description": "State of the passphrase for this region",
+                        "longDescription": "State of the passphrase for this region.",
+                        "readonly": true,
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "RegionId": {
+                        "description": "Unique region ID representing a specific region within the Memory",
+                        "longDescription": "Unique region ID representing a specific region within the Memory.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SizeMiB": {
+                        "description": "Size of this memory region in MiB",
+                        "longDescription": "Size of this memory region in MiB.",
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "units": "MiBy"
+                    }
+                },
+                "type": "object"
+            },
+            "longDescription": "The value of this property shall be the memory region information within the Memory.",
+            "readonly": true,
+            "type": "array"
+        },
+        "SecurityCapabilities": {
+            "additionalProperties": false,
+            "description": "This object contains security capabilities of the Memory.",
+            "longDescription": "This object shall contain properties which describe the security capabilities of the Memory.",
+            "properties": {
+                "ConfigurationLockCapable": {
+                    "description": "Support for configuration locking",
+                    "longDescription": "The value of this property shall indicate whether this memory supports the locking (freezing) of the configuration.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "DataLockCapable": {
+                    "description": "Support for data locking",
+                    "longDescription": "The value of this property shall indicate whether this memory supports the locking of the data access.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PassphraseCapable": {
+                    "description": "Memory passphrase set capability",
+                    "longDescription": "Memory passphrase set capability.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PassphraseLockLimit": {
+                    "description": "Maximum number of incorrect passphrase attempts allowed before memory is locked.",
+                    "longDescription": "The value of this property shall be the maximum number of incorrect passphase access attempts allowed before access to data is locked. A value of zero shall indicate that there is no limit to the number of attempts.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "SecurityState": {
+            "description": "The current security state of this Memory",
+            "enum": [
+                "Enabled",
+                "Disabled",
+                "Locked",
+                "Passphraselimit"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Secure mode is disabled",
+                "Enabled": "Secure mode is enabled and access to the data is unlocked",
+                "Locked": "Secure mode is enabled and access to the data is locked",
+                "Passphraselimit": "Number of attempts to unlock the Memory exceeded limit"
+            },
+            "longDescription": "The value of this property shall be the current security state of this memory.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "The serial number of this device",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "SubsystemDeviceID": {
+            "deprecated": "This property has been Deprecated in favor of MemorySubsystemControllerProductID.",
+            "description": "Subsystem Device ID",
+            "longDescription": "The value of this property shall be the subsystem Device ID of the Memory.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ],
+            "versionDeprecated": "v1_3_0"
+        },
+        "SubsystemVendorID": {
+            "deprecated": "This property has been Deprecated in favor of MemorySubsystemControllerManufacturerID.",
+            "description": "SubSystem Vendor ID",
+            "longDescription": "The value of this property shall be the subsystem Vendor ID of the Memory.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ],
+            "versionDeprecated": "v1_3_0"
+        },
+        "VendorID": {
+            "deprecated": "This property has been Deprecated in favor of ModuleManufacturerID.",
+            "description": "Vendor ID",
+            "longDescription": "The value of this property shall be the vendor ID of the Memory.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ],
+            "versionDeprecated": "v1_3_0"
+        },
+        "VolatileRegionNumberLimit": {
+            "description": "Total number of volatile regions this Memory can support.",
+            "longDescription": "The value of this property shall be the total number of volatile regions this Memory can support.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "VolatileRegionSizeLimitMiB": {
+            "description": "Total size of volatile regions in MiB",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "VolatileRegionSizeMaxMiB": {
+            "description": "Maximum size of a single volatile region in MiB.",
+            "longDescription": "The value of this property shall be the maximum size of a single volatile regions in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "VolatileSizeMiB": {
+            "description": "Total size of the volitile portion memory in MiB.",
+            "longDescription": "The value of this property shall be the total size of the volatile portion memory in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ],
+            "units": "MiBy"
+        }
+    },
+    "title": "#Memory.v1_7_1.Memory",
+    "type": "object"
+}

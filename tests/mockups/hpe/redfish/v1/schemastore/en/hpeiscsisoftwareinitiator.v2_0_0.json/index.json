@@ -1,0 +1,346 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "title": "#HpeiSCSISoftwareInitiator.v2_0_0.HpeiSCSISoftwareInitiator",
+    "$ref": "#/definitions/HpeiSCSISoftwareInitiator",
+    "definitions": {
+        "HpeiSCSISoftwareInitiator": {
+            "type": "object",
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "properties": {
+                "@Redfish.Settings": {
+                    "$ref": "HpeBiosExt.v2_0_0.json#/definitions/Settings"
+                },
+                "@odata.context": {
+                    "description": "The OData description of a payload.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.etag": {
+                    "longDescription": "The value of this property is the Etag of the resource.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.id": {
+                    "description": "The unique identifier for a resource.",
+                    "format": "uri",
+                    "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "@odata.type": {
+                    "description": "The type of a resource.",
+                    "longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Oem": {
+                    "additionalProperties": true,
+                    "description": "Oem extension object.",
+                    "longDescription": "This object represents the Oem properties.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                    "patternProperties": {
+                        "[A-Za-z0-9_.:]+": {
+                            "additionalProperties": true,
+                            "description": "Base type for an Oem object.",
+                            "longDescription": "This object represents the base type for an Oem property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "description": "This property shall specify a valid odata or Redfish property.",
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ]
+                                }
+                            },
+                            "properties": {},
+                            "type": "object"
+                        },
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "description": "This property shall specify a valid odata or Redfish property.",
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ]
+                        }
+                    },
+                    "properties": {},
+                    "type": "object"
+                },
+                "Id": {
+                    "description": "Uniquely identifies the resource within the collection of like resources.",
+                    "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "The name of the resource or array element.",
+                    "longDescription": "This object represents the Name property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification. The value of this string shall be of the format for the reserved word *Name*.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "iSCSINicSources": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "patternProperties": {
+                            "^[A-Z][A-Za-z0-9]+$": {
+                                "type": "string"
+                            }
+                        },
+                        "description": "The BIOS Attribute that describes a NIC instance that can be used as a target for iSCSI configuration."
+                    },
+                    "description": "The array of BIOS Attributes that represent the possible NIC instances that can be used as targets for iSCSI configuration. These attributes can be correlated to the physical NIC PCI devices by looking up the associations in the linked HpBiosMappings resource.",
+                    "readonly": false,
+                    "etag": true
+                },
+                "iSCSIInitiatorName": {
+                    "type": "string",
+                    "description": "The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI Initiator. Only IQN format is accepted. EUI format is not supported (for example, 'iqn.1986-03.com.hp:init.sn-123456').",
+                    "pattern": "^$|^iqn\\.[0-9]{4}-[0-9]{2}\\.[^:]+(:.*)?$",
+                    "maxLength": 223
+                },
+                "iSCSISources": {
+                    "type": "array",
+                    "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                            "StructuredBootString": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "pattern": "^[A-Za-z0-9]+[.][A-Za-z0-9]+[.]\\d+[.]\\d+([.][A-Za-z0-9]+)?$",
+                                "description": "Identifies this iSCSI option within the server.",
+                                "readonly": true
+                            },
+                            "UEFIDevicePath": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "Standardized text representation of the UEFI device path for this option, in UTF-8 format.",
+                                "readonly": true
+                            },
+                            "iSCSIAttemptInstance": {
+                                "type": "integer",
+                                "description": "Uniquely identifies this iSCSI attempt within iSCSISources array. If set to zero, all other properties in the boot option object are ignored (which will delete an existing boot attempt).",
+                                "minimum": 0,
+                                "maximum": 4
+                            },
+                            "iSCSINicSource": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "A BIOS Attribute that describes this selected NIC instance. This must match one of the possible values listed in the iSCSINicSources array."
+                            },
+                            "iSCSIAttemptName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "Human readable descriptive name for this iSCSI attempt configuration",
+                                "maxLength": 11
+                            },
+                            "iSCSIConnection": {
+                                "type": "string",
+                                "description": "Enables or Disables iSCSI mode for a selected iSCSI attempt.",
+                                "enum": [
+                                    "Disabled",
+                                    "Enabled",
+                                    "EnabledMpio"
+                                ],
+                                "enumDescriptions": {
+                                    "Disabled": "Connecting to this iSCSI attempt is disabled.",
+                                    "Enabled": "Connecting to this iSCSI attempt is enabled.",
+                                    "EnabledMpio": "Connecting to this iSCSI attempt is enabled with MPIO (Multi Path I/O)."
+                                }
+                            },
+                            "iSCSIIpAddressType": {
+                                "type": "string",
+                                "description": "The iSCSI IP Address type. If set to Auto, IPv4 will be attempted first, followed by IPv6.",
+                                "enum": [
+                                    "IPv4",
+                                    "IPv6",
+                                    "Auto"
+                                ],
+                                "enumDescriptions": {
+                                    "IPv4": "The iSCSI IP address is configured in IPv4 format.",
+                                    "IPv6": "The iSCSI IP address is configured in IPv6 format.",
+                                    "Auto": "The iSCSI IP address is configured in IPv4. If an issue occurs with IPv4, then the IPv6 configuration is used."
+                                }
+                            },
+                            "iSCSIConnectRetry": {
+                                "type": "integer",
+                                "description": "The number of times to retry the iSCSI connection. Zero means no retries.",
+                                "minimum": 0,
+                                "maximum": 16
+                            },
+                            "iSCSIConnectTimeoutMS": {
+                                "type": "integer",
+                                "description": "The iSCSI connection timeout value in milliseconds.",
+                                "minimum": 100,
+                                "maximum": 20000
+                            },
+                            "iSCSIInitiatorInfoViaDHCP": {
+                                "type": "boolean",
+                                "description": "If enabled, the iSCSI Initiator information is configured from DHCP. Otherwise, the iSCSI initiator information must be statically configured. When providing static values for the Initiator, ensure Target settings are also configured with static values."
+                            },
+                            "iSCSIInitiatorIpAddress": {
+                                "type": "string",
+                                "description": "The IP Address of the iSCSI Initiator, if not configured via DHCP. The Initiator IP Address is always auto-assigned if IP address type is IPv6. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.",
+                                "pattern": "^(?:(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\\.){3}(?:1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])$"
+                            },
+                            "iSCSIInitiatorNetmask": {
+                                "type": "string",
+                                "description": "The subnet mask of the iSCSI Initiator, if not configured via DHCP. The address must be an IPv4.",
+                                "pattern": "^(((128|192|224|240|248|252|254)\\.0\\.0\\.0)|(255\\.(0|128|192|224|240|248|252|254)\\.0\\.0)|(255\\.255\\.(0|128|192|224|240|248|252|254)\\.0)|(255\\.255\\.255\\.(0|128|192|224|240|248|252|254))|(0.0.0.0))$"
+                            },
+                            "iSCSIInitiatorGateway": {
+                                "type": "string",
+                                "description": "The gateway address of the iSCSI Initiator, if not configured via DHCP. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.",
+                                "pattern": "^(?:(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\\.){3}(?:1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])$"
+                            },
+                            "iSCSITargetInfoViaDHCP": {
+                                "type": "boolean",
+                                "description": "If enabled, the iSCSI target information are configured from DHCP. Otherwise, the iSCSI target information must be statically configured."
+                            },
+                            "iSCSITargetName": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "The worldwide unique iSCSI Qualified Name (IQN) of this iSCSI target. Only the IQN format is accepted. EUI format is not supported (for example, 'iqn.1991-05.com.microsoft:iscsitarget-iscsidisk-target').",
+                                "pattern": "^iqn\\.[0-9]{4}-[0-9]{2}\\.[^:]+(:.*)?$",
+                                "maxLength": 223
+                            },
+                            "iSCSITargetIpAddress": {
+                                "type": "string",
+                                "description": "The IP Address of the iSCSI Target, if not obtained from DHCP. The address must be an IPv4 or IPv6 address, depending on the IP Address Type.",
+                                "pattern": "^(?:(1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])\\.){3}(?:1?[0-9]{1,2}|2[0-4][0-9]|25[0-5])$|^([0-9a-fA-F]{0,4}:){2,7}(:|[0-9a-fA-F]{1,4})$"
+                            },
+                            "iSCSITargetTcpPort": {
+                                "type": "integer",
+                                "description": "The iSCSI Target TCP Port number, if not obtained from DHCP.",
+                                "minimum": 0,
+                                "maximum": 65535
+                            },
+                            "iSCSILUN": {
+                                "type": "string",
+                                "description": "The iSCSI target Logical Unit Number (LUN), if not obtained from DHCP. This value must follow the SAM-2 spec. E.g. 0001-1234-5678-9ABC. If the digit number is less then 5 characters, a dash character is not required. E.g. 0001. If the lun number is 12345, input 1234-5",
+                                "pattern": "^$|^([0-9A-Fa-f]{4}-){0,3}[0-9A-Fa-f]{1,4}$"
+                            },
+                            "iSCSIAuthenticationMethod": {
+                                "type": "string",
+                                "description": "The iSCSI connection authentication method.",
+                                "enum": [
+                                    "None",
+                                    "CHAP"
+                                ],
+                                "enumDescriptions": {
+                                    "None": "No iSCSI connection security.",
+                                    "CHAP": "iSCSI connection is secured using Challenge Handshake Authentication Protocol (CHAP)."
+                                }
+                            },
+                            "iSCSIChapType": {
+                                "type": "string",
+                                "description": "The CHAP authentication type. This is applicable only when the Authentication Method is set to CHAP.",
+                                "enum": [
+                                    "OneWay",
+                                    "Mutual"
+                                ],
+                                "enumDescriptions": {
+                                    "OneWay": "The target will authenticate the initiator. .",
+                                    "Mutual": "both the initiator and target will authenticate each other."
+                                }
+                            },
+                            "iSCSIChapUsername": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "The user name needed for CHAP authentication. This is applicable only when the Authentication Method is set to CHAP.",
+                                "maxLength": 126
+                            },
+                            "iSCSIChapSecret": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "The password needed for CHAP authentication. This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.",
+                                "pattern": "^.{12,16}$",
+                                "maxLength": 16
+                            },
+                            "iSCSIReverseChapUsername": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "User Name for reverse CHAP authentication (from the target to the initiator). This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.",
+                                "maxLength": 126
+                            },
+                            "iSCSIReverseChapSecret": {
+                                "type": [
+                                    "string",
+                                    "null"
+                                ],
+                                "description": "The password needed for reverse CHAP authentication (from the target to the initiator). This is applicable only when the Authentication Method is set to CHAP, and the CHAP Type is set to Mutual.",
+                                "pattern": "^.{12,16}$",
+                                "maxLength": 16
+                            }
+                        },
+                        "required": [
+                            "iSCSIAttemptInstance",
+                            "iSCSINicSource",
+                            "iSCSIAttemptName",
+                            "iSCSIConnection",
+                            "iSCSIIpAddressType",
+                            "iSCSIConnectRetry",
+                            "iSCSIConnectTimeoutMS",
+                            "iSCSIInitiatorInfoViaDHCP",
+                            "iSCSIInitiatorIpAddress",
+                            "iSCSIInitiatorNetmask",
+                            "iSCSIInitiatorGateway",
+                            "iSCSITargetInfoViaDHCP",
+                            "iSCSITargetName",
+                            "iSCSITargetIpAddress",
+                            "iSCSITargetTcpPort",
+                            "iSCSILUN",
+                            "iSCSIAuthenticationMethod",
+                            "iSCSIChapType",
+                            "iSCSIChapUsername",
+                            "iSCSIChapSecret",
+                            "iSCSIReverseChapUsername",
+                            "iSCSIReverseChapSecret"
+                        ]
+                    },
+                    "description": "The array of iSCSI sources available on this server. Each entry holds the configuration of an iSCSI attempt."
+                }
+            },
+            "required": []
+        }
+    }
+}

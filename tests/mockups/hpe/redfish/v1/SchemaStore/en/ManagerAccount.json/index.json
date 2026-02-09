@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "ManagerAccount",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The user accounts, owned by a Manager, are defined in this resource.  Changes to a Manager Account may affect the current Redfish service connection if this manager is responsible for the Redfish service.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Contains references to other resources that are related to this resource.",
+            "properties": {
+                "Role": {
+                    "description": "A reference to the Role object defining Privileges for this account--returned when the resource is read. The ID of the role is the same as property RoleId.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOAccount.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Password": {
+            "description": "The password used to log in to the management processor. The maximum length for a password is 39 characters. The minimum length for a password is specified in the MinPasswordLength property of the AccountService schema.",
+            "etag": false,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PasswordChangeRequired": {
+            "description": "Indicates that the password for this account must be changed. The service requires the password to be changed before access is allowed.",
+            "readonly": true,
+            "type": "boolean"
+        },
+        "RoleId": {
+            "description": "This property contains the name of the Role for this account.",
+            "readonly": false,
+            "type": "string"
+        },
+        "UserName": {
+            "description": "The name used to log in to the management processor. The user name does not have to be the same as the login name. The maximum length for the user name is 39 characters. The user name must use printable characters.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#ManagerAccount.v1_3_0.ManagerAccount",
+    "type": "object"
+}

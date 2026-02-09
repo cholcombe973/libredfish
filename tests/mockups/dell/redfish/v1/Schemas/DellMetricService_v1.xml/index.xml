@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellMetricService v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellMetricService" Abstract="true">
+                <Annotation String="Provides the ability to manage metrics." Term="OData.Description"/>
+                <Annotation String="Provides the ability to manage metrics." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellMetricService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="ControlMetrics" IsBound="true">
+                <Annotation String="The ControlMetrics action provides the ability to reset the metric collection for a particular metric or metrics." Term="OData.Description"/>
+                <Annotation String="The ControlMetrics action provides the ability to reset the metric collection for a particular metric or metrics." Term="OData.LongDescription"/>
+                <Parameter Name="DellMetricService" Type="DellMetricService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="MetricCollectionEnabled" Type="DellMetricService.MetricCollectionEnabled">
+                    <Annotation String="The MetricCollectionEnabled parameter indicates the desired operation to perform on the metrics. The parameter value is 4 (Reset)." Term="OData.Description"/>
+                    <Annotation String="The MetricCollectionEnabled parameter indicates the desired operation to perform on the metrics. The parameter value is 4 (Reset)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetResource" Type="Edm.String">
+                    <Annotation String="Reference to the DellBaseMetricDefinition or DellAggregationMetricDefinition for which collection is to be enabled or disabled." Term="OData.Description"/>
+                    <Annotation String="Reference to the DellBaseMetricDefinition or DellAggregationMetricDefinition for which collection is to be enabled or disabled." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportThermalHistory" IsBound="true">
+                <Annotation String="The ExportThermalHistory() method is used to exports the thermal history of the system from Lifecycle Controller to a remote share, in xml or csv format." Term="OData.Description"/>
+                <Annotation String="The ExportThermalHistory() method is used to exports the thermal history of the system from Lifecycle Controller to a remote share, in xml or csv format." Term="OData.LongDescription"/>
+                <Parameter Name="DellMetricService" Type="DellMetricService.v1_0_0.Actions"/>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="The target output file name." Term="OData.Description"/>
+                    <Annotation String="The target output file name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="FileType" Type="DellMetricService.FileType">
+                    <Annotation String="Type of exported file." Term="OData.Description"/>
+                    <Annotation String="Type of exported file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the network share." Term="OData.Description"/>
+                    <Annotation String="IP address of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path of the NFS share." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path of the NFS share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellMetricService.ShareType">
+                    <Annotation String="Type of the network Share." Term="OData.Description"/>
+                    <Annotation String="Type of the network Share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Username" Type="Edm.String">
+                    <Annotation String="User name for the network share authentication." Term="OData.Description"/>
+                    <Annotation String="User name for the network share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="FileType">
+                <Member Name="CSV">
+                    <Annotation String="CSV" Term="OData.Description"/>
+                </Member>
+                <Member Name="XML">
+                    <Annotation String="XML" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="MetricCollectionEnabled">
+                <Member Name="Reset">
+                    <Annotation String="Reset" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="ShareType">
+                <Member Name="CIFS">
+                    <Annotation String="CIFS" Term="OData.Description"/>
+                </Member>
+                <Member Name="NFS">
+                    <Annotation String="NFS" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricService.v1_0_0">
+            <EntityType Name="DellMetricService" BaseType="DellMetricService.DellMetricService">
+                <Annotation Term="OData.Description" String="Provides the ability to manage metrics."/>
+                <Annotation Term="OData.LongDescription" String="Provides the ability to manage metrics."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellMetricService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add ControlMetrics action."/>
+            <EntityType Name="DellMetricService" BaseType="DellMetricService.v1_0_0.DellMetricService"> 
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

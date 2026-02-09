@@ -1,0 +1,321 @@
+{
+    "$id": "/redfish/v1/Schemas/DellVideo.v1_3_0.json",
+    "$ref": "#/definitions/DellVideo",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellVideo": {
+            "additionalProperties": false,
+            "description": "DellVideo provides Video specific data which includes supported GPU properties if supported.",
+            "longDescription": "DellVideo provides Video specific data which includes supported GPU properties if supported.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "BoardPartNumber": {
+                    "description": "This property represent Board Part Number of GPU device.",
+                    "longDescription": "This property represent Board Part Number of GPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BuildDate": {
+                    "description": "This property represents BuildDate of the GPU device in yyyymmdd format.",
+                    "longDescription": "This property represents BuildDate of the GPU device in yyyymmdd format.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BusNumber": {
+                    "description": "The bus number where this video device resides.",
+                    "longDescription": "The bus number where this video device resides.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "DataBusWidth": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVideo.json#/definitions/DataBusWidth"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Data-bus width of the PCI device.",
+                    "longDescription": "Data-bus width of the PCI device.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DeviceNumber": {
+                    "description": "The device number assigned to this video for this bus.",
+                    "longDescription": "The device number assigned to this video for this bus.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "FQDD": {
+                    "description": "A string that contains the Fully Qualified Device Description (FQDD) - a user-friendly name for the object.",
+                    "longDescription": "A string that contains the Fully Qualified Device Description (FQDD) - a user-friendly name for the object.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FirmwareVersion": {
+                    "description": "This property represents the software version of GPU Device.",
+                    "longDescription": "This property represents the software version of GPU Device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "FunctionNumber": {
+                    "description": "The function number for this video device.",
+                    "longDescription": "The function number for this video device.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "GPUGUID": {
+                    "description": "This property represents the GPU GUID of the device.",
+                    "longDescription": "This property represents the GPU GUID of the device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GPUHealth": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVideo.json#/definitions/GPUHealth"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the GPU Health status.",
+                    "longDescription": "This property represents the GPU Health status.",
+                    "readonly": true
+                },
+                "GPUPartNumber": {
+                    "description": "This property represents Part Number of GPU device.",
+                    "longDescription": "This property represents Part Number of GPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "GPUState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVideo.json#/definitions/GPUState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the GPU state.",
+                    "longDescription": "This property represents the GPU state.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "InstanceID": {
+                    "description": "A unique identifier for the instance.",
+                    "longDescription": "A unique identifier for the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property provides the last time System Inventory Collection On Reboot (CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the last time System Inventory Collection On Reboot (CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastUpdateTime": {
+                    "description": "This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Manufacturer": {
+                    "description": "The name of the organization responsible for producing the PhysicalElement. This organization might be the entity from whom the Element is purchased, but this is not necessarily true.",
+                    "longDescription": "The name of the organization responsible for producing the PhysicalElement. This organization might be the entity from whom the Element is purchased, but this is not necessarily true.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MarketingName": {
+                    "description": "Indicates Marketing name of the GPU device.",
+                    "longDescription": "Indicates Marketing name of the GPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "OEMInfo": {
+                    "description": "Indicates OEM information of the GPU device.",
+                    "longDescription": "Indicates OEM information of the GPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "PCIDeviceID": {
+                    "description": "This property contains a value assigned by the device manufacturer used to identify the type of device.",
+                    "longDescription": "This property contains a value assigned by the device manufacturer used to identify the type of device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PCISubDeviceID": {
+                    "description": "Register that contains a value assigned by the device manufacturer used to identify the type of device.",
+                    "longDescription": "Register that contains a value assigned by the device manufacturer used to identify the type of device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PCISubVendorID": {
+                    "description": "Subsystem vendor ID.",
+                    "longDescription": "Subsystem vendor ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PCIVendorID": {
+                    "description": "Register that contains a value assigned by the Video SIG used to identify the manufacturer of the device.",
+                    "longDescription": "Register that contains a value assigned by the Video SIG used to identify the manufacturer of the device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SerialNumber": {
+                    "description": "This property represent Serial Number of GPU device.",
+                    "longDescription": "This property represent Serial Number of GPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SlotLength": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVideo.json#/definitions/SlotLength"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Slot length of the PCI device.",
+                    "longDescription": "Slot length of the PCI device.",
+                    "readonly": true
+                },
+                "SlotType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVideo.json#/definitions/SlotType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Slot type of the PCI device.",
+                    "longDescription": "Slot type of the PCI device.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellVideo.v1_3_0.DellVideo"
+}

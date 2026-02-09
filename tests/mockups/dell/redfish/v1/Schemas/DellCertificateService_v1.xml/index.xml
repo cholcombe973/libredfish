@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellCertificateService  v1.0.0 -->
+<!--# This schema complements to OEM section of certificate service Resource                   -->
+<!--# Copyright 2021-2022 Dell, Inc. or its subsidiaries.All Rights Reserved.             -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/CertificateCollection_v1.xml">
+    <edmx:Include Namespace="CertificateCollection"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificateService">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <Action Name="GetLastGeneratedCSR" IsBound="true">
+        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.OemActions"/>
+        <Annotation Term="OData.Description" String="This action returns last generated CSR."/>
+        <Annotation Term="OData.LongDescription" String="This action returns last generated CSR. The response will contain a signing request that a certificate authority (CA) will sign."/>
+        <Parameter Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
+            <Annotation Term="OData.Description" String="The link to the certificate collection where the certificate is expected to be installed after the certificate authority (CA) signs the certificate."/>
+            <Annotation Term="OData.LongDescription" String="This parameter shall contain a link to a resource collection of type CertificateCollection where the certificate is expected to be installed after the certificate authority (CA) signs the certificate."/>
+        </Parameter>
+        <ReturnType Type="DellCertificateService.v1_0_0.GetLastGeneratedCSRResponse" Nullable="false"/>
+      </Action>
+	</Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificateService.v1_0_0">
+    <ComplexType Name="GetLastGeneratedCSRResponse">
+      <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      <Annotation Term="OData.Description" String="The response body for the GetLastGeneratedCSR action."/>
+      <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetLastGeneratedCSR action."/>
+      <NavigationProperty Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="The link to the certificate collection where the certificate is expected to be installed."/>
+        <Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource collection of type CertificateCollection where the certificate is expected to be installed after the certificate authority (CA) has signed the certificate."/>
+        <Annotation Term="Redfish.Required"/>
+      </NavigationProperty>
+      <Property Name="CSRString" Type="Edm.String" Nullable="false">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="The string for the certificate signing request."/>
+        <Annotation Term="OData.LongDescription" String="This property shall contain the Privacy Enhanced Mail (PEM)-encoded string, which contains RFC2986-specified structures, of the certificate signing request.  The private key should not be part of the string."/>
+        <Annotation Term="Redfish.Required"/>
+      </Property>
+    </ComplexType>
+  </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,200 @@
+{
+    "$id": "/redfish/v1/Schemas/DellSensor.json",
+    "$ref": "#/definitions/DellSensor",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellSensor": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/DellSensor.v1_0_0.json#/definitions/DellSensor"
+                }
+            ],
+            "deletable": false,
+            "description": "An instance of DellSensor will represent a sensor, a hardware device that is capable of measuring the characteristics of a physical property.",
+            "insertable": false,
+            "longDescription": "An instance of DellSensor will represent a sensor, a hardware device that is capable of measuring the characteristics of a physical property.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellSensors/{SensorId}"
+            ]
+        },
+        "EnabledState": {
+            "enum": [
+                "Deferred",
+                "Disabled",
+                "Enabled",
+                "EnabledButOffline",
+                "InTest",
+                "NotApplicable",
+                "Other",
+                "Quiesce",
+                "ShuttingDown",
+                "Starting",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Deferred": "Deferred",
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "EnabledButOffline": "Enabled but Offline",
+                "InTest": "In Test",
+                "NotApplicable": "Not Applicable",
+                "Other": "Other",
+                "Quiesce": "Quiesce",
+                "ShuttingDown": "Shutting Down",
+                "Starting": "Starting",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "Deferred": "Deferred",
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "EnabledButOffline": "Enabled but Offline",
+                "InTest": "In Test",
+                "NotApplicable": "Not Applicable",
+                "Other": "Other",
+                "Quiesce": "Quiesce",
+                "ShuttingDown": "Shutting Down",
+                "Starting": "Starting",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "HealthState": {
+            "enum": [
+                "CriticalFailure",
+                "Degraded/Warning",
+                "MajorFailure",
+                "MinorFailure",
+                "NonRecoverableError",
+                "OK",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "CriticalFailure": "Critical failure",
+                "Degraded/Warning": "Degraded/Warning",
+                "MajorFailure": "Major failure",
+                "MinorFailure": "Minor failure",
+                "NonRecoverableError": "Non-recoverable Error",
+                "OK": "OK",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "CriticalFailure": "Critical failure",
+                "Degraded/Warning": "Degraded/Warning",
+                "MajorFailure": "Major failure",
+                "MinorFailure": "Minor failure",
+                "NonRecoverableError": "Non-recoverable Error",
+                "OK": "OK",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "Links": {
+            "additionalProperties": true,
+            "description": "Contains references to other resources that are related to this resource.",
+            "longDescription": "This type, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ComputerSystem": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/ComputerSystem.json#/definitions/ComputerSystem"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "Contains references to other resources that are related to this resource.",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties contained in this object shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "type": "object"
+        },
+        "SensorType": {
+            "enum": [
+                "AirFlow",
+                "Counter",
+                "Current",
+                "Humidity",
+                "Intrusion",
+                "Lock",
+                "Other",
+                "PowerConsumption",
+                "PowerProduction",
+                "Presence",
+                "Pressure",
+                "SmokeDetection",
+                "Switch",
+                "Tachometer",
+                "Temperature",
+                "Unknown",
+                "Voltage"
+            ],
+            "enumDescriptions": {
+                "AirFlow": "Air Flow",
+                "Counter": "Counter",
+                "Current": "Current",
+                "Humidity": "Humidity",
+                "Intrusion": "Intrusion",
+                "Lock": "Lock",
+                "Other": "Other",
+                "PowerConsumption": "Power Consumption",
+                "PowerProduction": "Power Production",
+                "Presence": "Presence",
+                "Pressure": "Pressure",
+                "SmokeDetection": "Smoke Detection",
+                "Switch": "Switch",
+                "Tachometer": "Tachometer",
+                "Temperature": "Temperature",
+                "Unknown": "Unknown",
+                "Voltage": "Voltage"
+            },
+            "enumLongDescriptions": {
+                "AirFlow": "Air Flow",
+                "Counter": "Counter",
+                "Current": "Current",
+                "Humidity": "Humidity",
+                "Intrusion": "Intrusion",
+                "Lock": "Lock",
+                "Other": "Other",
+                "PowerConsumption": "Power Consumption",
+                "PowerProduction": "Power Production",
+                "Presence": "Presence",
+                "Pressure": "Pressure",
+                "SmokeDetection": "Smoke Detection",
+                "Switch": "Switch",
+                "Tachometer": "Tachometer",
+                "Temperature": "Temperature",
+                "Unknown": "Unknown",
+                "Voltage": "Voltage"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellSensor.DellSensor"
+}

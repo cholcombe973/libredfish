@@ -1,0 +1,368 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOSnmpService",
+    "actions": {
+        "actions": {
+            "HpeiLOSnmpService.SendSNMPTestAlert": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOSnmpService.SendSNMPTestAlert"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Send SNMP test alert."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOSnmpService resource describes the properties for managing the SNMP configuration of the BMC.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOSnmpService.SendSNMPTestAlert": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AlertDestinationAssociations": {
+            "description": "Associate up to 8 remote management systems to receive SNMP alerts from the management processor.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "SNMPAlertProtocol": {
+                        "description": "Indicate the SNMP protocol associated with the AlertDestination.",
+                        "enum": [
+                            "SNMPv1Trap",
+                            "SNMPv3Trap",
+                            "SNMPv3Inform",
+                            null
+                        ],
+                        "enumDescriptions": {
+                            "SNMPv1Trap": "Indicate SNMPv1 trap is enabled for the destination.",
+                            "SNMPv3Inform": "Indicate SNMPv3 Inform is enabled for the destination. Needs to fill the SecurityName as well.",
+                            "SNMPv3Trap": "Indicate SNMPv3 trap is enabled for the destination. Needs to fill the SecurityName as well."
+                        },
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SecurityName": {
+                        "description": "Provides the SNMPv3 security name associated with the destination when SNMP alert protocol is SNMPv3 trap or inform.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": false,
+                "type": "object"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "AlertDestinations": {
+            "description": "The IP addresses or FQDNs of up to 8 remote management systems that receive SNMP alerts from the management processor.",
+            "items": {
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "maxItems": 8,
+            "readonly": false,
+            "type": "array"
+        },
+        "AlertsEnabled": {
+            "description": "The alert conditions that the management processor detects independently of the host operating system can be sent to specified SNMP alert destinations.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "SNMPv1Enabled": {
+            "description": "Indicates if the SNMPv1 protocol is enabled.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "Contact": {
+            "description": "The string of up to 49 characters that specifies the system administrator or server owner. The string can include a name, email address, or phone number.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Location": {
+            "description": "The string of up to 49 characters that specifies the physical location of the server.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOSnmpServiceExt.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "PeriodicHSATrapConfig": {
+            "description": "If there are any component in health status array(HSA) Trap are in degraded or failed condition then HSA trap will be sent periodically till the component status becomes ok or fine condition. This setting is disabled by default.",
+            "enum": [
+                "Disabled",
+                "Daily",
+                "Weekly",
+                "Monthly"
+            ],
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "ReadCommunities": {
+            "description": "The configured SNMP read-only community string (for example, public). User can configure up to 3 SNMP read-only communities.",
+            "items": {
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "Role": {
+            "description": "The string of up to 64 characters that describes the server role or function.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "RoleDetail": {
+            "description": "The string of up to 512 characters that describes specific tasks that the server might perform.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SNMPAlertDestinations": {
+            "description": "SNMP Alert Destination details.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SNMPUsers": {
+            "description": "SNMPv3 User details.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SNMPv1Traps": {
+            "deprecated": "This property has been deprecated in favor of AlertDestinationAssociations.SNMPAlertProtocol",
+            "description": "When enabled, SNMPv1 traps are sent to the remote management systems configured in the SNMP Alert Destination(s) boxes.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "SNMPv3EngineID": {
+            "description": "The SNMPv3 Engine ID is the unique identifier of an SNMP engine that belongs to an SNMP agent entity. This value must be a hexadecimal string with an even number of 6 to 32 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SNMPv3InformRetryAttempt": {
+            "default": 2,
+            "description": "Specifies the number of retries to be used in SNMPv3 inform.",
+            "etag": true,
+            "maximum": 5,
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        },
+        "SNMPv3InformRetryIntervalSeconds": {
+            "default": 15,
+            "description": "Specifies the interval in seconds between SNMPv3 inform retries.",
+            "etag": true,
+            "maximum": 120,
+            "minimum": 5,
+            "readonly": false,
+            "type": "integer"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "TrapCommunities": {
+            "description": "The configured SNMPv1 trap community string. User can configure up to 8 SNMP trap communities.",
+            "items": {
+                "type": "string"
+            },
+            "maxItems": 8,
+            "readonly": false,
+            "type": "array"
+        },
+        "TrapSourceHostname": {
+            "description": "Determines the host name that is used in the SNMP-defined sysName variable when the management processor generates SNMP traps.",
+            "enum": [
+                "Manager",
+                "System"
+            ],
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "Users": {
+            "description": "SNMPv3 supports the User-based Security Model (USM). With this model, security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "AuthPassphrase": {
+                        "description": "Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "AuthProtocol": {
+                        "description": "Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient. Select MD5 (Message Digest) or SHA (Secure Hash Algorithm).",
+                        "enum": [
+                            "MD5",
+                            "SHA",
+                            "SHA256",
+                            null
+                        ],
+                        "enumDescriptions": {
+                            "MD5": "Indicate Message Digest Algorithm.",
+                            "SHA": "Indicate Secure Hash Algorithm.",
+                            "SHA256": "Indicate SHA256 Algorithm."
+                        },
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "PrivacyPassphrase": {
+                        "description": "Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "PrivacyProtocol": {
+                        "description": "Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission. Select AES (Advanced Encryption Standard) or DES (Data Encryption Standard).",
+                        "enum": [
+                            "AES",
+                            "DES",
+                            null
+                        ],
+                        "enumDescriptions": {
+                            "AES": "Indicate Advanced Encryption Standard Algorithm.",
+                            "DES": "Indicate Data Encryption Standard Algorithm."
+                        },
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SecurityName": {
+                        "description": "The user profile name. Enter an alphanumeric string of 1 to 32 characters.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "UserEngineID": {
+                        "description": "The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": false,
+                "type": "object"
+            },
+            "maxItems": 8,
+            "readonly": false,
+            "type": "array"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOSnmpService.v2_3_0.HpeiLOSnmpService",
+    "type": "object"
+}

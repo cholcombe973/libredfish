@@ -1,0 +1,138 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "TelemetryService",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The TelemetryService resource describes the Metrics Service.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MaxReports": {
+            "description": "The maximum number of metric reports supported by this service.",
+            "longDescription": "The value shall be the maximum number of metric reports supported by this service.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "MetricDefinitions": {
+            "description": "A link to the collection of Metric Definitions.",
+            "longDescription": "The entries of shall be resources of type MetricDefinitionCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": [
+                "object",
+                "null"
+            ]
+        },
+        "MetricReportDefinitions": {
+            "description": "A link to the collection of Metric Reports.",
+            "longDescription": "The value shall be a link to a resource of type MetricReportCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": [
+                "object",
+                "null"
+            ]
+        },
+        "MetricReports": {
+            "description": "A link to the collection of Metric Reports.",
+            "longDescription": "The value shall be a link to a resource of type MetricReportCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": [
+                "object",
+                "null"
+            ]
+        },
+        "MinCollectionInterval": {
+            "description": "The minimum time interval between collections supported by this service.",
+            "longDescription": "The value shall be the minimum time interval between collections supported by this service.  The value shall conform to the Duration format.",
+            "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "SupportedCollectionFunctions": {
+            "description": "The functions that can be performed over each metric.",
+            "items": {
+                "description": "An operation to perform over the sample.",
+                "enum": [
+                    "Average",
+                    "Maximum",
+                    "Minimum",
+                    "Summation"
+                ],
+                "enumDescriptions": {
+                    "Average": "An averaging function.",
+                    "Maximum": "A maximum function.",
+                    "Minimum": "A minimum function.",
+                    "Summation": "A summation function."
+                },
+                "longDescription": "If present, the metric value shall be computed according to this function.",
+                "type": "string"
+            },
+            "longDescription": "The value shall define the function to apply over the collection duration.",
+            "readonly": false,
+            "type": "array"
+        },
+        "Triggers": {
+            "description": "A link to the collection of Triggers, which apply to metrics.",
+            "longDescription": "The value shall be a link to a resource of type TriggersCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": [
+                "object",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "required": [
+        "Id",
+        "Name"
+    ],
+    "title": "#TelemetryService.v1_0_0.TelemetryService",
+    "type": "object"
+}

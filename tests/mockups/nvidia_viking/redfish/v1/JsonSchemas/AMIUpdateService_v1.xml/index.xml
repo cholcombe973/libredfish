@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIUpdateService  v1.0.0                                            -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIUpdateService">
+      <ComplexType Name="AMIUpdateService">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </ComplexType>
+
+      <Action Name="UploadCABundle" IsBound="true">
+        <Annotation Term="OData.Description" String="This action is used to upload CA Bundle."/>
+        <Annotation Term="OData.LongDescription" String="This action is used to upload CA Bundle."/>
+        <Parameter Name="AMIUpdateService" Type="AMIUpdateService.v1_0_0.Actions"/>
+        <Parameter Name="ca_bundle" Type="Edm.Binary" Nullable="false">
+          <Annotation Term="OData.Description" String="This parameter contains all required RootCA certificates and intermediate certificates."/>
+          <Annotation Term="OData.LongDescription" String="This parameter provides CA bundle file in pem format which contains all required RootCA certificates and intermediate certificates for verifing SSL certificate on HTTPS server during SSL handshake."/>
+        </Parameter>
+      </Action>
+
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIUpdateService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+
+      <ComplexType Name="AMIUpdateService" BaseType="Resource.OemObject">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself."/>
+        <Property Name="Actions" Type="AMIUpdateService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+        </Property>
+
+        <Property Name="FlashPercentage" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is FlashPercentage of the UpdateService."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the FlashPercentage of the UpdateService.The format of the string shall be the  Percentage completed for Flashing of the UpdateService."/>
+        </Property>
+
+        <Property Name="PreserveConfiguration" Type="AMIUpdateService.v1_0_0.PreserveConfiguration" Nullable="true">
+          <Annotation Term="OData.Description" String="The configuration need to be preserved when doing firmware update or restore factory defaults."/>
+        </Property>
+
+        <Property Name="UpdateStatus" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is UpdateStatus of the UpdateService."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent the UpdateStatus of the UpdateService. The format of the string shall be the  Status is Preparing or Downloading or Verifying or Flashing."/>
+        </Property>
+
+        <Property Name="UpdateTarget" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is UpdateTarget of the UpdateService."/>
+          <Annotation Term="OData.LongDescription" String="The value of this string shall represent UpdateTarget of the UpdateService.  The format of this string shall be BMC."/>
+        </Property>
+
+        <Property Name="UpdateInformation" Type="AMIUpdateService.v1_0_0.UpdateInformation" Nullable="false">
+          <Annotation Term="OData.Description" String="The information about the updated firmware."/>
+        </Property>
+
+        <Property Name="HttpPushUriOptions" Type="AMIUpdateService.v1_0_0.HttpPushUriOptions" Nullable="true">
+          <Annotation Term="OData.Description" String="This is the schema definition for HttpPushUriOptions configurations."/>
+        </Property>
+
+      </ComplexType>
+      
+      <ComplexType Name="BMC" BaseType="AMIUpdateService.AMIUpdateService">
+        <Annotation Term="OData.Description" String="This is the schema definition for image configurations."/>
+        <Annotation Term="OData.LongDescription" String="This is the schema definition for image configurations."/>
+        <Property Name="DualImageConfigurations" Type="AMIUpdateService.v1_0_0.DualImageConfigurations" Nullable="false">
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+      </ComplexType>
+	  
+      <ComplexType Name="PreserveConfiguration">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The configuration need to be preserved when doing firmware update or restore factory defaults."/>
+        <Property Name="SDR" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve SDR."/>
+        </Property>
+        <Property Name="FRU" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve FRU."/>
+        </Property>
+        <Property Name="SEL" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve SEL."/>
+        </Property>
+        <Property Name="IPMI" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve IPMI."/>
+          <Annotation Term="OData.LongDescription" String="To preserve config of IPMI. It will preserve Network automatically if preserve IPMI"/>
+        </Property>
+        <Property Name="Network" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve Network."/>
+          <Annotation Term="OData.LongDescription" String="To preserve config of Network. It will preserve IPMI automatically if preserve Network"/>
+        </Property>
+        <Property Name="NTP" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve NTP."/>
+        </Property>
+        <Property Name="SNMP" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve SNMP."/>
+        </Property>
+        <Property Name="SSH" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve SSH."/>
+        </Property>
+        <Property Name="KVM" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve KVM."/>
+        </Property>
+        <Property Name="Authentication" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve Authentication."/>
+        </Property>
+        <Property Name="Syslog" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve Syslog."/>
+        </Property>
+        <Property Name="CMX" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve CMX."/>
+        </Property>
+        <Property Name="WEB" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve WEB."/>
+        </Property>
+        <Property Name="EXTLOG" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve EXTLOG."/>
+        </Property>
+        <Property Name="REDFISH" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve REDFISH."/>
+        </Property>
+        <Property Name="AUTOMATION_ENGINE" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="To preserve AUTOMATION_ENGINE."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="DualImageConfigurations" Abstract="true">
+        <Property Name="ActiveImage" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="active image in the BMC"/>  
+        </Property>
+        <Property Name="BootImage" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="Represents the image to which BMC boots to."/>
+        </Property>
+        <Property Name="FirmwareImage1Name" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The name of image #1."/>
+        </Property>
+        <Property Name="FirmwareImage1Version" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The version of the first firmware image."/>
+        </Property>
+        <Property Name="FirmwareImage2Name" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The name of image #2"/>
+        </Property>
+        <Property Name="FirmwareImage2Version" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The version of the second firmware image."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="UpdateInformation">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+        <Property Name="UpdateComponent" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Description" String="The information about the updated firmware."/>
+        </Property>
+      </ComplexType>  
+	  <ComplexType Name="HttpPushUriOptions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="HttpPushUriOptions for force update and clear the configuration."/>
+        <Property Name="ForceUpdateClearConfig" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Clear the configuration."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>

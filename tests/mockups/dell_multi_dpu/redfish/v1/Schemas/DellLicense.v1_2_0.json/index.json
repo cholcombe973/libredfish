@@ -1,0 +1,288 @@
+{
+    "$id": "/redfish/v1/Schemas/DellLicense.v1_2_0.json",
+    "$ref": "#/definitions/DellLicense",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellLicense": {
+            "additionalProperties": false,
+            "description": "An instance of DellLicense represents a feature license installed on a system.",
+            "longDescription": "An instance of DellLicense represents a feature license installed on a system.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "AssignedDevices": {
+                    "description": "The property array shall have values set to FQDDs of devices that have been assigned to this license.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The property array shall have values set to FQDDs of devices that have been assigned to this license.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DeviceFamilyDeviceID": {
+                    "description": "This property represents the device IDs of PCI devices supported by this license.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This property represents the device IDs of PCI devices supported by this license.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "DeviceFamilySubsystemID": {
+                    "description": "This property represents the subsystem IDs of PCI devices supported by this license.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This property represents the subsystem IDs of PCI devices supported by this license.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "DeviceFamilySubsystemVendorID": {
+                    "description": "This property represents the subsystem vendor IDs of PCI devices supported by this license.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This property represents the subsystem vendor IDs of PCI devices supported by this license.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "DeviceFamilyVendorID": {
+                    "description": "This property represents the vendor IDs of PCI devices supported by this license.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This property represents the vendor IDs of PCI devices supported by this license.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "EntitlementID": {
+                    "description": "The property shall have the value of the entitlement ID of the license which is a license unique ID.",
+                    "longDescription": "The property shall have the value of the entitlement ID of the license which is a license unique ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "EvalLicenseTimeRemainingDays": {
+                    "description": "The property shall represent the license period remaining in days and is counted only during the uptime of the system. The property shall be implemented, if the LicenseType property has value 3(Evaluation).",
+                    "longDescription": "The property shall represent the license period remaining in days and is counted only during the uptime of the system. The property shall be implemented, if the LicenseType property has value 3(Evaluation).",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Days"
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "InstanceID": {
+                    "description": "A unique identifier for the instance.",
+                    "longDescription": "A unique identifier for the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LicenseAttributes": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicense.json#/definitions/LicenseAttributes"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents bound-state to a device.",
+                    "longDescription": "This property represents bound-state to a device.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "LicenseDescription": {
+                    "description": "The property shall represent the licenses solution set in multiple languages.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The property shall represent the licenses solution set in multiple languages.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "LicenseDurationDays": {
+                    "description": "This property represents the license period in days, and is counted only during the uptime of the system. Note: LicenseDuration will be 0 for Permanent and Perpetual license since these licenses are not time bound.",
+                    "longDescription": "This property represents the license period in days, and is counted only during the uptime of the system. Note: LicenseDuration will be 0 for Permanent and Perpetual license since these licenses are not time bound.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Days"
+                },
+                "LicenseEndDate": {
+                    "description": "The property shall represent the end date of the license. The property shall be implemented, if the LicenseType property has value 2 (Leased) and 4 (Site).",
+                    "format": "date-time",
+                    "longDescription": "The property shall represent the end date of the license. The property shall be implemented, if the LicenseType property has value 2 (Leased) and 4 (Site).",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LicenseInstallDate": {
+                    "description": "The property shall represent the date on which the license was installed.",
+                    "format": "date-time",
+                    "longDescription": "The property shall represent the date on which the license was installed.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LicensePrimaryStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicense.json#/definitions/LicensePrimaryStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the license status.",
+                    "longDescription": "The property shall represent the license status.",
+                    "readonly": true
+                },
+                "LicenseSoldDate": {
+                    "description": "The property shall represent the date the factory created the license.",
+                    "format": "date-time",
+                    "longDescription": "The property shall represent the date the factory created the license.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LicenseStartDate": {
+                    "description": "The property shall represent the license start date.",
+                    "format": "date-time",
+                    "longDescription": "The property shall represent the license start date.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LicenseStatusMessage": {
+                    "description": "This property has the message string associated with the license status. If the property has a NULL value, no message is associated with the license status.",
+                    "longDescription": "This property has the message string associated with the license status. If the property has a NULL value, no message is associated with the license status.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LicenseStatusMessageID": {
+                    "description": "This property represents the message ID associated with the license status. If the property has a NULL value, no message is associated with the license status.",
+                    "longDescription": "This property represents the message ID associated with the license status. If the property has a NULL value, no message is associated with the license status.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LicenseType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicense.json#/definitions/LicenseType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the license type.",
+                    "longDescription": "The property shall represent the license type.",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellLicense.v1_2_0.DellLicense"
+}

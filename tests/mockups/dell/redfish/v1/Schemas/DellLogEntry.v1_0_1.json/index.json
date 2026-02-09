@@ -1,0 +1,163 @@
+{
+    "$id": "/redfish/v1/Schemas/DellLogEntry.v1_0_1.json",
+    "$ref": "#/definitions/DellLogEntry",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Category": {
+            "enum": [
+                "System Health",
+                "Storage",
+                "Updates",
+                "Audit",
+                "Configuration",
+                "Work Notes"
+            ],
+            "enumDescriptions": {
+                "Audit": "The Event has been generated as part of Audit type",
+                "Configuration": "The Event has been generated as part of Configuration type",
+                "Storage": "The Event has been generated as part of Storage unit",
+                "System Health": "The Event has been generated as part of System Health unit",
+                "Updates": "The Event has been generated as part of Updates",
+                "Work Notes": "The Event has been generated as part of Work Notes"
+            },
+            "type": "string"
+        },
+        "DellLogEntry": {
+            "additionalProperties": true,
+            "description": "This is the schema definition for the additional OEM properties to complement DMTF LogEntry Schema.",
+            "longDescription": "This resource shall be used to represent an OEM LogEntry for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "FQDD": {
+                    "description": "Property to represent Fully Qualified Device Descriptor of an instance.",
+                    "longDescription": "The value of the property represents Fully Qualified Device Descriptor of an instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_0_1"
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "SubSystem": {
+                    "description": "Property to represent SubSystem of the FQDD.",
+                    "longDescription": "The value of the property specifies the SubSystem of FQDD.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_0_1"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "DellLogEntrySummary": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Category": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Category"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Property to represent type of Event has Occurred.",
+                    "longDescription": "The value of the property specifies the type of Event.",
+                    "readonly": true
+                },
+                "FQDD": {
+                    "description": "Property to represent Fully Qualified Device Descriptor at an instance.",
+                    "longDescription": "The value of the property represents Fully Qualified Device Descriptor of the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SubSystem": {
+                    "description": "Property to represent SubSystem of the FQDD.",
+                    "longDescription": "The value of the property specifies the SubSystem of FQDD.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "#DellLogEntry.v1_0_1.DellLogEntry"
+}

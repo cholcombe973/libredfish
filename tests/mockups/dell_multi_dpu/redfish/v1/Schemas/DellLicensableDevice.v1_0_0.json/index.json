@@ -1,0 +1,219 @@
+{
+    "$id": "/redfish/v1/Schemas/DellLicensableDevice.v1_0_0.json",
+    "$ref": "#/definitions/DellLicensableDevice",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellLicensableDevice": {
+            "additionalProperties": false,
+            "description": "DellLicensableDevice represents a device in the system that has registered with the License Manager.",
+            "longDescription": "DellLicensableDevice represents a device in the system that has registered with the License Manager.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DeviceID": {
+                    "description": "An address or other identifying information to uniquely name the LogicalDevice.",
+                    "longDescription": "An address or other identifying information to uniquely name the LogicalDevice.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DevicePrimaryStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicensableDevice.json#/definitions/DevicePrimaryStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property represents the license status for the device.",
+                    "longDescription": "The property represents the license status for the device.",
+                    "readonly": true
+                },
+                "DeviceState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicensableDevice.json#/definitions/DeviceState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The value of this property represent the current device state.",
+                    "longDescription": "The value of this property represent the current device state.",
+                    "readonly": true
+                },
+                "DeviceStatusMessage": {
+                    "description": "The property has the message string associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device.",
+                    "longDescription": "The property has the message string associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeviceStatusMessageID": {
+                    "description": "The property represents the message ID associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device.",
+                    "longDescription": "The property represents the message ID associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeviceType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicensableDevice.json#/definitions/DeviceType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The value of this property represents the device type.",
+                    "longDescription": "The value of this property represents the device type.",
+                    "readonly": true
+                },
+                "FQDD": {
+                    "description": "A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object.",
+                    "longDescription": "A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LicenseList": {
+                    "description": "The values of this property array contain the Entitlement IDs of the licenses that are assigned to this device.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The values of this property array contain the Entitlement IDs of the licenses that are assigned to this device.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Model": {
+                    "description": "The value of this property represents the model description of the device.",
+                    "longDescription": "The value of this property represents the model description of the device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "RollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellLicensableDevice.json#/definitions/RollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "RollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "longDescription": "RollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status.",
+                    "readonly": true
+                },
+                "SubsystemID": {
+                    "description": "The value of this property represents the PCI subsystem ID.",
+                    "longDescription": "The value of this property represents the PCI subsystem ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SubsystemVendorID": {
+                    "description": "The value of this property represents the PCI subsystem vendor ID.",
+                    "longDescription": "The value of this property represents the PCI subsystem vendor ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "UniqueID": {
+                    "description": "The value of this property represents the unique ID of the devices, as used in the binding information. The information may not be available for all the licensable devices. In such cases, the property value is NULL.",
+                    "longDescription": "The value of this property represents the unique ID of the devices, as used in the binding information. The information may not be available for all the licensable devices. In such cases, the property value is NULL.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "VendorID": {
+                    "description": "The value of this property represents the PCI vendor or manufacturer ID.",
+                    "longDescription": "The value of this property represents the PCI vendor or manufacturer ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellLicensableDevice.v1_0_0.DellLicensableDevice"
+}

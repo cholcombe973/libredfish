@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoServiceAdvisor  v1.0.0                                 -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoServiceAdvisor">
+      <EntityType Name="LenovoServiceAdvisor" BaseType="Resource.v1_0_0.Resource" Abstract="true">    
+      </EntityType>
+      
+      <Action Name="TestCallHome" IsBound="true">
+        <Annotation Term="OData.Description" String="The action creates a test call home message to validate the network connection for call home with current setting."/>
+        <Parameter Name="LenovoServiceAdvisor" Type="LenovoServiceAdvisor.v1_0_0.Actions"/>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoServiceAdvisor.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <EntityType Name="LenovoServiceAdvisor" BaseType="LenovoServiceAdvisor.LenovoServiceAdvisor">       
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="CallHomeEnabled" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the server profile mode is enabled."/>
+        </Property>
+        <Property Name="CountryCode" Type="LenovoServiceAdvisor.v1_0_0.CountryCode" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates the country code."/>
+        </Property>
+        <Property Name="Method" Type="LenovoServiceAdvisor.v1_0_0.PreferredContactMethod" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates the preferred contact method."/>
+        </Property>
+         <Property Name="AgreementAccepted" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the agreement license is accepted."/>
+        </Property>
+        <Property Name="CallHomeSettings" Type="LenovoServiceAdvisor.v1_0_0.CallHomeSettings" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The settings for call home function"/>
+        </Property>
+        <Property Name="MachineLocation" Type="LenovoServiceAdvisor.v1_0_0.MachineLocation" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The settings for machine location"/>
+        </Property>
+        <Property Name="HTTPProxy" Type="LenovoServiceAdvisor.v1_0_0.HTTPProxy" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The HTTP Proxy."/>
+        </Property>
+        <Property Name="Actions" Type="LenovoServiceAdvisor.v1_0_0.Actions" Nullable="false"/>
+      </EntityType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </ComplexType>
+      
+      <ComplexType Name="CallHomeSettings">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object indicates the settings for call home function."/>    
+        <Property Name="Phone" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="ContactName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="Address" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="Email" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="CompanyName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="City" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="StateOrProvince" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="PostalCode" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternateContactName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternateEmail" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternatePhone" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternateCompanyName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternateAddress" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternateCity" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternateStateOrProvince" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="AlternatePostalCode" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property> 
+      </ComplexType>
+      
+      <ComplexType Name="MachineLocation">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object indicates the machine location."/>
+        <Property Name="Address" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="City" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="StateOrProvince" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="PostalCode" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="HTTPProxy">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object indicates the HTTP proxy."/>    
+        <Property Name="HTTPProxyPort" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="HTTPProxyUserName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="HTTPProxyPassword" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="HTTPProxyEnabled" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+        <Property Name="HTTPProxyLocation" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+        </Property>
+      </ComplexType>
+    
+      <EnumType Name="PreferredContactMethod">
+        <Member Name="Email"/>
+        <Member Name="Phone"/>
+      </EnumType>
+
+      <EnumType Name="CountryCode">
+        <Member Name="AO"/>
+        <Member Name="AR"/>
+        <Member Name="AM"/>
+        <Member Name="AU"/>
+        <Member Name="AT"/>
+        <Member Name="AZ"/>
+        <Member Name="BS"/>
+        <Member Name="BB"/>
+        <Member Name="BY"/>
+        <Member Name="BE"/>
+        <Member Name="BM"/>
+        <Member Name="BW"/>
+        <Member Name="BR"/>
+        <Member Name="BN"/>
+        <Member Name="BG"/>
+        <Member Name="BI"/>
+        <Member Name="CA"/>
+        <Member Name="KY"/>
+        <Member Name="CL"/>
+        <Member Name="CN"/>
+        <Member Name="CO"/>
+        <Member Name="HR"/>
+        <Member Name="CY"/>
+        <Member Name="CZ"/>
+        <Member Name="DK"/>
+        <Member Name="EC"/>
+        <Member Name="EG"/>
+        <Member Name="ER"/>
+        <Member Name="EE"/>
+        <Member Name="ET"/>
+        <Member Name="FI"/>
+        <Member Name="FR"/>
+        <Member Name="GE"/>
+        <Member Name="DE"/>
+        <Member Name="GH"/>
+        <Member Name="GR"/>
+        <Member Name="GU"/>
+        <Member Name="GY"/>
+        <Member Name="HK"/>
+        <Member Name="HU"/>
+        <Member Name="IN"/>
+        <Member Name="ID"/>
+        <Member Name="IE"/>
+        <Member Name="IL"/>
+        <Member Name="IT"/>
+        <Member Name="JM"/>
+        <Member Name="JP"/>
+        <Member Name="KZ"/>
+        <Member Name="KE"/>
+        <Member Name="KR"/>
+        <Member Name="KG"/>
+        <Member Name="LV"/>
+        <Member Name="LR"/>
+        <Member Name="LT"/>
+        <Member Name="LU"/>
+        <Member Name="MO"/>
+        <Member Name="MW"/>
+        <Member Name="MY"/>
+        <Member Name="MT"/>
+        <Member Name="MX"/>
+        <Member Name="MA"/>
+        <Member Name="MZ"/>
+        <Member Name="NL"/>
+        <Member Name="NZ"/>
+        <Member Name="NG"/>
+        <Member Name="NO"/>
+        <Member Name="PK"/>
+        <Member Name="PE"/>
+        <Member Name="PH"/>
+        <Member Name="PL"/>
+        <Member Name="PT"/>
+        <Member Name="PR"/>
+        <Member Name="RO"/>
+        <Member Name="RU"/>
+        <Member Name="RW"/>
+        <Member Name="LC"/>
+        <Member Name="ST"/>
+        <Member Name="SN"/>
+        <Member Name="RS"/>
+        <Member Name="SL"/>
+        <Member Name="SG"/>
+        <Member Name="SK"/>
+        <Member Name="SI"/>
+        <Member Name="ZA"/>
+        <Member Name="ES"/>
+        <Member Name="LK"/>
+        <Member Name="SR"/>
+        <Member Name="SE"/>
+        <Member Name="CH"/>
+        <Member Name="TW"/>
+        <Member Name="TJ"/>
+        <Member Name="TZ"/>
+        <Member Name="TH"/>
+        <Member Name="TT"/>
+        <Member Name="TN"/>
+        <Member Name="TR"/>
+        <Member Name="TM"/>
+        <Member Name="UG"/>
+        <Member Name="UA"/>
+        <Member Name="GB"/>
+        <Member Name="US"/>
+        <Member Name="US"/>
+        <Member Name="UY"/>
+        <Member Name="UZ"/>
+        <Member Name="VE"/>
+        <Member Name="VN"/>
+        <Member Name="VI"/>
+        <Member Name="ZM"/>
+        <Member Name="ZW"/>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+
+

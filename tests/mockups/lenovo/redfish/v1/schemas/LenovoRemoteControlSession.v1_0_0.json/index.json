@@ -1,0 +1,109 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoRemoteControlSession.v1_0_0.json",
+    "$ref": "#/definitions/LenovoRemoteControlSession",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "KnockIntervalTypes": {
+            "enum": [
+                "Interval_1minute",
+                "Interval_5minutes",
+                "Interval_10minutes",
+                "Interval_30minutes",
+                "Interval_1hour",
+                "Interval_2hours",
+                "Interval_24hours"
+            ],
+            "enumDescriptions": {
+                "Interval_10minutes": "The interval is 10 minutes",
+                "Interval_1hour": "The interval is 1 hour",
+                "Interval_1minute": "The interval is 1 minute",
+                "Interval_24hours": "The interval is 24 hours",
+                "Interval_2hours": "The interval is 2 hours",
+                "Interval_30minutes": "The interval is 30 minutes",
+                "Interval_5minutes": "The interval is 5 minutes"
+            },
+            "type": "string"
+        },
+        "LenovoRemoteControlSession": {
+            "additionalProperties": false,
+            "description": "This schema defines the remote control session to be used in conjunction with a remote mount service.",
+            "longDescription": "This resource shall be used to represent resources that represent the remote control session for the remote mount service.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "ActiveSession": {
+                    "description": "The active session address",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Timeout": {
+                    "$ref": "#/definitions/KnockIntervalTypes",
+                    "description": "The timeout for the active session",
+                    "readonly": true
+                },
+                "Username": {
+                    "description": "Username of the active session",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "title": "#LenovoRemoteControlSession.v1_0_0.LenovoRemoteControlSession"
+}

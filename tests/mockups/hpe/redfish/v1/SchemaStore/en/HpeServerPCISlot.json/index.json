@@ -1,0 +1,206 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerPCISlot",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2022 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerPCISlot resource describes the properties of PCI slots.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "BusNumber": {
+            "description": "PCI slot bus number.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Characteristics": {
+            "additionalProperties": false,
+            "description": "Characteristics of the slot.",
+            "properties": {
+                "Provides3_3Volts": {
+                    "description": "Provides 3.3 volts.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Provides5Volts": {
+                    "description": "Provides 5.0 volts.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SlotIsShared": {
+                    "description": "The slot shares its opening with another slot.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsCardBus": {
+                    "description": "PC Card slot supports Card Bus.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsHotPlugDevices": {
+                    "description": "Slot supports hot-plug devices.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsModemRingResume": {
+                    "default": false,
+                    "description": "PC Card slot supports Modem Ring Resume.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsPCCard16": {
+                    "description": "PC Card slot supports PC Card-16.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsPowerManagementEventSignal": {
+                    "description": "PCI slot supports Power Management Event signal.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsSMBusSignal": {
+                    "description": "PCI slot supports SMBUS signal.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SupportsZoomVideo": {
+                    "description": "PC Card slot supports Zoom Video.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "DeviceNumber": {
+            "description": "PCI slot device number.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "FunctionNumber": {
+            "description": "PCI slot function number.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Length": {
+            "description": "PCI slot length",
+            "enum": [
+                "Short",
+                "Long",
+                "Other"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LinkLanes": {
+            "description": "Bandwidth capacity of the slot, measured by the number of PCI Express Lanes present. Also known as the slot width.",
+            "enum": [
+                "8 bit",
+                "16 bit",
+                "32 bit",
+                "64 bit",
+                "128 bit",
+                "x1",
+                "x2",
+                "x4",
+                "x8",
+                "x16",
+                "x32",
+                "Other"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Status": {
+            "additionalProperties": false,
+            "description": "Status",
+            "properties": {
+                "EnabledState": {
+                    "description": "Specifies whether the slot is enabled or disabled.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "OperationalStatus": {
+                    "description": "Operational status",
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "Status": {
+                                "description": "Current usage status of the slot: InUse or Empty",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SupportsHotPlug": {
+            "description": "Specifies whether the slot supports hot-plug devices.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Technology": {
+            "description": "PCI technology",
+            "enum": [
+                "Proprietary",
+                "OCP NIC 3.0",
+                "PCIExpressGen5",
+                "PCIExpressGen4",
+                "PCIExpressGen3",
+                "PCIExpressGen2",
+                "PCIExpress"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UEFIDevicePath": {
+            "description": "Standardized text representation of the UEFI device path, in UTF-8 format",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerPCISlot.v2_1_1.HpeServerPCISlot",
+    "type": "object"
+}

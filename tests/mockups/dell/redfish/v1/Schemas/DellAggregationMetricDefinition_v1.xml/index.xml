@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellAggregationMetricDefinition v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellAggregationMetricDefinition">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellAggregationMetricDefinition" Abstract="true">
+                <Annotation String="DellAggregationMetricDefinition represents the definitions-related information of a metric." Term="OData.Description"/>
+                <Annotation String="DellAggregationMetricDefinition represents the definitions-related information of a metric." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellAggregationMetricDefinitions/{AggregationMetricDefinitionId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="ChangeType">
+                <Member Name="SimpleFunction">
+                    <Annotation String="Simple Function" Term="OData.Description"/>
+                    <Annotation String="Simple Function" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DataType">
+                <Member Name="Boolean">
+                    <Annotation String="boolean" Term="OData.Description"/>
+                    <Annotation String="boolean" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Char16">
+                    <Annotation String="char16" Term="OData.Description"/>
+                    <Annotation String="char16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Datetime">
+                    <Annotation String="datetime" Term="OData.Description"/>
+                    <Annotation String="datetime" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Real32">
+                    <Annotation String="real32" Term="OData.Description"/>
+                    <Annotation String="real32" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Real64">
+                    <Annotation String="real64" Term="OData.Description"/>
+                    <Annotation String="real64" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Sint16">
+                    <Annotation String="sint16" Term="OData.Description"/>
+                    <Annotation String="sint16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Sint32">
+                    <Annotation String="sint32" Term="OData.Description"/>
+                    <Annotation String="sint32" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Sint64">
+                    <Annotation String="sint64" Term="OData.Description"/>
+                    <Annotation String="sint64" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Sint8">
+                    <Annotation String="sint8" Term="OData.Description"/>
+                    <Annotation String="sint8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="String">
+                    <Annotation String="string" Term="OData.Description"/>
+                    <Annotation String="string" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Uint16">
+                    <Annotation String="uint16" Term="OData.Description"/>
+                    <Annotation String="uint16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Uint32">
+                    <Annotation String="uint32" Term="OData.Description"/>
+                    <Annotation String="uint32" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Uint64">
+                    <Annotation String="uint64" Term="OData.Description"/>
+                    <Annotation String="uint64" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Uint8">
+                    <Annotation String="uint8" Term="OData.Description"/>
+                    <Annotation String="uint8" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GatheringType">
+                <Member Name="OnChange">
+                    <Annotation String="OnChange" Term="OData.Description"/>
+                    <Annotation String="OnChange" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OnRequest">
+                    <Annotation String="OnRequest" Term="OData.Description"/>
+                    <Annotation String="OnRequest" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Periodic">
+                    <Annotation String="Periodic" Term="OData.Description"/>
+                    <Annotation String="Periodic" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SimpleFunction">
+                <Member Name="Average">
+                    <Annotation String="Average" Term="OData.Description"/>
+                    <Annotation String="Average" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Maximum">
+                    <Annotation String="Maximum" Term="OData.Description"/>
+                    <Annotation String="Maximum" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Median">
+                    <Annotation String="Median" Term="OData.Description"/>
+                    <Annotation String="Median" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Minimum">
+                    <Annotation String="Minimum" Term="OData.Description"/>
+                    <Annotation String="Minimum" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Mode">
+                    <Annotation String="Mode" Term="OData.Description"/>
+                    <Annotation String="Mode" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TimeScope">
+                <Member Name="Interval">
+                    <Annotation String="Interval" Term="OData.Description"/>
+                    <Annotation String="Interval" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Point">
+                    <Annotation String="Point" Term="OData.Description"/>
+                    <Annotation String="Point" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="StartupInterval">
+                    <Annotation String="StartupInterval" Term="OData.Description"/>
+                    <Annotation String="StartupInterval" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellAggregationMetricDefinition.v1_0_0">
+            <EntityType Name="DellAggregationMetricDefinition" BaseType="DellAggregationMetricDefinition.DellAggregationMetricDefinition">
+                <Annotation Term="OData.Description" String="DellAggregationMetricDefinition represents the definitions-related information of a metric."/>
+                <Annotation Term="OData.LongDescription" String="DellAggregationMetricDefinition represents the definitions-related information of a metric."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="ChangeType" Type="DellAggregationMetricDefinition.ChangeType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="ChangeType indicates how the metric value changes, in the form of typical combinations of finer grain attributes such as direction change, minimum and maximum values, and wrapping semantics. 5=&quot;Simple Function&quot;: The derived metric value is calculated by applying the basic mathematical function identified by the SimpleFunction property to the underlying metric values."/>
+                    <Annotation Term="OData.LongDescription" String="ChangeType indicates how the metric value changes, in the form of typical combinations of finer grain attributes such as direction change, minimum and maximum values, and wrapping semantics. 5=&quot;Simple Function&quot;: The derived metric value is calculated by applying the basic mathematical function identified by the SimpleFunction property to the underlying metric values."/>
+                </Property>
+                <Property Name="DataType" Type="DellAggregationMetricDefinition.DataType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="DataType identifies the data type of the metric. These types represent the data types defined for CIM."/>
+                    <Annotation Term="OData.LongDescription" String="DataType identifies the data type of the metric. These types represent the data types defined for CIM."/>
+                </Property>
+                <Property Name="ElementName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="ElementName is the user-friendly name for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="ElementName is the user-friendly name for the instance."/>
+                </Property>
+                <Property Name="GatheringType" Type="DellAggregationMetricDefinition.GatheringType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="GatheringType indicates how the metric values are gathered by the underlying instrumentation. This allows the client application to choose the right metric for the purpose. 0=&quot;Unknown&quot;: The GatheringType is not known. 2=&quot;OnChange&quot;: The CIM metric values get updated immediately when the values inside the measured resource change. The values of OnChange metrics truly reflect the current state within the resource. An example is the number of users logged on, which gets updated immediately as users log-on or log-off. 3=&quot;Periodic&quot;: The CIM metric values get updated periodically. For example, to a client application, a metric value that applies to the current time appears constant during each gathering interval and changes to the new value at the end of each gathering interval. 4=&quot;OnRequest&quot;: The CIM metric value is updated when a client application reads it. The values of OnRequest metrics return the current state within the resource when requested. However, the values do not change &quot;unobserved&quot; and therefore it is recommended that you do not subscribe for value changes of OnRequest metrics."/>
+                    <Annotation Term="OData.LongDescription" String="GatheringType indicates how the metric values are gathered by the underlying instrumentation. This allows the client application to choose the right metric for the purpose. 0=&quot;Unknown&quot;: The GatheringType is not known. 2=&quot;OnChange&quot;: The CIM metric values get updated immediately when the values inside the measured resource change. The values of OnChange metrics truly reflect the current state within the resource. An example is the number of users logged on, which gets updated immediately as users log-on or log-off. 3=&quot;Periodic&quot;: The CIM metric values get updated periodically. For example, to a client application, a metric value that applies to the current time appears constant during each gathering interval and changes to the new value at the end of each gathering interval. 4=&quot;OnRequest&quot;: The CIM metric value is updated when a client application reads it. The values of OnRequest metrics return the current state within the resource when requested. However, the values do not change &quot;unobserved&quot; and therefore it is recommended that you do not subscribe for value changes of OnRequest metrics."/>
+                </Property>
+                <Property Name="Id" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Id is the key and has the value &quot;AggrMetricDef:0&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="Id is the key and has the value &quot;AggrMetricDef:0&quot;."/>
+                </Property>
+                <Property Name="IsContinuous" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="IsContinuous indicates whether the metric value is continuous or scalar. The value of this property is TRUE."/>
+                    <Annotation Term="OData.LongDescription" String="IsContinuous indicates whether the metric value is continuous or scalar. The value of this property is TRUE."/>
+                </Property>
+                <Property Name="Name" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property is the name of the metric. The name can contain blanks and does not have to be unique, however it should be descriptive when used."/>
+                    <Annotation Term="OData.LongDescription" String="This property is the name of the metric. The name can contain blanks and does not have to be unique, however it should be descriptive when used."/>
+                </Property>
+                <Property Name="ProgrammaticUnits" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="ProgrammaticUnits identifies the specific units of a value."/>
+                    <Annotation Term="OData.LongDescription" String="ProgrammaticUnits identifies the specific units of a value."/>
+                </Property>
+                <Property Name="SampleInterval" Type="Edm.Duration">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="SampleInterval provides the sample interval so that client applications can determine the minimum time interval to retrieve new statistics. The property value is in W3C representation in WS-CIM with the corresponding value equal to CIM datetime."/>
+                    <Annotation Term="OData.LongDescription" String="SampleInterval provides the sample interval so that client applications can determine the minimum time interval to retrieve new statistics. The property value is in W3C representation in WS-CIM with the corresponding value equal to CIM datetime."/>
+                </Property>
+                <Property Name="SimpleFunction" Type="DellAggregationMetricDefinition.SimpleFunction">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The SimpleFunction property identifies the basic computation that is performed on an underlying metric for arriving at the value of this derived metric. This property is NULL when the ChangeType property has a value other than 5 &quot;Simple Function&quot;. 2=&quot;Minimum&quot;: The metric reports the lowest value detected for the monitored entity. This is also known as a low watermark. 3=&quot;Maximum&quot;: The metric reports the maximum value detected for the monitored entity. This is also known as a high watermark. 4=&quot;Average&quot;: The metric reports the average value of the underlying metric values. 5=&quot;Median&quot;: The metric reports the median value of the underlying metric values. 6=&quot;Mode&quot;: The metric reports the modal value of the underlying metric values."/>
+                    <Annotation Term="OData.LongDescription" String="The SimpleFunction property identifies the basic computation that is performed on an underlying metric for arriving at the value of this derived metric. This property is NULL when the ChangeType property has a value other than 5 &quot;Simple Function&quot;. 2=&quot;Minimum&quot;: The metric reports the lowest value detected for the monitored entity. This is also known as a low watermark. 3=&quot;Maximum&quot;: The metric reports the maximum value detected for the monitored entity. This is also known as a high watermark. 4=&quot;Average&quot;: The metric reports the average value of the underlying metric values. 5=&quot;Median&quot;: The metric reports the median value of the underlying metric values. 6=&quot;Mode&quot;: The metric reports the modal value of the underlying metric values."/>
+                </Property>
+                <Property Name="TimeScope" Type="DellAggregationMetricDefinition.TimeScope">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="TimeScope indicates the time scope to which the metric value applies. 0=&quot;Unknown&quot;: The time scope is not qualified by the metric designer or is unknown to the provider. 2=&quot;Point&quot;: The metric applies to a point in time. On the corresponding BaseMetricValue instances, TimeStamp specifies the point in time and Duration is always 0. 3=&quot;Interval&quot;: The metric applies to a time interval. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval and Duration specifies its duration. 4=&quot;StartupInterval&quot;: The metric applies to a time interval that began at the startup of the measured resource, that is, the ManagedElement associated by MetricDefForMe. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval. The Duration value specifies the duration between the time when the resource started and the TimeStamp value. A Duration value of 0 indicates that the startup time of the measured resource is unknown."/>
+                    <Annotation Term="OData.LongDescription" String="TimeScope indicates the time scope to which the metric value applies. 0=&quot;Unknown&quot;: The time scope is not qualified by the metric designer or is unknown to the provider. 2=&quot;Point&quot;: The metric applies to a point in time. On the corresponding BaseMetricValue instances, TimeStamp specifies the point in time and Duration is always 0. 3=&quot;Interval&quot;: The metric applies to a time interval. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval and Duration specifies its duration. 4=&quot;StartupInterval&quot;: The metric applies to a time interval that began at the startup of the measured resource, that is, the ManagedElement associated by MetricDefForMe. On the corresponding BaseMetricValue instances, TimeStamp specifies the end of the time interval. The Duration value specifies the duration between the time when the resource started and the TimeStamp value. A Duration value of 0 indicates that the startup time of the measured resource is unknown."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

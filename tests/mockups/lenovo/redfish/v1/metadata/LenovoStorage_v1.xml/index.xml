@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoStorage  v1.0.0                                        -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Storage_v1.xml">
+    <edmx:Include Namespace="Storage.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices> 
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoStorage">
+      <ComplexType Name="LenovoStorage" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoStorage resource."/>
+      </ComplexType>
+
+	  <ComplexType Name="LenovoStorageController" Abstract="true">
+	    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+		<Annotation Term="OData.Description" String="This is the schema definition for the LenovoStorageController resource."/>
+	  </ComplexType>
+            
+      <Action Name="PrefetchSMARTData" IsBound="true">
+        <Parameter Name="Storage" Type="Storage.v1_0_0.OemActions"/>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoStorage.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <ComplexType Name="LenovoStorageController" BaseType="LenovoStorage.LenovoStorageController">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="Lenovo Oem properties."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contains Lenovo Oem properties of Storage."/>
+        
+        <Property Name="SupportedRaidLevels" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The supported RAID levels of this storage controller."/>
+        </Property>
+        <Property Name="Mode" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The mode of this storage controller."/>
+        </Property>
+        <Property Name="Battery" Type="LenovoStorage.v1_0_0.BatteryInfo">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The battery info of this storage controller."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="BatteryInfo">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="Storage battery info properties."/>
+        <Property Name="DesignCapacity" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The design capacity of this battery."/>
+        </Property>
+        <Property Name="FullChargeCapacity" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The full charge capacity of this battery."/>
+        </Property>
+        <Property Name="RemainingCapacity" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The remaining capacity of this battery."/>
+        </Property>
+        <Property Name="DesignVoltageMV" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The design voltage of this battery."/>
+        </Property>
+        <Property Name="VoltageMV" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The voltage of this battery."/>
+        </Property>
+        <Property Name="CurrentMA" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The current of this battery."/>
+        </Property>
+        <Property Name="TemperatureCelsius" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The temperation of this battery."/>
+        </Property>
+        <Property Name="ProductName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The product name of this battery."/>
+        </Property>
+        <Property Name="Manufacturer" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The manufacturer of this battery."/>
+        </Property>
+        <Property Name="FirmwareDescription" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The firmware description of this battery."/>
+        </Property>
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The serial number of this battery."/>
+        </Property>
+        <Property Name="BatteryType" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The type of this battery."/>
+        </Property>
+        <Property Name="OperationalStatus" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The operation status of this battery."/>
+        </Property>
+        <Property Name="Chemistry" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The chemistry of this battery."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

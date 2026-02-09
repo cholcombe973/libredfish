@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMISMTP  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    	<edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    	<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+		<edmx:Include Namespace="Resource"/>
+		<edmx:Include Namespace="Resource.v1_0_0"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/JsonSchemas/AMISMTPCertificate_v1.xml">
+		<edmx:Include Namespace="AMISMTPCertificate"/>
+		<edmx:Include Namespace="AMISMTPCertificate.v1_0_0"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMISMTP">
+			<ComplexType Name="AMISMTP" Bool="false">
+				<Annotation Term="OData.Description" String="This is the schema definition for the Oem.Ami properties in CertificateLocation."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall be used to represent Oem.Ami properties in CertificateLocation."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+				<Record>
+				    <PropertyValue Property="Insertable" Bool="true"/>
+				</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+				<Record>
+			    	<PropertyValue Property="Updatable" Bool="false"/>
+				</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+				<Record>
+				    <PropertyValue Property="Deletable" Bool="false"/>
+				</Record>
+				</Annotation>
+			</ComplexType>
+			</Schema>
+					
+	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMISMTP.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+      <ComplexType Name="AMISMTP" BaseType="AMISMTP.AMISMTP">
+        <Annotation Term="OData.Description" String="This is the schema definition for the AMISMTP."/>
+        <NavigationProperty Name="PrimarySMTP" Type="AMISMTPCertificate.AMISMTPCertificate" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the properties related to Certificate SMTP"/>
+          <Annotation Term="OData.LongDescription" String="Indicates the properties related to Primary SMTP Certificate"/>
+        </NavigationProperty>  
+        <NavigationProperty Name="SecondarySMTP" Type="AMISMTPCertificate.AMISMTPCertificate" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the properties related to Certificate SMTP"/>
+          <Annotation Term="OData.LongDescription" String="Indicates the properties related to Secondary SMTP Certificate"/>
+        </NavigationProperty>     
+      </ComplexType>
+     
+    </Schema>
+			
+			
+	</edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    </edmx:Reference>
+
+    <edmx:DataServices>
+
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="OemUpdateService">
+
+            <Action Name="CommitImage" IsBound="true">
+                <Annotation Term="OData.Description" String="This action triggers a 'Commit Image' of firmware inventories."/>
+                <Annotation Term="OData.LongDescription" String="This action shall start a 'Commit Image' for particular firmware inventories."/>
+                <Parameter Name="Targets" Type="Collection(SoftwareInventory.SoftwareInventory)">
+                <Annotation Term="OData.Description" String="Collection of delivered firmware inventories for which the action will be applied."/>
+                <Annotation Term="OData.LongDescription" String="This parameter is a collection of redfish firmware inventory. For empty collection the action 'Commit image' will be applied for all available inventories."/>
+                </Parameter>
+            </Action>
+            
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,174 @@
+{
+    "$id": "/redfish/v1/Schemas/DellD4DReport.v1_0_0.json",
+    "$ref": "#/definitions/DellD4DReport",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellD4DReport": {
+            "additionalProperties": false,
+            "description": "The DellD4DReport schema represents a set of collected metrics.",
+            "longDescription": "This resource shall represent a metric report in a Redfish implementation. When a metric report is deleted, the historic metric data used to generate the report shall be deleted as well unless other metric reports are consuming the data.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Data": {
+                    "description": "The list of Metric Reports.",
+                    "items": {
+                        "$ref": "#/definitions/Report"
+                    },
+                    "longDescription": "The property shall contain a list of metric reports.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Timestamp": {
+                    "description": "The date and time when the metric is obtained. A management application can establish a time series of metric data by retrieving the instances of metric value and sorting them according to their timestamp.",
+                    "format": "date-time",
+                    "longDescription": "The value shall time when the metric value was obtained. Note that this value might be different from the time when this instance is created.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "MetricValue": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "T": {
+                    "description": "The time in epoch when the metric is obtained. A management application can establish a time series of metric data by retrieving the instances of metric value and sorting them according to their timestamp.",
+                    "longDescription": "The value shall time when the metric value was obtained in epoch time. Note that this value might be different from the time when this instance is created.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "V": {
+                    "description": "The metric value, as a string.",
+                    "longDescription": "This property shall contain the metric value, as a string.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Report": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FQDD": {
+                    "description": "Metric Id's FQDD.",
+                    "longDescription": "The FQDD is a hardware identifier.  One Metric Id can have many FQDD.  The Metric Report will contain a specific metric pertaining to one type of hardware",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "description": "The Report metric ID.",
+                    "longDescription": "The Report's metric ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Values": {
+                    "description": "The property shall contain a list of metric values.",
+                    "items": {
+                        "$ref": "#/definitions/MetricValue"
+                    },
+                    "longDescription": "The property shall contain a list of metric values specific to the FQDD hardware component and Metric ID.",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellD4DReport.v1_0_0.DellD4DReport"
+}

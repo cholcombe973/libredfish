@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  NmTrigger v1.0.0                                                        -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmTrigger">
+            <EntityType Name="Trigger" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+                <Annotation Term="OData.Description" String="The NmTrigger schema contains properties related to Node Manager triggers for policies."/>
+                <Annotation Term="OData.LongDescription" String="The NmTrigger schema contains properties related to Node Manager triggers for policies."/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="False"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/NodeManager/Triggers/{TriggerId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmTrigger.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <Annotation Term="Redfish.Release" String="1.0" />
+            <EntityType Name="Trigger" BaseType="NmTrigger.Trigger">
+                <Annotation Term="OData.Description" String="Trigger information for policies in domain."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain definition of trigger values supported for policies in the domain."/>
+                <Property Name="Min" Type="Edm.Decimal" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Min acceptable trigger limit value for the trigger."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain min acceptable value of a policy trigger limit for this trigger."/>
+                </Property>
+                <Property Name="Max" Type="Edm.Decimal" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Max acceptable trigger limit value for the trigger."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain max acceptable value of a policy trigger limit for this trigger."/>
+                </Property>
+                <Property Name="Unit" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Unit for trigger limit of the trigger."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain unit in which trigger limits are expressed."/>
+                </Property>
+                <Property Name="Name" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Descriptive name of the trigger."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a descriptive name of the trigger."/>
+                </Property>
+                <Property Name="TriggerValues" Type="Collection(Edm.String)" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="For triggers with enumerated limits, this property contains list of available values."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a list of valid values which can be set as trigger limit, in case of triggers which use enumerated values rather than physical properties."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

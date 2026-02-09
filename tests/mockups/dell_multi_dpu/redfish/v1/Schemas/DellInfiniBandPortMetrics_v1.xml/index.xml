@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellInfiniBandPortMetrics v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBandPortMetrics">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellInfiniBandPortMetrics" Abstract="true">
+                <Annotation String="An instance of DellInfiniBandPortMetrics will have the statistics of the InfiniBand, InfiniBand port or partition." Term="OData.Description"/>
+                <Annotation String="An instance of DellInfiniBandPortMetrics will have the statistics of the InfiniBand, InfiniBand port or partition." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/Oem/Dell/DellInfiniBandPortMetrics/{InfiniBandPortMetricsId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/{NetworkDeviceId}/Oem/Dell/DellInfiniBandPortMetrics/{InfiniBandPortMetricsId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="LinkSpeed">
+                <Member Name="DDR">
+                    <Annotation String="DDR" Term="OData.Description"/>
+                    <Annotation String="DDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EDR">
+                    <Annotation String="EDR" Term="OData.Description"/>
+                    <Annotation String="EDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FDR">
+                    <Annotation String="FDR" Term="OData.Description"/>
+                    <Annotation String="FDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FDR10">
+                    <Annotation String="FDR10" Term="OData.Description"/>
+                    <Annotation String="FDR10" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="HDR">
+                    <Annotation String="HDR" Term="OData.Description"/>
+                    <Annotation String="HDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NDR">
+                    <Annotation String="NDR" Term="OData.Description"/>
+                    <Annotation String="NDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NoLink">
+                    <Annotation String="NoLink" Term="OData.Description"/>
+                    <Annotation String="NoLink" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="QDR">
+                    <Annotation String="QDR" Term="OData.Description"/>
+                    <Annotation String="QDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SDR">
+                    <Annotation String="SDR" Term="OData.Description"/>
+                    <Annotation String="SDR" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="LinkWidth">
+                <Member Name="1X">
+                    <Annotation String="1X" Term="OData.Description"/>
+                    <Annotation String="1X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="2X">
+                    <Annotation String="2X" Term="OData.Description"/>
+                    <Annotation String="2X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="4X">
+                    <Annotation String="4X" Term="OData.Description"/>
+                    <Annotation String="4X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="8X">
+                    <Annotation String="8X" Term="OData.Description"/>
+                    <Annotation String="8X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Nowidth">
+                    <Annotation String="Nowidth" Term="OData.Description"/>
+                    <Annotation String="Nowidth" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PartitionLinkStatus">
+                <Member Name="Down">
+                    <Annotation String="Down" Term="OData.Description"/>
+                    <Annotation String="Down" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Up">
+                    <Annotation String="Up" Term="OData.Description"/>
+                    <Annotation String="Up" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PartitionOSDriverState">
+                <Member Name="Non-operational">
+                    <Annotation String="Non-operational" Term="OData.Description"/>
+                    <Annotation String="Non-operational" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Operational">
+                    <Annotation String="Operational" Term="OData.Description"/>
+                    <Annotation String="Operational" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBandPortMetrics.v1_0_0">
+            <EntityType Name="DellInfiniBandPortMetrics" BaseType="DellInfiniBandPortMetrics.DellInfiniBandPortMetrics">
+                <Annotation Term="OData.Description" String="An instance of DellInfiniBandPortMetrics will have the statistics of the InfiniBand, InfiniBand port or partition."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellInfiniBandPortMetrics will have the statistics of the InfiniBand, InfiniBand port or partition."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DiscardedPkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of discarded packets."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of discarded packets."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                </Property>
+                <Property Name="LinkSpeed" Type="DellInfiniBandPortMetrics.LinkSpeed">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the link speed."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the link speed."/>
+                </Property>
+                <Property Name="LinkWidth" Type="DellInfiniBandPortMetrics.LinkWidth">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="When the physical link is up, this field reflects the active link width."/>
+                    <Annotation Term="OData.LongDescription" String="When the physical link is up, this field reflects the active link width."/>
+                </Property>
+                <Property Name="PartitionLinkStatus" Type="DellInfiniBandPortMetrics.PartitionLinkStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates whether the partition link is up or down."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates whether the partition link is up or down."/>
+                </Property>
+                <Property Name="PartitionOSDriverState" Type="DellInfiniBandPortMetrics.PartitionOSDriverState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates operating system driver states of the partitions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates operating system driver states of the partitions."/>
+                </Property>
+                <Property Name="PortReceiveSwitchRelayTotalErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of packets received on the port that were discarded because they could not be forwarded by the switch relay."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of packets received on the port that were discarded because they could not be forwarded by the switch relay."/>
+                </Property>
+                <Property Name="RDMARxTotalBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA bytes received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA bytes received."/>
+                </Property>
+                <Property Name="RDMARxTotalPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA packets received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA packets received."/>
+                </Property>
+                <Property Name="RDMATotalProtectionErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Protection errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Protection errors."/>
+                </Property>
+                <Property Name="RDMATotalProtocolErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Protocol errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Protocol errors."/>
+                </Property>
+                <Property Name="RDMATxTotalBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA bytes transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA bytes transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA packets transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalReadReqPkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA ReadRequest packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA ReadRequest packets transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalSendPkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Send packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Send packets transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalWritePkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Write packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Write packets transmitted."/>
+                </Property>
+                <Property Name="RxBroadcast" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good broadcast packets received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good broadcast packets received."/>
+                </Property>
+                <Property Name="RxBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of bytes received, including host and remote management pass through traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of bytes received, including host and remote management pass through traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="Measures.Unit" String="Bytes"/>
+                </Property>
+                <Property Name="RxErrorPktAlignmentErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of packets received with alignment errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of packets received with alignment errors."/>
+                </Property>
+                <Property Name="RxErrorPktFCSErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of packets received with FCS errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of packets received with FCS errors."/>
+                </Property>
+                <Property Name="RxFalseCarrierDetection" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of false carrier errors received from PHY."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of false carrier errors received from PHY."/>
+                </Property>
+                <Property Name="RxJabberPkt" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of frames that are too long."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of frames that are too long."/>
+                </Property>
+                <Property Name="RxMutlicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="RxPauseXOFFFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the flow control frames from the network to pause transmission."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the flow control frames from the network to pause transmission."/>
+                </Property>
+                <Property Name="RxPauseXONFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the flow control frames from the network to resume transmission."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the flow control frames from the network to resume transmission."/>
+                </Property>
+                <Property Name="RxRuntPkt" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of frames that are too short (&lt; 64 bytes)."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of frames that are too short (&lt; 64 bytes)."/>
+                </Property>
+                <Property Name="RxUnicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="StartStatisticTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the measurement time for the first InfiniBand statistics. The property is used with the StatisticTime property to calculate the duration over which the InfiniBand statistics are gathered."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the measurement time for the first InfiniBand statistics. The property is used with the StatisticTime property to calculate the duration over which the InfiniBand statistics are gathered."/>
+                </Property>
+                <Property Name="StatisticTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the most recent measurement time for InfiniBand statistics. The property is used with the StatisticStartTime property to calculate the duration over which the InfiniBand statistics are gathered."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the most recent measurement time for InfiniBand statistics. The property is used with the StatisticStartTime property to calculate the duration over which the InfiniBand statistics are gathered."/>
+                </Property>
+                <Property Name="TotalExcessiveBufferOverrun" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The number of times that Overrun Errors consecutive flow control update periods occurred, each having at least one overrun error."/>
+                    <Annotation Term="OData.LongDescription" String="The number of times that Overrun Errors consecutive flow control update periods occurred, each having at least one overrun error."/>
+                </Property>
+                <Property Name="TotalLinkDownedCounter" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of times the Port Training state machine has failed the link error recovery process and downed the link."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of times the Port Training state machine has failed the link error recovery process and downed the link."/>
+                </Property>
+                <Property Name="TotalLinkErrorRecoveryCounter" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of times the Port Training state machine has successfully completed the link error recovery process."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of times the Port Training state machine has successfully completed the link error recovery process."/>
+                </Property>
+                <Property Name="TotalLocalLinkIntegrityErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The number of times that the count of local physical errors exceeded the threshold specified by Local Phy Errors."/>
+                    <Annotation Term="OData.LongDescription" String="The number of times that the count of local physical errors exceeded the threshold specified by Local Phy Errors."/>
+                </Property>
+                <Property Name="TotalPortReceiveData" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of data octets, divided by 4 (lanes), received on all VLs."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of data octets, divided by 4 (lanes), received on all VLs."/>
+                </Property>
+                <Property Name="TotalPortReceiveErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of packets containing an error that were received on the port."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of packets containing an error that were received on the port."/>
+                </Property>
+                <Property Name="TotalPortReceivePackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of packets , this may include packets containing Errors."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of packets , this may include packets containing Errors."/>
+                </Property>
+                <Property Name="TotalPortReceiveRemotePhysicalErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of packets marked with the EBP delimiter received on the port."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of packets marked with the EBP delimiter received on the port."/>
+                </Property>
+                <Property Name="TotalPortTransmitData" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of data octets, divided by 4 (lanes), transmitted on all VLs."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of data octets, divided by 4 (lanes), transmitted on all VLs."/>
+                </Property>
+                <Property Name="TotalPortTransmitDiscard" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of outbound packets discarded by the port because the port is down or congested."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of outbound packets discarded by the port because the port is down or congested."/>
+                </Property>
+                <Property Name="TotalPortTransmitPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of packets transmitted on all VLs from this port. This may include packets with errors."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of packets transmitted on all VLs from this port. This may include packets with errors."/>
+                </Property>
+                <Property Name="TotalPortTransmitWait" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The number of ticks during which the port had data to transmit but no data was sent during the entire tick (either because of insufficient credits or because of lack of arbitration)."/>
+                    <Annotation Term="OData.LongDescription" String="The number of ticks during which the port had data to transmit but no data was sent during the entire tick (either because of insufficient credits or because of lack of arbitration)."/>
+                </Property>
+                <Property Name="TotalSymbolErrorCounter" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Total number of minor link errors detected on one or more physical lanes."/>
+                    <Annotation Term="OData.LongDescription" String="Total number of minor link errors detected on one or more physical lanes."/>
+                </Property>
+                <Property Name="TotalVL15Dropped" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Number of incoming VL15 packets dropped due to resource limitations (e.g., lack of buffers) of the port."/>
+                    <Annotation Term="OData.LongDescription" String="Number of incoming VL15 packets dropped due to resource limitations (e.g., lack of buffers) of the port."/>
+                </Property>
+                <Property Name="TxBroadcast" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good broadcast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good broadcast packets transmitted."/>
+                </Property>
+                <Property Name="TxBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of bytes transmitted, including host and remote management passthrough traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of bytes transmitted, including host and remote management passthrough traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="Measures.Unit" String="Bytes"/>
+                </Property>
+                <Property Name="TxErrorPktExcessiveCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of times a single transmitted packet encountered more than 15 collisions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of times a single transmitted packet encountered more than 15 collisions."/>
+                </Property>
+                <Property Name="TxErrorPktLateCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of collisions that occurred after one slot time (defined by IEEE 802.3)."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of collisions that occurred after one slot time (defined by IEEE 802.3)."/>
+                </Property>
+                <Property Name="TxErrorPktMultipleCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of times that a transmitted packet encountered 2-15 collisions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of times that a transmitted packet encountered 2-15 collisions."/>
+                </Property>
+                <Property Name="TxErrorPktSingleCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of times that a successfully transmitted packet encountered a single collision."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of times that a successfully transmitted packet encountered a single collision."/>
+                </Property>
+                <Property Name="TxMutlicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="TxPauseXOFFFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of XOFF packets transmitted to the network."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of XOFF packets transmitted to the network."/>
+                </Property>
+                <Property Name="TxPauseXONFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of XON packets transmitted to the network."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of XON packets transmitted to the network."/>
+                </Property>
+                <Property Name="TxUnicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

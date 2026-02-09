@@ -1,0 +1,305 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOActiveHealthSystem",
+    "actions": {
+        "actions": {
+            "HpeiLOActiveHealthSystem.ClearLog": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOActiveHealthSystem.ClearLog"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOActiveHealthSystem.LogAmplifierData": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOActiveHealthSystem.LogAmplifierData"
+                        ],
+                        "type": "string"
+                    },
+                    "iLOAmplifierManagesCount": {
+                        "description": "Number of iLOs that this Amplifier instance manages.",
+                        "type": "integer"
+                    },
+                    "iLOAmplifierName": {
+                        "description": "Name of the iLO Amplifier instance that manages this iLO.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOActiveHealthSystem.LogMilestone": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOActiveHealthSystem.LogMilestone"
+                        ],
+                        "type": "string"
+                    },
+                    "MilestoneOrigin": {
+                        "description": "Origin of milestone.",
+                        "type": "string"
+                    },
+                    "MilestoneDescription": {
+                        "description": "Description of milestone.",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOActiveHealthSystem.CaptureSystemLog": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "Capture system log for debugging.",
+                        "enum": [
+                            "HpeiLOActiveHealthSystem.CaptureSystemLog"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Clear AHS data."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOActiveHealthSystem resource describes the properties for managing the Active Health System.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AHSEnabled": {
+            "description": "Determines whether HPE Active Health System logging is enabled or disabled.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "AHSFileEnd": {
+            "description": "The end of the AHS log.",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "AHSFileStart": {
+            "description": "The start of the AHS log.",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "AHSStatus": {
+            "additionalProperties": false,
+            "description": "This object describes the HPE Active Health System status.",
+            "properties": {
+                "HardwareEnabled": {
+                    "description": "Determines whether HPE Active Health System logging in hardware is enabled or not.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SoftwareEnabled": {
+                    "description": "Determines whether HPE Active Health System logging in software is enabled or not.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "TemporaryHoldEnabled": {
+                    "description": "Determines whether HPE Active Health System logging access is temporarily disabled.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOActiveHealthSystem.ClearLog": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOActiveHealthSystem.LogAmplifierData": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "iLOAmplifierManagesCount": {
+                            "description": "Number of iLOs that this Amplifier instance manages.",
+                            "type": "integer"
+                        },
+                        "iLOAmplifierName": {
+                            "description": "Name of the iLO Amplifier instance that manages this iLO.",
+                            "type": "string"
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOActiveHealthSystem.LogMilestone": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "MilestoneOrigin": {
+                            "description": "Origin of milestone.",
+                            "type": "string"
+                        },
+                        "MilestoneDescription": {
+                            "description": "Description of milestone.",
+                            "type": "string"
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOActiveHealthSystem.CaptureSystemLog": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "AHSLocation": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "A link to HPE Active Health System log. HPE Active Health System records all configurations for the entire life of the server. This log may become very large and downloading the entire log may take an excessive amount of time. Normally only recent log entries(last 7 days) are necessary to help HPE support personnel to troubleshoot health issues. Unless advised to download the entire log, consider downloading a range of days by using 'days' or the 'from' and 'to' query parameters."
+                },
+                "InfoSight": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "A link to HPE Active Health System log, including only 1 day of data and minimal support files."
+                },
+                "RecentWeek": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "A link to HPE Active Health System log, including only the last seven days of data."
+                }
+            },
+            "type": "object"
+        },
+        "LocationParameters": {
+            "additionalProperties": false,
+            "description": "These properties are helper query parameters. All or some of these may be added to the AHS location URI.",
+            "properties": {
+                "case_no": {
+                    "description": "This query parameter may be added to the AHS location URI to insert the case number into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&case_no=abc123.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "co_name": {
+                    "description": "This query parameter may be added to the AHS location URI to insert the company name into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&co_name=myCompany.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "contact_name": {
+                    "description": "This query parameter may be added to the AHS location URI to insert the contact name into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&contact_name=JohnDoe.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "days": {
+                    "description": "This query parameter should be used to download the most recent N days of the AHS log. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?days=7. Will retrive logs made within the last 7 days.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "downloadAll": {
+                    "description": "This query parameter should be used to download entire AHS log. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "email": {
+                    "description": "This query parameter may be added to the AHS location URI to insert the contacts email address into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&email=abc@xyz.com.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "from": {
+                    "description": "This query parameter must be added with the 'to' query parameter to the AHS location URI to limit the range of data returned. 'downloadAll' parameter should not be used with this query parameter. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?from=2014-03-01&&to=2014-03-30.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "phone": {
+                    "description": "This query parameter may be added to the AHS location URI to insert the contacts phone number into the AHS log header. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?downloadAll=1&&contact_name=JohnDoe&&phone=555-555-5555.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "to": {
+                    "description": "This query parameter must be added with the 'from' query parameter to the AHS location URI to limit the range of data returned.'downloadAll' parameter should not be used with this query parameter. For example, http://iloname.example.net/ahsdata/HPE_xxxxxxxxxx_20140821.ahs?from=2014-03-01&&to=2014-03-30.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        }
+    },
+    "title": "#HpeiLOActiveHealthSystem.v2_5_0.HpeiLOActiveHealthSystem",
+    "type": "object"
+}

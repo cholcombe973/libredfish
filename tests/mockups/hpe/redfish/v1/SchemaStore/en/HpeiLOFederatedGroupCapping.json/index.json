@@ -1,0 +1,91 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOFederatedGroupCapping",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOFederatedGroupCapping resource describes the properties for managing Federated Group Capping.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "CapWatts": {
+            "description": "The configured power cap for all servers in a group. This value is 0 if the power cap is not configured.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "CapacityWatts": {
+            "description": "The total power supply capacity for all servers in a group.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Groups": {
+            "additionalProperties": false,
+            "description": "Group-level power caps.",
+            "patternProperties": {
+                "^.{1,31}$": {
+                    "properties": {
+                        "AllocatedPowerWatts": {
+                            "description": "The allocated power, in watts.",
+                            "etag": true,
+                            "minimum": 0,
+                            "readonly": true,
+                            "type": "integer"
+                        },
+                        "CapLimitPctTenths": {
+                            "description": "The power cap limit, in tenths of a percent.",
+                            "etag": true,
+                            "maximum": 1000,
+                            "minimum": 0,
+                            "readonly": false,
+                            "type": [
+                                "null",
+                                "integer"
+                            ]
+                        },
+                        "CapLimitWatts": {
+                            "description": "The power cap value, in watts.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "integer"
+                        }
+                    },
+                    "readonly": false,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        },
+        "Throttle": {
+            "description": "High, Med, or Low based on the percentage of power usage.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOFederatedGroupCapping.v2_0_0.HpeiLOFederatedGroupCapping",
+    "type": "object"
+}

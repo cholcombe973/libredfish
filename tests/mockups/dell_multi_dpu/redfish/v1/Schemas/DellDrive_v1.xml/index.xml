@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellDrive v1_1_0-->
+<!--# -->
+<!--# Copyright 2021 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+      <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+          <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+      </edmx:Reference>
+      <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+          <edmx:Include Namespace="Resource"/>
+          <edmx:Include Namespace="Resource.v1_0_0"/>
+      </edmx:Reference>
+      <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+          <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+          <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+      </edmx:Reference>
+      <edmx:Reference Uri="/redfish/v1/Schemas/DellNVMeSMARTAttributes_v1.xml">
+          <edmx:Include Namespace="DellNVMeSMARTAttributes"/>
+      </edmx:Reference>
+      <edmx:Reference Uri="/redfish/v1/Schemas/DellPCIeSSD_v1.xml">
+          <edmx:Include Namespace="DellPCIeSSD"/>
+      </edmx:Reference>
+      <edmx:Reference Uri="/redfish/v1/Schemas/DellPhysicalDisk_v1.xml">
+          <edmx:Include Namespace="DellPhysicalDisk"/>
+      </edmx:Reference>
+      <edmx:Reference Uri="/redfish/v1/Schemas/DellDriveSMARTAttributes_v1.xml">
+          <edmx:Include Namespace="DellDriveSMARTAttributes"/>
+      </edmx:Reference>
+	  <edmx:Reference Uri="/redfish/v1/Schemas/Drive_v1.xml">
+          <edmx:Include Namespace="Drive"/>
+      </edmx:Reference>
+      <edmx:DataServices>
+
+          <Schema Namespace="DellDrive" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+	        <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+			<ComplexType Name="DellDrive" Abstract="true">
+				<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+				<Annotation Term="OData.Description" String="Oem data related to DellDrive."/>
+				<Annotation Term="OData.LongDescription" String="Oem data related to DellDrive."/>
+			</ComplexType>
+              <Action Name="ExportNVMeDeviceLogs" IsBound="true">
+                  <Annotation Term="OData.Description" String="The ExportNVMeDeviceLogs operation shall be used to export the storage device logs."/>
+                  <Annotation Term="OData.LongDescription" String="The ExportNVMeDeviceLogs operation shall be used to export the storage device logs."/>
+                  <Parameter Name="DellDrive" Type="Drive.v1_0_0.OemActions"/>
+                  <Parameter Name="IncludeInExport" Type="Collection(DellDrive.LogTypes)" Nullable="false">
+                      <Annotation String="IncludeInExport to select the logs type." Term="OData.Description"/>
+                      <Annotation String="IncludeInExport to select the logs type." Term="OData.LongDescription"/>
+                  </Parameter>
+                  <Parameter Name="IPAddress" Type="Edm.String">
+                      <Annotation String="IP address of the network share." Term="OData.Description"/>
+                      <Annotation String="IP address of the network share." Term="OData.LongDescription"/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+                  <Parameter Name="Password" Type="Edm.String">
+                      <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                      <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                  </Parameter>
+                  <Parameter Name="ShareName" Type="Edm.String">
+                      <Annotation String="Name of the share." Term="OData.Description"/>
+                      <Annotation String="Name of the share." Term="OData.LongDescription"/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+                  <Parameter Name="ShareType" Type="DellDrive.ShareType" Nullable="false">
+                      <Annotation String="Type of the network share." Term="OData.Description"/>
+                      <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                  </Parameter>
+                  <Parameter Name="UserName" Type="Edm.String">
+                      <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                      <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+                  <Parameter Name="FileName" Type="Edm.String" Nullable="false">
+                      <Annotation String="The target output file name." Term="OData.Description"/>
+                      <Annotation String="The target output file name." Term="OData.LongDescription"/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+                  <Parameter Name="ProxySupport" Type="DellDrive.ProxySupport">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Proxy Support to be Enabled or Disabled."/>
+                  </Parameter>
+
+                  <Parameter Name="ProxyType" Type="DellDrive.ProxyType">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Type of Proxy HTTP or SOCKS4."/>
+                  </Parameter>
+
+                  <Parameter Name="ProxyServer" Type="Edm.String">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Proxy Server address."/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+
+                  <Parameter Name="ProxyUserName" Type="Edm.String">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Proxy Server User Name."/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+
+                  <Parameter Name="ProxyPassword" Type="Edm.String">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Proxy Server Password."/>
+                      <Annotation Term="Validation.Pattern" String="\.+"/>
+                  </Parameter>
+
+                  <Parameter Name="ProxyPort" Type="Edm.Int16">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Proxy Port address."/>
+                  </Parameter>
+                  <Parameter Name="IgnoreCertificateWarning" Type="DellDrive.IgnoreCertificateWarning">
+                      <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+                      <Annotation Term="OData.Description" String="Ignore Certificate Warning."/>
+                  </Parameter>
+
+
+              </Action>
+            <EnumType Name="LogTypes">
+                <Member Name="PEL">
+                        <Annotation String="PEL" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ShareType">
+                  <Member Name="CIFS">
+                      <Annotation String="Share type is CIFS." Term="OData.Description"/>
+                  </Member>
+                  <Member Name="HTTP">
+                      <Annotation String="Share type is HTTP." Term="OData.Description"/>
+                  </Member>
+                  <Member Name="HTTPS">
+                      <Annotation String="Share type is HTTPS." Term="OData.Description"/>
+                  </Member>
+                  <Member Name="Local">
+                      <Annotation String="Share type is Local." Term="OData.Description"/>
+                  </Member>
+                  <Member Name="NFS">
+                      <Annotation String="Share type is NFS." Term="OData.Description"/>
+                  </Member>
+              </EnumType>
+              <EnumType Name="ProxySupport">
+                  <Member Name="Disabled">
+                      <Annotation Term="OData.Description" String="Proxy Support is Disabled."/>
+                  </Member>
+                  <Member Name="EnabledProxyDefault">
+                      <Annotation Term="OData.Description" String="Proxy Support to be Enabled and set to default."/>
+                  </Member>
+                  <Member Name="Enabled">
+                      <Annotation Term="OData.Description" String="Proxy Support is Enabled."/>
+                  </Member>
+              </EnumType>
+
+              <EnumType Name="ProxyType">
+                  <Member Name="HTTP">
+                      <Annotation Term="OData.Description" String="Proxy type is of HTTP type."/>
+                  </Member>
+                  <Member Name="SOCKS4">
+                      <Annotation Term="OData.Description" String="Proxy type is of SOCKS4 type."/>
+                  </Member>
+              </EnumType>
+
+              <EnumType Name="IgnoreCertificateWarning">
+                  <Member Name="Enable">
+                      <Annotation Term="OData.Description" String="Ignoring of certificate warning is Enable."/>
+                  </Member>
+                  <Member Name="Disable">
+                      <Annotation Term="OData.Description" String="Ignoring of certificate warning is Disable."/>
+                  </Member>
+              </EnumType>
+
+              <EnumType Name="ComplianceDescriptorType">
+			        <Member Name="FIPS140">
+					    <Annotation String="FIPS140" Term="OData.Description"/>
+					    <Annotation String="Compliance descriptor type of VOSS drives mapping to FIPS140" Term="OData.LongDescription"/>
+				    </Member>
+			  </EnumType>
+
+			  <EnumType Name="ComplianceRelatedStandard">
+				    <Member Name="FIPS140-2">
+					    <Annotation String="FIPS140-2" Term="OData.Description"/>
+					    <Annotation String="Compliance related standard of VOSS drives mapping to FIPS140-2" Term="OData.LongDescription"/>
+				    </Member>
+				    <Member Name="FIPS140-3">
+					    <Annotation String="FIPS140-3" Term="OData.Description"/>
+					    <Annotation String="Compliance related standard of VOSS drives mapping to FIPS140-3" Term="OData.LongDescription"/>
+				    </Member>
+			  </EnumType>
+
+          </Schema>
+          <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellDrive.v1_0_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was introduced to add support for Oem Action ExportNVMeDeviceLogs in Drive Resource."/>
+            <Annotation Term="OData.LongDescription" String="This version was introduced to add support for Oem Action ExportNVMeDeviceLogs in Drive Resource."/>
+          </Schema>
+
+          <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellDrive.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was introduced to add support for DellDrive."/>
+            <Annotation Term="OData.LongDescription" String="This version was introduced to add support for DellDrive."/>
+			<ComplexType Name="DellDrive" BaseType="DellDrive.DellDrive">
+				<NavigationProperty Name="DellNVMeSMARTAttributes" Type="DellNVMeSMARTAttributes.DellNVMeSMARTAttributes" ContainsTarget="true" Nullable="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A resource representation of DellNVMeSMARTAttributes."/>
+					<Annotation Term="OData.LongDescription" String="A resource representation of DellNVMeSMARTAttributes."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+                <NavigationProperty Name="DellDriveSMARTAttributes" Type="DellDriveSMARTAttributes.DellDriveSMARTAttributes" ContainsTarget="true" Nullable="true">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A resource representation of DellDriveSMARTAttributes."/>
+					<Annotation Term="OData.LongDescription" String="A resource representation of DellDriveSMARTAttributes."/>
+					<Annotation Term="OData.AutoExpandReferences"/>
+				</NavigationProperty>
+				<NavigationProperty Name="DellPCIeSSD" Type="DellPCIeSSD.DellPCIeSSD" ContainsTarget="true" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A resource representation of DellPCIeSSD."/>
+					<Annotation Term="OData.LongDescription" String="A resource representation of DellPCIeSSD."/>
+					<Annotation Term="OData.AutoExpand"/>
+				</NavigationProperty>
+				<NavigationProperty Name="DellPhysicalDisk" Type="DellPhysicalDisk.DellPhysicalDisk" ContainsTarget="true" Nullable="false">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A resource representation of DellPhysicalDisk."/>
+					<Annotation Term="OData.LongDescription" String="A resource representation of DellPhysicalDisk."/>
+					<Annotation Term="OData.AutoExpand"/>
+				</NavigationProperty>
+                <Property Name="FIPS140ComplianceDescriptor" Type="DellDrive.v1_1_0.FIPS140ComplianceDescriptor" Nullable="false">
+				    <Annotation Term="OData.Description" String="A resource representation of DellOem FIPS."/>
+				    <Annotation Term="OData.LongDescription" String="A resource representation of DellOem FIPS."/>
+			  </Property>
+			</ComplexType>
+
+
+			<ComplexType Name="FIPS140ComplianceDescriptor">
+			    <Annotation Term="OData.Description" String="FIPS140 compliance properties for VOSS drives."/>
+			    <Annotation Term="OData.LongDescription" String="FIPS140 compliance properties for VOSS drives."/>
+				  <Property Name="ComplianceDescriptorType" Type="DellDrive.ComplianceDescriptorType" >
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+					<Annotation Term="OData.Description" String="This property will describe compliance descriptor type."/>
+					<Annotation Term="OData.LongDescription" String="This property will describe compliance descriptor type."/>
+				  </Property>
+                  <Property Name="ComplianceDescriptorVersion" Type="Edm.String">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A string that contains compliance descriptor version of VOSS drives."/>
+					<Annotation Term="OData.LongDescription" String="A string that contains compliance descriptor version of VOSS drives."/>
+				  </Property>
+                  <Property Name="ComplianceRelatedStandard" Type="DellDrive.ComplianceRelatedStandard" >
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+					<Annotation Term="OData.Description" String="This property will describe compliance related standard."/>
+					<Annotation Term="OData.LongDescription" String="This property will describe compliance related standard."/>
+				  </Property>
+                  <Property Name="ComplianceOverallSecurityLevel" Type="Edm.String">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A string that contains compliance overall security level of VOSS drives."/>
+					<Annotation Term="OData.LongDescription" String="A string that contains compliance overall security level of VOSS drives."/>
+				  </Property>
+				  <Property Name="ComplianceHardwareVersion" Type="Edm.String">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A string that contains compliance hardware version of VOSS drives."/>
+					<Annotation Term="OData.LongDescription" String="A string that contains compliance hardware version of VOSS drives."/>
+				  </Property>
+				  <Property Name="ComplianceDescriptorModuleName" Type="Edm.String">
+					<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+					<Annotation Term="OData.Description" String="A string that contains compliance descriptor modulename of VOSS drives."/>
+					<Annotation Term="OData.LongDescription" String="A string that contains compliance descriptor modulename of VOSS drives."/>
+				  </Property>
+			</ComplexType>
+		  </Schema>           
+      </edmx:DataServices>
+  </edmx:Edmx>

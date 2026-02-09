@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################      -->
+<!--# Redfish Schema:  AMIFirmwareInventoryCollection.v1_0_0                                          																	-->
+<!--#                                                                                      																									-->
+<!--# Copyright American Megatrends, Inc. (AMI).                                                                  									-->
+<!--################################################################################      -->
+<!---->
+
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+		<edmx:Include Namespace="Resource.v1_0_0"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+		<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIFirmwareInventoryCollection">
+			<ComplexType Name="AMIFirmwareInventoryCollection" Abstract="true" BaseType="Resource.v1_0_0.Resource">
+				<Annotation Term="OData.Description" String="This is the schema definition for the Oem.Ami properties in FirmwareInventoryCollection."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall be used to represent Oem.Ami properties in FirmwareInventoryCollection."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+			</ComplexType>
+		</Schema>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIFirmwareInventoryCollection.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="AMI"/>
+			<ComplexType Name="AMIFirmwareInventoryCollection" BaseType="Resource.OemObject">
+				<Property Name="FirmwareInventory" Type="AMIFirmwareInventoryCollection.v1_0_0.FirmwareInventory" Nullable="true">
+					<Annotation Term="OData.Description" String="This is the schema definition for FirmwareInventory details."/>
+				</Property>
+			</ComplexType>
+			<ComplexType Name="FirmwareInventory">
+				<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+				<Annotation Term="OData.Description" String="FirmwareInventory Name and version details."/>
+				<Property Name="DataSourceUri" Type="Edm.String" Nullable="true">
+				  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				  <Annotation Term="OData.Description" String="Source URI of the component."/>
+				</Property>
+				<Property Name="Name" Type="Edm.String" Nullable="true">
+				  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				  <Annotation Term="OData.Description" String="Name of the component."/>
+				</Property>
+				<Property Name="Version" Type="Edm.String" Nullable="true">
+				  <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				  <Annotation Term="OData.Description" String="Version of the component."/>
+				</Property>
+			</ComplexType>		
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>
+

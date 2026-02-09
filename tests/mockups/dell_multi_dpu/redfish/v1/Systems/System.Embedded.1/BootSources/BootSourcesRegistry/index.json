@@ -1,0 +1,60 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#DellBootSourcesRegistry.DellBootSourcesRegistry",
+    "@odata.id": "/redfish/v1/Systems/System.Embedded.1/BootSources/BootSourcesRegistry",
+    "@odata.type": "#DellBootSourcesRegistry.v1_1_0.DellBootSourcesRegistry",
+    "Description": "This registry defines a representation of Boot Sources instances",
+    "Id": "DellBootSourcesRegistry.v1_1_0",
+    "Language": "en",
+    "Name": "Dell Boot Sources Registry",
+    "OwningEntity": "Dell",
+    "RegistryEntries": {
+        "Attributes": [
+            {
+                "AttributeName": "UefiBootSeq",
+                "DisplayName": "UEFI Boot Sequence",
+                "DisplayOrder": 0,
+                "Entry": [
+                    {
+                        "DisplayName": "HTTP Device 1: NIC in Slot 5 Port 1",
+                        "Enabled": null,
+                        "Id": "BIOS.Setup.1-1#UefiBootSeq#NIC.HttpDevice.1-1#84dbf9321496b2ad3116077ae835f768",
+                        "Index": null,
+                        "Name": "NIC.HttpDevice.1-1"
+                    },
+                    {
+                        "DisplayName": "Unavailable: ubuntu",
+                        "Enabled": null,
+                        "Id": "BIOS.Setup.1-1#UefiBootSeq#Unknown.Unknown.2-1#98d8275a1fc1f95194f0123f0cc8adc8",
+                        "Index": null,
+                        "Name": "Unknown.Unknown.2-1"
+                    }
+                ],
+                "HelpText": "This field controls the UEFI boot order. The first option in the list will be attempted first, and if unsuccessful, the second option will be attempted and so on. This field applies only when Boot Mode is 'UEFI'; it has no effect when Boot Mode is 'BIOS'.",
+                "Hidden": false,
+                "MenuPath": "./BootSettingsRef/UefiBootSettingsRef",
+                "ReadOnly": false,
+                "Type": "OrderedList"
+            }
+        ],
+        "Dependencies": [
+            {
+                "Dependency": {
+                    "MapFrom": [
+                        {
+                            "MapFromAttribute": "BootMode",
+                            "MapFromCondition": "EQU",
+                            "MapFromProperty": "CurrentValue",
+                            "MapFromValue": "Bios"
+                        }
+                    ],
+                    "MapToAttribute": "UefiBootSeq",
+                    "MapToProperty": "ReadOnly",
+                    "MapToValue": true
+                },
+                "DependencyFor": "UefiBootSeq",
+                "Type": "Map"
+            }
+        ]
+    },
+    "RegistryVersion": "v1_1_0"
+}

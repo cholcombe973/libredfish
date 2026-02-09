@@ -1,0 +1,260 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeComponentInstallSet",
+    "actions": {
+        "actions": {
+            "HpeComponentInstallSet.Invoke": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeComponentInstallSet.Invoke"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ClearTaskQueue": {
+                        "description": "Previous items in the task queue can be cleared before the Install Set is invoked",
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "Expire": {
+                        "description": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time",
+                        "format": "date-time",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MaintenanceWindow": {
+                        "description": "The maintenance window to associate with this invocation.",
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "StartAfter": {
+                        "description": "ISO 8601 Redfish-style time string of earliest execution - null for no start time specified",
+                        "format": "date-time",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "TPMOverride": {
+                        "description": "If true then the TPMOverrideFlag is passed in on the associated flash operations.",
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "UpdateRecoverySet": {
+                        "description": "If true then the components in the flash operations are used to replace matching contents in the Recovery Set.",
+                        "readonly": true,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            }
+        },
+        "description": "POST custom actions defined for this type. (The implemented actions may be a subset of these.)"
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeComponentInstallSet resource describes an Install Set, an ordered list of installation instructions that may be invoked.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeComponentInstallSet.Invoke": {
+                    "additionalProperties": false,
+                    "description": "Invokes the install set.  This causes iLO to copy the items in this sequence into the task queue.",
+                    "properties": {
+                        "ClearTaskQueue": {
+                            "description": "Previous items in the task queue can be cleared before the Install Set is invoked",
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "Expire": {
+                            "description": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time",
+                            "format": "date-time",
+                            "readonly": true,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "MaintenanceWindow": {
+                            "description": "The maintenance window to associate with this invocation.",
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "StartAfter": {
+                            "description": "ISO 8601 Redfish-style time string of earliest execution - null for no start time specified",
+                            "format": "date-time",
+                            "readonly": true,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "TPMOverride": {
+                            "description": "If true then the TPMOverrideFlag is passed in on the associated flash operations.",
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "UpdateRecoverySet": {
+                            "description": "If true then the components in the flash operations are used to replace matching contents in the Recovery Set.",
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "target": {
+                            "description": "The URI of this action.",
+                            "format": "uri-reference",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Created": {
+            "description": "ISO-time of install set creation.",
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Description": {
+            "description": "Description of the install set (client supplied upon creation).",
+            "maxLength": 64,
+            "readonly": false,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IsRecovery": {
+            "description": "If true, this install set is reserved to hold only critical firmware recovery updatable by iLO.  Additionally the 'Administrate Recovery Set' iLO privilege is required to modify or remove this install set.",
+            "readonly": false,
+            "type": "boolean"
+        },
+        "Modified": {
+            "description": "ISO-time of install modification.",
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "description": "Name of the install set (client supplied upon creation).",
+            "maxLength": 64,
+            "readonly": false,
+            "type": "string"
+        },
+        "Sequence": {
+            "description": "An ordered sequence of freeze-dried task items that iLO can iterate and schedule.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "Command": {
+                        "description": "Command to execute.",
+                        "enum": [
+                            "ApplyUpdate",
+                            "ResetServer",
+                            "ResetBmc",
+                            "Wait"
+                        ],
+                        "enumDescriptions": {
+                            "ApplyUpdate": "Apply an update using the specified component.",
+                            "ResetBmc": "Reset the BMC.",
+                            "ResetServer": "Reset the server.",
+                            "Wait": "Wait for the WaitTimeSeconds number of seconds."
+                        },
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Component": {
+                        "format": "uri-reference",
+                        "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ExecutionTimeoutMinutes": {
+                        "description": "The number of minutes that this update will likely take to apply.  Applies if the command is 'ApplyUpdate'.  Ignored otherwise.",
+                        "maximum": 300,
+                        "minimum": 0,
+                        "readonly": false,
+                        "type": "integer"
+                    },
+                    "Filename": {
+                        "description": "The unique filename of the component.  This correlates to 'Filename' in the HpeComponent.",
+                        "maxLength": 64,
+                        "pattern": "^[A-Za-z0-9-._]+$",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Name": {
+                        "description": "Name of the component.",
+                        "maxLength": 64,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "UpdatableBy": {
+                        "description": "This is an unordered set of permitted updaters that can execute this item.",
+                        "items": {
+                            "enum": [
+                                "Bmc",
+                                "Uefi",
+                                "RuntimeAgent"
+                            ],
+                            "enumDescriptions": {
+                                "Bmc": "This component may be scheduled for update by iLO.",
+                                "RuntimeAgent": "This component may be scheduled for update by a runtime update agent such as Smart Update Manager or Smart Update Tool.",
+                                "Uefi": "This component may be scheduled for update by UEFI BIOS."
+                            },
+                            "readonly": false,
+                            "type": "string"
+                        },
+                        "readonly": false,
+                        "type": "array"
+                    },
+                    "WaitTimeSeconds": {
+                        "description": "The number of seconds to pause if the command is 'Wait'.  Ignored otherwise.",
+                        "maximum": 3600,
+                        "minimum": 0,
+                        "readonly": false,
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": false,
+            "type": "array"
+        }
+    },
+    "title": "#HpeComponentInstallSet.v1_1_0.HpeComponentInstallSet",
+    "type": "object"
+}

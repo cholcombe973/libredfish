@@ -1,0 +1,143 @@
+{
+    "$id": "/redfish/v1/Schemas/DellLCLogEntry.v1_1_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Category": {
+            "enum": [
+                "Storage",
+                "Updates",
+                "Audit",
+                "Configuration",
+                "WorkNotes",
+                "SystemHealth"
+            ],
+            "enumDescriptions": {
+                "Audit": "The Event has been generated as part of Audit type",
+                "Configuration": "The Event has been generated as part of Configuration type",
+                "Storage": "The Event has been generated as part of Storage unit",
+                "SystemHealth": "The Event has been generated as part of System Health unit",
+                "Updates": "The Event has been generated as part of Updates",
+                "WorkNotes": "The Event has been generated as part of Work Notes"
+            },
+            "type": "string"
+        },
+        "DellLCLogEntry": {
+            "additionalProperties": false,
+            "description": "This is for the additional OEM properties to complement DMTF LogEntry Schema for Lifecycle Logs.",
+            "longDescription": "This is for the additional OEM properties to complement DMTF LogEntry Schema for Lifecycle Logs.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Category": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Category"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Property to represent category of Event that has occurred.",
+                    "longDescription": "The value of the property specifies the category of Event.",
+                    "readonly": true
+                },
+                "Comment": {
+                    "description": "Property to display any comment that might have been added to the log entry.",
+                    "longDescription": "Property to display any comment that might have been added to the log entry.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastUpdatedByUser": {
+                    "description": "Property to display UserName of the user that last commented on the log entry.",
+                    "longDescription": "Property to display UserName of the user that last commented on the log entry.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PreviousSequenceOfLogs": {
+                    "description": "Property to display previous sequence of log entries.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/PreviousSequenceOfLogsInfo"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "Property to display previous sequence of log entries.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "type": "object"
+        },
+        "PreviousSequenceOfLogsInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Created": {
+                    "description": "The date and time when the log entry was created.",
+                    "format": "date-time",
+                    "longDescription": "This property shall contain the date and time when the log entry was created.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "Message": {
+                    "description": "The message of the log entry.",
+                    "longDescription": "This property shall contain the message of the log entry.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "MessageId": {
+                    "description": "The MessageId of the log.",
+                    "longDescription": "The MessageId of the log.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellLCLogEntry.v1_1_0"
+}

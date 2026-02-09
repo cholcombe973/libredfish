@@ -1,0 +1,133 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoVolume.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AccessPolicy": {
+            "enum": [
+                "ReadWrite",
+                "ReadOnly",
+                "Blocked"
+            ],
+            "type": "string"
+        },
+        "DriveCachePolicy": {
+            "enum": [
+                "Unchanged",
+                "Enable",
+                "Disable"
+            ],
+            "enumDescriptions": {
+                "Disable": "Disable the policy",
+                "Enable": "Enable the policy",
+                "Unchanged": "The policy remains unchanged"
+            },
+            "type": "string"
+        },
+        "IOPolicy": {
+            "enum": [
+                "DirectIO",
+                "CachedIO"
+            ],
+            "type": "string"
+        },
+        "LenovoVolumeProperties": {
+            "additionalProperties": true,
+            "description": "This is the schema definition for the LenovoVolume resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AccessPolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AccessPolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The access policy for this volume.",
+                    "longDescription": "The value of this property shall be the access policy for this volume.",
+                    "readonly": false
+                },
+                "Bootable": {
+                    "description": "Inidiates whether this volume is bootable.",
+                    "longDescription": "The value of this property indicates whether this volume is bootable.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "DiskPerSpan": {
+                    "description": "The disk number per span in this volume.",
+                    "longDescription": "The value of this property shall be the disk number per span in this volume.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "DriveCachePolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DriveCachePolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The drive cache policy for this volume.",
+                    "longDescription": "The value of this property shall be the drive cache policy for this volume.",
+                    "readonly": false
+                },
+                "IOPolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IOPolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The IO policy for this volume.",
+                    "longDescription": "The value of this property shall be the IO policy for this volume.",
+                    "readonly": false
+                },
+                "RaidLevel": {
+                    "description": "The RAID level of this volume.",
+                    "longDescription": "The value of this property indicates the RAID level of this volume.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SpanDepth": {
+                    "description": "The span depth for this volume.",
+                    "longDescription": "The value of this property shall be the span depth for this volume.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoVolume.v1_0_0"
+}

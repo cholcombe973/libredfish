@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMISMTP  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    	<edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    	<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+		<edmx:Include Namespace="Resource"/>
+		<edmx:Include Namespace="Resource.v1_0_0"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIIPV6">
+			<ComplexType Name="AMIIPV6" Bool="false">
+				<Annotation Term="OData.Description" String="This is the schema definition for the  IPV6Address - StaticIPAddressIndex  ."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall be used to represent IPV6Address - StaticIPAddressIndex  ."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+				<Record>
+				    <PropertyValue Property="Insertable" Bool="false"/>
+				</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+				<Record>
+			    	<PropertyValue Property="Updatable" Bool="true"/>
+				</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+				<Record>
+				    <PropertyValue Property="Deletable" Bool="false"/>
+				</Record>
+				</Annotation>
+			</ComplexType>
+			</Schema>
+					
+	<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIIPV6.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+      <ComplexType Name="AMIIPV6" BaseType="AMIIPV6.AMIIPV6">
+        <Property Name="StaticIPAddressIndex" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="IPV6 Address Index value."/>
+          <Annotation Term="OData.LongDescription" String="IPV6 Address Index value for the interface."/>
+        </Property> 
+             
+      </ComplexType>
+     
+    </Schema>
+			
+			
+	</edmx:DataServices>
+</edmx:Edmx>

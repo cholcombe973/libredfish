@@ -1,0 +1,51 @@
+{
+    "$ref": "#/definitions/AMIConfigurations",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "definitions": {
+        "AMIConfigurations": {
+            "additionalProperties": false,
+            "description": "This allows additional configuring of the Redfish service.",
+            "longDescription": "This allows additional configuring of the Redfish service.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "CertificateAuthorityUrl": {
+                    "description": "The URL for the web server where the CA certificate is stored.",
+                    "longDescription": "The URL for the web server where the CA certificate is stored.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "#AMIConfigurations.v1_0_0.AMIConfigurations"
+}

@@ -1,0 +1,118 @@
+{
+    "definitions": {
+        "DiskCachePolicy": {
+            "enum": [
+                "Unchanged",
+                "Enable",
+                "Disable"
+            ],
+            "type": "string"
+        },
+        "LdWritePolicy": {
+            "enum": [
+                "WriteThrough",
+                "WriteBack",
+                "WriteBackWithBBU"
+            ],
+            "type": "string"
+        },
+        "LdIOPolicy": {
+            "enum": [
+                "DirectIO",
+                "CachedIO"
+            ],
+            "type": "string"
+        },
+        "RaidLevel": {
+            "enumLongDescriptions": {
+                "RAID10": "This value shall mean that this device conforms to the RAID 10.",
+                "RAID50": "This value shall mean that this device conforms to the RAID 50.",
+                "RAID5": "This value shall mean that this device conforms to the RAID 5.",
+                "RAID6": "This value shall mean that this device conforms to the RAID 6.",
+                "RAID1": "This value shall mean that this device conforms to the RAID 1.",
+                "RAID0": "This value shall mean that this device conforms to the RAID 0.",
+                "RAID60": "This value shall mean that this device conforms to the RAID 60."
+            },
+            "enumDescriptions": {
+                "RAID10": "Standard RAID level 10",
+                "RAID50": "Standard RAID level 50",
+                "RAID5": "Standard RAID level 5",
+                "RAID6": "Standard RAID level 6",
+                "RAID1": "Standard RAID level 1",
+                "RAID0": "Standard RAID level 0",
+                "RAID60": "Standard RAID level 60"
+            },
+            "enum": [
+                "RAID0",
+                "RAID1",
+                "RAID5",
+                "RAID6",
+                "RAID10",
+                "RAID50",
+                "RAID60"
+            ],
+            "type": "string"
+        },
+        "AccessPolicy": {
+            "enum": [
+                "ReadWrite",
+                "ReadOnly",
+                "Blocked"
+            ],
+            "type": "string"
+        },
+        "VolumeConfig": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.v1_0_0.json#/definitions/VolumeConfig"
+                }
+            ]
+        },
+        "InitState": {
+            "enum": [
+                "NoInit",
+                "QuickInit",
+                "FullInit"
+            ],
+            "type": "string"
+        },
+        "LdReadPolicy": {
+            "enum": [
+                "NoReadAhead",
+                "AlwaysReadAhead"
+            ],
+            "type": "string"
+        },
+        "StripSize": {
+            "enumLongDescriptions": {
+                "1024K": "This value shall mean that Strip size per DDF is 1024K.",
+                "64K": "This value shall mean that Strip size per DDF is 64K.",
+                "256K": "This value shall mean that Strip size per DDF is 256K.",
+                "128K": "This value shall mean that Strip size per DDF is 128K.",
+                "512K": "This value shall mean that Strip size per DDF is 512K."
+            },
+            "enumDescriptions": {
+                "1024K": "1024K strip size per DDF.",
+                "64K": "64K strip size per DDF.",
+                "256K": "256K strip size per DDF.",
+                "128K": "128K strip size per DDF.",
+                "512K": "512K strip size per DDF."
+            },
+            "enum": [
+                "64K",
+                "128K",
+                "256K",
+                "512K",
+                "1024K"
+            ],
+            "type": "string"
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/VolumeConfig",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#VolumeConfig.VolumeConfig"
+}

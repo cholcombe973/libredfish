@@ -1,0 +1,106 @@
+{
+    "definitions": {
+        "Batteries": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "Name": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Battery sensor name.",
+                    "longDescription": "The value of this property shall be the name of the Battery sensor."
+                },
+                "SensorNumber": {
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "A numerical identifier to represent the Battery sensor.",
+                    "longDescription": "The value of this property shall be a numerical identifier for this Battery sensor that is unique within this resource."
+                }
+            }
+        },
+        "PowerSupply": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "SensorNumber": {
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "A numerical identifier to represent the Battery sensor.",
+                    "longDescription": "The value of this property shall be a numerical identifier for this Battery sensor that is unique within this resource."
+                }
+            }
+        },
+        "Power": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "Battery": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Batteries"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This object describes the central memory of the system in general detail.",
+                    "longDescription": "This object shall contain properties which describe the central memory for the current resource."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcPowerExtensions.v1_0_0"
+}

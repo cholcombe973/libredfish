@@ -1,0 +1,397 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Storage",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "Storage defines a storage subsystem and its respective properties.  A storage subsystem represents a set of storage controllers (physical or virtual) and the resources such as volumes that can be accessed from that subsystem.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Controllers": {
+            "description": "The set of controllers instantiated by this storage subsystem.",
+            "longDescription": "This property shall contain a link to a resource collection of type StorageControllerCollection that contains the set of storage controllers allocated to this storage subsystem.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "type": "object",
+            "readonly": true
+        },
+        "Drives": {
+            "description": "Array of links to drives attached to this controller.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Array of links to enclosing chassis.",
+            "properties": {
+                "Enclosures": {
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "StorageControllers": {
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    },
+                    "CacheSummary": {
+                        "additionalProperties": false,
+                        "description": "This type describes the cache memory of the storage controller in general detail.",
+                        "longDescription": "This type shall contain properties that describe the cache memory for a storage controller.",
+                        "properties": {
+                            "PersistentCacheSizeMiB": {
+                                "description": "The portion of the cache memory that is persistent, measured in MiB.",
+                                "longDescription": "This property shall contain the amount of cache memory that is persistent as measured in mebibytes.  This size shall be less than or equal to the TotalCacheSizeMiB.",
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ],
+                                "units": "MiBy"
+                            },
+                            "Status": {
+                                "$ref": "Resource.json#/definitions/Status"
+                            },
+                            "TotalCacheSizeMiB": {
+                                "description": "The total configured cache memory, measured in MiB.",
+                                "longDescription": "This property shall contain the amount of configured cache memory as measured in mebibytes.",
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ],
+                                "units": "MiBy"
+                            }
+                        },
+                        "required": [
+                            "TotalCacheSizeMiB"
+                        ],
+                        "type": "object"
+                    },
+                    "ControllerRates": {
+                        "additionalProperties": false,
+                        "description": "This type describes the various controller rates used for processes such as volume rebuild or consistency checks.",
+                        "longDescription": "This type shall contain all the rate settings available on the controller.",
+                        "properties": {
+                            "ConsistencyCheckRatePercent": {
+                                "description": "The percentage of controller resources used for performing a data consistency check on volumes.",
+                                "longDescription": "This property shall contain the percentage of controller resources used for checking data consistency on volumes.",
+                                "maximum": 100,
+                                "minimum": 0,
+                                "readonly": false,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "RebuildRatePercent": {
+                                "description": "The percentage of controller resources used for rebuilding/repairing volumes.",
+                                "longDescription": "This property shall contain the percentage of controller resources used for rebuilding volumes.",
+                                "maximum": 100,
+                                "minimum": 0,
+                                "readonly": false,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "TransformationRatePercent": {
+                                "description": "The percentage of controller resources used for transforming volumes from one configuration to another.",
+                                "longDescription": "This property shall contain the percentage of controller resources used for transforming volumes.",
+                                "maximum": 100,
+                                "minimum": 0,
+                                "readonly": false,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "Id": {
+                        "$ref": "Resource.json#/definitions/Id"
+                    },
+                    "Identifiers": {
+                        "description": "The durable names for the storage controller.",
+                        "items": {
+                            "$ref": "Resource.json#/definitions/Identifier"
+                        },
+                        "longDescription": "This property shall contain a list of all known durable names for the associated storage controller.",
+                        "type": "array"
+                    },
+                    "FirmwareVersion": {
+                        "description": "The firmware version of this storage controller.",
+                        "longDescription": "This property shall contain the firwmare version as defined by the manufacturer for the associated storage controller.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Location": {
+                        "$ref": "Resource.json#/definitions/Location",
+                        "description": "The location of the storage controller.",
+                        "longDescription": "This property shall contain location information of the associated storage controller."
+                    },
+                    "Manufacturer": {
+                        "description": "Controller Manufacturer name.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MemberId": {
+                        "description": "This is the identifier for the member within the collection.",
+                        "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                        "type": "string"
+                    },
+                    "Model": {
+                        "description": "Controller model name.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Name": {
+                        "$ref": "Resource.json#/definitions/Name"
+                    },
+                    "PCIeInterface": {
+                        "additionalProperties": false,
+                        "description": "The PCIe interface details for this controller.",
+                        "properties": {
+                            "LanesInUse": {
+                                "description": "This is the number of PCIe lanes in use by this device.",
+                                "maximum": 32,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "MaxLanes": {
+                                "description": "This is the number of PCIe lanes supported by this device.",
+                                "maximum": 32,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "MaxPCIeType": {
+                                "description": "The highest version of the PCIe specification supported by this device.",
+                                "enum": [
+                                    "Gen1",
+                                    "Gen2",
+                                    "Gen3",
+                                    "Gen4",
+                                    "Gen5"
+                                ],
+                                "enumDescriptions": {
+                                    "Gen1": "A PCIe v1.0 slot.",
+                                    "Gen2": "A PCIe v2.0 slot.",
+                                    "Gen3": "A PCIe v3.0 slot.",
+                                    "Gen4": "A PCIe v4.0 slot.",
+                                    "Gen5": "A PCIe v5.0 slot."
+                                },
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "PCIeType": {
+                                "description": "The version of the PCIe specification in use by this device.",
+                                "enum": [
+                                    "Gen1",
+                                    "Gen2",
+                                    "Gen3",
+                                    "Gen4",
+                                    "Gen5"
+                                ],
+                                "enumDescriptions": {
+                                    "Gen1": "A PCIe v1.0 slot.",
+                                    "Gen2": "A PCIe v2.0 slot.",
+                                    "Gen3": "A PCIe v3.0 slot.",
+                                    "Gen4": "A PCIe v4.0 slot.",
+                                    "Gen5": "A PCIe v5.0 slot."
+                                },
+                                "readonly": true,
+                                "type": "string"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "PartNumber": {
+                        "description": "The part number for this storage controller.",
+                        "longDescription": "This property shall contain a part number assigned by the organization that is responsible for producing or manufacturing the storage controller.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SKU": {
+                        "description": "The SKU for this storage controller.",
+                        "longDescription": "This property shall contain the stock-keeping unit number for this storage storage controller.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SerialNumber": {
+                        "description": "Controller serial number.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SpeedGbps": {
+                        "description": "The maximum speed of the storage controller's device interface.",
+                        "longDescription": "This property shall represent the maximum supported speed of the storage bus interface, in Gbit/s.  The specified interface connects the controller to the storage devices, not the controller to a host.  For example, SAS bus not PCIe host bus.",
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ],
+                        "units": "Gbit/s"
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    },
+                    "SupportedControllerProtocols": {
+                        "items": {
+                            "enum": [
+                                "PCIe"
+                            ],
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "SupportedDeviceProtocols": {
+                        "items": {
+                            "enum": [
+                                "NVMe",
+                                "SAS",
+                                "SATA",
+                                "USB"
+                            ],
+                            "enumDescriptions": {
+                                "NVMe": "Non-Volatile Memory Express (NVMe).",
+                                "SAS": "Serial Attached SCSI.",
+                                "SATA": "Serial AT Attachment.",
+                                "USB": "Universal Serial Bus (USB)."
+                            },
+                            "type": "string"
+                        },
+                        "type": "array"
+                    },
+                    "SupportedRAIDTypes": {
+                        "description": "This object describes the RAID Types supported by the storage controller.",
+                        "items": {
+                            "enum": [
+                                "RAID0",
+                                "RAID1",
+                                "RAID3",
+                                "RAID4",
+                                "RAID5",
+                                "RAID6",
+                                "RAID10",
+                                "RAID01",
+                                "RAID6TP",
+                                "RAID1E",
+                                "RAID50",
+                                "RAID60",
+                                "RAID00",
+                                "RAID10E",
+                                "RAID1Triple",
+                                "RAID10Triple",
+                                "None"
+                            ],
+                            "enumDescriptions": {
+                                "None": "A placement policy with no redundancy at the device level.",
+                                "RAID0": "A placement policy where consecutive logical blocks of data are uniformly distributed across a set of independent storage devices without offering any form of redundancy.",
+                                "RAID00": "A placement policy that creates a RAID 0 stripe set over two or more RAID 0 sets.",
+                                "RAID01": "A data placement policy that creates a mirrored device (RAID 1) over a set of striped devices (RAID 0).",
+                                "RAID1": "A placement policy where each logical block of data is stored on more than one independent storage device.",
+                                "RAID10": "A placement policy that creates a striped device (RAID 0) over a set of mirrored devices (RAID 1).",
+                                "RAID10E": "A placement policy that uses a RAID 0 stripe set over two or more RAID 10 sets.",
+                                "RAID10Triple": "A placement policy that uses a striped device (RAID 0) over a set of triple mirrored devices (RAID 1Triple).",
+                                "RAID1E": "A placement policy that uses a form of mirroring implemented over a set of independent storage devices where logical blocks are duplicated on a pair of independent storage devices so that data is uniformly distributed across the storage devices.",
+                                "RAID1Triple": "A placement policy where each logical block of data is mirrored three times across a set of three independent storage devices.",
+                                "RAID3": "A placement policy using parity-based protection where logical bytes of data are uniformly distributed across a set of independent storage devices and where the parity is stored on a dedicated independent storage device.",
+                                "RAID4": "A placement policy using parity-based protection where logical blocks of data are uniformly distributed across a set of independent storage devices and where the parity is stored on a dedicated independent storage device.",
+                                "RAID5": "A placement policy using parity-based protection for storing stripes of 'n' logical blocks of data and one logical block of parity across a set of 'n+1' independent storage devices where the parity and data blocks are interleaved across the storage devices.",
+                                "RAID50": "A placement policy that uses a RAID 0 stripe set over two or more RAID 5 sets of independent storage devices.",
+                                "RAID6": "A placement policy using parity-based protection for storing stripes of 'n' logical blocks of data and two logical blocks of independent parity across a set of 'n+2' independent storage devices where the parity and data blocks are interleaved across the storage devices.",
+                                "RAID60": "A placement policy that uses a RAID 0 stripe set over two or more RAID 6 sets of independent storage devices.",
+                                "RAID6TP": "A placement policy that uses parity-based protection for storing stripes of 'n' logical blocks of data and three logical blocks of independent parity across a set of 'n+3' independent storage devices where the parity and data blocks are interleaved across the storage devices."
+                            },
+                            "type": "string"
+                        },
+                        "longDescription": "This object shall contain all the RAIDType values supported by the current resource.",
+                        "readonly": true,
+                        "type": "array"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Volumes": {
+            "description": "A reference to the Volumes associated with this storage system.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "title": "#Storage.v1_12_0.Storage",
+    "type": "object"
+}

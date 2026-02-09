@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellSlot v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSlot">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellSlot" Abstract="true">
+                <Annotation String="DellSlot provides slot occupancy and device correlation information." Term="OData.Description"/>
+                <Annotation String="DellSlot provides slot occupancy and device correlation information." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellSlots/{SlotId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="ConnectorLayout">
+                <Member Name="AUI">
+                    <Annotation String="AUI" Term="OData.Description"/>
+                    <Annotation String="AUI" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="BNC">
+                    <Annotation String="BNC" Term="OData.Description"/>
+                    <Annotation String="BNC" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DB9">
+                    <Annotation String="DB9" Term="OData.Description"/>
+                    <Annotation String="DB9" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DIMM">
+                    <Annotation String="DIMM" Term="OData.Description"/>
+                    <Annotation String="DIMM" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EnclosureFan">
+                    <Annotation String="Enclosure Fan" Term="OData.Description"/>
+                    <Annotation String="Enclosure Fan" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EnclosurePowerSupply">
+                    <Annotation String="Enclosure Power Supply" Term="OData.Description"/>
+                    <Annotation String="Enclosure Power Supply" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FDDI-MIC">
+                    <Annotation String="FDDI-MIC" Term="OData.Description"/>
+                    <Annotation String="FDDI-MIC" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Fan">
+                    <Annotation String="Fan" Term="OData.Description"/>
+                    <Annotation String="Fan" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Fiber-RTMJ">
+                    <Annotation String="Fiber-RTMJ" Term="OData.Description"/>
+                    <Annotation String="Fiber-RTMJ" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FiberSC">
+                    <Annotation String="Fiber SC" Term="OData.Description"/>
+                    <Annotation String="Fiber SC" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="FiberST">
+                    <Annotation String="Fiber ST" Term="OData.Description"/>
+                    <Annotation String="Fiber ST" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="IDSDM">
+                    <Annotation String="IDSDM" Term="OData.Description"/>
+                    <Annotation String="IDSDM" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI">
+                    <Annotation String="PCI" Term="OData.Description"/>
+                    <Annotation String="PCI" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-E">
+                    <Annotation String="PCI-E" Term="OData.Description"/>
+                    <Annotation String="PCI-E" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX1">
+                    <Annotation String="PCI-E x1" Term="OData.Description"/>
+                    <Annotation String="PCI-E x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX16">
+                    <Annotation String="PCI-E x16" Term="OData.Description"/>
+                    <Annotation String="PCI-E x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX2">
+                    <Annotation String="PCI-E x2" Term="OData.Description"/>
+                    <Annotation String="PCI-E x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX32">
+                    <Annotation String="PCI-E x32" Term="OData.Description"/>
+                    <Annotation String="PCI-E x32" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX4">
+                    <Annotation String="PCI-E x4" Term="OData.Description"/>
+                    <Annotation String="PCI-E x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX64">
+                    <Annotation String="PCI-E x64" Term="OData.Description"/>
+                    <Annotation String="PCI-E x64" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-EX8">
+                    <Annotation String="PCI-E x8" Term="OData.Description"/>
+                    <Annotation String="PCI-E x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-X">
+                    <Annotation String="PCI-X" Term="OData.Description"/>
+                    <Annotation String="PCI-X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PhysicalDisk">
+                    <Annotation String="Physical Disk" Term="OData.Description"/>
+                    <Annotation String="Physical Disk" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PowerSupply">
+                    <Annotation String="Power Supply" Term="OData.Description"/>
+                    <Annotation String="Power Supply" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Processor">
+                    <Annotation String="Processor" Term="OData.Description"/>
+                    <Annotation String="Processor" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="RJ11">
+                    <Annotation String="RJ11" Term="OData.Description"/>
+                    <Annotation String="RJ11" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="RJ45">
+                    <Annotation String="RJ45" Term="OData.Description"/>
+                    <Annotation String="RJ45" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="RS232">
+                    <Annotation String="RS232" Term="OData.Description"/>
+                    <Annotation String="RS232" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Ribbon">
+                    <Annotation String="Ribbon" Term="OData.Description"/>
+                    <Annotation String="Ribbon" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SCSIHighDensity">
+                    <Annotation String="SCSI High Density" Term="OData.Description"/>
+                    <Annotation String="SCSI High Density" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SCSILowDensity">
+                    <Annotation String="SCSI Low Density" Term="OData.Description"/>
+                    <Annotation String="SCSI Low Density" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SDCard">
+                    <Annotation String="SD Card" Term="OData.Description"/>
+                    <Annotation String="SD Card" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Slot">
+                    <Annotation String="Slot" Term="OData.Description"/>
+                    <Annotation String="Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotEnabledState">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSlot.v1_0_0">
+            <EntityType Name="DellSlot" BaseType="DellSlot.DellSlot">
+                <Annotation Term="OData.Description" String="DellSlot provides slot occupancy and device correlation information."/>
+                <Annotation Term="OData.LongDescription" String="DellSlot provides slot occupancy and device correlation information."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="ConnectorLayout" Type="DellSlot.ConnectorLayout">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Describes the type of packaging normally associated with this type of connector. 16 (PCI) - Describes the generic PCI connector layout. 17 (PCI-X) - Describes the PCI Extended connector layout. 18 (PCI-E) - Describes the PCI Express connector layout, where the actual layout, as far as the length is concerned, is unknown. 19 - 25 (PCI-E xN) - Describes the PCI Express connector layout, where N is the lane count that appropriately describes the length of the PCI-E connector."/>
+                    <Annotation Term="OData.LongDescription" String="Describes the type of packaging normally associated with this type of connector. 16 (PCI) - Describes the generic PCI connector layout. 17 (PCI-X) - Describes the PCI Extended connector layout. 18 (PCI-E) - Describes the PCI Express connector layout, where the actual layout, as far as the length is concerned, is unknown. 19 - 25 (PCI-E xN) - Describes the PCI Express connector layout, where N is the lane count that appropriately describes the length of the PCI-E connector."/>
+                </Property>
+                <Property Name="DeviceFQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the FQDD for the device that is plugged into the slot."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the FQDD for the device that is plugged into the slot."/>
+                </Property>
+                <Property Name="Name" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the slot name."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the slot name."/>
+                </Property>
+                <Property Name="EmptySlot" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents whether the slot is empty. TRUE - Empty. FALSE - Occupied."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents whether the slot is empty. TRUE - Empty. FALSE - Occupied."/>
+                </Property>
+                <Property Name="Number" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the numeric slot number. If the slot number contains alphabets, this property is NULL and the slot number is obtained from property NumberDescription."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the numeric slot number. If the slot number contains alphabets, this property is NULL and the slot number is obtained from property NumberDescription."/>
+                </Property>
+                <Property Name="NumberDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the slot number containing alphanumeric value."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the slot number containing alphanumeric value."/>
+                </Property>
+                <Property Name="SlotEnabledState" Type="DellSlot.SlotEnabledState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents whether the slot is enabled or disabled."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents whether the slot is enabled or disabled."/>
+                </Property>
+                <Property Name="Tag" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property is the key and has a unique value."/>
+                    <Annotation Term="OData.LongDescription" String="This property is the key and has a unique value."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

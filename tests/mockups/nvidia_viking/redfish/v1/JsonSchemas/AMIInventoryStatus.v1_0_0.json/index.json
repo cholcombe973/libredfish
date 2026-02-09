@@ -1,0 +1,169 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "copyright": "Copyright American Megatrends, Inc. (AMI).",
+    "definitions": {
+        "CrcElementes": {
+            "description": "The enumerations of CrcElementes.",
+            "enum": [
+                "DIMM",
+                "CPU",
+                "PCIE",
+                "CERTIFICATE"
+            ],
+            "enumDescriptions": {
+                "CERTIFICATE": "This element corresponds to all data related to Boot Certificates",
+                "CPU": "This element corresponds to all data related to Processor, like Processors and ProcessorsMetrics.",
+                "DIMM": "This element corresponds to all data related to Memory, like Memory, MemoryDomains, MemoryChunks and MemoryMetrics",
+                "PCIE": "This element corresponds to all data related to Storage, PCIeDevices, NetworkInterfaces, NetworkAdapters."
+            },
+            "type": "string"
+        },
+        "InventoryData": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DeletedModules": {
+                    "description": "This is an array CrcElementes that have been updated in this Inventory population.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/CrcElementes"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "This is an array CrcElementes that have been updated in this Inventory population.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Messages": {
+                    "description": "This is an array messages that is created during Inventory population.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This is an array messages that is created during Inventory population.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ProcessingTime": {
+                    "description": "This is the time taken to process and populate the Inventory file.",
+                    "longDescription": "This is the time taken to process and populate the Inventory file.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "units": "milliseconds(ms)"
+                },
+                "Status": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/StatusTypes"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specifies the status of inventory file processing.",
+                    "longDescription": "The value of this property shall indicate the status of inventory file processing.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "InventoryStatus": {
+            "additionalProperties": false,
+            "description": "This is the root for InventoryData status information.",
+            "longDescription": "This is the root for InventoryData status information.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "InventoryData": {
+                    "description": "This object contains the InventoryData informations",
+                    "items": {
+                        "$ref": "#/definitions/InventoryData"
+                    },
+                    "longDescription": "This object contains the InventoryData informations",
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "StatusTypes": {
+            "description": "The enumerations of StatusTypes specify the status of inventory file processing.",
+            "enum": [
+                "Ready",
+                "Queued",
+                "In-Progress",
+                "Completed",
+                "Failed"
+            ],
+            "enumDescriptions": {
+                "Completed": "This signifies that Inventory file processing is completed.",
+                "Failed": "This signifies that Inventory file processing failed.",
+                "In-Progress": "This signifies that Inventory file is being processed in background",
+                "Queued": "This signifies that Inventory processing task is queued in background",
+                "Ready": "This signifies that Inventory file is posted but processing has not started yet."
+            },
+            "type": "string"
+        }
+    },
+    "title": "#AMIInventoryStatus.v1_0_0"
+}

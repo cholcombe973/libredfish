@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellInfiniBand v1_3_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBand">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellInfiniBand" Abstract="true">
+                <Annotation String="An instance of DellInfiniBand will have InfiniBand device specific data." Term="OData.Description"/>
+                <Annotation String="An instance of DellInfiniBand will have InfiniBand device specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/Oem/Dell/DellInfiniBand/{InfiniBandId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/{NetworkDeviceId}/Oem/Dell/DellInfiniBand/{InfiniBandId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="ConnectFirstTarget">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DataBusWidth">
+                <Member Name="128Bit">
+                    <Annotation String="128 bit" Term="OData.Description"/>
+                    <Annotation String="128 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="12XOrX12">
+                    <Annotation String="12x or x12" Term="OData.Description"/>
+                    <Annotation String="12x or x12" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="16Bit">
+                    <Annotation String="16 bit" Term="OData.Description"/>
+                    <Annotation String="16 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="16XOrX16">
+                    <Annotation String="16x or x16" Term="OData.Description"/>
+                    <Annotation String="16x or x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="1XOrX1">
+                    <Annotation String="1x or x1" Term="OData.Description"/>
+                    <Annotation String="1x or x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="2XOrX2">
+                    <Annotation String="2x or x2" Term="OData.Description"/>
+                    <Annotation String="2x or x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="32Bit">
+                    <Annotation String="32 bit" Term="OData.Description"/>
+                    <Annotation String="32 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="32XOrX32">
+                    <Annotation String="32x or x32" Term="OData.Description"/>
+                    <Annotation String="32x or x32" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="4XOrX4">
+                    <Annotation String="4x or x4" Term="OData.Description"/>
+                    <Annotation String="4x or x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="64Bit">
+                    <Annotation String="64 bit" Term="OData.Description"/>
+                    <Annotation String="64 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="8Bit">
+                    <Annotation String="8 bit" Term="OData.Description"/>
+                    <Annotation String="8 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="8XOrX8">
+                    <Annotation String="8x or x8" Term="OData.Description"/>
+                    <Annotation String="8x or x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PrimaryStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SNAPIState">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SNAPISupport">
+                <Member Name="Available">
+                    <Annotation String="Available" Term="OData.Description"/>
+                    <Annotation String="Available" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotAvailable">
+                    <Annotation String="Not Available" Term="OData.Description"/>
+                    <Annotation String="Not Available" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotLength">
+                <Member Name="LongLength">
+                    <Annotation String="Long Length" Term="OData.Description"/>
+                    <Annotation String="Long Length" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ShortLength">
+                    <Annotation String="Short Length" Term="OData.Description"/>
+                    <Annotation String="Short Length" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotType">
+                <Member Name="AGP">
+                    <Annotation String="AGP" Term="OData.Description"/>
+                    <Annotation String="AGP" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="AGP2X">
+                    <Annotation String="AGP 2X" Term="OData.Description"/>
+                    <Annotation String="AGP 2X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="AGP4X">
+                    <Annotation String="AGP 4X" Term="OData.Description"/>
+                    <Annotation String="AGP 4X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="AGP8X">
+                    <Annotation String="AGP 8X" Term="OData.Description"/>
+                    <Annotation String="AGP 8X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EISA">
+                    <Annotation String="EISA" Term="OData.Description"/>
+                    <Annotation String="EISA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="I/ORiserCardSlot">
+                    <Annotation String="I/O Riser Card Slot" Term="OData.Description"/>
+                    <Annotation String="I/O Riser Card Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ISA">
+                    <Annotation String="ISA" Term="OData.Description"/>
+                    <Annotation String="ISA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="MCA">
+                    <Annotation String="MCA" Term="OData.Description"/>
+                    <Annotation String="MCA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NuBus">
+                    <Annotation String="NuBus" Term="OData.Description"/>
+                    <Annotation String="NuBus" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/C20">
+                    <Annotation String="PC-98/C20" Term="OData.Description"/>
+                    <Annotation String="PC-98/C20" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/C24">
+                    <Annotation String="PC-98/C24" Term="OData.Description"/>
+                    <Annotation String="PC-98/C24" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/Card">
+                    <Annotation String="PC-98/Card" Term="OData.Description"/>
+                    <Annotation String="PC-98/Card" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/E">
+                    <Annotation String="PC-98/E" Term="OData.Description"/>
+                    <Annotation String="PC-98/E" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/LocalBus">
+                    <Annotation String="PC-98/Local Bus" Term="OData.Description"/>
+                    <Annotation String="PC-98/Local Bus" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCCard(PCMCIA)">
+                    <Annotation String="PC Card (PCMCIA)" Term="OData.Description"/>
+                    <Annotation String="PC Card (PCMCIA)" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI">
+                    <Annotation String="PCI" Term="OData.Description"/>
+                    <Annotation String="PCI" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-66MHzCapable">
+                    <Annotation String="PCI - 66MHz Capable" Term="OData.Description"/>
+                    <Annotation String="PCI - 66MHz Capable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-X">
+                    <Annotation String="PCI-X" Term="OData.Description"/>
+                    <Annotation String="PCI-X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpress">
+                    <Annotation String="PCI Express" Term="OData.Description"/>
+                    <Annotation String="PCI Express" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2">
+                    <Annotation String="PCI Express Gen 2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2SFF-8639">
+                    <Annotation String="PCI Express Gen 2 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 SFF-8639" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X1">
+                    <Annotation String="PCI Express Gen 2 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X16">
+                    <Annotation String="PCI Express Gen 2 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X2">
+                    <Annotation String="PCI Express Gen 2 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X4">
+                    <Annotation String="PCI Express Gen 2 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X8">
+                    <Annotation String="PCI Express Gen 2 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3">
+                    <Annotation String="PCI Express Gen 3" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3SFF-8639">
+                    <Annotation String="PCI Express Gen 3 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 SFF-8639" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X1">
+                    <Annotation String="PCI Express Gen 3 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X16">
+                    <Annotation String="PCI Express Gen 3 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X2">
+                    <Annotation String="PCI Express Gen 3 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X4">
+                    <Annotation String="PCI Express Gen 3 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X8">
+                    <Annotation String="PCI Express Gen 3 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4">
+                    <Annotation String="PCI Express Gen 4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X1">
+                    <Annotation String="PCI Express Gen 4 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X16">
+                    <Annotation String="PCI Express Gen 4 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X2">
+                    <Annotation String="PCI Express Gen 4 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X4">
+                    <Annotation String="PCI Express Gen 4 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X8">
+                    <Annotation String="PCI Express Gen 4 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen5">
+                    <Annotation String="PCI Express Gen 5" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen5x4">
+                    <Annotation String="PCI Express Gen 5 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5 x4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen5x8">
+                    <Annotation String="PCI Express Gen 5 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5 x8" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen5x16">
+                    <Annotation String="PCI Express Gen 5 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5 x16" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX1">
+                    <Annotation String="PCI Express x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX16">
+                    <Annotation String="PCI Express x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX2">
+                    <Annotation String="PCI Express x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX4">
+                    <Annotation String="PCI Express x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX8">
+                    <Annotation String="PCI Express x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ProcessorCardSlot">
+                    <Annotation String="Processor Card Slot" Term="OData.Description"/>
+                    <Annotation String="Processor Card Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Proprietary">
+                    <Annotation String="Proprietary" Term="OData.Description"/>
+                    <Annotation String="Proprietary" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ProprietaryMemoryCardSlot">
+                    <Annotation String="Proprietary Memory Card Slot" Term="OData.Description"/>
+                    <Annotation String="Proprietary Memory Card Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="VL-VESA">
+                    <Annotation String="VL-VESA" Term="OData.Description"/>
+                    <Annotation String="VL-VESA" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="UpdateLockdownCapable">
+                <Member Name="False">
+                    <Annotation String="False" Term="OData.Description"/>
+                    <Annotation String="False" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="True">
+                    <Annotation String="True" Term="OData.Description"/>
+                    <Annotation String="True" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="UpdateLockdownState">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VPISupport">
+                <Member Name="Available">
+                    <Annotation String="Available" Term="OData.Description"/>
+                    <Annotation String="Available" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotAvailable">
+                    <Annotation String="Not Available" Term="OData.Description"/>
+                    <Annotation String="Not Available" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBand.v1_0_0">
+            <EntityType Name="DellInfiniBand" BaseType="DellInfiniBand.DellInfiniBand">
+                <Annotation Term="OData.Description" String="An instance of DellInfiniBand will have InfiniBand device specific data."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellInfiniBand will have InfiniBand device specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BusNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the bus number where this PCI device resides."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the bus number where this PCI device resides."/>
+                </Property>
+                <Property Name="ConnectFirstTarget" Type="DellInfiniBand.ConnectFirstTarget">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the Connect First Target."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the Connect First Target."/>
+                </Property>
+                <Property Name="ControllerBIOSVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the firmware version of Controller BIOS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the firmware version of Controller BIOS."/>
+                </Property>
+                <Property Name="DataBusWidth" Type="DellInfiniBand.DataBusWidth">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the data-bus width of the InfiniBand device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the data-bus width of the InfiniBand device."/>
+                </Property>
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                </Property>
+                <Property Name="DeviceNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the device number assigned to this PCI device for this bus."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the device number assigned to this PCI device for this bus."/>
+                </Property>
+                <Property Name="EFIVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the firmware version of EFI."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the firmware version of EFI."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                </Property>
+                <Property Name="FamilyVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the family version of firmware."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the family version of firmware."/>
+                </Property>
+                <Property Name="FirstTargetChapId" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the First Target ChapId."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the First Target ChapId."/>
+                </Property>
+                <Property Name="FirstTargetChapPwd" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the First Target ChapPassword."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the First Target ChapPassword."/>
+                </Property>
+                <Property Name="FunctionNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the function number for this PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the function number for this PCI device."/>
+                </Property>
+                <Property Name="ISCSIOSDriverVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the ISCSI OS Driver version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the ISCSI OS Driver version."/>
+                </Property>
+                <Property Name="InfiniBandOSDriverVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the InfiniBand OS Driver version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the InfiniBand OS Driver version."/>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="IscsiInitiatorSubnetPrefix" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the Iscs iInitiator SubnetPrefix."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the Iscs iInitiator SubnetPrefix."/>
+                </Property>
+                <Property Name="LANDriverVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the LAN OS Driver version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the LAN OS Driver version."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the time when the data was last updated. The value is represented in the format yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the time when the data was last updated. The value is represented in the format yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="MediaType" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the drive media type."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the drive media type."/>
+                </Property>
+                <Property Name="NodeGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Node GUID."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Node GUID."/>
+                </Property>
+                <Property Name="NumberOfPorts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the number of ports."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the number of ports."/>
+                </Property>
+                <Property Name="NumberPCIEFunctionsEnabled" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the number of PCIE functions enabled per port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the number of PCIE functions enabled per port."/>
+                </Property>
+                <Property Name="PCIDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property contains a value assigned by the device manufacturer used to identify the type of device."/>
+                    <Annotation Term="OData.LongDescription" String="This property contains a value assigned by the device manufacturer used to identify the type of device."/>
+                </Property>
+                <Property Name="PCISubDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents PCI sub device ID."/>
+                    <Annotation Term="OData.LongDescription" String="Represents PCI sub device ID."/>
+                </Property>
+                <Property Name="PCISubVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the subsystem vendor ID. ID information is reported from a PCIDevice through protocol-specific requests."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the subsystem vendor ID. ID information is reported from a PCIDevice through protocol-specific requests."/>
+                </Property>
+                <Property Name="PCIVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the register that contains a value assigned by the PCI SIG used to identify the manufacturer of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the register that contains a value assigned by the PCI SIG used to identify the manufacturer of the device."/>
+                </Property>
+                <Property Name="PermanentPortGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property defines port GUID that is hardcoded into a port . This hardcoded address can be changed using a firmware upgrade or a software configuration. When this change is made, the field must updated at the same time. If no hardcoded GUID exists for the InfiniBand card, PermanentAddress must be left blank."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines port GUID that is hardcoded into a port . This hardcoded address can be changed using a firmware upgrade or a software configuration. When this change is made, the field must updated at the same time. If no hardcoded GUID exists for the InfiniBand card, PermanentAddress must be left blank."/>
+                </Property>
+                <Property Name="PermanentiSCSIMACAddress" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property defines the network address that is hardcoded into a port for iSCSI. This hardcoded address can be changed using a firmware upgrade or a software configuration. When this change is made, the field must updated at the same time. If no hardcoded address exists for the NetworkAdapter, PermanentAddress must be left blank."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the network address that is hardcoded into a port for iSCSI. This hardcoded address can be changed using a firmware upgrade or a software configuration. When this change is made, the field must updated at the same time. If no hardcoded address exists for the NetworkAdapter, PermanentAddress must be left blank."/>
+                </Property>
+                <Property Name="PrimaryStatus" Type="DellInfiniBand.PrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the status of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the status of the device."/>
+                </Property>
+                <Property Name="ProductName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the product name."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the product name."/>
+                </Property>
+                <Property Name="Protocol" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Supported Protocol Types."/>
+                    <Annotation Term="OData.LongDescription" String="Supported Protocol Types."/>
+                </Property>
+                <Property Name="RDMAOSDriverVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the RDMA OS Driver version."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the RDMA OS Driver version."/>
+                </Property>
+                <Property Name="SNAPIState" Type="DellInfiniBand.SNAPIState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the SNAPI state."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the SNAPI state."/>
+                </Property>
+                <Property Name="SNAPISupport" Type="DellInfiniBand.SNAPISupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the SNAPI support."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the SNAPI support."/>
+                </Property>
+                <Property Name="SlotLength" Type="DellInfiniBand.SlotLength">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the represents the slot length of the InfiniBand device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the represents the slot length of the InfiniBand device."/>
+                </Property>
+                <Property Name="SlotType" Type="DellInfiniBand.SlotType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates the slot type of the NIC PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the slot type of the NIC PCI device."/>
+                </Property>
+                <Property Name="UpdateLockdownCapable" Type="DellInfiniBand.UpdateLockdownCapable">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the firmware update capable or not."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the firmware update capable or not."/>
+                </Property>
+                <Property Name="UpdateLockdownState" Type="DellInfiniBand.UpdateLockdownState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the update lock down mode state."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the update lock down mode state."/>
+                </Property>
+                <Property Name="VPISupport" Type="DellInfiniBand.VPISupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the VPI support."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the VPI support."/>
+                </Property>
+                <Property Name="VendorName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the vendor name."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the vendor name."/>
+                </Property>
+                <Property Name="VirtNodeGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Virtual Node GUID."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Virtual Node GUID."/>
+                </Property>
+                <Property Name="VirtPortGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the virtual port GUID."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the virtual port GUID."/>
+                </Property>
+                <Property Name="VirtiSCSIMACAddress" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the virtual iSCSI MAC address."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the virtual iSCSI MAC address."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBand.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add NumberPCIEFunctionsSupported property."/>
+            <EntityType Name="DellInfiniBand" BaseType="DellInfiniBand.v1_0_0.DellInfiniBand">
+                <Property Name="NumberPCIEFunctionsSupported" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the number of PCIE functions supported per port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the number of PCIE functions supported per port."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBand.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable value PCIExpressGen5 for SlotType property."/>
+            <EntityType Name="DellInfiniBand" BaseType="DellInfiniBand.v1_1_0.DellInfiniBand">
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBand.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable values PCIExpressGen5x4, PCIExpressGen5x8, PCIExpressGen5x16 for SlotType property."/>
+            <EntityType Name="DellInfiniBand" BaseType="DellInfiniBand.v1_2_0.DellInfiniBand">
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

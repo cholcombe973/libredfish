@@ -1,0 +1,81 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeBaseNetworkAdapterExt",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeBaseNetworkAdapterExt resource describes an Ethernet Adapter and its ports.  Clients should use the Redfish NetworkAdapter and NetworkInterface resources when available instead of this.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "BadReceives": {
+            "description": "A count of frames that were received by the adapter but which had an error.  This counter is the sum of mib items cpqNicIfPhysAdapterAlignmentErrors, cpqNicIfPhysAdapterFCSErrors, cpqNicIfPhysAdapterFrameTooLongs, and cpqNicIfPhysAdapterInternalMacReceiveErrors. If this counter increments frequently, check the more detailed error statistics and take appropriate action.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "BadTransmits": {
+            "description": "A count of frames that were not transmitted by the adapter because of an error.  This counter is the sum of MIB items cpqNicIfPhysAdapterDeferredTransmissions, cpqNicIfPhysAdapterLateCollisions, cpqNicIfPhysAdapterExcessiveCollisions, cpqNicIfPhysAdapterCarrierSenseErrors, and cpqNicIfPhysAdapterInternalMacTransmitErrors. If this counter increments frequently, check the more detailed error statistics and take appropriate action.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "GoodReceives": {
+            "description": "A count of frames successfully received by the physical adapter.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "GoodTransmits": {
+            "description": "A count of frames successfully transmitted by the physical adapter.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "StructuredName": {
+            "description": "PCI device structured name in UTF-8 format (e.g. 'NIC.LOM.1.1' - see PCIDevices in /rest/v1/Systems/x/PCIDevices - this comes from SMBIOS",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Team": {
+            "description": "If a port is configured for NIC teaming, the name of the configured link between the physical ports that form a logical network adapter. This value is displayed for system NICs only (embedded and stand-up).",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "title": "#HpeBaseNetworkAdapterExt.v2_0_0.HpeBaseNetworkAdapterExt",
+    "type": "object"
+}

@@ -1,0 +1,338 @@
+{
+    "$id": "/redfish/v1/Schemas/DellPSNumericSensor.v1_1_0.json",
+    "$ref": "#/definitions/DellPSNumericSensor",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellPSNumericSensor": {
+            "additionalProperties": true,
+            "description": "An instance of DellPSNumericSensor will have data specific to a power sensor device that returns only numeric readings and optionally supports of thresholds settings.",
+            "longDescription": "An instance of DellPSNumericSensor will have data specific to a power sensor device that returns only numeric readings and optionally supports of thresholds settings.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "CurrentReading": {
+                    "description": "The current value indicated by the Sensor. The property value shall be in units specified by the BaseUnit property value multiplied by 10 to the power of the UnitModier property value.",
+                    "longDescription": "The current value indicated by the Sensor. The property value shall be in units specified by the BaseUnit property value multiplied by 10 to the power of the UnitModier property value.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "CurrentState": {
+                    "description": "The current state indicated by the Sensor. This property value is always one of the \"PossibleStates\".",
+                    "longDescription": "The current state indicated by the Sensor. This property value is always one of the \"PossibleStates\".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "ElementName": {
+                    "description": "The user-friendly name for the class instance.This value does not have to be unique within its namespace.",
+                    "longDescription": "The user-friendly name for the class instance.This value does not have to be unique within its namespace.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "EnabledDefault": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/EnabledDefault"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An enumerated value indicating an administrator's default or startup configuration for the Enabled State of an element. By default, the element is \"Enabled\" (value=2).",
+                    "longDescription": "An enumerated value indicating an administrator's default or startup configuration for the Enabled State of an element. By default, the element is \"Enabled\" (value=2).",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "EnabledState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/EnabledState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "EnabledState is an integer enumeration that indicates the enabled and disabled states of an element. It can also indicate the transitions between these requested states. For example, shutting down (value=4) and starting (value=10) are transient states between enabled and disabled. The following text briefly summarizes the various enabled and disabled states: Enabled (2) indicates that the element is or could be executing commands, will process any queued commands, and queues new requests. Disabled (3) indicates that the element will not execute commands and will drop any new requests. Shutting Down (4) indicates that the element is in the process of going to a Disabled state. Not Applicable (5) indicates the element does not support being enabled or disabled. Enabled but Offline (6) indicates that the element might be completing commands, and will drop any new requests. Test (7) indicates that the element is in a test state. Deferred (8) indicates that the element might be completing commands, but will queue any new requests. Quiesce (9) indicates that the element is enabled but in a restricted mode. Starting (10) indicates that the element is in the process of going to an Enabled state. New requests are queued.",
+                    "longDescription": "EnabledState is an integer enumeration that indicates the enabled and disabled states of an element. It can also indicate the transitions between these requested states. For example, shutting down (value=4) and starting (value=10) are transient states between enabled and disabled. The following text briefly summarizes the various enabled and disabled states: Enabled (2) indicates that the element is or could be executing commands, will process any queued commands, and queues new requests. Disabled (3) indicates that the element will not execute commands and will drop any new requests. Shutting Down (4) indicates that the element is in the process of going to a Disabled state. Not Applicable (5) indicates the element does not support being enabled or disabled. Enabled but Offline (6) indicates that the element might be completing commands, and will drop any new requests. Test (7) indicates that the element is in a test state. Deferred (8) indicates that the element might be completing commands, but will queue any new requests. Quiesce (9) indicates that the element is enabled but in a restricted mode. Starting (10) indicates that the element is in the process of going to an Enabled state. New requests are queued.",
+                    "readonly": true
+                },
+                "HealthState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/HealthState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Indicates the current health of the element.",
+                    "longDescription": "Indicates the current health of the element.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Links": {
+                    "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/Links",
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "LowerThresholdCritical": {
+                    "description": "The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is below LowerThresholdCritical, the CurrentState is Critical.",
+                    "longDescription": "The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is below LowerThresholdCritical, the CurrentState is Critical.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LowerThresholdNonCritical": {
+                    "description": "The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If Current Reading is between LowerThresholdNonCritical and Upper ThresholdNonCritical, the Sensor is reporting a normal value. If CurrentReading is between LowerThresholdNonCritical and LowerThresholdCritical, the CurrentState is NonCritical.",
+                    "longDescription": "The threshold values of the sensor specify the ranges (minimum and maximum values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If Current Reading is between LowerThresholdNonCritical and Upper ThresholdNonCritical, the Sensor is reporting a normal value. If CurrentReading is between LowerThresholdNonCritical and LowerThresholdCritical, the CurrentState is NonCritical.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "OperationalStatus": {
+                    "description": "Indicates the operational status of the resource represented.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/OperationalStatus"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "Indicates the operational status of the resource represented.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "PossibleStates": {
+                    "description": "PossibleStates enumerates the string outputs of the Sensor. For example, a \"Switch\" Sensor may output the states \"On\", or \"Off\". Another implementation of the Switch may output the states \"Open\", and \"Close\". Another example is a NumericSensor supporting thresholds. This Sensor can report the states like \"Normal\", \"Upper Fatal\", \"Lower Non-Critical\", and so on. A NumericSensor that does not publish readings and thresholds, but stores this data internally, can still report its states.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "PossibleStates enumerates the string outputs of the Sensor. For example, a \"Switch\" Sensor may output the states \"On\", or \"Off\". Another implementation of the Switch may output the states \"Open\", and \"Close\". Another example is a NumericSensor supporting thresholds. This Sensor can report the states like \"Normal\", \"Upper Fatal\", \"Lower Non-Critical\", and so on. A NumericSensor that does not publish readings and thresholds, but stores this data internally, can still report its states.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "PrimaryStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/PrimaryStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "PrimaryStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status. It should be used to provide high-level and detailed health status of the ManagedElement and its subcomponents. PrimaryStatus consists of one of the following values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the implementation is in general capable of returning this property, but is unable to do so at this time. \"OK\" indicates the ManagedElement is functioning normally. \"Degraded\" indicates the ManagedElement is functioning below normal. \"Error\" indicates the ManagedElement is in an Error condition.",
+                    "longDescription": "PrimaryStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status. It should be used to provide high-level and detailed health status of the ManagedElement and its subcomponents. PrimaryStatus consists of one of the following values: Unknown, OK, Degraded or Error. \"Unknown\" indicates the implementation is in general capable of returning this property, but is unable to do so at this time. \"OK\" indicates the ManagedElement is functioning normally. \"Degraded\" indicates the ManagedElement is functioning below normal. \"Error\" indicates the ManagedElement is in an Error condition.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "RateUnits": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/RateUnits"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specifies if the units returned by this Sensor are rate units. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). This is true unless this property (RateUnits) has a value different than \"None\". For example, if BaseUnits is Volts and the UnitModifier is -6, the units of the values returned are MicroVolts. But, if the RateUnits property is set to a value other than \"None\", the units are further qualified as rate units. In the above example, if RateUnits is set to \"Per Second\", the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier. Any implementation of CurrentReading should be qualified with either a Counter or a Gauge qualifier, depending on the characteristics of the sensor being modeled.",
+                    "longDescription": "Specifies if the units returned by this Sensor are rate units. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). This is true unless this property (RateUnits) has a value different than \"None\". For example, if BaseUnits is Volts and the UnitModifier is -6, the units of the values returned are MicroVolts. But, if the RateUnits property is set to a value other than \"None\", the units are further qualified as rate units. In the above example, if RateUnits is set to \"Per Second\", the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier. Any implementation of CurrentReading should be qualified with either a Counter or a Gauge qualifier, depending on the characteristics of the sensor being modeled.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "ReadingUnits": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/BaseUnits"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The base unit of the values returned by the Sensor. All the values returned by the Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the UnitModifier is -6, then the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than \"None\", then the units are further qualified as rate units. In the above example, if RateUnits is set to \"Per Second\", then the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier.",
+                    "longDescription": "The base unit of the values returned by the Sensor. All the values returned by the Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the UnitModifier is -6, then the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than \"None\", then the units are further qualified as rate units. In the above example, if RateUnits is set to \"Per Second\", then the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier.",
+                    "readonly": true
+                },
+                "RequestedState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/RequestedState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "RequestedState is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested. The actual state of the element is represented by EnabledState. This property is provided to compare the last requested and current enabled or disabled states. When EnabledState is set to 5 (\"Not Applicable\"), this property is not applicable. For explanations of the values in the RequestedState enumeration, see the EnabledState property description. \"Unknown\" (0) indicates the last requested state for the element is unknown. The value \"No Change\" (5) has been deprecated in lieu of indicating the last requested state is \"Unknown\" (0). If the last requested or desired state is unknown, RequestedState has the value \"Unknown\" (0), but may have the value \"No Change\" (5). Offline (6) indicates that the element has been requested to transition to the Enabled but Offline EnabledState. There are two new values in RequestedState that build on the statuses of EnabledState. These values are \"Reboot\" (10) and \"Reset\" (11). Reboot refers to performing a \"Shut Down\" and then moving to an \"Enabled\" state. Reset indicates that the element is first \"Disabled\" and then \"Enabled\". \"Shut Down\" and \"Disabled\" requests are different. Shut Down requests an orderly transition to the Disabled state and might involve removing power to completely erase any existing state. The Disabled state requests an immediate disabling of the element so that it does not execute or accept any commands or processing requests. This property is set as the result of a method invocation (such as Start or StopService) or can be overridden and defined as WRITEable in a subclass. The method approach is recommended because it explicitly invokes the operation and returns a result code. If determining the last RequestedState is not supported for the EnabledLogicalElement, the property must be NULL or have the value 12 \"Not Applicable\".",
+                    "longDescription": "RequestedState is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested. The actual state of the element is represented by EnabledState. This property is provided to compare the last requested and current enabled or disabled states. When EnabledState is set to 5 (\"Not Applicable\"), this property is not applicable. For explanations of the values in the RequestedState enumeration, see the EnabledState property description. \"Unknown\" (0) indicates the last requested state for the element is unknown. The value \"No Change\" (5) has been deprecated in lieu of indicating the last requested state is \"Unknown\" (0). If the last requested or desired state is unknown, RequestedState has the value \"Unknown\" (0), but may have the value \"No Change\" (5). Offline (6) indicates that the element has been requested to transition to the Enabled but Offline EnabledState. There are two new values in RequestedState that build on the statuses of EnabledState. These values are \"Reboot\" (10) and \"Reset\" (11). Reboot refers to performing a \"Shut Down\" and then moving to an \"Enabled\" state. Reset indicates that the element is first \"Disabled\" and then \"Enabled\". \"Shut Down\" and \"Disabled\" requests are different. Shut Down requests an orderly transition to the Disabled state and might involve removing power to completely erase any existing state. The Disabled state requests an immediate disabling of the element so that it does not execute or accept any commands or processing requests. This property is set as the result of a method invocation (such as Start or StopService) or can be overridden and defined as WRITEable in a subclass. The method approach is recommended because it explicitly invokes the operation and returns a result code. If determining the last RequestedState is not supported for the EnabledLogicalElement, the property must be NULL or have the value 12 \"Not Applicable\".",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Resolution": {
+                    "description": "Resolution indicates the ability of the Sensor to resolve differences in the measured property. The units for this measurement are determined by BaseUnit*UnitModifier/RateUnit.",
+                    "longDescription": "Resolution indicates the ability of the Sensor to resolve differences in the measured property. The units for this measurement are determined by BaseUnit*UnitModifier/RateUnit.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "SensorType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/SensorType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The Type of the Sensor, e.g. Voltage or Temperature Sensor. If the type is set to \"Other\", then the OtherSensorType Description can be used to further identify the type, or if the Sensor has numeric readings, then the type of the Sensor can be implicitly determined by the Units. A description of the different Sensor types is as follows: A Temperature Sensor measures the environmental temperature. Voltage and Current Sensors measure electrical voltage and current readings. A Tachometer measures speed/revolutions of a Device. For example, a Fan Device can have an associated Tachometer which measures its speed. A Counter is a general purpose Sensor that measures some numerical property of a Device. A Counter value can be cleared, but it never decreases. A Switch Sensor has states like Open/Close, On/Off, or Up/Down. A Lock has states of Locked/Unlocked. Humidity, Smoke Detection and Air Flow Sensors measure the equivalent environmental characteristics. A Presence Sensor detects the presence of a PhysicalElement. A Power Consumption Sensor measures the instantaneous power consumed by a managed element. A Power Production Sensor measures the instantaneous power produced by a managed element such as a power supply or a voltage regulator. A pressure sensor is used to report pressure. Intrusion sensor reports an intrusion of an enclosure regardless whether it was authorized or not.",
+                    "longDescription": "The Type of the Sensor, e.g. Voltage or Temperature Sensor. If the type is set to \"Other\", then the OtherSensorType Description can be used to further identify the type, or if the Sensor has numeric readings, then the type of the Sensor can be implicitly determined by the Units. A description of the different Sensor types is as follows: A Temperature Sensor measures the environmental temperature. Voltage and Current Sensors measure electrical voltage and current readings. A Tachometer measures speed/revolutions of a Device. For example, a Fan Device can have an associated Tachometer which measures its speed. A Counter is a general purpose Sensor that measures some numerical property of a Device. A Counter value can be cleared, but it never decreases. A Switch Sensor has states like Open/Close, On/Off, or Up/Down. A Lock has states of Locked/Unlocked. Humidity, Smoke Detection and Air Flow Sensors measure the equivalent environmental characteristics. A Presence Sensor detects the presence of a PhysicalElement. A Power Consumption Sensor measures the instantaneous power consumed by a managed element. A Power Production Sensor measures the instantaneous power produced by a managed element such as a power supply or a voltage regulator. A pressure sensor is used to report pressure. Intrusion sensor reports an intrusion of an enclosure regardless whether it was authorized or not.",
+                    "readonly": true
+                },
+                "SystemName": {
+                    "description": "The Name of the scoping System.",
+                    "longDescription": "The Name of the scoping System.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "TransitioningToState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPSNumericSensor.json#/definitions/TransitioningToState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "TransitioningToState indicates the target state to which the instance is transitioning. A value of 5 \"No Change\" indicates that no transition is in progress. A value of 12 \"Not Applicable\" indicates the implementation does not support representing ongoing transitions. A value other than 5 or 12 identifies the state to which the element is in the process of transitioning.",
+                    "longDescription": "TransitioningToState indicates the target state to which the instance is transitioning. A value of 5 \"No Change\" indicates that no transition is in progress. A value of 12 \"Not Applicable\" indicates the implementation does not support representing ongoing transitions. A value other than 5 or 12 identifies the state to which the element is in the process of transitioning.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "UnitModifier": {
+                    "description": "The unit multiplier for the values returned by this Sensor. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the Unit Modifier is -6, the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than \"None\", the units are further qualified as rate units. In the above example, if RateUnits is set to \"Per Second\", the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier.",
+                    "longDescription": "The unit multiplier for the values returned by this Sensor. All the values returned by this Sensor are represented in the units obtained by (BaseUnits * 10 raised to the power of the UnitModifier). For example, if BaseUnits is Volts and the Unit Modifier is -6, the units of the values returned are MicroVolts. However, if the RateUnits property is set to a value other than \"None\", the units are further qualified as rate units. In the above example, if RateUnits is set to \"Per Second\", the values returned by the Sensor are in MicroVolts/Second. The units apply to all numeric properties of the Sensor, unless explicitly overridden by the Units qualifier.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "UpperThresholdCritical": {
+                    "description": "The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is above UpperThresholdCritical, the CurrentState is Critical.",
+                    "longDescription": "The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is above UpperThresholdCritical, the CurrentState is Critical.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "UpperThresholdNonCritical": {
+                    "description": "The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is between LowerThresholdNonCritical and UpperThresholdNonCritical, the Sensor is reporting a normal value. If the CurrentReading is between UpperThreshold NonCritical and UpperThresholdCritical, the CurrentState is NonCritical.",
+                    "longDescription": "The threshold values of the sensor specify the ranges (min and max values) for determining whether the Sensor is operating under Normal, NonCritical, or Critical conditions. If the CurrentReading is between LowerThresholdNonCritical and UpperThresholdNonCritical, the Sensor is reporting a normal value. If the CurrentReading is between UpperThreshold NonCritical and UpperThresholdCritical, the CurrentState is NonCritical.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ValueFormulation": {
+                    "description": "The property has the value 2 (Measured).",
+                    "longDescription": "The property has the value 2 (Measured).",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellPSNumericSensor.v1_1_0.DellPSNumericSensor"
+}

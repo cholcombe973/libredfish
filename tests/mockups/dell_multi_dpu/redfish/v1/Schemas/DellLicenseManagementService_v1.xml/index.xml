@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellLicenseManagementService v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicenseManagementService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellLicenseManagementService" Abstract="true">
+                <Annotation String="The DellLicenseManagementService resource provides some actions to support License Management functionality." Term="OData.Description"/>
+                <Annotation String="The DellLicenseManagementService resource provides some actions to support License Management functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellLicenseManagementService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="DeleteLicense" IsBound="true">
+                <Annotation String="A method used to delete assigned licenses. The DeleteLicense() method deletes a specific license from all devices it is assigned to if only the EntitlementID parameter is present, all licenses from a specific device if only the FQDD parameter is present, or a specific license from a specific device if both the EntitlementID and FQDD parameters are present. Either the EntitlementID or FQDD parameter shall be present." Term="OData.Description"/>
+                <Annotation String="A method used to delete assigned licenses. The DeleteLicense() method deletes a specific license from all devices it is assigned to if only the EntitlementID parameter is present, all licenses from a specific device if only the FQDD parameter is present, or a specific license from a specific device if both the EntitlementID and FQDD parameters are present. Either the EntitlementID or FQDD parameter shall be present." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Parameter Name="DeleteOptions" Type="DellLicenseManagementService.DeleteOptions" Nullable="false">
+                    <Annotation String="Flag used to force delete or delete license from all like devices." Term="OData.Description"/>
+                    <Annotation String="Flag used to force delete or delete license from all like devices." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="EntitlementID" Type="Edm.String">
+                    <Annotation String="Entitlement ID of the license to delete." Term="OData.Description"/>
+                    <Annotation String="Entitlement ID of the license to delete." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="FQDD" Type="Edm.String">
+                    <Annotation String="FQDD of the device to delete the license from." Term="OData.Description"/>
+                    <Annotation String="FQDD of the device to delete the license from." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportLicense" IsBound="true">
+                <Annotation String="ExportLicense is a method used to export License files from the iDRAC. The ExportLicense method returns a License, specified by Entitlement ID, as a base64 encoded string." Term="OData.Description"/>
+                <Annotation String="ExportLicense is a method used to export License files from the iDRAC. The ExportLicense method returns a License, specified by Entitlement ID, as a base64 encoded string." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Parameter Name="EntitlementID" Type="Edm.String" Nullable="false">
+                    <Annotation String="Entitlement ID of the license being exported." Term="OData.Description"/>
+                    <Annotation String="Entitlement ID of the license being exported." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellLicenseManagementService.v1_0_0.ExportLicenseResponse" Nullable="false"/>
+            </Action>
+            <Action Name="ExportLicenseByDevice" IsBound="true">
+                <Annotation String="The ExportLicenseByDevice method exports license files specific to a device from iDRAC. The ExportLicenseByDevice method returns all licenses assigned to a device specified by FQDD, as a base64 encoded string." Term="OData.Description"/>
+                <Annotation String="The ExportLicenseByDevice method exports license files specific to a device from iDRAC. The ExportLicenseByDevice method returns all licenses assigned to a device specified by FQDD, as a base64 encoded string." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="FQDD" Type="Edm.String" Nullable="false">
+                    <Annotation String="Unique device ID." Term="OData.Description"/>
+                    <Annotation String="Unique device ID." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellLicenseManagementService.v1_1_0.ExportLicenseByDeviceResponse" Nullable="false"/>
+            </Action>
+            <Action Name="ExportLicenseByDeviceToNetworkShare" IsBound="true">
+                <Annotation String="ExportLicenseByDeviceToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseByDeviceToNetworkShare method exports all licenses from a device, specified by FQDD, to a user defined location." Term="OData.Description"/>
+                <Annotation String="ExportLicenseByDeviceToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseByDeviceToNetworkShare method exports all licenses from a device, specified by FQDD, to a user defined location." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Parameter Name="FQDD" Type="Edm.String" Nullable="false">
+                    <Annotation String="FQDD of the device to export licenses from." Term="OData.Description"/>
+                    <Annotation String="FQDD of the device to export licenses from." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="FileName" Type="Edm.String" Nullable="false">
+                    <Annotation String="The exported license is renamed to &lt;FileName&gt;." Term="OData.Description"/>
+                    <Annotation String="The exported license is renamed to &lt;FileName&gt;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String" Nullable="false">
+                    <Annotation String="IP Address of the machine hosting the CIFS/NFS share." Term="OData.Description"/>
+                    <Annotation String="IP Address of the machine hosting the CIFS/NFS share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password  for CIFS share authentication." Term="OData.Description"/>
+                    <Annotation String="Password  for CIFS share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String" Nullable="false">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLicenseManagementService.ShareType" Nullable="false">
+                    <Annotation String="Type of the Network Share." Term="OData.Description"/>
+                    <Annotation String="Type of the Network Share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="Username for CIFS share authentication." Term="OData.Description"/>
+                    <Annotation String="Username for CIFS share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportLicenseToNetworkShare" IsBound="true">
+                <Annotation String="ExportLicenseToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseToNetworkShare method exports a License, specified by EntitlementID, to a user defined location." Term="OData.Description"/>
+                <Annotation String="ExportLicenseToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseToNetworkShare method exports a License, specified by EntitlementID, to a user defined location." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Parameter Name="EntitlementID" Type="Edm.String" Nullable="false">
+                    <Annotation String="Entitlement ID of the license being exported." Term="OData.Description"/>
+                    <Annotation String="Entitlement ID of the license being exported." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="If included, the exported license is renamed as &lt;FileName&gt;." Term="OData.Description"/>
+                    <Annotation String="If included, the exported license is renamed as &lt;FileName&gt;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String" Nullable="false">
+                    <Annotation String="IP address of the machine hosting the Network share." Term="OData.Description"/>
+                    <Annotation String="IP address of the machine hosting the Network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLicenseManagementService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password for Network share authentication." Term="OData.Description"/>
+                    <Annotation String="Password for Network share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password to login into proxy server." Term="OData.Description"/>
+                    <Annotation String="The password to login into proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP Adrress of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP Adrress of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLicenseManagementService.ProxySupport">
+                    <Annotation String="Specifies if proxy is to be used or not. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy is to be used or not. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLicenseManagementService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The username for proxy server." Term="OData.Description"/>
+                    <Annotation String="The username for proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLicenseManagementService.ShareType" Nullable="false">
+                    <Annotation String="Type of the Network Share." Term="OData.Description"/>
+                    <Annotation String="Type of the Network Share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="Username for Network share authentication." Term="OData.Description"/>
+                    <Annotation String="Username for Network share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ImportLicense" IsBound="true">
+                <Annotation String="The ImportLicense() method imports the License given in the input parameter to the License Manager Data Store." Term="OData.Description"/>
+                <Annotation String="The ImportLicense() method imports the License given in the input parameter to the License Manager Data Store." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Parameter Name="FQDD" Type="Edm.String" Nullable="false">
+                    <Annotation String="FQDD of the device to apply the License to." Term="OData.Description"/>
+                    <Annotation String="FQDD of the device to apply the License to." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ImportOptions" Type="DellLicenseManagementService.ImportOptions" Nullable="false">
+                    <Annotation String="Flag to force or install for all like devices." Term="OData.Description"/>
+                    <Annotation String="Flag to force or install for all like devices." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="LicenseFile" Type="Edm.String" Nullable="false">
+                    <Annotation String="A base 64 encoded string of the XML License file." Term="OData.Description"/>
+                    <Annotation String="A base 64 encoded string of the XML License file." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ImportLicenseFromNetworkShare" IsBound="true">
+                <Annotation String="The ImportLicenseFromNetworkShare() method imports the License given in the network share location." Term="OData.Description"/>
+                <Annotation String="The ImportLicenseFromNetworkShare() method imports the License given in the network share location." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <Parameter Name="FQDD" Type="Edm.String" Nullable="false">
+                    <Annotation String="FQDD of the device to apply the License to." Term="OData.Description"/>
+                    <Annotation String="FQDD of the device to apply the License to." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String" Nullable="false">
+                    <Annotation String="IP address of the machine hosting the Network share." Term="OData.Description"/>
+                    <Annotation String="IP address of the machine hosting the Network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLicenseManagementService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ImportOptions" Type="DellLicenseManagementService.ImportOptions" Nullable="false">
+                    <Annotation String="Flag to force or install for all like devices." Term="OData.Description"/>
+                    <Annotation String="Flag to force or install for all like devices." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="LicenseName" Type="Edm.String" Nullable="false">
+                    <Annotation String="The file name of the license file to be imported." Term="OData.Description"/>
+                    <Annotation String="The file name of the license file to be imported." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password for Network share authentication." Term="OData.Description"/>
+                    <Annotation String="Password for Network share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password to login into proxy server." Term="OData.Description"/>
+                    <Annotation String="The password to login into proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP Adrress of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP Adrress of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLicenseManagementService.ProxySupport">
+                    <Annotation String="Specifies if proxy is to be used or not. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy is to be used or not. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLicenseManagementService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The username for proxy server." Term="OData.Description"/>
+                    <Annotation String="The username for proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLicenseManagementService.ShareType" Nullable="false">
+                    <Annotation String="Type of the Network Share." Term="OData.Description"/>
+                    <Annotation String="Type of the Network Share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="Username for Network share authentication." Term="OData.Description"/>
+                    <Annotation String="Username for Network share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share, optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ShowLicenseBits" IsBound="true">
+                <Annotation String="The ShowLicenseBits() method is used to retrieve the iDRAC feature license bit string for the Licenses in iDRAC in a hexadecimal representation of a 256 bit-string. To read the output, you'll need to see which bit position is TRUE from right-to-left. Please refer to the Appendix section that will show which bit represents what feature." Term="OData.Description"/>
+                <Annotation String="The ShowLicenseBits() method is used to retrieve the iDRAC feature license bit string for the Licenses in iDRAC in a hexadecimal representation of a 256 bit-string. To read the output, you'll need to see which bit position is TRUE from right-to-left. Please refer to the Appendix section that will show which bit represents what feature." Term="OData.LongDescription"/>
+                <Parameter Name="DellLicenseManagementService" Type="DellLicenseManagementService.v1_0_0.Actions"/>
+                <ReturnType Type="DellLicenseManagementService.v1_0_0.ShowLicenseBitsResponse" Nullable="false"/>
+            </Action>
+            <EnumType Name="DeleteOptions">
+                <Member Name="All">
+                    <Annotation String="All" Term="OData.Description"/>
+                </Member>
+                <Member Name="Force">
+                    <Annotation String="Force" Term="OData.Description"/>
+                </Member>
+                <Member Name="NoOption">
+                    <Annotation String="No option" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="IgnoreCertWarning">
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+                <Member Name="On">
+                    <Annotation String="On" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ImportOptions">
+                <Member Name="All">
+                    <Annotation String="All" Term="OData.Description"/>
+                </Member>
+                <Member Name="Force">
+                    <Annotation String="Force" Term="OData.Description"/>
+                </Member>
+                <Member Name="NoOption">
+                    <Annotation String="No Option" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ProxySupport">
+                <Member Name="DefaultProxy">
+                    <Annotation String="On - use default proxy settings" Term="OData.Description"/>
+                </Member>
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+                <Member Name="ParametersProxy">
+                    <Annotation String="On - use passed in parameters for proxy" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ProxyType">
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="SOCKS">
+                    <Annotation String="SOCKS" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ShareType">
+                <Member Name="CIFS">
+                    <Annotation String="CIFS" Term="OData.Description"/>
+                </Member>
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="HTTPS">
+                    <Annotation String="HTTPS" Term="OData.Description"/>
+                </Member>
+                <Member Name="NFS">
+                    <Annotation String="NFS" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicenseManagementService.v1_0_0">
+            <EntityType Name="DellLicenseManagementService" BaseType="DellLicenseManagementService.DellLicenseManagementService">
+                <Annotation Term="OData.Description" String="The DellLicenseManagementService resource provides some actions to support License Management functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellLicenseManagementService resource provides some actions to support License Management functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellLicenseManagementService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+            <ComplexType Name="ExportLicenseResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the ExportLicense action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the ExportLicense action."/>
+                <Property Name="LicenseFile" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Base64 encoded string of the license file contents."/>
+                    <Annotation Term="OData.LongDescription" String="Base64 encoded string of the license file contents."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="ShowLicenseBitsResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the ShowLicenseBits action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the ShowLicenseBits action."/>
+                <Property Name="LicenseBits" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The hexadecimal equivalent of the 256-bit license-bit string."/>
+                    <Annotation Term="OData.LongDescription" String="The hexadecimal equivalent of the 256-bit license-bit string."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicenseManagementService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add ExportLicenseByDevice action."/>
+            <EntityType Name="DellLicenseManagementService" BaseType="DellLicenseManagementService.v1_0_0.DellLicenseManagementService">
+</EntityType>
+            <ComplexType Name="ExportLicenseByDeviceResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the ExportLicenseByDevice action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the ExportLicenseByDevice action."/>
+                <Property Name="LicenseFile" Type="Collection(Edm.String)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Base64 encoded string of the license file contents."/>
+                    <Annotation Term="OData.LongDescription" String="Base64 encoded string of the license file contents."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

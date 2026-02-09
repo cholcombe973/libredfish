@@ -1,0 +1,235 @@
+{
+    "$id": "/redfish/v1/Schemas/DellNVMeSMARTAttributes.v1_1_0.json",
+    "$ref": "#/definitions/DellNVMeSMARTAttributes",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellNVMeSMARTAttributes": {
+            "additionalProperties": false,
+            "description": "An instance of DellNVMeSMARTAttributes will have NVMe SMARTAttributes specific data.",
+            "longDescription": "An instance of DellNVMeSMARTAttributes will have NVMe SMARTAttributes specific data.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "AvailableSparePercent": {
+                    "description": "This property shall represent the remaining spare capacity available.",
+                    "longDescription": "This property shall represent the remaining spare capacity available as a normalized percentage (0 to 100%)",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Percent"
+                },
+                "AvailableSpareThresholdPercent": {
+                    "description": "This property shall represent the available spare value below which an asynchronous event completion may occur.",
+                    "longDescription": "This property shall represent the available spare value below which an asynchronous event completion may occur. The value is  as a normalized percentage (0 to 100%)",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Percent"
+                },
+                "BadFlashBlock": {
+                    "description": "This property shall represent the number of bad flash block.",
+                    "longDescription": "This property shall represent the number of bad flash block. This count is incremented when the bad flash block detected.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "CompositeTemperatureKelvin": {
+                    "description": "This property shall represent the current composite temperature of the controller and namespace(s) associated with that controller",
+                    "longDescription": "This property shall represent the current composite temperature (in Kelvin) of the controller and namespace(s) associated with that controller",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "K"
+                },
+                "ControllerBusyTimeMinutes": {
+                    "description": "This property shall represent the amount of time in minutes the controller is busy with I/O command.",
+                    "longDescription": "This property shall represent the amount of time in minutes the controller is busy with I/O command. It is collated by using ControllerBusyTimeLower and ControllerBusyTimeUpper attributes.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "CriticalWarningsCount": {
+                    "description": "This property shall represent the critical warnings about the controller state",
+                    "longDescription": "This property shall represent the critical warnings about the controller state.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "DataUnitsReadMB": {
+                    "description": "This property shall represent the lower part of the count of 512 byte data units the host has read from the controller",
+                    "longDescription": "This property shall represent the lower part of the count of 512 byte data units the host has read from the controller.This value is reported in thousands and is rounded up.It is Collated by using DataUnitsReadLower and DataUnitsReadUpper attributes",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "MB"
+                },
+                "DataUnitsWrittenMB": {
+                    "description": "This property shall represent the lower part of the count of 512 byte data units the host has written to the controller.",
+                    "longDescription": "This property shall represent the lower part of the count of 512 byte data units the host has written to the controller.This value is reported in thousands and is rounded up. It is collated by using DataUnitsWrittenLower and DataUnitsWrittenUpper attributes.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "MB"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "ErrorInfoCount": {
+                    "description": "This property shall represent the lower part of the count of error information log entries over the life of the controller.",
+                    "longDescription": "This property shall represent the lower part of the count of error information log entries over the life of the controller. It is collated by using NumOfErrorInfoLogEntriesLower and NumOfErrorInfoLogEntriesUpper attributes",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "HostReadCommandsCount": {
+                    "description": "This property shall represent the lower part of the number of read commands completed by the controller",
+                    "longDescription": "This property shall represent the lower part of the number of read commands completed by the controller.It is collated by using HostReadCommandsLower and HostReadCommandsUpper attributes.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "HostWriteCommandsCount": {
+                    "description": "This propert shall represent the lower part of the number of write commands completed by the controller.",
+                    "longDescription": "This property shall represent the lower part of the number of write commands completed by the controller. It is Collated by using HostWriteLower and HostWriteUpper attributes.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LifeUsedPercent": {
+                    "description": "This property shall represent a vendor specific estimate of the percentage of NVM(Non Volatile Memory) subsystem life used.",
+                    "longDescription": "This property shall represent a vendor specific estimate of the percentage of NVM(Non Volatile Memory) subsystem life used based on the actual usage and the manufacturer's prediction of NVM life.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Percent"
+                },
+                "MediaDataIntegrityErrorsCount": {
+                    "description": "This property shall represent the lower part of the count of detected unrecovered data integrity errors.",
+                    "longDescription": "This property shall represent the lower part of the count of detected unrecovered data integrity errors. It includes errors such as uncorrectable ECC, CRC checksum failure, or LBA tag mismatch. It is collated by using MediaDataIntegrityErrorsLower and MediaDataIntegrityErrorsUpper attributes.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "PowerCycleCount": {
+                    "description": "This property shall represent the lower part of the number of power cycles.",
+                    "longDescription": "This property shall represent the lower part of the number of power cycles.Specifies the lower part of the number of power cycles.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PowerOnHours": {
+                    "description": "This propert shall represent the lower part of the number of hours powered on.",
+                    "longDescription": "This property shall represent the lower part of the number of hours powered on.Hours may not include time that the controller was powered and in a non-operational power state. It is collated by using PowerOnHoursLower and PowerOnHoursUpper attributes",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "UncorrectableError": {
+                    "description": "This property shall represent the uncorrectable error.",
+                    "longDescription": "This property shall represent the uncorrectable error. This count is incremented when the uncorrectable errors are detected.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "UnsafeShutdownsCount": {
+                    "description": "This property shall represent the upper part of the number of unsafe shutdowns.",
+                    "longDescription": "This property shall represent the upper part of the number of unsafe shutdowns. This count is incremented when a shutdown notification (CC.SHN) is not received prior to loss of power. It is collated by using UnsafeShutdownsLower and UnsafeShutdownsUpper attributes",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellNVMeSMARTAttributes.v1_1_0.DellNVMeSMARTAttributes"
+}

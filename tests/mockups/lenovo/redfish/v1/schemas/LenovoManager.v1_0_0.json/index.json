@@ -1,0 +1,234 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoManager.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "GlobalSettings": {
+            "additionalProperties": true,
+            "description": "This object is used to represent global settings of alert recipient.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "RetryCount": {
+                    "description": "Retry count of additional times that the OOB alert service will attempt to send an OOB alert.",
+                    "longDescription": "The value of this property shall be retry count of additional times that the OOB alert service will attempt to send an OOB alert.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "RetryInterval": {
+                    "description": "The time interval that the OOB alert service will wait between retries to send an OOB alert.",
+                    "longDescription": "The value of this property shall be the time interval that the OOB alert service will wait between retries to send an OOB alert.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "RntryRetryInterval": {
+                    "description": "The time interval that the OOB alert service will wait before sending an alert to the next OOB alert recipient in the list.",
+                    "longDescription": "The value of this property shall be the time interval that the OOB alert service will wait before sending an alert to the next OOB alert recipient in the list.",
+                    "readonly": false,
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "LenovoManagerProperties": {
+            "additionalProperties": true,
+            "description": "This object is used to represent Lenovo extended Manager properties.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Configuration": {
+                    "$ref": "/redfish/v1/metadata/LenovoConfigurationService.json#/definitions/LenovoConfigurationService",
+                    "description": "A reference to the configuration service properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the configuration service characteristics of this manager and shall be of type LenovoConfigurationService.",
+                    "readonly": true
+                },
+                "DateTimeService": {
+                    "$ref": "/redfish/v1/metadata/LenovoDateTimeService.json#/definitions/LenovoDateTimeService",
+                    "description": "This property is a reference to Date and Time setting",
+                    "longDescription": "By the property, user can check how the manager update its Date and time.",
+                    "readonly": true
+                },
+                "FoD": {
+                    "$ref": "/redfish/v1/metadata/LenovoFoDService.json#/definitions/LenovoFoDService",
+                    "description": "A reference to the Feature on Demand service properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the Feature on Demand service characteristics of this manager and shall be of type LenovoFoDService.",
+                    "readonly": true
+                },
+                "KCSEnabled": {
+                    "description": "The value of this property enable or disable IPMI on KCS channel.",
+                    "longDescription": "Redfish support to expose the level of service to align with product generation and release cycles.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "OPSetting": {
+                    "$ref": "#/definitions/OPSetting",
+                    "description": "This property is a reference to the configuration of OpenID Provider.",
+                    "longDescription": "This is a reference to the configuration of OpenID Provider."
+                },
+                "Recipients": {
+                    "$ref": "/redfish/v1/metadata/LenovoAlertRecipientCollection.json#/definitions/LenovoAlertRecipientCollection",
+                    "description": "A reference to the event recepient properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the event recipient characteristics of this manager and shall be of type LenovoAlertRecipient.",
+                    "readonly": true
+                },
+                "RecipientsSettings": {
+                    "$ref": "#/definitions/GlobalSettings",
+                    "description": "The event recepient global settings.",
+                    "longDescription": "The value of this property shall be object to represent the event recipient characteristics of this manager."
+                },
+                "RemoteControl": {
+                    "$ref": "/redfish/v1/metadata/LenovoRemoteControlService.json#/definitions/LenovoRemoteControlService",
+                    "description": "A reference to the remote control properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the remote control characteristics of this manager and shall be of type LenovoRemoteControlService.",
+                    "readonly": true
+                },
+                "RemoteMap": {
+                    "$ref": "/redfish/v1/metadata/LenovoRemoteMapService.json#/definitions/LenovoRemoteMapService",
+                    "description": "A reference to the remote map properties, corresponding to CLI rdmount",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the remote map characteristics of this manager and shall be of type LenovoRemoteMapService.",
+                    "readonly": true
+                },
+                "SecureKeyLifecycleService": {
+                    "$ref": "/redfish/v1/metadata/LenovoSecureKeyLifecycle.json#/definitions/LenovoSecureKeyLifecycle",
+                    "description": "This property is a reference to secure key lifecycle service.",
+                    "longDescription": "This is a reference to secure key lifecycle service.",
+                    "readonly": true
+                },
+                "Security": {
+                    "$ref": "/redfish/v1/metadata/LenovoSecurityService.json#/definitions/LenovoSecurityService",
+                    "description": "A reference to the security service properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the security service characteristics of this manager and shall be of type LenovoSecurityService.",
+                    "readonly": true
+                },
+                "ServerProfile": {
+                    "$ref": "/redfish/v1/metadata/LenovoServerProfileService.json#/definitions/LenovoServerProfileService",
+                    "description": "A reference to the server profile service properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the server profile service characteristics of this manager and shall be of type LenovoServerProfileService.",
+                    "readonly": true
+                },
+                "ServiceAdvisor": {
+                    "$ref": "/redfish/v1/metadata/LenovoServiceAdvisor.json#/definitions/LenovoServiceAdvisor",
+                    "description": "This property is a reference to service advisor",
+                    "longDescription": "This is a reference to service advisor of the manager.",
+                    "readonly": true
+                },
+                "ServiceData": {
+                    "$ref": "/redfish/v1/metadata/LenovoServiceData.json#/definitions/LenovoServiceData",
+                    "description": "A reference to capture the service data properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that can be used to collect service data, FFDC and latest OS failure screen.",
+                    "readonly": true
+                },
+                "Watchdogs": {
+                    "$ref": "/redfish/v1/metadata/LenovoWatchdogCollection.json#/definitions/LenovoWatchdogCollection",
+                    "description": "This property is a reference to watchdogs setting",
+                    "longDescription": "This is a reference to watchdog settings of the manager.",
+                    "readonly": true
+                },
+                "release_name": {
+                    "description": "This property indicates redfish release name for product generation and release cycles.",
+                    "longDescription": "This property determines whether or not IPMI access Control to the BMC should be allowed on the KCS channel.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "OPSetting": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AuthorizationServerUri": {
+                    "description": "This property indicates the URI of LXCA authorization server endpoint.",
+                    "longDescription": "The value of this property shall indicate the URI of LXCA authorization server endpoint.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ClientID": {
+                    "description": "This property indicates the client identifier which normally is XCC UUID.",
+                    "longDescription": "The value of this property shall indicate the the client identifier which normally is XCC UUID.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PubKey": {
+                    "description": "This property indicates pub key for single sign on.",
+                    "longDescription": "The value of this property shall indicate pub key for single sign on.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SSOState": {
+                    "description": "This property indicates if XCC is managed by LXCA.",
+                    "longDescription": "The value of this property shall indicate if XCC is managed by LXCA.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UserInfoUri": {
+                    "description": "This property indicates the URI of UserInfo endpoint.",
+                    "longDescription": "The value of this property shall indicate the URI of UserInfo endpoint.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoManager.v1_0_0"
+}

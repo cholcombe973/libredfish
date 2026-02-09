@@ -1,0 +1,725 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "ComputerSystem",
+    "actions": {
+        "actions": {
+            "ComputerSystem.Reset": {
+                "additionalProperties": false,
+                "description": "This action resets the system.",
+                "longDescription": "This action shall reset the system represented by the resource.  For systems that implement ACPI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI Power Button Push.  The ForceOff value shall remove power from the system or perform an ACPI Power Button Override, commonly known as a four-second hold of the Power Button.  The ForceRestart value shall perform a ForceOff action, followed by an On action.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "ComputerSystem.Reset"
+                        ],
+                        "type": "string"
+                    },
+                    "ResetType": {
+                        "$ref": "Resource.json#/definitions/ResetType",
+                        "description": "The type of reset.",
+                        "longDescription": "This parameter shall contain the type of reset.  The service can accept a request without the parameter and perform an implementation-specific default reset."
+                    },
+                    "target": {
+                        "description": "Link to invoke action",
+                        "format": "uri-reference",
+                        "type": "string"
+                    },
+                    "title": {
+                        "description": "Friendly action name",
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "ResetType"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "The POST custom actions defined for this type (the implemented actions might be a subset of these)."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2020 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The ComputerSystem resource describes the compute node and its properties. A ComputerSystem represents a physical or virtual machine and the local resources, such as memory, CPU, and other devices that can be accessed from that machine.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#ComputerSystem.Reset": {
+                    "properties": {
+                        "ResetType@Redfish.AllowableValues": {
+                            "description": "The supported values for the ResetType parameter.",
+                            "items": {
+                                "enum": [
+                                    {
+                                        "$ref": "Resource.json#/definitions/ResetType"
+                                    }
+                                ],
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the ResetType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AssetTag": {
+            "description": "A user-definable tag that is used to track this system for inventory or other client purposes.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Bios": {
+            "description": "The Bios URI.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "BiosVersion": {
+            "description": "The version of the system BIOS or primary system firmware.",
+            "longDescription": "The value of this property shall be the version string of the currently installed and running BIOS (for x86 systems).  For other systems, the value may contain a version string representing the primary system firmware.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Boot": {
+            "additionalProperties": false,
+            "description": "The boot information for the current resource.",
+            "properties": {
+                "BootOptions": {
+                    "description": "A reference to the collection of the UEFI Boot Options associated with this Computer System.",
+                    "longDescription": "The value of this property shall be a link to a collection of type BootOptionCollection.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "BootOrder": {
+                    "description": "Ordered array of BootOptionReference strings representing the persistent Boot Order associated with this computer system.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The value of this property shall be an ordered array of BootOptionReference strings representing the persistent Boot Order of this computer system. For UEFI systems, this is the UEFI BootOrder as defined by the UEFI Specification.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "BootSourceOverrideEnabled": {
+                    "description": "BootSourceOverrideTarget must be specified before BootSourceOverrideEnabled can be used.",
+                    "enum": [
+                        null,
+                        "Disabled",
+                        "Once",
+                        "Continuous"
+                    ],
+                    "enumDescriptions": {
+                        "Continuous": "The system will boot to the target specified in the BootSourceOverrideTarget until this property is set to Disabled.",
+                        "Disabled": "The system will boot normally.",
+                        "Once": "On its next boot cycle, the system will boot (one time) to the Boot Source Override Target. The value of BootSourceOverrideEnabled is then reset back to Disabled."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BootSourceOverrideMode": {
+                    "enum": [
+                        "Legacy",
+                        "UEFI"
+                    ],
+                    "enumDescriptions": {
+                        "Legacy": "The system will boot in non-UEFI boot mode to the Boot Source Override Target.",
+                        "UEFI": "The system will boot in UEFI boot mode to the Boot Source Override Target."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "BootSourceOverrideTarget": {
+                    "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is true.",
+                    "etag": true,
+                    "longDescription": "The value of this property shall contain the source to boot the system from, overriding the normal boot order. The valid values for this property are specified through the Redfish.AllowableValues annotation. Pxe indicates to PXE boot from the primary NIC; Floppy, Cd, Usb, Hdd indicates to boot from their devices respectively. BiosSetup indicates to boot into the native BIOS screen setup. Utilities and Diags indicate to boot from the local utilities or diags partitions and UefiTarget indicates to boot from the UEFI device path found in UefiTargetBootSourceOverride.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BootSourceOverrideTarget@Redfish.AllowableValues": {
+                    "etag": true,
+                    "items": {
+                        "description": "The current boot source to be used at next boot instead of the normal boot device, if BootSourceOverrideEnabled is not Disabled.",
+                        "enum": [
+                            null,
+                            "None",
+                            "Pxe",
+                            "Floppy",
+                            "Cd",
+                            "Usb",
+                            "Hdd",
+                            "BiosSetup",
+                            "Utilities",
+                            "Diags",
+                            "UefiShell",
+                            "UefiTarget",
+                            "SDCard",
+                            "UefiHttp"
+                        ],
+                        "enumDescriptions": {
+                            "BiosSetup": "Boot to the BIOS Setup Utility.",
+                            "Cd": "Boot from the CD/DVD disc.",
+                            "Diags": "Boot the manufacturer's Diagnostics program.",
+                            "Floppy": "Boot from the floppy disk drive.",
+                            "Hdd": "Boot from a hard drive.",
+                            "None": "Boot from the normal boot device.",
+                            "Pxe": "Boot from the Pre-Boot EXecution (PXE) environment.",
+                            "SDCard": "Boot from an SD Card",
+                            "UefiHttp": "Boot from a UEFI HTTP network location",
+                            "UefiShell": "Boot to the UEFI Shell.",
+                            "UefiTarget": "Boot to the UEFI Device specified in the UefiTargetBootSourceOverride property.",
+                            "Usb": "Boot from a USB device as specified by the system BIOS.",
+                            "Utilities": "Boot the manufacturer's Utilities program(s)."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "type": "array"
+                },
+                "UefiTargetBootSourceOverride": {
+                    "description": "This property is the UEFI Device Path of the device to boot from when BootSourceOverrideTarget is UefiTarget.",
+                    "etag": true,
+                    "longDescription": "The value of this property shall be the UEFI device path of the override boot target. The valid values for this property are specified through the Redfish.AllowableValues annotation. BootSourceOverrideEnabled = Continuous is not supported for UEFI Boot Source Override as this setting is defined in UEFI as a one time boot only.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "UefiTargetBootSourceOverride@Redfish.AllowableValues": {
+                    "etag": true,
+                    "items": {
+                        "description": "An array of structured boot strings.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "EthernetInterfaces": {
+            "description": "A reference to the collection of Ethernet interfaces associated with this system.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "HostName": {
+            "description": "The DNS Host Name, without any domain information",
+            "etag": true,
+            "longDescription": "The value of this property shall be the host name for this system, as reported by the operating system or hypervisor.",
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "HostingRole": {
+            "description": "The enumerations of HostingRoles specify different features that the hosting ComputerSystem supports.",
+            "enum": [
+                "ApplicationServer",
+                "StorageServer",
+                "Switch",
+                "Appliance",
+                "BareMetalServer",
+                "VirtualMachineServer",
+                "ContainerServer"
+            ],
+            "enumDescriptions": {
+                "Appliance": "The system hosts functionality that supports the system acting as an appliance.",
+                "ApplicationServer": "The system hosts functionality that supports general purpose applications.",
+                "BareMetalServer": "The system hosts functionality that supports the system acting as a bare metal server.",
+                "ContainerServer": "The system hosts functionality that supports the system acting as a container server.",
+                "StorageServer": "The system hosts functionality that supports the system acting as a storage server.",
+                "Switch": "The system hosts functionality that supports the system acting as a switch.",
+                "VirtualMachineServer": "The system hosts functionality that supports the system acting as a virtual machine server."
+            },
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IndicatorLED": {
+            "description": "The state of the indicator LED.",
+            "enum": [
+                null,
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Blinking": "The Indicator LED is blinking.",
+                "Lit": "The Indicator LED is lit.",
+                "Off": "The Indicator LED is off.",
+                "Unknown": "The state of the Indicator LED cannot be determined."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Links": {
+            "additionalProperties": true,
+            "description": "The links array contains the related resource URIs.",
+            "properties": {
+                "Chassis": {
+                    "description": "The physical container URI associated with this resource.",
+                    "etag": false,
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ManagedBy": {
+                    "description": "The Manager URI for this resource.",
+                    "etag": false,
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Oem": {
+                    "$ref": "Resource.json#/definitions/Oem"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "LogServices": {
+            "description": "The LogService collection URI for this resource.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Manufacturer": {
+            "description": "The manufacturer or OEM of this system.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Memory": {
+            "additionalProperties": false,
+            "description": "The central memory in the system.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "MemoryDomains": {
+            "additionalProperties": false,
+            "description": "A reference to the collection of Memory Domains associated with this system.",
+            "etag": false,
+            "longDescription": "The value of this property shall be a link to a collection of type MemoryDomainCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "MemorySummary": {
+            "additionalProperties": false,
+            "description": "This object describes the central memory of the system in general detail.",
+            "properties": {
+                "Status": {
+                    "$ref": "Resource.json#/definitions/Status"
+                },
+                "TotalSystemMemoryGiB": {
+                    "description": "This is the total amount of memory in the system measured in GiB.",
+                    "longDescription": "This property shall contain the amount of system general purpose volatile (RAM) memory as measured in gibibytes.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "TotalSystemPersistentMemoryGiB": {
+                    "description": "The total configured, system-accessible persistent memory, measured in GiB.",
+                    "longDescription": "This property shall contain the total amount of configured persistent memory available to the system as measured in gibibytes.",
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Model": {
+            "description": "The model information that the manufacturer uses to refer to this system.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NetworkInterfaces": {
+            "additionalProperties": false,
+            "description": "The collection of network interfaces partitioned to this system.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeComputerSystemExt.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "PartNumber": {
+            "description": "The manufacturer's system part number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PowerState": {
+            "description": "This is the current power state of the system",
+            "enum": [
+                null,
+                "On",
+                "Off",
+                "Unknown",
+                "Reset",
+                "PoweringOn",
+                "PoweringOff"
+            ],
+            "longDescription": "The value of this property shall contain the power state of the system.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ProcessorSummary": {
+            "additionalProperties": false,
+            "description": "This object describes the central processors of the system in general detail.",
+            "properties": {
+                "Count": {
+                    "description": "The number of processors in the system.",
+                    "longDescription": "This property shall contain the number of central processors in the system.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Model": {
+                    "description": "The processor model for the primary or majority of processors in this system.",
+                    "longDescription": "This property shall contain the processor model for the central processors in the system, per the description in Table 22 of the SMBIOS Specification DSP0134 2.8 or later.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Status": {
+                    "$ref": "Resource.json#/definitions/Status"
+                }
+            },
+            "type": "object"
+        },
+        "Processors": {
+            "description": "The central processors in the system.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SKU": {
+            "description": "SKU for this system.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SecureBoot": {
+            "description": "A reference to the UEFI SecureBoot resource associated with this system.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SerialNumber": {
+            "description": "The system serial number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Storage": {
+            "description": "A reference to the collection of storage devices associated with this system.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SystemType": {
+            "description": "The type of computer system that this resource represents.",
+            "enum": [
+                "Physical",
+                "Virtual",
+                "OS",
+                "PhysicallyPartitioned",
+                "VirtuallyPartitioned",
+                "DPU"
+            ],
+            "enumDescriptions": {
+                "DPU": "SmartNIC DPU System",
+                "OS": "An operating system instance",
+                "Physical": "A computer system",
+                "PhysicallyPartitioned": "A hardware-based partition of a computer system",
+                "Virtual": "A virtual machine instance running on this system",
+                "VirtuallyPartitioned": "A virtual or software-based partition of a computer system"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "TrustedModules": {
+            "description": "This object describes the array of Trusted Modules in the system.",
+            "etag": true,
+            "items": {
+                "additionalProperties": false,
+                "description": "This object describes the inventory of a Trusted Modules installed in the system.",
+                "properties": {
+                    "FirmwareVersion": {
+                        "description": "The firmware version of this Trusted Module",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "InterfaceType": {
+                        "description": "This property indicates the interface type of the Trusted Module.",
+                        "enum": [
+                            "TM1_0",
+                            "TPM1_2",
+                            "TPM2_0"
+                        ],
+                        "enumDescriptions": {
+                            "TM1_0": "Trusted Module (TM) 1.0",
+                            "TPM1_2": "Trusted Platform Module (TPM) 1.2",
+                            "TPM2_0": "Trusted Platform Module (TPM) 2.0"
+                        },
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Oem": {
+                        "additionalProperties": true,
+                        "properties": {
+                            "Hpe": {
+                                "$ref": "HpeTrustedModuleExt.json#",
+                                "readonly": false
+                            }
+                        },
+                        "readonly": false,
+                        "type": "object"
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "UUID": {
+            "description": "The universal unique identifier for this system.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "BootProgress": {
+            "description": "Information about SmartNIC device Operating Boot progress",
+            "additionalProperties": false,
+            "etag": true,
+            "properties": {
+                "LastState": {
+                    "description": "SmartNIC device operating system status",
+                    "enum": [
+                        "OSBootStarted",
+                        "OSRunning",
+                        "OEM"
+                    ],
+                    "enumDescriptions": {
+                        "OSBootStarted": "The operating system has started booting.",
+                        "OSRunning": "The operating system is running.",
+                        "OEM": "The operating system state is reported in the OemLastState property."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "OemLastState": {
+                    "description": "SmartNIC device operating system oem status",
+                    "enum": [
+                        "OSServicesReady",
+                        "OSServicesOffline",
+                        "OSHalting",
+                        "OSHalted"
+                    ],
+                    "enumDescriptions": {
+                        "OSServicesReady": "The operating system services are ready.",
+                        "OSServicesOffline": "The operating system services are offline.",
+                        "OSHalting": "The operating system has started halting.",
+                        "OSHalted": "The operating system has performed a shutdown."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#ComputerSystem.v1_13_0.ComputerSystem",
+    "type": "object"
+}

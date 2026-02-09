@@ -1,0 +1,401 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeSmartStorageDiskDrive",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeSmartStorageDiskDrive resource describes the properties of the HPE Smart Storage controller,drives,and volumes.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "BlockSizeBytes": {
+            "description": "Block size of the drive in bytes. This is the block size presented by the drive to clients such as the array controller or operating system.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "CapacityGB": {
+            "description": "Total capacity of the drive in GB. This denotes the marketing capacity (base 10)",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "CapacityLogicalBlocks": {
+            "description": "Total number of logical blocks in the drive",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "CapacityMiB": {
+            "description": "Total capacity of the drive in MiB",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "CarrierApplicationVersion": {
+            "description": "Carrier PIC firmware version currently running",
+            "readonly": true,
+            "type": "string"
+        },
+        "CarrierAuthenticationStatus": {
+            "description": "Authentication status of the drive carrier",
+            "enum": [
+                "OK",
+                "Fail",
+                "NoCommunication",
+                "NotApplicable"
+            ],
+            "enumDescriptions": {
+                "Fail": "Carrier authentication failed",
+                "NoCommunication": "Communication could not be established with the carrier",
+                "NotApplicable": "Carrier does not support authentication",
+                "OK": "Carrier authenticated as genuine HPE product"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "CurrentTemperatureCelsius": {
+            "description": "The current temperature of the drive",
+            "etag": false,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "DiskDriveStatusReasons": {
+            "description": "A list of status reasons that the drive is currently exhibiting",
+            "etag": true,
+            "items": {
+                "enum": [
+                    "None",
+                    "Unknown",
+                    "CommunicationFailure",
+                    "Zoned",
+                    "EraseInProgress",
+                    "QueuedForErase",
+                    "EraseCompleted",
+                    "EraseFailed",
+                    "EraseAborted",
+                    "Failed",
+                    "NonAuthenticDrive",
+                    "CarrierCommunicationFailure",
+                    "PredictiveFail",
+                    "NotSupported",
+                    "SizeNotValid",
+                    "FailedDueToPredictiveSpareActivation",
+                    "Rebuilding",
+                    "TransientDataDrive",
+                    "Unrecoverable"
+                ],
+                "enumDescriptions": {
+                    "CarrierCommunicationFailure": "The drive carrier has a communication fault",
+                    "CommunicationFailure": "Cannot communicate with drive",
+                    "EraseAborted": "The erase operation was aborted",
+                    "EraseCompleted": "Drive has completed the erase operation",
+                    "EraseFailed": "The erase operation has failed for the drive",
+                    "EraseInProgress": "Drive is currently in process of an erase operation",
+                    "Failed": "The drive has failed",
+                    "FailedDueToPredictiveSpareActivation": "The drive was failed due to a predictive spare activation",
+                    "NonAuthenticDrive": "The drive is not an authentic drive",
+                    "None": "No status reason available",
+                    "NotSupported": "The drive is not supported by the controller",
+                    "PredictiveFail": "Drive failure is imminent",
+                    "QueuedForErase": "Drive is currently queued for an erase operation",
+                    "Rebuilding": "The drive is currently rebuilding",
+                    "SizeNotValid": "The drive size is invalid. Typically occurs if a drive part of a raid volume is replaced with a smaller sized drive",
+                    "TransientDataDrive": "The drive is part of a volume that is currently undergoing a transformation. After the transformation is complete the drive's state will change",
+                    "Unknown": "Reason is unknown",
+                    "Unrecoverable": "The drive is in an unrecoverable condition",
+                    "Zoned": "Drive is currently zoned, only basic information can be displayed"
+                },
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "DiskDriveUse": {
+            "description": "The current use of the physical drive.",
+            "enum": [
+                "Data",
+                "Spare",
+                "Raw",
+                "Unconfigured",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Data": "It is a Data drive which is a part of an array.",
+                "Raw": "Indicates the drive is available to the OS via HBA mode on the controller.",
+                "Spare": "It is a spare drive which is a part of an array.",
+                "Unconfigured": "Indicates the drive is not available to the OS as controller is in RAID mode.",
+                "Unknown": "The current use of the disk drive is not known."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "EncryptedDrive": {
+            "description": "True if encryption is currently enabled on this disk drive, false otherwise",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "EraseCompletionPercentage": {
+            "description": "The percent complete for an erase operation currently occurring on the disk drive or null if not currently erasing a drive.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "ErasePattern": {
+            "description": "The pattern used for erasing the disk drive",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "FirmwareVersion": {
+            "$ref": "Resource.json#/definitions/CurrentFirmwareVersion"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IndicatorLED": {
+            "description": "The state of the indicator LED.",
+            "enum": [
+                null,
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Blinking": "The Indicator LED is blinking.",
+                "Lit": "The Indicator LED is lit.",
+                "Off": "The Indicator LED is off.",
+                "Unknown": "The state of the Indicator LED cannot be determined."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "InterfaceSpeedMbps": {
+            "description": "Native interface speed for the device",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "InterfaceType": {
+            "description": "The connection interface of the drive. The value NVME has been deprecated.",
+            "enum": [
+                "SAS",
+                "SATA",
+                "NVME",
+                "PCIe",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "NVME": "Non-volatile memory (deprecated)",
+                "PCIe": "PCIe interface",
+                "SAS": "SAS",
+                "SATA": "SATA",
+                "Unknown": "Information is unavailable"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LegacyBootPriority": {
+            "description": "This indicates that the array controller should provide legacy boot support.",
+            "enum": [
+                "Primary",
+                "Secondary",
+                "None"
+            ],
+            "enumDescriptions": {
+                "None": "Legacy boot not supported on this physical drive",
+                "Primary": "This indicates that the array controller should provide legacy boot support (Interrupt 13h BIOS support) for this physical drive. The physical drive will be listed as first in the LUN list returned via SCSI commands",
+                "Secondary": "This indicates that the array controller should provide legacy boot support (Interrupt 13h BIOS support) for this physical drive. The physical drive will be listed as second in the LUN list returned via SCSI commands"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Location": {
+            "description": "The location of the drive",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "LocationFormat": {
+            "description": "Format for the location property",
+            "enum": [
+                "ControllerPort:Box:Bay",
+                "SwitchPort:Box:Bay",
+                "SwitchPort:SwitchBay:Bay"
+            ],
+            "enumDescriptions": {
+                "ControllerPort:Box:Bay": "This format typically used in controller context where the drive would be identified using the controller port, JBOD box number and drive bay",
+                "SwitchPort:Box:Bay": "This format typically used in a SAS switch context where the drive would be identified using the switch port, JBOD box number and drive bay",
+                "SwitchPort:SwitchBay:Bay": "This format typically used in a SAS switch context where the drive would be identified using the switch port, ICM bay number for the switch and drive bay"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Manufacturer": {
+            "description": "Manufacturer of the disk drive",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "MaximumTemperatureCelsius": {
+            "description": "The maximum recommended temperature for the drive",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "MediaType": {
+            "description": "Type of disk",
+            "enum": [
+                "HDD",
+                "SSD",
+                "SMR"
+            ],
+            "enumDescriptions": {
+                "HDD": "The drive media type is traditional magnetic platters",
+                "SMR": "The drive media type is shingled magnetic recording",
+                "SSD": "The drive media type is solid state or flash memory"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "MinimumGoodFirmwareVersion": {
+            "description": "The minimum recommended firmware revision for the drive",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Model": {
+            "description": "Drive model number",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NativeBlockSizeBytes": {
+            "description": "Native block size of the drive in bytes. This is the underlying sector size used by the physical drive to store data. For example, an advanced format drive that uses 4K sector sizes to store data will return 4K as the NativeBlockSizeBytes but may return 512 for the BlockSizeBytes when running in 512e (emulation) mode for backward compatibility",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        },
+        "PhyCount": {
+            "description": "The number of phys the drive has",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "PortCount": {
+            "description": "The number of ports on the drive. Typically 1 (single-domain) or 2 (dual-domain)",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "PowerOnHours": {
+            "description": "The number of lifetime hours that the drive has been powered on. The value is null if the disk power on hours cannot be determined or is not supported.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "RotationalSpeedRpm": {
+            "description": "The rotational speed of the drive, only applicable on HDDs",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "SSDEnduranceUtilizationPercentage": {
+            "description": "This is the percentage of the drive that has been worn out and can no longer be used. When this values reaches 100%, the drive has 0% usage remaining and is completely worn out. The value is null if percent endurance used cannot be determined or is not supported.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "The serial number of the drive",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "SpareRebuildMode": {
+            "description": "Method to used activate this drive when another drive fails, this is only applicable if the drive is configured as a spare drive",
+            "enum": [
+                "Dedicated",
+                "Roaming"
+            ],
+            "enumDescriptions": {
+                "Dedicated": "This drive will take over a failed drive temporarily. When the failed drive is replaced, this will return to being a spare. This drive be shared between arrays.",
+                "Roaming": "This drive will permanently replace a failed drive. The failed drive will become a spare. This spare drive cannot be shared between arrays."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "TransferSpeedMbps": {
+            "description": "Effective transfer speed to the device taking into account hardware acceleration such as edge-buffering",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "UncorrectedReadErrors": {
+            "description": "The number of read errors that have occurred on a drive that could not be recovered by a drive's Error Correction Code (ECC) algorithm or through retries. Over time, a drive may produce these errors, and a problem may exist. The value increases every time the physical drive detects another error. The severity of these errors depends on if the drive is in a fault tolerant mode and the controller can remap data to eliminate problems.  If an increase in this counter is seen, run diagnostics on the drive",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "UncorrectedWriteErrors": {
+            "description": "The number of write errors that have occurred on a drive that could not be recovered through retries. Over time, a drive may produce these errors, and a problem may exist. The value increases every time the physical drive detects another error. If an increase in this counter is seen, run diagnostics on the drive.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "WWID": {
+            "description": "Unique identifier for the device",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeSmartStorageDiskDrive.v2_1_0.HpeSmartStorageDiskDrive",
+    "type": "object"
+}

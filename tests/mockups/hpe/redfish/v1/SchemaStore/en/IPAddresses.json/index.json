@@ -1,0 +1,207 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "IPAddresses",
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "definitions": {
+        "IPv4Address": {
+            "additionalProperties": false,
+            "description": "This type describes an IPv4 Address.",
+            "properties": {
+                "Address": {
+                    "description": "This is the IPv4 Address.",
+                    "etag": true,
+                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AddressOrigin": {
+                    "$ref": "#/definitions/IPv4AddressOrigin",
+                    "description": "This indicates how the address was determined.",
+                    "etag": true,
+                    "longDescription": "The value of this property shall be the IP address origin for this network interface.",
+                    "readonly": true
+                },
+                "Gateway": {
+                    "description": "This is the IPv4 gateway for this address.",
+                    "etag": true,
+                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SubnetMask": {
+                    "$ref": "#/definitions/dSubnetMask",
+                    "description": "This is the IPv4 Subnet mask.",
+                    "etag": true,
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "IPv4AddressOrigin": {
+            "enum": [
+                null,
+                "Static",
+                "DHCP",
+                "BOOTP",
+                "IPv4LinkLocal"
+            ],
+            "enumDescriptions": {
+                "BOOTP": "Address is provided by a BOOTP service.",
+                "DHCP": "Address is provided by a DHCPv4 service.",
+                "IPv4LinkLocal": "Address is valid only for this network segment (link).",
+                "Static": "A static address as configured by the user."
+            },
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IPv6Address": {
+            "additionalProperties": false,
+            "description": "This type describes an IPv6 Address.",
+            "properties": {
+                "Address": {
+                    "description": "This is the IPv6 Address.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AddressOrigin": {
+                    "$ref": "#/definitions/IPv6AddressOrigin",
+                    "description": "This indicates how the address was determined.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "AddressState": {
+                    "$ref": "#/definitions/dAddressState",
+                    "description": "The current state of this address as defined in RFC 4862.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "PrefixLength": {
+                    "$ref": "#/definitions/dPrefixLength",
+                    "description": "This is the IPv6 Address Prefix Length.",
+                    "etag": true,
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "IPv6AddressOrigin": {
+            "enum": [
+                null,
+                "Static",
+                "DHCPv6",
+                "LinkLocal",
+                "SLAAC"
+            ],
+            "enumDescriptions": {
+                "DHCPv6": "Address is provided by a DHCPv6 service.",
+                "LinkLocal": "Address is valid only for this network segment (link).",
+                "SLAAC": "Address is provided by a Stateless Address AutoConfiguration (SLAAC) service.",
+                "Static": "A static address as configured by the user."
+            },
+            "etag": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IPv6GatewayStaticAddress": {
+            "additionalProperties": false,
+            "description": "This object represents a single IPv6 static address to be assigned on a network interface.",
+            "properties": {
+                "Address": {
+                    "description": "A valid IPv6 address.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PrefixLength": {
+                    "$ref": "#/definitions/dPrefixLength",
+                    "description": "The Prefix Length of this IPv6 address.",
+                    "etag": true,
+                    "readonly": false
+                }
+            },
+            "required": [
+                "Address"
+            ],
+            "type": "object"
+        },
+        "IPv6StaticAddress": {
+            "additionalProperties": false,
+            "description": "This object represents a single IPv6 static address to be assigned on a network interface.",
+            "properties": {
+                "Address": {
+                    "description": "A valid IPv6 address.",
+                    "etag": true,
+                    "longDescription": "This property provides access to a static IPv6 address that is currently assigned on a network interface.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PrefixLength": {
+                    "$ref": "#/definitions/dPrefixLength",
+                    "description": "The Prefix Length of this IPv6 address.",
+                    "etag": true,
+                    "readonly": false
+                }
+            },
+            "required": [
+                "Address",
+                "PrefixLength"
+            ],
+            "type": "object"
+        },
+        "dAddressState": {
+            "enum": [
+                null,
+                "Preferred",
+                "Deprecated",
+                "Tentative",
+                "Failed"
+            ],
+            "enumDescriptions": {
+                "Deprecated": "This address is currently within it's valid lifetime, but is now outside of it's preferred lifetime as defined in RFC 4862.",
+                "Failed": "This address has failed Duplicate Address Detection testing as defined in RFC 4862 section 5.4 and is not currently in use.",
+                "Preferred": "This address is currently within both it's valid and preferred lifetimes as defined in RFC 4862.",
+                "Tentative": "This address is currently undergoing Duplicate Address Detection testing as defined in RFC 4862 section 5.4."
+            },
+            "etag": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dPrefixLength": {
+            "maximum": 128,
+            "minimum": 1,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "dSubnetMask": {
+            "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$",
+            "type": "string"
+        }
+    },
+    "description": "The JSON Schema File resource describes the location (URI) of a particular Redfish schema definition being implemented or referenced by a Redfish service.",
+    "title": "#IPAddresses.v1_1_0",
+    "type": "object"
+}

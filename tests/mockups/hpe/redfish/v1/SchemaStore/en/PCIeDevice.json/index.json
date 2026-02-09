@@ -1,0 +1,181 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "PCIeDevice",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This is the schema definition for the PCIeDevice resource.  It represents the properties of a PCIe Device attached to a System.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "DeviceType": {
+            "description": "The device type for this PCIe device.",
+            "longDescription": "This property shall contain the device type of the PCIe device such as SingleFunction or MultiFunction.",
+            "enum": [
+                "SingleFunction",
+                "MultiFunction",
+                "Simulated"
+            ],
+            "enumDescriptions": {
+                "MultiFunction": "A multi-function PCIe device.",
+                "Simulated": "A PCIe device which is not currently physically present, but is being simulated by the PCIe infrastructure.",
+                "SingleFunction": "A single-function PCIe device."
+            },
+            "type": "string",
+            "readonly": true
+        },
+        "FirmwareVersion": {
+            "description": "The version of firmware for this PCIe device.",
+            "longDescription": "This property shall contain the firmware version of the PCIe device.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id",
+            "readonly": true
+        },
+        "Links": {
+            "$ref": "#/definitions/Links",
+            "description": "The links to other Resources that are related to this Resource.",
+            "longDescription": "This property shall contain links to Resources that are related to but are not contained by, or subordinate to, this Resource."
+        },
+        "Manufacturer": {
+            "description": "The manufacturer of this PCIe device.",
+            "longDescription": "This property shall contain the name of the organization responsible for producing the PCIe device.  This organization might be the entity from whom the PCIe device is purchased, but this is not necessarily true.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Model": {
+            "description": "The model number for the PCIe device.",
+            "longDescription": "This property shall contain the name by which the manufacturer generally refers to the PCIe device.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name",
+            "readonly": true
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpePCIeDevice.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "PCIeFunctions": {
+            "description": "The link to the collection of PCIe functions associated with this PCIe device.",
+            "longDescription": "This property shall contain a link to a Resource Collection of type PCIeFunctionCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PCIeInterface": {
+            "additionalProperties": false,
+            "description": "This type defines a PCI interface.",
+            "longDescription": "These properties shall contain the definition for a PCIe Interface for a Redfish implementation.",
+            "properties": {
+                "LanesInUse": {
+                    "description": "The number of PCIe lanes in use by this device.",
+                    "longDescription": "This property shall contain the number of PCIe lanes in use by this device, which shall be equal to or less than the MaxLanes property value.",
+                    "maximum": 32,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxLanes": {
+                    "description": "The number of PCIe lanes supported by this device.",
+                    "longDescription": "This property shall contain the maximum number of PCIe lanes supported by this device.",
+                    "maximum": 32,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxPCIeType": {
+                    "description": "The highest version of the PCIe specification supported by this device.",
+                    "longDescription": "This property shall contain the maximum PCIe specification that this device supports.",
+                    "$ref": "Resource.json#/definitions/PCIeTypes",
+                    "readonly": true
+                },
+                "PCIeType": {
+                    "description": "The version of the PCIe specification in use by this device.",
+                    "longDescription": "This property shall contain the negotiated PCIe interface version in use by this device.",
+                    "$ref": "Resource.json#/definitions/PCIeTypes",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "PartNumber": {
+            "description": "The part number for this PCIe device.",
+            "longDescription": "This property shall contain a part number assigned by the organization that is responsible for producing or manufacturing the PCIe device.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SKU": {
+            "description": "The SKU for this PCIe device.",
+            "longDescription": "This property shall contain the stock-keeping unit number for this PCIe device.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "The serial number for this PCIe device.",
+            "longDescription": "This property shall contain a manufacturer-allocated number that identifies the PCIe device.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        }
+    },
+    "required": [
+        "@odata.id",
+        "@odata.type",
+        "Id",
+        "Name"
+    ],
+    "readonly": true,
+    "title": "#PCIeDevice.v1_5_0.PCIeDevice",
+    "type": "object"
+}

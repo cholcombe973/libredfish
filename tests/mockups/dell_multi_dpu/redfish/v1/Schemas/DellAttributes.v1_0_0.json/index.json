@@ -1,0 +1,114 @@
+{
+    "$id": "/redfish/v1/Schemas/DellAttributes.v1_0_0.json",
+    "$ref": "#/definitions/DellAttributes",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Attributes": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "[A-Za-z0-9]+": {
+                    "type": [
+                        "string",
+                        "boolean",
+                        "number",
+                        "null"
+                    ]
+                },
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "DellAttributes": {
+            "additionalProperties": true,
+            "description": "DellAttributes contains properties of additional properties to complement the Attribute Registry DMTF schema. It contains attributes surrounding attribute registry and Actions needed to perform changes to settings, which typically doesn't require a manager reset to apply.",
+            "longDescription": "This resource shall be used to represent Oem attributes for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "AttributeRegistry": {
+                    "description": "The Resource ID of the Attribute Registry for the manager Attributes resource.",
+                    "longDescription": "The reference to the Attribute Registry that lists the metadata describing the manager attribute settings in this resource.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Attributes": {
+                    "$ref": "#/definitions/Attributes",
+                    "description": "This is the manufacturer/provider specific list of manager attributes.",
+                    "longDescription": "Manager Attribute settings appear as additional properties in this object, and can be looked up in the Attribute Registry by their AttributeName."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellAttributes.v1_0_0.DellAttributes"
+}

@@ -1,0 +1,209 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpePowerMeter",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpePowerMeter resource contains the computer system power history logged by the BMC.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Average": {
+            "description": "Average power across all samples, over the last 24 hours.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Maximum": {
+            "description": "Maximum power across all samples, taken from the 24 hour history.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Minimum": {
+            "description": "Minimum power across all samples, taken from the 24 hour history.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        },
+        "PowerDetail": {
+            "description": "Power detail of the power meter.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "AmbTemp": {
+                        "description": "Ambient temperature, in degrees Celsius.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "Average": {
+                        "description": "Average power in Watts over the sample time.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "Cap": {
+                        "description": "The applicable power cap in Watts at the time of this power sample.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CpuAvgFreq": {
+                        "description": "CPU average frequency in MHz.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CpuCapLim": {
+                        "description": "Measures the effect of the power cap on performance in percent.",
+                        "etag": true,
+                        "maximum": 100,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CpuMax": {
+                        "description": "The percentage of time the CPU spent in its maximum power mode.",
+                        "etag": true,
+                        "maximum": 100,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CpuPwrSavLim": {
+                        "description": "Measures the effect of CPU Power Regulator state switching on performance in percent.",
+                        "etag": true,
+                        "maximum": 100,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CpuUtil": {
+                        "description": "CPU utilization in percent.",
+                        "etag": true,
+                        "maximum": 100,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CpuWatts": {
+                        "description": "The power consumed by the system CPUs in Watts.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "DimmWatts": {
+                        "description": "The power consumed by the system memory DIMMs in Watts.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "GpuWatts": {
+                        "description": "The power consumed by the GPU(s) in Watts.  This will be 0 if no GPUs are installed or if the drivers are not loaded.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "Minimum": {
+                        "description": "Minimum power in Watts over the sample time.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "Peak": {
+                        "description": "Peak power in Watts over the sample time.",
+                        "etag": true,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "PrMode": {
+                        "description": "Power Regulator mode, which can be OS Control, Static High, Static Low or Dynamic.",
+                        "enum": [
+                            null,
+                            "dyn",
+                            "min",
+                            "max",
+                            "osc"
+                        ],
+                        "enumDescriptions": {
+                            "dyn": "Dynamic Mode - CPU power regulation is managed dynamically by the firmware.",
+                            "max": "Maximum Mode - CPU power regulation is configured for maximum performance at the possible expense of power efficiency.",
+                            "min": "Minimum Mode - CPU power regulation is configured to save as much power as possible at the possible expense of performance.",
+                            "osc": "OS Control Mode - CPU power regulation is managed by the Operating System."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "PunCap": {
+                        "description": "If true, CPU performance is being penalized by the current power cap.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "Time": {
+                        "description": "Time at which the power sample detail was captured.",
+                        "etag": true,
+                        "format": "date-time",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "UnachCap": {
+                        "description": "If true, the configured power cap could not be achieved due to system power requirements.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Samples": {
+            "description": "Number of samples in the array.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        }
+    },
+    "readonly": true,
+    "title": "#HpePowerMeter.v2_0_1.HpePowerMeter",
+    "type": "object"
+}

@@ -1,0 +1,71 @@
+{
+    "$id": "/redfish/v1/Schemas/DataStorageLoSCapabilities.json",
+    "$ref": "#/definitions/DataStorageLoSCapabilities",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2021 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "DataStorageLoSCapabilities": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/DataStorageLoSCapabilities.v1_2_2.json#/definitions/DataStorageLoSCapabilities"
+                }
+            ],
+            "deletable": false,
+            "description": "Describe data storage and provisioning capabilities.",
+            "insertable": false,
+            "longDescription": "This resource shall be used to describe storage availability and provisioning capabilities.",
+            "updatable": true
+        },
+        "ProvisioningPolicy": {
+            "description": "Space provisioning policy.",
+            "enum": [
+                "Fixed",
+                "Thin"
+            ],
+            "enumDescriptions": {
+                "Fixed": "Storage is fully allocated.",
+                "Thin": "Storage may be over allocated."
+            },
+            "enumLongDescriptions": {
+                "Fixed": "This enumeration literal specifies storage shall be fully allocated.",
+                "Thin": "This enumeration literal specifies storage may be over allocated."
+            },
+            "longDescription": "The enumeration literals may be used to specify space provisioning policy.",
+            "type": "string"
+        },
+        "StorageAccessCapability": {
+            "description": "Values of StorageAccessCapability describe abilities to read or write storage.",
+            "enum": [
+                "Read",
+                "Write",
+                "WriteOnce",
+                "Append",
+                "Streaming",
+                "Execute"
+            ],
+            "enumDescriptions": {
+                "Append": "AppendOnly.",
+                "Execute": "Execute access is allowed by the file share.",
+                "Read": "Read.",
+                "Streaming": "Streaming.",
+                "Write": "Write Many.",
+                "WriteOnce": "WriteOnce."
+            },
+            "enumLongDescriptions": {
+                "Append": "This enumeration literal shall indicate that the storage may be written only to append.",
+                "Execute": "This value shall indicate that Execute access is allowed by the file share.",
+                "Read": "This enumeration literal shall indicate that the storage may be read.",
+                "Streaming": "This enumeration literal shall indicate that the storage may be read sequentially.",
+                "Write": "This enumeration literal shall indicate that the storage may be written multiple times.",
+                "WriteOnce": "This enumeration literal shall indicate that the storage may be written only once."
+            },
+            "longDescription": "StorageAccessCapability enumeration literals may be used to describe abilities to read or write storage.",
+            "type": "string"
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#DataStorageLoSCapabilities.DataStorageLoSCapabilities"
+}

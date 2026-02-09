@@ -1,0 +1,53 @@
+{
+    "$id": "/redfish/v1/Schemas/ConsistencyGroup.json",
+    "$ref": "#/definitions/ConsistencyGroup",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2023 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "ApplicationConsistencyMethod": {
+            "enum": [
+                "HotStandby",
+                "VASA",
+                "VDI",
+                "VSS",
+                "Other"
+            ],
+            "enumDescriptions": {
+                "HotStandby": "Supports consistency method commonly orchestrated using application-specific code.",
+                "Other": "Supports consistency method orchestrated using vendor-specific code.",
+                "VASA": "Supports VMware consistency requirements, such as for VASA and VVOLs.",
+                "VDI": "Supports Microsoft virtual backup device interface (VDI).",
+                "VSS": "Supports Microsoft VSS."
+            },
+            "type": "string"
+        },
+        "ConsistencyGroup": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/ConsistencyGroup.v1_1_1.json#/definitions/ConsistencyGroup"
+                }
+            ],
+            "deletable": true,
+            "description": "A collection of volumes grouped together to ensure write order consistency across all those volumes.",
+            "insertable": false,
+            "longDescription": "A collection of volumes grouped together to ensure write order consistency across all those volumes. A management operation on a consistency group, such as configuring replication properties, applies to all the volumes within the consistency group.",
+            "updatable": true
+        },
+        "ConsistencyType": {
+            "enum": [
+                "CrashConsistent",
+                "ApplicationConsistent"
+            ],
+            "enumDescriptions": {
+                "ApplicationConsistent": "Orchestration exists to either flush or halt pending IO to ensure operations occur in a transactionally consistent manner.",
+                "CrashConsistent": "Requested operations are either triggered or instituted without regard to pending IO."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#ConsistencyGroup.ConsistencyGroup"
+}

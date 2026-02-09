@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoRemoteControlSession  v1.0.0                           -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteControlSession">
+      <EntityType Name="LenovoRemoteControlSession" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoRemoteControlSession resource."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a remote mount media for an OEM implementation."/>
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteControlSession.v1_0_0">
+      <EntityType Name="LenovoRemoteControlSession" BaseType="LenovoRemoteControlSession.LenovoRemoteControlSession">
+        <Annotation Term="OData.Description" String="This schema defines the remote control session to be used in conjunction with a remote mount service."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the remote control session for the remote mount service."/>
+
+        <Property Name="Username" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Username of the active session"/>
+        </Property>
+        <Property Name="ActiveSession" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The active session address"/>
+        </Property>    
+        <Property Name="Timeout" Type="LenovoRemoteControlSession.v1_0_0.KnockIntervalTypes" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The timeout for the active session"/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="KnockIntervalTypes">
+        <Member Name="Interval_1minute">
+          <Annotation Term="OData.Description" String="The interval is 1 minute"/>
+        </Member>
+        <Member Name="Interval_5minutes">
+          <Annotation Term="OData.Description" String="The interval is 5 minutes"/>
+        </Member>
+        <Member Name="Interval_10minutes">
+          <Annotation Term="OData.Description" String="The interval is 10 minutes"/>
+        </Member>
+        <Member Name="Interval_30minutes">
+          <Annotation Term="OData.Description" String="The interval is 30 minutes"/>
+        </Member>
+        <Member Name="Interval_1hour">
+          <Annotation Term="OData.Description" String="The interval is 1 hour"/>
+        </Member>
+        <Member Name="Interval_2hours">
+          <Annotation Term="OData.Description" String="The interval is 2 hours"/>
+        </Member>
+        <Member Name="Interval_24hours">
+          <Annotation Term="OData.Description" String="The interval is 24 hours"/>
+        </Member>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

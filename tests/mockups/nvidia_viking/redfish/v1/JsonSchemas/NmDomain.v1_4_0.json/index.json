@@ -1,0 +1,617 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/NmDomain.v1_4_0.json",
+    "$ref": "#/definitions/Domain",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#NmDomain.ChangeState": {
+                    "$ref": "#/definitions/ChangeState"
+                },
+                "#NmDomain.ResetStatistics": {
+                    "$ref": "#/definitions/ResetStatistics"
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/JsonSchemas/NodeManager.v1_0_0.json#/definitions/OemActions",
+                    "description": "The available OEM-specific actions for this resource.",
+                    "longDescription": "This property shall contain the available OEM-specific actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "Capabilities": {
+            "additionalProperties": false,
+            "description": "The capabilities data information for this domain.",
+            "longDescription": "This type shall contain min and max that describe control capabilities of this domain.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Max": {
+                    "description": "Maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown.",
+                    "longDescription": "This property shall contain maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown (e.g. not reported by underlying hardware).",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MaxCorrectionTimeInMs": {
+                    "description": "Maximal correction time of policies in this domain.",
+                    "longDescription": "This property shall contain maximal value correction time which can be set for policies in this domain.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "ms"
+                },
+                "MaxStatisticsReportingPeriod": {
+                    "description": "Maximal statistic reporting period for calculating the average for policies in this domain. The value shall conform to the Duration format.",
+                    "longDescription": "This property shall contain maximal value correction time which can be set for policies in this domain. The value shall conform to the Duration format.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Min": {
+                    "description": "Minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown.",
+                    "longDescription": "This property shall contain minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown (e.g. not reported by underlying hardware).",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MinCorrectionTimeInMs": {
+                    "description": "Minimal correction time of policies in this domain.",
+                    "longDescription": "This property shall contain minimal value correction time which can be set for policies in this domain.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "ms"
+                },
+                "MinStatisticsReportingPeriod": {
+                    "description": "Minimal statistic reporting period for calculating the average for policies in this domain. The value shall conform to the Duration format.",
+                    "longDescription": "This property shall contain minimal value correction time which can be set for policies in this domain. The value shall conform to the Duration format.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ChangeState": {
+            "additionalProperties": false,
+            "parameters": {
+                "State": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/State",
+                    "description": "The state of the Resource to transition to.",
+                    "longDescription": "This parameter shall contain the state of the Resource to transition to."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ComponentCapabilities": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Max": {
+                    "description": "Maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown.",
+                    "longDescription": "This property shall contain maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown (e.g. not reported by underlying hardware).",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "versionAdded": "v1_4_0"
+                },
+                "Min": {
+                    "description": "Minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown.",
+                    "longDescription": "This property shall contain minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown (e.g. not reported by underlying hardware).",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "versionAdded": "v1_4_0"
+                },
+                "Name": {
+                    "description": "Name of component for which capabilites are presented.",
+                    "longDescription": "This property shall contain name of the domains component for which capabilites is for.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_4_0"
+                }
+            },
+            "type": "object"
+        },
+        "ControlKnob": {
+            "enum": [
+                "AcpiPstate",
+                "HwpmPerfBias",
+                "HwpmPerfPreference",
+                "HwpmPerfPreferenceOverride",
+                "ProchotRatio",
+                "TurboRatioLimit"
+            ],
+            "enumDescriptions": {
+                "AcpiPstate": "ACPI Pstate number in range {0..Pn}.",
+                "HwpmPerfBias": "HWPM Power-Performance Bias setting.",
+                "HwpmPerfPreference": "HWPM Performance Preference indication setting.",
+                "HwpmPerfPreferenceOverride": "PHWPM Performance Preference Override setting.",
+                "ProchotRatio": "CPU ratio value to be set in response to PROCHOT# signal assertion.",
+                "TurboRatioLimit": "Turbo ratio limit for all active threads and all CPU packages."
+            },
+            "type": "string"
+        },
+        "Domain": {
+            "additionalProperties": false,
+            "description": "The NmDomain schema contains properties related to monitoring and control of the given domain.",
+            "longDescription": "The NmDomain schema contains properties related to monitoring and control of the given domain.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this Resource.",
+                    "longDescription": "This property shall contain the available actions for this Resource."
+                },
+                "Capabilities": {
+                    "$ref": "#/definitions/Capabilities",
+                    "description": "The capabilities data information for this domain.",
+                    "longDescription": "This type shall contain min and max that describe control capabilities of this domain."
+                },
+                "ComponentCapabilities": {
+                    "description": "The capabilities data information for components in this domain.",
+                    "items": {
+                        "$ref": "#/definitions/ComponentCapabilities"
+                    },
+                    "longDescription": "This type shall contain min and max that describe control capabilities for componenents of this domain.",
+                    "type": "array",
+                    "versionAdded": "v1_4_0"
+                },
+                "ControlKnobs": {
+                    "deprecated": "This value has been deprecated.",
+                    "description": "Collection of Control Knobs supported for policies in this domain.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/ControlKnob"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "This property shall contain collection of Control Knob values which are allowed for policies in this domain.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0",
+                    "versionDeprecated": "v1_4_0"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LimitBias": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/LimitBias"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Limit Bias settings to apply to policies in a domain.",
+                    "longDescription": "This property shall contain values for Absolute and Relative Limit Bias which will be applied to limits of selected policies.",
+                    "readonly": false
+                },
+                "LimitingPolicies": {
+                    "description": "Array of links to the policies that are currently enforcing power capping in this domain.",
+                    "items": {
+                        "$ref": "/redfish/v1/JsonSchemas/NmPolicy.json#/definitions/Policy"
+                    },
+                    "longDescription": "This property shall contain an array of links to the policies that are currently enforcing power capping in this domain.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_2_0"
+                },
+                "LimitingPolicies@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/count"
+                },
+                "LimitingPolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/NmPolicy.json#/definitions/Policy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "deprecated": "This value has been deprecated in favor of LimitingPolicies collection.",
+                    "description": "Link to the policy that is currently enforcing power capping in this domain.",
+                    "longDescription": "This property shall contain a link to a policy that is currently enforcing power capping in this domain.",
+                    "readonly": true,
+                    "versionDeprecated": "v1_2_0"
+                },
+                "Links": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Links"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The links to other Resources that are related to this Resource.",
+                    "longDescription": "This property shall contain links to Resources that are related to but are not contained by or subordinate to this Resource."
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Statistics": {
+                    "description": "Statistics collected for the domain.",
+                    "items": {
+                        "$ref": "#/definitions/Statistics"
+                    },
+                    "longDescription": "This property shall contain statistics of a controlled parameter for the domain.",
+                    "type": "array"
+                },
+                "Status": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status",
+                    "description": "The status and health of the Resource and its subordinate or dependent Resources.",
+                    "longDescription": "This property shall contain any status or health properties of the Resource."
+                },
+                "SupportedTriggers": {
+                    "description": "An array of links to triggers supported by this domain.",
+                    "items": {
+                        "$ref": "/redfish/v1/JsonSchemas/NmTrigger.json#/definitions/Trigger"
+                    },
+                    "longDescription": "This property shall contain an array of links to triggers which can be used for policies in this domain.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "SupportedTriggers@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/count"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "LimitBias": {
+            "additionalProperties": false,
+            "description": "Absolute and Relative Limit Bias Values.",
+            "longDescription": "This type shall contain Absolute and Relative Limit Bias values.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AbsoluteLimitBias": {
+                    "description": "Absolute Limit Bias value.",
+                    "longDescription": "This property shall value of an Absolute Limit Bias.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "RelativeLimitBias": {
+                    "description": "Relative Limit Bias value.",
+                    "longDescription": "This property shall value of an Absolute Limit Bias.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The links to other Resources that are related to this Resource.",
+            "longDescription": "This Redfish Specification-described type shall contain links to Resources that are related to but not contained by or subordinate to this Resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties contained in this object shall conform to the Redfish Specification-described requirements."
+                },
+                "Policies": {
+                    "description": "An array of links to policies created in this domain.",
+                    "items": {
+                        "$ref": "/redfish/v1/JsonSchemas/NmPolicy.json#/definitions/Policy"
+                    },
+                    "longDescription": "This property shall contain an array of links to policies created in this domain",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Policies@odata.count": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/count"
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM-specific actions for this resource.",
+            "longDescription": "This type shall contain the available OEM-specific actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ResetStatistics": {
+            "additionalProperties": false,
+            "description": "This ResetStatistics action forces the manager to reset statistics Minimal, Maximal and Average values for the domain.",
+            "longDescription": "This ResetStatistics action forces the manager to reset statistics Minimal, Maximal and Average values for the domain.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Statistics": {
+            "additionalProperties": false,
+            "description": "Min, max, average and current values of statistics.",
+            "longDescription": "This type shall contain min, max, average and current values statistics the resource it is used in.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Average": {
+                    "description": "Average value of collected statistics.",
+                    "longDescription": "This property shall contain an average value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "AveragingDuration": {
+                    "deprecated": "This property has been deprecated in favor of AveragingInterval.",
+                    "description": "Duration over which average value was calculated.",
+                    "longDescription": "This property shall contain duration over which an average value was collected for these statistics. The value shall conform to the Duration format.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string",
+                    "versionDeprecated": "v1_3_0"
+                },
+                "AveragingInterval": {
+                    "description": "Interval over which average value was calculated.",
+                    "longDescription": "This property shall contain interval over which an average value was collected for these statistics. The value shall conform to the Duration format.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_3_0"
+                },
+                "Current": {
+                    "description": "Current value of collected statistics.",
+                    "longDescription": "This property shall contain a current value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Max": {
+                    "description": "Maximal value of collected statistics.",
+                    "longDescription": "This property shall contain a maximal value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MeasurementState": {
+                    "description": "Flag stating if the measuremt is in progress.",
+                    "longDescription": "This property is a flag telling if the statistics measurement was at progress.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Min": {
+                    "description": "Minimal value of collected statistics.",
+                    "longDescription": "This property shall contain a minimal value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "description": "Statistic name.",
+                    "longDescription": "This property shall contain the statistic name.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "release": "1.4",
+    "title": "#NmDomain.v1_4_0.Domain"
+}

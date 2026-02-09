@@ -1,0 +1,1033 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerChassis",
+    "actions": {
+        "actions": {
+            "HpeServerChassis.DisableMCTPOnServer": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "The action to disable MCTP on the server.",
+                        "enum": [
+                            "HpeServerChassis.DisableMCTPOnServer"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeServerChassis.FactoryResetMCTP": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "The action to reset the server to default MCTP settings.",
+                        "enum": [
+                            "HpeServerChassis.FactoryResetMCTP"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeServerChassis.ModifyEnclosureChassisFru": {
+                "additionalProperties": false,
+                "description": "The action to modify field of enclosure chassis FRU.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeServerChassis.ModifyEnclosureChassisFru"
+                        ],
+                        "type": "string"
+                    },
+                    "SerialNumber": {
+                        "description": "Serial Number of the enclosure chassis.",
+                        "etag": true,
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "PartNumber": {
+                        "description": "Part Number of the enclosure chassis.",
+                        "etag": true,
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "The allowed custom actions."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerChassis object extends the Redfish Chassis resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeServerChassis.DisableMCTPOnServer": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeServerChassis.FactoryResetMCTP": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeServerChassis.ModifyEnclosureChassisFru": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "SerialNumber@Redfish.AllowableValues": {
+                            "description": "The ASCII values for the enclosure chassis serial number.",
+                            "etag": true,
+                            "items": {
+                                "description": "Contains ASCII string values.",
+                                "etag": true,
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The ASCII values for the enclosure chassis serial number.",
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "PartNumber@Redfish.AllowableValues": {
+                            "description": "The ASCII values for the enclosure chassis part number.",
+                            "etag": true,
+                            "items": {
+                                "description": "Contains ASCII string values.",
+                                "etag": true,
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The ASCII values for the enclosure chassis part number.",
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BayNumber": {
+            "description": "The bay number of the node or the blade.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "BaysConsumedHeight": {
+            "description": "The number of enclosure bays this chassis consumes in height.",
+            "etag": true,
+            "minimum": 1,
+            "readonly": true,
+            "type": "integer"
+        },
+        "BaysConsumedWidth": {
+            "description": "The number of enclosure bays this chassis consumes in width.",
+            "etag": true,
+            "minimum": 1,
+            "readonly": true,
+            "type": "integer"
+        },
+        "EnclosureDateTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The date and time in a Moonshot EL chassis (enclosure).",
+            "readonly": false,
+            "etag": false
+        },
+        "EnclosureIndicatorLED": {
+            "description": "The enclosure indicator LED that is used to identify the enclosure.",
+            "enum": [
+                null,
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Blinking": "The Indicator LED is blinking.",
+                "Lit": "The Indicator LED is on.",
+                "Off": "The Indicator LED is off.",
+                "Unknown": "The state of the Indicator LED cannot be determined."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "EnclosureModel": {
+            "description": "Type of enclosure.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "EnclosureUUID": {
+            "description": "The UUID of the enclosure.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "EnclosureCPLD": {
+            "description": "The CPLD version of the enclosure.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "IPv4Address": {
+            "description": "The IPv4 address of the chassis manager.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "TrayID": {
+            "description": "Tray ID is a platform dependent value used to identify what kind of server tray it is.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "PcieMini2SlotRiser": {
+            "description": "PCIE mini 2 slot riser is a platform dependent value used to identify installation of this riser.",
+            "enum": [
+                "NotInstalled",
+                "InstalledWithOtherFRU",
+                "InstalledWithBadFRU",
+                "Installed"
+            ],
+            "enumDescriptions": {
+                "NotInstalled": "The PCIE mini 2 slot riser is not installed. The PCIE mini slot 3 and slot 4 do not exist in this Enclosure.",
+                "InstalledWithOtherFRU": "A non recognized riser option is installed with a valid EEPROM FRU. Contact Customer Support to secure a replacement.",
+                "InstalledWithBadFRU": "The PCIe mini 2 slot riser is installed with an invaild EEPROM FRU. Contact Customer Support to secure a replacement.",
+                "Installed": "The PCIE mini 2 slot riser is installed. The PCIE mini slot 3 and slot 4 exist in this Enclosure."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "ChassisPowerWatts": {
+            "description": "The total power consumed by the chassis and nodes.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "NodePowerWatts": {
+            "description": "The total power being consumed by this node.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Firmware": {
+            "additionalProperties": false,
+            "description": "The firmware versions.",
+            "properties": {
+                "PlatformDefinitionTable": {
+                    "additionalProperties": false,
+                    "description": "The Intelligent Platform Abstraction Data.",
+                    "properties": {
+                        "Current": {
+                            "additionalProperties": false,
+                            "description": "The current firmware version.",
+                            "properties": {
+                                "VersionString": {
+                                    "description": "The version of the Intelligent Platform Abstraction Data.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "PowerManagementController": {
+                    "additionalProperties": false,
+                    "description": " The power monitor controller.",
+                    "properties": {
+                        "Current": {
+                            "additionalProperties": false,
+                            "description": "The current firmware version.",
+                            "properties": {
+                                "VersionString": {
+                                    "description": "The firmware version of the Power Monitor.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "PowerManagementControllerBootloader": {
+                    "additionalProperties": false,
+                    "description": "The power monitor bootloader.",
+                    "properties": {
+                        "Current": {
+                            "additionalProperties": false,
+                            "description": "The Current firmware version.",
+                            "properties": {
+                                "Family": {
+                                    "description": "The family type of the Power Monitor hardware.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                },
+                                "VersionString": {
+                                    "description": "The firmware version of the Power Monitor boot loader.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SASProgrammableLogicDevice": {
+                    "additionalProperties": false,
+                    "description": "Serial Attached SCSI (SAS) device.",
+                    "properties": {
+                        "Current": {
+                            "additionalProperties": false,
+                            "description": "The current firmware version.",
+                            "properties": {
+                                "VersionString": {
+                                    "description": "The firmware version of the SAS controller.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SPSFirmwareVersionData": {
+                    "additionalProperties": false,
+                    "description": "Server Platform Services Data",
+                    "properties": {
+                        "Current": {
+                            "additionalProperties": false,
+                            "description": "Management Engine Data",
+                            "properties": {
+                                "VersionString": {
+                                    "description": "The SPS FW Version number, aka ME FW Version, AAAA.BBBB.CCCC.DDDD.E",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SystemProgrammableLogicDevice": {
+                    "additionalProperties": false,
+                    "description": "Complex programmable logic device (CPLD).",
+                    "properties": {
+                        "Current": {
+                            "additionalProperties": false,
+                            "description": "The current firmware version.",
+                            "properties": {
+                                "VersionString": {
+                                    "description": "The firmware version of the CPLD.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "ChassisControllerVersion": {
+                    "type": "object",
+                    "readonly": true,
+                    "additionalProperties": false,
+                    "properties": {
+                        "Current": {
+                            "type": "object",
+                            "additionalProperties": false,
+                            "properties": {
+                                "VersionString": {
+                                    "type": "string",
+                                    "description": "The firmware version of the chassis controller.",
+                                    "readonly": true,
+                                    "etag": true
+                                }
+                            },
+                            "description": "The current firmware version.",
+                            "readonly": true
+                        }
+                    },
+                    "description": " The power monitor controller."
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Images": {
+            "additionalProperties": false,
+            "description": "The URIs for chassis images.",
+            "properties": {
+                "Front": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "The URI for this front resource."
+                },
+                "Model": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "The URI for this external model resource."
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Links": {
+            "additionalProperties": true,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "BaseFrus": {
+                    "description": "The URI for this base FRUs resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "BladeEnclosure": {
+                    "description": "The URI for this blade enclosure resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Devices": {
+                    "description": "The URI for this Devices resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "HddService": {
+                    "description": "The URI for this Hdd service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "MezzFrus": {
+                    "description": "The URI for this mezzanine FRUs resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "additionalProperties": false,
+            "description": "Locations.",
+            "properties": {
+                "GeographicLocation": {
+                    "additionalProperties": false,
+                    "description": "Geographic location.",
+                    "properties": {
+                        "RackName": {
+                            "description": "The name of the chassis enclosure.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "LocationInRack": {
+                    "additionalProperties": false,
+                    "description": "Chassis rack location.",
+                    "properties": {
+                        "RackLdsPartNumber": {
+                            "description": "The chassis rack part number.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "RackLdsProductDescription": {
+                            "description": " The chassis rack product description.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "RackUHeight": {
+                            "description": "The chassis rack U height.",
+                            "etag": true,
+                            "minimum": 0,
+                            "readonly": true,
+                            "type": "integer"
+                        },
+                        "RackUUID": {
+                            "description": "The chassis rack UUID.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "TagVersion": {
+                            "description": "The chassis rack tag version.",
+                            "etag": true,
+                            "minimum": 0,
+                            "readonly": true,
+                            "type": "integer"
+                        },
+                        "ULocation": {
+                            "description": "The chassis rack U location.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        },
+                        "UPosition": {
+                            "description": "The chassis U position in the rack.",
+                            "etag": true,
+                            "minimum": 0,
+                            "readonly": true,
+                            "type": "integer"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "LocationOfChassis": {
+                    "additionalProperties": false,
+                    "description": "Chassis location.",
+                    "properties": {
+                        "UUID": {
+                            "description": "The chassis UUID provided by SMBIOS.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "MCTPEnabledOnServer": {
+            "description": "Indicates if MCTP is enabled on the server or not.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "OnboardAdministrator": {
+            "additionalProperties": false,
+            "description": "The properties specific to Onboard Administrator.",
+            "properties": {
+                "IPv4Address": {
+                    "description": "IPv4 address of the chassis.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "IPv6": {
+                    "additionalProperties": false,
+                    "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface.",
+                    "etag": true,
+                    "properties": {
+                        "DHCPv6Address": {
+                            "description": "This is the DHCPv6 Address.",
+                            "etag": true,
+                            "items": {
+                                "format": "ipv6",
+                                "type": "string"
+                            },
+                            "readonly": true,
+                            "type": "array"
+                        },
+                        "SLAACAddress": {
+                            "description": "This is the SLAAC IPv6 Address.",
+                            "etag": true,
+                            "items": {
+                                "format": "ipv6",
+                                "type": "string"
+                            },
+                            "readonly": true,
+                            "type": "array"
+                        },
+                        "StaticAddress": {
+                            "description": "This is the Static IPv6 Address.",
+                            "etag": true,
+                            "items": {
+                                "format": "ipv6",
+                                "type": "string"
+                            },
+                            "readonly": true,
+                            "type": "array"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "MacAddress": {
+                    "description": "MAC address of the chassis.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PowerAlertMode": {
+            "additionalProperties": false,
+            "description": "The power alert mode settings.",
+            "properties": {
+                "Activated": {
+                    "description": "The power alert mode activation state.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "AlertPowerWatts": {
+                    "description": "The power consumption of the system when operating in alert mode.",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "SpikeWatts": {
+                    "description": "Maximum additional power consumed when all CPUs are in Turbo Mode",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "RackName": {
+            "description": "The name of the rack that contains the enclosure.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "SmartStorageBattery": {
+            "description": "This is the definition for HPE Smart Storage Battery.",
+            "items": {
+                "additionalProperties": false,
+                "description": "HPE Smart Storage Battery Information.",
+                "etag": true,
+                "properties": {
+                    "BatteryWearLevelPercent": {
+                        "description": "The battery wear level percentage. When this value reaches 100%, the battery is completely worn out and needs to be replaced. The value is null if battery wear level cannot be determined or is not supported.",
+                        "maximum": 100,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ChargeLevelPercent": {
+                        "description": "State of charge of the battery.",
+                        "maximum": 100,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ErrorCode": {
+                        "description": "Error code of the battery.",
+                        "enum": [
+                            null,
+                            "GeneralFailure",
+                            "HighInternalBatteryResistance",
+                            "LowOpenCircuitVoltage",
+                            "BatteryCellFailure",
+                            "BatteryChargeTimeout",
+                            "OverTemperature",
+                            "DischargeBelowMinimumVoltage",
+                            "DischargeCurrentHigh",
+                            "LoadCountExceeded",
+                            "BackupSucceeded",
+                            "OverCurrent",
+                            "PermanentFailure",
+                            "BackupTimeExceeded"
+                        ],
+                        "enumDescriptions": {
+                            "BackupSucceeded": "The last backup succeeded within the expected time.",
+                            "BackupTimeExceeded": "The last backup failed due to exceeding the battery discharge time limit.",
+                            "BatteryCellFailure": "The battery has failed.",
+                            "BatteryChargeTimeout": "The battery did not charge at the expected rate, indicating a faulty battery.",
+                            "DischargeBelowMinimumVoltage": "The battery discharged below the minimum discharge voltage, and may be re-enabled upon recharging the battery.",
+                            "DischargeCurrentHigh": "The last backup failed due to exceeding the maximum discharge current.",
+                            "GeneralFailure": "The battery has failed.",
+                            "HighInternalBatteryResistance": "The battery has failed due to high internal resistance.",
+                            "LoadCountExceeded": "The battery was disabled due to exceeding the maximum amount of devices supported, and will be re-enabled when the battery has been recharged or the additional devices are removed.",
+                            "LowOpenCircuitVoltage": "The battery has failed due to a low voltage output.",
+                            "OverCurrent": "The battery has been protected due to exceeding the output current capability. The battery should be re-enabled on the next reboot.",
+                            "OverTemperature": "The battery was disabled due to high ambient temperature, and will be re-enabled when the temperature is lowered.",
+                            "PermanentFailure": "The battery has permanently failed."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "FailurePredicted": {
+                        "description": "Is this battery currently predicting a failure in the near future.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "FirmwareVersion": {
+                        "description": "Firmware version of the battery.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Index": {
+                        "description": "Index of the battery.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "MaximumCapWatts": {
+                        "description": "Maximum capacity of the battery in watts.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "Model": {
+                        "description": "Model of the battery.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ProductName": {
+                        "description": "Product name of the battery.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "RemainingChargeTimeSeconds": {
+                        "description": "Remaining charging time of the battery in seconds.",
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "SerialNumber": {
+                        "description": "Serial number of the battery.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "SparePartNumber": {
+                        "description": "Spare part number of the battery.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "SystemMaintenanceSwitches": {
+            "description": "Describes the maintenance switch positions",
+            "etag": true,
+            "properties": {
+                "Sw1": {
+                    "description": "Override iLO security.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "No function (Normal).",
+                        "On": "iLO Security Override Enabled."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw10": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Normal).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw11": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Normal).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw12": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Normal).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw2": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Normal).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw3": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Normal).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw4": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Normal).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw5": {
+                    "description": "BIOS/UEFI Password Disable.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Power On Password enabled (Normal).",
+                        "On": "Power On Password disabled."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw6": {
+                    "description": "Reset Configuration.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "off": "No function (Normal).",
+                        "on": "ROM reads system configuration as invalid."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw7": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Default).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw8": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Default).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Sw9": {
+                    "description": "Reserved.",
+                    "enum": [
+                        "On",
+                        "Off"
+                    ],
+                    "enumDescriptions": {
+                        "Off": "Switch is off (Default).",
+                        "On": "Switch is on."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ElConfigOverride": {
+            "description": "The value indicates if Thermal Configuration includes Edgeline specific options.",
+            "readonly": false,
+            "type": "boolean"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerChassis.v2_3_1.HpeServerChassis",
+    "type": "object"
+}

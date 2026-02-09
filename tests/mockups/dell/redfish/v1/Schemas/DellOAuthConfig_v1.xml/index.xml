@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellOAuthConfig v1_0_0-->
+<!--# -->
+<!--# Copyright 2014-2020 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    </edmx:Reference>
+
+    <edmx:DataServices>
+        <Schema Namespace="DellOAuthConfig" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="OAuthConfig" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="OAuth Authentication configurations for both online and offline modes."/>
+                <Annotation Term="OData.LongDescription" String="OAuth Authentication configurations for both online and offline modes."/>
+            </ComplexType>
+            <Action Name="SubmitTestToken" IsBound="true">
+                <Annotation Term="OData.Description" String="The SubmitTestToken operation shall test the supplied Token against the OAuth Configurations present in OAuthConfig."/>
+                <Annotation Term="OData.LongDescription" String="The SubmitTestToken operation shall test the supplied Token against the OAuth Configurations present in OAuthConfig."/>
+                <Parameter Name="DellOAuthConfig" Type="DellOAuthConfig.v1_0_0.Actions"/>
+                <Parameter Name="ForceDownload" Type="Edm.Boolean" Nullable="true">
+                    <Annotation Term="OData.Description" String="Boolean value to force the Resource Server to re-download any cached metadata. This parameter is ignored for offline mode."/>
+                    <Annotation Term="OData.LongDescription" String="Boolean value to force the Resource Server to re-download any cached metadata. This parameter is optional for offline mode and shall be ignored if provided."/>
+                </Parameter>
+                <Parameter Name="Token" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Description" String="String value containing a generated access token signed by one of the configured authorization servers."/>
+                    <Annotation Term="OData.LongDescription" String="String value containing a generated access token signed by one of the configured authorization servers."/>
+                </Parameter>
+            </Action>
+        </Schema>
+
+        <Schema Namespace="DellOAuthConfig.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="OAuthConfig" BaseType="DellOAuthConfig.OAuthConfig">
+		<Property Name="OAuthConfig" Type="DellOAuthConfig.v1_0_0.OAuthConfigInfo">
+			 <Annotation Term="OData.Description" String="OAuth Authentication configurations for both online and offline modes."/>
+                <Annotation Term="OData.LongDescription" String="OAuth Authentication configurations for both online and offline modes."/>
+		</Property>
+            </ComplexType>
+            <ComplexType Name="OAuthConfigInfo">
+                <Property Name="NameTag" Type="Edm.String">
+                    <Annotation EnumMember="OData.Permission/ReadWrite" Term="OData.Permissions"/>
+                    <Annotation Term="Redfish.RequiredOnCreate"/>
+                    <Annotation String="A user defined name of the Delegated Auth instance. On POST Create, one or both of the following pairs of parameters are required to be provided along with this in the POST body; 'HttpsCertificate' paired with 'ServerURL' and/or 'Issuer' paired with 'PublicSigningKey'." Term="OData.Description"/>
+                    <Annotation String="A user defined name of the Delegated Auth instance. On POST Create, one or both of the following pairs of parameters are required to be provided along with this in the POST body; 'HttpsCertificate' paired with 'ServerURL' and/or 'Issuer' paired with 'PublicSigningKey'." Term="OData.LongDescription"/>
+                </Property>
+                <Property Name="HttpsCertificate" Type="Edm.String">
+                    <Annotation EnumMember="OData.Permission/ReadWrite" Term="OData.Permissions"/>
+                    <Annotation String="Delegated Authentication HTTP Public Certificate used by the Authorization Server. Is RequiredOnCreate if 'ServerURL' is specified." Term="OData.Description"/>
+                    <Annotation String="Delegated Authentication HTTP Public Certificate used by the Authorization Server. Is RequiredOnCreate if 'ServerURL' is specified." Term="OData.LongDescription"/>
+                </Property>
+                <Property Name="Issuer" Type="Edm.String">
+                    <Annotation EnumMember="OData.Permission/ReadWrite" Term="OData.Permissions"/>
+                    <Annotation String="Issuer string  value in tokens signed by the configured static key (s). Is RequiredOnCreate if 'PublicSigningKey' is specified." Term="OData.Description"/>
+                    <Annotation String="Issuer string  value in tokens signed by the configured static key (s). Is RequiredOnCreate if 'PublicSigningKey' is specified." Term="OData.LongDescription"/>
+                </Property>
+                <Property Name="PublicSigningKey" Type="Edm.String">
+                    <Annotation EnumMember="OData.Permission/ReadWrite" Term="OData.Permissions"/>
+                    <Annotation String="The public signing key as defined in rfc7517 or a JWK set document as specified in rfc8414. Is RequiredOnCreate if 'Issuer' is specified." Term="OData.Description"/>
+                    <Annotation String="The public signing key as defined in rfc7517 or a JWK set document as specified in rfc8414. Is RequiredOnCreate if 'Issuer' is specified." Term="OData.LongDescription"/>
+                </Property>
+                <Property Name="ServerURL" Type="Edm.String">
+                    <Annotation EnumMember="OData.Permission/ReadWrite" Term="OData.Permissions"/>
+                    <Annotation String="The Oauth Metadata document URL of the Authorization Server. Is RequiredOnCreate if 'HttpsCertificate' is specified." Term="OData.Description"/>
+                    <Annotation String="The Oauth Metadata document URL of the Authorization Server. Is RequiredOnCreate if 'HttpsCertificate' is specified." Term="OData.LongDescription"/>
+                </Property> 
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

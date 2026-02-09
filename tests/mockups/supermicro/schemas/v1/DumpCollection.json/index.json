@@ -1,0 +1,85 @@
+{
+    "definitions": {
+        "DumpCollection": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/idRef"
+                },
+                {
+                    "additionalProperties": false,
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "required": [
+                        "Name",
+                        "Members"
+                    ],
+                    "type": "object",
+                    "properties": {
+                        "@odata.type": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                        },
+                        "Name": {
+                            "readonly": true,
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                        },
+                        "Members": {
+                            "items": {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/Dump.json#/definitions/Dump"
+                            },
+                            "readonly": true,
+                            "type": "array",
+                            "description": "The members of this collection.",
+                            "longDescription": "This property shall contain an array of links to the members of this collection."
+                        },
+                        "Members@odata.navigationLink": {
+                            "type": "string",
+                            "format": "uri"
+                        },
+                        "Members@odata.count": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/count"
+                        },
+                        "@odata.id": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                        },
+                        "@odata.context": {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                        },
+                        "Oem": {
+                            "longDescription": "This property shall contain the OEM extensions.  All values for properties contained in this object shall conform to the Redfish Specification-described requirements.",
+                            "description": "The OEM extension property.",
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                        },
+                        "Description": {
+                            "readonly": true,
+                            "anyOf": [
+                                {
+                                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ],
+            "description": "A Collection of Dump Resource instances.",
+            "longDescription": "This Resource shall represent a Resource Collection of Dump instances for a Redfish implementation."
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/DumpCollection",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#DumpCollection.DumpCollection"
+}

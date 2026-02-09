@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellCertificate  v1.0.0                                             -->
+<!--# This is DELL OEM Schema.                                                             -->
+<!--# Copyright 2014-2016 Dell, Inc. or its subsidiaries.All Rights Reserved.              -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_2_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificate">
+      <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+
+      <EntityType Name="DellCertificate" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This resource contains information about a SecureBoot Certificate."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a SecureBoot Certificate."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Certificate can be removed through a DELETE to the certificate."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/SecureBoot/Oem/Dell/Certificates/{CertificateStoreId}/{CertificateId}</String>
+            <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/HWCertificates/{CertificateId}</String>
+          </Collection>
+        </Annotation>
+
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificate.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+
+      <EntityType Name="DellCertificate" BaseType="DellCertificate.DellCertificate">
+	    <Property Name="SecureBootPolicy" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The current SecureBoot Policy."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the SecureBoot Policy enabled on the system."/>
+        </Property>
+		<Property Name="CertificateType" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The certificate type."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the type of certificate."/>
+        </Property>
+		<Property Name="CertificateSubtype" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The certificate subtype."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the subtype of the certificate."/>
+        </Property>		
+		<Property Name="SerialNumber" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The certificate serial number."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the serial number of the certificate."/>
+        </Property>		
+        <Property Name="SubjectCountryCode_CC" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subject country code."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the subject country code."/>
+        </Property>
+		<Property Name="SubjectState_S" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subject state."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the subject state."/>
+        </Property>
+		 <Property Name="SubjectLocality_L" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subject locality."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the subject locality."/>
+        </Property>
+		<Property Name="SubjectOrganization_O" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subject organization."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the subject organization."/>
+        </Property>
+		 <Property Name="SubjectOrganizationalUnit_OU" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subject organizational unit."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the isubject organizational unit."/>
+        </Property>
+		<Property Name="SubjectCommonName_CN" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The subject common name."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the subject common name."/>
+        </Property>		
+		<Property Name="IssuerCountryCode_CC" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The issuer country code."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the issuer country code."/>
+        </Property>
+		<Property Name="IssuerState_S" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The issuer state."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the issuer state."/>
+        </Property>
+		 <Property Name="IssuerLocality_L" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The issuer locality."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the issuer locality."/>
+        </Property>
+		<Property Name="IssuerOrganization_O" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The issuer organization."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the issuer organization."/>
+        </Property>
+		 <Property Name="IssuerOrganizationalUnit_OU" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The issuer organizational unit."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the issuer organizational unit."/>
+        </Property>
+		<Property Name="IssuerCommonName_CN" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The issuer common name."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the issuer common name."/>
+        </Property>		
+		<Property Name="Thumbprint" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The certificate identifier."/>
+          <Annotation Term="OData.LongDescription" String="The Unique identifier for a particular certificate."/>
+        </Property>
+		<Property Name="Hash" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Hash value of a file."/>
+          <Annotation Term="OData.LongDescription" String="Hash of the file, which can be of type SHA-256, SHA-384, SHA-512."/>
+        </Property>
+		<Property Name="ValidFrom" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A string providing the validity start date."/>
+          <Annotation Term="OData.LongDescription" String="A string providing the validity start date."/>
+        </Property>
+		<Property Name="ValidTo" Type="Edm.String" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A string providing the validity end date."/>
+          <Annotation Term="OData.LongDescription" String="A string providing the validity end date."/>
+        </Property>	
+        <Property Name="CryptographicHash" Type="Edm.String" Nullable="false">
+		  <Annotation Term="Redfish.RequiredOnCreate" Bool="false"/>
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
+          <Annotation Term="OData.Description" String="A string providing the Cryptographic Hash value of SHA-256, SHA-384, SHA-512."/>
+          <Annotation Term="OData.LongDescription" String="A string providing the Cryptographic Hash value of SHA-256, SHA-384, SHA-512."/>
+        </Property>			
+	  </EntityType>
+		
+  </Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificate.v1_0_1">
+	  <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+	  <Annotation Term="OData.Description" String="This version was created to update type as nullable for Optional Properties"/>
+      <EntityType Name="DellCertificate" BaseType="DellCertificate.v1_0_0.DellCertificate"/>
+  </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

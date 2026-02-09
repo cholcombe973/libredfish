@@ -1,0 +1,263 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeDirectoryTest",
+    "actions": {
+        "actions": {
+            "HpeDirectoryTest.StartTest": {
+                "additionalProperties": false,
+                "description": "This action is for starting the directory test.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeDirectoryTest.StartTest"
+                        ],
+                        "enumDescriptions": {
+                            "StartTest": "Start the directory test."
+                        },
+                        "type": "string"
+                    },
+                    "DirectoryAdminDn": {
+                        "description": "Distinguished name of the directory administrator.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "DirectoryAdminPassword": {
+                        "description": "Password of the directory administrator.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "TestUserName": {
+                        "description": "Distinguished name or login name of the directory test user.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "TestUserPassword": {
+                        "description": "Password of the directory test user.",
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeDirectoryTest.StopTest": {
+                "additionalProperties": false,
+                "description": "This action is for forcefully stopping the directory test.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeDirectoryTest.StopTest"
+                        ],
+                        "enumDescriptions": {
+                            "StopTest": "Stop the directory test."
+                        },
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "This describes the POST custom actions defined for directory test."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeDirectoryTest resource describes the BMC directory test.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeDirectoryTest.StartTest": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "DirectoryAdminDn@Redfish.AllowableValues": {
+                            "description": "Distinguished name of the directory administrator.",
+                            "items": {
+                                "description": "Contains the Distinguished name of the directory administrator.",
+                                "readonly": false,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "uniqueItems": true
+                        },
+                        "DirectoryAdminPassword@Redfish.AllowableValues": {
+                            "description": "Password of the directory administrator.",
+                            "items": {
+                                "description": "Contains the Password of the directory administrator.",
+                                "readonly": false,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "uniqueItems": true
+                        },
+                        "TestUserName@Redfish.AllowableValues": {
+                            "description": "Distinguished name or login name of the directory test user.",
+                            "items": {
+                                "description": "Contains the Distinguished name or login name of the directory test user.",
+                                "readonly": false,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "uniqueItems": true
+                        },
+                        "TestUserPassword@Redfish.AllowableValues": {
+                            "description": "Password of the directory test user.",
+                            "items": {
+                                "description": "Contains the password of the directory test user.",
+                                "readonly": false,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "type": [
+                                "string",
+                                "null"
+                            ],
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeDirectoryTest.StopTest": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "OverallStatus": {
+            "description": "Represents the overall status of directory tests.",
+            "enum": [
+                "NotRun",
+                "InProgress",
+                "Success",
+                "Warning",
+                "Failed",
+                "Error"
+            ],
+            "enumDescriptions": {
+                "Error": "The Directory Test has encountered an error condition.",
+                "Failed": "The Overall Directory Test has failed.",
+                "InProgress": "The Overall Directory Test is in progress.",
+                "NotRun": "The Overall Directory Test was not run.",
+                "Success": "The Overall Directory Test has completed successfully.",
+                "Warning": "The Overall Directory Test has completed with warning."
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "TestResults": {
+            "description": "This array describes the detailed directory test results.",
+            "items": {
+                "properties": {
+                    "Notes": {
+                        "description": "This provides additional details on the directory test.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Status": {
+                        "description": "The status of the directory test.",
+                        "enum": [
+                            "NotRun",
+                            "InProgress",
+                            "Success",
+                            "Warning",
+                            "Failed",
+                            "Error"
+                        ],
+                        "enumDescriptions": {
+                            "Error": "The Directory Test has encountered an error condition.",
+                            "Failed": "The Directory Test has failed.",
+                            "InProgress": "The Directory Test is in progress.",
+                            "NotRun": "The Directory Test was not run.",
+                            "Success": "The Directory Test has completed successfully.",
+                            "Warning": "The Directory Test has not run."
+                        },
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "TestName": {
+                        "description": "The name of directory test.",
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeDirectoryTest.v1_0_0.HpeDirectoryTest",
+    "type": "object"
+}

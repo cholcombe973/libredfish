@@ -1,0 +1,116 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/AMIManagerAccount.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "definitions": {
+        "AMIManagerAccount": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the AMIManagerAccount.",
+            "longDescription": "This schemas defines the properties and actions which is used in the ManagerAccount.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "SNMP": {
+                    "$ref": "#/definitions/SNMP",
+                    "description": "Indicates the properties related to SNMP",
+                    "longDescription": "Indicates the properties related to SNMP",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "Access": {
+            "enum": [
+                "ReadOnly",
+                "ReadWrite"
+            ],
+            "enumDescriptions": {
+                "ReadOnly": "ReadOnly Access.",
+                "ReadWrite": "ReadWrite Access."
+            },
+            "enumLongDescriptions": {
+                "ReadOnly": "ReadOnly Access.",
+                "ReadWrite": "ReadWrite Access."
+            },
+            "type": "string"
+        },
+        "AuthenticationProtocol": {
+            "enum": [
+                "SHA256",
+                "SHA384",
+                "SHA512"
+            ],
+            "enumDescriptions": {
+                "SHA256": "SHA256 Authentication.",
+                "SHA384": "SHA384 Authentication.",
+                "SHA512": "SHA512 Authentication."
+            },
+            "enumLongDescriptions": {
+                "SHA256": "SHA256 Authentication.",
+                "SHA384": "SHA384 Authentication.",
+                "SHA512": "SHA512 Authentication."
+            },
+            "type": "string"
+        },
+        "EncryptionProtocol": {
+            "enum": [
+                "DES",
+                "AES"
+            ],
+            "enumDescriptions": {
+                "AES": "AES Encryption.",
+                "DES": "DES Encryption."
+            },
+            "enumLongDescriptions": {
+                "AES": "AES Encryption.",
+                "DES": "DES Encryption."
+            },
+            "type": "string"
+        },
+        "SNMP": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Access": {
+                    "$ref": "#/definitions/Access",
+                    "description": "Access for the SNMP."
+                },
+                "AuthenticationProtocol": {
+                    "$ref": "#/definitions/AuthenticationProtocol",
+                    "description": "AuthenticationProtocol for the SNMP."
+                },
+                "EncryptionProtocol": {
+                    "$ref": "#/definitions/EncryptionProtocol",
+                    "description": "EncryptionProtocol for SNMP."
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMIManagerAccount.v1_0_0"
+}

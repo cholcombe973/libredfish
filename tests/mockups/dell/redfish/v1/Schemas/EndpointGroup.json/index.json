@@ -1,0 +1,51 @@
+{
+    "$id": "/redfish/v1/Schemas/EndpointGroup.json",
+    "$ref": "#/definitions/EndpointGroup",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2021 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "AccessState": {
+            "description": "Describes the options for the access characteristics of an endpoint.",
+            "enum": [
+                "Optimized",
+                "NonOptimized",
+                "Standby",
+                "Unavailable",
+                "Transitioning"
+            ],
+            "enumDescriptions": {
+                "NonOptimized": "The endpoint(s) are in an Active/NonOptimized state.",
+                "Optimized": "The endpoint(s) are in an Active/Optimized state.",
+                "Standby": "The endpoint(s) are in a Standby state.",
+                "Transitioning": "The endpoint(s) are transitioning to a new AccessState.",
+                "Unavailable": "The endpoint(s) are unavailable."
+            },
+            "enumLongDescriptions": {
+                "NonOptimized": "In the context of this enumeration literal, each endpoint shall be in an Active/NonOptimized state.",
+                "Optimized": "In the context of this enumeration literal, each endpoint shall be in an Active/Optimized state.",
+                "Standby": "In the context of this enumeration literal, each endpoint shall be in a Standby state.",
+                "Transitioning": "In the context of this enumeration literal, at least one endpoint shall be transitioning to a new AccessState.",
+                "Unavailable": "In the context of this enumeration literal, each endpoint shall be in an unavailable state."
+            },
+            "longDescription": "Access to all associated resources through all aggregated endpoints shall share this access state.",
+            "type": "string"
+        },
+        "EndpointGroup": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/EndpointGroup.v1_2_1.json#/definitions/EndpointGroup"
+                }
+            ],
+            "deletable": true,
+            "description": "A group of endpoints that are managed as a unit.",
+            "insertable": false,
+            "longDescription": "A group of endpoints that shall be managed as a unit.",
+            "updatable": true
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#EndpointGroup.EndpointGroup"
+}

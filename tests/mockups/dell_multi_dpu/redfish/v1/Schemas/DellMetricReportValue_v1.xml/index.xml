@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellMetricReportValue  v1.0.1                                             -->
+<!--# This is DELL OEM Schema.                                                             -->
+<!--# Copyright 2014-2020 Dell, Inc. or its subsidiaries.All Rights Reserved.              -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricReportValue">
+        <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+		<ComplexType Name="DellMetricReportValue" Abstract="true">
+			<Annotation Term="OData.AdditionalProperties" Bool="false"/>
+			<Annotation Term="OData.Description" String="The DellMetricReport schema describes Dell metric metadata collected and reported by the Redfish Service."/>
+			<Annotation Term="OData.LongDescription" String="The schema describes property additions to the Metrics within the MetricReport."/>
+		</ComplexType>
+</Schema>
+<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricReportValue.v1_0_0">
+        <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+		<ComplexType Name="DellMetricReportValue" BaseType="DellMetricReportValue.DellMetricReportValue">
+			<Property Name="ContextID" Type="Edm.String">
+			  <Annotation Term="OData.Description" String="The Context Id is a user friendly way to read the metric source."/>
+			  <Annotation Term="OData.LongDescription" String="The value of this property is a Context Id of the metric source."/>
+			</Property>
+			<Property Name="Label" Type="Edm.String">
+			  <Annotation Term="OData.Description" String="The Label is a user friendly representation of the metric."/>
+			  <Annotation Term="OData.LongDescription" String="The value of this property is a friendly representation of the device description associated with the Metric Id."/>
+			</Property>
+			<Property Name="Source" Type="Edm.String">
+				<Annotation Term="OData.Description" String="This field shows the data source name that the metric value was obtained from."/>
+				<Annotation Term="OData.LongDescription" String="The value of this property shows the data source name that the metric value was obtained from."/>
+			</Property>
+			<Property Name="FQDD" Type="Edm.String">
+				<Annotation Term="OData.Description" String="The iDRAC standard FQDD of the device producing the metric."/>
+				<Annotation Term="OData.LongDescription" String="The value of this property is the iDRAC standard FQDD of the device producing the metric."/>
+			</Property>
+		</ComplexType>
+</Schema>
+<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricReportValue.v1_0_1">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <Annotation Term="OData.Description" String="This version was created to correct various typographical errors."/>
+       <EntityType Name="DellMetricReportvalue" BaseType="DellMetricReportValue.v1_0_1.DellMetricReportValue"/>
+     </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

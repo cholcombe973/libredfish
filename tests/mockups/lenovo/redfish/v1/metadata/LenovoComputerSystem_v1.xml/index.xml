@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoComputerSystem  v1.0.0                                 -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ComputerSystem_v1.xml">
+    <edmx:Include Namespace="ComputerSystem"/>
+    <edmx:Include Namespace="ComputerSystem.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoHistoryMetricValueContainerCollection_v1.xml">
+    <edmx:Include Namespace="LenovoHistoryMetricValueContainerCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
+    <edmx:Include Namespace="SensorCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoHistoryMetricValue_v1.xml">
+    <edmx:Include Namespace="LenovoHistoryMetricValue"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoScheduledPowerActionCollection_v1.xml">
+    <edmx:Include Namespace="LenovoScheduledPowerActionCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoBootManagerCollection_v1.xml">
+    <edmx:Include Namespace="LenovoBootManagerCollection"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices> 
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoComputerSystem">
+      <ComplexType Name="LenovoComputerSystem" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoComputerSystem resource."/>
+      </ComplexType>
+            
+      <Action Name="CustomizedReset" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.OemActions"/>
+        <Parameter Name="ResetType" Type="Resource.ResetType">
+          <Annotation Term="OData.Description" String="The type of reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines expected power action to the system by the caller. For the method, the supported power action is 'power on server'."/>
+        </Parameter>
+        <Parameter Name="Date" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Indicate the specified date for next power action, the format shoud be Month/Day/Year. By the parameter, user can set to automatically power on the server on specified day."/>
+        </Parameter>
+        <Parameter Name="Time" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Indicate the specified time for next power action, the format is 'Hour:Minute AM/PM'.By the parameter, user can set to automatically power on the server on specified moment."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="BootToBIOSSetup" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.OemActions"/>
+      </Action>
+      
+      <Action Name="RemoteClearCMOS" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.OemActions"/>
+        <Parameter Name="UefiAdminPassword" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The value of the uefi admin password."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="SystemReset" IsBound="true">
+        <Parameter Name="ComputerSystem" Type="ComputerSystem.v1_0_0.OemActions"/>
+        <Parameter Name="ResetType" Type="LenovoComputerSystem.v1_0_0.ResetTypeItem">
+          <Annotation Term="OData.Description" String="The type of reset to be performed."/>
+          <Annotation Term="OData.LongDescription" String="This defines expected power action to the system by the caller."/>
+        </Parameter>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoComputerSystem.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <ComplexType Name="LenovoSystemProperties" BaseType="LenovoComputerSystem.LenovoComputerSystem">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="Lenovo Oem properties."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contains Lenovo Oem properties of ComputerSystem."/>
+        
+        <Property Name="NumberOfReboots" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="NumberOfReboots indicates the number of times the system has been rebooted."/>
+          <Annotation Term="OData.LongDescription" String="NumberOfReboots indicates the number of times the system has been rebooted."/>
+        </Property>
+        <Property Name="TotalPowerOnHours" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The total amount of time that the host server has been powered on."/>
+          <Annotation Term="OData.LongDescription" String="The total amount of time that the host server has been powered on."/>
+        </Property>
+        <Property Name="SystemStatus" Type="LenovoComputerSystem.v1_0_0.SystemStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the status of the system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the status of the system."/>
+        </Property>
+        <Property Name="TPMSettings" Type="LenovoComputerSystem.v1_0_0.TPMSettingsItem">
+          <Annotation Term="OData.Description" String="Represents the settings of TPM operations service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the settings of TPM oprations service."/>
+        </Property>
+        <Property Name="SecureBootOverKCSSettings" Type="LenovoComputerSystem.v1_0_0.SecureBootOverKCSSettings">
+          <Annotation Term="OData.Description" String="Represents the setting of secure boot over KCS."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the setting of secure boot over KCS."/>
+        </Property>
+        <Property Name="FrontPanelUSB" Type="LenovoComputerSystem.v1_0_0.FrontPanelUSBPort">
+          <Annotation Term="OData.Description" String="The properties for the front panel USB port."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the properties for the front panel USB port."/>
+        </Property>
+        <NavigationProperty Name="Metrics" Type="LenovoHistoryMetricValueContainerCollection.LenovoHistoryMetricValueContainerCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of the system metrics in general detail."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference indicating the collection of the system metrics in general detail."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="HistorySysPerf" Type="LenovoHistoryMetricValue.LenovoHistoryMetricValue" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference indicating system performance history metric values."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference indicating system performance history metric values. In this reference shall contain: SystemPerformance, CPUSubsystemPerformance, MemorySubsystemPerformance, IOSubsystemPerformance metric values."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="Sensors" Type="SensorCollection.SensorCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This object describes the sensors of the system in general detail."/>
+          <Annotation Term="OData.LongDescription" String="This is a reference to sensor. This object shall contain properties which describes the sensors for the current resource."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="ScheduledPowerActions" Type="LenovoScheduledPowerActionCollection.LenovoScheduledPowerActionCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of the scheduled power actions of the system."/>
+          <Annotation Term="OData.LongDescription" String="This is a reference to scheduled power actions. This object shall contain properties which describes the scheduled power actions for the current resource."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="BootSettings" Type="LenovoBootManagerCollection.LenovoBootManagerCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A refernce to the collection of the boot settings for the server."/>
+          <Annotation Term="OData.LongDescription" String="Use this field to describe the server boot settings. From the general classification, there are 3 collections. There are multiple boot sources in sequence in each collection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+      
+      <ComplexType Name="TPMSettingsItem">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent TPM operation settings."/>
+        <Property Name="AssertRPP" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Get/set the BMC to assert or de-assert UEFI's remote physical presence signal."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall get/set the BMC to assert or de-assert UEFI's physical presence signal.This property is get/set via an IPMI command which can only be exercised by IPMI users with Administrator privileges."/>
+        </Property>
+        <Property Name="EnableRPP" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the BMC's ability to assert UEFI remote physical presence."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the BMC's ability to assert UEFI remote physical presence."/>
+        </Property>
+        <Property Name="AssertDurationMins" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents assert physical presence of TPM for this duration."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent assert physical presence of TPM for this duration."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="SecureBootOverKCSSettings">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent SecureBoot Over KCS settings."/>
+        <Property Name="AllowEnableSecureBootOverKCS" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Get/set whether the BMC allow to enable secure boot over KCS."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall get/set whether the BMC allow to enable secure boot over KCS."/>
+        </Property>
+        <Property Name="AllowDisableSecureBootOverKCS" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Get/set whether the BMC allow to disable secure boot over KCS."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall get/set whether the BMC allow to disable secure boot over KCS."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="FrontPanelUSBPort">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object indicates the configuration of front panel USB port."/>
+        <Property Name="FPMode" Type="LenovoComputerSystem.v1_0_0.FPModeItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The mode configuration of the front panel USB port."/>
+          <Annotation Term="OData.LongDescription" String="Display and configure the front panel USB port mode."/>
+        </Property>
+        <Property Name="InactivityTimeoutMins" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Shared inactivity timeout minutes."/>
+          <Annotation Term="OData.LongDescription" String="The BMC will support an inactivity timeout that signals the BMC to automatically switch the USB port back from the BMC to the server when the USB port is in shared mode and server power is on and there has been no USB activity to the BMC for a period of time. This setting is hidden if Shared FPMode is not enabled for front panel USB port."/>
+        </Property>
+        <Property Name="IDButton" Type="LenovoComputerSystem.v1_0_0.IDButtonItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Enable/Disable using id button to toggle owner."/>
+          <Annotation Term="OData.LongDescription" String="The BMC will support a setting that allows the user to choose whether or not to allow the ID (Locate) push button to be used as a signal to the BMC to switch the port to or from the BMC. This setting is hidden if Shared FPMode is not enabled."/>
+        </Property>
+        <Property Name="PortSwitchingTo" Type="LenovoComputerSystem.v1_0_0.PortSwitchingToItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Display and configure the front panel USB port owner."/>
+          <Annotation Term="OData.LongDescription" String="If the port configuration is set to Shared FPMode and the USB port is currently connected to the server, the BMC will support a request to switch the front panel USB port to the BMC. When this request is executed, the front panel USB connector will be switched immediately to the BMC. If the port configuration is set to Shared FPMode and the USB port is currently connected to the BMC, the BMC will support a request to switch the front panel USB port back to the server. When this request is executed, the front panel USB connector will be switched immediately to the server. This setting is hidden if Shared FPMode is not enabled."/>
+        </Property>
+        <Property Name="PortEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates this port is enabled or not."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="FPModeItem">
+        <Member Name="Shared">
+            <Annotation Term="OData.Description" String="Shared mode."/>
+        </Member>
+        <Member Name="BMC">
+            <Annotation Term="OData.Description" String="The port is always connected to the BMC. It is never connected to the server."/>
+        </Member>
+        <Member Name="Server">
+            <Annotation Term="OData.Description" String="The port is always connected to the server. It is never connected to the BMC."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="IDButtonItem">
+        <Member Name="On">
+            <Annotation Term="OData.Description" String="Allow the ID (Locate) push button."/>
+        </Member>
+        <Member Name="Off">
+            <Annotation Term="OData.Description" String="Disable the ID (Locate) push button."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="PortSwitchingToItem">
+        <Member Name="BMC">
+            <Annotation Term="OData.Description" String="The front panel USB port is currently connected to the BMC/Request to switch the front panel USB port to the BMC."/>
+        </Member>
+        <Member Name="Server">
+            <Annotation Term="OData.Description" String="The front panel USB port is currently connected to the server/Request to switch the front panel USB port to the server."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="ResetTypeItem">
+        <Member Name="ACPowerCycle"/>
+      </EnumType>
+      
+      <EnumType Name="SystemStatus">
+        <Member Name="SystemPowerOff_StateUnknown">
+        </Member>
+        <Member Name="SystemOn_StartingUEFI">
+        </Member>
+        <Member Name="SystemRunningInUEFI">
+        </Member>
+        <Member Name="SystemStoppedInUEFI">
+        </Member>
+        <Member Name="BootingOSOrInUndetectedOS">
+        </Member>
+        <Member Name="OSBooted">
+        </Member>
+        <Member Name="SuspendToRAM">
+        </Member>
+        <Member Name="SystemRunningInSetup">
+        </Member>
+      </EnumType>
+      
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

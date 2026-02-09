@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIPreserveConfigurations  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    </edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/JsonSchemas/AMIUpdateService_v1.xml">
+        <edmx:Include Namespace="AMIUpdateService.v1_0_0" Alias="AMIUpdateService"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="AMIPreserveConfigurations" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+          <EntityType Name="AMIPreserveConfigurations" BaseType="Resource.v1_0_0.Resource">
+            <Annotation Term="OData.Description" String="This is the schema definition for the configuration resource."/>
+            <Annotation Term="OData.LongDescription" String="This is the schema definition for the configuration resource."/>
+            <Annotation Term="Capabilities.InsertRestrictions">
+              <Record>
+                <PropertyValue Property="Insertable" Bool="false"/>
+              </Record>
+            </Annotation>
+            <Annotation Term="Capabilities.UpdateRestrictions">
+              <Record>
+                <PropertyValue Property="Updatable" Bool="true"/>
+              </Record>
+            </Annotation>
+            <Annotation Term="Capabilities.DeleteRestrictions">
+              <Record>
+                <PropertyValue Property="Deletable" Bool="false"/>
+              </Record>
+            </Annotation>
+          </EntityType>
+        </Schema>
+    	<Schema Namespace="AMIPreserveConfigurations.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+          <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+            <EntityType Name="AMIPreserveConfigurations" BaseType="AMIPreserveConfigurations.AMIPreserveConfigurations">
+                <Annotation Term="OData.Description" String="This allows preserve configuration of the BMC."/>
+                <Annotation Term="OData.LongDescription" String="This allows preserve configuration of the BMC."/>
+                <Property Name="PreserveConfigurations" Type="AMIUpdateService.v1_0_0.PreserveConfiguration" Nullable="true">
+				          <Annotation Term="OData.Description" String="The configuration need to be preserved when doing firmware update or restore factory defaults."/>
+				        </Property>
+            </EntityType>
+    
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

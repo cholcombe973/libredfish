@@ -1,0 +1,153 @@
+{
+    "$id": "/redfish/v1/Schemas/ThermalSubsystem.v1_0_0.json",
+    "$ref": "#/definitions/ThermalSubsystem",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "$ref": "#/definitions/OemActions",
+                    "description": "This property contains the available OEM specific actions for this resource.",
+                    "longDescription": "This property shall contain any additional OEM actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM specific actions for this resource.",
+            "longDescription": "This type shall contain any additional OEM actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "ThermalSubsystem": {
+            "additionalProperties": false,
+            "description": "This ThermalSubsystem schema contains the definition for the thermal subsystem of a chassis.",
+            "longDescription": "This resource shall represent a thermal subsystem for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "FanRedundancy": {
+                    "description": "The redundancy information for the groups of fans in this subsystem.",
+                    "items": {
+                        "$ref": "/redfish/v1/Schemas/Redundancy.json#/definitions/RedundantGroup"
+                    },
+                    "longDescription": "This property shall contain redundancy information for the groups of fans in this subsystem.",
+                    "type": "array"
+                },
+                "Fans": {
+                    "$ref": "/redfish/v1/Schemas/FanCollection.json#/definitions/FanCollection",
+                    "description": "The link to the collection of fans within this subsystem.",
+                    "longDescription": "This property shall contain a link to a resource collection of type FanCollection.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Status": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Status",
+                    "description": "The status and health of the resource and its subordinate or dependent resources.",
+                    "longDescription": "This property shall contain any status or health properties of the resource."
+                },
+                "ThermalMetrics": {
+                    "$ref": "/redfish/v1/Schemas/ThermalMetrics.json#/definitions/ThermalMetrics",
+                    "description": "The link to the summary of thermal metrics for this subsystem.",
+                    "longDescription": "This property shall contain a link to a resource collection of type ThermalMetrics.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "DMTF",
+    "release": "2020.4",
+    "title": "#ThermalSubsystem.v1_0_0.ThermalSubsystem"
+}

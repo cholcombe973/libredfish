@@ -1,0 +1,105 @@
+{
+    "RegistryVersion": "1.0.0",
+    "OwningEntity": "Lenovo",
+    "Description": "This registry defines Lenovo Extended Warning messages for Redfish.",
+    "@odata.type": "#MessageRegistry.v1_3_1.MessageRegistry",
+    "Language": "en",
+    "Messages": {
+        "CertificateMissing": {
+            "Resolution": "POST the certificate to the target resource and resubmit the request.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that this operation failed due to the certificate missing.",
+            "Severity": "Warning",
+            "Message": "This operation is failed because the certificate in '%1' is missing while property '%2' states its requirement."
+        },
+        "ReceivedUntrustedCertificate": {
+            "Resolution": "Stop accessing the HTTPS server and reset BMC to default if any security concern.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the service has automatically received an untrusted certificate from an HTTPS server",
+            "Severity": "Warning",
+            "Message": "In order to perform the operation, the service has automatically received an untrusted certificate from %1"
+        },
+        "LocalFileNotFound": {
+            "Resolution": "Provide a valid local file name and resubmit the request.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the operation expected a local file that specified in this request but one was not found.",
+            "Severity": "Warning",
+            "Message": "The requested local file %1 was not found."
+        },
+        "UpdateSNMPv3Settings": {
+            "Resolution": "Update SNMPv3 settings of the account if need to access SNMP GET.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that users need to update SNMPv3 settings otherwise the account unable to access SNMP GET.",
+            "Severity": "Warning",
+            "Message": "The SNMPv3 settings as well as SNMP user accessible interface for BMC user accounts need to be set otherwise the account won\u2019t be able to access SNMP GET."
+        },
+        "MissingSNMPv3Settings": {
+            "Resolution": "Update SNMPv3 settings of this account if need to access SNMP GET.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that this account creation request was missing SNMPv3 settings that would cause the account unable to access SNMP GET.",
+            "Severity": "Warning",
+            "Message": "The SNMPv3 settings need to be set otherwise the new account won\u2019t be able to access SNMP GET."
+        },
+        "ResourceChangeRequried": {
+            "Resolution": "Perform the required change action on the specified component.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that a resource state change is required for changes or operations to complete.",
+            "Severity": "Warning",
+            "Message": "In order to complete the operation, a resource %1 property %2 is required to change to be value '%3'."
+        },
+        "LocalFileLocked": {
+            "Resolution": "Remove the condition and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the expected local file is being used by another one in an exclusive way.",
+            "Severity": "Warning",
+            "Message": "The requested local file %1 is being locked."
+        },
+        "AccountAccessIPMIDenied": {
+            "Resolution": "Reset the password to be less than 20 bytes if necessary to access IPMI with the account.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that the account is unable to access IPMI since the length of the password exceeds 20 bytes.",
+            "Severity": "Warning",
+            "Message": "The account is unable to access IPMI since the length of the password exceeds 20 bytes."
+        },
+        "CertificateInvalid": {
+            "Resolution": "Correct the certificate and resubmit the request.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that this operation failed due to the certificate failed on verification.",
+            "Severity": "Warning",
+            "Message": "This operation is failed because the certificate in '%1' is invalid on verifying the certificates getting from '%2'."
+        },
+        "LocalFileInvalidSize": {
+            "Resolution": "Provide a valid offset and length and resubmit the request.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that the input offset or length for operating the specified local file was invalid.",
+            "Severity": "Warning",
+            "Message": "The input offset or length is invalid for this operation."
+        }
+    },
+    "@odata.context": "/redfish/v1/$metadata#MessageRegistry.MessageRegistry",
+    "Id": "LenovoExtendedWarning.1.0.0",
+    "Name": "Lenovo Extended Warning Message Registry",
+    "RegistryPrefix": "LenovoExtendedWarning"
+}

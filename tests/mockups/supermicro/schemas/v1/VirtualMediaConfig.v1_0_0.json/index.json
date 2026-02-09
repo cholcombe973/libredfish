@@ -1,0 +1,230 @@
+{
+    "definitions": {
+        "Mount": {
+            "description": "The actions mounts/unmounts an image file.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a mount/unmount action to the virtual media config supplied as a parameter.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action",
+                    "format": "uri"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                }
+            }
+        },
+        "UnMount": {
+            "description": "The actions mounts/unmounts an image file.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This defines the name of the custom action supported when used in conjunction with a POST operation to this resource. When issued, this operation will perform a mount/unmount action to the virtual media config supplied as a parameter.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action",
+                    "format": "uri"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                }
+            }
+        },
+        "IsoConfig": {
+            "description": "The base type for resources and members that can be linked to.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "Username": {
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The username of user in virtual media config.",
+                    "longDescription": "The value of this property shall be match the format of username. Max string length: 128."
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "Host": {
+                    "readonly": false,
+                    "type": "string",
+                    "description": "The host of user in virtual media config.",
+                    "longDescription": "The value of this property shall be match the format of ip address of host name. Max string length: 128."
+                },
+                "Actions": {
+                    "description": "The Actions object contains the available custom actions on this resource.",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                            "type": [
+                                "array",
+                                "boolean",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ],
+                            "description": "This property shall specify a valid odata or Redfish property."
+                        }
+                    },
+                    "readonly": true,
+                    "additionalProperties": true,
+                    "type": "object",
+                    "properties": {
+                        "#VirtualMediaConfig.Mount": {
+                            "$ref": "#/definitions/Mount"
+                        },
+                        "#VirtualMediaConfig.UnMount": {
+                            "$ref": "#/definitions/UnMount"
+                        },
+                        "Oem": {
+                            "additionalProperties": true,
+                            "patternProperties": {
+                                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                                    "type": [
+                                        "array",
+                                        "boolean",
+                                        "number",
+                                        "null",
+                                        "object",
+                                        "string"
+                                    ],
+                                    "description": "This property shall specify a valid odata or Redfish property."
+                                }
+                            },
+                            "type": [
+                                "object",
+                                "null"
+                            ],
+                            "properties": {}
+                        }
+                    }
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Path": {
+                    "readonly": false,
+                    "type": "string",
+                    "description": "The iso path of user in virtual media config.",
+                    "longDescription": "The value of this property shall be match the format of file path. Max string length: 128."
+                },
+                "Password": {
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The password of user in virtual media config.",
+                    "longDescription": "The value of this property shall be match the format of password. Max string length: 128."
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        },
+        "VirtualMediaConfig": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "AcceptSelfSigned": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "The aloow AcceptSelfSigned on this resource."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/IsoConfig",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#VirtualMediaConfig.v1_0_0.IsoConfig"
+}

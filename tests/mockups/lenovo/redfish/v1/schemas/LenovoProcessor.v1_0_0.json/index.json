@@ -1,0 +1,145 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoProcessor.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "LenovoProcessor": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for Oem Lenovo Processor resource.  It represents the properties of a processor attached to a System.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CacheInfo": {
+                    "description": "The cache for this processor.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/ProcessorCache"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "This property shall indicate the attibutes of processor cache device. Processoy may have different level cache.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "CurrentClockSpeedMHz": {
+                    "description": "The current speed (in MHz) of this Processor.",
+                    "longDescription": "The current speed (in MHz) of this Processor.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ExternalBusClockSpeedMHz": {
+                    "description": "The speed (in MHz) of the external bus interface.",
+                    "longDescription": "The speed (in MHz) of the external bus interface.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "NumberOfEnabledCores": {
+                    "description": "Number of processor cores enabled for processor.",
+                    "longDescription": "Number of processor cores enabled for processor.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProcessorFamily": {
+                    "description": "The Family field for this processor.",
+                    "longDescription": "This property shall indicate the Processor Family field.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ProcessorCache": {
+            "additionalProperties": false,
+            "description": "This includes the processor cache information",
+            "longDescription": "This type shall contain cache of a processor resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CacheLevel": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ProcessorCacheLevel"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This includes the processor cache information",
+                    "readonly": true
+                },
+                "InstalledSizeKByte": {
+                    "description": "The installed cache size. The value should be zero if no cache is installed.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxCacheSizeKByte": {
+                    "description": "The maximum size that can be installed.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ProcessorCacheLevel": {
+            "enum": [
+                "L1",
+                "L2",
+                "L3"
+            ],
+            "enumDescriptions": {
+                "L1": "L1 Cache of Processor.",
+                "L2": "L2 Cache of Processor.",
+                "L3": "L3 Cache of Processor."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoProcessor.v1_0_0"
+}

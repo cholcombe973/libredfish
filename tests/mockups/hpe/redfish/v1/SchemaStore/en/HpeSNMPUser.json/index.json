@@ -1,0 +1,96 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeSNMPUser",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeSNMPUser resource describes the properties for SNMP support.  SNMPv3 supports the User-based Security Model (USM). With this model,security parameters are configured at both the agent level and the manager level. Messages exchanged between the agent and the manager are subject to a data integrity check and data origin authentication. Up to 8 user profiles are supported for setting SNMPv3 USM parameters.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AuthPassphrase": {
+            "description": "Sets the passphrase to use for sign operations. Enter a value of 8 to 49 characters.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "AuthProtocol": {
+            "description": "Sets the message digest algorithm to use for encoding the authorization passphrase. The message digest is calculated over an appropriate portion of an SNMP message, and is included as part of the message sent to the recipient.",
+            "enum": [
+                "MD5",
+                "SHA",
+                "SHA256"
+            ],
+            "enumDescriptions": {
+                "MD5": "Indicate Message Digest Algorithm.",
+                "SHA": "Indicate Secure Hash Algorithm.",
+                "SHA256": "Indicate SHA256 Algorithm."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "PrivacyPassphrase": {
+            "description": "Sets the passphrase to use for encrypt operations. Enter a value of 8 to 49 characters.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PrivacyProtocol": {
+            "description": "Sets the encryption algorithm to use for encoding the privacy passphrase. A portion of an SNMP message is encrypted before transmission.",
+            "enum": [
+                "DES",
+                "AES"
+            ],
+            "enumDescriptions": {
+                "AES": "Indicate Advanced Encryption Standard Algorithm.",
+                "DES": "Indicate Data Encryption Standard Algorithm."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "SecurityName": {
+            "description": "The user profile name. Enter an alphanumeric string of 1 to 32 characters.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "UserEngineID": {
+            "description": "The UserEngineID is combined with the SecurityName to create a SNMPv3 user for each manager. It is only used for creating remote accounts used with INFORM messages. If this property is not set then INFORM message will be sent with default or iLO configured engine ID. This value must be a hexadecimal string with an even number of 10 to 64 characters, excluding the first two characters, 0x (for example, 0x01020304abcdef).",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "readonly": false,
+    "title": "#HpeSNMPUser.v2_1_0.HpeSNMPUser",
+    "type": "object"
+}

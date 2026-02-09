@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeMaintenanceWindow",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeMaintenanceWindow resource describes the properties for managing the time window for a software or firmware update task or install set.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Created": {
+            "description": "ISO-time of maintenance window creation (by whomever created this thing)",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "Description": {
+            "description": "User defined description of the maintenance window.",
+            "maxLength": 64,
+            "minLength": 0,
+            "readonly": false,
+            "type": "string"
+        },
+        "Expire": {
+            "description": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time",
+            "format": "date-time",
+            "readonly": false,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Modified": {
+            "description": "ISO-time of last maintenance window item update by updater (not client)",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "description": "User defined name of the maintenance window.",
+            "maxLength": 64,
+            "minLength": 0,
+            "readonly": false,
+            "type": "string"
+        },
+        "StartAfter": {
+            "description": "ISO 8601 Redfish-style time string of earliest execution.",
+            "format": "date-time",
+            "readonly": false,
+            "type": "string"
+        }
+    },
+    "required": [
+        "Created",
+        "Description",
+        "Id",
+        "Modified",
+        "Name",
+        "StartAfter"
+    ],
+    "title": "#HpeMaintenanceWindow.v1_0_1.HpeMaintenanceWindow",
+    "type": "object"
+}

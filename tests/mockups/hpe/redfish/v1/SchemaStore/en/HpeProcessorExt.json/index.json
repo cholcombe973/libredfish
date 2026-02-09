@@ -1,0 +1,419 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeProcessorExt",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2022 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeProcessorExt object extends the Redfish Processor resource with additional HPE functionality.",
+    "private": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AssetTag": {
+            "description": "The processor asset tag.",
+            "displayname": "AssetTag",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Cache": {
+            "description": "The array of caches supported by the processor.",
+            "displayname": "Cache",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "Associativity": {
+                        "description": "The associativity of the cache.",
+                        "enum": [
+                            "DirectMapped",
+                            "2waySetAssociative",
+                            "4waySetAssociative",
+                            "FullyAssociative",
+                            "8waySetAssociative",
+                            "16waySetAssociative",
+                            "12waySetAssociative",
+                            "24waySetAssociative",
+                            "32waySetAssociative",
+                            "48waySetAssociative",
+                            "64waySetAssociative",
+                            "20waySetAssociative",
+                            "None"
+                        ],
+                        "enumDescriptions": {
+                            "12waySetAssociative": "12-way Set-Associative",
+                            "16waySetAssociative": "16-way Set-Associative",
+                            "20waySetAssociative": "20-way Set-Associative",
+                            "24waySetAssociative": "24-way Set-Associative",
+                            "2waySetAssociative": "2-way Set-Associative",
+                            "32waySetAssociative": "32-way Set-Associative",
+                            "48waySetAssociative": "48-way Set-Associative",
+                            "4waySetAssociative": "4-way Set-Associative",
+                            "64waySetAssociative": "64-way Set-Associative",
+                            "8waySetAssociative": "8-way Set-Associative",
+                            "DirectMapped": "Direct Mapped",
+                            "FullyAssociative": "Fully Associative"
+                        },
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "CacheSpeedns": {
+                        "description": "The cache speed (ns).",
+                        "displayname": "CacheSpeedns",
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "CurrentSRAMType": {
+                        "items": {
+                            "description": "The array of supported SRAM attributes currently used by the cache.",
+                            "displayname": "CurrentSRAMType",
+                            "enum": [
+                                "NonBurst",
+                                "Burst",
+                                "PipelineBurst",
+                                "Synchronous",
+                                "Asynchronous"
+                            ],
+                            "enumDescriptions": {
+                                "Asynchronous": "Asynchronous",
+                                "Burst": "Burst",
+                                "NonBurst": "Non-Burst",
+                                "PipelineBurst": "Pipeline Burst",
+                                "Synchronous": "Synchronous"
+                            },
+                            "readonly": true,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "type": "array"
+                    },
+                    "EccType": {
+                        "description": "The cache memory ECC type.",
+                        "enum": [
+                            "None",
+                            "Parity",
+                            "SingleBitECC",
+                            "MultiBitECC"
+                        ],
+                        "enumDescriptions": {
+                            "MultiBitECC": "Multi-bit ECC",
+                            "None": "None",
+                            "Parity": "Parity",
+                            "SingleBitECC": "Single-bit ECC"
+                        },
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "InstalledSizeKB": {
+                        "description": "The installed cache size (KB).",
+                        "displayname": "InstalledSizeKB",
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Location": {
+                        "description": "The cache location (internal or external).",
+                        "enum": [
+                            "Internal",
+                            "External"
+                        ],
+                        "enumDescriptions": {
+                            "External": "External",
+                            "Internal": "Internal"
+                        },
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MaximumSizeKB": {
+                        "description": "The maximum cache size (KB).",
+                        "displayname": "MaximumSizeKB",
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Name": {
+                        "description": "The cache name, for example, 'L1-Cache,' 'L2-Cache,' or 'L3-Cache.'",
+                        "displayname": "Name",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Policy": {
+                        "description": "The caching policy.",
+                        "enum": [
+                            "WriteThrough",
+                            "WriteBack",
+                            "Varies"
+                        ],
+                        "enumDescriptions": {
+                            "Varies": "Varies with memory address",
+                            "WriteBack": "Write back",
+                            "WriteThrough": "Write through"
+                        },
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Socketed": {
+                        "description": "If true, the cache is a socketed component.",
+                        "displayname": "Socketed",
+                        "readonly": true,
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    },
+                    "SupportedSRAMType": {
+                        "description": "The array of supported SRAM attributes supported by the cache.",
+                        "displayname": "SupportedSRAMType",
+                        "items": {
+                            "enum": [
+                                "NonBurst",
+                                "Burst",
+                                "PipelineBurst",
+                                "Synchronous",
+                                "Asynchronous"
+                            ],
+                            "enumDescriptions": {
+                                "Asynchronous": "Asynchronous",
+                                "Burst": "Burst",
+                                "NonBurst": "Non-Burst",
+                                "PipelineBurst": "Pipeline Burst",
+                                "Synchronous": "Synchronous"
+                            },
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "SystemCacheType": {
+                        "description": "The cache type (unified, instructions, or data).",
+                        "enum": [
+                            "Instruction",
+                            "Data",
+                            "Unified"
+                        ],
+                        "enumDescriptions": {
+                            "Data": "Data",
+                            "Instruction": "Instruction",
+                            "Unified": "Unified"
+                        },
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Characteristics": {
+            "description": "The array of processor characteristics.",
+            "displayname": "Characteristics",
+            "items": {
+                "enum": [
+                    "64Bit",
+                    "MultiCore",
+                    "HwThread",
+                    "ExecuteProtection",
+                    "EnhancedVirtualization",
+                    "PowerPerfControl"
+                ],
+                "enumDescriptions": {
+                    "64Bit": "64-bit Capable",
+                    "EnhancedVirtualization": "Enhanced Virtualization",
+                    "ExecuteProtection": "Execute Protection",
+                    "HwThread": "Hardware Thread",
+                    "MultiCore": "Multi-Core",
+                    "PowerPerfControl": "Power/Performance Control"
+                },
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "ConfigStatus": {
+            "additionalProperties": false,
+            "description": "CPU Status",
+            "displayname": "ConfigStatus",
+            "properties": {
+                "Populated": {
+                    "description": "True if the processor socket is populated with a CPU.",
+                    "displayname": "Populated",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "State": {
+                    "description": "The current state of the processor.",
+                    "enum": [
+                        "Enabled",
+                        "DisabledByUser",
+                        "DisabledByBios",
+                        "Idle"
+                    ],
+                    "enumDescriptions": {
+                        "DisabledByBios": "CPU Disabled By BIOS (POST Error)",
+                        "DisabledByUser": "CPU Disabled by User through BIOS Setup",
+                        "Enabled": "CPU Enabled",
+                        "Idle": "CPU is Idle, waiting to be enabled."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "CoresEnabled": {
+            "description": "The number of enabled cores in the processor.",
+            "displayname": "CoresEnabled",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "ExternalClockMHz": {
+            "description": "The processor external clock frequency (MHZ), for example, 1000 = 1 GHZ.",
+            "displayname": "ExternalClockMHz",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MicrocodePatches": {
+            "description": "The array of microcode patches applied to the processor.",
+            "displayname": "MicrocodePatches",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "CpuId": {
+                        "description": "The microcode patch CPUID.",
+                        "displayname": "CpuId",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Date": {
+                        "description": "The microcode patch date.",
+                        "displayname": "Date",
+                        "format": "date-time",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "PatchId": {
+                        "description": "The microcode patch ID.",
+                        "displayname": "PatchId",
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "PartNumber": {
+            "description": "The processor part number.",
+            "displayname": "PartNumber",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "RatedSpeedMHz": {
+            "description": "The speed of the processor (in MHz) as of the last system boot, for example, 1000 = 1GHz.",
+            "displayname": "RatedSpeedMHz",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "The processor serial number.",
+            "displayname": "SerialNumber",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "VoltageVoltsX10": {
+            "description": "The processor voltage multiplied by 10, for example, 3.3v = 33.",
+            "displayname": "VoltageVoltsX10",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "title": "#HpeProcessorExt.v2_0_1.HpeProcessorExt",
+    "type": "object"
+}

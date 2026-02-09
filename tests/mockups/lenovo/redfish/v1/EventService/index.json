@@ -1,0 +1,74 @@
+{
+    "EventFormatTypes": [
+        "Event",
+        "MetricReport"
+    ],
+    "Subscriptions": {
+        "@odata.id": "/redfish/v1/EventService/Subscriptions"
+    },
+    "RegistryPrefixes": [
+        "Base",
+        "EventRegistry",
+        "ExtendedError",
+        "LenovoExtendedWarning",
+        "LenovoFirmwareUpdateRegistry",
+        "License",
+        "LogService",
+        "ResourceEvent",
+        "TaskEvent",
+        "Update"
+    ],
+    "ResourceTypes": [
+        "LogService"
+    ],
+    "DeliveryRetryIntervalSeconds": 60,
+    "DeliveryRetryAttempts": 3,
+    "Id": "EventService",
+    "Name": "Event Service",
+    "@odata.type": "#EventService.v1_7_2.EventService",
+    "@odata.id": "/redfish/v1/EventService",
+    "SubordinateResourcesSupported": true,
+    "IncludeOriginOfConditionSupported": true,
+    "SSEFilterPropertiesSupported": {
+        "OriginResource": true,
+        "MessageId": true,
+        "ResourceType": true,
+        "MetricReportDefinition": true,
+        "SubordinateResources": true,
+        "EventFormatType": true,
+        "RegistryPrefix": true
+    },
+    "Description": "This resource represents an event service for a Redfish implementation.",
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "SMTP": {
+        "ConnectionProtocol@Redfish.AllowableValues": [
+            "AutoDetect"
+        ],
+        "Authentication@Redfish.AllowableValues": [
+            "None",
+            "Login",
+            "CRAM_MD5"
+        ],
+        "ServiceEnabled": true,
+        "FromAddress": null,
+        "Password": null,
+        "ConnectionProtocol": "AutoDetect",
+        "ServerAddress": "0.0.0.0",
+        "Authentication": "None",
+        "Port": 25,
+        "Username": ""
+    },
+    "@odata.context": "/redfish/v1/$metadata#EventService.EventService",
+    "@odata.etag": "\"bd70d5f34fb62d2afb985\"",
+    "ServerSentEventUri": "/redfish/v1/EventService/ServerSentEvent",
+    "ServiceEnabled": true,
+    "Actions": {
+        "#EventService.SubmitTestEvent": {
+            "title": "SubmitTestEvent",
+            "target": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent"
+        }
+    }
+}

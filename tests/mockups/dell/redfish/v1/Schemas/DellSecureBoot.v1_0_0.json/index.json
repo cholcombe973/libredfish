@@ -1,0 +1,37 @@
+{
+    "$id": "/redfish/v1/Schemas/DellSecureBoot.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellSecureBoot": {
+            "additionalProperties": false,
+            "description": "This resource contains the Dell specific Redfish implementation for SecureBoot.",
+            "longDescription": "This resource contains the Dell specific Redfish implementation for SecureBoot.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Certificates": {
+                    "$ref": "/redfish/v1/Schemas/DellCertificateStoreCollection.json#/definitions/DellCertificateStoreCollection",
+                    "description": "A reference to the collection of SecureBoot Certificates associated with this system.",
+                    "longDescription": "The value of this property shall be a link to a collection of type SecureBoot Certificates.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellSecureBoot.v1_0_0"
+}

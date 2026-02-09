@@ -1,0 +1,76 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+		<edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+		<edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+		<edmx:Include Namespace="Resource"/>
+		<edmx:Include Namespace="Resource.v1_0_0"/>
+	</edmx:Reference>
+	<edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+		<edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+		<edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+	</edmx:Reference>
+        <edmx:Reference Uri="/redfish/v1/Schemas/DellD4DReportCollection_v1.xml">
+                <edmx:Include Namespace="DellD4DReportCollection"/>
+        </edmx:Reference>
+        <edmx:Reference Uri="/redfish/v1/Schemas/MetricReportDefinitionCollection_v1.xml">
+		<edmx:Include Namespace="MetricReportDefinitionCollection"/>
+	</edmx:Reference>
+	<edmx:DataServices>
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellD4D">
+			<Annotation Term="Redfish.OwningEntity" String="Dell"/>
+			<EntityType Name="DellD4D" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+				<Annotation Term="OData.Description" String="The DellD4D schema represents a set of collected metrics."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall represent D4D Services in a Redfish implementation."/>
+				<Annotation Term="Capabilities.InsertRestrictions">
+					<Record>
+						<PropertyValue Property="Insertable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.UpdateRestrictions">
+					<Record>
+						<PropertyValue Property="Updatable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Capabilities.DeleteRestrictions">
+					<Record>
+						<PropertyValue Property="Deletable" Bool="false"/>
+					</Record>
+				</Annotation>
+				<Annotation Term="Redfish.Uris">
+					<Collection>
+						<String>/redfish/v1/TelemetryService/Oem/Dell/D4D</String>
+					</Collection>
+				</Annotation>
+			</EntityType>
+		</Schema>
+
+
+		<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellD4D.v1_0_0">
+			<Annotation Term="Redfish.OwningEntity" String="Dell"/>
+		        <EntityType Name="DellD4D" BaseType="DellD4D.DellD4D" >
+				<Annotation Term="OData.Description" String="The DellD4D schema is the D4D service page providing D4D actions report definitions and reports."/>
+				<Annotation Term="OData.LongDescription" String="This resource shall represent the D4D Service page."/>
+			<NavigationProperty Name="Reports" Type="DellD4DReportCollection.DellD4DReportCollection" ContainsTarget="true" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				<Annotation Term="OData.Description" String="The link to the collection of d4d reports."/>
+				<Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource collection of type DellD4DReportCollection."/>
+				<Annotation Term="OData.AutoExpandReferences"/>
+			</NavigationProperty>
+			<NavigationProperty Name="ReportDefinitions" Type="MetricReportDefinitionCollection.MetricReportDefinitionCollection" ContainsTarget="true" Nullable="false">
+				<Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+				<Annotation Term="OData.Description" String="The link to the collection of metric report definitions."/>
+				<Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource collection of type MetricReportDefinitionCollection."/>
+				<Annotation Term="OData.AutoExpandReferences"/>
+			</NavigationProperty>
+			<Property Name="HistoricalReports" Type="Edm.String" Nullable="false">
+				<Annotation Term="OData.Description" String="The value is a URI.  The URI will provide all D4D Reports."/>
+				<Annotation Term="OData.LongDescription" String="The value is a link that will provide all D4D Reports.  The link will provide data in tar or zip content-types.  Zip is set by default.  To change the content type,  the request header shall update key Accept to either application/x-tar or to application/zip"/>
+			</Property>
+			</EntityType>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

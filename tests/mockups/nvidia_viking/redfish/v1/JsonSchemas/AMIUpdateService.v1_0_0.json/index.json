@@ -1,0 +1,326 @@
+{
+    "$ref": "#/definitions/AMIUpdateService",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_2_0.json",
+    "copyright": "Copyright American Megatrends, Inc.(AMI).",
+    "definitions": {
+        "AMIUpdateService": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the Update Service. It represents the properties for the service itself and has links to collections of firmware and software inventory.",
+            "longDescription": "This resource shall be used to represent an Update Service for a Redfish implementation. It represents the properties that affect the service itself.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The Actions object contains the available custom actions on this resource."
+                },
+                "FlashPercentage": {
+                    "description": "This is FlashPercentage of the UpdateService.",
+                    "longDescription": "The value of this string shall represent the FlashPercentage of the UpdateService.The format of the string shall be the  Percentage completed for Flashing of the UpdateService.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PreserveConfiguration": {
+                    "$ref": "#/definitions/PreserveConfiguration",
+                    "description": "The configuration need to be preserved when doing firmware update or restore factory defaults."
+                },
+                "UpdateInformation": {
+                    "$ref": "#/definitions/UpdateInformation",
+                    "description": "The information about the updated firmware."
+                },
+                "UpdateStatus": {
+                    "description": "This is UpdateStatus of the UpdateService.",
+                    "longDescription": "The value of this string shall represent the UpdateStatus of the UpdateService. The format of the string shall be the  Status is Preparing or Downloading or Verifying or Flashing.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "UpdateTarget": {
+                    "description": "This is UpdateTarget of the UpdateService.",
+                    "longDescription": "The value of this string shall represent UpdateTarget of the UpdateService.  The format of this string shall be BMC.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#AMIUpdateService.UploadCABundle": {
+                    "$ref": "#/definitions/UploadCABundle"
+                }
+            },
+            "type": "object"
+        },
+        "BMC": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for image configurations and preserve configurations.",
+            "longDescription": "This is the schema definition for image configurations and preserve configurations.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DualImageConfigurations": {
+                    "$ref": "#/definitions/DualImageConfigurations"
+                }
+            },
+            "type": "object"
+        },
+        "DualImageConfigurations": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ActiveImage": {
+                    "description": "active image in the BMC",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "BootImage": {
+                    "description": "Represents the image to which BMC boots to.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "FirmwareImage1Name": {
+                    "description": "The name of image #1.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "FirmwareImage1Version": {
+                    "description": "The version of the first firmware image.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "FirmwareImage2Name": {
+                    "description": "The name of image #2",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "FirmwareImage2Version": {
+                    "description": "The version of the second firmware image.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "PreserveConfiguration": {
+            "additionalProperties": false,
+            "description": "The configuration need to be preserved when doing firmware update or restore factory defaults.",
+            "properties": {
+                "AUTOMATION_ENGINE": {
+                    "description": "To preserve AUTOMATION_ENGINE.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "Authentication": {
+                    "description": "To preserve Authentication.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "CMX": {
+                    "description": "To preserve CMX.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "EXTLOG": {
+                    "description": "To preserve EXTLOG.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "FRU": {
+                    "description": "To preserve FRU.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "IPMI": {
+                    "description": "To preserve IPMI.",
+                    "longDescription": "To preserve config of IPMI. It will preserve Network automatically if preserve IPMI",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "KVM": {
+                    "description": "To preserve KVM.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "NTP": {
+                    "description": "To preserve NTP.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "Network": {
+                    "description": "To preserve Network.",
+                    "longDescription": "To preserve config of Network. It will preserve IPMI automatically if preserve Network",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "REDFISH": {
+                    "description": "To preserve REDFISH.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "SDR": {
+                    "description": "To preserve SDR.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "SEL": {
+                    "description": "To preserve SEL.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "SNMP": {
+                    "description": "To preserve SNMP.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "SSH": {
+                    "description": "To preserve SSH.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "Syslog": {
+                    "description": "To preserve Syslog.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "WEB": {
+                    "description": "To preserve WEB.",
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "UpdateInformation": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "UpdateComponent": {
+                    "description": "The information about the updated firmware.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "UploadCABundle": {
+            "additionalProperties": false,
+            "description": "This action is used to upload CA Bundle.",
+            "longDescription": "This action is used to upload CA Bundle.",
+            "parameters": {
+                "ca_bundle": {
+                    "description": "This parameter contains all required RootCA certificates and intermediate certificates.",
+                    "longDescription": "This parameter provides CA bundle file in pem format which contains all required RootCA certificates and intermediate certificates for verifing SSL certificate on HTTPS server during SSL handshake.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMIUpdateService.v1_0_0.AMIUpdateService"
+}

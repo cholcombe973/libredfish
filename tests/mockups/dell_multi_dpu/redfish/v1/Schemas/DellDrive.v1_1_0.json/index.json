@@ -1,0 +1,310 @@
+{
+    "$id": "/redfish/v1/Schemas/DellDrive.v1_1_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellDrive.ExportNVMeDeviceLogs": {
+                    "$ref": "#/definitions/ExportNVMeDeviceLogs"
+                }
+            },
+            "type": "object"
+        },
+        "DellDrive": {
+            "additionalProperties": false,
+            "description": "Oem data related to DellDrive.",
+            "longDescription": "Oem data related to DellDrive.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DellDriveSMARTAttributes": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellDriveSMARTAttributes.json#/definitions/DellDriveSMARTAttributes"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A resource representation of DellDriveSMARTAttributes.",
+                    "longDescription": "A resource representation of DellDriveSMARTAttributes.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "DellNVMeSMARTAttributes": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNVMeSMARTAttributes.json#/definitions/DellNVMeSMARTAttributes"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A resource representation of DellNVMeSMARTAttributes.",
+                    "longDescription": "A resource representation of DellNVMeSMARTAttributes.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "DellPCIeSSD": {
+                    "$ref": "/redfish/v1/Schemas/DellPCIeSSD.json#/definitions/DellPCIeSSD",
+                    "autoExpand": true,
+                    "description": "A resource representation of DellPCIeSSD.",
+                    "longDescription": "A resource representation of DellPCIeSSD.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "DellPhysicalDisk": {
+                    "$ref": "/redfish/v1/Schemas/DellPhysicalDisk.json#/definitions/DellPhysicalDisk",
+                    "autoExpand": true,
+                    "description": "A resource representation of DellPhysicalDisk.",
+                    "longDescription": "A resource representation of DellPhysicalDisk.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "FIPS140ComplianceDescriptor": {
+                    "$ref": "#/definitions/FIPS140ComplianceDescriptor",
+                    "description": "A resource representation of DellOem FIPS.",
+                    "longDescription": "A resource representation of DellOem FIPS.",
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "type": "object"
+        },
+        "ExportNVMeDeviceLogs": {
+            "additionalProperties": false,
+            "description": "The ExportNVMeDeviceLogs operation shall be used to export the storage device logs.",
+            "longDescription": "The ExportNVMeDeviceLogs operation shall be used to export the storage device logs.",
+            "parameters": {
+                "FileName": {
+                    "description": "The target output file name.",
+                    "longDescription": "The target output file name.",
+                    "pattern": "\\.+",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "IPAddress": {
+                    "description": "IP address of the network share.",
+                    "longDescription": "IP address of the network share.",
+                    "pattern": "\\.+",
+                    "type": "string"
+                },
+                "IgnoreCertificateWarning": {
+                    "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/IgnoreCertificateWarning",
+                    "description": "Ignore Certificate Warning.",
+                    "readonly": true
+                },
+                "IncludeInExport": {
+                    "description": "IncludeInExport to select the logs type.",
+                    "items": {
+                        "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/LogTypes"
+                    },
+                    "longDescription": "IncludeInExport to select the logs type.",
+                    "requiredParameter": true,
+                    "type": "array"
+                },
+                "Password": {
+                    "description": "Password of the account to access the share.",
+                    "longDescription": "Password of the account to access the share.",
+                    "type": "string"
+                },
+                "ProxyPassword": {
+                    "description": "Proxy Server Password.",
+                    "pattern": "\\.+",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Proxy Port address.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "ProxyServer": {
+                    "description": "Proxy Server address.",
+                    "pattern": "\\.+",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ProxySupport": {
+                    "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/ProxySupport",
+                    "description": "Proxy Support to be Enabled or Disabled.",
+                    "readonly": true
+                },
+                "ProxyType": {
+                    "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/ProxyType",
+                    "description": "Type of Proxy HTTP or SOCKS4.",
+                    "readonly": true
+                },
+                "ProxyUserName": {
+                    "description": "Proxy Server User Name.",
+                    "pattern": "\\.+",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ShareName": {
+                    "description": "Name of the share.",
+                    "longDescription": "Name of the share.",
+                    "pattern": "\\.+",
+                    "type": "string"
+                },
+                "ShareType": {
+                    "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/ShareType",
+                    "description": "Type of the network share.",
+                    "longDescription": "Type of the network share.",
+                    "requiredParameter": true
+                },
+                "UserName": {
+                    "description": "UserName of the account to access the share.",
+                    "longDescription": "UserName of the account to access the share.",
+                    "pattern": "\\.+",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "FIPS140ComplianceDescriptor": {
+            "additionalProperties": false,
+            "description": "FIPS140 compliance properties for VOSS drives.",
+            "longDescription": "FIPS140 compliance properties for VOSS drives.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ComplianceDescriptorModuleName": {
+                    "description": "A string that contains compliance descriptor modulename of VOSS drives.",
+                    "longDescription": "A string that contains compliance descriptor modulename of VOSS drives.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ComplianceDescriptorType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/ComplianceDescriptorType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property will describe compliance descriptor type.",
+                    "longDescription": "This property will describe compliance descriptor type.",
+                    "readonly": false,
+                    "versionAdded": "v1_1_0"
+                },
+                "ComplianceDescriptorVersion": {
+                    "description": "A string that contains compliance descriptor version of VOSS drives.",
+                    "longDescription": "A string that contains compliance descriptor version of VOSS drives.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ComplianceHardwareVersion": {
+                    "description": "A string that contains compliance hardware version of VOSS drives.",
+                    "longDescription": "A string that contains compliance hardware version of VOSS drives.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ComplianceOverallSecurityLevel": {
+                    "description": "A string that contains compliance overall security level of VOSS drives.",
+                    "longDescription": "A string that contains compliance overall security level of VOSS drives.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ComplianceRelatedStandard": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellDrive.json#/definitions/ComplianceRelatedStandard"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property will describe compliance related standard.",
+                    "longDescription": "This property will describe compliance related standard.",
+                    "readonly": false,
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellDrive.v1_1_0"
+}

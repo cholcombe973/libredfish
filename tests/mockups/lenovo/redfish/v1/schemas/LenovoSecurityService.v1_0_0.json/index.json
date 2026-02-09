@@ -1,0 +1,318 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoSecurityService.v1_0_0.json",
+    "$ref": "#/definitions/LenovoSecurityService",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#LenovoSecurityService.CreateKeyPair": {
+                    "$ref": "#/definitions/CreateKeyPair"
+                }
+            },
+            "type": "object"
+        },
+        "CreateKeyPair": {
+            "additionalProperties": false,
+            "description": "This action is used to create a key pair for the specified Service.",
+            "parameters": {
+                "Service": {
+                    "$ref": "#/definitions/ServiceName",
+                    "description": "Indicates for which Service this certificate applies."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "CryptographyManagement": {
+            "additionalProperties": false,
+            "description": "This is used to represent cryptography management in security service.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "MinTLSLevel": {
+                    "$ref": "#/definitions/TLSLevel",
+                    "description": "Indicates the enabled minimum TLS level.",
+                    "longDescription": "The value of this property shall be a string indicating the enabled minimum TLS level.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "EncapMode": {
+            "enum": [
+                "NormalMode",
+                "EncapsulationLiteMode"
+            ],
+            "type": "string"
+        },
+        "EncapSettings": {
+            "additionalProperties": false,
+            "description": "This object is used to represent the settings of encapsulation mode.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "EncapMode": {
+                    "$ref": "#/definitions/EncapMode",
+                    "description": "Represents whether the system is in encapsulation mode, and which encapsulation mode it is.",
+                    "longDescription": "The value of this property shall represent whether the system is in encapsulation mode, and which encapsulation mode it is.",
+                    "readonly": false
+                },
+                "WhiteList": {
+                    "description": "Represents a white-list of network traffic. Each item of this array shall be an IPv4/IPv6 address.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "The value of this property shall represent a white-list of network traffic. Each item of this array shall be an IPv4/IPv6 address.",
+                    "readonly": false,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "FWRollback": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "type": "string"
+        },
+        "LenovoSecurityService": {
+            "additionalProperties": false,
+            "description": "This is Lenovo extended Security service properties.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Configurator": {
+                    "$ref": "#/definitions/SecureConfigurator",
+                    "description": "Represents security configurations.",
+                    "longDescription": "The value of this property shall indicate the information about security configurations."
+                },
+                "CryptographyManagement": {
+                    "$ref": "#/definitions/CryptographyManagement",
+                    "description": "Represents cryptography management in security service.",
+                    "longDescription": "The value of this property shall represent cryptography management in security service.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "EncapSettings": {
+                    "$ref": "#/definitions/EncapSettings",
+                    "description": "Represents settings of encapsulation service.",
+                    "longDescription": "The value of this property shall indicate the settings of encapsulation service."
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "SSLSettings": {
+                    "$ref": "#/definitions/SSLSettings",
+                    "description": "Represents settings of SSL.",
+                    "longDescription": "The value of this property shall indicate the settings of SSL."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "SSLSettings": {
+            "additionalProperties": false,
+            "description": "This object is used to represent the settings of SSL.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "EnableCIMOverHttps": {
+                    "description": "Represents enable or disable SSL for CIM-XML-Http server.",
+                    "longDescription": "The value of this property shall represent enable or disable SSL for CIM-XML-Http server.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "EnableHttps": {
+                    "description": "Represents enable or disable SSL for web http.",
+                    "longDescription": "The value of this property shall represent enable or disable SSL for web http.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "EnableLDAPS": {
+                    "description": "Represents enable or disable SSL for LDAP-Client.",
+                    "longDescription": "The value of this property shall represent enable or disable SSL for LDAP-Client.",
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "type": "object"
+        },
+        "SecureConfigurator": {
+            "additionalProperties": false,
+            "description": "This is uesd to represent the host name or IP address and port number of SKLM servers.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FWRollback": {
+                    "$ref": "#/definitions/FWRollback",
+                    "description": "Represents secure roll back status.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "ServiceName": {
+            "enum": [
+                "SSH_SVR"
+            ],
+            "enumDescriptions": {
+                "SSH_SVR": "Indicates SSH server."
+            },
+            "type": "string"
+        },
+        "TLSLevel": {
+            "enum": [
+                "TLSLevel1_1",
+                "TLSLevel1_2",
+                "TLSLevel1_3"
+            ],
+            "type": "string"
+        }
+    },
+    "title": "#LenovoSecurityService.v1_0_0.LenovoSecurityService"
+}

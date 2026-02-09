@@ -1,0 +1,802 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Resource",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2020 Distributed Management Task Force. All rights reserved.",
+    "definitions": {
+        "AvailableActions": {
+            "additionalItems": true,
+            "items": {
+                "additionalProperties": false,
+                "description": "This array item defines an available custom action on this resource.",
+                "properties": {
+                    "Action": {
+                        "description": "Defines the name of the custom action for which the following properties are supported on this resource.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Capabilities": {
+                        "description": "This array item defines the allowable values supported for this custom action on this resource.",
+                        "items": {
+                            "additionalProperties": false,
+                            "properties": {
+                                "AllowableValues": {
+                                    "description": "Defines the allowable values for this property on this resource.",
+                                    "items": {
+                                        "type": "string"
+                                    },
+                                    "readonly": true,
+                                    "type": "array"
+                                },
+                                "PropertyName": {
+                                    "description": "Defines the property name for which the following allowable values apply.",
+                                    "readonly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array",
+            "uniqueItems": true
+        },
+        "Context": {
+            "description": "This object represents the Context property.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "CurrentFirmwareVersion": {
+            "additionalProperties": false,
+            "description": "The schema definition for the current firmware version.",
+            "properties": {
+                "Current": {
+                    "$ref": "#/definitions/FWVersion"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Description": {
+            "description": "Provides a description of this resource and is used for commonality  in the schema definitions.",
+            "longDescription": "This object represents the Description property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "FWVersion": {
+            "additionalProperties": false,
+            "description": "This object contains information about the version of a firmware image.",
+            "properties": {
+                "VersionString": {
+                    "description": "This string represents the version of the firmware image.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "HpePowerSupplyStatus": {
+            "additionalProperties": false,
+            "description": "This object represents the status of power the power supply.",
+            "properties": {
+                "State": {
+                    "description": "Indicates the known state of the resource.",
+                    "enum": [
+                        "Unknown",
+                        "Ok",
+                        "Degraded",
+                        "Failed",
+                        "OverVoltage",
+                        "OverCurrent",
+                        "OverTemperature",
+                        "ACPowerLost",
+                        "FanFailure",
+                        "WarningHighInputVoltage",
+                        "WarningLowInputVoltage",
+                        "WarningHighOutputVoltage",
+                        "WarningLowOutputVoltage",
+                        "WarningInletTemperature",
+                        "WarningInternalTemperature",
+                        "WarningHighAuxiliaryVoltage",
+                        "WarningLowAuxiliaryVoltage",
+                        "PowerSupplyMismatch",
+                        "GoodInStandby"
+                    ],
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Id": {
+            "description": "Uniquely identifies the resource within the collection of like resources.",
+            "longDescription": "This property represents an identifier for the resource.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Identifier": {
+            "additionalProperties": false,
+            "description": "Any additional identifiers for a resource.",
+            "longDescription": "This type shall contain any additional identifiers for a resource.",
+            "properties": {
+                "DurableName": {
+                    "description": "The world-wide, persistent name of the resource.",
+                    "longDescription": "This property shall contain the world-wide unique identifier for the resource.  The string shall be in the Identifier.DurableNameFormat property value format.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DurableNameFormat": {
+                    "description": "The format of the durable name property.",
+                    "longDescription": "This property shall represent the format of the DurableName property.",
+                    "enum": [
+                        "NAA",
+                        "iQN",
+                        "FC_WWN",
+                        "UUID",
+                        "EUI",
+                        "NQN",
+                        "NGUID"
+                    ],
+                    "enumDescriptions": {
+                        "EUI": "The IEEE-defined 64-bit Extended Unique Identifier (EUI).",
+                        "FC_WWN": "The Fibre Channel (FC) World Wide Name (WWN).",
+                        "NAA": "The Name Address Authority (NAA) format.",
+                        "NGUID": "The Namespace Globally Unique Identifier (NGUID).",
+                        "NQN": "The NVMe Qualified Name (NQN).",
+                        "UUID": "The Universally Unique Identifier (UUID).",
+                        "iQN": "The iSCSI Qualified Name (iQN)."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Location": {
+            "additionalProperties": false,
+            "description": "The location of a Resource.",
+            "longDescription": "This type shall describe the location of a Resource.",
+            "properties": {
+                "PartLocation": {
+                    "$ref": "#/definitions/PartLocation",
+                    "description": "The part location within the placement.",
+                    "longDescription": "The location within a Resource.  This representation shall indicate the location within the Placement.",
+                    "versionAdded": "v1_5_0"
+                },
+                "Placement": {
+                    "$ref": "#/definitions/Placement",
+                    "description": "A place within the addressed location.",
+                    "longDescription": "This property shall contain a place within the addressed location.",
+                    "versionAdded": "v1_3_0"
+                }
+            },
+            "type": "object"
+        },
+        "LocationType": {
+            "description": "The location types for PartLocation.",
+            "enum": [
+                null,
+                "Slot",
+                "Bay",
+                "Connector",
+                "Socket"
+            ],
+            "enumDescriptions": {
+                "Bay": "The bay as the type of location.",
+                "Connector": "The connector as the type of location.",
+                "Slot": "The slot as the type of location.",
+                "Socket": "The socket as the type of location."
+            },
+            "enumLongDescriptions": {
+                "Bay": "Bay shall indicate the type of PartLocation is of the Bay type.",
+                "Connector": "Connector shall indicate the type of PartLocation is of the Connector type.",
+                "Slot": "Slot shall indicate the type of PartLocation is of the Slot type.",
+                "Socket": "Socket shall indicate the type of PartLocation of the Socket type."
+            },
+            "longDescription": "Enumeration literals shall name the type of location in use.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "description": "The name of the resource or array element.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Oem": {
+            "additionalProperties": false,
+            "description": "This object represents the Oem property.",
+            "patternProperties": {
+                "^[A-Za-z0-9]+$": {
+                    "additionalProperties": true,
+                    "description": "This is the manufacturer/provider-specific property used to divide the OEM object into sections.",
+                    "properties": {
+                        "Type": {
+                            "etag": true,
+                            "pattern": "^[A-Z][A-Za-z0-9]+\\.\\d+\\.\\d+\\.\\d+$",
+                            "readonly": true,
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Orientation": {
+            "description": "The orientation for the ordering of the part location ordinal value.",
+            "enum": [
+                null,
+                "FrontToBack",
+                "BackToFront",
+                "TopToBottom",
+                "BottomToTop",
+                "LeftToRight",
+                "RightToLeft"
+            ],
+            "enumDescriptions": {
+                "BackToFront": "The ordering for the LocationOrdinalValue is back to front.",
+                "BottomToTop": "The ordering for LocationOrdinalValue is bottom to top.",
+                "FrontToBack": "The ordering for LocationOrdinalValue is front to back.",
+                "LeftToRight": "The ordering for the LocationOrdinalValue is left to right.",
+                "RightToLeft": "The ordering for the LocationOrdinalValue is right to left.",
+                "TopToBottom": "The ordering for the LocationOrdinalValue is top to bottom."
+            },
+            "enumLongDescriptions": {
+                "BackToFront": "This value shall be used to indicate the ordering for LocationOrdinalValue is back to front.",
+                "BottomToTop": "This value shall be used to indicate the ordering for LocationOrdinalValue is bottom to top.",
+                "FrontToBack": "This value shall be used to indicate the ordering for LocationOrdinalValue is front to back.",
+                "LeftToRight": "This value shall be used to indicate the ordering for LocationOrdinalValue is left to right.",
+                "RightToLeft": "This value shall be used to indicate the ordering for LocationOrdinalValue is right to left.",
+                "TopToBottom": "This value shall be used to indicate the ordering for LocationOrdinalValue is top to bottom."
+            },
+            "longDescription": "These enumeration literals shall name the orientation for the location type ordering in determining the LocationOrdinalValue.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ResetType": {
+            "enum": [
+                "On",
+                "ForceOff",
+                "GracefulShutdown",
+                "GracefulRestart",
+                "ForceRestart",
+                "Nmi",
+                "ForceOn",
+                "PushPowerButton",
+                "PowerCycle"
+            ],
+            "enumDescriptions": {
+                "ForceOff": "Turn off the unit immediately (non-graceful shutdown).",
+                "ForceOn": "Turn on the unit immediately.",
+                "ForceRestart": "Shut down immediately and non-gracefully and restart the system.",
+                "GracefulRestart": "Shut down gracefully and restart the system.",
+                "GracefulShutdown": "Shut down gracefully and power off.",
+                "Nmi": "Generate a diagnostic interrupt, which is usually an NMI on x86 systems, to stop normal operations, complete diagnostic actions, and, typically, halt the system.",
+                "On": "Turn on the unit.",
+                "PowerCycle": "Power cycle the unit.",
+                "PushPowerButton": "Simulate the pressing of the physical power button on this unit."
+            },
+            "enumVersionAdded": {
+                "PowerCycle": "v1_4_0"
+            },
+            "type": "string"
+        },
+        "PartLocation": {
+            "additionalProperties": false,
+            "description": "The part location within the placement.",
+            "longDescription": "This type shall describe a location within a Resource.  This representation shall indicate the location within the Placement.",
+            "properties": {
+                "LocationOrdinalValue": {
+                    "description": "The number that represents the location of the part.  If LocationType is `slot` and this unit is in slot 2, the LocationOrdinalValue is 2.",
+                    "longDescription": "This property shall contain the number that represents the location of the part based on the LocationType.  LocationOrdinalValue shall be measured based on the Orientation value starting with 0.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_5_0"
+                },
+                "LocationType": {
+                    "$ref": "#/definitions/LocationType",
+                    "description": "The type of location of the part, such as slot, bay, socket and slot.",
+                    "longDescription": "This property shall contain the type of location of the part, such as slot, bay, socket and slot.",
+                    "readonly": true,
+                    "versionAdded": "v1_5_0"
+                },
+                "Orientation": {
+                    "$ref": "#/definitions/Orientation",
+                    "description": "The orientation for the ordering of the slot enumeration used by the LocationOrdinalValue property.",
+                    "longDescription": "This property shall contain the orientation for the ordering used by the LocationOrdinalValue property.",
+                    "readonly": true,
+                    "versionAdded": "v1_5_0"
+                },
+                "Reference": {
+                    "$ref": "#/definitions/Reference",
+                    "description": "The reference point for the part location.  Provides guidance about the general location of the part.",
+                    "longDescription": "This property shall contain the general location within the unit of the part.",
+                    "readonly": true,
+                    "versionAdded": "v1_5_0"
+                },
+                "ServiceLabel": {
+                    "description": "The label of the part location, such as a silk-screened name or a printed label.",
+                    "longDescription": "This property shall contain the label assigned for service at the part location.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_5_0"
+                }
+            },
+            "type": "object"
+        },
+        "PCIeTypes": {
+            "enum": [
+                "Gen1",
+                "Gen2",
+                "Gen3",
+                "Gen4",
+                "Gen5"
+            ],
+            "enumDescriptions": {
+                "Gen1": "A PCIe v1.0 slot.",
+                "Gen2": "A PCIe v2.0 slot.",
+                "Gen3": "A PCIe v3.0 slot.",
+                "Gen4": "A PCIe v4.0 slot.",
+                "Gen5": "A PCIe v5.0 slot."
+            },
+            "type": "string"
+        },
+        "PhysicalContext": {
+            "enum": [
+                null,
+                "Room",
+                "Intake",
+                "Exhaust",
+                "Front",
+                "Back",
+                "Upper",
+                "Lower",
+                "CPU",
+                "GPU",
+                "Backplane",
+                "SystemBoard",
+                "PowerSupply",
+                "VoltageRegulator",
+                "StorageDevice",
+                "NetworkingDevice",
+                "ComputeBay",
+                "StorageBay",
+                "NetworkBay",
+                "ExpansionBay",
+                "PowerSupplyBay"
+            ],
+            "enumDescriptions": {
+                "Back": "The back of the chassis",
+                "Backplane": "A backplane within the chassis",
+                "CPU": "A Processor (CPU)",
+                "ComputeBay": "Within a compute bay",
+                "Exhaust": "The exhaust point of the chassis",
+                "ExpansionBay": "Within an expansion bay",
+                "Front": "The front of the chassis",
+                "GPU": "A Graphics Processor (GPU)",
+                "Intake": "The intake point of the chassis",
+                "Lower": "The lower portion of the chassis",
+                "NetworkBay": "Within a networking bay",
+                "NetworkingDevice": "A networking device",
+                "PowerSupply": "A power supply",
+                "PowerSupplyBay": "Within a power supply bay",
+                "Room": "The room",
+                "StorageBay": "Within a storage bay",
+                "StorageDevice": "A storage device",
+                "SystemBoard": "The system board (PCB)",
+                "Upper": "The upper portion of the chassis",
+                "VoltageRegulator": "A voltage regulator device"
+            },
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Placement": {
+            "additionalProperties": false,
+            "description": "The placement within the addressed location.",
+            "longDescription": "The value shall describe a location within a Resource.  Examples include a shelf in a rack.",
+            "properties": {
+                "AdditionalInfo": {
+                    "description": "Area designation or other additional info.",
+                    "longDescription": "This property shall contain additional information, such as Tile, Column (Post), Wall, or other designation that describes a location that cannot be conveyed with other properties defined for the Placement object.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_7_0"
+                },
+                "Rack": {
+                    "description": "The name of a rack location within a row.",
+                    "longDescription": "This property shall contain the name of the rack within a row.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_3_0"
+                },
+                "RackOffset": {
+                    "description": "The vertical location of the item, in terms of RackOffsetUnits.",
+                    "longDescription": "The vertical location of the item in the rack.  Rack offset units shall be measured from bottom to top, starting with 0.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_3_0"
+                },
+                "RackOffsetUnits": {
+                    "$ref": "#/definitions/RackUnits",
+                    "description": "The type of rack units in use.",
+                    "longDescription": "This property shall contain a RackUnit enumeration literal that indicates the type of rack units in use.",
+                    "readonly": false,
+                    "versionAdded": "v1_3_0"
+                },
+                "Row": {
+                    "description": "The name of the row.",
+                    "longDescription": "This property shall contain the name of the row.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_3_0"
+                }
+            },
+            "type": "object"
+        },
+        "RackUnits": {
+            "description": "The type of rack unit in use.",
+            "enum": [
+                null,
+                "OpenU",
+                "EIA_310"
+            ],
+            "enumDescriptions": {
+                "EIA_310": "A rack unit that is equal to 1.75 in (44.45 mm).",
+                "OpenU": "A rack unit that is equal to 48 mm (1.89 in)."
+            },
+            "enumLongDescriptions": {
+                "EIA_310": "Rack units shall conform to the EIA-310 standard.",
+                "OpenU": "Rack units shall be specified in terms of the Open Compute Open Rack specification."
+            },
+            "longDescription": "Enumeration literals shall name the type of rack unit in use.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Redundancy": {
+            "additionalProperties": false,
+            "description": "This is the redundancy definition to be used in other resource schemas.",
+            "longDescription": "This object represents the Redundancy element property.  All values for resources described by this schema shall comply to the requirements as described in the Redfish specification.  The value of this string shall be of the format for the reserved word *Redundancy*",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "#/definitions/odataid"
+                },
+                "MaxNumSupported": {
+                    "description": "This is the maximum number of members allowable for this particular managers redundancy, including this manager.",
+                    "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MemberId": {
+                    "description": "This is the identifier for the member within the collection.",
+                    "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                    "type": "string"
+                },
+                "MinNumNeeded": {
+                    "description": "This is the minumum number of managers needed for this manager to be redundant.",
+                    "longDescription": "The value of this property shall contain the maximum number of members allowed in the redundancy group for the current redundancy mode to still be fault tolerant.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Mode": {
+                    "description": "This is the redundancy mode of the group.",
+                    "enum": [
+                        null,
+                        "Failover",
+                        "N+1",
+                        "LoadBalanced",
+                        "Sparing",
+                        "LimitedSparing"
+                    ],
+                    "enumDescriptions": {
+                        "Failover": "Failure of the primary unit will cause a secondary unit to take over the functions of the primary unit",
+                        "LimitedSparing": "A spare unit is available to take over the function of a failed unit, but may require intervention to facilitate the transition",
+                        "LoadBalanced": "Multiple units are available such that the system will continue operation at a reduced capacity if one unit fails",
+                        "N+1": "Multiple units are available such that the system can continue normal operation if one unit fails",
+                        "Sparing": "A spare unit is available to take over the function of a failed unit"
+                    },
+                    "longDescription": "The value of this property shall contain the information about the redundancy mode of this manager.  Failover shall indicate a master/slave type arrangement where status indicates the role of this manager.  N+1 indicates an arrangement where the redundancy set needs MaxNumSupported-1 number of resources in order to be redundant.  Load Balanced indicates all members are active. However, there functionality is not independent of each other. Their functioning is determined by some sort of load balancing algorithm. Sparing is implied (i.e. each member can be a spare for the other(s). Sparing indicates that all members are active and are aware of each others. However, their functionality is independent until failover. Each member can be a spare for the other(s). Limited Sparing indicates that all members are active, and they may or may not be aware of each and they are not spares for each other.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "#/definitions/Name"
+                },
+                "Oem": {
+                    "$ref": "#/definitions/Oem",
+                    "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+                    "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+                },
+                "RedundancySet": {
+                    "description": "Contains any ids that represent components of this reduncancy set.",
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "longDescription": "The value of this property shall contain the ids of components that are part of this redundancy set. The id values may or may not be dereferenceable.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Status": {
+                    "$ref": "#/definitions/Status"
+                }
+            },
+            "type": "object"
+        },
+        "Reference": {
+            "description": "The reference area for the location of the part.",
+            "enum": [
+                null,
+                "Top",
+                "Bottom",
+                "Front",
+                "Rear",
+                "Left",
+                "Right",
+                "Middle"
+            ],
+            "enumDescriptions": {
+                "Bottom": "The part is in the bottom of the unit.",
+                "Front": "The part is in the front of the unit.",
+                "Left": "The part is on the left side of of the unit.",
+                "Middle": "The part is in the middle of the unit.",
+                "Rear": "The part is in the rear of the unit.",
+                "Right": "The part is on the right side of the unit.",
+                "Top": "The part is in the top of the unit."
+            },
+            "enumLongDescriptions": {
+                "Bottom": "This value shall be used to indicate the part is in the bottom of the unit.",
+                "Front": "This value shall be used to indicate the part is in the front of the unit.",
+                "Left": "This value shall be used to indicate the part is on the left side of of the unit.",
+                "Middle": "This value shall be used to indicate the part is in the middle of the unit.",
+                "Rear": "This value shall be used to indicate the part is in the rear of the unit.",
+                "Right": "This value shall be used to indicate the part is on the right side of the unit.",
+                "Top": "This value shall be used to indicate the part is in the top of the unit."
+            },
+            "longDescription": "The enumerated literals shall name the reference for the part location.",
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Settings": {
+            "additionalProperties": false,
+            "properties": {
+                "href": {
+                    "description": "Reference to the resource the client may PUT/PATCH to in order to change this resource.",
+                    "longDescription": "The value of this property shall be the URI of the resource to which a client must do a PUT or PATCh in order to modify this resource.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SettingsResult": {
+            "additionalProperties": false,
+            "properties": {
+                "ETag": {
+                    "description": "The ETag of the resource to which the settings were applied, after the application.",
+                    "longDescription": "The value of this property shall be the ETag of the resource to which the settings were applied, after the application.  This is here so that the client can check it against the ETag of the current resource to see if any other changes have also happened to the resource.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Operation": {
+                    "description": "Last operation detail.",
+                    "enum": [
+                        "SettingsApply"
+                    ],
+                    "longDescription": "The value of this property shall indicate the results of the settings application.  The value SettingsApply shall be used to indicate the Settings were applied during the normal course of operations, such as what happens during a reboot.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Time": {
+                    "description": "Indicates the time the settings were applied.",
+                    "longDescription": "The value of this property shall indicate the time that the settings object was applied to the resource.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "additionalProperties": false,
+            "properties": {
+                "Health": {
+                    "description": "This represents the health state of this resource in the absence of its dependent resources.",
+                    "enum": [
+                        null,
+                        "OK",
+                        "Warning",
+                        "Critical"
+                    ],
+                    "enumDescriptions": {
+                        "Critical": "A critical condition exists that requires immediate attention",
+                        "OK": "Normal",
+                        "Warning": "A condition exists that requires attention"
+                    },
+                    "longDescription": "This property shall represent the HealthState of the resource without considering its dependent resources. The values shall conform to those defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HealthRollup": {
+                    "description": "This represents the overall health state from the view of this resource.",
+                    "enum": [
+                        null,
+                        "OK",
+                        "Warning",
+                        "Critical"
+                    ],
+                    "enumDescriptions": {
+                        "Critical": "A critical condition exists that requires immediate attention",
+                        "OK": "Normal",
+                        "Warning": "A condition exists that requires attention"
+                    },
+                    "longDescription": "This property shall represent the HealthState of the resource and its dependent resources.  The values shall conform to those defined in the Redfish specification.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "State": {
+                    "description": "This indicates the known state of the resource, such as if it is enabled.",
+                    "enum": [
+                        null,
+                        "Enabled",
+                        "Disabled",
+                        "StandbyOffline",
+                        "StandbySpare",
+                        "InTest",
+                        "Starting",
+                        "Absent",
+                        "UnavailableOffline",
+                        "Deferring",
+                        "Quiesced",
+                        "Updating"
+                    ],
+                    "enumDescriptions": {
+                        "Absent": "This function or resource is not present or not detected.",
+                        "Deferring": "The element will not process any commands but will queue new requests.",
+                        "Disabled": "This function or resource has been disabled.",
+                        "Enabled": "This function or resource has been enabled.",
+                        "InTest": "This function or resource is undergoing testing.",
+                        "Quiesced": "The element is enabled but only processes a restricted set of commands.",
+                        "StandbyOffline": "This function or resource is enabled, but awaiting an external action to activate it.",
+                        "StandbySpare": "This function or resource is part of a redundancy set and is awaiting a failover or other external action to activate it.",
+                        "Starting": "This function or resource is starting.",
+                        "UnavailableOffline": "This function or resource is present but cannot be used.",
+                        "Updating": "The element is updating and may be unavailable or degraded."
+                    },
+                    "longDescription": "This property shall represent if this component is available or not and why.  Enabled indicates the resource is available.  Disabled indicates the resource has been intentionally made unavailable but it can be enabled.  Offline indicates the resource is unavailable intentionally and requires action to be made available.  InTest indicates that the component is undergoing testing.  Starting indicates that the resource is on its way to becoming available.  Absent indicates the resources is physically unavailable.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "extref": {
+            "properties": {
+                "extref": {
+                    "description": "The URI of an external resource.",
+                    "etag": true,
+                    "format": "uri-reference",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "odatacontext": {
+            "format": "uri-reference",
+            "longDescription": "The value of this property shall be the context URL that describes the resource according to OData-Protocol and shall be of the form defined in the SPMF specification.",
+            "readonly": true,
+            "type": "string"
+        },
+        "odatacount": {
+            "description": "The number of items in a collection.",
+            "longDescription": "The value of this property shall be an integer representing the number of items in a collection.",
+            "readonly": true,
+            "type": "number"
+        },
+        "odataetag": {
+            "longDescription": "The value of this property is the Etag of the resource.",
+            "readonly": true,
+            "type": "string"
+        },
+        "odataid": {
+            "format": "uri-reference",
+            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.",
+            "readonly": true,
+            "type": "string"
+        },
+        "odatatype": {
+            "longDescription": "The value of this property shall be an absolute URL that specifies the type of the resource and it shall be of the form defined in the SPMF specification.",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "description": "The Resource schema includes many structures reused throughout the Redfish API.",
+    "title": "#Resource.v1_3_0.Resource",
+    "type": "object"
+}

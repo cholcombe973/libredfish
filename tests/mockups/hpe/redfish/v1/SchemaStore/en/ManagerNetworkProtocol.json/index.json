@@ -1,0 +1,330 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "ManagerNetworkProtocol",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This resource is used to obtain or modify the network services managed by this manager.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "FQDN": {
+            "description": "The fully-qualified domain name of the manager that is obtained by DNS and includes the host name and top-level domain name.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "HTTP": {
+            "additionalProperties": false,
+            "description": "The HTTP protocol settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The HTTP port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether HTTP is enabled or disabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "HTTPS": {
+            "additionalProperties": false,
+            "description": "The HTTPS/SSL settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The HTTPS/SSL port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether HTTPS/SSL is enabled or disabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "HostName": {
+            "description": "The host name of the manager that is obtained by DNS and does not include any domain information.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IPMI": {
+            "additionalProperties": false,
+            "description": "The IPMI over LAN protocol settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The IPMI over LAN port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether IPMI over LAN is enabled for the manager.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "KVMIP": {
+            "additionalProperties": false,
+            "description": "The KVM-IP (Keyboard, Video, Mouse) protocol settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The KVM-IP port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether KVM-IP is enabled for the manager.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOManagerNetworkService.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SNMP": {
+            "additionalProperties": false,
+            "description": "The SNMP protocol settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The SNMP port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether SNMP is enabled for the manager.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SSDP": {
+            "additionalProperties": false,
+            "description": "The Simple Service Discovery Protocol (SSDP) settings for the manager. SSDP provides network discovery of devices.",
+            "properties": {
+                "NotifyIPv6Scope": {
+                    "description": "The scope for IPv6 Notify messages for SSDP.",
+                    "enum": [
+                        null,
+                        "Link",
+                        "Site",
+                        "Organization"
+                    ],
+                    "enumDescriptions": {
+                        "Link": "SSDP Notify messages are sent to addresses in the IPv6 Local Link scope",
+                        "Organization": "SSDP Notify messages are sent to addresses in the IPv6 Local Organization scope.",
+                        "Site": "SSDP Notify messages are sent to addresses in the IPv6 Local Site scope."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "NotifyMulticastIntervalSeconds": {
+                    "description": "Indicates how often multicast is performed for SSDP. Allowed values are 0, 30, 60, 120, 300, 600, 900 or 1800.",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "NotifyTTL": {
+                    "description": "The Time to Live (TTL) hop count for SSDP Notify messages.",
+                    "etag": true,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Port": {
+                    "description": "The SSDP port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether SSDP is enabled for the manager.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SSH": {
+            "additionalProperties": false,
+            "description": "The SSH protocol settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The SSH port number.  NOTE: When this field is modified, the Manager will reset automatically.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether SSH is enabled for the manager.  NOTE: When this field is modified, the Manager will reset automatically.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status",
+            "description": "Status."
+        },
+        "VirtualMedia": {
+            "additionalProperties": false,
+            "description": "The Virtual Media protocol settings for the manager.",
+            "properties": {
+                "Port": {
+                    "description": "The Virtual Media port number.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates whether Virtual Media is enabled for the manager.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#ManagerNetworkProtocol.v1_0_0.ManagerNetworkProtocol",
+    "type": "object"
+}

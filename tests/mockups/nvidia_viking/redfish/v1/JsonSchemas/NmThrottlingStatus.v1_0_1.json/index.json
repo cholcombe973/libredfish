@@ -1,0 +1,227 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/NmThrottlingStatus.v1_0_1.json",
+    "$ref": "#/definitions/ThrottlingStatus",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "ThrottlingEvent": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Policy": {
+                    "description": "Copy (JSON representation) of the Policy that enforced throttling.",
+                    "longDescription": "This property shall contain a copy (JSON representation) of the Policy that enforced throttling.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "StartTimestamp": {
+                    "description": "Timestamp indicating when this ThrottlingEvent started. Format shall follow EDM DateTimeOffset schema.",
+                    "format": "date-time",
+                    "longDescription": "This property shall contain a timestamp indicating when this ThrottlingEvent started. Format shall follow EDM DateTimeOffset schema.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ThrottlingDuration": {
+                    "description": "Approximate duration of the throttling.",
+                    "longDescription": "This property shall contain an approximate duration of the throttling of this ThrottlingEvent.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ThrottlingInProgress": {
+                    "description": "Indicates that event is still in progress. ThrottlingDuration is expeted to be updated.",
+                    "longDescription": "This property shall contain information on whether or not this ThrottlingEvent is still in progress.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "ThrottlingMethod": {
+                    "$ref": "#/definitions/ThrottlingMethod",
+                    "description": "Logs method used to throttle the system in this event.",
+                    "longDescription": "This property shall contain information on how the ThrottlingSource enforced the throttling in system.",
+                    "readonly": true
+                },
+                "ThrottlingReason": {
+                    "$ref": "#/definitions/ThrottlingReason",
+                    "description": "Reason of the throttling.",
+                    "longDescription": "This property shall contain information on the reason why the ThrottlingSource enforced the throttling.",
+                    "readonly": true
+                },
+                "ThrottlingSource": {
+                    "$ref": "#/definitions/ThrottlingSource",
+                    "description": "Source of the throttling.",
+                    "longDescription": "This property shall contain information about the Node Manager domain or mechanism that enforced the power capping.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "ThrottlingMethod": {
+            "enum": [
+                "PowerLimit",
+                "ACPIPstate",
+                "ACPThreads",
+                "TurboRatioLimit",
+                "PROCHOT"
+            ],
+            "enumDescriptions": {
+                "ACPIPstate": "Policy used ACPI P-state setting to throttle the system.",
+                "ACPThreads": "Policy requested the host's operating system to de-allocate CPU threads.",
+                "PROCHOT": "Policy triggered PROCHOT# signal to throttle the system.",
+                "PowerLimit": "Policy used power limits in systems's hardware to throttle the system",
+                "TurboRatioLimit": "Policy created a limit for available Turbo frequencies."
+            },
+            "type": "string"
+        },
+        "ThrottlingReason": {
+            "enum": [
+                "AlwaysOn",
+                "InletAirTemperature",
+                "MissingReadingsTimeout",
+                "TimeAfterHostReset",
+                "GPIO",
+                "CPUUtilization",
+                "Host Reset",
+                "OCWarning",
+                "OTWarning",
+                "UVFault"
+            ],
+            "enumDescriptions": {
+                "AlwaysOn": "Node Manager Always On policy enforced throttling on the system.",
+                "CPUUtilization": "Policy throttled the system because average CPU utilization dropped below specified threshold.",
+                "GPIO": "Policy was activated due to assertion of specified GPIO pin.",
+                "Host Reset": "Policy was activated due to host reset.",
+                "InletAirTemperature": "Policy throttled system due to exceeding defined threshold for inlet air temperature.",
+                "MissingReadingsTimeout": "Policy throttled system because defined time has elapsed since obtaining a valid reading of Controlled Parameter in a domain.",
+                "OCWarning": "One of the PSUs reported output current exceeds its capability.",
+                "OTWarning": "One of the PSUs reported exceeded max hot spot temperature.",
+                "TimeAfterHostReset": "Policy was activated because a defined period of time after host reset has elapsed.",
+                "UVFault": "One of the PSUs reported that AC Voltage dropped below fault limit."
+            },
+            "type": "string"
+        },
+        "ThrottlingSource": {
+            "enum": [
+                "ACTotalPlatformDomain",
+                "CPUSubsystem",
+                "MemorySubsystem",
+                "HWProtection",
+                "PCISubsystem",
+                "DCTotalPlatformDomain",
+                "Performance",
+                "SmaRTCLST"
+            ],
+            "enumDescriptions": {
+                "ACTotalPlatformDomain": "Wall (AC) power consumption of entire node, including expansion cards, drives, etc.",
+                "CPUSubsystem": "All host CPUs populated in the node. Includes all devices embedded in CPU package.",
+                "DCTotalPlatformDomain": "DC power consumption of an entire node.",
+                "HWProtection": "Node power envelope limitations defined by power delivery constraints.",
+                "MemorySubsystem": "All DIMM modules present in the node.",
+                "PCISubsystem": "PCIe-attached expansion cards (accelerators, graphic cards, etc.).",
+                "Performance": "Performance (frequency) related constraints.",
+                "SmaRTCLST": "Node Manager SmartCLST hardware protection mechanism."
+            },
+            "enumVersionAdded": {
+                "Performance": "v1_0_1"
+            },
+            "type": "string"
+        },
+        "ThrottlingStatus": {
+            "additionalProperties": false,
+            "description": "The Throttling Status resource provides information about any power capping enforced by Node Manager on the system.",
+            "longDescription": "The Throttling Status resource provides information about any power capping enforced by Node Manager on the system.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "ThrottlingEvents": {
+                    "description": "An array of any power capping occurrences enforced by Node Manager.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/ThrottlingEvent"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "This property shall contain an array of any power capping occurrences enforced by Node Manager.",
+                    "type": "array"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "release": "1.0",
+    "title": "#NmThrottlingStatus.v1_0_1.ThrottlingStatus"
+}

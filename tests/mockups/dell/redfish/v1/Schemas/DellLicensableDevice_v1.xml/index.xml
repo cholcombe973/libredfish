@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellLicensableDevice v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicensableDevice">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellLicensableDevice" Abstract="true">
+                <Annotation String="DellLicensableDevice represents a device in the system that has registered with the License Manager." Term="OData.Description"/>
+                <Annotation String="DellLicensableDevice represents a device in the system that has registered with the License Manager." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellLicensableDevices/{LicensableDeviceId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="DevicePrimaryStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DeviceState">
+                <Member Name="DeviceNotReady">
+                    <Annotation String="DeviceNotReady" Term="OData.Description"/>
+                    <Annotation String="DeviceNotReady" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DevicePresent">
+                    <Annotation String="DevicePresent" Term="OData.Description"/>
+                    <Annotation String="DevicePresent" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DeviceType">
+                <Member Name="External">
+                    <Annotation String="External" Term="OData.Description"/>
+                    <Annotation String="External" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Internal">
+                    <Annotation String="Internal" Term="OData.Description"/>
+                    <Annotation String="Internal" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Virtual">
+                    <Annotation String="Virtual" Term="OData.Description"/>
+                    <Annotation String="Virtual" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="RollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicensableDevice.v1_0_0">
+            <EntityType Name="DellLicensableDevice" BaseType="DellLicensableDevice.DellLicensableDevice">
+                <Annotation Term="OData.Description" String="DellLicensableDevice represents a device in the system that has registered with the License Manager."/>
+                <Annotation Term="OData.LongDescription" String="DellLicensableDevice represents a device in the system that has registered with the License Manager."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="An address or other identifying information to uniquely name the LogicalDevice."/>
+                    <Annotation Term="OData.LongDescription" String="An address or other identifying information to uniquely name the LogicalDevice."/>
+                </Property>
+                <Property Name="DevicePrimaryStatus" Type="DellLicensableDevice.DevicePrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the license status for the device."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the license status for the device."/>
+                </Property>
+                <Property Name="DeviceState" Type="DellLicensableDevice.DeviceState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represent the current device state."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represent the current device state."/>
+                </Property>
+                <Property Name="DeviceStatusMessage" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property has the message string associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device."/>
+                    <Annotation Term="OData.LongDescription" String="The property has the message string associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device."/>
+                </Property>
+                <Property Name="DeviceStatusMessageID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the message ID associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the message ID associated with the license status of the device. If the property has a NULL value, no message is associated with the license status of the device."/>
+                </Property>
+                <Property Name="DeviceType" Type="DellLicensableDevice.DeviceType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represents the device type."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represents the device type."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                </Property>
+                <Property Name="LicenseList" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The values of this property array contain the Entitlement IDs of the licenses that are assigned to this device."/>
+                    <Annotation Term="OData.LongDescription" String="The values of this property array contain the Entitlement IDs of the licenses that are assigned to this device."/>
+                </Property>
+                <Property Name="Model" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represents the model description of the device."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represents the model description of the device."/>
+                </Property>
+                <Property Name="RollupStatus" Type="DellLicensableDevice.RollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="RollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="RollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="SubsystemID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represents the PCI subsystem ID."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represents the PCI subsystem ID."/>
+                </Property>
+                <Property Name="SubsystemVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represents the PCI subsystem vendor ID."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represents the PCI subsystem vendor ID."/>
+                </Property>
+                <Property Name="UniqueID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represents the unique ID of the devices, as used in the binding information. The information may not be available for all the licensable devices. In such cases, the property value is NULL."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represents the unique ID of the devices, as used in the binding information. The information may not be available for all the licensable devices. In such cases, the property value is NULL."/>
+                </Property>
+                <Property Name="VendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property represents the PCI vendor or manufacturer ID."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property represents the PCI vendor or manufacturer ID."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

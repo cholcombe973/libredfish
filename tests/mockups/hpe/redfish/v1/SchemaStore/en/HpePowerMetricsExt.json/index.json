@@ -1,0 +1,296 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpePowerMetricsExt",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2020 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpePowerMetricsExt object extends the Redfish Power resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "BatteryBackedUnits": {
+            "description": "Battery backed units.",
+            "items": {
+                "properties": {
+                    "BBUStatus": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    },
+                    "BayNumber": {
+                        "description": "Bay number of the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CapacityWatts": {
+                        "description": "Total capacity (in Watts) of the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "CutOffSetPointmAh": {
+                        "description": "Cut off threshold (mAh) where battery backed unit stops supplying power to the server.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "FirmwareVersion": {
+                        "description": "Firmware version of the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "PercentCharge": {
+                        "description": "Percentage charge remaining for the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "RemainingCapacitymAh": {
+                        "description": "Remaining capacity (mAh) of the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "SerialNumber": {
+                        "description": "Serial number of the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "TimeToCutOffSeconds": {
+                        "description": "Run time (in seconds) available with the battery backed unit until cut off. This is detected only when battery is charging or discharging, otherwise set to 0.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "TimeToFullChargeMinutes": {
+                        "description": "Time required (in minutes) to fully charge the battery backed unit. This is detected only when battery is charging or discharging, otherwise set to 0.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "UsableCapacitymAh": {
+                        "description": " Usable capacity (mAh) of the battery backed unit.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "BbuPowerSupply": {
+            "description": "Battery Backup Unit Power Supply action determines what will occur when a server is running on battery power.",
+            "enum": [
+                "DoNothing",
+                "MomentaryPowerButtonPress",
+                "HostShutdown"
+            ],
+            "enumDescriptions": {
+                "DoNothing": "No action will be taken when a server switches to battery power.",
+                "HostShutdown": "Shutdown message sent to host operating system with installed management software to initiate a shutdown.",
+                "MomentaryPowerButtonPress": "Momentary virtual power button press which should shutdown host operating system when pressed."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "BrownoutRecoveryEnabled": {
+            "description": "When a brownout condition occurs in the server, this setting will determine if the server should recover from it.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "FanPowerRequirement": {
+            "description": "Cooling challenge bucket definition.",
+            "etag": true,
+            "maximum": 4,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "FanPowerRequirementErrors": {
+            "description": "Cooling challenge errors.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "FanPowerRequirementVersion": {
+            "description": "Version of the Synergy cooling table bucket definitions.",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "HasCpuPowerMetering": {
+            "description": "Indicates if the system has CPU power metering.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "HasDimmPowerMetering": {
+            "description": "Indicates if the system has DIMM power metering.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "HasGpuPowerMetering": {
+            "description": "Indicates if the system has GPU power metering.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "HasPowerMetering": {
+            "description": "Indicates if the system has power metering.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "HighEfficiencyMode": {
+            "description": "The redundant power supply mode that will be used when redundant power supplies are configured.",
+            "enum": [
+                null,
+                "Auto",
+                "Balanced",
+                "Even",
+                "Odd"
+            ],
+            "enumDescription": {
+                "Auto": "Delivers full power to one of the power supplies, and places the other power supplies on standby at a lower power-usage level.",
+                "Balanced": "Delivers power equally across all installed power supplies",
+                "Even": "Delivers full power to the odd-numbered power supplies, and places the even-numbered power supplies on standby at a lower power-usage level.",
+                "Odd": "Delivers full power to the even-numbered power supplies, and places the odd-numbered power supplies on standby at a lower power-usage level."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "Provides resource URIs under HPE Power Metrics.",
+            "properties": {
+                "AccPowerService": {
+                    "description": "The URI for this Apollo chassis controller power control service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "FastPowerMeter": {
+                    "description": "The URI for this fast power meter resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "FederatedGroupCapping": {
+                    "description": "The URI for this management processor federation group power capping resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "PowerMeter": {
+                    "description": "The URI for this power meter resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SlowPowerMeter": {
+                    "description": "The URI for this Slow power meter resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MinimumSafelyAchievableCap": {
+            "description": "Minimum Safely Achievable Cap is the lowest cap value that is safe for a group power manager to apply to a particular server. It can either be identical to or slightly greater than the 0 percent cap value calculated during ROM power burn.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "MinimumSafelyAchievableCapValid": {
+            "description": "Indicates if the msac is valid.  msac is valid only if this is true.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "SNMPPowerThresholdAlert": {
+            "additionalProperties": false,
+            "description": "The SNMP Alert on Breach of Power Threshold section enables the sending of an SNMP alert when power consumption exceeds a defined threshold.",
+            "properties": {
+                "DurationInMin": {
+                    "description": "Sets the length of time, in minutes, that power consumption must remain above the warning threshold before an SNMP alert is triggered. The maximum duration is 240 minutes, and the duration must be a multiple of 5.",
+                    "etag": true,
+                    "maximum": 240,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "ThresholdWatts": {
+                    "description": "Sets the power consumption threshold (watts). If power consumption exceeds this value for the specified time duration, an SNMP alert is triggered.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "Trigger": {
+                    "description": "Trigger determines whether alerts are based on peak power consumption, average power consumption, or if they are disabled. Trigger property can only be enabled if the ThresholdWatts and DurationInMin values are specified/configured.",
+                    "enum": [
+                        "Disabled",
+                        "AveragePowerConsumption",
+                        "PeakPowerConsumption"
+                    ],
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpePowerMetricsExt.v2_3_0.HpePowerMetricsExt",
+    "type": "object"
+}

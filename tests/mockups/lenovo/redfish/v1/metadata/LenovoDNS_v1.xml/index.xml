@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoDNS  v1.0.0                                            -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoDNS">
+      <EntityType Name="LenovoDNS" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoDNS resource."/>
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoDNS.v1_0_0">
+      <EntityType Name="LenovoDNS" BaseType="LenovoDNS.LenovoDNS">
+        <Annotation Term="OData.Description" String="This is the schema definition for the Domain Name System(DNS)."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a DNS resource for a Redfish implementation."/>
+        <Property Name="DNSEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether DNS is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall enable or disable the IMM Domain Name System (DNS)."/>
+        </Property>
+        <Property Name="PreferredAddresstype" Type="LenovoDNS.v1_0_0.PreferredAddresstypeItem" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This chooses the preferred DNS servers when both IPv4 and IPv6 DNS Server address are set."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the preferred DNS servers."/>
+        </Property>
+        <Property Name="IPv4Address1" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the DNS IPv4 primary Address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS IPv4 primary Address."/>
+          <Annotation Term="Validation.Pattern" String="^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$"/>
+        </Property>
+        <Property Name="IPv4Address2" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the DNS IPv4 secondary Address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS IPv4 secondary Address."/>
+          <Annotation Term="Validation.Pattern" String="^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$"/>
+        </Property>
+        <Property Name="IPv4Address3" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the DNS IPv4 tertiary Address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS IPv4 tertiary Address."/>
+          <Annotation Term="Validation.Pattern" String="^(?:[0-9]{1,3}\.){3}[0-9]{1,3}$"/>
+        </Property>
+        <Property Name="IPv6Address1" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the DNS IPv6 primary Address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS IPv6 primary Address."/>
+        </Property>
+        <Property Name="IPv6Address2" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the DNS IPv6 secondary Address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS IPv6 secondary Address."/>
+        </Property>
+        <Property Name="IPv6Address3" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This is the DNS IPv6 tertiary Address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the DNS IPv6 tertiary Address."/>
+        </Property>
+        <Property Name="DDNS" Type="LenovoDNS.v1_0_0.DDNS" Nullable="false">
+          <Annotation Term="OData.Description" String="The Dynamic Domain Name Service (DDNS) Protocol"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the dynamic domain name service (DDNS) protocol."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="DDNS">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The Dynamic Domain Name Service (DDNS) Protocol"/>
+        <Annotation Term="OData.LongDescription" String="This object shall be used to represent the dynamic domain name service (DDNS) protocol."/>
+        <Property Name="DDNSEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether the dynamic DNS is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall enable or disable the dynamic DNS."/>
+        </Property>
+        <Property Name="DomainNameSource" Type="LenovoDNS.v1_0_0.DomainNameSourceItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates the source of the domain name."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the source of the domain name."/>
+        </Property>
+        <Property Name="DomainName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="If the type of DDNS is set to Custom, this domain name will be sent to the DNS server."/>
+          <Annotation Term="OData.LongDescription" String="If the type of DDNS is set to DHCP, this property becomes read-only."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="PreferredAddresstypeItem">
+        <Member Name="IPv4">
+          <Annotation Term="OData.Description" String="IPv4 DNS Server."/>
+        </Member>
+        <Member Name="IPv6">
+          <Annotation Term="OData.Description" String="IPv6 DNS Server."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="DomainNameSourceItem">
+        <Member Name="DHCP">
+          <Annotation Term="OData.Description" String="Use domain name obtained from the DHCP server."/>
+        </Member>
+        <Member Name="Custom">
+          <Annotation Term="OData.Description" String="Use custom domain name."/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

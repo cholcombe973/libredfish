@@ -1,0 +1,690 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOUpdateServiceExt",
+    "actions": {
+        "actions": {
+            "HpeiLOUpdateServiceExt.AddFromUri": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.AddFromUri"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "CompSigURI": {
+                        "format": "uri-reference",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "ComponentFileName": {
+                        "description": "File name of landed component. Only required when component to be uploaded is >32MB.",
+                        "maxLength": 64,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "ImageURI": {
+                        "format": "uri-reference",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Section": {
+                        "description": "Sets the section of the entire image that this 32MB chunk represents.",
+                        "min": 1,
+                        "readonly": false,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "TPMOverrideFlag": {
+                        "default": false,
+                        "description": "If true the action can update the target when a TPM module is installed and enabled.",
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "UpdateRecoverySet": {
+                        "default": false,
+                        "description": "If true the action will update the system recovery set if it contains a matching target after the repository is updated.",
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "UpdateRepository": {
+                        "default": false,
+                        "description": "If true the action will update the component file in the repository.",
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "UpdateTarget": {
+                        "default": true,
+                        "description": "If true the action will flash the target.",
+                        "readonly": true,
+                        "type": "boolean"
+                    },
+                    "UploadCurrentEtag": {
+                        "description": "client-supplied etag (during component upload) indicating to what UploadStatus is reporting upon.",
+                        "maxLength": 64,
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "ImageURI"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.DeleteInstallSets": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.DeleteInstallSets"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "IncludeRecoverySet": {
+                        "readonly": true,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.DeleteMaintenanceWindows": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.DeleteMaintenanceWindows"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.DeleteUnlockedComponents": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.DeleteUnlockedComponents"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.DeleteUpdateTaskQueueItems": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.DeleteUpdateTaskQueueItems"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.RemoveLanguagePack": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.RemoveLanguagePack"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Language": {
+                        "description": "Specifies one of the languages supported by the management processor for removal. Please use HpeiLOUpdateServiceExt.AddFromUri or UpdateService.SimpleUpdate for adding language pack. NOTE: When language pack is removed, the Manager will reset automatically.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "Language"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.SetDefaultLanguage": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.SetDefaultLanguage"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Language": {
+                        "description": "Specifies one of the languages supported by the management processor to be set as default language used for the Web interface.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "Language"
+                ],
+                "type": "object"
+            },
+            "HpeiLOUpdateServiceExt.StartFirmwareIntegrityCheck": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOUpdateServiceExt.StartFirmwareIntegrityCheck"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "POST custom actions defined for this type. (The implemented actions may be a subset of these.)"
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2021 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOUpdateServiceExt object extends the Redfish UpdateService resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOUpdateServiceExt.AddFromUri": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "CompSigURI@Redfish.AllowableValues": {
+                            "description": "The supported values for the CompSigURI parameter.",
+                            "items": {
+                                "format": "uri-reference",
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the CompSigURI parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "ComponentFileName@Redfish.AllowableValues": {
+                            "description": "The supported values for the ComponentFileName parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the ComponentFileName parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "ImageURI@Redfish.AllowableValues": {
+                            "description": "The supported values for the ImageURI parameter.",
+                            "items": {
+                                "format": "uri-reference",
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the ImageURI parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "TPMOverrideFlag@Redfish.AllowableValues": {
+                            "description": "The supported values for the TPMOverrideFlag parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "boolean"
+                            },
+                            "longDescription": "The supported values for the TPMOverrideFlag parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.DeleteInstallSets": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.DeleteMaintenanceWindows": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.DeleteUnlockedComponents": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.DeleteUpdateTaskQueueItems": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.RemoveLanguagePack": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Language@Redfish.AllowableValues": {
+                            "description": "Specifies one of the languages supported by the management processor for removal. Please use HpeiLOUpdateServiceExt.AddFromUri or UpdateService.SimpleUpdate for adding language pack. NOTE: When language pack is removed, the Manager will reset automatically.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Language parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Remove Language pack.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.SetDefaultLanguage": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Language": {
+                            "description": "Specifies one of the languages supported by the management processor to be set as default language used for the Web interface.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Language parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Set deafault language for iLO web interface.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOUpdateServiceExt.StartFirmwareIntegrityCheck": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Capabilities": {
+            "additionalProperties": false,
+            "description": "Indicates iLO support for various firmware update protocols.",
+            "properties": {
+                "UpdateFWPKG": {
+                    "description": "Indicates whether iLO supports FWPKG 2.0 firmware images.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "PLDMFirmwareUpdate": {
+                    "description": "Indicates whether iLO supports PLDM firmware updates.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "BundleDowngradeSupport": {
+                    "description": "Indicates whether iLO supports downgrade capability for cloud based updates.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "OfflineRuntimeBundleUpdate": {
+                    "description": "Indicates whether iLO supports offline type D installation.",
+                    "enum": [
+                        "ProductionMode",
+                        "ProductionAndHighSecurityMode",
+                        "AllModes"
+                    ],
+                    "enumDescriptions": {
+                        "ProductionMode": "iLO supports offline type D installation in production security state only.",
+                        "ProductionAndHighSecurityMode": "iLO supports offline type D installation in Production and High security state only.",
+                        "AllModes": "iLO supports offline type D installation in all security states viz, Production, High security, FIPS and CNSA."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ComponentRepository": {
+            "additionalProperties": false,
+            "description": "Link to the Component Repository.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "BundleUpdateReport": {
+            "additionalProperties": false,
+            "description": "Link to the Bundle Update report.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "CurrentTime": {
+            "description": "ISO 8601 Redfish-style time string of the current iLO time (the reference for all scheduling)",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "DowngradePolicy": {
+            "description": "Can be used to restrict the firmware downgrade.",
+            "enum": [
+                "AllowDowngrade",
+                "RecoveryDowngrade",
+                "NoDowngrade"
+            ],
+            "enumDescriptions": {
+                "AllowDowngrade": "Downgrading firmware is allowed.",
+                "NoDowngrade": "Downgrading firmware is not allowed.  This is a permanent setting and cannot be undone.",
+                "RecoveryDowngrade": "Downgrading firmware is allowed by a user with the Recovery Set privilege."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string"
+            ]
+        },
+        "FirmwareIntegrity": {
+            "additionalProperties": false,
+            "properties": {
+                "EnableBackgroundScan": {
+                    "description": "Enables or disables background scan of critical firmware.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "LastFailedImageUri": {
+                    "description": "This is a link to the binary image of the firmware that failed an integrity check and is intended for diagnostic purposes.",
+                    "format": "uri-reference",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastScanResult": {
+                    "description": "The firmware integrity scan engine status.",
+                    "enum": [
+                        "OK",
+                        "Repaired",
+                        "Failure",
+                        "Stopped"
+                    ],
+                    "enumDescriptions": {
+                        "Failure": "The last firmware integrity scan failed to complete or repair an issue.  Refer to the event log for details.",
+                        "OK": "The last firmware integrity scan completed without finding any issues.",
+                        "Repaired": "The last firmware integrity scan successfully repaired an issue.  Refer to the event log for details.",
+                        "Stopped": "The last firmware integrity scan was stopped prior to completion.  Refer to the event log for details."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastScanTime": {
+                    "description": "The time stamp of the last firmware integrity scan.",
+                    "format": "date-time",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "OnIntegrityFailure": {
+                    "description": "Sets the policy for how the firmware integrity check handles integrity failures.",
+                    "enum": [
+                        "LogOnly",
+                        "LogAndRepairAutomatically"
+                    ],
+                    "enumDescriptions": {
+                        "LogAndRepairAutomatically": "Log failures to the iLO event log and automatically attempt to repair.",
+                        "LogOnly": "Log failures to the iLO event log but do not automatically attempt to repair."
+                    },
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ScanEveryDays": {
+                    "description": "Sets the interval between firmware integrity scans in 24 hour increments.",
+                    "max": 365,
+                    "min": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "FlashProgressPercent": {
+            "description": "This is the percent complete for an iLO flash operation.  It is only valid when State is Updating.",
+            "max": 100,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "InstallSets": {
+            "additionalProperties": false,
+            "description": "Link to the Install Sets collection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "InvalidImageRepository": {
+            "additionalProperties": false,
+            "description": "Link to the Invalid Image Repository.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "MaintenanceWindows": {
+            "additionalProperties": false,
+            "description": "Link to the Maintenance Windows.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Accept3rdPartyFirmware": {
+            "description": "Enable or disable support for 3rd party firmware update packages.",
+            "readonly": false,
+            "type": "boolean"
+        },
+        "Result": {
+            "additionalProperties": true,
+            "properties": {
+                "MessageArgs": {
+                    "description": "The message arguments array is substituted for the arguments in the message when looked up in the message registry.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": false,
+                    "type": "array"
+                },
+                "MessageId": {
+                    "description": "The key for this message that can be used to look up the message in a message registry.",
+                    "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "State": {
+            "enum": [
+                "Idle",
+                "Uploading",
+                "Verifying",
+                "Writing",
+                "Updating",
+                "Complete",
+                "Error"
+            ],
+            "enumDescriptions": {
+                "Complete": "The update service has completed up upload or update operation.",
+                "Error": "The upload service encountered an error.  See Result for detail.",
+                "Idle": "The update service is idle.",
+                "Updating": "The update service is updating (flashing) firmware.",
+                "Uploading": "The update service is receiving a new component.",
+                "Verifying": "The update service is verifying the integrity of a new component.",
+                "Writing": "The update service is writing a new component to the iLO Repository."
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "UpdateTaskQueue": {
+            "additionalProperties": false,
+            "description": "Link to the Update Task Queue.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "UploadCurrentEtag": {
+            "description": "client-supplied etag (during component upload) indicating to what UploadStatus is reporting upon.",
+            "maxLength": 64,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "required": [
+        "UpdateTaskQueue",
+        "State",
+        "InstallSets",
+        "MaintenanceWindows",
+        "ComponentRepository",
+        "InvalidImageRepository"
+    ],
+    "title": "#HpeiLOUpdateServiceExt.v2_3_0.HpeiLOUpdateServiceExt",
+    "type": "object"
+}

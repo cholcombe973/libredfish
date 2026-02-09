@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellPCIeSSDBackPlane v1_2_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPCIeSSDBackPlane">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellPCIeSSDBackPlane" Abstract="true">
+                <Annotation String="An instance of DellPCIeSSDBackPlane will have PCIeSSD back plane specific data." Term="OData.Description"/>
+                <Annotation String="An instance of DellPCIeSSDBackPlane will have PCIeSSD back plane specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Chassis/Oem/Dell/DellPCIeSSDBackPlanes/{PCIeSSDBackPlaneId}</String>
+                        <String>/redfish/v1/Chassis/{EnclosureId}/Oem/Dell/DellPCIeSSDBackPlanes/{PCIeSSDBackPlaneId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPCIeSSDBackPlane.v1_0_0">
+            <EntityType Name="DellPCIeSSDBackPlane" BaseType="DellPCIeSSDBackPlane.DellPCIeSSDBackPlane">
+                <Annotation Term="OData.Description" String="An instance of DellPCIeSSDBackPlane will have PCIeSSD back plane specific data."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellPCIeSSDBackPlane will have PCIeSSD back plane specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="SlotCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This is the number of slots on the BackPlane."/>
+                    <Annotation Term="OData.LongDescription" String="This is the number of slots on the BackPlane."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPCIeSSDBackPlane.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add FirmwareVersion property."/>
+            <EntityType Name="DellPCIeSSDBackPlane" BaseType="DellPCIeSSDBackPlane.v1_0_0.DellPCIeSSDBackPlane">
+                <Property Name="FirmwareVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides information about the firmware installed on the backplane."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides information about the firmware installed on the backplane."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPCIeSSDBackPlane.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add PCIExpressGeneration property."/>
+            <EntityType Name="DellPCIeSSDBackPlane" BaseType="DellPCIeSSDBackPlane.v1_1_0.DellPCIeSSDBackPlane">
+                <Property Name="PCIExpressGeneration" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the PCI generation of backplane."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the PCI generation of backplane."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

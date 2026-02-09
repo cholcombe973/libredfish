@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellBIOSService v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellBIOSService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellBIOSService" Abstract="true">
+                <Annotation String="The DellBIOSService resource provides some actions to support BIOS functionality." Term="OData.Description"/>
+                <Annotation String="The DellBIOSService resource provides some actions to support BIOS functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellBIOSService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="DeviceRecovery" IsBound="true">
+                <Annotation String="The DeviceRecovery() method is used to perform recovery of the component provided in the Device parameter. If the Device is BIOS, a successful invocation of this command will result in shutdown of the host and initiation of the BIOS recovery sequence." Term="OData.Description"/>
+                <Annotation String="The DeviceRecovery() method is used to perform recovery of the component provided in the Device parameter. If the Device is BIOS, a successful invocation of this command will result in shutdown of the host and initiation of the BIOS recovery sequence." Term="OData.LongDescription"/>
+                <Parameter Name="DellBIOSService" Type="DellBIOSService.v1_0_0.Actions"/>
+                <Parameter Name="Device" Type="DellBIOSService.Device">
+                    <Annotation String="Type of the device to be recovered" Term="OData.Description"/>
+                    <Annotation String="Type of the device to be recovered" Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="Device">
+                <Member Name="BIOS">
+                    <Annotation String="BIOS" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellBIOSService.v1_0_0">
+            <EntityType Name="DellBIOSService" BaseType="DellBIOSService.DellBIOSService">
+                <Annotation Term="OData.Description" String="The DellBIOSService resource provides some actions to support BIOS functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellBIOSService resource provides some actions to support BIOS functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellBIOSService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,446 @@
+{
+    "$id": "/redfish/v1/Schemas/DellLCService.json",
+    "$ref": "#/definitions/DellLCService",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Component": {
+            "enum": [
+                "AllApps",
+                "BIOS",
+                "CryptographicErasePD",
+                "DIAG",
+                "DrvPack",
+                "IDRAC",
+                "LCData",
+                "NonVolatileMemory",
+                "OverwritePD",
+                "PERCNVCache",
+                "vFlash"
+            ],
+            "enumDescriptions": {
+                "AllApps": "AllApps",
+                "BIOS": "BIOS",
+                "CryptographicErasePD": "CryptographicErasePD",
+                "DIAG": "DIAG",
+                "DrvPack": "DrvPack",
+                "IDRAC": "IDRAC",
+                "LCData": "LCData",
+                "NonVolatileMemory": "NonVolatileMemory",
+                "OverwritePD": "OverwritePD",
+                "PERCNVCache": "PERCNVCache",
+                "vFlash": "vFlash"
+            },
+            "enumVersionAdded": {
+                "AllApps": "v1_1_0",
+                "BIOS": "v1_1_0",
+                "CryptographicErasePD": "v1_1_0",
+                "DIAG": "v1_1_0",
+                "DrvPack": "v1_1_0",
+                "IDRAC": "v1_1_0",
+                "LCData": "v1_1_0",
+                "NonVolatileMemory": "v1_1_0",
+                "OverwritePD": "v1_1_0",
+                "PERCNVCache": "v1_1_0",
+                "vFlash": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "DataSelectorArrayIn": {
+            "enum": [
+                "DebugLogs",
+                "HWData",
+                "OSAppData",
+                "OSAppDataWithoutPII",
+                "TTYLogs",
+                "TelemetryReports"
+            ],
+            "enumDescriptions": {
+                "DebugLogs": "Debug Logs",
+                "HWData": "HW Data",
+                "OSAppData": "OSApp Data",
+                "OSAppDataWithoutPII": "OSApp Data Without PII",
+                "TTYLogs": "TTY Logs",
+                "TelemetryReports": "Telemetry Reports"
+            },
+            "enumVersionAdded": {
+                "DebugLogs": "v1_1_0",
+                "TelemetryReports": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "DellLCService": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/DellLCService.v1_3_0.json#/definitions/DellLCService"
+                }
+            ],
+            "deletable": false,
+            "description": "The DellLCService resource provides some actions to support Lifecycle Controller functionality.",
+            "insertable": false,
+            "longDescription": "The DellLCService resource provides some actions to support Lifecycle Controller functionality.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellLCService"
+            ]
+        },
+        "FileType": {
+            "enum": [
+                "BootCaptureVideo",
+                "CrashCaptureVideo",
+                "LastCrashScreenShot",
+                "Preview",
+                "ServerScreenShot"
+            ],
+            "enumDescriptions": {
+                "BootCaptureVideo": "Boot Capture Video",
+                "CrashCaptureVideo": "Crash Capture Video",
+                "LastCrashScreenShot": "Last Crash Screen Shot",
+                "Preview": "Preview",
+                "ServerScreenShot": "Server Screen Shot"
+            },
+            "enumVersionAdded": {
+                "BootCaptureVideo": "v1_1_0",
+                "CrashCaptureVideo": "v1_1_0",
+                "LastCrashScreenShot": "v1_1_0",
+                "Preview": "v1_1_0",
+                "ServerScreenShot": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "Filter": {
+            "enum": [
+                "No",
+                "Yes"
+            ],
+            "enumDescriptions": {
+                "No": "No",
+                "Yes": "Yes"
+            },
+            "enumVersionAdded": {
+                "No": "v1_1_0",
+                "Yes": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "GetRemoteServicesAPIStatusResponseLCStatus": {
+            "enum": [
+                "Disabled",
+                "InRecovery",
+                "InUse",
+                "NotInitialized",
+                "Ready",
+                "ReloadingData"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "InRecovery": "In Recovery",
+                "InUse": "In Use",
+                "NotInitialized": "Not Initialized",
+                "Ready": "Ready",
+                "ReloadingData": "Reloading data"
+            },
+            "type": "string"
+        },
+        "GetRemoteServicesAPIStatusResponseRTStatus": {
+            "enum": [
+                "NotReady",
+                "Ready"
+            ],
+            "enumDescriptions": {
+                "NotReady": "Not Ready",
+                "Ready": "Ready"
+            },
+            "type": "string"
+        },
+        "GetRemoteServicesAPIStatusResponseServerStatus": {
+            "enum": [
+                "AutomatedTaskExecution",
+                "CollectingSystemInventory",
+                "EnteredF11BootManager",
+                "EnteredF2Setup",
+                "HaltedF1/F2/F11Prompt",
+                "HaltedF1/F2Prompt",
+                "InPOST",
+                "LCUSC",
+                "OutOfPOST",
+                "PoweredOff"
+            ],
+            "enumDescriptions": {
+                "AutomatedTaskExecution": "Automated Task Execution",
+                "CollectingSystemInventory": "Collecting System Inventory",
+                "EnteredF11BootManager": "Server has entered F11 Boot Manager menu",
+                "EnteredF2Setup": "Server has entered F2 setup menu",
+                "HaltedF1/F2/F11Prompt": "Server has halted at F1/F2/F11 prompt because there are no bootable devices available",
+                "HaltedF1/F2Prompt": "Server has halted at F1/F2 error prompt because of a POST error",
+                "InPOST": "In POST",
+                "LCUSC": "Lifecycle Controller Unified Server Configurator",
+                "OutOfPOST": "Out of POST",
+                "PoweredOff": "Powered Off"
+            },
+            "type": "string"
+        },
+        "GetRemoteServicesAPIStatusResponseStatus": {
+            "enum": [
+                "Disabled",
+                "InRecovery",
+                "InUse",
+                "NotReady",
+                "Ready",
+                "ReloadingData"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "InRecovery": "In Recovery",
+                "InUse": "In Use",
+                "NotReady": "Not Ready",
+                "Ready": "Ready",
+                "ReloadingData": "Reloading data"
+            },
+            "type": "string"
+        },
+        "GetRemoteServicesAPIStatusResponseTelemetryServiceStatus": {
+            "enum": [
+                "NotReady",
+                "Ready"
+            ],
+            "enumDescriptions": {
+                "NotReady": "Not Ready",
+                "Ready": "Ready"
+            },
+            "type": "string"
+        },
+        "IgnoreCertWarning": {
+            "enum": [
+                "Off",
+                "On"
+            ],
+            "enumDescriptions": {
+                "Off": "Off",
+                "On": "On"
+            },
+            "type": "string"
+        },
+        "PerformAutoDiscovery": {
+            "enum": [
+                "NextBoot",
+                "Now",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "NextBoot": "NextBoot",
+                "Now": "Now",
+                "Off": "Off"
+            },
+            "type": "string"
+        },
+        "ProxySupport": {
+            "enum": [
+                "DefaultProxy",
+                "Off",
+                "ParametersProxy"
+            ],
+            "enumDescriptions": {
+                "DefaultProxy": "On-use user default proxy settings",
+                "Off": "Off",
+                "ParametersProxy": "On-use passed in parameters for proxy"
+            },
+            "type": "string"
+        },
+        "ProxyType": {
+            "enum": [
+                "HTTP",
+                "SOCKS"
+            ],
+            "enumDescriptions": {
+                "HTTP": "HTTP",
+                "SOCKS": "SOCKS"
+            },
+            "type": "string"
+        },
+        "RebootJobType": {
+            "enum": [
+                "GracefulRebootWithForcedShutdown",
+                "GracefulRebootWithoutForcedShutdown",
+                "PowerCycle"
+            ],
+            "enumDescriptions": {
+                "GracefulRebootWithForcedShutdown": "Graceful Reboot with forced shutdown",
+                "GracefulRebootWithoutForcedShutdown": "Graceful Reboot without forced shutdown",
+                "PowerCycle": "PowerCycle"
+            },
+            "enumVersionAdded": {
+                "GracefulRebootWithForcedShutdown": "v1_1_0",
+                "GracefulRebootWithoutForcedShutdown": "v1_1_0",
+                "PowerCycle": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "Recurrence": {
+            "enum": [
+                "Monthly",
+                "Quarterly",
+                "Weekly"
+            ],
+            "enumDescriptions": {
+                "Monthly": "Monthly",
+                "Quarterly": "Quarterly",
+                "Weekly": "Weekly"
+            },
+            "enumVersionAdded": {
+                "Monthly": "v1_1_0",
+                "Quarterly": "v1_1_0",
+                "Weekly": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "RunMode": {
+            "enum": [
+                "Express",
+                "ExpressAndExtended",
+                "Extended"
+            ],
+            "enumDescriptions": {
+                "Express": "Express",
+                "ExpressAndExtended": "Express&amp;Extended",
+                "Extended": "Extended"
+            },
+            "enumVersionAdded": {
+                "Express": "v1_1_0",
+                "ExpressAndExtended": "v1_1_0",
+                "Extended": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "ShareType": {
+            "enum": [
+                "CIFS",
+                "FTP",
+                "HTTP",
+                "HTTPS",
+                "Local",
+                "NFS",
+                "TFTP"
+            ],
+            "enumDescriptions": {
+                "CIFS": "CIFS",
+                "FTP": "FTP",
+                "HTTP": "HTTP",
+                "HTTPS": "HTTPS",
+                "Local": "Local",
+                "NFS": "NFS",
+                "TFTP": "TFTP"
+            },
+            "enumVersionAdded": {
+                "FTP": "v1_1_0",
+                "TFTP": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SupportAssistGetAutoCollectScheduleResponseRecurrence": {
+            "enum": [
+                "Monthly",
+                "Quarterly",
+                "Weekly"
+            ],
+            "enumDescriptions": {
+                "Monthly": "Monthly",
+                "Quarterly": "Quarterly",
+                "Weekly": "Weekly"
+            },
+            "enumVersionAdded": {
+                "Monthly": "v1_1_0",
+                "Quarterly": "v1_1_0",
+                "Weekly": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SupportAssistGetEULAStatusResponseInterface": {
+            "enum": [
+                "LCUI",
+                "REDFISH",
+                "Racadm",
+                "SCP",
+                "WSMan",
+                "iDRACGUI"
+            ],
+            "enumDescriptions": {
+                "LCUI": "LC UI",
+                "REDFISH": "REDFISH",
+                "Racadm": "Racadm",
+                "SCP": "SCP",
+                "WSMan": "WSMan",
+                "iDRACGUI": "iDRAC GUI"
+            },
+            "enumVersionAdded": {
+                "LCUI": "v1_1_0",
+                "REDFISH": "v1_1_0",
+                "Racadm": "v1_1_0",
+                "SCP": "v1_1_0",
+                "WSMan": "v1_1_0",
+                "iDRACGUI": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SupportAssistGetEULAStatusResponseIsRegistered": {
+            "enum": [
+                "NotRegistered",
+                "Registered"
+            ],
+            "enumDescriptions": {
+                "NotRegistered": "Not Registered",
+                "Registered": "Registered"
+            },
+            "enumVersionAdded": {
+                "NotRegistered": "v1_1_0",
+                "Registered": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "Transmit": {
+            "enum": [
+                "No",
+                "Yes"
+            ],
+            "enumDescriptions": {
+                "No": "No",
+                "Yes": "Yes"
+            },
+            "enumVersionAdded": {
+                "No": "v1_1_0",
+                "Yes": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "UpdateType": {
+            "enum": [
+                "Automatic"
+            ],
+            "enumDescriptions": {
+                "Automatic": "Automatic"
+            },
+            "enumVersionAdded": {
+                "Automatic": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "XMLSchema": {
+            "enum": [
+                "CIM-XML",
+                "JSON",
+                "Simple"
+            ],
+            "enumDescriptions": {
+                "CIM-XML": "CIM-XML",
+                "JSON": "JSON",
+                "Simple": "Simple"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellLCService.DellLCService"
+}

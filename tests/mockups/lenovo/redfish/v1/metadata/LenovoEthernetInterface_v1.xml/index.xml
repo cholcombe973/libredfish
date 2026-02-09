@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoEthernetInterface  v1.0.0                              -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/IPAddresses_v1.xml">
+    <edmx:Include Namespace="IPAddresses"/>
+    <edmx:Include Namespace="IPAddresses.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoPortForwarding_v1.xml">
+    <edmx:Include Namespace="LenovoPortForwarding"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoEthernetInterface">
+      <ComplexType Name="LenovoEthernetInterface" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoEthernetInterface resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoEthernetInterface.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <ComplexType Name="LenovoEthernetInterfaceProperties" BaseType="LenovoEthernetInterface.LenovoEthernetInterface">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoEthernetInterface resource."/>
+        
+        <Property Name="IPv6AddressAssignedby" Type="Collection(IPAddresses.v1_0_0.IPv6AddressOrigin)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates where the IPv6 addresses are obtained from."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates where the IPv6 addresses are obtained from."/>
+        </Property>
+        <Property Name="IPv4AddressAssignedby" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates where the IPv4 addresses are obtained from."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates where the IPv4 addresses are obtained from."/>
+        </Property>
+        <Property Name="InterfaceFailoverMode" Type="LenovoEthernetInterface.v1_0_0.InterfaceFailoverMode">
+          <Annotation Term="OData.Description" String="The failover mode in this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the failover mode in this interface."/>
+        </Property>
+        <Property Name="InterfaceNicMode" Type="LenovoEthernetInterface.v1_0_0.InterfaceNicMode">
+          <Annotation Term="OData.Description" String="The NIC mode in this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the NIC mode in this interface."/>
+        </Property>
+        <Property Name="DomainName" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The domain name of this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the domain name of this interface."/>
+        </Property>
+        <Property Name="NetworkSettingSync" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Network setting synchronization."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property directs to use the same network settings that are used on the dedicated management network port for the shared network port if the failover mode is enabled."/>
+        </Property>
+        <Property Name="IPv4Enabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether the IPv4 support is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this IPv4 support is enabled."/>
+        </Property>
+        <Property Name="IPv6Enabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether the IPv6 support is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this IPv6 support is enabled."/>
+        </Property>
+        <Property Name="AddressMode" Type="LenovoEthernetInterface.v1_0_0.AddressModeItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Select address mode for ethernet over USB interface: IPv4, IPv4 LLA or IPv6 LLA."/>
+        </Property>
+        <Property Name="OSIPv4Address" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the IPv4 Address of the Ethernet Over USB."/>
+          <Annotation Term="OData.LongDescription" String="Use this field to define the IP address of the Ethernet Over USB. The default value is 169.254.95.120."/>
+        </Property>
+        <NavigationProperty Name="PortForwarding" Type="LenovoPortForwarding.LenovoPortForwarding" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the port forwarding property for this ethernet over usb interface."/>
+          <Annotation Term="OData.LongDescription" String="Display and configure ethernet to ethernet over usb port mapping, Allows user to map an external Ethernet port number to a different port number for Ethernet over USB."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    
+      <ComplexType Name="InterfaceFailoverMode">
+        <Property Name="InterfaceSharedNicPortSupported" Type="Collection(LenovoEthernetInterface.v1_0_0.SharedNicPortItem)">
+          <Annotation Term="OData.Description" String="All shared NIC ports supported in this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates all shared NIC ports supported in this interface."/>
+        </Property>
+        <Property Name="NicValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The NIC index number in this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the NIC index number in this interface."/>
+        </Property>
+        <Property Name="FailoverMode" Type="LenovoEthernetInterface.v1_0_0.FailoverModeItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The failver mode of this NIC port."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the failver mode of this NIC port."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="SharedNicPortItem">
+        <Property Name="ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The ID of this shared NIC."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the ID of this shared NIC."/>
+        </Property>
+        <Property Name="MaxPorts" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The max support ports in this shared NIC."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the max support ports in this shared NIC."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="FailoverModeItem">
+        <Member Name="None">
+        </Member>
+        <Member Name="Shared">
+        </Member>
+        <Member Name="SharedNic">
+        </Member>
+      </EnumType>
+      
+      <ComplexType Name="InterfaceNicMode">
+        <Property Name="NicMode" Type="LenovoEthernetInterface.v1_0_0.NicModeItem">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The NIC mode of this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the NIC mode of this interface."/>
+        </Property>
+        <Property Name="NicValue" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The NIC value of this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the NIC mode of this interface."/>
+        </Property>
+        <Property Name="InterfaceSharedNicPortSettings" Type="Collection(LenovoEthernetInterface.v1_0_0.SharedNicPortSetting)">
+          <Annotation Term="OData.Description" String="The setting of shared NIC port for this interface."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the setting of shared NIC port for this interface."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="NicModeItem">
+        <Member Name="Dedicated">
+        </Member>
+        <Member Name="Shared">
+        </Member>
+        <Member Name="SharedNic">
+        </Member>
+      </EnumType>
+      
+      <ComplexType Name="SharedNicPortSetting">
+        <Property Name="ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The ID of this shared NIC port."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the ID of this shared NIC port."/>
+        </Property>
+        <Property Name="Port" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The shared NIC port number."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property indicates the shared NIC port number."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="AddressModeItem">
+        <Member Name="IPv4">
+          <Annotation Term="OData.Description" String="User configured IPv4 address mode."/>
+        </Member>
+        <Member Name="IPv4LLA">
+          <Annotation Term="OData.Description" String="IPv4 link-local address mode."/>
+        </Member>
+        <Member Name="IPv6LLA">
+          <Annotation Term="OData.Description" String="IPv6 link-local address mode."/>
+        </Member>
+      </EnumType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+
+

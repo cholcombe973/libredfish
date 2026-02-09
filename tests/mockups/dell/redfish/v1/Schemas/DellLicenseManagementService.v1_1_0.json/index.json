@@ -1,0 +1,730 @@
+{
+    "$id": "/redfish/v1/Schemas/DellLicenseManagementService.v1_1_0.json",
+    "$ref": "#/definitions/DellLicenseManagementService",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellLicenseManagementService.DeleteLicense": {
+                    "$ref": "#/definitions/DeleteLicense"
+                },
+                "#DellLicenseManagementService.ExportLicense": {
+                    "$ref": "#/definitions/ExportLicense"
+                },
+                "#DellLicenseManagementService.ExportLicenseByDevice": {
+                    "$ref": "#/definitions/ExportLicenseByDevice"
+                },
+                "#DellLicenseManagementService.ExportLicenseByDeviceToNetworkShare": {
+                    "$ref": "#/definitions/ExportLicenseByDeviceToNetworkShare"
+                },
+                "#DellLicenseManagementService.ExportLicenseToNetworkShare": {
+                    "$ref": "#/definitions/ExportLicenseToNetworkShare"
+                },
+                "#DellLicenseManagementService.ImportLicense": {
+                    "$ref": "#/definitions/ImportLicense"
+                },
+                "#DellLicenseManagementService.ImportLicenseFromNetworkShare": {
+                    "$ref": "#/definitions/ImportLicenseFromNetworkShare"
+                },
+                "#DellLicenseManagementService.ShowLicenseBits": {
+                    "$ref": "#/definitions/ShowLicenseBits"
+                }
+            },
+            "type": "object"
+        },
+        "DeleteLicense": {
+            "additionalProperties": false,
+            "description": "A method used to delete assigned licenses. The DeleteLicense() method deletes a specific license from all devices it is assigned to if only the EntitlementID parameter is present, all licenses from a specific device if only the FQDD parameter is present, or a specific license from a specific device if both the EntitlementID and FQDD parameters are present. Either the EntitlementID or FQDD parameter shall be present.",
+            "longDescription": "A method used to delete assigned licenses. The DeleteLicense() method deletes a specific license from all devices it is assigned to if only the EntitlementID parameter is present, all licenses from a specific device if only the FQDD parameter is present, or a specific license from a specific device if both the EntitlementID and FQDD parameters are present. Either the EntitlementID or FQDD parameter shall be present.",
+            "parameters": {
+                "DeleteOptions": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/DeleteOptions",
+                    "description": "Flag used to force delete or delete license from all like devices.",
+                    "longDescription": "Flag used to force delete or delete license from all like devices."
+                },
+                "EntitlementID": {
+                    "description": "Entitlement ID of the license to delete.",
+                    "longDescription": "Entitlement ID of the license to delete.",
+                    "type": "string"
+                },
+                "FQDD": {
+                    "description": "FQDD of the device to delete the license from.",
+                    "longDescription": "FQDD of the device to delete the license from.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DellLicenseManagementService": {
+            "additionalProperties": false,
+            "description": "The DellLicenseManagementService resource provides some actions to support License Management functionality.",
+            "longDescription": "The DellLicenseManagementService resource provides some actions to support License Management functionality.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "ExportLicense": {
+            "actionResponse": {
+                "$ref": "#/definitions/ExportLicenseResponse"
+            },
+            "additionalProperties": false,
+            "description": "ExportLicense is a method used to export License files from the iDRAC. The ExportLicense method returns a License, specified by Entitlement ID, as a base64 encoded string.",
+            "longDescription": "ExportLicense is a method used to export License files from the iDRAC. The ExportLicense method returns a License, specified by Entitlement ID, as a base64 encoded string.",
+            "parameters": {
+                "EntitlementID": {
+                    "description": "Entitlement ID of the license being exported.",
+                    "longDescription": "Entitlement ID of the license being exported.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExportLicenseByDevice": {
+            "actionResponse": {
+                "$ref": "#/definitions/ExportLicenseByDeviceResponse"
+            },
+            "additionalProperties": false,
+            "description": "The ExportLicenseByDevice method exports license files specific to a device from iDRAC. The ExportLicenseByDevice method returns all licenses assigned to a device specified by FQDD, as a base64 encoded string.",
+            "longDescription": "The ExportLicenseByDevice method exports license files specific to a device from iDRAC. The ExportLicenseByDevice method returns all licenses assigned to a device specified by FQDD, as a base64 encoded string.",
+            "parameters": {
+                "FQDD": {
+                    "description": "Unique device ID.",
+                    "longDescription": "Unique device ID.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_1_0"
+        },
+        "ExportLicenseByDeviceResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the ExportLicenseByDevice action.",
+            "longDescription": "This type shall contain the properties found in the response body for the ExportLicenseByDevice action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "LicenseFile": {
+                    "description": "Base64 encoded string of the license file contents.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "Base64 encoded string of the license file contents.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "LicenseFile"
+            ],
+            "type": "object"
+        },
+        "ExportLicenseByDeviceToNetworkShare": {
+            "additionalProperties": false,
+            "description": "ExportLicenseByDeviceToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseByDeviceToNetworkShare method exports all licenses from a device, specified by FQDD, to a user defined location.",
+            "longDescription": "ExportLicenseByDeviceToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseByDeviceToNetworkShare method exports all licenses from a device, specified by FQDD, to a user defined location.",
+            "parameters": {
+                "FQDD": {
+                    "description": "FQDD of the device to export licenses from.",
+                    "longDescription": "FQDD of the device to export licenses from.",
+                    "type": "string"
+                },
+                "FileName": {
+                    "description": "The exported license is renamed to <FileName>.",
+                    "longDescription": "The exported license is renamed to <FileName>.",
+                    "type": "string"
+                },
+                "IPAddress": {
+                    "description": "IP Address of the machine hosting the CIFS/NFS share.",
+                    "longDescription": "IP Address of the machine hosting the CIFS/NFS share.",
+                    "type": "string"
+                },
+                "Password": {
+                    "description": "Password  for CIFS share authentication.",
+                    "longDescription": "Password  for CIFS share authentication.",
+                    "type": "string"
+                },
+                "ShareName": {
+                    "description": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "longDescription": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "type": "string"
+                },
+                "ShareType": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ShareType",
+                    "description": "Type of the Network Share.",
+                    "longDescription": "Type of the Network Share."
+                },
+                "UserName": {
+                    "description": "Username for CIFS share authentication.",
+                    "longDescription": "Username for CIFS share authentication.",
+                    "type": "string"
+                },
+                "Workgroup": {
+                    "description": "Workgroup for the CIFS share, optional.",
+                    "longDescription": "Workgroup for the CIFS share, optional.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ExportLicenseResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the ExportLicense action.",
+            "longDescription": "This type shall contain the properties found in the response body for the ExportLicense action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "LicenseFile": {
+                    "description": "Base64 encoded string of the license file contents.",
+                    "longDescription": "Base64 encoded string of the license file contents.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "LicenseFile"
+            ],
+            "type": "object"
+        },
+        "ExportLicenseToNetworkShare": {
+            "additionalProperties": false,
+            "description": "ExportLicenseToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseToNetworkShare method exports a License, specified by EntitlementID, to a user defined location.",
+            "longDescription": "ExportLicenseToNetworkShare is a method used to export License files from the IDRAC. The ExportLicenseToNetworkShare method exports a License, specified by EntitlementID, to a user defined location.",
+            "parameters": {
+                "EntitlementID": {
+                    "description": "Entitlement ID of the license being exported.",
+                    "longDescription": "Entitlement ID of the license being exported.",
+                    "type": "string"
+                },
+                "FileName": {
+                    "description": "If included, the exported license is renamed as <FileName>.",
+                    "longDescription": "If included, the exported license is renamed as <FileName>.",
+                    "type": "string"
+                },
+                "IPAddress": {
+                    "description": "IP address of the machine hosting the Network share.",
+                    "longDescription": "IP address of the machine hosting the Network share.",
+                    "type": "string"
+                },
+                "IgnoreCertWarning": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/IgnoreCertWarning",
+                    "description": "Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off).",
+                    "longDescription": "Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off)."
+                },
+                "Password": {
+                    "description": "Password for Network share authentication.",
+                    "longDescription": "Password for Network share authentication.",
+                    "type": "string"
+                },
+                "ProxyPasswd": {
+                    "description": "The password to login into proxy server.",
+                    "longDescription": "The password to login into proxy server.",
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Port for the proxy server. Default is set to 80.",
+                    "longDescription": "Port for the proxy server. Default is set to 80.",
+                    "type": "string"
+                },
+                "ProxyServer": {
+                    "description": "The IP Adrress of the proxy server.",
+                    "longDescription": "The IP Adrress of the proxy server.",
+                    "type": "string"
+                },
+                "ProxySupport": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ProxySupport",
+                    "description": "Specifies if proxy is to be used or not. Default is 1 (Off).",
+                    "longDescription": "Specifies if proxy is to be used or not. Default is 1 (Off)."
+                },
+                "ProxyType": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ProxyType",
+                    "description": "The proxy type of the proxy server. Default is 0 (HTTP).",
+                    "longDescription": "The proxy type of the proxy server. Default is 0 (HTTP)."
+                },
+                "ProxyUname": {
+                    "description": "The username for proxy server.",
+                    "longDescription": "The username for proxy server.",
+                    "type": "string"
+                },
+                "ShareName": {
+                    "description": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "longDescription": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "type": "string"
+                },
+                "ShareType": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ShareType",
+                    "description": "Type of the Network Share.",
+                    "longDescription": "Type of the Network Share."
+                },
+                "UserName": {
+                    "description": "Username for Network share authentication.",
+                    "longDescription": "Username for Network share authentication.",
+                    "type": "string"
+                },
+                "Workgroup": {
+                    "description": "Workgroup for the CIFS share, optional.",
+                    "longDescription": "Workgroup for the CIFS share, optional.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImportLicense": {
+            "additionalProperties": false,
+            "description": "The ImportLicense() method imports the License given in the input parameter to the License Manager Data Store.",
+            "longDescription": "The ImportLicense() method imports the License given in the input parameter to the License Manager Data Store.",
+            "parameters": {
+                "FQDD": {
+                    "description": "FQDD of the device to apply the License to.",
+                    "longDescription": "FQDD of the device to apply the License to.",
+                    "type": "string"
+                },
+                "ImportOptions": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ImportOptions",
+                    "description": "Flag to force or install for all like devices.",
+                    "longDescription": "Flag to force or install for all like devices."
+                },
+                "LicenseFile": {
+                    "description": "A base 64 encoded string of the XML License file.",
+                    "longDescription": "A base 64 encoded string of the XML License file.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ImportLicenseFromNetworkShare": {
+            "additionalProperties": false,
+            "description": "The ImportLicenseFromNetworkShare() method imports the License given in the network share location.",
+            "longDescription": "The ImportLicenseFromNetworkShare() method imports the License given in the network share location.",
+            "parameters": {
+                "FQDD": {
+                    "description": "FQDD of the device to apply the License to.",
+                    "longDescription": "FQDD of the device to apply the License to.",
+                    "type": "string"
+                },
+                "IPAddress": {
+                    "description": "IP address of the machine hosting the Network share.",
+                    "longDescription": "IP address of the machine hosting the Network share.",
+                    "type": "string"
+                },
+                "IgnoreCertWarning": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/IgnoreCertWarning",
+                    "description": "Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off).",
+                    "longDescription": "Specifies if certificate warning is to be ignored when HTTPS is specified. If IgnoreCertWarning is on:certificate will be ignored. Default is 1 (Off)."
+                },
+                "ImportOptions": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ImportOptions",
+                    "description": "Flag to force or install for all like devices.",
+                    "longDescription": "Flag to force or install for all like devices."
+                },
+                "LicenseName": {
+                    "description": "The file name of the license file to be imported.",
+                    "longDescription": "The file name of the license file to be imported.",
+                    "type": "string"
+                },
+                "Password": {
+                    "description": "Password for Network share authentication.",
+                    "longDescription": "Password for Network share authentication.",
+                    "type": "string"
+                },
+                "ProxyPasswd": {
+                    "description": "The password to login into proxy server.",
+                    "longDescription": "The password to login into proxy server.",
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Port for the proxy server. Default is set to 80.",
+                    "longDescription": "Port for the proxy server. Default is set to 80.",
+                    "type": "string"
+                },
+                "ProxyServer": {
+                    "description": "The IP Adrress of the proxy server.",
+                    "longDescription": "The IP Adrress of the proxy server.",
+                    "type": "string"
+                },
+                "ProxySupport": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ProxySupport",
+                    "description": "Specifies if proxy is to be used or not. Default is 1 (Off).",
+                    "longDescription": "Specifies if proxy is to be used or not. Default is 1 (Off)."
+                },
+                "ProxyType": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ProxyType",
+                    "description": "The proxy type of the proxy server. Default is 0 (HTTP).",
+                    "longDescription": "The proxy type of the proxy server. Default is 0 (HTTP)."
+                },
+                "ProxyUname": {
+                    "description": "The username for proxy server.",
+                    "longDescription": "The username for proxy server.",
+                    "type": "string"
+                },
+                "ShareName": {
+                    "description": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "longDescription": "Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file.",
+                    "type": "string"
+                },
+                "ShareType": {
+                    "$ref": "/redfish/v1/Schemas/DellLicenseManagementService.json#/definitions/ShareType",
+                    "description": "Type of the Network Share.",
+                    "longDescription": "Type of the Network Share."
+                },
+                "UserName": {
+                    "description": "Username for Network share authentication.",
+                    "longDescription": "Username for Network share authentication.",
+                    "type": "string"
+                },
+                "Workgroup": {
+                    "description": "Workgroup for the CIFS share, optional.",
+                    "longDescription": "Workgroup for the CIFS share, optional.",
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ShowLicenseBits": {
+            "actionResponse": {
+                "$ref": "#/definitions/ShowLicenseBitsResponse"
+            },
+            "additionalProperties": false,
+            "description": "The ShowLicenseBits() method is used to retrieve the iDRAC feature license bit string for the Licenses in iDRAC in a hexadecimal representation of a 256 bit-string. To read the output, you'll need to see which bit position is TRUE from right-to-left. Please refer to the Appendix section that will show which bit represents what feature.",
+            "longDescription": "The ShowLicenseBits() method is used to retrieve the iDRAC feature license bit string for the Licenses in iDRAC in a hexadecimal representation of a 256 bit-string. To read the output, you'll need to see which bit position is TRUE from right-to-left. Please refer to the Appendix section that will show which bit represents what feature.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ShowLicenseBitsResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the ShowLicenseBits action.",
+            "longDescription": "This type shall contain the properties found in the response body for the ShowLicenseBits action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "LicenseBits": {
+                    "description": "The hexadecimal equivalent of the 256-bit license-bit string.",
+                    "longDescription": "The hexadecimal equivalent of the 256-bit license-bit string.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "required": [
+                "LicenseBits"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellLicenseManagementService.v1_1_0.DellLicenseManagementService"
+}

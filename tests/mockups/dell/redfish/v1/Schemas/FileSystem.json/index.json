@@ -1,0 +1,63 @@
+{
+    "$id": "/redfish/v1/Schemas/FileSystem.json",
+    "$ref": "#/definitions/FileSystem",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2021 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "FileProtocol": {
+            "description": "The file sharing protocols supported by the file system.",
+            "enum": [
+                "NFSv3",
+                "NFSv4_0",
+                "NFSv4_1",
+                "SMBv2_0",
+                "SMBv2_1",
+                "SMBv3_0",
+                "SMBv3_0_2",
+                "SMBv3_1_1"
+            ],
+            "enumDescriptions": {
+                "NFSv3": "NFSv3, as defined in RFC 1813.",
+                "NFSv4_0": "NFSv4, as defined in RFC 7530.",
+                "NFSv4_1": "NFSv4.1, as defined in RFC 5661.",
+                "SMBv2_0": "Server Message Block version 2.0.",
+                "SMBv2_1": "Server Message Block version 2.1.",
+                "SMBv3_0": "Server Message Block version 3.0.",
+                "SMBv3_0_2": "Server Message Block version 3.0.2.",
+                "SMBv3_1_1": "Server Message Block version 3.1.1."
+            },
+            "enumLongDescriptions": {
+                "NFSv3": "This value shall indicate that NFSv3, as defined in RFC 1813, is supported by the file system.",
+                "NFSv4_0": "This value shall indicate that NFSv4, as defined in RFC 7530, is supported by the file system.",
+                "NFSv4_1": "This value shall indicate that NFSv4.1, as defined in RFC 5661, is supported by the file system.",
+                "SMBv2_0": "This value shall indicate that Server Message Block version 2.0 is supported by the file system.",
+                "SMBv2_1": "This value shall indicate that Server Message Block version 2.1 is supported by the file system.",
+                "SMBv3_0": "This value shall indicate that Server Message Block version 3.0 is supported by the file system.",
+                "SMBv3_0_2": "This value shall indicate that Server Message Block version 3.0.2 is supported by the file system.",
+                "SMBv3_1_1": "This value shall indicate that Server Message Block version 3.1.1 is supported by the file system."
+            },
+            "longDescription": "The values shall indicate the file sharing protocols supported by the file system. At least one value shall be present.",
+            "type": "string"
+        },
+        "FileSystem": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/FileSystem.v1_2_2.json#/definitions/FileSystem"
+                }
+            ],
+            "deletable": true,
+            "description": "A hierarchical namespace of files.",
+            "insertable": false,
+            "longDescription": "This resource shall be used to represent a hierarchical namespace of files.",
+            "updatable": true
+        },
+        "ImportedShare": {
+            "anyOf": []
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#FileSystem.FileSystem"
+}

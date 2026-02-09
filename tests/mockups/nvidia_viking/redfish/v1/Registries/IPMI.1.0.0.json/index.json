@@ -1,0 +1,234 @@
+{
+    "@odata.type": "#MessageRegistry.v1_3_1.MessageRegistry",
+    "Description": "This registry defines messages for representing IPMI completion codes in Redfish",
+    "Id": "IPMI.1.0.0",
+    "Language": "en",
+    "Messages": {
+        "BMCInitializing": {
+            "Description": "Command response could not be provided. BMC initialization or initialization agent in progress.",
+            "Message": "The request could not be completed because BMC initialization is in progress",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request after the BMC initialization is completed.",
+            "Severity": "Critical"
+        },
+        "CannotExecuteDuplicate": {
+            "Description": "Cannot execute duplicated request. This completion code is for devices which cannot return the response that was returned for the original instance of the request. Such devices should provide separate commands that allow the completion status of the original request to be determined. An Event Receiver does not use this completion code, but returns the 00h completion code in the response to (valid) duplicated requests.",
+            "Message": "The request could not be completed because it was detected as a duplicate of a previous request.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "CommandSpecific": {
+            "Description": "Standard command-specific codes. This range is reserved for command-specific completion codes described by IPMI specification.",
+            "Message": "Standard command-specific code: %1.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Consult IPMI specification for the given completion code.",
+            "Severity": "Critical"
+        },
+        "CompletedNormally": {
+            "Description": "Command Completed Normally.",
+            "Message": "The request was processed and completed normally.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "OK"
+        },
+        "DataLengthExceeded": {
+            "Description": "Request data field length limit exceeded.",
+            "Message": "The request could not be completed because an underlying IPMI request exceeded its data length limit.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify the request parameters and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "DataLengthInvalid": {
+            "Description": "Request data length invalid.",
+            "Message": "The request could not be completed because an underlying IPMI request sent an invalid data length.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify the request parameters and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "DataTruncated": {
+            "Description": "Request data truncated.",
+            "Message": "The request could not be completed because an underlying IPMI request was truncated.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify the request parameters and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "DestinationUnavailable": {
+            "Description": "Destination unavailable. Cannot deliver request to selected destination. E.g. this code can be returned if a request message is targeted to SMS, but receive message queue reception is disabled for the particular channel.",
+            "Message": "The request could not be completed because the target destination is unavailable.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "DeviceSpecific": {
+            "Description": "Device specific (OEM) completion code. This range is used for command-specific codes that are also specific for a particular device and version. A-priori knowledge of the device command set is required for interpretation of these codes.",
+            "Message": "Device specific (OEM) completion code: %1.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Consult OEM documentation for the given completion code.",
+            "Severity": "Critical"
+        },
+        "FirmwareInUpdateMode": {
+            "Description": "Command response could not be provided. Device in firmware update mode.",
+            "Message": "The request could not be completed because the device is in firmware update mode.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request after the Firmware update is completed.",
+            "Severity": "Critical"
+        },
+        "IllegalCommand": {
+            "Description": "Command illegal for specified sensor or record type.",
+            "Message": "The request could not be completed due to the use of an IPMI command not recognized and/or supported by the sensor or record it was sent to.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify the requested command and resource and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "IncompatibleState": {
+            "Description": "Cannot execute command. Command, or request parameter(s), not supported in present state.",
+            "Message": "The request could not be completed because a command or request parameter is not supported in the present state.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify that the service is not in a conflicting state and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "InsufficientPrivilege": {
+            "Description": "Cannot execute command due to insufficient privilege level or other security-based restriction (e.g. disabled for \u2018firmware firewall\u2019).",
+            "Message": "The request could not be completed because it was sent with insufficient privilege level or other security restriction.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request with proper security clearance.",
+            "Severity": "Critical"
+        },
+        "InvalidCommand": {
+            "Description": "Invalid Command. Used to indicate an unrecognized or unsupported command.",
+            "Message": "The request could not be completed due to the use of an unrecognized or unsupported IPMI command.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "InvalidCommandForLUN": {
+            "Description": "Command invalid for given LUN.",
+            "Message": "The request could not be completed due to the use of an IPMI command not recognized and/or supported by the LUN it was sent to.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "InvalidRequestData": {
+            "Description": "Invalid data field in Request",
+            "Message": "The request could not be completed because one or more parameters were invalid.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify that all parameter values are valid and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "MediumError": {
+            "Description": "Indicates that the error occurred not during the IPMI operation, but in the communication medium.",
+            "Message": "An error occurred in the IPMI communication medium: %1.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Verify that the IPMI service is functional and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "NoReservation": {
+            "Description": "Reservation Canceled or Invalid Reservation ID.",
+            "Message": "The request could not be completed due to an invalid or cancelled IPMI Reservation ID.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "NoResponse": {
+            "Description": "Command response could not be provided.",
+            "Message": "The request was accepted but returned with no response",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify the IPMI service is functional and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "NodeBusy": {
+            "Description": "Node Busy. Command could not be processed because command processing resources are temporarily unavailable.",
+            "Message": "The request could not be completed because the required service is busy.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify other pending operations have finished and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "OutOfSpace": {
+            "Description": "Out of space. Command could not be completed because of a lack of storage space required to execute the given command operation.",
+            "Message": "The request could not be completed because of a lack of storage space required to execute the given command operation.",
+            "NumberOfArgs": 0,
+            "Resolution": "Create additional storage space and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "ParamaterOutOfRange": {
+            "Description": "Parameter out of range. One or more parameters in the data field of the Request are out of range. This is different from \u2018Invalid data field\u2019 (CCh) code in that it indicates that the erroneous field(s) has a contiguous range of possible values.",
+            "Message": "The request could not be completed because one or more parameters were not within the range of acceptable values.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify that all parameter values are valid and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "PortAlreadyInUse": {
+            "Description": "Indicates that the given Port is already in use.",
+            "Message": "Indicates that the given Port is already in use.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request with different port value which ranges from 1 to 65535.",
+            "Severity": "Critical"
+        },
+        "Reserved": {
+            "Description": "Reserved completion code.",
+            "Message": "Reserved completion code: %1.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "ResourceNotFound": {
+            "Description": "Requested Sensor, data, or record not present.",
+            "Message": "The request could not be completed because it referenced a sensor, record, or data field that could not be found.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify that the correct resource was specified and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "ResponseSize": {
+            "Description": "Cannot return number of requested data bytes.",
+            "Message": "The request could not be completed because the response was too large.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        },
+        "SDRInUpdateMode": {
+            "Description": "Command response could not be provided. SDR Repository in update mode.",
+            "Message": "The request could not be completed because the SDR Repository is in update mode.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request after SDR Repository update is complete.",
+            "Severity": "Critical"
+        },
+        "SubfunctionDisabled": {
+            "Description": "Cannot execute command. Parameter is illegal because command sub-function has been disabled or is unavailable (e.g. disabled for \u2018firmware firewall\u2019).",
+            "Message": "The request could not be completed because it relied on a sub-function has been disabled or is unavailable.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify that the service is functional and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "Timeout": {
+            "Description": "Timeout while processing command. Response unavailable.",
+            "Message": "A timeout occurred while processing the requeset. No response available.",
+            "NumberOfArgs": 0,
+            "Resolution": "Verify that the IPMI service is functional and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "UnspecifiedError": {
+            "Description": "Unspecified error.",
+            "Message": "The request could not be completed due to an unspecified error.",
+            "NumberOfArgs": 0,
+            "Resolution": "None",
+            "Severity": "Critical"
+        }
+    },
+    "Name": "IPMI Message Registry",
+    "OwningEntity": "AMI",
+    "RegistryPrefix": "IPMI",
+    "RegistryVersion": "1.0.0"
+}

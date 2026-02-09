@@ -1,0 +1,59 @@
+{
+    "@odata.context": "/redfish/v1/$metadata#EventService.EventService",
+    "@odata.etag": "W/\"C56F367A\"",
+    "@odata.id": "/redfish/v1/EventService",
+    "@odata.type": "#EventService.v1_0_8.EventService",
+    "Id": "EventService",
+    "Actions": {
+        "#EventService.SubmitTestEvent": {
+            "EventType@Redfish.AllowableValues": [
+                "StatusChange",
+                "ResourceUpdated",
+                "ResourceAdded",
+                "ResourceRemoved",
+                "Alert"
+            ],
+            "target": "/redfish/v1/EventService/Actions/EventService.SubmitTestEvent"
+        }
+    },
+    "DeliveryRetryAttempts": 3,
+    "DeliveryRetryIntervalSeconds": 30,
+    "Description": "Event Subscription service",
+    "EventTypesForSubscription": [
+        "StatusChange",
+        "ResourceUpdated",
+        "ResourceAdded",
+        "ResourceRemoved",
+        "Alert"
+    ],
+    "Name": "Event Service",
+    "Oem": {
+        "Hpe": {
+            "@odata.context": "/redfish/v1/$metadata#HpeEventService.HpeEventService",
+            "@odata.id": "/redfish/v1/EventService",
+            "@odata.type": "#HpeEventService.v2_1_0.HpeEventService",
+            "Id": "EventService",
+            "Actions": {
+                "#HpeEventService.ImportCACertificate": {
+                    "target": "/redfish/v1/EventService/Actions/Oem/Hpe/HpeEventService.ImportCACertificate"
+                }
+            },
+            "CACertificates": {
+                "@odata.id": "/redfish/v1/EventService/CACertificates"
+            },
+            "RequestedMaxEventsToQueueDefault": 3,
+            "RetireOldEventInMinutesDefault": 10,
+            "TTLCountDefault": 999999,
+            "TTLUnitsDefault": "minutes"
+        }
+    },
+    "ServiceEnabled": true,
+    "Status": {
+        "Health": "OK",
+        "HealthRollup": "OK",
+        "State": "Enabled"
+    },
+    "Subscriptions": {
+        "@odata.id": "/redfish/v1/EventService/Subscriptions"
+    }
+}

@@ -1,0 +1,66 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoSerialInterface.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "CLIModeType": {
+            "enum": [
+                "Compatible",
+                "UserDefined"
+            ],
+            "enumDescriptions": {
+                "Compatible": "CLI with compatible keystroke sequences",
+                "UserDefined": "CLI with user defined keystroke sequences"
+            },
+            "type": "string"
+        },
+        "LenovoSerialInterfaceProperties": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for Oem Lenovo Serial Interface resource. It represents the additional properties of a serial interface of a System.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CLIMode": {
+                    "$ref": "#/definitions/CLIModeType"
+                },
+                "EnterCLIKeySequence": {
+                    "description": "The key sequence to exit serial redirection and enter CLI.",
+                    "longDescription": "When the exit key sequence is typed, serial redirection stops and you are returned to the command mode in the Telnet or SSH session.",
+                    "readonly": false,
+                    "type": "string"
+                },
+                "SerialInterfaceState": {
+                    "$ref": "#/definitions/SerialInterfaceState",
+                    "description": "Specify the enabled and disabled state of the serial interface.",
+                    "readonly": false
+                },
+                "TextFlowType": {
+                    "description": "Specify the type of the text stream supported on the serial interface.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SerialInterfaceState": {
+            "enum": [
+                "Enabled",
+                "Offline"
+            ],
+            "type": "string"
+        }
+    },
+    "title": "#LenovoSerialInterface.v1_0_0"
+}

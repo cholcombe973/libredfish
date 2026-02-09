@@ -1,0 +1,42 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoDeviceInfo.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "LenovoDeviceInfo": {
+            "additionalProperties": false,
+            "description": "This is Lenovo extended network device info properties.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Location": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Location",
+                    "description": "This property indicates part location.",
+                    "longDescription": "The value of this property shall indicate device location information.",
+                    "readonly": true
+                },
+                "UUID": {
+                    "description": "This indicates Universal Unique ID of device.",
+                    "longDescription": "The value of this property shall indicate Universal Unique ID of device.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoDeviceInfo.v1_0_0"
+}

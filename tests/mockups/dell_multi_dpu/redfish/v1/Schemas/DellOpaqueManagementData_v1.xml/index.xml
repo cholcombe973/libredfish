@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellOpaqueManagementData v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOpaqueManagementData">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellOpaqueManagementData" Abstract="true">
+                <Annotation String="DCIM_OpaqueManagementData is a derivation of CIM_OpaqueManagementData and represents a partition on a storage device such as the vFlash." Term="OData.Description"/>
+                <Annotation String="DCIM_OpaqueManagementData is a derivation of CIM_OpaqueManagementData and represents a partition on a storage device such as the vFlash." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellOpaqueManagementData/{OpaqueManagementDataId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOpaqueManagementData.v1_0_0">
+            <EntityType Name="DellOpaqueManagementData" BaseType="DellOpaqueManagementData.DellOpaqueManagementData">
+                <Annotation Term="OData.Description" String="DCIM_OpaqueManagementData is a derivation of CIM_OpaqueManagementData and represents a partition on a storage device such as the vFlash."/>
+                <Annotation Term="OData.LongDescription" String="DCIM_OpaqueManagementData is a derivation of CIM_OpaqueManagementData and represents a partition on a storage device such as the vFlash."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="AccessType" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Access describes whether the media is readable. The property has the value &quot;Read Only&quot; or &quot;Read- Write&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="Access describes whether the media is readable. The property has the value &quot;Read Only&quot; or &quot;Read- Write&quot;."/>
+                </Property>
+                <Property Name="AttachedState" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents if the partition is attached to OS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents if the partition is attached to OS."/>
+                </Property>
+                <Property Name="DataFormat" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property has the value &quot;Raw&quot;, &quot;Ext2&quot;, &quot;Ext3&quot;, &quot;FAT16&quot;, or &quot;FAT32&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="The property has the value &quot;Raw&quot;, &quot;Ext2&quot;, &quot;Ext3&quot;, &quot;FAT16&quot;, or &quot;FAT32&quot;."/>
+                </Property>
+                <Property Name="DeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="An address or other identifying information to uniquely name the LogicalDevice."/>
+                    <Annotation Term="OData.LongDescription" String="An address or other identifying information to uniquely name the LogicalDevice."/>
+                </Property>
+                <Property Name="Name" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The user-friendly name for this instance."/>
+                    <Annotation Term="OData.LongDescription" String="The user-friendly name for this instance."/>
+                </Property>
+                <Property Name="PartitionIndex" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the index of the partition."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the index of the partition."/>
+                </Property>
+                <Property Name="PartitionType" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the type of the partition specified during creation. The property has the value &quot;Floppy&quot;, &quot;HDD&quot;, or &quot;CD-DVD&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the type of the partition specified during creation. The property has the value &quot;Floppy&quot;, &quot;HDD&quot;, or &quot;CD-DVD&quot;."/>
+                </Property>
+                <Property Name="Size" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The value of this property is in MB."/>
+                    <Annotation Term="OData.LongDescription" String="The value of this property is in MB."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

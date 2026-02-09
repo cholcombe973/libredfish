@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIServiceRoot  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/JsonSchemas/AMIBiosTable_v1.xml">
+      <edmx:Include Namespace="AMIBiosTable"/>
+      <edmx:Include Namespace="AMIBiosTable.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/JsonSchemas/AMIBiosTableTags_v1.xml">
+      <edmx:Include Namespace="AMIBiosTableTags"/>
+      <edmx:Include Namespace="AMIBiosTableTags.v1_0_0"/>
+  </edmx:Reference>
+<edmx:DataServices>
+
+ <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIBIOSInventoryCRC">
+      <ComplexType Name="AMIBIOSInventoryCRC" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the CRC values of CPU,DIMM and PCIE"/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent CRC Values of Processor, Memory, PCIE devices."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="true"/>
+          </Record>
+        </Annotation>
+      </ComplexType>
+    </Schema>
+<Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIBIOSInventoryCRC.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+
+      <ComplexType Name="AMIBIOSInventoryCRC" BaseType="AMIBIOSInventoryCRC.AMIBIOSInventoryCRC">
+        <Annotation Term="OData.Description" String="This property shall specify a valid odata or Redfish property."/>
+        <Annotation Term="OData.LongDescription" String="This property shall specify a valid odata or Redfish property."/>
+		<Property Name="Bios" Type="AMIBIOSInventoryCRC.v1_0_0.Bios" Nullable="false"></Property>
+		<Property Name="Aep" Type="AMIBIOSInventoryCRC.v1_0_0.Aep" Nullable="false"></Property>
+		  
+       </ComplexType>
+        <ComplexType Name="Aep" Abstract="true">
+          <NavigationProperty Name="Namespaces" Type="NamespaceCollection.NamespaceCollection" Nullable="true">
+            <Annotation Term="OData.Description" String="This link provides the information related to Namespace collection"/>
+          </NavigationProperty>
+          <NavigationProperty Name="Pools" Type="PoolCollection.PoolCollection" Nullable="true">
+            <Annotation Term="OData.Description" String="This link provides the information related to Pools Collection."/>
+          </NavigationProperty>
+        </ComplexType>
+        <ComplexType Name="Bios" Abstract="true">
+          <Property Name="Inventory" Type="AMIBIOSInventoryCRC.v1_0_0.Inventory" Nullable="false"> </Property>
+          <Property Name="RtpVersion" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="RTP Version."/>
+            <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the RTP Version."/>
+          </Property>
+          <Property Name="RedfishVersion" Type="Edm.String" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The version of the Redfish service."/>
+            <Annotation Term="OData.LongDescription" String="The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification."/>
+          </Property>
+          <NavigationProperty Name="BiosTable" Type="AMIBiosTable.v1_0_0.AMIBiosTable" Nullable="true">
+            <Annotation Term="OData.Description" String="This link provides the information related to BiosTable"/>
+          </NavigationProperty>
+          <NavigationProperty Name="BiosTableTags" Type="AMIBiosTableTags.v1_0_0.AMIBiosTableTags" Nullable="true">
+            <Annotation Term="OData.Description" String="This link provides the information related to BiosTableTags."/>
+          </NavigationProperty>
+        </ComplexType>
+	<ComplexType Name="Inventory" Abstract="true">
+		<Property Name="Crc" Type="AMIBIOSInventoryCRC.v1_0_0.Crc" Nullable="false"> </Property>
+	</ComplexType>
+	<ComplexType Name="Crc" Abstract="true">
+		<Property Name="GroupCrcList" Type="Collection(AMIBIOSInventoryCRC.v1_0_0.GroupCrcList)" >
+          <Annotation Term="OData.Description" String="This allows additional configuring of the Redfish service."/>
+        </Property>
+	</ComplexType>
+
+
+	  <ComplexType Name="GroupCrcList">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This allows additional configuring of the Redfish service."/>
+        <Annotation Term="OData.LongDescription" String="This allows additional configuring of the Redfish service."/>
+        <Property Name="CPU" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
+          <Annotation Term="OData.Description" String="Value of the CRC Processor"/>
+          <Annotation Term="OData.LongDescription" String="This element corresponds to all data related to Processor CRC."/>
+        </Property>
+        <Property Name="DIMM" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
+          <Annotation Term="OData.Description" String="Value of the CRC Memory."/>
+          <Annotation Term="OData.LongDescription" String="This element corresponds to all data related to Memory CRC."/>
+        </Property>		
+        <Property Name="PCIE" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
+          <Annotation Term="OData.Description" String="Value of the CRC PCIE"/>
+          <Annotation Term="OData.LongDescription" String="This element corresponds to all data related to Storage, PCIeDevices CRC."/>
+        </Property>
+        <Property Name="CERTIFICATE" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
+          <Annotation Term="OData.Description" String="Value of the CRC CERTIFICATE"/>
+          <Annotation Term="OData.LongDescription" String="This element corresponds to all data related to CERTIFICATE CRC."/>
+        </Property>
+        <Property Name="SECUREBOOT" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Write"/>
+          <Annotation Term="OData.Description" String="Value of the CRC SECUREBOOT"/>
+          <Annotation Term="OData.LongDescription" String="This element corresponds to CRC data related to Secureboot resources."/>
+        </Property>
+      </ComplexType>
+
+    </Schema>
+	
+</edmx:DataServices>
+</edmx:Edmx>

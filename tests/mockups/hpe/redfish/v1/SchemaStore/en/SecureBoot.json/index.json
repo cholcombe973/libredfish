@@ -1,0 +1,137 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "SecureBoot",
+    "actions": {
+        "actions": {
+            "SecureBoot.ResetKeys": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "SecureBoot.ResetKeys"
+                        ],
+                        "enumDescriptions": {
+                            "SecureBoot.ResetKeys": "Action to perform reset of the Secure Boot Keys."
+                        },
+                        "type": "string"
+                    },
+                    "ResetKeysType": {
+                        "description": "This parameter specifies what type of reset action to perform.",
+                        "enum": [
+                            "ResetAllKeysToDefault",
+                            "DeleteAllKeys",
+                            "DeletePK"
+                        ],
+                        "enumDescriptions": {
+                            "DeleteAllKeys": "Delete all Secure Boot keys on next boot.",
+                            "DeletePK": "Delete Secure Boot platform keys on next boot.",
+                            "ResetAllKeysToDefault": "Reset to default Secure Boot keys on next boot."
+                        },
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "ResetKeysType"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Reset of Secure Boot Keys."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This resource contains UEFI Secure Boot information. It represents properties for managing the UEFI Secure Boot functionality of a system.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#SecureBoot.ResetKeys": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "ResetKeysType@Redfish.AllowableValues": {
+                            "items": {
+                                "description": "This parameter specifies what type of reset action to perform.",
+                                "enum": [
+                                    "ResetAllKeysToDefault",
+                                    "DeleteAllKeys",
+                                    "DeletePK"
+                                ],
+                                "etag": true,
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "type": "array"
+                        },
+                        "target": {
+                            "description": "This is the URI to POST the custom action to.",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "SecureBootCurrentBoot": {
+            "description": "Secure Boot state during the current boot cycle.",
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Secure Boot is currently disabled.",
+                "Enabled": "Secure Boot is currently enabled."
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "SecureBootEnable": {
+            "description": "Enable or disable UEFI Secure Boot (takes effect on next boot).",
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "SecureBootMode": {
+            "description": "Current Secure Boot Mode.",
+            "enum": [
+                "SetupMode",
+                "UserMode",
+                "AuditMode",
+                "DeployedMode"
+            ],
+            "enumDescriptions": {
+                "AuditMode": "Secure Boot is currently in Audit Mode.",
+                "DeployedMode": "Secure Boot is currently in Deployed Mode.",
+                "SetupMode": "Secure Boot is currently in Setup Mode.",
+                "UserMode": "Secure Boot is currently in User Mode."
+            },
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "title": "#SecureBoot.v1_0_0.SecureBoot",
+    "type": "object"
+}

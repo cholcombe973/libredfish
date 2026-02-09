@@ -1,0 +1,88 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoTask.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "FFDCForDownloading": {
+            "additionalProperties": false,
+            "description": "This object is only used to represent the generating FFDC to XCC internal sftp server task. The values of the properties shall be set only when its task state is complete.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Path": {
+                    "description": "Indicates the relative path of generated FFDC in XCC internal sftp server.",
+                    "longDescription": "The value of this property shall indicate the relative path of generated FFDC in XCC internal sftp server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Port": {
+                    "description": "Indicates the port of XCC internal sftp service.",
+                    "longDescription": "The value of this property shall indicate the port of XCC internal sftp service.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "LenovoTaskProperties": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the LenovoTask resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FFDCForDownloading": {
+                    "$ref": "#/definitions/FFDCForDownloading",
+                    "description": "This object is only used to represent the generating FFDC to XCC internal sftp server task. The values of the properties shall be set only when its task state is complete."
+                },
+                "ServProfData": {
+                    "description": "This property indicates the result data of server profile task. This property appears only when the server profile task completes.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ProgressItem": {
+            "enum": [
+                "Downloading",
+                "Updating"
+            ],
+            "enumDescriptions": {
+                "Downloading": "Indicates the install firmware task is running at downloading firmware step.",
+                "Updating": "Indiates the install firmware task is running at updating firmware step."
+            },
+            "type": "string"
+        }
+    },
+    "title": "#LenovoTask.v1_0_0"
+}

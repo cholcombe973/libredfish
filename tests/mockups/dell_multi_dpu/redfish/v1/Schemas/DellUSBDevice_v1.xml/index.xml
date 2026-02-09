@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellUSBDevice v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellUSBDevice">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellUSBDevice" Abstract="true">
+                <Annotation String="DellUSBDeviceView provides USB Device specific data." Term="OData.Description"/>
+                <Annotation String="DellUSBDeviceView provides USB Device specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellUSBDevices/{USBDeviceId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellUSBDevice.v1_0_0">
+            <EntityType Name="DellUSBDevice" BaseType="DellUSBDevice.DellUSBDevice">
+                <Annotation Term="OData.Description" String="DellUSBDeviceView provides USB Device specific data."/>
+                <Annotation Term="OData.LongDescription" String="DellUSBDeviceView provides USB Device specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BaseClass" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Base Class identifies the first byte of the Class Code triple (Assigned by usb.org). Note: It is displayed in hex format and as a user-readable string."/>
+                    <Annotation Term="OData.LongDescription" String="Base Class identifies the first byte of the Class Code triple (Assigned by usb.org). Note: It is displayed in hex format and as a user-readable string."/>
+                </Property>
+                <Property Name="Name" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description - a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description - a property that describes the device and its location."/>
+                </Property>
+                <Property Name="DeviceVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the version of the device (Assigned by the manufacturer)."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the version of the device (Assigned by the manufacturer)."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD) - a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD) - a user-friendly name for the object."/>
+                </Property>
+                <Property Name="Manufacturer" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The name of the organization responsible for producing the PhysicalElement. This organization might be the entity from whom the Element is purchased, but this is not necessarily true."/>
+                    <Annotation Term="OData.LongDescription" String="The name of the organization responsible for producing the PhysicalElement. This organization might be the entity from whom the Element is purchased, but this is not necessarily true."/>
+                </Property>
+                <Property Name="MaximumCurrentDrawn" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A USB device can have multiple configuration and each configuration can have a different power requirement. This property reports the maximum current drawn by a USB device across all available configurations."/>
+                    <Annotation Term="OData.LongDescription" String="A USB device can have multiple configuration and each configuration can have a different power requirement. This property reports the maximum current drawn by a USB device across all available configurations."/>
+                </Property>
+                <Property Name="ProductID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Used to identify the type of the product (Assigned by the manufacturer)."/>
+                    <Annotation Term="OData.LongDescription" String="Used to identify the type of the product (Assigned by the manufacturer)."/>
+                </Property>
+                <Property Name="ProductName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string containing the product name."/>
+                    <Annotation Term="OData.LongDescription" String="A string containing the product name."/>
+                </Property>
+                <Property Name="Protocol" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Protocol identifies the third byte of the Class Code triple (Assigned by usb.org)."/>
+                    <Annotation Term="OData.LongDescription" String="Protocol identifies the third byte of the Class Code triple (Assigned by usb.org)."/>
+                </Property>
+                <Property Name="SerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A manufacturer-allocated number used to identify the Physical Element."/>
+                    <Annotation Term="OData.LongDescription" String="A manufacturer-allocated number used to identify the Physical Element."/>
+                </Property>
+                <Property Name="SubClass" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Sub Class identifies the second byte of the Class Code triple (Assigned by usb.org)."/>
+                    <Annotation Term="OData.LongDescription" String="Sub Class identifies the second byte of the Class Code triple (Assigned by usb.org)."/>
+                </Property>
+                <Property Name="USBVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represent the highest USB specification supported by a device. If a device supports two versions, only the highest version is reported. Often, USB devices encode this value as a binary coded decimal with a format of 0xAABC, where AA is the major version number, B is the minor version number, and C is the sub-minor version number."/>
+                    <Annotation Term="OData.LongDescription" String="This property represent the highest USB specification supported by a device. If a device supports two versions, only the highest version is reported. Often, USB devices encode this value as a binary coded decimal with a format of 0xAABC, where AA is the major version number, B is the minor version number, and C is the sub-minor version number."/>
+                </Property>
+                <Property Name="VendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the part number of the USB device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the part number of the USB device."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

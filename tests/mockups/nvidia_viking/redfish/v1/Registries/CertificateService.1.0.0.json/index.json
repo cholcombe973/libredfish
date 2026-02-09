@@ -1,0 +1,119 @@
+{
+    "@odata.type": "#MessageRegistry.v1_3_1.MessageRegistry",
+    "Description": "This registry defines the certificate service messages for Redfish",
+    "Id": "CertificateService.1.0.0",
+    "Language": "en",
+    "Messages": {
+        "CertificateActionRequiredDataMissing": {
+            "Description": "Indicates that the certificate action request lacks of required data.",
+            "Message": "The certificate action %1 required %2 in database, but it is missing.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Please update the missing data and try again.",
+            "Severity": "Critical"
+        },
+        "DuplicateCertificateStringForOwnerGuid": {
+            "Description": "The CertificateString has been used for existing certificate OwnerGuid.",
+            "Message": "The POST operation is unsuccessful because the CertificateString has been used for another OwnerGuid.",
+            "NumberOfArgs": 0,
+            "Resolution": "Please use another CertificateString or deleting the existing OwnerGuid for this CertificateString.",
+            "Severity": "Critical"
+        },
+        "DuplicateOwnerGuid": {
+            "Description": "The OwnerGuid is the same as existing certificate OwnerGuid.",
+            "Message": "The POST operation is unsuccessful because of duplicate OwnerGuid.",
+            "NumberOfArgs": 0,
+            "Resolution": "Please use another OwnerGuid.",
+            "Severity": "Critical"
+        },
+        "GenerateCSRFailed": {
+            "Description": "Failed to generate CSR.",
+            "Message": "The Process of generating CSR is terminated and return error.",
+            "NumberOfArgs": 0,
+            "Resolution": "Ensure the data content is valid and the format is correct.",
+            "Severity": "Critical"
+        },
+        "InvalidCertificateString": {
+            "Description": "Verify CertificateString Failed.",
+            "Message": "The CertificateString value or format is invalid.",
+            "NumberOfArgs": 0,
+            "Resolution": "Ensure the CertificateString is a valid PEM format, and all end-of-line string of CertificateString in request body should be replaced as \n. If the certificate contains any private keys, the private keys should follow PKCS#1 or PKCS#8 format.",
+            "Severity": "Critical"
+        },
+        "LDAPCertificateUploadFailed": {
+            "Description": "Indicates that the LDAP certificates upload is failed.",
+            "Message": "The value given for %1 might not have the private key information.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please make sure to give the value for CertificateId having private key information.",
+            "Severity": "Critical"
+        },
+        "PrepareSigning": {
+            "Description": "Indicates that device is preparing to sign certificate.",
+            "Message": "Device is preparing to sign certificate for action %1.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "None",
+            "Severity": "OK"
+        },
+        "RemoveDefaultBiosCertificateFailed": {
+            "Description": "Failed to remove default bios certificate.",
+            "Message": "DELETE operation for removing default bios certificate is not allowed.",
+            "NumberOfArgs": 0,
+            "Resolution": "Default bios certificate cannot be removed.",
+            "Severity": "Critical"
+        },
+        "ReplaceCertificateFailed": {
+            "Description": "Failed to replace certificate.",
+            "Message": "Target certificate string does not exist.",
+            "NumberOfArgs": 0,
+            "Resolution": "Make sure the certificate string existed in the given CertificateUri.",
+            "Severity": "Critical"
+        },
+        "SigningCertificateCompletion": {
+            "Description": "Signing certificate successfully.",
+            "Message": "The Process of signing certificate is completed. The certificate has been installed in %1 URI.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Check the certificate information in URI which certificate has been installed.",
+            "Severity": "OK"
+        },
+        "SigningCertificateFailed": {
+            "Description": "Failed to sign certificate.",
+            "Message": "The Process of signing CSR is terminated and return error.",
+            "NumberOfArgs": 0,
+            "Resolution": "Please contact Certificate Authority(CA) to find more details.",
+            "Severity": "Critical"
+        },
+        "SigningServerCertificateCompletion": {
+            "Description": "Signing certificate for ssl server successfully.",
+            "Message": "The Process of signing certificate for ssl server is completed. The certificate has been installed in %1 URI and HTTPS service is going to restart.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Check the certificate information in URI after HTTPS service restarting.",
+            "Severity": "OK"
+        },
+        "VerifyServerCertificateFailed": {
+            "Description": "Indicates that the validation of SSL certificate for server usage failed.",
+            "Message": "The certificate action return error while verifying the certificate data for SSL server.",
+            "NumberOfArgs": 0,
+            "Resolution": "Please make sure the certificate is correct for SSL server usage and it should not expire or be encrypted.",
+            "Severity": "Critical"
+        }
+    },
+    "Name": "CertificateService Message Registry",
+    "OwningEntity": "AMI",
+    "RegistryPrefix": "CertificateService",
+    "RegistryVersion": "1.0.0"
+}

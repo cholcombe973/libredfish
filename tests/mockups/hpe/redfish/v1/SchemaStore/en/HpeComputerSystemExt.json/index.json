@@ -1,0 +1,1637 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeComputerSystemExt",
+    "actions": {
+        "actions": {
+            "HpeComputerSystemExt.PowerButton": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "The Action to be performed.",
+                        "enum": [
+                            "HpeComputerSystemExt.PowerButton"
+                        ],
+                        "type": "string"
+                    },
+                    "PushType": {
+                        "description": "PushType identifies the type of Action to be performed.",
+                        "enum": [
+                            "Press",
+                            "PressAndHold"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "PushType"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.SecureSystemErase": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeComputerSystemExt.SecureSystemErase"
+                        ],
+                        "type": "string"
+                    },
+                    "SystemROMAndiLOErase": {
+                        "additionalProperties": false,
+                        "description": "Action to perform resetting the system BIOS settings and iLO to manufacturing defaults. It also erases the user data in the NAND like Active Health System(AHS), Repository.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "boolean"
+                    },
+                    "UserDataErase": {
+                        "additionalProperties": false,
+                        "description": "Action to perform erasing all the user data on the system including TPMs, persistent memory devices, storage controller configurations, RAID settings, as well as the hard drives attached to the system. USB and other removable media will be excluded.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": false,
+                "required": [
+                    "Action",
+                    "SystemROMAndiLOErase",
+                    "UserDataErase"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.ServerIntelligentDiagnosticsMode": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "Enables the Intelligent Diagnostics mode which can automatically diagnose and isolate the failures during POST operation by systematically disabling the sub-systems in an automatic manner.",
+                        "enum": [
+                            "HpeComputerSystemExt.ServerIntelligentDiagnosticsMode"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.RestoreManufacturingDefaults": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "Resets all BIOS configuration settings to their default manufacturing values and deletes all UEFI non-volatile variables, such as boot configuration and Secure Boot security keys (if Secure Boot is enabled).",
+                        "enum": [
+                            "HpeComputerSystemExt.RestoreManufacturingDefaults"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.ServerSafeMode": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "Enables the Server Safe Mode which attempts to boot the server with a safe minimum configuration.",
+                        "enum": [
+                            "HpeComputerSystemExt.ServerSafeMode"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.ServerSigRecompute": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "The Action to be performed.",
+                        "enum": [
+                            "HpeComputerSystemExt.ServerSigRecompute"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.RestoreSystemDefaults": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "Resets all BIOS configuration settings to their default values and immediately and automatically restarts the server.",
+                        "enum": [
+                            "HpeComputerSystemExt.RestoreSystemDefaults"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeComputerSystemExt.SystemReset": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "The Action to be performed.",
+                        "enum": [
+                            "HpeComputerSystemExt.SystemReset"
+                        ],
+                        "type": "string"
+                    },
+                    "ResetType": {
+                        "description": "ResetType identifies the type of Action to be performed.",
+                        "enum": [
+                            "ColdBoot",
+                            "AuxCycle"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "ResetType"
+                ],
+                "type": "object"
+            },
+            "ComputerSystem.SetSimpleUpdateStatus": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "The Action to be performed.",
+                        "enum": [
+                            "ComputerSystem.SetSimpleUpdateStatus"
+                        ],
+                        "type": "string"
+                    },
+                    "TaskState": {
+                        "description": "TaskState identifies the type of Action to be performed.",
+                        "enum": [
+                            "New",
+                            "Starting",
+                            "Running",
+                            "Suspended",
+                            "Interrupted",
+                            "Pending",
+                            "Stopping",
+                            "Completed",
+                            "Killed",
+                            "Exception",
+                            "Service"
+                        ],
+                        "type": "string"
+                    },
+                    "PercentComplete": {
+                        "description": "Percentage of task complete",
+                        "readonly": false,
+                        "minimum": 0,
+                        "maximum": 100,
+                        "type": "integer"
+                    },
+                    "Message": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "Message to be displayed"
+                    },
+                    "TaskStatus": {
+                        "type": "string",
+                        "readonly": true,
+                        "description": "Current status of the ongoing task",
+                        "enum": [
+                            "Ok",
+                            "Warning",
+                            "Critical"
+                        ]
+                    }
+                },
+                "required": [
+                    "Action",
+                    "TaskState"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "The allowed custom actions."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "definitions": {
+        "EraseStatus": {
+            "description": "Indicates the erase status of the individual components",
+            "enum": [
+                "Idle",
+                "Initiated",
+                "InProgress",
+                "CompletedWithSuccess",
+                "CompletedWithErrors",
+                "Failed"
+            ],
+            "enumDescriptions": {
+                "CompletedWithErrors": "Indicates Secure System Erase process has been completed with some errors",
+                "CompletedWithSuccess": "Indicates Secure System Erase process has been completed with no errors",
+                "Failed": "Indicates Secure System Erase process has failed",
+                "Idle": "Indicates SecureSystem Erase is not started",
+                "InProgress": "Indicates Secure System Erase process is under progress",
+                "Initiated": "Indicates Secure System Erase process is started"
+            },
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "description": "This schema extends Redfish ComputerSystem schema to describe specifics of HPE servers.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeComputerSystemExt.PowerButton": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "PushType@Redfish.AllowableValues": {
+                            "description": "The supported values for the PushType parameter.",
+                            "items": {
+                                "description": "PushType identifies the type of Action to be performed.",
+                                "enum": [
+                                    "Press",
+                                    "PressAndHold"
+                                ],
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the PushType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.SecureSystemErase": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "SystemROMAndiLOErase@Redfish.AllowableValues": {
+                            "description": "Action to perform resetting the system BIOS settings and iLO to manufacturing defaults. It also erases the user data in the NAND like Active Health System(AHS), Repository.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "UserDataErase@Redfish.AllowableValues": {
+                            "description": "Action to perform erasing all the user data on the system including TPMs, persistent memory devices, storage controller configurations, RAID settings, as well as the hard drives attached to the system. USB and other removable media will be excluded.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.ServerIntelligentDiagnosticsMode": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.RestoreManufacturingDefaults": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.ServerSafeMode": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.ServerSigRecompute": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.RestoreSystemDefaults": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeComputerSystemExt.SystemReset": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "ResetType@Redfish.AllowableValues": {
+                            "description": "The supported values for the ResetType parameter.",
+                            "items": {
+                                "description": "ResetType identifies the type of Action to be performed.",
+                                "enum": [
+                                    "ColdBoot",
+                                    "AuxCycle"
+                                ],
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the ResetType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#ComputerSystem.SetSimpleUpdateStatus": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "TaskState@Redfish.AllowableValues": {
+                            "description": "The supported values for the TaskState parameter.",
+                            "items": {
+                                "description": "TaskState identifies the type of Action to be performed.",
+                                "enum": [
+                                    "New",
+                                    "Starting",
+                                    "Running",
+                                    "Suspended",
+                                    "Interrupted",
+                                    "Pending",
+                                    "Stopping",
+                                    "Completed",
+                                    "Killed",
+                                    "Exception",
+                                    "Service"
+                                ],
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the TaskState parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        },
+                        "PercentComplete": {
+                            "description": "Percentage of task complete",
+                            "readonly": false,
+                            "minimum": 0,
+                            "maximum": 100,
+                            "type": "integer"
+                        },
+                        "Message": {
+                            "type": "string",
+                            "readonly": true,
+                            "description": "Message to be displayed"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AggregateHealthStatus": {
+            "additionalProperties": false,
+            "description": "The Aggregate Health Status of the System.",
+            "properties": {
+                "AgentlessManagementService": {
+                    "description": "This indicates if the Agentless Management Service is available or not. ",
+                    "enum": [
+                        "Unavailable",
+                        "Ready"
+                    ],
+                    "enumDescriptions": {
+                        "Ready": "The Agentless Management Service is Ready.",
+                        "Unavailable": "The Agentless Management Service is unavailable."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "AggregateServerHealth": {
+                    "description": "This represents the overall health state",
+                    "enum": [
+                        null,
+                        "OK",
+                        "Warning",
+                        "Critical"
+                    ],
+                    "enumDescriptions": {
+                        "Critical": "A critical condition exists that requires immediate attention",
+                        "OK": "Normal",
+                        "Warning": "A condition exists that requires attention"
+                    },
+                    "longDescription": "This property shall represent the overall health state of the server, encompassing all the health state of individual sub system.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BiosOrHardwareHealth": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Overall system",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "FanRedundancy": {
+                    "description": "This indicates if the Fan is redundant or not. ",
+                    "enum": [
+                        "Redundant",
+                        "NonRedundant",
+                        "FailedRedundant",
+                        "Unknown"
+                    ],
+                    "enumDescriptions": {
+                        "FailedRedundant": "The Redundant fan has failed.",
+                        "NonRedundant": "The fans are not Redundant.",
+                        "Redundant": "The fans are Redundant.",
+                        "Unknown": "The Redundant state is unknown."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Fans": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Fan system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "LiquidCoolingRedundancy": {
+                    "description": "This indicates if the LiquidCooling Units are redundant or not. ",
+                    "enum": [
+                        "Redundant",
+                        "NonRedundant",
+                        "FailedRedundant",
+                        "Unknown"
+                    ],
+                    "enumDescriptions": {
+                        "FailedRedundant": "The Redundant fan has failed.",
+                        "NonRedundant": "The Liquid Cooling modules are not Redundant.",
+                        "Redundant": "The Liquid Cooling modules are Redundant.",
+                        "Unknown": "The Redundant state is unknown."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "LiquidCooling": {
+                    "additionalProperties": false,
+                    "description": "This indicates the Overall health status of the Liquid Cooling system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Memory": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Memory system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Network": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Network system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "PowerSupplies": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Power Supply system",
+                    "etag": true,
+                    "properties": {
+                        "PowerSuppliesMismatch": {
+                            "description": "This indicates if the there is a mismatch in the power supplies.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "PowerSupplyRedundancy": {
+                    "description": "This indicates if the Power Supply is redundant or not. ",
+                    "enum": [
+                        "Redundant",
+                        "NonRedundant",
+                        "FailedRedundant",
+                        "Unknown"
+                    ],
+                    "enumDescriptions": {
+                        "FailedRedundant": "The Redundant power supply has failed.",
+                        "NonRedundant": "The power supplies are not Redundant.",
+                        "Redundant": "The power supplies are Redundant.",
+                        "Unknown": "The Redundant state is unknown."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Processors": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Processor system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SmartStorageBattery": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Smart Storage Battery.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Storage": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Storage system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Temperatures": {
+                    "additionalProperties": false,
+                    "description": "This indicates the health status of the Temperature system.",
+                    "etag": true,
+                    "properties": {
+                        "Status": {
+                            "$ref": "Resource.json#/definitions/Status"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Bios": {
+            "additionalProperties": false,
+            "description": "The information about the system BIOS.",
+            "properties": {
+                "Backup": {
+                    "$ref": "HpeiLO.json#/definitions/HpeFirmwareVersionInfo"
+                },
+                "Bootblock": {
+                    "$ref": "HpeiLO.json#/definitions/HpeFirmwareVersionInfo"
+                },
+                "Current": {
+                    "$ref": "HpeiLO.json#/definitions/HpeFirmwareVersionInfo"
+                },
+                "UefiClass": {
+                    "description": "The UEFI BIOS Class value defined in the UEFI specification.",
+                    "enum": [
+                        0,
+                        1,
+                        2,
+                        3
+                    ],
+                    "etag": true,
+                    "readonly": true,
+                    "type": "integer"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "CriticalTempRemainOff": {
+            "description": "Indicates whether server should remain off after thermal shutdown is triggered.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "CurrentPowerOnTimeSeconds": {
+            "description": "Displays the amount of time(in seconds) that has passed since the server was last powered on. The data is reset on iLO reset.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "DeviceDiscoveryComplete": {
+            "additionalProperties": false,
+            "properties": {
+                "AMSDeviceDiscovery": {
+                    "description": "This property indicates the current AMS Device Discovery Status.",
+                    "enum": [
+                        null,
+                        "Busy",
+                        "Complete",
+                        "NoAMS",
+                        "Initial"
+                    ],
+                    "enumDescriptions": {
+                        "Busy": "The server has AMS loaded and iLO is discovering devices that require AMS to be loaded",
+                        "Complete": "The server has AMS loaded and iLO is finished discovering devices that require AMS to be loaded",
+                        "Initial": "Default state after iLO has booted.",
+                        "NoAMS": "The server does not have AMS loaded for device discovery."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeviceDiscovery": {
+                    "description": "This property indicates the current device discovery status of devices that are not Smart Array or AMS related.",
+                    "enum": [
+                        null,
+                        "Busy",
+                        "vAuxDeviceDiscoveryComplete",
+                        "vMainDeviceDiscoveryComplete",
+                        "DataIncomplete",
+                        "Initial"
+                    ],
+                    "enumDescriptions": {
+                        "Busy": "iLO is discovering devices.",
+                        "DataIncomplete": "iLO response took longer than expected while discovering devices.",
+                        "Initial": "Default state after iLO has booted.",
+                        "vAuxDeviceDiscoveryComplete": "The server is off and iLO is finished discovering devices.",
+                        "vMainDeviceDiscoveryComplete": "The server is on and iLO is finished discovering devices."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SmartArrayDiscovery": {
+                    "description": "This property indicates the current Smart Array Storage Device Discovery Status",
+                    "enum": [
+                        null,
+                        "Busy",
+                        "PendingSoftwareRAID",
+                        "Complete",
+                        "Initial",
+                        "Cached"
+                    ],
+                    "enumDescriptions": {
+                        "Busy": "iLO is discovering Smart Array devices.  If the server is shutdown before discovery is complete, this reflects an incomplete data set.",
+                        "Cached": "Data is cached, server is offline or data not yet available.",
+                        "Complete": "iLO is finished discovering Smart Array storage.",
+                        "Initial": "Default state for Smart Array",
+                        "PendingSoftwareRAID": "Pending discovery of Dynamic Smart Array."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ElapsedEraseTimeInMinutes": {
+            "additionalProperties": false,
+            "description": "Reports the time elapsed since the erase started",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "EndOfPostDelaySeconds": {
+            "description": "Supported on UEFI based systems only. The number of seconds to delay before finalizing POST with the Mode action (e.g. delay before shutdown). If > 255 seconds is requested, the value is rounded up to the nearest minute.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "EstimatedEraseTimeInMinutes": {
+            "additionalProperties": false,
+            "description": "Reports the guestimate time (in minutes) for the overall erase process",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "HostOS": {
+            "descripton": "Describes the running host operating system.  This is visible only if Agentless Management Service is currently running and these values are valid.",
+            "properties": {
+                "OsName": {
+                    "description": "from cpqHoName if AMS is running",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "OsSysDescription": {
+                    "description": "from cpqHosysDesc if AMS is running",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "OsType": {
+                    "description": "from cpqHoOsType if AMS is running.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "OsVersion": {
+                    "description": "from cpqHoVersion if AMS is running",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IntelligentProvisioningAlwaysOn": {
+            "description": "Always on Intelligent Provisioning is available.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "IntelligentProvisioningIndex": {
+            "description": " Index in the Firmware Version Table for Intelligent Provisioning.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "IntelligentProvisioningLocation": {
+            "description": " Location string of Intelligent Provisioning in Firmware Version Table.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "IntelligentProvisioningVersion": {
+            "description": " Intelligent Provisioning Version.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "IsColdBooting": {
+            "description": "Indicates if the system is cold booting.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Links": {
+            "additionalProperties": true,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "EthernetInterfaces": {
+                    "description": "A reference to the ethernet interfaces associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "NetworkAdapters": {
+                    "description": "A reference to the network adapters associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "PCIDevices": {
+                    "description": "A reference to the PCI devices associated with this system.",
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "PCISlots": {
+                    "description": "A reference to the PCI slots associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SmartStorage": {
+                    "description": "A reference to the SmartStorage associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "USBDevices": {
+                    "description": "A reference to the USB Devices that are associated with this system, detected during server boot.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "USBPorts": {
+                    "description": "A reference to the USB Port Connectors associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "WorkloadPerformanceAdvisor": {
+                    "description": "A reference to the Workload Performance Advisor associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SecureEraseReportService": {
+                    "description": "A reference to the Secure Erase Report associated with this system.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PCAPartNumber": {
+            "description": "The PCA part number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PCASerialNumber": {
+            "description": "The PCA serial number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PostDiscoveryCompleteTimeStamp": {
+            "description": "Displays the last known POST Discovery Complete time",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PostDiscoveryMode": {
+            "description": "The manner in which the system will operate during the discovery section of POST.",
+            "enum": [
+                null,
+                "Auto",
+                "ForceFullDiscovery",
+                "ForceFastBoot"
+            ],
+            "enumDescriptions": {
+                "Auto": "BIOS will automatically use ForceFastBoot if the system hardware has not changed from last time of FullDiscovery or ForceFullDiscovery if the system hardware has changed.",
+                "ForceFastBoot": "Server uses the existing cached discovery data.",
+                "ForceFullDiscovery": "Server makes a full discovery of all devices."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PostMode": {
+            "description": "The manner in which the system will operate during and at completion of POST.",
+            "enum": [
+                null,
+                "Normal",
+                "PostToShutdown",
+                "PostToReboot"
+            ],
+            "enumDescriptions": {
+                "Normal": "Normal operations.",
+                "PostToReboot": "Server boots until Discovery Completes, then reboots.",
+                "PostToShutdown": "Server boots until Discovery Completes, then shuts down."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PostState": {
+            "description": "The current state of system POST.",
+            "enum": [
+                null,
+                "Unknown",
+                "Reset",
+                "PowerOff",
+                "InPost",
+                "InPostDiscoveryStart",
+                "InPostDiscoveryComplete",
+                "FinishedPost"
+            ],
+            "enumDescriptions": {
+                "FinishedPost": "The server has booted the installed OS.",
+                "InPost": "The server is booting and has not reached discovery complete.",
+                "InPostDiscoveryStart": "The server has started to discover devices.",
+                "InPostDiscoveryComplete": "The server has reached discovery complete and is now waiting for the installed OS to be booted.  Discovery complete is the point at which it has been deemed safe to read and write the BIOS configuration information.",
+                "PowerOff": "The server power is off.",
+                "Reset": "The server is currently in reset.",
+                "Unknown": "iLO was unable to determine the current server state."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PowerAllocationLimit": {
+            "description": "The total amount of power allocated to the system.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "PowerAutoOn": {
+            "description": "Auto Power-On mode defines what occurs when the AC power is applied to the system.",
+            "enum": [
+                "RemainOff",
+                "PowerOn",
+                "Restore"
+            ],
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "PowerOnDelay": {
+            "description": "The PowerAutoOn policy delay that can also be found in the HpBios::PowerOnDelay object.  Will be null if PowerAutoOn is set to RemainOff.  Blades only support Minimum and RandomUpTo120Sec.",
+            "enum": [
+                null,
+                "Minimum",
+                "15Sec",
+                "30Sec",
+                "45Sec",
+                "60Sec",
+                "RandomUpTo120Sec"
+            ],
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PowerOnMinutes": {
+            "description": "The number of lifetime minutes that the server has been powered on.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "PowerRegulatorMode": {
+            "description": "Power Regulator mode.  Switching to and from OS Control mode requires a server reboot to take effect.",
+            "enum": [
+                "OSControl",
+                "Dynamic",
+                "Max",
+                "Min",
+                "Unknown"
+            ],
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "PowerRegulatorModesSupported": {
+            "description": "The power regulator modes supported by the system.",
+            "items": {
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "ProcessorJitterControl": {
+            "description": "Describes the various options to perform Jitter Control of the processor",
+            "properties": {
+                "ConfiguredFrequencyLimitMHz": {
+                    "description": "Displays the last known user configured frequency limit of the processor in MHz.",
+                    "etag": true,
+                    "max": 10000,
+                    "min": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "FrequencyLimitMHz": {
+                    "description": "Current frequency limit of the processor in MHz.",
+                    "etag": true,
+                    "max": 10000,
+                    "min": 0,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "Mode": {
+                    "description": "Provides various jitter control modes.",
+                    "enum": [
+                        "Auto",
+                        "Disabled",
+                        "Manual"
+                    ],
+                    "enumDescription": {
+                        "Auto": "When configured in Auto mode, the platform will monitor frequency variance of the processor and automatically make adjustments to minimize variance over time.",
+                        "Disabled": "Jitter control is disabled.",
+                        "Manual": "When configured in Manual mode, the customer can choose to attempt to operate the processor at a fixed frequency."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ProcessorJitterControlOptimization": {
+                    "description": "Provides Jitter Control Optimizations.",
+                    "enum": [
+                        "OptimizedForThroughput",
+                        "OptimizedForLatency",
+                        "ZeroLatency"
+                    ],
+                    "enumDescriptions": {
+                        "OptimizedForLatency ": "Threshold and Polling rate will be optimized for Low Latency.",
+                        "OptimizedForThroughput ": "Threshold and Polling rate will be optimized for Maximum Throughput.",
+                        "ZeroLatency ": "Threshold and Polling rate will be optimized for Zero Latency."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SMBIOS": {
+            "description": "A reference to the SMBIOS records associated with this system.",
+            "properties": {
+                "extref": {
+                    "description": "The URI of an external resource.",
+                    "etag": true,
+                    "format": "uri-reference",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ServerFQDN": {
+            "description": "The IP address or FQDN of the server. Host software like AMS is required to obtain this value from the OS.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "ServerIntelligentDiagnosticsModeEnabled": {
+            "description": "Indicates the current state of server Intelligent Diagnostics mode.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "ServerSafeModeEnabled": {
+            "description": "Indicates the current state of server Safe Mode.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "ServerSignature": {
+            "description": " The CRC32 of:  All Device Signatures combined together, Server Slot Location in Enclosure, Enclosure UUID, and Manager Domain IP Address",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "ServerSignatureStatus": {
+            "description": "The current state of Server Signature.",
+            "enum": [
+                null,
+                "Initial",
+                "Busy",
+                "Invalid",
+                "Complete"
+            ],
+            "enumDescriptions": {
+                "Busy": "The server signature calculation is being run.",
+                "Complete": "The server signature calculation is complete and valid.",
+                "Initial": "The server signature calculation has not run yet.",
+                "Invalid": "The server signature is invalid.  Re-compute action necessary."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SmartStorageConfig": {
+            "description": "An array of references to SmartStorage elements associated with this system.",
+            "items": {
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "SystemROMAndiLOEraseComponentStatus": {
+            "additionalProperties": true,
+            "description": "Reports the erase status for individual components",
+            "etag": true,
+            "properties": {
+                "BIOSSettingsEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the BIOS settings Erase status",
+                    "etag": true,
+                    "readonly": true
+                },
+                "iLOSettingsEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the iLO settings Erase status",
+                    "etag": true,
+                    "readonly": true
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SystemROMAndiLOEraseStatus": {
+            "$ref": "#/definitions/EraseStatus",
+            "additionalProperties": false,
+            "description": "Reports the overall Erase status of both System ROM and iLO",
+            "etag": true,
+            "readonly": true
+        },
+        "SystemUsage": {
+            "additionalProperties": false,
+            "description": "Describes the various system utilization parameters",
+            "properties": {
+                "AvgCPU0Freq": {
+                    "description": "Current CPU0 average frequency in MHz.",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "AvgCPU1Freq": {
+                    "description": "Current CPU1 average frequency in MHz.",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "AvgCPU2Freq": {
+                    "description": "Current CPU2 average frequency in MHz.",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "AvgCPU3Freq": {
+                    "description": "Current CPU3 average frequency in MHz.",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "CPU0Power": {
+                    "description": "Current power consumed by the system CPU0 in Watts.",
+                    "etag": false,
+                    "min": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "CPU1Power": {
+                    "description": "Current power consumed by the system CPU1 in Watts.",
+                    "etag": false,
+                    "min": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "CPU2Power": {
+                    "description": "Current power consumed by the system CPU2 in Watts.",
+                    "etag": false,
+                    "min": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "CPU3Power": {
+                    "description": "Current power consumed by the system CPU3 in Watts.",
+                    "etag": false,
+                    "min": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "CPUICUtil": {
+                    "description": "Current System CPU Interconnect utilization in percentage",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "CPUUtil": {
+                    "description": "Current System CPU utilization in percentage",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "IOBusUtil": {
+                    "description": "Current System I/O bus utilization in percentage",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "JitterCount": {
+                    "description": "Current processor Jitter Count.",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "MemoryBusUtil": {
+                    "description": "Current System memory bus utilization in percentage",
+                    "etag": false,
+                    "readonly": true,
+                    "type": "integer"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "UserDataEraseComponentStatus": {
+            "additionalProperties": true,
+            "description": "Reports the erase status for individual components of User Data",
+            "etag": true,
+            "properties": {
+                "NVDIMMEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the NVDIMM Erase status",
+                    "etag": true,
+                    "readonly": true
+                },
+                "NVMeDrivesEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the NVMeDrives Erase status",
+                    "etag": true,
+                    "readonly": true
+                },
+                "SATADrivesEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the SATADrives Erase status",
+                    "etag": true,
+                    "readonly": true
+                },
+                "SmartStorageEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the Smart Storage Erase status",
+                    "etag": true,
+                    "readonly": true
+                },
+                "TPMEraseStatus": {
+                    "$ref": "#/definitions/EraseStatus",
+                    "additionalProperties": false,
+                    "description": "Reports the TPM Erase status",
+                    "etag": true,
+                    "readonly": true
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "UserDataEraseStatus": {
+            "$ref": "#/definitions/EraseStatus",
+            "additionalProperties": false,
+            "description": "Reports the overall User Data erase status",
+            "etag": true,
+            "readonly": true
+        },
+        "VirtualProfile": {
+            "description": "The current state of the systems virtual profile.  This profile is the one that, when the server is rebooted, will set the  Virtual properties.  Intent is to use this state to determine whether the server needs to be rebooted so these values are set.  Additional informaiton about the profile will be considered later.",
+            "enum": [
+                "Active",
+                "Busy",
+                "Inactive",
+                "Unknown"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "VirtualUUID": {
+            "description": "Used in conjunction with the UUID (Logical) value.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IntegrationConfig": {
+            "description": "Time out value for ESXio to report boot success or failure",
+            "additionalProperties": false,
+            "etag": true,
+            "properties": {
+                "OsReadyTimeout": {
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "integer"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "EnabledSystemCapabilities": {
+            "description": "",
+            "items": {
+                "description": "Indicates SmartNIC DPU supports OS-triggered DPC",
+                "enum": [
+                    "OSTriggeredDPC"
+                ],
+                "readonly": true,
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "AvailableSystemCapabilities": {
+            "description": "",
+            "items": {
+                "description": "Indicates SmartNIC DPU supports OS-triggered DPC",
+                "enum": [
+                    "OSTriggeredDPC"
+                ],
+                "readonly": true,
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "BootProgress": {
+            "description": "Information about SmartNIC device Operating Boot progress",
+            "additionalProperties": false,
+            "etag": true,
+            "properties": {
+                "ResetReason": {
+                    "description": "The Smart NIC Device Operating system reset reason .",
+                    "enum": [
+                        "OEM",
+                        "Unknown",
+                        "OSNormal",
+                        "BMCNormal",
+                        "OSCrash",
+                        "HWWatchdog",
+                        "Thermal"
+                    ],
+                    "enumDescriptions": {
+                        "OEM": "oem value , SmartNIC DPU",
+                        "Unknown": "unknown reason, cold start",
+                        "OSNormal": "a normal reset by ESXio",
+                        "BMCNormal": "reset by BMC",
+                        "OSCrash": "a reset after a crash by ESXio",
+                        "HWWatchdog": "a reset due to hardware watchdog",
+                        "Thermal": "a reset due to thermal shutdown"
+                    },
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "OemResetReason": {
+                    "description": "The Smart NIC Device Operating system OEM reset reason .",
+                    "enum": [
+                        "Unknown",
+                        "OSNormal",
+                        "BMCNormal",
+                        "OSCrash",
+                        "HWWatchdog",
+                        "Thermal"
+                    ],
+                    "enumDescriptions": {
+                        "Unknown": "unknown reason, cold start",
+                        "OSNormal": "a normal reset by ESXio",
+                        "BMCNormal": "reset by BMC",
+                        "OSCrash": "a reset after a crash by ESXio",
+                        "HWWatchdog": "a reset due to hardware watchdog",
+                        "Thermal": "a reset due to thermal shutdown"
+                    },
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "OperatingSystem": {
+            "description": "Information about SmartNIC device operating system ",
+            "additionalProperties": false,
+            "etag": true,
+            "properties": {
+                "Kernel": {
+                    "properties": {
+                        "Name": {
+                            "description": "SmartNIC device operating system kernel name",
+                            "etag": true,
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "Version": {
+                            "description": "SmartNIC device operating system kernel version",
+                            "etag": true,
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "readonly": false,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeComputerSystemExt.v2_12_0.HpeComputerSystemExt",
+    "type": "object"
+}

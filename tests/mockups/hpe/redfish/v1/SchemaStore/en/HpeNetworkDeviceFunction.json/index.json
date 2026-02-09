@@ -1,0 +1,159 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeNetworkDeviceFunction",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeNetworkDeviceFunction resource describes the Hewlett Packard Enterprise property extensions for Network Device Functions",
+    "etag": true,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "BootTargetSource": {
+            "description": "Controls the source of boot target parameters for this network device function. This property can only be configured when the network device function is not in the Disabled state.",
+            "enum": [
+                null,
+                "UEFI",
+                "NetworkDeviceFunction",
+                "None"
+            ],
+            "enumDescriptions": {
+                "NetworkDeviceFunction": "Boot target parameters as configured on this network device function will be used.",
+                "None": "Boot mode is configured disabled, and no target source applies.",
+                "UEFI": "Boot target parameters are under control of UEFI and the device option ROM.  Any target parameters configured on this network device function are ignored."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ConnectionID": {
+            "description": "The Connection ID to be used with EVB, in IETF RFC-4122 UUID format.",
+            "etag": true,
+            "pattern": "^([0-9A-F]){8}(-([0-9A-F]){4}){3}-([0-9A-F]){12}$",
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "NetDevFuncCapabilities": {
+            "description": "Interconnection capabilities of this network device function.",
+            "etag": true,
+            "items": {
+                "enum": [
+                    null,
+                    "Disabled",
+                    "Ethernet",
+                    "FibreChannel",
+                    "iSCSI",
+                    "FCoE",
+                    "InfiniBand",
+                    "RoCE",
+                    "iWarp"
+                ],
+                "enumDescriptions": {
+                    "Disabled": "Neither enumerated nor visible to the operating system.",
+                    "Ethernet": "Appears to the operating system as an Ethernet device.",
+                    "FCoE": "Appears to the operating system as an FCoE device.",
+                    "FibreChannel": "Appears to the operating system as a Fibre Channel device.",
+                    "InfiniBand": "Appears to the operating system as an InfiniBand device.",
+                    "RoCE": "(Deprecated function type for some adapters, in iLO 1.40+) Appears to the operating system as an RDMA over converged Ethernet device.",
+                    "iSCSI": "Appears to the operating system as an iSCSI device.",
+                    "iWarp": "(Deprecated function type for some adapters, in iLO 1.40+) Appears to the operating system as an iWarp RDMA device."
+                },
+                "etag": true,
+                "readonly": true,
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "NetDevFuncType": {
+            "description": "The presently configured interconnection capability of this network device function.",
+            "enum": [
+                null,
+                "Disabled",
+                "Ethernet",
+                "FibreChannel",
+                "iSCSI",
+                "FCoE",
+                "InfiniBand",
+                "RCoE",
+                "iWarp"
+            ],
+            "enumDescriptions": {
+                "Disabled": "This function is disabled, and is neither enumerated nor visible to the operating system.",
+                "Ethernet": "This function is configured to operate as an Ethernet device.",
+                "FCoE": "This function is configured to oeprate as an FCoE device.",
+                "FibreChannel": "This function is configured to operate as a Fibre Channel device.",
+                "Infiniband": "This function is configured to operate as an Infiniband device.",
+                "RoCE": "(Deprecated function type for some adapters, in iLO 1.40+) This function is configured to operate as an RDMA over converged Ethernet device.",
+                "iSCSI": "This function is configured to operate as an iSCSI device.",
+                "iWarp": "(Deprecated function type for some adapters, in iLO 1.40+) This function is configured to operate as an iWarp RDMA device."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SupportedFCBootTargetCount": {
+            "description": "The number of Fibre Channel boot targets supported by this network device function.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "VirtualLinkStatus": {
+            "description": "Current status of the EVB Virtual Link (S-Channel) supporting this function.",
+            "enum": [
+                null,
+                "NoChannel",
+                "SwitchChannelDown",
+                "HostDriverDown",
+                "VirtualLinkUp"
+            ],
+            "enumDescriptions": {
+                "HostDriverDown": "SVID is assigned and Virtual Link status is up, but the host OS driver is inactive.",
+                "NoChannel": "Port link is down, or the connected switch has not assigned an SVID.",
+                "SwitchChannelDown": "SVID is assigned but Virtual Link status is down.",
+                "VirtualLinkUp": "SVID is assigned, Virual Link status is up, and the host OS driver is active."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "WakeOnLANEnabled": {
+            "description": "Enables Ethernet Wake On LAN (WoL) capability for this function when true.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        }
+    },
+    "title": "#HpeNetworkDeviceFunction.v1_2_1.HpeNetworkDeviceFunction",
+    "type": "object"
+}

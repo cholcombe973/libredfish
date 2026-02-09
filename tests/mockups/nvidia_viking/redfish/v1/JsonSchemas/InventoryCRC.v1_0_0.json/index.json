@@ -1,0 +1,92 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/InventoryCRC.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright American Megatrends, Inc. (AMI).",
+    "definitions": {
+        "GroupCrcList": {
+            "additionalProperties": false,
+            "description": "Show Inventory components CRC values and allow to change for BIOS to post inventory in next system boot.",
+            "longDescription": "Show Inventory components CRC values and allow to change for BIOS to post inventory in next system boot.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CERTIFICATE": {
+                    "description": "Value of the CRC CERTIFICATE",
+                    "longDescription": "This element corresponds to all data related to CERTIFICATE CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "CPU": {
+                    "description": "Value of the CRC Processor",
+                    "longDescription": "This element corresponds to all data related to Processor CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "DIMM": {
+                    "description": "Value of the CRC Memory.",
+                    "longDescription": "This element corresponds to all data related to Memory CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "PCIE": {
+                    "description": "Value of the CRC PCIE",
+                    "longDescription": "This element corresponds to all data related to Storage, PCIeDevices CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "SECUREBOOT": {
+                    "description": "Value of the CRC SecureBoot.",
+                    "longDescription": "This element corresponds to all data related to SecureBoot CRC.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "InventoryCRC": {
+            "additionalProperties": false,
+            "description": "The Inventorycrc schema represents a components CRC values such as DIMM, CPU, PCIE, Certificate, Secureboot.",
+            "longDescription": "The Inventorycrc schema represents a components CRC values such as DIMM, CPU, PCIE, Certificate, Secureboot.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "GroupCrcList": {
+                    "items": {
+                        "$ref": "#/definitions/InventoryCRC"
+                    },
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#InventoryCRC.v1_0_0"
+}

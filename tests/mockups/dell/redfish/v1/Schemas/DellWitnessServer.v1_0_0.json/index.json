@@ -1,0 +1,201 @@
+{
+    "$id": "/redfish/v1/Schemas/DellWitnessServer.v1_0_0.json",
+    "$ref": "#/definitions/DellWitnessServer",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellWitnessServer": {
+            "additionalProperties": false,
+            "description": "DellWitnessServer is a representation of the Witness Server Node in the chassis.",
+            "longDescription": "DellWitnessServer is a representation of the Witness Server Node in the chassis.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Eppid": {
+                    "description": "A string that contains the EPPID of the Witness Server.",
+                    "longDescription": "A string that contains the EPPID of the Witness Server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HeartBeat": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/HeartBeatStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the policy for physical disks included in the virtual disk.",
+                    "longDescription": "The property shall represent the policy for physical disks included in the virtual disk.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Mac1": {
+                    "description": "A string that contains the MAC address of port 1 of witness server.",
+                    "longDescription": "A string that contains the MAC address of port 1 of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Mac2": {
+                    "description": "A string that contains the MAC address of port 2 of witness server.",
+                    "longDescription": "A string that contains the MAC address of port 2 of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "POSTCode": {
+                    "description": "A string that contains the BIOS POST code of witness server.",
+                    "longDescription": "A string that contains the BIOS POST code of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PowerConsumptioninWatts": {
+                    "description": "Power Consumption of Witness server in Watts.",
+                    "longDescription": "Power Consumption of witness server in Watts.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Status": {
+                    "description": "An array of status values of witness server.",
+                    "items": {
+                        "$ref": "#/definitions/WitnessStatus"
+                    },
+                    "longDescription": "An array of status values of witness server.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "SystemID": {
+                    "description": "A string that contains the SystemID of witness server.",
+                    "longDescription": "A string that contains the SystemID of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "HeartBeatStatus": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "type": "string"
+        },
+        "WitnessStatus": {
+            "enum": [
+                "Fan Mismatch",
+                "PG Failure",
+                "POST Error",
+                "Fan Absent",
+                "Heartbeat Failure",
+                "Throttle",
+                "Thermtrip",
+                "Absent",
+                "Present"
+            ],
+            "enumDescriptions": {
+                "Absent": "Absent",
+                "Fan Absent": "Fan Absent",
+                "Fan Mismatch": "Fan Mismatch",
+                "Heartbeat Failure": "Heartbeat Failure",
+                "PG Failure": "PG Failure",
+                "POST Error": "POST Error",
+                "Present": "Present",
+                "Thermtrip": "Thermal Trip ",
+                "Throttle": "Throttle"
+            },
+            "enumLongDescriptions": {
+                "Absent": "Witness Server is Absent",
+                "Fan Absent": "Witness FAN is not installed",
+                "Fan Mismatch": "Witness FAN Airflow mismatch",
+                "Heartbeat Failure": "Witness Server OS Heart Beat failed",
+                "PG Failure": "Witness Server Power Good Failure",
+                "POST Error": "Witness BIOS POST error",
+                "Present": "Witness Server is Present",
+                "Thermtrip": "Witness CPU Thermal Trip occurred",
+                "Throttle": "Witness CPU Throttled"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellWitnessServer.v1_0_0.DellWitnessServer"
+}

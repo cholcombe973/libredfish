@@ -1,0 +1,101 @@
+{
+    "$id": "/redfish/v1/Schemas/DellFirmwareImageHash.v1_0_0.json",
+    "$ref": "#/definitions/DellFirmwareImageHash",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellFirmwareImageHash": {
+            "additionalProperties": false,
+            "description": "This resource contains information about a FirmwareImageHash Instance.",
+            "longDescription": "This resource represents a FirmwareImageHash Instance with its details.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "HashAlgorithm": {
+                    "$ref": "#/definitions/HashAlgorithms",
+                    "description": "The Hash Algorithm used to generate hash.",
+                    "longDescription": "This property shall represent the cryptographic hash function/algorithm used to generate Hash value of given FirmwareImage. For FirmwareImageHash, supported values are SHA256, SHA384, SHA512 only.",
+                    "readonly": true
+                },
+                "HashValue": {
+                    "description": "The Hash value of a FirmwareImage reported by BIOS.",
+                    "longDescription": "This property shall represent the Hash of a FirmwareImage, which can be generated from cryptographic hash function/algorithm  mentioned in HashAlgorithm.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "HashAlgorithms": {
+            "enum": [
+                "SHA256",
+                "SHA384",
+                "SHA512",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "SHA256": "SHA256 cryptographic hash function used to generate Hash value of given FirmwareImage.",
+                "SHA384": "SHA384 cryptographic hash function used to generate Hash value of given FirmwareImage.",
+                "SHA512": "SHA512 cryptographic hash function used to generate Hash value of given FirmwareImage.",
+                "Unknown": "Unknown cryptographic hash function used to generate Hash value of given FirmwareImage."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellFirmwareImageHash.v1_0_0.DellFirmwareImageHash"
+}

@@ -1,0 +1,243 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeMemoryExt",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2020 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2020 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeMemoryExt object extends the Redfish Memory resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Armed": {
+            "description": "Specifies the current backup-ready status of the NVDIMM_N if available.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "Attributes": {
+            "items": {
+                "enum": [
+                    "HpeSmartMemory",
+                    "HpeStandardMemory",
+                    "HpeLogicalNVDIMM"
+                ],
+                "enumDescriptions": {
+                    "HpeLogicalNVDIMM": "This DIMM is HPE Logical Memory.",
+                    "HpeSmartMemory": "This DIMM is HPE Smart Memory",
+                    "HpeStandardMemory": "This DIMM is HPE Standard Memory"
+                },
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "BaseModuleType": {
+            "enum": [
+                "BurstEDO",
+                "FastPage",
+                "Synchronous",
+                "EDO",
+                "LRDIMM",
+                "RDRAM",
+                "RDIMM",
+                "UDIMM",
+                "NVDIMM",
+                "NVDIMM-N",
+                "LRNVDIMM",
+                "SO_RDIMM_72b",
+                "SO_UDIMM_72b",
+                "PMM"
+            ],
+            "type": "string"
+        },
+        "BlocksRead": {
+            "description": "Number of blocks read for the lifetime of the Memory.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "BlocksWritten": {
+            "description": "Number of blocks written for the lifetime of the Memory.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "DIMMStatus": {
+            "description": "Specifies memory module status and whether the module in use.",
+            "enum": [
+                null,
+                "Unknown",
+                "Other",
+                "NotPresent",
+                "PresentUnused",
+                "GoodInUse",
+                "AddedButUnused",
+                "UpgradedButUnused",
+                "ExpectedButMissing",
+                "DoesNotMatch",
+                "NotSupported",
+                "ConfigurationError",
+                "Degraded",
+                "PresentSpare",
+                "GoodPartiallyInUse",
+                "MapOutConfiguration",
+                "MapOutError"
+            ],
+            "enumDescriptions": {
+                "AddedButUnused": "DIMM is added but currently unused.",
+                "ConfigurationError": "Configuration error in DIMM.",
+                "Degraded": "DIMM state is degraded.",
+                "DoesNotMatch": "DIMM type does not match.",
+                "ExpectedButMissing": "DIMM is expected but missing.",
+                "GoodInUse": "DIMM is functioning properly and currently in use.",
+                "GoodPartiallyInUse": "DIMM is functioning properly but partially in use.",
+                "MapOutConfiguration": "DIMM mapped out due to configuration error.",
+                "MapOutError": "DIMM mapped out due to training failure.",
+                "NotPresent": "DIMM is not present.",
+                "NotSupported": "DIMM is not supported.",
+                "Other": "DIMM status that does not fit any of these definitions.",
+                "PresentSpare": "DIMM is present but used as spare.",
+                "PresentUnused": "DIMM is present but unused.",
+                "Unknown": "The status of the DIMM is unknown.",
+                "UpgradedButUnused": "DIMM is upgraded but currently unused."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MinimumVoltageVoltsX10": {
+            "description": "The minimum DIMM voltage multiplied by 10, for example, 1.2v = 12.",
+            "displayname": "MinVoltageVoltsX10",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "PredictedMediaLifeLeftPercent": {
+            "description": "The percentage of media life left.",
+            "max": 100,
+            "min": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "ProductName": {
+            "description": "friendly product name from SMBIOS 202 record",
+            "readonly": true,
+            "type": "string"
+        },
+        "RelatedBackupStores": {
+            "description": "An array of references to the NVMe drives related to the logical NVDIMM.",
+            "items": {
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "RelatedPhysicalDIMMs": {
+            "description": "An array of references to the DIMMs related to the logical NVDIMM.",
+            "items": {
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "RelatedPowerBackupUnitBays": {
+            "description": "An array of battery backed unit bays that provides backup power to the logical NVDIMM.",
+            "etag": true,
+            "items": {
+                "description": "Battery backup unit bay number.",
+                "etag": true,
+                "readonly": true,
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "SPDBytes": {
+            "etag": true,
+            "items": {
+                "description": "The SPD Bytes in the DIMM",
+                "etag": true,
+                "readonly": true,
+                "type": "integer"
+            },
+            "type": "array"
+        },
+        "SpareBlockLeftPercent": {
+            "description": "The percentage of the number of spare blocks remaining.",
+            "max": 100,
+            "min": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "DIMMManufacturingDate": {
+            "description": "Module manufacturing date in YYWW format.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MaxOperatingSpeedMTs": {
+            "description": "Maximum capable speed of the device, in megatransfers per second (MT/s).",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "VendorName": {
+            "description": "Vendor Name decoded from VendorID",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PartNumber": {
+            "description": "The HPE product part number of this device",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "title": "#HpeMemoryExt.v2_5_0.HpeMemoryExt",
+    "type": "object"
+}

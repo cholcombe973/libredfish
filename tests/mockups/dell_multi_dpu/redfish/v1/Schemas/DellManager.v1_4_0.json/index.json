@@ -1,0 +1,460 @@
+{
+    "$id": "/redfish/v1/Schemas/DellManager.v1_4_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellManager.ClearPending": {
+                    "$ref": "#/definitions/ClearPending"
+                },
+                "#DellManager.ResetToDefaults": {
+                    "$ref": "#/definitions/ResetToDefaults"
+                },
+                "#DellManager.SetCustomDefaults": {
+                    "$ref": "#/definitions/SetCustomDefaults"
+                }
+            },
+            "type": "object"
+        },
+        "CA": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Certificates": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The link to a collection of CA certificates used for TLS support for RemoteSystemLogs.",
+                    "longDescription": "This property shall contain a link to a Resource Collection of type CertificateCollection.",
+                    "readonly": true,
+                    "versionAdded": "v1_2_0"
+                }
+            },
+            "type": "object"
+        },
+        "ClearPending": {
+            "additionalProperties": false,
+            "description": "This action is used to clear all the pending values.",
+            "longDescription": "This action shall perform a clear pending values.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "DellManager": {
+            "additionalProperties": false,
+            "description": "Oem data related to DellManager.",
+            "longDescription": "Oem data related to DellManager.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CustomDefaultsDownloadURI": {
+                    "description": "The URI at which to download saved custom defaults. This URI shall return an HTTP 404, if the custom defaults have not been set already by using the SetCustomDefaults Oem Action.",
+                    "format": "uri-reference",
+                    "longDescription": "This property shall contain the URI at which to download the saved custom defaults, using the Redfish protocol and authentication methods.  The service provides this URI for the download of the OEM-specific XML file of the saved custom defaults.  An HTTP GET from this URI shall return a response payload of MIME time `application/octet-stream`. This URI shall return an HTTP 404, if the custom defaults have not been set already by using the SetCustomDefaults Oem Action.",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_4_0"
+                },
+                "DelliDRACCard": {
+                    "$ref": "/redfish/v1/Schemas/DelliDRACCard.json#/definitions/DelliDRACCard",
+                    "autoExpand": true,
+                    "description": "A resource representation of DelliDRACCard.",
+                    "longDescription": "A resource representation of DelliDRACCard.",
+                    "readonly": true,
+                    "versionAdded": "v1_2_0"
+                },
+                "Jobs": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellJobCollection.json#/definitions/DellJobCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A reference to the collection of Job associated with this system.",
+                    "longDescription": "The value of this property shall be a link to a collection of type Job.",
+                    "readonly": true,
+                    "versionAdded": "v1_3_0"
+                },
+                "RemoteSystemLogs": {
+                    "$ref": "#/definitions/RemoteSystemLogs",
+                    "description": "TLS based remote syslog configurations.",
+                    "longDescription": "This property shall contain the TLS based remote syslog configurations.",
+                    "versionAdded": "v1_2_0"
+                }
+            },
+            "type": "object"
+        },
+        "HTTPS": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Certificates": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The link to a collection of client trust certificates used for TLS support for RemoteSystemLogs.",
+                    "longDescription": "This property shall contain a link to a Resource Collection of type CertificateCollection.",
+                    "readonly": true,
+                    "versionAdded": "v1_2_0"
+                },
+                "SecureClientAuth": {
+                    "$ref": "#/definitions/SecureClientAuth",
+                    "description": "The identity authentication option used by iDRAC for TLS based remote syslog.",
+                    "longDescription": "This property shall indicate the identity authentication option used by iDRAC for TLS based remote syslog. By default iDRAC will use anonymous idenity which can be overriden by generating a signed trust certificate to prove iDRAC's authenticity.",
+                    "readonly": false,
+                    "versionAdded": "v1_2_0"
+                },
+                "SecurePort": {
+                    "description": "Specifies the secure remote syslog port number.",
+                    "longDescription": "This property shall contain the secure remote syslog port number. The default port value is 6514. The port value should be an integral value from 1 to 65535.",
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": "integer",
+                    "versionAdded": "v1_2_0"
+                },
+                "SecureServers": {
+                    "description": "Name of the TLS supported remote syslog servers.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "longDescription": "This property shall contain the list of all TLS supported remote syslog servers.",
+                    "readonly": false,
+                    "type": "array",
+                    "versionAdded": "v1_2_0"
+                },
+                "SecureSysLogEnable": {
+                    "$ref": "#/definitions/SecureSysLogEnable",
+                    "description": "An indication of whether TLS based remote syslog is enabled.",
+                    "longDescription": "This property shall indicate whether TLS based remote syslog is enabled or not. Enabled indicates TLS based remote syslog is enabled. Disabled indicates TLS based remote syslog is disabled. By default TLS support is disabled.",
+                    "readonly": false,
+                    "versionAdded": "v1_2_0"
+                }
+            },
+            "type": "object"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {},
+            "type": "object"
+        },
+        "RemoteSystemLogs": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CA": {
+                    "$ref": "#/definitions/CA",
+                    "description": "TLS based remote syslog CA certificate.",
+                    "longDescription": "This property shall contain the TLS based remote syslog CA certificate.",
+                    "versionAdded": "v1_2_0"
+                },
+                "HTTPS": {
+                    "$ref": "#/definitions/HTTPS",
+                    "description": "TLS based remote syslog configurations and client trust certificate.",
+                    "longDescription": "This property shall contain the TLS based remote syslog configurations and client trust certificate.",
+                    "versionAdded": "v1_2_0"
+                }
+            },
+            "type": "object"
+        },
+        "ResetToDefaults": {
+            "additionalProperties": false,
+            "description": "This action is used to reset the Dell attributes to default.",
+            "longDescription": "This action shall perform reset of the Dell attributes to their default values.",
+            "parameters": {
+                "ResetType": {
+                    "$ref": "#/definitions/ResetType",
+                    "description": "The type of ResetType option to be performed.",
+                    "longDescription": "The type of ResetType option to be performed.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResetType": {
+            "enum": [
+                "All",
+                "ResetAllWithRootDefaults",
+                "Default",
+                "CustomDefaults"
+            ],
+            "enumDescriptions": {
+                "All": "All configuration is set to default.",
+                "CustomDefaults": "All configuration is set to the custom defaults which would have been set previously using the SetCustomDefaults Action. In case there is no saved custom default settings available, this option will not work",
+                "Default": "All configuration is set to default except users and network settings are preserved.",
+                "ResetAllWithRootDefaults": "All configuration including network is set to default exception root user password set to calvin."
+            },
+            "enumVersionAdded": {
+                "CustomDefaults": "v1_4_0"
+            },
+            "type": "string"
+        },
+        "SecureClientAuth": {
+            "enum": [
+                "Anonymous",
+                "Certificate"
+            ],
+            "enumDescriptions": {
+                "Anonymous": "TLS based remote syslog with anonymous client authentication.",
+                "Certificate": "TLS based remote syslog with certificate based client trust authentication"
+            },
+            "type": "string"
+        },
+        "SecureSysLogEnable": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "TLS based remote syslog is disabled.",
+                "Enabled": "TLS based remote syslog is enabled."
+            },
+            "type": "string"
+        },
+        "ServerConfigurationProfileResults": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DisplayValue": {
+                    "description": "This is the Display Value of the Configuration opertaion.",
+                    "longDescription": "This property shall contain Display Value of the Configuration opertaion.",
+                    "type": "string"
+                },
+                "ErrCode": {
+                    "description": "This is the Error code of the configuration operation.",
+                    "longDescription": "This property shall contain Error code of the configuration operation, default value for success is 0.",
+                    "type": "string"
+                },
+                "FQDD": {
+                    "description": "This is the FQDD of the configuration operation.",
+                    "longDescription": "This property shall contain FQDD of the configuration operation.",
+                    "type": "string"
+                },
+                "Name": {
+                    "description": "This is the Name of the configuration operation.",
+                    "longDescription": "This property shall contain Name of the configuration operation.",
+                    "type": "string"
+                },
+                "NewValue": {
+                    "description": "This is the New Value of the configuration operation.",
+                    "longDescription": "This property shall contain New Value of the configuration operation.",
+                    "type": "string"
+                },
+                "OldValue": {
+                    "description": "This is the Old Value of the configuration operation.",
+                    "longDescription": "This property shall contain Old Value of the configuration operation.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SetCustomDefaults": {
+            "additionalProperties": false,
+            "description": "This action is used to set the custom defaults to be used during Reset.",
+            "longDescription": "This action is used to set the custom defaults to be used during Reset.",
+            "parameters": {
+                "CustomDefaults": {
+                    "description": "The XML representing the custom defaults.",
+                    "longDescription": "The XML representing the custom defaults.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_4_0"
+        },
+        "Status": {
+            "enum": [
+                "Success",
+                "Failure"
+            ],
+            "enumDescriptions": {
+                "Failure": "Status of the configuration operation change when failed.",
+                "Success": "Status of the configuration operation change when succeeded."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellManager.v1_4_0"
+}

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellNetworkTransceiver v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNetworkTransceiver">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellNetworkTransceiver" Abstract="true">
+                <Annotation String="DellNetworkTransceiver represents a Network Transceiver device in the managed system. Instantiating this class represents the specific managed objects and its properties for the number of managed devices present in the system." Term="OData.Description"/>
+                <Annotation String="DellNetworkTransceiver represents a Network Transceiver device in the managed system. Instantiating this class represents the specific managed objects and its properties for the number of managed devices present in the system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkPorts/Oem/Dell/DellNetworkTransceivers/{NetworkTransceiverId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkPorts/{NetworkPortId}/Oem/Dell/DellNetworkTransceivers/{NetworkTransceiverId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="IdentifierType">
+                <Member Name="OSFP">
+                    <Annotation String="OSFP" Term="OData.Description"/>
+                    <Annotation String="OSFP" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="QSFP">
+                    <Annotation String="QSFP" Term="OData.Description"/>
+                    <Annotation String="QSFP" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="QSFP+OrLater">
+                    <Annotation String="QSFP+ or later" Term="OData.Description"/>
+                    <Annotation String="QSFP+ or later" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="QSFP-DD">
+                    <Annotation String="QSFP-DD" Term="OData.Description"/>
+                    <Annotation String="QSFP-DD" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="QSFP28OrLater">
+                    <Annotation String="QSFP28 or later" Term="OData.Description"/>
+                    <Annotation String="QSFP28 or later" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SFP/SFP+/SFP28">
+                    <Annotation String="SFP/SFP+/SFP28" Term="OData.Description"/>
+                    <Annotation String="SFP/SFP+/SFP28" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="InterfaceType">
+                <Member Name="Backplane">
+                    <Annotation String="Backplane" Term="OData.Description"/>
+                    <Annotation String="Backplane" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DirectAttachCopper">
+                    <Annotation String="Direct Attach Copper" Term="OData.Description"/>
+                    <Annotation String="Direct Attach Copper" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OpticalFiber">
+                    <Annotation String="Optical Fiber" Term="OData.Description"/>
+                    <Annotation String="Optical Fiber" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="TwistedPair">
+                    <Annotation String="Twisted Pair" Term="OData.Description"/>
+                    <Annotation String="Twisted Pair" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNetworkTransceiver.v1_0_0">
+            <EntityType Name="DellNetworkTransceiver" BaseType="DellNetworkTransceiver.DellNetworkTransceiver">
+                <Annotation Term="OData.Description" String="DellNetworkTransceiver represents a Network Transceiver device in the managed system. Instantiating this class represents the specific managed objects and its properties for the number of managed devices present in the system."/>
+                <Annotation Term="OData.LongDescription" String="DellNetworkTransceiver represents a Network Transceiver device in the managed system. Instantiating this class represents the specific managed objects and its properties for the number of managed devices present in the system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                </Property>
+                <Property Name="IdentifierType" Type="DellNetworkTransceiver.IdentifierType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the type of Small Form Factor pluggable(SFP) Transceiver."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the type of Small Form Factor pluggable(SFP) Transceiver."/>
+                </Property>
+                <Property Name="InterfaceType" Type="DellNetworkTransceiver.InterfaceType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the interface type of Small Form Factor pluggable(SFP) Transceiver."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the interface type of Small Form Factor pluggable(SFP) Transceiver."/>
+                </Property>
+                <Property Name="PartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The part number assigned by the organization that is responsible for producing or manufacturing the Small Form Factor pluggable(SFP) Transceivers."/>
+                    <Annotation Term="OData.LongDescription" String="The part number assigned by the organization that is responsible for producing or manufacturing the Small Form Factor pluggable(SFP) Transceivers."/>
+                </Property>
+                <Property Name="Revision" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the revision number of the Small Form Factor pluggable(SFP) Transceiver."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the revision number of the Small Form Factor pluggable(SFP) Transceiver."/>
+                </Property>
+                <Property Name="SerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A manufacturer-allocated number used to identify the Small Form Factor pluggable(SFP) Transceiver."/>
+                    <Annotation Term="OData.LongDescription" String="A manufacturer-allocated number used to identify the Small Form Factor pluggable(SFP) Transceiver."/>
+                </Property>
+                <Property Name="VendorName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the vendor name of Small Form Factor pluggable(SFP) Transceiver."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the vendor name of Small Form Factor pluggable(SFP) Transceiver."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNetworkTransceiver.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable values OSFP,QSFP-DD for IdentifierType property."/>
+            <EntityType Name="DellNetworkTransceiver" BaseType="DellNetworkTransceiver.v1_0_0.DellNetworkTransceiver">
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

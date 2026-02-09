@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################-->
+<!--# Redfish Schema:  DellLCLogEntry  v1.1.0                                       -->
+<!--# This schema complements the OEM section of LifeCycle LogEntry Resource                -->
+<!--# Copyright 2014-2020 Dell, Inc. or its subsidiaries.All Rights Reserved.       -->
+<!--################################################################################-->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCLogEntry">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <ComplexType Name="DellLCLogEntry" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is for the additional OEM properties to complement DMTF LogEntry Schema for Lifecycle Logs."/>
+        <Annotation Term="OData.LongDescription" String="This is for the additional OEM properties to complement DMTF LogEntry Schema for Lifecycle Logs."/>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCLogEntry.v1_0_0">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <EnumType Name="Category">
+        <Member Name="Storage">
+          <Annotation Term="OData.Description" String="The Event has been generated as part of Storage unit"/>
+        </Member>
+        <Member Name="Updates">
+          <Annotation Term="OData.Description" String="The Event has been generated as part of Updates"/>
+        </Member>
+        <Member Name="Audit">
+          <Annotation Term="OData.Description" String="The Event has been generated as part of Audit type"/>
+        </Member>
+        <Member Name="Configuration">
+          <Annotation Term="OData.Description" String="The Event has been generated as part of Configuration type"/>
+        </Member>
+        <Member Name="WorkNotes">
+          <Annotation Term="OData.Description" String="The Event has been generated as part of Work Notes"/>
+        </Member>
+        <Member Name="SystemHealth">
+          <Annotation Term="OData.Description" String="The Event has been generated as part of System Health unit"/>
+        </Member>
+      </EnumType>
+      <ComplexType Name="DellLCLogEntry" BaseType="DellLCLogEntry.DellLCLogEntry">
+        <Property Name="Category" Type="DellLCLogEntry.v1_0_0.Category">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Property to represent category of Event that has occurred."/>
+          <Annotation Term="OData.LongDescription" String="The value of the property specifies the category of Event."/>
+        </Property>
+        <Property Name="Comment" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Property to display any comment that might have been added to the log entry."/>
+          <Annotation Term="OData.LongDescription" String="Property to display any comment that might have been added to the log entry."/>
+        </Property>
+		<Property Name="LastUpdatedByUser" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Property to display UserName of the user that last commented on the log entry."/>
+          <Annotation Term="OData.LongDescription" String="Property to display UserName of the user that last commented on the log entry."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCLogEntry.v1_1_0">
+        <Annotation Term="OData.Description" String="This version was created to add PreviousSequenceOfLogs property"/>
+        <ComplexType Name="PreviousSequenceOfLogsInfo">
+            <Property Name="Created" Type="Edm.DateTimeOffset" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="The date and time when the log entry was created."/>
+                <Annotation Term="OData.LongDescription" String="This property shall contain the date and time when the log entry was created."/>
+            </Property>
+            <Property Name="Message" Type="Edm.String">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="The message of the log entry."/>
+                <Annotation Term="OData.LongDescription" String="This property shall contain the message of the log entry."/>
+            </Property>
+            <Property Name="MessageId" Type="Edm.String" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="The MessageId of the log."/>
+                <Annotation Term="OData.LongDescription" String="The MessageId of the log."/>
+            </Property>
+        </ComplexType>
+        <ComplexType Name="DellLCLogEntry" BaseType="DellLCLogEntry.v1_0_0.DellLCLogEntry">
+            <Property Name="PreviousSequenceOfLogs" Type="Collection(DellLCLogEntry.v1_1_0.PreviousSequenceOfLogsInfo)">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="Property to display previous sequence of log entries."/>
+                <Annotation Term="OData.LongDescription" String="Property to display previous sequence of log entries."/>
+            </Property>
+        </ComplexType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

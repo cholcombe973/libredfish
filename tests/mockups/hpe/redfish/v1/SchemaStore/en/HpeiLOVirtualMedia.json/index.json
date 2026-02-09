@@ -1,0 +1,154 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOVirtualMedia",
+    "actions": {
+        "actions": {
+            "HpeiLOVirtualMedia.EjectVirtualMedia": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOVirtualMedia.EjectVirtualMedia"
+                        ],
+                        "type": "string"
+                    },
+                    "Intent": {
+                        "additionalProperties": false,
+                        "description": "A text description of the reason for this action invocation.",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Signature": {
+                        "additionalProperties": false,
+                        "description": "A RSA2048 SHA-256 signature validating the provided Intent (Base64 encoded).",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOVirtualMedia.InsertVirtualMedia": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOVirtualMedia.InsertVirtualMedia"
+                        ],
+                        "type": "string"
+                    },
+                    "Certificate": {
+                        "additionalProperties": false,
+                        "description": "A PEM encoded X509 certificate used to validate the https server.",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Image": {
+                        "additionalProperties": false,
+                        "description": "A URL for an ISO, BIN, or IMG file locating the virtual media image.",
+                        "etag": true,
+                        "format": "uri-reference",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Intent": {
+                        "additionalProperties": false,
+                        "description": "A text description of the reason for this action invocation.",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Signature": {
+                        "additionalProperties": false,
+                        "description": "A RSA2048 SHA-256 signature validating the provided Intent (Base64 encoded).",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "WriteProtected": {
+                        "additionalProperties": false,
+                        "description": "Indicates whether the virtual media is protected against write operations.",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Inserting and Ejecting Virtual Media."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOVirtualMedia resource describes additional properties for the VirtualMedia resource.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOVirtualMedia.EjectVirtualMedia": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOVirtualMedia.InsertVirtualMedia": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BootOnNextServerReset": {
+            "description": "If set to true, the server will boot to this image on the next server reboot. The image will be ejected automatically on the second server reboot so that the server does not boot to this image twice.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOVirtualMedia.v2_2_0.HpeiLOVirtualMedia",
+    "type": "object"
+}

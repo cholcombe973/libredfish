@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  LenovoServerProfileService   v1.0.0                                 -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CertificateCollection_v1.xml">
+    <edmx:Include Namespace="CertificateCollection"/>
+  </edmx:Reference>
+
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoServerProfileService">
+      <EntityType Name="LenovoServerProfileService" BaseType="Resource.v1_0_0.Resource" Abstract="true">    
+      </EntityType>
+            
+      <Action Name="ApplySystemProfiles" IsBound="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The action to apply system profile function."/>
+        <Parameter Name="LenovoServerProfileService" Type="LenovoServerProfileService.v1_0_0.Actions"/>
+        <Parameter Name="SysProfPassPhrase" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The password for configuration pattern."/>
+        </Parameter>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoServerProfileService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoServerProfileService" BaseType="LenovoServerProfileService.LenovoServerProfileService">       
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="Enabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the server profile mode is enabled."/>
+        </Property>
+        <Property Name="ServerIP" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The server IP for system profile config."/>
+        </Property>
+        <Property Name="ServerPort" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The server port number for system profile config."/>
+        </Property>
+        <Property Name="UserID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The user ID for system profile config."/>
+        </Property>
+        <Property Name="Password" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The password for system profile config."/>
+        </Property>
+        <NavigationProperty Name="Certificates" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link to a collection of certificates that the external account provider uses."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a link to a Resource Collection of certificates of the CertificateCollection type that the external account provider uses."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="Actions" Type="LenovoServerProfileService.v1_0_0.Actions" Nullable="false"/>
+      </EntityType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      </ComplexType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

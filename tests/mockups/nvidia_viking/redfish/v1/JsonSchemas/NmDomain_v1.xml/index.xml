@@ -1,0 +1,352 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  NmDomain v1.0.0                                                        -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures" />
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+        <edmx:Include Namespace="Resource" />
+        <edmx:Include Namespace="Resource.v1_0_0" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NodeManager_v1.xml">
+        <edmx:Include Namespace="NodeManager" />
+        <edmx:Include Namespace="NodeManager.v1_0_0" />
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NmPolicy_v1.xml">
+        <edmx:Include Namespace="NmPolicy"/>
+		<edmx:Include Namespace="NmPolicy.v1_0_0"/>
+		<edmx:Include Namespace="NmPolicy.v1_1_0"/>
+		<edmx:Include Namespace="NmPolicy.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NmTrigger_v1.xml">
+        <edmx:Include Namespace="NmTrigger"/>
+		<edmx:Include Namespace="NmTrigger.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmDomain">
+            <EntityType Name="Domain" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+                <Annotation Term="OData.Description" String="The NmDomain schema contains properties related to monitoring and control of the given domain." />
+                <Annotation Term="OData.LongDescription" String="The NmDomain schema contains properties related to monitoring and control of the given domain." />
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="true" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false" />
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/NodeManager/Domains/{DomainId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="ChangeState" IsBound="true">
+                <Parameter Name="Domain" Type="NmDomain.v1_0_0.Actions" />
+                <Parameter Name="State" Type="Resource.State">
+                    <Annotation Term="OData.Description" String="The state of the Resource to transition to." />
+                    <Annotation Term="OData.LongDescription" String="This parameter shall contain the state of the Resource to transition to." />
+                </Parameter>
+            </Action>
+            <Action Name="ResetStatistics" IsBound="true">
+                <Annotation Term="OData.Description" String="This ResetStatistics action forces the manager to reset statistics Minimal, Maximal and Average values for the domain." />
+                <Annotation Term="OData.LongDescription" String="This ResetStatistics action forces the manager to reset statistics Minimal, Maximal and Average values for the domain." />
+            </Action>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmDomain.v1_0_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <Annotation Term="Redfish.Release" String="1.0" />
+            <EntityType Name="Domain" BaseType="NmDomain.Domain">
+                <Property Name="Actions" Type="NmDomain.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this Resource." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the available actions for this Resource." />
+                </Property>
+                <NavigationProperty Name="SupportedTriggers" Type="Collection(NmTrigger.Trigger)" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="An array of links to triggers supported by this domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain an array of links to triggers which can be used for policies in this domain." />
+                    <Annotation Term="OData.AutoExpandReferences" />
+                </NavigationProperty>
+                <Property Name="Capabilities" Type="NmDomain.v1_0_0.Capabilities" Nullable="false">
+                    <Annotation Term="OData.Description" String="The capabilities data information for this domain." />
+                    <Annotation Term="OData.LongDescription" String="This type shall contain min and max that describe control capabilities of this domain." />
+                </Property>
+                <Property Name="Statistics" Type="Collection(NmDomain.v1_0_0.Statistics)" Nullable="false">
+                    <Annotation Term="OData.Description" String="Statistics collected for the domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain statistics of a controlled parameter for the domain." />
+                </Property>
+                <Property Name="Links" Type="NmDomain.v1_0_0.Links">
+                    <Annotation Term="OData.Description" String="The links to other Resources that are related to this Resource." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain links to Resources that are related to but are not contained by or subordinate to this Resource." />
+                </Property>
+                <Property Name="Status" Type="Resource.Status" Nullable="false">
+                    <Annotation Term="OData.Description" String="The status and health of the Resource and its subordinate or dependent Resources." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the Resource." />
+                </Property>
+                <NavigationProperty Name="LimitingPolicy" Type="NmPolicy.Policy" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Link to the policy that is currently enforcing power capping in this domain." />
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated" />
+                                <PropertyValue Property="Version" String="v1_2_0" />
+                                <PropertyValue Property="Description" String="This value has been deprecated in favor of LimitingPolicies collection."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a link to a policy that is currently enforcing power capping in this domain." />
+                </NavigationProperty>
+                <Property Name="LimitBias" Type="NmDomain.v1_0_0.LimitBias" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+                    <Annotation Term="OData.Description" String="Limit Bias settings to apply to policies in a domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain values for Absolute and Relative Limit Bias which will be applied to limits of selected policies." />
+                </Property>
+            </EntityType>
+            <ComplexType Name="Capabilities">
+                <Annotation Term="OData.Description" String="The capabilities data information for this domain." />
+                <Annotation Term="OData.LongDescription" String="This type shall contain min and max that describe control capabilities of this domain." />
+                <Annotation Term="OData.AdditionalProperties" Bool="false" />
+                <Property Name="Min" Type="Edm.Decimal" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+                    <Annotation Term="OData.Description" String="Minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown (e.g. not reported by underlying hardware)." />
+                </Property>
+                <Property Name="Max" Type="Edm.Decimal" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+                    <Annotation Term="OData.Description" String="Maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown (e.g. not reported by underlying hardware)." />
+                </Property>
+                <Property Name="MinCorrectionTimeInMs" Type="Edm.Int32">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Minimal correction time of policies in this domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain minimal value correction time which can be set for policies in this domain." />
+                    <Annotation Term="Measures.Unit" String="ms" />
+                </Property>
+                <Property Name="MaxCorrectionTimeInMs" Type="Edm.Int32">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Maximal correction time of policies in this domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain maximal value correction time which can be set for policies in this domain." />
+                    <Annotation Term="Measures.Unit" String="ms" />
+                </Property>
+                <Property Name="MinStatisticsReportingPeriod" Type="Edm.Duration" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Minimal statistic reporting period for calculating the average for policies in this domain. The value shall conform to the Duration format." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain minimal value correction time which can be set for policies in this domain. The value shall conform to the Duration format." />
+                </Property>
+                <Property Name="MaxStatisticsReportingPeriod" Type="Edm.Duration" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Maximal statistic reporting period for calculating the average for policies in this domain. The value shall conform to the Duration format." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain maximal value correction time which can be set for policies in this domain. The value shall conform to the Duration format." />
+                </Property>
+            </ComplexType>
+            <ComplexType Name="Links" BaseType="Resource.Links">
+                <Annotation Term="OData.Description" String="The links to other Resources that are related to this Resource." />
+                <Annotation Term="OData.LongDescription" String="This Redfish Specification-described type shall contain links to Resources that are related to but not contained by or subordinate to this Resource." />
+                <NavigationProperty Name="Policies" Type="Collection(NmPolicy.Policy)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="An array of links to policies created in this domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain an array of links to policies created in this domain" />
+                    <Annotation Term="OData.AutoExpandReferences" />
+                </NavigationProperty>
+            </ComplexType>
+            <ComplexType Name="Statistics">
+                <Annotation Term="OData.Description" String="Min, max, average and current values of statistics." />
+                <Annotation Term="OData.LongDescription" String="This type shall contain min, max, average and current values statistics the resource it is used in." />
+                <Annotation Term="OData.AdditionalProperties" Bool="false" />
+                <Property Name="Average" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Average value of collected statistics." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain an average value of collected statistics." />
+                </Property>
+                <Property Name="AveragingDuration" Type="Edm.Duration" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Duration over which average value was calculated." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain duration over which an average value was collected for these statistics. The value shall conform to the Duration format." />
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated" />
+                                <PropertyValue Property="Version" String="v1_3_0" />
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of AveragingInterval."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="Current" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Current value of collected statistics." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a current value of collected statistics." />
+                </Property>
+                <Property Name="Max" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Maximal value of collected statistics." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a maximal value of collected statistics." />
+                </Property>
+                <Property Name="Min" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Minimal value of collected statistics." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a minimal value of collected statistics." />
+                </Property>
+                <Property Name="MeasurementState" Type="Edm.Boolean" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Flag stating if the measuremt is in progress." />
+                    <Annotation Term="OData.LongDescription" String="This property is a flag telling if the statistics measurement was at progress." />
+                </Property>
+                <Property Name="Name" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Statistic name." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the statistic name." />
+                </Property>
+            </ComplexType>
+            <ComplexType Name="LimitBias">
+                <Annotation Term="OData.Description" String="Absolute and Relative Limit Bias Values." />
+                <Annotation Term="OData.LongDescription" String="This type shall contain Absolute and Relative Limit Bias values." />
+                <Annotation Term="OData.AdditionalProperties" Bool="false" />
+                <Property Name="AbsoluteLimitBias" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+                    <Annotation Term="OData.Description" String="Absolute Limit Bias value." />
+                    <Annotation Term="OData.LongDescription" String="This property shall value of an Absolute Limit Bias." />
+                </Property>
+                <Property Name="RelativeLimitBias" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite" />
+                    <Annotation Term="OData.Description" String="Relative Limit Bias value." />
+                    <Annotation Term="OData.LongDescription" String="This property shall value of an Absolute Limit Bias." />
+                </Property>
+            </ComplexType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false" />
+                <Annotation Term="OData.Description" String="The available actions for this resource." />
+                <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource." />
+                <Property Name="Oem" Type="NodeManager.v1_0_0.OemActions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available OEM-specific actions for this resource." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the available OEM-specific actions for this resource." />
+                </Property>
+            </ComplexType>
+            <ComplexType Name="OemActions">
+                <Annotation Term="OData.AdditionalProperties" Bool="true" />
+                <Annotation Term="OData.Description" String="The available OEM-specific actions for this resource." />
+                <Annotation Term="OData.LongDescription" String="This type shall contain the available OEM-specific actions for this resource." />
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmDomain.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <Annotation Term="Redfish.Release" String="1.1" />
+            <EntityType Name="Domain" BaseType="NmDomain.v1_0_0.Domain">
+                <Property Name="ControlKnobs" Type="Collection(NmDomain.v1_1_0.ControlKnob)" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Collection of Control Knobs supported for policies in this domain." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain collection of Control Knob values which are allowed for policies in this domain." />
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated" />
+                                <PropertyValue Property="Version" String="v1_4_0" />
+                                <PropertyValue Property="Description" String="This value has been deprecated."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+            </EntityType>
+            <EnumType Name="ControlKnob">
+                <Member Name="AcpiPstate">
+                    <Annotation Term="OData.Description" String="ACPI Pstate number in range {0..Pn}." />
+                </Member>
+                <Member Name="HwpmPerfBias">
+                    <Annotation Term="OData.Description" String="HWPM Power-Performance Bias setting." />
+                </Member>
+                <Member Name="HwpmPerfPreference">
+                    <Annotation Term="OData.Description" String="HWPM Performance Preference indication setting." />
+                </Member>
+                <Member Name="HwpmPerfPreferenceOverride">
+                    <Annotation Term="OData.Description" String="PHWPM Performance Preference Override setting." />
+                </Member>
+                <Member Name="ProchotRatio">
+                    <Annotation Term="OData.Description" String="CPU ratio value to be set in response to PROCHOT# signal assertion." />
+                </Member>
+                <Member Name="TurboRatioLimit">
+                    <Annotation Term="OData.Description" String="Turbo ratio limit for all active threads and all CPU packages." />
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmDomain.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <Annotation Term="Redfish.Release" String="1.2" />
+            <EntityType Name="Domain" BaseType="NmDomain.v1_1_0.Domain">
+                <NavigationProperty Name="LimitingPolicies" Type="Collection(NmPolicy.Policy)" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Array of links to the policies that are currently enforcing power capping in this domain." />
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added" />
+                                <PropertyValue Property="Version" String="v1_2_0" />
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain an array of links to the policies that are currently enforcing power capping in this domain." />
+                </NavigationProperty>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmDomain.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <Annotation Term="Redfish.Release" String="1.3" />
+            <EntityType Name="Domain" BaseType="NmDomain.v1_2_0.Domain" />
+            <ComplexType Name="Statistics" BaseType="NmDomain.v1_0_0.Statistics">
+                <Annotation Term="OData.Description" String="Min, max, average and current values of statistics."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain min, max, average and current values statistics the resource it is used in."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="AveragingInterval" Type="Edm.Duration" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Interval over which average value was calculated."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain interval over which an average value was collected for these statistics. The value shall conform to the Duration format."/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmDomain.v1_4_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <Annotation Term="Redfish.Release" String="1.4" />
+            <EntityType Name="Domain" BaseType="NmDomain.v1_3_0.Domain">
+                <Property Name="ComponentCapabilities" Type="Collection(NmDomain.v1_4_0.ComponentCapabilities)" Nullable="false">
+                    <Annotation Term="OData.Description" String="The capabilities data information for components in this domain." />
+                    <Annotation Term="OData.LongDescription" String="This type shall contain min and max that describe control capabilities for componenents of this domain." />
+                </Property>
+            </EntityType>
+            <ComplexType Name="ComponentCapabilities">
+                <Property Name="Name" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Name of component for which capabilites are presented." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain name of the domains component for which capabilites is for." />
+                </Property>
+                <Property Name="Min" Type="Edm.Decimal" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain minimal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the minimal value, or such constraints are unknown (e.g. not reported by underlying hardware)." />
+                </Property>
+                <Property Name="Max" Type="Edm.Decimal" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read" />
+                    <Annotation Term="OData.Description" String="Maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown." />
+                    <Annotation Term="OData.LongDescription" String="This property shall contain maximal value of the controlled parameter for this domain. Value 0 means that either there are no constraints on the maximal value, or such constraints are unknown (e.g. not reported by underlying hardware)." />
+                </Property>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

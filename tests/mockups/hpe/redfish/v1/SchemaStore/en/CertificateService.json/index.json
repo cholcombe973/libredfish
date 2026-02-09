@@ -1,0 +1,255 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "CertificateService",
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The CertificateService schema describes a certificate service that represents the actions available to manage certificates and links to the certificates.",
+    "additionalProperties": false,
+    "actions": {
+        "actions": {
+            "CertificateService.GenerateCSR": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "CertificateService.GenerateCSR"
+                        ],
+                        "type": "string"
+                    },
+                    "AlternativeNames": {
+                        "description": "The additional host names of the component to secure.",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": false,
+                        "longDescription": "This parameter shall contain an array of additional host names of the component to secure, as defined by the RFC5280 'subjectAltName' attribute.",
+                        "type": "array"
+                    },
+                    "CertificateCollection": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid",
+                                "readonly": false
+                            }
+                        },
+                        "type": "object",
+                        "description": "The link to the certificate collection where the certificate is installed after the certificate authority (CA) signs the certificate.",
+                        "readonly": false,
+                        "longDescription": "This parameter shall contain a link to a resource collection of type CertificateCollection where the certificate is installed after the certificate authority (CA) signs the certificate."
+                    },
+                    "ChallengePassword": {
+                        "description": "The challenge password to apply to the certificate for revocation requests.",
+                        "readonly": false,
+                        "longDescription": "This property shall contain the challenge password to apply to the certificate for revocation requests as defined by the RFC2985 'challengePassword' attribute.",
+                        "type": "string"
+                    },
+                    "City": {
+                        "description": "The city or locality of the organization making the request.",
+                        "longDescription": "This parameter shall contain the city or locality of the organization making the request, as defined by the RFC5280 'localityName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "CommonName": {
+                        "description": "The fully qualified domain name of the component to secure.",
+                        "longDescription": "This parameter shall contain the fully qualified domain name of the component to secure, as defined by the RFC5280 'commonName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "ContactPerson": {
+                        "description": "The name of the user making the request.",
+                        "readonly": false,
+                        "longDescription": "This property shall contain the name of the user making the request, as defined by the RFC5280 'name' attribute.",
+                        "type": "string"
+                    },
+                    "Country": {
+                        "description": "The two-letter country code of the organization making the request.",
+                        "longDescription": "This parameter shall contain the two-letter ISO code for the country of the organization making the request, as defined by the RFC5280 'countryName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Email": {
+                        "description": "The email address of the contact within the organization making the request.",
+                        "longDescription": "This parameter shall contain the email address of the contact within the organization making the request, as defined by the RFC2985 'emailAddress' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "GivenName": {
+                        "description": "The given name of the user making the request.",
+                        "longDescription": "This parameter shall contain the given name of the user making the request, as defined by the RFC5280 'givenName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Initials": {
+                        "description": "The initials of the user making the request.",
+                        "longDescription": "This parameter shall contain the initials of the user making the request, as defined by the RFC5280 'initials' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "KeyBitLength": {
+                        "description": "The length of the key, in bits, if needed based on the KeyPairAlgorithm parameter value.",
+                        "longDescription": "This parameter shall contain the length of the key, in bits, if needed based on the KeyPairAlgorithm parameter value.",
+                        "readonly": false,
+                        "type": "integer"
+                    },
+                    "KeyCurveId": {
+                        "description": "The curve ID to use with the key, if needed based on the KeyPairAlgorithm parameter value.",
+                        "longDescription": "This parameter shall contain the curve ID to use with the key, if needed based on the KeyPairAlgorithm parameter value.  The allowable values for this parameter shall be the strings in the 'Name' field of the 'TPM_ECC_CURVE Constants' table within the 'Trusted Computing Group Algorithm Registry'.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "KeyPairAlgorithm": {
+                        "description": "The type of key-pair for use with signing algorithms.",
+                        "longDescription": "This parameter shall contain the type of key-pair for use with signing algorithms.  The allowable values for this parameter shall be the strings in the 'Algorithm Name' field of the 'TPM_ALG_ID Constants' table within the 'Trusted Computing Group Algorithm Registry'.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "KeyUsage": {
+                        "description": "The usage of the key contained in the certificate.",
+                        "items": {
+                            "readonly": false,
+                            "enum": [
+                                "DigitalSignature",
+                                "NonRepudiation",
+                                "KeyEncipherment",
+                                "DataEncipherment",
+                                "KeyAgreement",
+                                "KeyCertSign",
+                                "CRLSigning",
+                                "EncipherOnly",
+                                "DecipherOnly",
+                                "ServerAuthentication",
+                                "ClientAuthentication",
+                                "CodeSigning",
+                                "EmailProtection",
+                                "Timestamping",
+                                "OCSPSigning"
+                            ],
+                            "type": "string"
+                        },
+                        "longDescription": "This parameter shall contain the usage of the key contained in the certificate.  If the client does not provide this value, the service can determine the appropriate key usage settings in the certificate signing request.",
+                        "readonly": false,
+                        "type": "array"
+                    },
+                    "Organization": {
+                        "description": "The name of the organization making the request.",
+                        "longDescription": "This parameter shall contain the name of the organization making the request, as defined by the RFC5280 'organizationName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "OrganizationalUnit": {
+                        "description": "The name of the unit or division of the organization making the request.",
+                        "longDescription": "This parameter shall contain the name of the unit or division of the organization making the request, as defined by the RFC5280 'organizationalUnitName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "State": {
+                        "description": "The state, province, or region of the organization making the request.",
+                        "longDescription": "This parameter shall contain the state, province, or region of the organization making the request, as defined by the RFC5280 'stateOrProvinceName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Surname": {
+                        "description": "The surname of the user making the request.",
+                        "longDescription": "This parameter shall contain the surname of the user making the request, as defined by the RFC5280 'surname' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "UnstructuredName": {
+                        "description": "The unstructured name of the subject.",
+                        "longDescription": "This property shall contain the unstructured name of the subject, as defined by the RFC2985 'unstructuredName' attribute.",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "CertificateCollection"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "These describe the POST custom actions defined for this type (although the implemented actions may be a subset of these)."
+    },
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#CertificateService.GenerateCSR": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "KeyUsage@Redfish.AllowableValues": {
+                            "description": "The supported values for the KeuUsage parameter.",
+                            "items": {
+                                "enum": [
+                                    "DigitalSignature",
+                                    "NonRepudiation",
+                                    "KeyEncipherment",
+                                    "DataEncipherment",
+                                    "KeyAgreement",
+                                    "KeyCertSign",
+                                    "CRLSigning",
+                                    "EncipherOnly",
+                                    "DecipherOnly",
+                                    "ServerAuthentication",
+                                    "ClientAuthentication",
+                                    "CodeSigning",
+                                    "EmailProtection",
+                                    "Timestamping",
+                                    "OCSPSigning"
+                                ],
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the EventType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CertificateLocations": {
+            "description": "The information about the location of certificates.",
+            "longDescription": "This property shall contain a link to a resource of type CertificateLocations.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "readonly": true,
+    "title": "#CertificateService.v1_0_3.CertificateService",
+    "type": "object"
+}

@@ -1,0 +1,1340 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeNetworkPort",
+    "actions": {
+        "actions": {
+            "NetworkPort.DiagnosticsReset": {
+                "description": "NOTE: Deprecated, will be removed in a future release. Replaced by HpeNetworkPort.DiagnosticsReset",
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "NetworkPort.DiagnosticsReset"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeNetworkPort.DiagnosticsReset": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeNetworkPort.DiagnosticsReset"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        }
+    },
+    "copyright": "Copyright 2014-2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2022 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeNetworkPort resource describes the The HpeNetworkPort resource describes the Hewlett Packard Enterprise property extensions for Network Ports",
+    "additionalProperties": false,
+    "definitions": {
+        "dConfiguredNetworkLink": {
+            "additionalProperties": false,
+            "description": "A link speed/lane width configuration this port is permitted to use for autonegotiation.",
+            "properties": {
+                "ConfiguredLinkSpeedGbps": {
+                    "description": "The link speed per lane this port is configured to use for autonegotiation.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ConfiguredWidth": {
+                    "description": "The number of lanes this port is configured to use for autonegotiation. If this property is omitted, the lane count shall default to one.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "EvbReceiving": {
+            "description": "EVB TLV data received from the link partner on this port.",
+            "properties": {
+                "CdcpActive": {
+                    "description": "True if a currently active IEEE 802.1Qbg CDCP TLV has been received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ChannelActive": {
+                    "description": "A currently unexpired HPE Channel Link Control or HPE Channel Description TLV has been received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ChannelDescriptionLocalSequenceNumber": {
+                    "description": "The link partner's HPE Channel Description sequence number that was last successfully received and processed.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelDescriptionRemoteSequenceNumber": {
+                    "description": "The last HPE Channel Decsription sequence number sent on this link that was successfully received and processed by the link partner.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelDescriptionSubtype": {
+                    "description": "The header subtype field of the last received HPE Channel Description TLV.",
+                    "etag": true,
+                    "maximum": 255,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlLocalSequenceNumber": {
+                    "description": "The link partner's HPE Channel Link Control sequence number that was last successfully received and processed.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlMCEnable": {
+                    "description": "The Feature Indicators field, Management Controller (MC) Channel (SCID 4094) enabled state in the HPE CLC TLV being received from the link partner on this port.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlRemoteSequenceNumber": {
+                    "description": "The last HPE Channel Link control sequence number sent on this link that was successfully received and processed by the link partner.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlSubtype": {
+                    "description": "The header subtype field of the last received HPE Channel Link Control TLV.",
+                    "etag": true,
+                    "maximum": 255,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Role": {
+                    "description": "The link partner's IEEE 802.1Qbg operating role.",
+                    "enum": [
+                        null,
+                        "bridge",
+                        "station"
+                    ],
+                    "enumDescriptions": {
+                        "bridge": "Indicates the link partner is operating as a Bridge.",
+                        "station": "Indicates the link partner is operating as a Station."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SChannelAssignments": {
+                    "description": "The set of all EVB <SCID,SVID> S-Channel assignments received from the link partner on this port.",
+                    "etag": true,
+                    "items": {
+                        "description": "An EVB <SCID,SVID> S-Channel identifier pair.",
+                        "etag": true,
+                        "properties": {
+                            "Scid": {
+                                "description": "SCID value for this <SCID,SVID> S-Channel identifier pairreceived from the link partner on this port.",
+                                "etag": true,
+                                "maximum": 4095,
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "Svid": {
+                                "description": "SVID assignment value for this <SCID,SVID> S-Channel identifier pair received from the link partner on this port. When 0 it indicates an assignment request is in progress.",
+                                "etag": true,
+                                "maximum": 4095,
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "SChannelMaxCount": {
+                    "description": "Indicates the number of S-Channels the link partner can support on this physical link.",
+                    "etag": true,
+                    "maximum": 4095,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "SChannelsSupported": {
+                    "description": "When true this link supports S-Channels.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "VirtualLinkStatusVector": {
+                    "description": "A bit vector indicating S-Channel status received from the link partner, 1=up, 0=down. S-Channel status bits are ordered by SCID from lowest numbered (first) to highest (last).",
+                    "etag": true,
+                    "pattern": "^([0-1]){1,}$",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "etag": true,
+            "type": "object"
+        },
+        "EvbTransmitting": {
+            "description": "EVB TLV data being transmitted to the link partner on this port.",
+            "properties": {
+                "ChannelDescriptionData": {
+                    "description": "The set of all S-Channel descriptions being transmitted to the link partner on this port.",
+                    "etag": true,
+                    "items": {
+                        "description": "Descriptive data for one S-Channel being transmitted to the link partner on this port.",
+                        "etag": true,
+                        "properties": {
+                            "Descriptor0BandwidthCirMbps": {
+                                "description": "The bandwidth Commited Information Rate (CIR) for this S-Channel, in Mbps.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0BandwidthPirMbps": {
+                                "description": "The bandwidth Peak Information Rate (PIR) for this S-Channel, in Mbps.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0ChannelTerminationType": {
+                                "description": "Indicates the termination provided for this S-Channel.",
+                                "enum": [
+                                    null,
+                                    "primary-physical",
+                                    "SR-IOV-virtual",
+                                    "secondary-physical",
+                                    "vSwitch-port",
+                                    "NCSI-port"
+                                ],
+                                "enumDescriptions": {
+                                    "NCSI-port": "This S-Channel is mapped to the NCSI internal port for management.",
+                                    "SR-IOV-virtual": "This S-Channel is presented to the host OS as a PCI SR-IOV virtual function.",
+                                    "primary-physical": "This S-Channel is presented to the host OS as a primary PCI physical function.",
+                                    "secondary-physical": "This S-Channel is presented to the host OS as a secondary PCI physical function, i.e. a PCI physical function behind a bridge on the device.",
+                                    "vSwitch-port": "This S-Channel is mapped to a Virtual Switch port."
+                                },
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0EthernetSupport": {
+                                "description": "When true, this S-Channel supports Ethernet.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0FCoESupport": {
+                                "description": "When true, this S-Channel supports Fibre Channel over Ethernet (FCoE).",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0PcpSupport": {
+                                "description": "Indicates which IEEE 802.1Q Ethernet Priority Code Point (PCP) classes are supported on this S-Channel. When no PCPs are supported, the S-Channel makes no attempt to filter or control traffic class. A string of 1/0 characters indicating 1=enabled, 0=disabled. PCP classes are ordered from highest numbered 7 (first) to lowest 0 (last).",
+                                "etag": true,
+                                "pattern": "^(([0-1]){8})$",
+                                "readonly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0RoCEESupport": {
+                                "description": "When true, this S-Channel supports RDMA over Converged Enhanced Ethernet (RoCEE).",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0Scid": {
+                                "description": "The S-Channel identifier for this Descriptor0 instance.",
+                                "etag": true,
+                                "maximum": 4095,
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor0iSCSISupport": {
+                                "description": "When true, this S-Channel supports Internet SCSI (iSCSI).",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor1ConnectionID": {
+                                "description": "A unique S-Channel identifer in UUID format.",
+                                "etag": true,
+                                "pattern": "^([0-9A-F]){8}(-([0-9A-F]){4}){3}-([0-9A-F]){12}$",
+                                "readonly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "Descriptor1Scid": {
+                                "description": "The S-Channel identifier for this Descriptor1 instance.",
+                                "etag": true,
+                                "maximum": 4095,
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ChannelDescriptionLocalSequenceNumber": {
+                    "description": "This station's channel discovery local sequence number which will be transmitted to the link partner on this port.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelDescriptionRemoteSequenceNumber": {
+                    "description": "The link partner's channel discovery local sequence number that was last successfully received and processed.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelDescriptorCount": {
+                    "description": "The number of channel descriptor pairs being transmitted to the link partner on this port.",
+                    "etag": true,
+                    "maximum": 66,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlLocalSequenceNumber": {
+                    "description": "This station's channel link control local sequence number which will be transmitted to the link partner on this port.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlMCEnable": {
+                    "description": "The Feature Indicators field, Management Controller (MC) Channel (SCID 4094) enabled state in the HPE CLC TLV being transmitted to the link partner on this port.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ChannelLinkControlRemoteSequenceNumber": {
+                    "description": "The link partner's channel link control local sequence number that was last successfully received and processed.",
+                    "etag": false,
+                    "maximum": 65535,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Role": {
+                    "description": "This port's IEEE 802.1Qbg role being advertised on the link.",
+                    "enum": [
+                        null,
+                        "bridge",
+                        "station"
+                    ],
+                    "enumDescriptions": {
+                        "bridge": "Indicates this link is operating locally as a Bridge.",
+                        "station": "Indicates this link is operating locally as a Station."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SChannelAssignments": {
+                    "description": "The set of all EVB <SCID,SVID> S-Channel assignments being transmitted to the link partner on this port.",
+                    "etag": true,
+                    "items": {
+                        "description": "An EVB <SCID,SVID> S-Channel identifier pair.",
+                        "etag": true,
+                        "properties": {
+                            "Scid": {
+                                "description": "SCID value for this <SCID,SVID> S-Channel identifier pair being transmitted to the link partner on this port.",
+                                "etag": true,
+                                "maximum": 4095,
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "Svid": {
+                                "description": "SVID assignment value for this <SCID,SVID> S-Channel identifier pair being transmitted to the link partner on this port. When 0 it indicates an SVID assignment request to the link partner is in progress.",
+                                "etag": true,
+                                "maximum": 4095,
+                                "minimum": 0,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "SChannelMaxCount": {
+                    "description": "The Channel Capacity value being advertised to the link partner. It indicates the number of S-Channels this station can support on this physical link.",
+                    "etag": true,
+                    "maximum": 4095,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "SChannelsSupported": {
+                    "description": "When true, indicates that this physical link has S-Channel capability.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "VirtualLinkStatusVector": {
+                    "description": "A bit vector indicating S-Channel status being transmitted on this link, 1=up, 0=down. S-Channel status bits are ordered by SCID from lowest numbered (first) to highest (last).",
+                    "etag": true,
+                    "pattern": "^([0-1]){1,}$",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "etag": true,
+            "type": "object"
+        },
+        "IANAMgmtAddrType": {
+            "enum": [
+                null,
+                "IPv4",
+                "IPv6",
+                "all802"
+            ],
+            "enumDescriptions": {
+                "IPv4": "Type 1 (IP version 4).",
+                "IPv6": "Type 2 (IP version 6).",
+                "all802": "Type 6 (All 802 media plus Ethernet 'canonical format')."
+            },
+            "etag": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IEEE802IDSubtype": {
+            "enum": [
+                null,
+                "ChassisComp",
+                "IfAlias",
+                "PortComp",
+                "MacAddr",
+                "NetworkAddr",
+                "IfName",
+                "AgentId",
+                "LocalAssign"
+            ],
+            "enumDescriptions": {
+                "AgentId": "Agent circuit ID, based on the agent-local identifier of the circuit as defined in RFC 3046.",
+                "ChassisComp": "Chassis component, based in the value of entPhysicalAlias in IETF RFC 4133.",
+                "IfAlias": "Interface alias, based on the IfAlias MIB object.",
+                "IfName": "Interface name, based on the IfName MIB object.",
+                "LocalAssign": "Locally assigned, based on a alpha-numeric value locally assigned.",
+                "MacAddr": "MAC address, based on an agent detected unicast source address as defined in IEEE Std. 802.",
+                "NetworkAddr": "Network address, based on an agent detected network address.",
+                "PortComp": "Port component, based in the value of entPhysicalAlias in IETF RFC 4133."
+            },
+            "etag": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "LldpReceiving": {
+            "description": "LLDP data being received on this link.",
+            "etag": true,
+            "properties": {
+                "ChassisID": {
+                    "description": "The LLDP chassis ID received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChassisIDSubtype": {
+                    "$ref": "#/definitions/IEEE802IDSubtype",
+                    "description": "The IEEE 802.1AB-2009 chassis ID subtype received from the link partner.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "Dcb": {
+                    "description": "DCB data being received on thhis link.",
+                    "etag": true,
+                    "properties": {
+                        "ApplicationPriorityReceived": {
+                            "description": "True when an unexpired Data Center Bridging (DCB) Application Priority Table TLV has been received.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "ApplicationPriorityTable": {
+                            "description": "The set of all entries in the DCB Application Priority Table, as received in the LLDP Application Priority TLV.",
+                            "items": {
+                                "description": "One entry in the DCB Application Priority Table, as received in the LLDP Application Priority TLV.",
+                                "etag": true,
+                                "properties": {
+                                    "ApplicationPriority": {
+                                        "description": "Indicates which priority level is assigned for this application protocol.",
+                                        "etag": true,
+                                        "maximum": 7,
+                                        "minimum": 0,
+                                        "readonly": true,
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
+                                    },
+                                    "ApplicationProtocol": {
+                                        "description": "An integer value indicating application protocol identity, of the type described by DCBApplicationSelect.",
+                                        "etag": true,
+                                        "maximum": 65535,
+                                        "minimum": 0,
+                                        "readonly": true,
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
+                                    },
+                                    "ApplicationSelect": {
+                                        "description": "Indentifies the type of the DCBApplicationProtocol property.",
+                                        "enum": [
+                                            null,
+                                            "reserved",
+                                            "default-Ethertype",
+                                            "TCP-SCTP",
+                                            "UDP-DCCP",
+                                            "TCP-SCTP-UDP-DCCP"
+                                        ],
+                                        "enumDescriptions": {
+                                            "TCP-SCTP": "DCBApplicationProtocol value is a well known port over TCP or SCTP.",
+                                            "TCP-SCTP-UDP-DCCP": "DCBApplicationProtocol is a well known port over TCP, SCTP, SCTP, or DCCP.",
+                                            "UDP-DCCP": "DCBApplicationProtocol value is a well known port over UDP or DCCP.",
+                                            "default-Ethertype": "Default priority. Use when priority not otherwise specified.",
+                                            "reserved": "Reserved select value."
+                                        },
+                                        "etag": true,
+                                        "readonly": true,
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    }
+                                },
+                                "readonly": true,
+                                "type": "object"
+                            },
+                            "readonly": true,
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "Ets": {
+                            "description": "ETS data being received on this link.",
+                            "etag": true,
+                            "properties": {
+                                "BandwidthAssignmentTable": {
+                                    "description": "The DCB ETS Traffic Class Assignment table received from the link partner. The sum of all bandwidth assignments in this table must be 100 or less",
+                                    "etag": true,
+                                    "items": {
+                                        "description": "One entry in the DCB ETS Traffic Class (TC) Bandwidth Assignment Table.",
+                                        "etag": true,
+                                        "maximum": 100,
+                                        "minimum": 0,
+                                        "readonly": true,
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
+                                    },
+                                    "readonly": true,
+                                    "type": "array"
+                                },
+                                "CreditBasedShaper": {
+                                    "description": "True if the link partner supports the Credit-based Shaper (CBS) transmmission selection algortithm.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "MaximumTrafficClassCount": {
+                                    "description": "The maximum number of traffic classes supported by the link partner.",
+                                    "etag": true,
+                                    "maximum": 8,
+                                    "minimum": 1,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "PriorityAssignmentTable": {
+                                    "description": "The DCB ETS Priority Assignment Table from the received DCB ETS Configuration TLV.  Priority values are listed in order from 0 (first) to 7 (last).",
+                                    "etag": true,
+                                    "items": {
+                                        "description": "One entry in the DCB ETS Priority Assignment Table indicating this priority's Traffic Class assignment.",
+                                        "etag": true,
+                                        "readonly": true,
+                                        "type": [
+                                            "integer",
+                                            "null"
+                                        ]
+                                    },
+                                    "readonly": true,
+                                    "type": "array"
+                                },
+                                "TlvReceived": {
+                                    "description": "True when an unexpired DCB Enhanced Transmission Selection (ETS) TLV has been received.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "TrafficSelectionAlgorithmTable": {
+                                    "description": "The DCB ETS TSA assignment table received from the link partner.  Traffic classes are listed from 0 (first) to 7 (last).",
+                                    "etag": true,
+                                    "items": {
+                                        "description": "An assignment of a Traffic Selection Algorithm (TSA) to a traffic class.",
+                                        "enum": [
+                                            null,
+                                            "strict",
+                                            "CBS",
+                                            "ETS",
+                                            "vendor"
+                                        ],
+                                        "enumDescriptions": {
+                                            "CBS": "Credit-Based Shaper algorithm.",
+                                            "ETS": "Enhanced Traffic Selection algorithm.",
+                                            "strict": "Strict priority algorithm.",
+                                            "vendor": "Vendor specific algorithm for use with DCB."
+                                        },
+                                        "etag": true,
+                                        "readonly": true,
+                                        "type": [
+                                            "string",
+                                            "null"
+                                        ]
+                                    },
+                                    "readonly": true,
+                                    "type": "array"
+                                },
+                                "Willing": {
+                                    "description": "True if the link partner is willing to accept ETS configurations.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "LocalEqualRemote": {
+                            "description": "True when the transmitted and received contents match for both DCB ETS and PFC TLVs.",
+                            "etag": true,
+                            "readonly": true,
+                            "type": [
+                                "boolean",
+                                "null"
+                            ]
+                        },
+                        "Pfc": {
+                            "description": "Priority flow control data being received on this link.",
+                            "etag": true,
+                            "properties": {
+                                "EnabledTrafficClasses": {
+                                    "description": "A bit string indicating which priority levels have PFC enabled, 1=enabled. PFC levels are bit ordered from 7 (first) to 0 (last).",
+                                    "etag": true,
+                                    "pattern": "^([0-1]){8}$",
+                                    "readonly": true,
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "MacSecurityBypassCapability": {
+                                    "description": "True when the link partner has the ability to bypass MAC security in order to improve PFC responsiveness.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "MaximumTrafficClassCount": {
+                                    "description": "Indicates the maximum number of traffic classes that the link partner can simultaneously support.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "TlvReceived": {
+                                    "description": "True when an unexpired DCB Priority Flow Control (PFC) TLV has been received.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                },
+                                "Willing": {
+                                    "description": "True if the LLDP link partner is willing to accept PFC configurations.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "boolean",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "Version": {
+                            "description": "The DCB version supported by the link partner.",
+                            "enum": [
+                                null,
+                                "unknown",
+                                "CEE",
+                                "IEEE"
+                            ],
+                            "enumDescriptions": {
+                                "CEE": "Converged Enhanced Ethernet",
+                                "IEEE": "IEEE 802.1Q",
+                                "unknown": "Unknown"
+                            },
+                            "etag": true,
+                            "readonly": true,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "ManagementAddress": {
+                    "description": "The management address received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ManagementAddressOID": {
+                    "description": "An object identifier for the hardware or protocol entity associated with the management address.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ManagementAddressReceived": {
+                    "description": "True when a currently unexpired management address TLV has been received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ManagementAddressType": {
+                    "$ref": "#/definitions/IANAMgmtAddrType",
+                    "description": "The type of management address received from the link partner.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "ManagementCvlanID": {
+                    "description": "The management CVLAN ID received from the link partner.",
+                    "etag": true,
+                    "maximum": 4095,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ManagementIFNumSubtype": {
+                    "description": "Management interface number subtype.",
+                    "enum": [
+                        null,
+                        "unknown",
+                        "ifIndex",
+                        "sysPortNum"
+                    ],
+                    "enumDescriptions": {
+                        "ifIndex": "Interface number is based on the ifIndex MIB object.",
+                        "sysPortNum": "Interface number is based on the system port numbering convention.",
+                        "unknown": "Interface number is not known."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ManagementIFNumber": {
+                    "description": "Management interface number received from the link partner represented as a colon delimited string of hexadecimal octets.",
+                    "etag": true,
+                    "pattern": "^([0-9A-F]{2})([:]([0-9A-F]){2}){0,3}$",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ManagementVlanReceived": {
+                    "description": "True when a currently unexpired management address VID TLV has been received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "NearestBridgeTtlExpired": {
+                    "description": "True when the LLDP PDU most recently received from the link partner has expired.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PortDescription": {
+                    "description": "The remote link partner's port description.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PortID": {
+                    "description": "A colon delimited string of hexadecimal octets received from the link partner identifying its port.",
+                    "etag": true,
+                    "pattern": "^([0-9A-F]{2})([:]([0-9A-F]){2}){0,63}$",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PortIDSubtype": {
+                    "$ref": "#/definitions/IEEE802IDSubtype",
+                    "description": "The port ID subtype enumeration from IEEE 802.1AB-2009 Table 8-3, which indicates the format for the PortID property.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "SystemDescription": {
+                    "description": "The system description received from the link partner.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "LldpTransmitting": {
+            "description": "LLDP data being transmitted on this link.",
+            "etag": true,
+            "properties": {
+                "ChassisID": {
+                    "description": "The Link Layer Data Protocol (LLDP) chassis ID being transmitted on this link.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChassisIDSubtype": {
+                    "$ref": "#/definitions/IEEE802IDSubtype",
+                    "description": "The IEEE 802.1AB-2009 chassis ID subtype being transmitted on this link.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "ManagementAddresses": {
+                    "description": "The set of all management addresses being transmitted in LLDP on this link.",
+                    "etag": true,
+                    "items": {
+                        "description": "A management address for this server.",
+                        "etag": true,
+                        "properties": {
+                            "ManagementIPAddress": {
+                                "description": "A management address.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "ManagementIPAddressType": {
+                                "$ref": "#/definitions/IANAMgmtAddrType",
+                                "description": "The IANA type of this management address.",
+                                "etag": true,
+                                "readonly": true
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array",
+                    "uniqueItems": true
+                },
+                "ManagementCvlanID": {
+                    "description": "The management CVLAN ID being transmitted on this link.",
+                    "etag": true,
+                    "maximum": 4095,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ManagementCvlanIDTransmitted": {
+                    "description": "When true, indicates that a management CVLAN ID is being transmitted on this link.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PortDescription": {
+                    "description": "An alphanumeric string describing this link.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PortID": {
+                    "description": "A colon delimited string of hexadecimal octets identifying this port.",
+                    "etag": true,
+                    "pattern": "^([0-9A-F]{2})([:]([0-9A-F]){2}){0,63}$",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PortIDSubtype": {
+                    "$ref": "#/definitions/IEEE802IDSubtype",
+                    "description": "The port ID subtype from IEEE 802.1AB-2009 Table 8-3.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "SystemDescription": {
+                    "description": "A textual description of this system.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#NetworkPort.DiagnosticsReset": {
+                    "additionalProperties": false,
+                    "description": "NOTE: Deprecated, will be removed in a future release. Replaced by HpeNetworkPort.DiagnosticsReset. Invoking this action will reset all diagnostic capabilities on this port to an inactive state.",
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeNetworkPort.DiagnosticsReset": {
+                    "additionalProperties": false,
+                    "description": "Invoking this action will reset all diagnostic capabilities on this port to an inactive state.",
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AutoNegotiationCapable": {
+            "description": "Indicates the ability of this network port to autonegotiate link speed.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "ConfiguredNetworkLinks": {
+            "description": "The set of link speed and width pairs this port is configured to use for autonegotiation.",
+            "items": {
+                "$ref": "#/definitions/dConfiguredNetworkLink"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "Evb": {
+            "description": "Edge Virtual Bridging (EVB) information for this port.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "format": "uri-reference",
+                    "longDescription": "NOTE: Deprecated, will be removed in a future release, replaced by EvbData. The unique resource identifier for EVB information on this port.  When null, the resource is not available.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "EvbData": {
+            "additionalProperties": false,
+            "description": "Edge Virtual Bridging (EVB) data for this network port.",
+            "properties": {
+                "Receiving": {
+                    "$ref": "#/definitions/EvbReceiving",
+                    "description": "EVB TLV data received from the link partner on this port.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "Transmitting": {
+                    "$ref": "#/definitions/EvbTransmitting",
+                    "description": "EVB TLV data being transmitted to the link partner on this port.",
+                    "etag": true,
+                    "readonly": true
+                }
+            },
+            "etag": false,
+            "type": "object"
+        },
+        "Lldp": {
+            "description": "Link-Layer Discovery Protocol (LLDP) information for this port.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "format": "uri-reference",
+                    "longDescription": "Note: Deprecated, to be removed in a future release, replaced by LldpData. The unique resource identifier for LLDP information on this port.  When null, the resource is not available.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "LldpData": {
+            "additionalProperties": false,
+            "description": "Link-Layer Discovery Protocol (LLDP) data for this network port.",
+            "properties": {
+                "Receiving": {
+                    "$ref": "#/definitions/LldpReceiving",
+                    "description": "LLDP data being received on this link.",
+                    "etag": true,
+                    "readonly": true
+                },
+                "Transmitting": {
+                    "$ref": "#/definitions/LldpTransmitting",
+                    "description": "LLDP data being transmitted on this link.",
+                    "etag": true,
+                    "readonly": true
+                }
+            },
+            "etag": false,
+            "type": "object"
+        },
+        "PortDiagnosticEnableLocalLoopback": {
+            "description": "When true, local loopback is active on this port.  PortDiagnosticsEnabled must first be true in order to set this property to true.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "PortDiagnosticEnableRemoteLoopback": {
+            "description": "When true, remote loopback is active on this port. PortDiagnosticsEnabled must first be true in order to set this property to true.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "PortDiagnosticLocalLoopbackCapable": {
+            "description": "When true, the port has local loopback capability.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "PortDiagnosticRemoteLoopbackCapable": {
+            "description": "When true, the port has remote loopback capability.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "PortDiagnosticsEnabled": {
+            "description": "When true, diagnostic features are enabled on this port.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "VirtualFunctionAllocations": {
+            "description": "Indicates the maximum number of virtual functions that may be allocated per logical device function on this port.",
+            "etag": true,
+            "items": {
+                "additionalProperties": false,
+                "etag": true,
+                "properties": {
+                    "NetworkDeviceFunction": {
+                        "description": "The logical network device function to which this virtual function allocation applies.",
+                        "etag": true,
+                        "properties": {
+                            "@odata.id": {
+                                "format": "uri-reference",
+                                "longDescription": "A unique resource identifer for the network device function this allocation pertains to.  When null, the function assignment is not available.",
+                                "readonly": true,
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "VirtualFunctionsAllocated": {
+                        "description": "The number of virtual functions allocated to this logical network device function instance.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": false,
+            "type": "array"
+        }
+    },
+    "title": "#HpeNetworkPort.v1_3_2.HpeNetworkPort",
+    "etag": true,
+    "type": "object"
+}

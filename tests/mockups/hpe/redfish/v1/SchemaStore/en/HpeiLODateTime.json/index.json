@@ -1,0 +1,163 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLODateTime",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLODateTime resource describes the properties for managing the BMC data and time.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "ConfigurationSettings": {
+            "description": "The state of the currently displayed configuration settings.",
+            "enum": [
+                "Current",
+                "SomePendingReset"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "DateTime": {
+            "description": "The date and time used by management processor.",
+            "etag": false,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "THE URIs for the resources related to the Ethernet network interface resource.",
+            "properties": {
+                "EthernetNICs": {
+                    "description": "The URI for this Ethernet network interface resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "NTPServers": {
+            "description": "The NTP servers, in order of preference.",
+            "etag": true,
+            "items": {
+                "description": "The current NTP server's IPv4 address, IPv6 address, or FQDN. The value either comes from DHCP or is static depending on the DHCP settings.",
+                "maxLength": 255,
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "PropagateTimeToHost": {
+            "default": true,
+            "description": "Determines whether the server time is synchronized with the management processor time during the first POST after AC power is applied.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "StaticNTPServers": {
+            "description": "The static NTP servers, in order of preference.",
+            "etag": true,
+            "items": {
+                "description": "The static NTP server's IPv4 address, IPv6 address, or FQDN. To set this property, management processor must not be configured to use NTP servers provided by DHCPv4 or DHCPv6.",
+                "maxLength": 255,
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "TimeZone": {
+            "additionalProperties": false,
+            "description": "The currently selected time zone.",
+            "etag": true,
+            "properties": {
+                "Index": {
+                    "description": "The index of the current time zone. To set a new time zone, specify a different time zone index. This property can be set only when DHCPv4 or DHCPv6 supplied time settings are disabled. Since the time zone list might vary from one firmware version to another (which often leads to differences in time zone indices), setting the time zone by name is recommended over setting by index, for better compatibility.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "Name": {
+                    "description": "The name of the current time zone. Patch this field to set the time zone by name - recommended over patching the index. When this field is specified in the patch, the Index field, if specified, will be ignored.",
+                    "readonly": false,
+                    "type": "string"
+                },
+                "UtcOffset": {
+                    "description": "The UTC offset of the current time zone, in the format {+/-}hh:mm",
+                    "pattern": "^(\\+|\\-)(((0[0-9]|1[0-7]):[0-5][0-9])|(18:00))$",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Value": {
+                    "description": "The environment variable value.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "TimeZoneList": {
+            "etag": true,
+            "items": {
+                "additionalProperties": false,
+                "description": "The list of available time zones.",
+                "properties": {
+                    "Index": {
+                        "description": "The time zone index.",
+                        "readonly": true,
+                        "type": "number"
+                    },
+                    "Name": {
+                        "description": "The time zone name.",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "UtcOffset": {
+                        "description": "The UTC offset of the time zone, in the format {+/-}hh:mm",
+                        "pattern": "^(\\+|\\-)(((0[0-9]|1[0-7]):[0-5][0-9])|(18:00))$",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Value": {
+                        "description": "The environment variable value.",
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLODateTime.v2_0_0.HpeiLODateTime",
+    "type": "object"
+}

@@ -1,0 +1,294 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "EventService",
+    "actions": {
+        "actions": {
+            "EventService.SubmitTestEvent": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "EventService.SubmitTestEvent"
+                        ],
+                        "type": "string"
+                    },
+                    "EventId": {
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "EventTimestamp": {
+                        "format": "date-time",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "EventType": {
+                        "enum": [
+                            "StatusChange",
+                            "ResourceUpdated",
+                            "ResourceAdded",
+                            "ResourceRemoved",
+                            "Alert"
+                        ],
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Message": {
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "MessageArgs": {
+                        "items": {
+                            "readonly": false,
+                            "type": "string"
+                        },
+                        "readonly": false,
+                        "type": "array"
+                    },
+                    "MessageId": {
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "OriginOfCondition": {
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Severity": {
+                        "enum": [
+                            "OK",
+                            "Warning",
+                            "Critical"
+                        ],
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "EventType",
+                    "OriginOfCondition",
+                    "MessageArgs",
+                    "MessageId",
+                    "Message",
+                    "Severity",
+                    "EventTimestamp",
+                    "EventId"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "This describes the POST custom actions defined for this type (the implemented actions might be a subset of these)."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The EventService resource describes the Event Service.  It represents the properties for the service itself and has links to the actual list of subscriptions.",
+    "displayname": "EventService.0.91.0",
+    "private": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#EventService.SubmitTestEvent": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "EventID@Redfish.AllowableValues": {
+                            "description": "The supported values for the EventID parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the EventID parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "EventTimestamp@Redfish.AllowableValues": {
+                            "description": "The supported values for the EventTimestamp parameter.",
+                            "items": {
+                                "format": "date-time",
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the EventTimestamp parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "EventType@Redfish.AllowableValues": {
+                            "description": "The supported values for the EventType parameter.",
+                            "items": {
+                                "enum": [
+                                    "StatusChange",
+                                    "ResourceUpdated",
+                                    "ResourceAdded",
+                                    "ResourceRemoved",
+                                    "Alert"
+                                ],
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the EventType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "Message@Redfish.AllowableValues": {
+                            "description": "The supported values for the Message parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Message parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "MessageArgs@Redfish.AllowableValues": {
+                            "description": "The supported values for the MessageArgs parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the MessageArgs parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "MessageID@Redfish.AllowableValues": {
+                            "description": "The supported values for the MessageID parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the MessageID parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "OriginOfCondition@Redfish.AllowableValues": {
+                            "description": "The supported values for the OriginOfCondition parameter.",
+                            "items": {
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the OriginOfCondition parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "Severity@Redfish.AllowableValues": {
+                            "description": "The supported values for the Severity parameter.",
+                            "items": {
+                                "enum": [
+                                    "OK",
+                                    "Warning",
+                                    "Critical"
+                                ],
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Severity parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeliveryRetryAttempts": {
+            "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
+            "displayname": "DeliveryRetryAttempts",
+            "etag": true,
+            "readonly": false,
+            "type": "integer"
+        },
+        "DeliveryRetryIntervalSeconds": {
+            "description": "This represents the number of seconds between retry attempts for sending any given Event",
+            "displayname": "DeliveryRetryIntervalSeconds",
+            "etag": true,
+            "readonly": false,
+            "type": "integer"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "EventTypesForSubscription": {
+            "description": "This is the types of Events that can be subscribed to.",
+            "displayname": "EventTypesForSubscription",
+            "items": {
+                "enum": [
+                    "StatusChange",
+                    "ResourceUpdated",
+                    "ResourceAdded",
+                    "ResourceRemoved",
+                    "Alert"
+                ],
+                "enumDescriptions": {
+                    "Alert": "A condition exists which requires attention",
+                    "ResourceAdded": "A resource has been added",
+                    "ResourceRemoved": "A resource has been removed",
+                    "ResourceUpdated": "The value of this resource has been updated",
+                    "StatusChange": "The status of this resource has changed"
+                },
+                "readonly": true,
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeEventService.json#"
+                }
+            },
+            "type": "object"
+        },
+        "ServiceEnabled": {
+            "description": "This indicates whether this service is enabled.",
+            "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled.",
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Subscriptions": {
+            "description": "This is a reference to a collection of ListenerDestination resources.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#EventService.v1_0_8.EventService",
+    "type": "object"
+}

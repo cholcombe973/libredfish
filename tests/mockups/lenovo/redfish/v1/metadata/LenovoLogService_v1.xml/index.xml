@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoLogService  v1.0.0                                     -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService_v1.xml">
+    <edmx:Include Namespace="LogService"/>
+    <edmx:Include Namespace="LogService.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLogService">
+      <ComplexType Name="LenovoLogService" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoLogService resource."/>
+      </ComplexType>
+            
+      <Action Name="GetLogEntriesBySequenceNumber" IsBound="true">
+        <Parameter Name="LenovoLogService" Type="LogService.v1_0_0.OemActions"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This action shall return all matched Log entries, based on the two input parameters. The return code of this action shall be an unsigned int type."/>
+        <Parameter Name="FirstEventSequenceNumber" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Description" String="This is the first (or only) sequence number value being requested. If it is not found, then no records will be output."/>
+        </Parameter>
+        <Parameter Name="NumberOfEntries" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Description" String="This is the number of entries requested to be returned. If there are not enough entries in the log to satisfy NumberOfEntries input, then the available entries are returned with no error. A value of 0 for NmberOfEntries is invalid and fails with Invalid Parameter and no output."/>
+        </Parameter>
+        <Parameter Name="HiddenType" Type="LenovoLogService.v1_0_0.HiddenTypeItem">
+          <Annotation Term="OData.Description" String="Hidden log entries will be returned if it's hidden. Default value is none-hidden."/>
+        </Parameter>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLogService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <ComplexType Name="LenovoLogServiceProperties" BaseType="LenovoLogService.LenovoLogService">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is Lenovo extended details of Log service properties."/>
+        <Property Name="SupportedCategories" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents that the PFA (Predictable Failure Alert) event categories supported by the server."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the PFA (Predictable Failure Alert) event categories supported by the server."/>
+        </Property>
+        <Property Name="DesiredCategories" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents that the desired PFA event categories which are to be processed by the system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the desired PFA event categories which are to be processed by the system."/>
+        </Property>
+        <Property Name="VMMoveCategory" Type="Collection(LenovoLogService.v1_0_0.VMMoveCategoryItem)" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents the PFA (Predictable Failure Alert) event categories supported by IMM no matter these events are supported on not by the server"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array of objects used to represent the PFA event categories supported by IMM no matter these events are supported on not by the server"/>
+        </Property>
+        <Property Name="FirstSeqNum" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The first sequence number of log entry in this log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number used to represent the first sequence number of this log service."/>
+        </Property>
+        <Property Name="LastSeqNum" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The last sequence number of log entry in this log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number used to represent the last sequence number of  log entry in this log service."/>
+        </Property>
+        <Property Name="HiddenFirstSeqNum" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The first sequence number of hidden log entry in this log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number used to represent the first sequence number of hidden log entry in this log service."/>
+        </Property>
+        <Property Name="HiddenLastSeqNum" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The last sequence number of hidden log entry in this log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number used to represent the last sequence number of hidden log entry in this log service."/>
+        </Property>
+        <Property Name="AuditLogCapabilities" Type="Collection(LenovoLogService.v1_0_0.AuditLogCapability)">
+          <Annotation Term="OData.Description" String="Represents the capabilities of audit log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be an array to indicate the capabilities of audit log service."/>
+        </Property>
+        <Property Name="EnableSELWrapping" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents SEL log service is allowed to wrapping or not."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property indicates SEL log service is allowed to wrapping or not. Only available in SEL log service."/>
+        </Property>
+        <Property Name="MPFA_FirstSeqNum" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The first sequence number of log entry in this log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number used to represent the first sequence number of MPFA data in the Diagnostic service."/>
+        </Property>
+        <Property Name="MPFA_LastSeqNum" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The last sequence number of log entry in this log service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a number used to represent the last sequence number of MPFA data in the Diagnostic service."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="VMMoveCategoryItem">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="VMMoveCategoryBit" Type="Edm.Int64" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents bits of each PFA event categories supported by IMM."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent bits of the PFA event categories."/>
+        </Property>
+        <Property Name="VMMoveCategoryName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents name of the PFA event categories supported by IMM."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent name of the PFA event categories."/>
+        </Property>
+        <Property Name="VMMoveCategoryType" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents type of the PFA event categories supported by IMM."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent type of the PFA event categories."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="HiddenTypeItem">
+        <Member Name="hidden"/>
+        <Member Name="none_hidden"/>
+      </EnumType>
+      
+      <EnumType Name="AuditLogCapability">
+        <Member Name="IPMICmd"/>
+        <Member Name="None"/>
+      </EnumType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeComponentUpdateEntry",
+    "additionalProperties": false,
+    "copyright": "Copyright 2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2021 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeComponentUpdateEntry resource describes a software or firmware component information and update status.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "DependencyStatus": {
+            "description": "DependencyStatus",
+            "readonly": true,
+            "type": "boolean"
+        },
+        "ComponentStatus": {
+            "description": "Status",
+            "enum": [
+                "Pending",
+                "In Progress",
+                "Suspended",
+                "Completed",
+                "Exception",
+                "Killed",
+                "Newly Created",
+                "Interrupted",
+                "Stopping",
+                "Running as a Service"
+            ],
+            "enumDescriptions": {
+                "Pending": "Update is pending and has not started.",
+                "In Progress": "Update Service in Progress.",
+                "Suspended": "Update has been suspended.",
+                "Completed": "Update completed successfully",
+                "Exception": "Update has stopped due to an exception condition.",
+                "Killed": "Update was terminated.",
+                "Newly Created": "A new update.",
+                "Interrupted": "Update has been interrupted.",
+                "Stopping": "Update is in the process of stopping.",
+                "Running as a Service": "Update now running as a service."
+            },
+            "enumLongDescriptions": {
+                "Pending": "This value shall represent that the update is pending some condition and has not yet begun to execute.",
+                "In Progress": "This value shall represent that the update is ongoing.",
+                "Suspended": "This value shall represent that the update has been suspended but is expected to restart and is therefore not complete.",
+                "Completed": "This value shall represent that the update completed successfully or with warnings.",
+                "Exception": "This value shall represent that the update completed with errors.",
+                "Killed": "This value shall represent that the update is complete because an operator killed it.",
+                "Newly Created": "This value shall represent that the update is newly created, but has not started.",
+                "Interrupted": "This value shall represent that the update has been interrupted but is expected to restart and is therefore not complete.",
+                "Stopping": "This value shall represent that the update is stopping but is not yet complete.",
+                "Running as a Service": "This value shall represent that the update is now running as a service and expected to continue operation until stopped or killed."
+            },
+            "readonly": true,
+            "type": [
+                "string"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "description": "Name of the component.",
+            "maxLength": 64,
+            "readonly": true,
+            "type": "string"
+        },
+        "Version": {
+            "description": "Version of the component.",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeComponentUpdateEntry.v1_0_1.HpeComponentUpdateEntry",
+    "type": "object"
+}

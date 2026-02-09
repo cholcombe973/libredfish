@@ -1,0 +1,70 @@
+{
+    "$id": "/redfish/v1/Schemas/DellFan.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellFan": {
+            "additionalProperties": false,
+            "description": "This property shall represent the Oem properties for a Fan resource.",
+            "longDescription": "This property shall represent the Oem properties for a Fan resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FanPWM": {
+                    "description": "Represents Fan's PWM.",
+                    "longDescription": "The property shall represent Fan's Pulse width modulation(PWM).",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "FanType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/FanType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Represents type of the fan.",
+                    "longDescription": "This property shall represent type of the fan.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "FanType": {
+            "enum": [
+                "NotApplicable",
+                "Standard",
+                "Silver",
+                "NotSupported",
+                "Gold"
+            ],
+            "enumDescriptions": {
+                "Gold": "A Gold standard fan.",
+                "NotApplicable": "Fan type not applicable.",
+                "NotSupported": "Fan type not supported.",
+                "Silver": "A Silver standard fan.",
+                "Standard": "A standard fan."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellFan.v1_0_0"
+}

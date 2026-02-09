@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellComponentIntegrity v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellComponentIntegrity">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellComponentIntegrity.v1_0_0">
+            <ComplexType Name="SPDM" Nullable="true">
+                <Annotation Term="OData.Description" String="An Oem extension to represent SPDM related properties."/>
+                <Annotation Term="OData.LongDescription" String="An Oem extension to represent SPDM related properties."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="SPDM" Type="DellComponentIntegrity.v1_0_0.SPDMObject">
+                    <Annotation Term="OData.Description" String="Oem properties for representing SPDM properties."/>
+                    <Annotation Term="OData.LongDescription" String="Oem properties for representing SPDM properties."/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="SPDMObject">
+                <Annotation Term="OData.Description" String="An Oem extension to represent SPDM related properties."/>
+                <Annotation Term="OData.LongDescription" String="An Oem extension to represent SPDM related properties."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DigestAndCertificateSupport" Type="DellComponentIntegrity.v1_0_0.Support">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the support for digest."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the support for digest."/>
+                </Property>
+                <Property Name="ChallengeAuthResponseSupport" Type="DellComponentIntegrity.v1_0_0.Support">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent support for challenge auth response."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent support for challenge auth response."/>
+                </Property>
+                <Property Name="MeasurementsSupport" Type="DellComponentIntegrity.v1_0_0.Support">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the support for measurement."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the support for measurement."/>
+                </Property>
+                <Property Name="EncryptionSupport" Type="DellComponentIntegrity.v1_0_0.Support">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the support for encryption."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the support for encryption."/>
+                </Property>
+                <Property Name="DeviceChallengeStatus" Type="DellComponentIntegrity.v1_0_0.Status">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the device challenge status."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the device challenge status."/>
+                </Property>
+            </ComplexType>
+            <EnumType Name="Support">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="Status">
+                <Member Name="Failed">
+                    <Annotation String="Failed" Term="OData.Description"/>
+                    <Annotation String="Failed" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Success">
+                    <Annotation String="Success" Term="OData.Description"/>
+                    <Annotation String="Success" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

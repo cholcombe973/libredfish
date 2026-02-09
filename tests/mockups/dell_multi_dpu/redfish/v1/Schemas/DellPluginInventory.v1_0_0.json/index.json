@@ -1,0 +1,170 @@
+{
+    "$id": "/redfish/v1/Schemas/DellPluginInventory.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellPluginInventory.Restart": {
+                    "$ref": "#/definitions/Restart"
+                },
+                "#DellPluginInventory.Uninstall": {
+                    "$ref": "#/definitions/Uninstall"
+                }
+            },
+            "type": "object"
+        },
+        "DellPluginInventory": {
+            "additionalProperties": false,
+            "description": "The DellPluginInventory schema describes the plugin inventory and the properties for the plugin service itself.",
+            "longDescription": "This resource shall represent a plugin inventory and the properties that affect the plugin service itself for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "PluginEnabled": {
+                    "description": "The state of the plugin true when enabled, false when disabled.",
+                    "longDescription": "The state of the plugin true when enabled, false when disabled.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "PluginResourceCPUTime": {
+                    "description": "The cumulative CPU utilization of the process.",
+                    "longDescription": "The cumulative CPU utilization of the process.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PluginResourceElapsedRuntime": {
+                    "description": "The amount of wall clock time the process has been running.",
+                    "longDescription": "The amount of wall clock time the process has been running.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PluginResourceRSS": {
+                    "description": "The plugin process memory utilization.",
+                    "longDescription": "The plugin process memory utilization.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PluginSizeKB": {
+                    "description": "Plugin File System size reported in terms of KB.",
+                    "longDescription": "This property shall contain File System size reported in terms of KB.",
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "PluginStatus": {
+                    "description": "The current status of the plugin.",
+                    "longDescription": "The current status of the plugin.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Restart": {
+            "additionalProperties": false,
+            "description": "The Restart operation shall restart plugin instance present in SoftwareInventory.",
+            "longDescription": "The Restart operation shall restart plugin instance present in SoftwareInventory.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Uninstall": {
+            "additionalProperties": false,
+            "description": "The Uninstall operation shall remove plugin instance present in SoftwareInventory.",
+            "longDescription": "The Uninstall operation shall remove plugin instance present in SoftwareInventory.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellPluginInventory.v1_0_0"
+}

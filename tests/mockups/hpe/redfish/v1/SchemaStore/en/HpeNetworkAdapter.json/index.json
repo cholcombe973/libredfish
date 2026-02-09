@@ -1,0 +1,454 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeNetworkAdapter",
+    "actions": {
+        "actions": {
+            "NetworkAdapter.FlushConfigurationToNVM": {
+                "description": "NOTE: Deprecated, will be removed in a future release.  Replaced by HpeNetworkAdapter.FlushConfigurationToNVM.",
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "NetworkAdapter.FlushConfigurationToNVM"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeNetworkAdapter.FlushConfigurationToNVM": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeNetworkAdapter.FlushConfigurationToNVM"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        }
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeNetworkAdapter resource describes the Hewlett Packard Enterprise property extensions for Network Adapters",
+    "etag": true,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#NetworkAdapter.FlushConfigurationToNVM": {
+                    "additionalProperties": false,
+                    "description": "NOTE: Deprecated, will be removed in a future release.  Replaced by #HpeNetworkAdapter.FlushConfigurationToNVM. Invoking this action instructs the network adapter to save its configuration state to non-volatile storage. This optional action may not be supported by all devices. Support is indicated by target presence in a GET response.",
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeNetworkAdapter.FlushConfigurationToNVM": {
+                    "additionalProperties": false,
+                    "description": "Invoking this action instructs the network adapter to save its configuration state to non-volatile storage. This optional action may not be supported by all devices. Support is indicated by target presence in a GET response.",
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CLPVersion": {
+            "description": "Option ROM Systems Management Architecture for Server Hardware (SMASH) Command Line Protocol (CLP) support version.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Controllers": {
+            "etag": true,
+            "items": {
+                "properties": {
+                    "ConfigurationStatus": {
+                        "description": "Summary digest data for the current configuration of this network adapter controller, which can be used to detect configuration changes.",
+                        "etag": true,
+                        "properties": {
+                            "Detail": {
+                                "description": "An array of digests representing configuration state for various individual portions of this network adapter controller, the mapping of which is HPE proprietary.",
+                                "etag": true,
+                                "items": {
+                                    "properties": {
+                                        "Group": {
+                                            "description": "Configuration group identifier.",
+                                            "etag": true,
+                                            "readonly": true,
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "SubGroup": {
+                                            "description": "Configuration sub-group identifier.",
+                                            "etag": true,
+                                            "readonly": true,
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        },
+                                        "Summary": {
+                                            "description": "A digest value representing the current state of configuration for this group/sub-group.",
+                                            "etag": true,
+                                            "readonly": true,
+                                            "type": [
+                                                "integer",
+                                                "null"
+                                            ]
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "type": "object"
+                                },
+                                "readonly": true,
+                                "type": "array"
+                            },
+                            "Summary": {
+                                "description": "A digest value representing the current configuration state of this network adapter controller.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "DeviceLimitationsBitmap": {
+                        "description": "Indicates any unique device limitations. A value of 0 indicates no limitations are present. When set, bit 0 indicates that the device cannot validate data received when in standby power. All other bit mappings are reserved.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "EdgeVirtualBridging": {
+                        "description": "Capability, status, and configuration values related to Edge Virtual Bridging (EVB) for this controller.",
+                        "etag": true,
+                        "properties": {
+                            "ChannelDescriptionTLVCapable": {
+                                "description": "When true, this controller supports HPE Flex10Qbg Channel Description TLVs.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "ChannelLinkControlTLVCapable": {
+                                "description": "When true, this controller supports HPE Flex10Qbg Channel Link Control TLVs.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "EmbeddedLLDPFunctions": {
+                        "description": "Provides a global enable/disable status and control capability for all network device functions on the controller utilizing HPE defined embedded LLDP.",
+                        "etag": true,
+                        "properties": {
+                            "Enabled": {
+                                "description": " NOTE: This is a read-only property when the adapter is installed on an HPE Synergy server. When false, globally disables device functions on this controller which utilize HPE defined embedded LLDP.  When set false will also disable EVB, FCoE, RoCE, and DCBX capabilities on this controller. This property does not affect Ethernet NPAR functionality.",
+                                "etag": true,
+                                "readonly": false,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            },
+                            "Optional": {
+                                "description": "When true, indicates that this controller has the ability to globally disable all network device functions which utilize HPE defined embedded LLDP.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": [
+                                    "boolean",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "readonly": false,
+                        "type": "object"
+                    },
+                    "FactoryDefaultsCurrentlyActive": {
+                        "description": "When true, this controller's configuration matches factory default settings.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "FunctionTypeLimits": {
+                        "description": "A set of resource constraints that indicate the combinations of functions that this controller can support on a per port basis. For a given configuration to be valid, the sum of resources for each selected function cannot exceed TotalSharedResourcesAvailable on any port for any constraint. Note that separate instances of a configured function on a port consume resources separately. For example, two Ethernet functions on the same port consume 2X EthernetResourcesConsumed.",
+                        "etag": true,
+                        "items": {
+                            "properties": {
+                                "ConstraintDescription": {
+                                    "Description": "The name of this resource constraint.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                },
+                                "EthernetResourcesConsumed": {
+                                    "Description": "For Ethernet, the number of resources consumed per function per port.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "FCoEResourcesConsumed": {
+                                    "Description": "For FCoE, the number of resources consumed per function per port.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "RDMAResourcesConsumed": {
+                                    "Description": "(Deprecated in iLO 1.40+) For RDMA, the number of resources consumed per function per port.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "TotalSharedResourcesAvailable": {
+                                    "Description": "The maximum number of resources available per port in this constraint.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "iSCSIResourcesConsumed": {
+                                    "Description": "For iSCSI, the number of resources consumed per function per port.",
+                                    "etag": true,
+                                    "readonly": true,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "readonly": true,
+                        "type": "array",
+                        "uniqueItems": false
+                    },
+                    "FunctionTypes": {
+                        "description": "List of network device function types and protocols that are supported by this controller.",
+                        "etag": true,
+                        "items": {
+                            "enum": [
+                                null,
+                                "Ethernet",
+                                "FibreChannel",
+                                "iSCSI",
+                                "FCoE",
+                                "InfiniBand",
+                                "RoCE",
+                                "iWarp"
+                            ],
+                            "enumDescriptions": {
+                                "Ethernet": "Has Ethernet functionality.",
+                                "FCoE": "Has FibreChannel over Ethernet functionality.",
+                                "FibreChannel": "Has native FibreChannel functionality.",
+                                "InfiniBand": "Has InfiniBand functionality.",
+                                "RoCE": "Has RDMA over Converged Ethernet protocol functionality.",
+                                "iSCSI": "Has iSCSI functionality.",
+                                "iWarp": "Has internet Wide-area RDMA protocol functionality."
+                            },
+                            "etag": true,
+                            "readonly": true,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "MostRecentConfigurationChangeSource": {
+                        "description": "Type of the last client to have changed configuration on this device.",
+                        "enum": [
+                            null,
+                            "None",
+                            "OS",
+                            "VendorControl",
+                            "VirtualConnect",
+                            "CNU",
+                            "Other",
+                            "Redfish",
+                            "UEFI-HII"
+                        ],
+                        "enumDescriptions": {
+                            "CNU": "Converged Network Utility",
+                            "None": "No change detected.",
+                            "OS": "Operating System Driver",
+                            "Other": "Other configuration or diagnostic software.",
+                            "Redfish": "Redfish Client",
+                            "UEFI-HII": "UEFI Human Interface Infrastructure",
+                            "VendorControl": "Vendor Control Software",
+                            "VirtualConnect": "Virtual Connect"
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "RDMASupport": {
+                        "description": "RDMA technology supported.",
+                        "items": {
+                            "enum": [
+                                "None",
+                                "RoCE",
+                                "iWARP"
+                            ],
+                            "enumDescriptions": {
+                                "None": "No RDMA support.",
+                                "RoCE": "RDMA over Converged Ethernet supported.",
+                                "iWARP": "iWARP supported."
+                            },
+                            "readonly": true,
+                            "type": "string",
+                            "etag": true
+                        },
+                        "readonly": true,
+                        "etag": true,
+                        "type": [
+                            "array",
+                            "null"
+                        ]
+                    },
+                    "UnderlyingDataSource": {
+                        "description": "Protocol through which Redfish data is supplied for this adapter.",
+                        "enum": [
+                            "DCi",
+                            "RDE"
+                        ],
+                        "enumDescriptions": {
+                            "DCi": "HPE Proprietary DCi protocol",
+                            "RDE": "DMTF RDE protocol"
+                        },
+                        "type": "string",
+                        "etag": false,
+                        "readonly": true
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "FactoryDefaultsActuationBehavior": {
+            "description": "Indicates the implementation timing of a reset to factory default settings request, when made with the server in the standby power state.",
+            "enum": [
+                null,
+                "Immediate",
+                "AtFullPower",
+                "AtNextReboot"
+            ],
+            "enumDescriptions": {
+                "AtFullPower": "Defaults take effect within 5 seconds of power being applied.",
+                "AtNextReboot": "Defaults take effect on next reboot to full power.",
+                "Immediate": "Defaults take effect within 2 seconds of being applied."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PCAVersion": {
+            "description": "Printed Circuit Assembly number for the circuit board comprising this device.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "RedfishConfiguration": {
+            "description": "Controls Redfish configuration write access to network adapters.  When present and disabled, network adapter information is read-only.  Note that some HPE advanced network adapters will present a reduced level of capability when disabled.",
+            "enum": [
+                null,
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "The network adapter is operating in read-only mode relative to the Redfish management interface. To transition to this state, a network adapter reset to factory default operation is required.",
+                "Enabled": "The Redfish management interface is enabled to make changes on this network adapter.  To return to the Disabled state, a network adapter reset to factory default operation is required."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "title": "#HpeNetworkAdapter.v1_3_0.HpeNetworkAdapter",
+    "type": "object"
+}

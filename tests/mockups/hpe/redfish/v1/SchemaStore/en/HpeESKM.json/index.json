@@ -1,0 +1,235 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeESKM",
+    "actions": {
+        "actions": {
+            "HpeESKM.ClearESKMLog": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeESKM.ClearESKMLog"
+                        ],
+                        "enumDescriptions": {
+                            "ClearESKMLog": "Clears ESKM log."
+                        },
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeESKM.TestESKMConnections": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeESKM.TestESKMConnections"
+                        ],
+                        "enumDescriptions": {
+                            "TestESKMConnections": "Test ESKM connections."
+                        },
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Custom ESKM actions."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeESKM resource describes properties for managing the ESKM feature.  ESKM (Enterprise Security Key Manager) enables connections to an operational key manager,change redundancy settings,view the key manager connection settings,test the connection,and view key management events.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeESKM.ClearESKMLog": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeESKM.TestESKMConnections": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ESKMEvents": {
+            "items": {
+                "additionalProperties": false,
+                "description": "List of ESKM events (activity trace logs).",
+                "etag": true,
+                "properties": {
+                    "Event": {
+                        "description": "ESKM event description.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Timestamp": {
+                        "description": "Time of ESKM event.",
+                        "format": "date-time",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "KeyManagerConfig": {
+            "additionalProperties": false,
+            "properties": {
+                "AccountGroup": {
+                    "description": "Account group on ESKM.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AccountName": {
+                    "description": "Account name on ESKM.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ESKMLocalCACertificateName": {
+                    "description": "This is the name of Local CA (Certificate Authority) in ESKM that is used to sign the ESKM server certificate. iLO will retrieve this certificate from the ESKM server.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ImportedCertificateIssuer": {
+                    "description": "Imported certificate issuer.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ImportedCertificateSubject": {
+                    "description": "Imported certificate subject.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "LoginName": {
+                    "description": "ESKM administrator account login name. This property always returns null on GET.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Password": {
+                    "description": "ESKM administrator account password. This property always returns null on GET.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "KeyServerRedundancyReq": {
+            "description": "If true encryption keys will be maintained on both the configured key servers. When this option is disabled, iLO will not verify that encryption keys are copied to both of the configured key servers.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "PrimaryKeyServerAddress": {
+            "description": "Primary key server IP address or FQDN. Set to null to clear the value.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PrimaryKeyServerPort": {
+            "description": "Primary key server port number. Set to null to clear the value.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "SecondaryKeyServerAddress": {
+            "description": "Secondary key server IP address or FQDN. Set to null to clear the value.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SecondaryKeyServerPort": {
+            "description": "Secondary key server port number. Set to null to clear the value.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "integer",
+                "null"
+            ]
+        }
+    },
+    "readonly": false,
+    "title": "#HpeESKM.v2_0_0.HpeESKM",
+    "type": "object"
+}

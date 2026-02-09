@@ -1,0 +1,142 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Event",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The Event resource describes an array of Redfish events.",
+    "displayname": "Event.0.91.0",
+    "private": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Events": {
+            "items": {
+                "description": "Each event in this array has a set of properties that describe the event.  Since this is an array, more than one event can be sent simultaneously.",
+                "displayname": "Events Item",
+                "properties": {
+                    "Context": {
+                        "description": "A context can be supplied at subscription time.  This property is the context value supplied by the subscriber.",
+                        "displayname": "Context",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "EventId": {
+                        "description": "This is a unique instance identifier of an event.",
+                        "displayname": "EventID",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "EventTimestamp": {
+                        "description": "This is time the event occurred.",
+                        "displayname": "EventTimestamp",
+                        "format": "date-time",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "EventType": {
+                        "description": "This indicates the type of event sent, according to the definitions in the EventService.",
+                        "displayname": "EventType",
+                        "enum": [
+                            "StatusChange",
+                            "ResourceUpdated",
+                            "ResourceAdded",
+                            "ResourceRemoved",
+                            "Alert"
+                        ],
+                        "enumDescriptions": {
+                            "Alert": "A condition exists which requires attention",
+                            "ResourceAdded": "A resource has been added",
+                            "ResourceRemoved": "A resource has been removed",
+                            "ResourceUpdated": "The value of this resource has been updated",
+                            "StatusChange": "The status of this resource has changed"
+                        },
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "MemberId": {
+                        "description": "This is the identifier for the member within the collection.",
+                        "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                        "type": "string"
+                    },
+                    "Message": {
+                        "description": "This is the human readable message, if provided.",
+                        "displayname": "Message",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "MessageArgs": {
+                        "description": "This array of message arguments are substituted for the arguments in the message when looked up in the message registry.",
+                        "displayname": "MessageArgs",
+                        "items": {
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "MessageId": {
+                        "description": "This is the key for this message which can be used to look up the message in a message registry.",
+                        "longDescription": "This property shall be a key into message registry as described in the Redfish specification.",
+                        "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Oem": {
+                        "additionalProperties": true,
+                        "properties": {
+                            "Hpe": {
+                                "$ref": "HpeEvent.json#"
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "OriginOfCondition": {
+                        "description": "This indicates the resource that originated the condition that caused the event to be generated.",
+                        "displayname": "OriginOfCondition",
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Severity": {
+                        "description": "This is the severity of the event.",
+                        "displayname": "Severity",
+                        "enum": [
+                            "OK",
+                            "Warning",
+                            "Critical"
+                        ],
+                        "enumDescriptions": {
+                            "Critical": "A critical condition exists that requires immediate attention",
+                            "OK": "Normal",
+                            "Warning": "A condition exists that requires attention"
+                        },
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        }
+    },
+    "readonly": true,
+    "title": "#Event.v1_0_0.Event",
+    "type": "object"
+}

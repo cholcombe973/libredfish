@@ -1,0 +1,136 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "LogService",
+    "actions": {
+        "actions": {
+            "LogService.ClearLog": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "LogService.ClearLog"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "These describe the POST custom actions defined for this type (although the implemented actions may be a subset of these)."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This resource contains properties for monitoring and configuring an event log service for the resource or service to which it is associated.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#LogService.ClearLog": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Entries": {
+            "description": "The URI to this log entries collection resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MaxNumberOfRecords": {
+            "description": "The maximum number of log entries.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "DateTime": {
+            "description": "The current date and time, with UTC offset, that the Log Service uses to set or read time.",
+            "format": "date-time",
+            "longDescription": "This property shall represent the current DateTime value, with UTC offset, in Redfish Timestamp format that the Log Service uses to set or read time.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "DateTimeLocalOffset": {
+            "description": "The UTC offset that the current DateTime proeprtu value contains in the `+HH:MM` format.",
+            "longDescription": "This property shall represent the offset from UTC time that the current value of DataTime property contains.",
+            "pattern": "^(\\+|\\-)(((0[0-9]|1[0-7]):[0-5][0-9])|(18:00))$",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ServiceEnabled": {
+            "description": "An indication of whether this service is enabled.",
+            "longDescription": "Thi property shall indicate whether this service is enabled.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        },
+        "OverWritePolicy": {
+            "description": "When the log is full, the overwrite policy is enforced.",
+            "enum": [
+                "Unknown",
+                "WrapsWhenFull",
+                "NeverOverwrites"
+            ],
+            "enumDescriptions": {
+                "NeverOverwrites": "When the log is full, new entries are discarded.",
+                "Unknown": "The overwrite policy is not known or is undefined.",
+                "WrapsWhenFull": "When the log is full, new entries will overwrite previous entries."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#LogService.v1_1_0.LogService",
+    "type": "object"
+}

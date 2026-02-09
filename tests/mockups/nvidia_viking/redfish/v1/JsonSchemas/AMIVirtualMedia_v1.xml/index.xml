@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIVirtualMedia  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIVirtualMedia">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+
+      <ComplexType Name="AMIVirtualMedia" Abstract="true">
+        <Annotation Term="OData.Description" String="This schema contains properties related to the monitor and control of an instance of virtual media, such as a remote CD, DVD, or USB device.  A manager for a system or device provides virtual media functionality."/>
+        <Annotation Term="OData.LongDescription" String="This Resource shall represent a virtual media service for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Properties, such as Image, Inserted, and WriteProtected, can be updated for a VirtualMedia instance."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/{ManagerId}/VirtualMedia/{VirtualMediaId}</String>
+          </Collection>
+        </Annotation>
+      </ComplexType>
+      <Action Name="ConfigureCDInstance" IsBound="true">
+        <Parameter Name="AMIVirtualMedia" Type="AMIVirtualMedia.v1_0_0.Actions"/>
+        <Parameter Name="CDInstance" Type="Resource.CDInstance">
+          <Annotation Term="OData.Description" String="The number of CD instances supported for media redirection."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the CD instance count that are to be supported for CD media redirection. The value ranges from zero to four."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to update the number of CD devices."/>
+        <Annotation Term="OData.LongDescription" String="This action shall perform an update on number of CD devices that are to be supported for Media Redirection.The value ranges from zero to four. When the user set the CD instance value as four , then four CD media instances will be available for redirection."/>
+      </Action>
+      <Action Name="EnableRMedia" IsBound="true">
+        <Parameter Name="AMIVirtualMedia" Type="AMIVirtualMedia.v1_0_0.Actions"/>
+        <Parameter Name="RMediaState" Type="Edm.String">
+          <Annotation Term="OData.Description" String="This resource shall be used to change the RMedia state."/>
+          <Annotation Term="OData.LongDescription" String="This resource shall be used to change the RMedia state."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action allows to enable or disable the Remote Media settings."/>
+        <Annotation Term="OData.LongDescription" String="This action allows to enable or disable the Remote Media settings. The Enable value shall enable the RMedia support.  The Disable value shall disable the RMedia support."/>
+      </Action>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIVirtualMedia.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+      <ComplexType Name="AMIVirtualMedia" BaseType="AMIVirtualMedia.AMIVirtualMedia">
+        <Property Name="RedirectionStatus" Type="AMIVirtualMedia.v1_0_0.RedirectionStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The redirection status message."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the redirection status of the media."/>
+        </Property>
+        <Property Name="BoostMode" Type="Edm.Boolean" Nullable="false">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+            <Annotation Term="OData.Description" String="Indicates the BoostMode of the media instance."/>
+            <Annotation Term="OData.LongDescription" String="The value of this string shall represent the BoostMode of the media instance. When boostmode is enabled, the redirection will be started with boost mode"/>
+        </Property>
+        <Property Name="Actions" Type="AMIVirtualMedia.v1_0_0.Actions" Nullable="false">
+            <Annotation Term="OData.Description" String="The available actions for this Resource."/>
+            <Annotation Term="OData.LongDescription" String="The actions property shall contain the available actions for this Resource."/>
+        </Property>     
+      </ComplexType>
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="The available  actions for this Resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this Resource."/>
+      </ComplexType>
+      <EnumType Name="RedirectionStatus">
+        <Member Name="None">
+          <Annotation Term="OData.Description" String="No Redirection"/>
+        </Member>
+        <Member Name="Redirection Started">
+          <Annotation Term="OData.Description" String="Redirection Started"/>
+        </Member>
+        <Member Name="Stopped - Connection Denied">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Connection Denied"/>
+        </Member>
+        <Member Name="Stopped - Login Failed">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Login Failed"/>
+        </Member>
+        <Member Name="Stopped - MAX Session Reached">
+          <Annotation Term="OData.Description" String="Redirection Stopped - MAX Session Reached"/>
+        </Member>
+        <Member Name="Stopped - Permission Denied">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Permission Denied"/>
+        </Member>
+        <Member Name="Stopped - Unknown Error">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unknown Error"/>
+        </Member>
+        <Member Name="Media Detach Stage">
+          <Annotation Term="OData.Description" String="Media Detach Stage"/>
+        </Member>
+        <Member Name="Stopped - All device instances are occupied">
+          <Annotation Term="OData.Description" String="Redirection Stopped - All device instances are occupied"/>
+        </Member>
+        <Member Name="Stopped - Unable to Connect">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unable to Connect"/>
+        </Member>
+        <Member Name="Stopped - Invalid Image">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Invalid Image"/>
+        </Member>
+        <Member Name="Stopped - Mount Error">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Mount Error"/>
+        </Member>
+        <Member Name="Stopped - Unable to Open">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unable to Open"/>
+        </Member>
+        <Member Name="Stopped - Media License Expired">
+          <Annotation Term="OData.Description" String="Redirection Stopped -Media License Expired"/>
+        </Member>
+        <Member Name="Stopped - Connection Lost">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Connection Lost"/>
+        </Member>
+        <Member Name="Stopped - Mount Cancelled By User">
+          <Annotation Term="OData.Description" String="Redirection Stopped -Mount Cancelled By User"/>
+        </Member>
+        <Member Name="Stopped - Device Ejected">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Device Ejected"/>
+        </Member>
+        <Member Name="Stopped - Session Terminated">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Session Terminated"/>
+        </Member>
+        <Member Name="Stopped - Session Disconnected">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Session Disconnected"/>
+        </Member>
+        <Member Name="Stopped - Unable to Access Mount">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unable to Access Mount"/>
+        </Member>
+        <Member Name="Stopped - Unable to Access CD Mount">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unable to Access CD Mount"/>
+        </Member>
+        <Member Name="Stopped - Unable to Access HD Mount">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unable to Access HD Mount"/>
+        </Member>
+        <Member Name="Stopped - Unable to Send">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Unable to Send"/>
+        </Member>
+        <Member Name="Stopped - Image File Not Found">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Image File Not Found"/>
+        </Member>
+        <Member Name="Stopped - Link Down">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Link Down"/>
+        </Member>
+        <Member Name="Stopped - Restart CD Redirection">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Restart CD Redirection"/>
+        </Member>
+        <Member Name="Stopped - Restart HD Redirection">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Restart HD Redirection"/>
+        </Member>
+        <Member Name="Redirection Started With Media Boost">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Redirection Started With Media Boost"/>
+        </Member>
+        <Member Name="Connection Accepted With Out Media Boost">
+          <Annotation Term="OData.Description" String="Redirection Stopped - Connection Accepted With Out Media Boost"/>
+        </Member>
+        <Member Name="Initiating Redirection">
+          <Annotation Term="OData.Description" String="Initiating the Redirection"/>
+        </Member>
+
+      </EnumType>
+    </Schema>  
+  </edmx:DataServices>
+</edmx:Edmx>

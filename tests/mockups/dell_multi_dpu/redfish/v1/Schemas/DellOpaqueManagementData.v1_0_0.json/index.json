@@ -1,0 +1,137 @@
+{
+    "$id": "/redfish/v1/Schemas/DellOpaqueManagementData.v1_0_0.json",
+    "$ref": "#/definitions/DellOpaqueManagementData",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellOpaqueManagementData": {
+            "additionalProperties": false,
+            "description": "DCIM_OpaqueManagementData is a derivation of CIM_OpaqueManagementData and represents a partition on a storage device such as the vFlash.",
+            "longDescription": "DCIM_OpaqueManagementData is a derivation of CIM_OpaqueManagementData and represents a partition on a storage device such as the vFlash.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "AccessType": {
+                    "description": "Access describes whether the media is readable. The property has the value \"Read Only\" or \"Read- Write\".",
+                    "longDescription": "Access describes whether the media is readable. The property has the value \"Read Only\" or \"Read- Write\".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AttachedState": {
+                    "description": "This property represents if the partition is attached to OS.",
+                    "longDescription": "This property represents if the partition is attached to OS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DataFormat": {
+                    "description": "The property has the value \"Raw\", \"Ext2\", \"Ext3\", \"FAT16\", or \"FAT32\".",
+                    "longDescription": "The property has the value \"Raw\", \"Ext2\", \"Ext3\", \"FAT16\", or \"FAT32\".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DeviceID": {
+                    "description": "An address or other identifying information to uniquely name the LogicalDevice.",
+                    "longDescription": "An address or other identifying information to uniquely name the LogicalDevice.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "PartitionIndex": {
+                    "description": "This property represents the index of the partition.",
+                    "longDescription": "This property represents the index of the partition.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PartitionType": {
+                    "description": "This property represents the type of the partition specified during creation. The property has the value \"Floppy\", \"HDD\", or \"CD-DVD\".",
+                    "longDescription": "This property represents the type of the partition specified during creation. The property has the value \"Floppy\", \"HDD\", or \"CD-DVD\".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Size": {
+                    "description": "The value of this property is in MB.",
+                    "longDescription": "The value of this property is in MB.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellOpaqueManagementData.v1_0_0.DellOpaqueManagementData"
+}

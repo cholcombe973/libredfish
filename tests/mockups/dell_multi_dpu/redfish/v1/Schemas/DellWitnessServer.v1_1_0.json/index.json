@@ -1,0 +1,192 @@
+{
+    "$id": "/redfish/v1/Schemas/DellWitnessServer.v1_1_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellWitnessServer": {
+            "additionalProperties": false,
+            "description": "An Oem extension to represent Witness Server Node related properties in the chassis.",
+            "longDescription": "An Oem extension to represent Witness Server Node related properties in the chassis.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DellWitnessServer": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DellWitnessServerObject"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Oem properties for representing Witness Server properties.",
+                    "longDescription": "Oem properties for representing Witness Server properties."
+                }
+            },
+            "type": "object"
+        },
+        "DellWitnessServerObject": {
+            "additionalProperties": false,
+            "description": "An Oem extension to represent Witness Server Node related properties in the chassis.",
+            "longDescription": "An Oem extension to represent Witness Server Node related properties in the chassis.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Eppid": {
+                    "description": "A string that contains the EPPID of the Witness Server.",
+                    "longDescription": "A string that contains the EPPID of the Witness Server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "HeartBeat": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/HeartBeatStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the policy for physical disks included in the virtual disk.",
+                    "longDescription": "The property shall represent the policy for physical disks included in the virtual disk.",
+                    "readonly": true
+                },
+                "Mac1": {
+                    "description": "A string that contains the MAC address of port 1 of witness server.",
+                    "longDescription": "A string that contains the MAC address of port 1 of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Mac2": {
+                    "description": "A string that contains the MAC address of port 2 of witness server.",
+                    "longDescription": "A string that contains the MAC address of port 2 of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "POSTCode": {
+                    "description": "A string that contains the BIOS POST code of witness server.",
+                    "longDescription": "A string that contains the BIOS POST code of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PowerConsumptioninWatts": {
+                    "description": "Power Consumption of Witness server in Watts.",
+                    "longDescription": "Power Consumption of witness server in Watts.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Status": {
+                    "description": "An array of status values of witness server.",
+                    "items": {
+                        "$ref": "#/definitions/WitnessStatus"
+                    },
+                    "longDescription": "An array of status values of witness server.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "SystemID": {
+                    "description": "A string that contains the SystemID of witness server.",
+                    "longDescription": "A string that contains the SystemID of witness server.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "HeartBeatStatus": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "type": "string"
+        },
+        "WitnessStatus": {
+            "enum": [
+                "FanMismatch",
+                "PGFailure",
+                "POSTError",
+                "FanAbsent",
+                "HeartbeatFailure",
+                "Throttle",
+                "Thermtrip",
+                "Absent",
+                "Present"
+            ],
+            "enumDescriptions": {
+                "Absent": "Absent",
+                "FanAbsent": "Fan Absent",
+                "FanMismatch": "Fan Mismatch",
+                "HeartbeatFailure": "Heartbeat Failure",
+                "PGFailure": "PG Failure",
+                "POSTError": "POST Error",
+                "Present": "Present",
+                "Thermtrip": "Thermal Trip ",
+                "Throttle": "Throttle"
+            },
+            "enumLongDescriptions": {
+                "Absent": "Witness Server is Absent",
+                "FanAbsent": "Witness FAN is not installed",
+                "FanMismatch": "Witness FAN Airflow mismatch",
+                "HeartbeatFailure": "Witness Server OS Heart Beat failed",
+                "PGFailure": "Witness Server Power Good Failure",
+                "POSTError": "Witness BIOS POST error",
+                "Present": "Witness Server is Present",
+                "Thermtrip": "Witness CPU Thermal Trip occurred",
+                "Throttle": "Witness CPU Throttled"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellWitnessServer.v1_1_0"
+}

@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellJobService v1_2_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellJobService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellJobService" Abstract="true">
+                <Annotation String="The DellJobService resource provides some actions to support Job management functionality." Term="OData.Description"/>
+                <Annotation String="The DellJobService resource provides some actions to support Job management functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellJobService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="CreateRebootJob" IsBound="true">
+                <Annotation String="The CreateRebootJob action is used for creating a reboot job." Term="OData.Description"/>
+                <Annotation String="The CreateRebootJob action is used for creating a reboot job." Term="OData.LongDescription"/>
+                <Parameter Name="DellJobService" Type="DellJobService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="RebootJobType" Type="DellJobService.RebootJobType" Nullable="false">
+                    <Annotation String="RebootJobType indicates the requested reboot type." Term="OData.Description"/>
+                    <Annotation String="RebootJobType indicates the requested reboot type." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DeleteJobQueue" IsBound="true">
+                <Annotation String="The DeleteJobQueue() method is used for deleting jobs from the JobQueue or the job store. To clear all the jobs, use the keyword JID_CLEARALL for the JobID. Successful execution of this method with the JID_CLEARALL parameter value also clears all the pending attribute values. When the number of jobs in the JobQueue reaches the maximum limit, jobs in the &quot;&quot;Completed&quot;&quot; state are deleted automatically. Note: on 11th Generation of PowerEdge systems, jobs in the &quot;&quot;Failed&quot;&quot; state are not deleted automatically and must be removed manually one at a time, or all together using the keyword JID_CLEARALL." Term="OData.Description"/>
+                <Annotation String="The DeleteJobQueue() method is used for deleting jobs from the JobQueue or the job store. To clear all the jobs, use the keyword JID_CLEARALL for the JobID. Successful execution of this method with the JID_CLEARALL parameter value also clears all the pending attribute values. When the number of jobs in the JobQueue reaches the maximum limit, jobs in the &quot;&quot;Completed&quot;&quot; state are deleted automatically. Note: on 11th Generation of PowerEdge systems, jobs in the &quot;&quot;Failed&quot;&quot; state are not deleted automatically and must be removed manually one at a time, or all together using the keyword JID_CLEARALL." Term="OData.LongDescription"/>
+                <Parameter Name="DellJobService" Type="DellJobService.v1_0_0.Actions"/>
+                <Parameter Name="JobID" Type="Edm.String" Nullable="false">
+                    <Annotation String="The JobID parameter specifies the job to be deleted. The value &quot;JID_CLEARALL&quot; for the JobID clears all the jobs." Term="OData.Description"/>
+                    <Annotation String="The JobID parameter specifies the job to be deleted. The value &quot;JID_CLEARALL&quot; for the JobID clears all the jobs." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SetDeleteOnCompletionTimeout" IsBound="true">
+                <Annotation String="This method sets the job store auto-delete policy. After successful execution, the jobs that have been completed for longer than what is specified in DeleteOnCompletionTimeout parameter are deleted when the auto-delete threshold is reached. The auto-delete threshold is specified in the DellJobService.StartAutoDeleteAtThreshold property and represents percentage of maximum jobs." Term="OData.Description"/>
+                <Annotation String="This method sets the job store auto-delete policy. After successful execution, the jobs that have been completed for longer than what is specified in DeleteOnCompletionTimeout parameter are deleted when the auto-delete threshold is reached. The auto-delete threshold is specified in the DellJobService.StartAutoDeleteAtThreshold property and represents percentage of maximum jobs." Term="OData.LongDescription"/>
+                <Parameter Name="DellJobService" Type="DellJobService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="DeleteOnCompletionTimeout" Type="Edm.Int64" Nullable="false">
+                    <Annotation String="Specifies the wait time, in minutes, for auto job-deletion. Minimum value is 15 and maximum value is 10080." Term="OData.Description"/>
+                    <Annotation String="Specifies the wait time, in minutes, for auto job-deletion. Minimum value is 15 and maximum value is 10080." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SetupJobQueue" IsBound="true">
+                <Annotation String="This method is used for creating a job queue that shall contain one or more DellJobs with a specified order of execution within the queue." Term="OData.Description"/>
+                <Annotation String="This method is used for creating a job queue that shall contain one or more DellJobs with a specified order of execution within the queue." Term="OData.LongDescription"/>
+                <Parameter Name="DellJobService" Type="DellJobService.v1_0_0.Actions"/>
+                <Parameter Name="JobArray" Type="Collection(Edm.String)" Nullable="false">
+                    <Annotation String="The JobArray parameter will contain the array of JobIDs which represent the set of jobs to add to the job queue. This is an ordered array that represents the sequence in which the jobs are run." Term="OData.Description"/>
+                    <Annotation String="The JobArray parameter will contain the array of JobIDs which represent the set of jobs to add to the job queue. This is an ordered array that represents the sequence in which the jobs are run." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="StartTimeInterval" Type="Edm.String" Nullable="false">
+                    <Annotation String="Start time for the job execution in the format yyyymmddhhmmss. The string &quot;TIME_NOW&quot; means immediate." Term="OData.Description"/>
+                    <Annotation String="Start time for the job execution in the format yyyymmddhhmmss. The string &quot;TIME_NOW&quot; means immediate." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UntilTime" Type="Edm.String">
+                    <Annotation String="End time for the job execution in the format yyyymmddhhmmss. If this parameter is not NULL, then StartTimeInterval parameter must be specified." Term="OData.Description"/>
+                    <Annotation String="End time for the job execution in the format yyyymmddhhmmss. If this parameter is not NULL, then StartTimeInterval parameter must be specified." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="RebootJobType">
+                <Member Name="GracefulRebootWithForcedShutdown">
+                    <Annotation String="Graceful Reboot with forced shutdown" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="GracefulRebootWithoutForcedShutdown">
+                    <Annotation String="Graceful Reboot without forced shutdown" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PowerCycle">
+                    <Annotation String="PowerCycle" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellJobService.v1_0_0">
+            <EntityType Name="DellJobService" BaseType="DellJobService.DellJobService">
+                <Annotation Term="OData.Description" String="The DellJobService resource provides some actions to support Job management functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellJobService resource provides some actions to support Job management functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellJobService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellJobService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add CurrentNumberOfJobs, DeleteOnCompletionTimeoutMinutes, MaximumNumberOfJobs, StartAutoDeleteAtThreshold properties.It was also created to add SetDeleteOnCompletionTimeout action."/>
+            <EntityType Name="DellJobService" BaseType="DellJobService.v1_0_0.DellJobService">
+                <Property Name="CurrentNumberOfJobs" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="CurrentNumberOfJobs represents the current number of jobs in the job store."/>
+                    <Annotation Term="OData.LongDescription" String="CurrentNumberOfJobs represents the current number of jobs in the job store."/>
+                </Property>
+                <Property Name="DeleteOnCompletionTimeoutMinutes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="DeleteOnCompletionTimeout represents the timeout period, in minutes, for completed jobs to qualify for auto deletion. If the time taken to complete a job is more than the value of DeleteOnCompletionTimeout, the job is deleted during the auto-delete."/>
+                    <Annotation Term="OData.LongDescription" String="DeleteOnCompletionTimeout represents the timeout period, in minutes, for completed jobs to qualify for auto deletion. If the time taken to complete a job is more than the value of DeleteOnCompletionTimeout, the job is deleted during the auto-delete."/>
+                    <Annotation Term="Measures.Unit" String="Minutes"/>
+                </Property>
+                <Property Name="MaximumNumberOfJobs" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="MaximumNumberOfJobs represents the maximum number of jobs that the job store supports."/>
+                    <Annotation Term="OData.LongDescription" String="MaximumNumberOfJobs represents the maximum number of jobs that the job store supports."/>
+                </Property>
+                <Property Name="StartAutoDeleteAtThreshold" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="StartAutoDeleteAtThreshold represents the percentage of the MaximumNumberOfJobs which, when reached, causes all jobs that have taken more time than the DeleteOnCompletetionTimeout to be deleted."/>
+                    <Annotation Term="OData.LongDescription" String="StartAutoDeleteAtThreshold represents the percentage of the MaximumNumberOfJobs which, when reached, causes all jobs that have taken more time than the DeleteOnCompletetionTimeout to be deleted."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellJobService.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add CreateRebootJob action."/>
+            <EntityType Name="DellJobService" BaseType="DellJobService.v1_1_0.DellJobService">
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

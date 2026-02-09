@@ -1,0 +1,122 @@
+{
+    "definitions": {
+        "AccountService": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "ActiveDirectory": {
+                    "readonly": false,
+                    "description": "Active Directory Resource Object",
+                    "ERROR": "type SmcAccountServiceExtensions.v1_0_0.ActiveDirectory unrecognized."
+                },
+                "LDAP": {
+                    "longDescription": "This property shall contain the first LDAP external account provider that this account service supports.  If the account service supports one or more LDAP services as an external account provider, this entity shall be populated by default.  This entity shall not be present in the additional external account providers resource collection.",
+                    "description": "The first LDAP external account provider that this account service supports.",
+                    "$ref": "#/definitions/ExternalAccountProvider"
+                }
+            }
+        },
+        "ExternalAccountProvider": {
+            "description": "The external account provider services that can provide accounts for this manager to use for authentication.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This type shall contain properties that represent external account provider services that can provide accounts for this manager to use for authentication.",
+            "additionalProperties": true,
+            "type": "object",
+            "properties": {
+                "StartTLSEnabled": {
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "An indication of whether StartTLS is enabled",
+                    "longDescription": "This property shall indicate whether StartTLS is enabled."
+                }
+            }
+        },
+        "ActiveDirectory": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "UserDomainNames": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": false,
+                    "type": "array",
+                    "description": "The Collection domain name of user in Active Directory server.",
+                    "longDescription": "The value of this property shall be match the format of domain name."
+                },
+                "DNSLookupEnable": {
+                    "readonly": false,
+                    "type": "boolean",
+                    "description": "Active Directory DNS Lookup is enabled or not"
+                },
+                "Prefix": {
+                    "readonly": false,
+                    "type": "string",
+                    "description": "The domain name of Prefix in Active Directory server."
+                },
+                "DynamicServerAddresses": {
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "readonly": false,
+                    "type": "array",
+                    "description": "The Domain Controller Server Address for the AD (Active Directory) server.",
+                    "longDescription": "The value of this property shall be a  domain controller server address. A domain controller (DC) is a server that responds to security authentication requests (logging in, checking permissions, etc.) "
+                },
+                "Port": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The port number for Active Directory server.",
+                    "longDescription": "The value of this property shall be in the range between 1~65535."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcAccountServiceExtensions.v1_0_1"
+}

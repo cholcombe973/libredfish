@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoPower  v1.0.0                                          -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoHistoryMetricValue_v1.xml">
+    <edmx:Include Namespace="LenovoHistoryMetricValue"/>
+    <edmx:Include Namespace="LenovoHistoryMetricValue.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPower">
+      <ComplexType Name="LenovoPower" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoPower resource."/>
+      </ComplexType>
+
+      <ComplexType Name="LenovoPowerSupply" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoPowerSupply resource."/>
+      </ComplexType>
+
+      <ComplexType Name="LenovoPowerControl" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoPowerControl resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPower.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <ComplexType Name="Capabilities" BaseType="LenovoPower.LenovoPower">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo extended Power resource."/>
+        <Property Name="PowerRestorePolicy" Type="LenovoPower.v1_0_0.PowerRestorePolicy">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates current power policy of the system."/>
+          <Annotation Term="OData.LongDescription" String="The power policy specifies that the system's power behavior after AC returns."/>
+        </Property>
+        <Property Name="WakeOnLANEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether Wake on LAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether Wake on LAN is enabled."/>
+        </Property>
+        <Property Name="PowerOnPermissionEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether power on permission is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether power on permission is enabled."/>
+        </Property>
+        <Property Name="LocalPowerControlEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether local power control is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether local power control is enabled."/>
+        </Property>
+        <Property Name="RandomDelay" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether random delay before power on."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether there is a random delay between 1 and 15 seconds for power on."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="PowerRestorePolicy">
+        <Member Name="AlwaysOff">
+          <Annotation Term="OData.Description" String="system stays powered off after AC/mains returns"/>
+        </Member>
+        <Member Name="Restore">
+          <Annotation Term="OData.Description" String="after AC returns, power is restored to the state that was in effect when AC/mains was lost"/>
+        </Member>
+        <Member Name="AlwaysOn">
+          <Annotation Term="OData.Description" String="system always powers on after AC/mains returns"/>
+        </Member>
+        <Member Name="Unknown">
+          <Annotation Term="OData.Description" String="unknown"/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="LimitMode">
+        <Member Name="AC"/>
+        <Member Name="DC"/>
+      </EnumType>
+      
+      <EnumType Name="UtilizationMode">
+        <Member Name="None"/>
+        <Member Name="Static"/>
+      </EnumType>
+      
+      <ComplexType Name="LenovoPowerSupply" BaseType="LenovoPower.LenovoPowerSupply">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo extended Power supply resource."/>
+        <Property Name="Location" Type="Resource.Location">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The slot info of this PSU."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate PSU slot information. The InfoFormat shall be Slot X, like Slot 1."/>
+        </Property>
+        <NavigationProperty Name="HistoryPowerSupplyMetric" Type="LenovoHistoryMetricValue.LenovoHistoryMetricValue" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A reference indicating power supply history metric values."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference indicating power supply history metric values. In this reference shall contain: PowerSupplyInputPower, PowerSupplyOutputPower metric values."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="FruPartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The fru part number."/>
+          <Annotation Term="OData.LongDescription" String="The value of this porperty shall be the fru part number."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="PowerUtilization">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo extended Power Utilization resource."/>
+        <Property Name="UtilizationMode" Type="LenovoPower.v1_0_0.UtilizationMode" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="UtilizationMode indicates the current power utilization mode implemented by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the current power utilization mode implemented by the service."/>
+        </Property>
+        <Property Name="EnablePowerCapping" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="EnablePowerCapping indicates current power capping is enabled or not."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the current power capping is enabled or not."/>
+        </Property>
+        <Property Name="LimitMode" Type="LenovoPower.v1_0_0.LimitMode">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="LimitMode indicates the current power limit mode implemented by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the current power limit mode implemented by the service."/>
+        </Property>
+        <Property Name="GuaranteedInWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="GuaranteedInWatts indicate the guaranteed value of power limit is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the guaranteed value of power limit is allowed by the service."/>
+        </Property>
+        <Property Name="MinLimitInWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="MinLimitInWatts indicates the minimum value of power limit is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum value of power limit is allowed by the service."/>
+        </Property>
+        <Property Name="MaxLimitInWatts" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="MaxLimitInWatts indicates the maximal value of power limit is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximal value of power limit is allowed by the service."/>
+        </Property>
+        <Property Name="CapacityMinAC" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="CapacityMinAC indicates the minimum value of capacity AC is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum value of capacity AC is allowed by the service."/>
+        </Property>
+        <Property Name="CapacityMaxAC" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="CapacityMinAC indicates the maximum value of capacity AC is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum value of capacity AC is allowed by the service."/>
+        </Property>
+        <Property Name="CapacityMinDC" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="CapacityMinAC indicates the minimum value of capacity DC is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the minimum value of capacity DC is allowed by the service."/>
+        </Property>
+        <Property Name="CapacityMaxDC" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="CapacityMinAC indicates the maximum value of capacity DC is allowed by the service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the maximum value of capacity DC is allowed by the service."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="LenovoPowerControl" BaseType="LenovoPower.LenovoPowerControl">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo extended Power control resource."/>
+        <NavigationProperty Name="HistoryPowerMetric" Type="LenovoHistoryMetricValue.LenovoHistoryMetricValue" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A reference indicating power history metric values."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference indicating power history metric values. In this reference shall contain: SystemInputPower, SystemOutputPower, CPUSubsystemPower, MemorySubsystemPower, CoolingSubsystemPower metric values."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="PowerUtilization" Type="LenovoPower.v1_0_0.PowerUtilization" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents the ability of a platform or component to perform autonomic management of its power utilization."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the ability of a platform or component to perform autonomic management of its power utilization."/>
+        </Property>
+      </ComplexType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

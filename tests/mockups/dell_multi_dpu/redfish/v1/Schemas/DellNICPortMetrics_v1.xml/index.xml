@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellNICPortMetrics v1_1_1-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNICPortMetrics">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellNICPortMetrics" Abstract="true">
+                <Annotation String="Represents the statistics of the NIC, NIC port, or partition." Term="OData.Description"/>
+                <Annotation String="Represents the statistics of the NIC, NIC port, or partition." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/Oem/Dell/DellNICPortMetrics/{NICPortMetricsId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/{NetworkDeviceId}/Oem/Dell/DellNICPortMetrics/{NICPortMetricsId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="OSDriverState">
+                <Member Name="Non-operational">
+                    <Annotation String="Non-operational" Term="OData.Description"/>
+                    <Annotation String="Non-operational" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Operational">
+                    <Annotation String="Operational" Term="OData.Description"/>
+                    <Annotation String="Operational" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PartitionLinkStatus">
+                <Member Name="Down">
+                    <Annotation String="Down" Term="OData.Description"/>
+                    <Annotation String="Down" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Up">
+                    <Annotation String="Up" Term="OData.Description"/>
+                    <Annotation String="Up" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PartitionOSDriverState">
+                <Member Name="Non-operational">
+                    <Annotation String="Non-operational" Term="OData.Description"/>
+                    <Annotation String="Non-operational" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Operational">
+                    <Annotation String="Operational" Term="OData.Description"/>
+                    <Annotation String="Operational" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TemperatureStatus">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Ok">
+                    <Annotation String="Ok" Term="OData.Description"/>
+                    <Annotation String="Ok" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Warning">
+                    <Annotation String="Warning" Term="OData.Description"/>
+                    <Annotation String="Warning" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VoltageStatus">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Ok">
+                    <Annotation String="Ok" Term="OData.Description"/>
+                    <Annotation String="Ok" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Warning">
+                    <Annotation String="Warning" Term="OData.Description"/>
+                    <Annotation String="Warning" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="RXInputPowerStatus">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Ok">
+                    <Annotation String="Ok" Term="OData.Description"/>
+                    <Annotation String="Ok" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Warning">
+                    <Annotation String="Warning" Term="OData.Description"/>
+                    <Annotation String="Warning" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="TXBiasCurrentStatus">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Ok">
+                    <Annotation String="Ok" Term="OData.Description"/>
+                    <Annotation String="Ok" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Warning">
+                    <Annotation String="Warning" Term="OData.Description"/>
+                    <Annotation String="Warning" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="TXOutputPowerStatus">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Ok">
+                    <Annotation String="Ok" Term="OData.Description"/>
+                    <Annotation String="Ok" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Warning">
+                    <Annotation String="Warning" Term="OData.Description"/>
+                    <Annotation String="Warning" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNICPortMetrics.v1_0_0">
+            <EntityType Name="DellNICPortMetrics" BaseType="DellNICPortMetrics.DellNICPortMetrics">
+                <Annotation Term="OData.Description" String="Represents the statistics of the NIC, NIC port, or partition."/>
+                <Annotation Term="OData.LongDescription" String="Represents the statistics of the NIC, NIC port, or partition."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DiscardedPkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of discarded packets."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of discarded packets."/>
+                </Property>
+                <Property Name="FCCRCErrorCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of FC frames with CRC errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of FC frames with CRC errors."/>
+                </Property>
+                <Property Name="FCOELinkFailures" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of FCoE/FIP login failures."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of FCoE/FIP login failures."/>
+                </Property>
+                <Property Name="FCOEPktRxCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of good (FCS valid) packets received with the active FCoE MAC address of the partition."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of good (FCS valid) packets received with the active FCoE MAC address of the partition."/>
+                </Property>
+                <Property Name="FCOEPktTxCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of good (FCS valid) packets transmitted that passed L2 filtering by a specific MAC address."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of good (FCS valid) packets transmitted that passed L2 filtering by a specific MAC address."/>
+                </Property>
+                <Property Name="FCOERxPktDroppedCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of receive packets with FCS errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of receive packets with FCS errors."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                </Property>
+                <Property Name="LanFCSRxErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the Lan FCS receive Errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the Lan FCS receive Errors."/>
+                </Property>
+                <Property Name="LanUnicastPktRXCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of Lan Unicast Packets Received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of Lan Unicast Packets Received."/>
+                </Property>
+                <Property Name="LanUnicastPktTXCount" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of Lan Unicast Packets Transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of Lan Unicast Packets Transmitted."/>
+                </Property>
+                <Property Name="OSDriverState" Type="DellNICPortMetrics.OSDriverState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates operating system driver states."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates operating system driver states."/>
+                </Property>
+                <Property Name="PartitionLinkStatus" Type="DellNICPortMetrics.PartitionLinkStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates whether the partition link is up or down."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates whether the partition link is up or down."/>
+                </Property>
+                <Property Name="PartitionOSDriverState" Type="DellNICPortMetrics.PartitionOSDriverState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates operating system driver states of the partitions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates operating system driver states of the partitions."/>
+                </Property>
+                <Property Name="RDMARxTotalBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA bytes received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA bytes received."/>
+                </Property>
+                <Property Name="RDMARxTotalPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA packets received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA packets received."/>
+                </Property>
+                <Property Name="RDMATotalProtectionErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Protection errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Protection errors."/>
+                </Property>
+                <Property Name="RDMATotalProtocolErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Protocol errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Protocol errors."/>
+                </Property>
+                <Property Name="RDMATxTotalBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA bytes transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA bytes transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA packets transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalReadReqPkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA ReadRequest packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA ReadRequest packets transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalSendPkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Send packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Send packets transmitted."/>
+                </Property>
+                <Property Name="RDMATxTotalWritePkts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of RDMA Write packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of RDMA Write packets transmitted."/>
+                </Property>
+                <Property Name="RXInputPowermW" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the RX input power value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the RX input power value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Measures.Unit" String="mW"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of RXInputPower under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="RxBroadcast" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good broadcast packets received."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good broadcast packets received."/>
+                </Property>
+                <Property Name="RxBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of bytes received, including host and remote management pass through traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of bytes received, including host and remote management pass through traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="Measures.Unit" String="Bytes"/>
+                </Property>
+                <Property Name="RxErrorPktAlignmentErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of packets received with alignment errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of packets received with alignment errors."/>
+                </Property>
+                <Property Name="RxErrorPktFCSErrors" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of packets received with FCS errors."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of packets received with FCS errors."/>
+                </Property>
+                <Property Name="RxFalseCarrierDetection" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of false carrier errors received from PHY."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of false carrier errors received from PHY."/>
+                </Property>
+                <Property Name="RxJabberPkt" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of frames that are too long."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of frames that are too long."/>
+                </Property>
+                <Property Name="RxMutlicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="RxPauseXOFFFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the flow control frames from the network to pause transmission."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the flow control frames from the network to pause transmission."/>
+                </Property>
+                <Property Name="RxPauseXONFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the flow control frames from the network to resume transmission."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the flow control frames from the network to resume transmission."/>
+                </Property>
+                <Property Name="RxRuntPkt" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of frames that are too short (&lt; 64 bytes)."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of frames that are too short (&lt; 64 bytes)."/>
+                </Property>
+                <Property Name="RxUnicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="StartStatisticTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the measurement time for the first NIC statistics. The property is used with the StatisticTime property to calculate the duration over which the NIC statistics are gathered."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the measurement time for the first NIC statistics. The property is used with the StatisticTime property to calculate the duration over which the NIC statistics are gathered."/>
+                </Property>
+                <Property Name="StatisticTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the most recent measurement time for NIC statistics. The property is used with the StatisticStartTime property to calculate the duration over which the NIC statistics are gathered."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the most recent measurement time for NIC statistics. The property is used with the StatisticStartTime property to calculate the duration over which the NIC statistics are gathered."/>
+                </Property>
+                <Property Name="TXBiasCurrentmA" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the TX Bias current value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the TX Bias current value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Measures.Unit" String="mA"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of TXBiasCurrent under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TXOutputPowermW" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the TX output power value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the TX output power value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Measures.Unit" String="mW"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of TXOutputPower under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TemperatureCelsius" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the temperature value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the temperature value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of Temperature under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TemperatureStatus" Type="DellNICPortMetrics.TemperatureStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the status of Temperature value limits."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the status of Temperature value limits."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of TemperatureStatus under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TxBroadcast" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good broadcast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good broadcast packets transmitted."/>
+                </Property>
+                <Property Name="TxBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of bytes transmitted, including host and remote management passthrough traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of bytes transmitted, including host and remote management passthrough traffic. Remote management passthrough traffic is applicable to LOMs only."/>
+                    <Annotation Term="Measures.Unit" String="Bytes"/>
+                </Property>
+                <Property Name="TxErrorPktExcessiveCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of times a single transmitted packet encountered more than 15 collisions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of times a single transmitted packet encountered more than 15 collisions."/>
+                </Property>
+                <Property Name="TxErrorPktLateCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of collisions that occurred after one slot time (defined by IEEE 802.3)."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of collisions that occurred after one slot time (defined by IEEE 802.3)."/>
+                </Property>
+                <Property Name="TxErrorPktMultipleCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of times that a transmitted packet encountered 2-15 collisions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of times that a transmitted packet encountered 2-15 collisions."/>
+                </Property>
+                <Property Name="TxErrorPktSingleCollision" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of times that a successfully transmitted packet encountered a single collision."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of times that a successfully transmitted packet encountered a single collision."/>
+                </Property>
+                <Property Name="TxMutlicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good multicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="TxPauseXOFFFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of XOFF packets transmitted to the network."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of XOFF packets transmitted to the network."/>
+                </Property>
+                <Property Name="TxPauseXONFrames" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the number of XON packets transmitted to the network."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the number of XON packets transmitted to the network."/>
+                </Property>
+                <Property Name="TxUnicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the total number of good unicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="VoltageStatus" Type="DellNICPortMetrics.VoltageStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the status of voltage value limits. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the status of voltage value limits. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of VoltageStatus under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="VoltageValueVolts" Type="Edm.Decimal">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the voltage value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the voltage value of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Measures.Unit" String="Volts"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of VoltageValue under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNICPortMetrics.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add RXInputPowerStatus, TXBiasCurrentStatus, TXOutputPowerStatus properties."/>
+            <EntityType Name="DellNICPortMetrics" BaseType="DellNICPortMetrics.v1_0_0.DellNICPortMetrics">
+                <Property Name="RXInputPowerStatus" Type="DellNICPortMetrics.RXInputPowerStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the status of Rx Input Power value limits."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the status of Rx Input Power value limits."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of RXInputPowerStatus under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TXBiasCurrentStatus" Type="DellNICPortMetrics.TXBiasCurrentStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the status of Tx Bias Current value limits. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the status of Tx Bias Current value limits. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of TXBiasCurrentStatus under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TXOutputPowerStatus" Type="DellNICPortMetrics.TXOutputPowerStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates the status of Tx Output Power value limits. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates the status of Tx Output Power value limits. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of TXOutputPowerStatus under NetworkTransceiverPortMetrics."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNICPortMetrics.v1_1_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to deprecate the RXInputPowerStatus,RXInputPowermW,TXBiasCurrentStatus,TXBiasCurrentmA,TXOutputPowerStatus,TXOutputPowermW,TemperatureCelsius,TemperatureStatus,VoltageStatus,VoltageValueVolts properties. It was also created to update descriptions for RXInputPower,TXBiasCurrent,TXBiasCurrentStatus,TXOutputPower,TXOutputPowerStatus,Temperature,VoltageStatus,VoltageValue properties."/>
+            <EntityType Name="DellNICPortMetrics" BaseType="DellNICPortMetrics.v1_1_0.DellNICPortMetrics"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

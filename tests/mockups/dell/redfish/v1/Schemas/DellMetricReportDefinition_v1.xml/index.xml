@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellMetricReportDefinition  v1.0.0                                             -->
+<!--# This is DELL OEM Schema.                                                             -->
+<!--# Copyright 2014-2020 Dell, Inc. or its subsidiaries.All Rights Reserved.              -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+  </edmx:Reference>
+
+  <edmx:DataServices>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricReportDefinition">
+    <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+    <ComplexType Name="DellMetricReportDefinition" Abstract="true">
+      <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      <Annotation Term="OData.Description" String="The DellMetricReportDefinition schema describes Dell metric metadata used for collecting and reporting metric data within the Redfish Service."/>
+      <Annotation Term="OData.LongDescription" String="The schema describes property additions to the Metrics within the MetricReportDefinition."/>
+    </ComplexType>
+  </Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricReportDefinition.v1_0_0">
+    <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+    <ComplexType Name="DellMetricReportDefinition" BaseType="DellMetricReportDefinition.DellMetricReportDefinition">
+    <Property Name="Digest" Type="Edm.String">
+        <Annotation Term="OData.Description" String="Digest is the checksum representation of the MetricReportDefinition."/>
+        <Annotation Term="OData.LongDescription" String="Users can compare their Metric Report Definition with what is available int he system using the Digest."/>
+    </Property>
+    <Property Name="iDRACFirmwareVersion" Type="Edm.String">
+        <Annotation Term="OData.Description" String="iDRAC Firmware Version."/>
+        <Annotation Term="OData.LongDescription" String="DRAC Firmware Version."/>
+    </Property>
+    </ComplexType>
+  </Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellMetricReportDefinition.v1_1_0">
+    <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+    <ComplexType Name="DellMetricReportDefinition" BaseType="DellMetricReportDefinition.v1_0_0.DellMetricReportDefinition">
+      <Property Name="CustomLabel" Type="Edm.String">
+        <Annotation Term="OData.Description" String="Metric Custom Label shall override the default Label of the metric in the MetricReport."/>
+        <Annotation Term="OData.LongDescription" String="The custom label is customized by the user."/>
+      </Property>
+      <Property Name="D4D" Type="Edm.Boolean" Nullable="true">
+          <Annotation Term="OData.Description" String="D4D property flags the type of Report outputted by the MetricReportDefinition."/>
+          <Annotation Term="OData.LongDescription" String="D4D property flag if true will provide a DellD4DReport schema formatted report, if false a MetricReport"/>
+      </Property>
+    </ComplexType>
+  </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,195 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeComponentUpdateTask",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2021 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeComponentUpdateTask resource describes an Update Task, an element in the update task queue.  This represents an install instruction.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Command": {
+            "description": "Command to execute.",
+            "enum": [
+                "ApplyUpdate",
+                "ResetServer",
+                "ResetBmc",
+                "Wait"
+            ],
+            "enumDescriptions": {
+                "ApplyUpdate": "Apply an update using the specified component.",
+                "ResetBmc": "Reset the BMC.",
+                "ResetServer": "Reset the server.",
+                "Wait": "Wait for the WaitTimeSeconds number of seconds."
+            },
+            "readonly": false,
+            "type": "string"
+        },
+        "Component": {
+            "format": "uri-reference",
+            "longDescription": "The value of this property shall be the unique identifier for the resource and it shall be of the form defined in the SPMF specification.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Created": {
+            "description": "ISO-time of task creation (by whomever created this thing)",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "ExecutionTimeoutMinutes": {
+            "description": "The number of minutes that this update will likely take to apply.  Applies if the command is 'ApplyUpdate'.  Ignored otherwise.",
+            "maximum": 300,
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        },
+        "Expire": {
+            "description": "ISO 8601 Redfish-style time string after which we will automatically change state to Expired - null for no expire time",
+            "format": "date-time",
+            "readonly": false,
+            "type": "string"
+        },
+        "Filename": {
+            "description": "The unique filename of the component.  This correlates to 'Filename' in the HpeComponent.",
+            "maxLength": 64,
+            "pattern": "^[A-Za-z0-9-._]+$",
+            "readonly": false,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MaintenanceWindow": {
+            "description": "The maintenance window for this update task.",
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Modified": {
+            "description": "ISO-time of last task queue item update by updater (not client)",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "description": "User defined name of the task.",
+            "maxLength": 64,
+            "minLength": 0,
+            "readonly": false,
+            "type": "string"
+        },
+        "RecoveryPrivilege": {
+            "description": "This task was created by a user with Recovery Set privilege, and would allow a downgrade if 'DowngradePolicy' is set to 'RecoveryDowngrade'.  Applies if the command is 'ApplyUpdate'.  Ignored otherwise.",
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Result": {
+            "additionalProperties": true,
+            "properties": {
+                "MessageArgs": {
+                    "description": "The message arguments array is substituted for the arguments in the message when looked up in the message registry.",
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": false,
+                    "type": "array"
+                },
+                "MessageId": {
+                    "description": "The key for this message that can be used to look up the message in a message registry.",
+                    "pattern": "^[A-Za-z0-9]+\\.\\d+\\.\\d+.[A-Za-z0-9.]+$",
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "ResultLog": {
+            "description": "base64 encoded entry to capture component log.  Estimated to be generally 1-2KB. written by updater",
+            "maxLength": 2048,
+            "minLength": 0,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "StartAfter": {
+            "description": "ISO 8601 Redfish-style time string of earliest execution - null for no start time specified",
+            "format": "date-time",
+            "readonly": false,
+            "type": "string"
+        },
+        "State": {
+            "description": "The current state of the update task.",
+            "enum": [
+                "Pending",
+                "InProgress",
+                "Complete",
+                "Expired",
+                "Exception",
+                "Canceled"
+            ],
+            "enumDescriptions": {
+                "Canceled": "The task is no longer scheduled to run.",
+                "Complete": "The task was completed and the results are available in the Results.",
+                "Exception": "The task was unsuccessful because of an exception condition.",
+                "Expired": "The task will not execute because the current time is after the 'Expire' time.",
+                "InProgress": "The task is executing.",
+                "Pending": "The task is pending execution."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "TPMOverride": {
+            "description": "If true then the TPMOverrideFlag is passed in on the associated flash operations.",
+            "readonly": false,
+            "type": "boolean"
+        },
+        "UpdatableBy": {
+            "description": "This is an unordered set of permitted updaters that can execute this item.",
+            "items": {
+                "enum": [
+                    "Bmc",
+                    "Uefi",
+                    "RuntimeAgent"
+                ],
+                "enumDescriptions": {
+                    "Bmc": "This component may be scheduled for update by iLO.",
+                    "RuntimeAgent": "This component may be scheduled for update by a runtime update agent such as Smart Update Manager or Smart Update Tool.",
+                    "Uefi": "This component may be scheduled for update by UEFI BIOS."
+                },
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "UpdateRecoverySet": {
+            "description": "Update Recovery Set with this component if the command is 'ApplyUpdate'.  Ignored otherwise.",
+            "readonly": false,
+            "type": "boolean"
+        },
+        "WaitTimeSeconds": {
+            "description": "The number of seconds to pause if the command is 'Wait'.  Ignored otherwise.",
+            "maximum": 3600,
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        }
+    },
+    "title": "#HpeComponentUpdateTask.v1_2_0.HpeComponentUpdateTask",
+    "type": "object"
+}

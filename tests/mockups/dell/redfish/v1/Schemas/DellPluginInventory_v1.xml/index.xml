@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellPluginInventory v1.0.0                                          -->
+<!--#                                                                                      -->
+<!--# This schema describes properties about DellPluginInventory.  						   -->
+<!--# 													                                   -->
+<!--# Copyright 2014-2019 Dell, Inc. or its subsidiaries.  All Rights Reserved.            -->
+<!--# See the full Dell copyright policy												   -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPluginInventory">
+      <Annotation Term="Redfish.OwningEntity" String="DMTF"/>
+	<ComplexType Name="DellPluginInventory" Abstract="true">
+	<Annotation Term="OData.Description" String="The DellPluginInventory schema describes the plugin inventory and the properties for the plugin service itself."/>
+	<Annotation Term="OData.LongDescription" String="This resource shall represent a plugin inventory and the properties that affect the plugin service itself for a Redfish implementation."/>
+	</ComplexType>
+	<Action Name="Restart" IsBound="true">
+            <Annotation Term="OData.Description" String="The Restart operation shall restart plugin instance present in SoftwareInventory."/>
+            <Annotation Term="OData.LongDescription" String="The Restart operation shall restart plugin instance present in SoftwareInventory."/>
+        </Action>
+	<Action Name="Uninstall" IsBound="true">
+            <Annotation Term="OData.Description" String="The Uninstall operation shall remove plugin instance present in SoftwareInventory."/>
+            <Annotation Term="OData.LongDescription" String="The Uninstall operation shall remove plugin instance present in SoftwareInventory."/>
+       </Action>
+      <!--<EntityType Name="DellPluginInventory" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="The DellPluginInventory schema describes the plugin inventory and the properties for the plugin service itself."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall represent a plugin inventory and the properties that affect the plugin service itself for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Writable properties, such as ServiceEnabled, can be updated for the DellPluginInventory."/>
+          </Record>
+        </Annotation>
+      </EntityType>-->
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPluginInventory.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+
+      <!--EntityType Name="DellPluginInventory" BaseType="DellPluginInventory.DellPluginInventory"-->
+      <ComplexType Name="DellPluginInventory" BaseType="DellPluginInventory.DellPluginInventory">
+        <Property Name="PluginEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The state of the plugin true when enabled, false when disabled."/>
+          <Annotation Term="OData.LongDescription" String="The state of the plugin true when enabled, false when disabled."/>
+        </Property>
+		<Property Name="PluginSizeKB" Type="Edm.Decimal">
+          <Annotation Term="OData.Description" String="Plugin File System size reported in terms of KB."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain File System size reported in terms of KB."/>
+        </Property>        
+        <Property Name="PluginStatus" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The current status of the plugin."/>
+          <Annotation Term="OData.LongDescription" String="The current status of the plugin."/>
+        </Property>
+		<Property Name="PluginResourceRSS" Type="Edm.Decimal">
+          <Annotation Term="OData.Description" String="The plugin process memory utilization."/>
+          <Annotation Term="OData.LongDescription" String="The plugin process memory utilization."/>
+        </Property>
+		<Property Name="PluginResourceCPUTime" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The cumulative CPU utilization of the process."/>
+          <Annotation Term="OData.LongDescription" String="The cumulative CPU utilization of the process."/>
+        </Property>
+		<Property Name="PluginResourceElapsedRuntime" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The amount of wall clock time the process has been running."/>
+          <Annotation Term="OData.LongDescription" String="The amount of wall clock time the process has been running."/>
+        </Property>
+      <!--/EntityType-->
+      </ComplexType>
+
+      <!--EnumType Name="PluginStatus">
+        <Member Name="NotStarted">
+          <Annotation Term="OData.Description" String="Plugin Not Started."/>
+        </Member>
+        <Member Name="Starting">
+          <Annotation Term="OData.Description" String="Plugin Starting."/>
+        </Member>
+        <Member Name="Running">
+          <Annotation Term="OData.Description" String="Plugin Running."/>
+        </Member>
+        <Member Name="Stopping">
+          <Annotation Term="OData.Description" String="Plugin Stopping."/>
+        </Member>
+        <Member Name="Updating">
+          <Annotation Term="OData.Description" String="Plugin is Updating."/>
+        </Member>
+        <Member Name="Stopped(Disabled)">
+          <Annotation Term="OData.Description" String="Plugin Stopped in Disabled state."/>
+        </Member>
+        <Member Name="Stopped(Installed)">
+          <Annotation Term="OData.Description" String="Plugin Stopped in Installed state."/>
+        </Member>
+        <Member Name="Stopped(VersionDependency)">
+          <Annotation Term="OData.Description" String="Plugin Stopped with version Dependency."/>
+        </Member>
+		<Member Name="Stopped(PluginFailure)">
+          <Annotation Term="OData.Description" String="Plugin Stopped with Failure."/>
+        </Member>
+		<Member Name="Stopped(InternalError">
+          <Annotation Term="OData.Description" String="Plugin Stopped with internal error."/>
+        </Member>
+		<Member Name="Stopped(PluginConflict)">
+          <Annotation Term="OData.Description" String="Plugin Stopped with conflict."/>
+        </Member>
+      </EnumType-->
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

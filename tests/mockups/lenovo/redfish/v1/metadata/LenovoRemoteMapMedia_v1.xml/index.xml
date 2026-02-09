@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoRemoteMapMedia  v1.0.0                                 -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteMapMedia">
+      <EntityType Name="LenovoRemoteMapMedia" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteMapMedia.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoRemoteMapMedia" BaseType="LenovoRemoteMapMedia.LenovoRemoteMapMedia">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoRemoteMapMedia resource."/>
+        <Property Name="FilePath" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="File path of the map image"/>
+        </Property>
+        <Property Name="Type" Type="LenovoRemoteMapMedia.v1_0_0.AvailabilityTypes">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The map type of the image."/>
+        </Property>
+        <Property Name="Username" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Username to access the file path, available for Samba, HTTP/HTTPS, SFTP/FTP"/>
+        </Property>
+        <Property Name="Password" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Password to access the file path, password should be encrypted after object creation, available for Samba, HTTP/HTTPS, SFTP/FTP"/>
+        </Property>
+        <Property Name="Domain" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Domain of the username to access the file path, available for Samba only"/>
+        </Property>
+        <Property Name="Readonly" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="It indicates the map image status is readonly or read/write"/>
+        </Property>
+        <Property Name="Options" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="It indicates the mount options to map the image of the file path, available for Samba and NFS only"/>
+        </Property>
+        <Property Name="Owner" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="Owner of the map image"/>
+        </Property>
+        <Property Name="Mounted" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="It indicates the map image is mounted or not"/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="AvailabilityTypes">
+        <Member Name="Samba"/>
+        <Member Name="NFS"/>
+        <Member Name="Local"/>
+        <Member Name="HTTP"/>
+        <Member Name="HTTPS"/>
+        <Member Name="SFTP"/>
+        <Member Name="FTP"/>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

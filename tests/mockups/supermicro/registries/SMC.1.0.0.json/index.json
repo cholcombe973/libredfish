@@ -1,0 +1,1629 @@
+{
+    "@Redfish.Copyright": "Copyright \u00a9 2014-2015 Distributed Management Task Force, Inc. (DMTF). All rights reserved.",
+    "@odata.type": "#MessageRegistry.v1_4_0.MessageRegistry",
+    "Id": "SMC.1.0.0",
+    "Name": "SMC Message Registry",
+    "Language": "en",
+    "Description": "This registry defines the OEM messages for Redfish",
+    "RegistryPrefix": "SMC",
+    "RegistryVersion": "1.0.0",
+    "OwningEntity": "DMTF",
+    "Messages": {
+        "OemUserNotToEnableOneDisabledService": {
+            "Description": "Indicates that the user cannot change any other settings except for enabling the disabled service.",
+            "Message": "Disabled service %1 was not allowed the user to change settings without enabling it.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Enable it or you cannot change any other settings."
+        },
+        "OemAdMissingItem": {
+            "Description": "Indicates that a required item was not supplied as part of the request.",
+            "Message": "To enable Active Directory authentication must have at least one server IP setting.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Add one domain control server IP."
+        },
+        "OemAdPatchSettingCondition": {
+            "Description": "Indicates that a must require property was not supplied as part of the request.",
+            "Message": "To set the required information to access the Active Directory, user must enable Active Directory Authentication.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Enable Active Directory Authentication."
+        },
+        "OemSmtpModified": {
+            "Description": "Indicates that the SMTP settings were successfully changed.",
+            "Message": "The SMTP was successfully modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemRadiusModified": {
+            "Description": "Indicates that the RADIUS settings were successfully changed.",
+            "Message": "The RADIUS was successfully modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemOtherAuthenticationServiceIsRunning": {
+            "Description": "Indicates that other authentication services were running.",
+            "Message": "%1 authentication service was already enabled, so %2 cannot be enabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Disable other authentication services and then try again."
+        },
+        "OemOnlyOneAuthenticationServiceCanBeEnabled": {
+            "Description": "Indicates that only one authentication service can be enabled.",
+            "Message": "Only one authentication service can be enabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please enable one authentication service."
+        },
+        "OemAdInvalidPortNumberWithoutSsl": {
+            "Description": "Indicates that an invalid port in request with the SSL is being disabled.",
+            "Message": "The value %1 for the property %2 was an invalid port number with the SSL being disabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Only 389 or 3268 port can be supported with the SSL being disabled."
+        },
+        "OemAdInvalidPortNumberWithSsl": {
+            "Description": "Indicates that an invalid port in request with the SSL being enabled.",
+            "Message": "The value %1 for the property %2 was an invalid port number with the SSL being enabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Only 636 or 3269 port can be supported with the SSL being enabled."
+        },
+        "OemNtpPatchSettingCondition": {
+            "Description": "Indicates that to set the required information, user needs to enable the NTP first.",
+            "Message": "To set the required information to access the NTP server, user must enable the NTP first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Enable the NTP"
+        },
+        "OemIllegalGroupName": {
+            "Description": "Indicates that there were special characters in the request to set the domain name.",
+            "Message": "In %1 property, following special characters are not allowed: ,; &\\\"<>=$*!@~`%^#",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Do not include special characters in the group name."
+        },
+        "OemIllegalDomainName": {
+            "Description": "Indicates that there were special characters in the request to set the domain name.",
+            "Message": "In %1 property, following special characters are not allowed: ,;&'\\\"<>=$|^?*~`()[]#%{}",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Do not include special characters in the domain name."
+        },
+        "OemNtpMissingItem": {
+            "Description": "Indicates that a required property was not supplied as part of the request to enable the NTP.",
+            "Message": "To enable, the NTP must have at least one setting.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Add one NTP server."
+        },
+        "OemNtpAcceptedMessage": {
+            "Description": "Indicate that request to configure NTP was accepted successfully but it takes time to perform.",
+            "Message": "Please also check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemMousemodeModified": {
+            "Description": "Indicates that the Mouse Mode was successfully modified.",
+            "Message": "Mouse Mode was modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemIkvmInterfaceModified": {
+            "Description": "Indicates that the iKVM interface was successfully modified.",
+            "Message": "iKVM interface was modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "TaskMonitorException": {
+            "Description": "Task monitor exception occurred, please see below for more details.",
+            "Message": "Resource: %1 was in exception because %2.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Please check if anything wrong and do it again."
+        },
+        "TaskMonitorAccepted": {
+            "Description": "Task monitor was running, please see below for more details.",
+            "Message": "Resource: %1 was %2 with progress percentage %3.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "number"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "TaskMonitorCompleted": {
+            "Description": "Task monitor was completed, please see below for more details.",
+            "Message": "Resource: %1 was completed.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemFailModifyLanSetting": {
+            "Description": "Indicate that the LAN setting was failed.",
+            "Message": "Modication of the LAN setting was failed due to the LAN information was unable to obtain.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check the LAN connection."
+        },
+        "OemFailSetLanspeed": {
+            "Description": "Indicate that set LAN speed only when the LAN cable was plugged in the Dedicated port.",
+            "Message": "Right now the LAN cable was not plugged in the Dedicated port hence the LAN speed was not configurable.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Plug the LAN cable to the Dedicate port."
+        },
+        "OemLanspeedUnsupported": {
+            "Description": "Indicate set LAN speed failed due to invalid value.",
+            "Message": "This LAN speed was unsupported.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please select supported LAN speed"
+        },
+        "OemLdapModified": {
+            "Description": "Indicate that the LDAP was successfully configured.",
+            "Message": "The LDAP was successfully modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemLdapInvalidPortNumberWithoutSsl": {
+            "Description": "Indicate that the LDAP port setting needs attention.",
+            "Message": "The value %1 for the property %2 was an invalid number with the SSL being disabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Only 389 port can be supported with the SSL being disabled."
+        },
+        "OemLdapInvalidPortNumberWithSsl": {
+            "Description": "Indicate that the LDAP port setting needs attention.",
+            "Message": "The value %1 for the property %2 was an invalid number with the SSL being enabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Only 636 port can be supported with the SSL being enabled."
+        },
+        "OemLdapBadServiceAddresses": {
+            "Description": "Indicate that the LDAP service address needs attention.",
+            "Message": "The value %1 for the property %2 was an invalid service address.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Service addresses should start with ldap:// or ldaps://."
+        },
+        "OemLdapBadIpAddresses": {
+            "Description": "Indicate that the IP address needs to attention.",
+            "Message": "It's an illegal IP address format.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "IP address should match the valid IP format."
+        },
+        "OemLdapBadPortNumber": {
+            "Description": "Indicate that the port number needs attention.",
+            "Message": "It's an illegal port number format.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Port number should match the valid port format."
+        },
+        "OemLdapBadLocalRole": {
+            "Description": "Indicate that the local role needs to be corrected.",
+            "Message": "The value %1 for the property %2 is an invalid local role.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Local role should be one of the following: Administrator, Operator, or User."
+        },
+        "OemSmcrakpModified": {
+            "Description": "Indicate that the RAKP was successfully configured.",
+            "Message": "The RAKP was configured successfully.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSyslogModified": {
+            "Description": "Indicate that the Syslog was successfully configured.",
+            "Message": "The Syslog was configured successfully.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemIpAccessControlDisabled": {
+            "Description": "Indicate that the filtering rule was able to be added only when service was running.",
+            "Message": "To set the filtering rule, must enable the IP Access Control Service first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Enable the IP Access Control Service first and try again."
+        },
+        "OemIpAccessControlRefuseLocal": {
+            "Description": "Indicate that accept policy with localhost is the default setting in the IP table.",
+            "Message": "The accept policy with localhost %1 is the default setting in the IP table.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Enter the other valid IP address instead of localhost."
+        },
+        "OemVmCdcfgModified": {
+            "Description": "Indicate that the Virtual Media was successfully configured.",
+            "Message": "The Virtual Media was configured successfully.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemVmMounted": {
+            "Description": "Indicate that the Virtual Media was successfully mounted.",
+            "Message": "The Virtual Media was mounted successfully.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemVmMountFail": {
+            "Description": "Indicate that the Virtual Media was failed to mount.",
+            "Message": "Unable to mount Virtual Media. (%1).",
+            "Severity": "Critical",
+            "MessageSeverity": "Critical",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Check the Virtual Media settings and the connection to share point."
+        },
+        "OemVmUnmounted": {
+            "Description": "Indicate that the Virtual Media was successfully unmounted.",
+            "Message": "The Virtual Media was unmounted successfully.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemVmUnmountFail": {
+            "Description": "Indicate that the Virtual Media was failed to unmount.",
+            "Message": "Unable to unmount Virtual Media. (%1).",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Check if the Virtual Media was in use."
+        },
+        "OemVmImageEmpty": {
+            "Description": "Indicate that the Virtual Media Image was empty.",
+            "Message": "Please enter the location for the virtual media image.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Image cannot be empty."
+        },
+        "OemVmImageIpv6Linklocal": {
+            "Description": "Indicate that the IPv6 link-local address was not suitable for Virtual Media.",
+            "Message": "The IPv6 link-local address was not allowed.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Use global IPv6 address instead."
+        },
+        "OemVmPathEmpty": {
+            "Description": "Indicate that the Virtual Media path was empty.",
+            "Message": "Please enter the path to the image.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Path cannot be empty."
+        },
+        "OemVmPathError": {
+            "Description": "Indicate that the Virtual Media path was invalid.",
+            "Message": "The path did not meet the expected pattern. (It is not an ISO file or contains :*?\\\"<>|).",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Correct the Path."
+        },
+        "OemVmUserPassEmptyError": {
+            "Description": "Indicate that the Virtual Media User or password was empty.",
+            "Message": "Virtual Media User and password should be either both filled or both empty at the same time.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Fill or empty both user and password concurrently."
+        },
+        "OemSnmpModified": {
+            "Description": "Indicate that the SNMP was successfully configured.",
+            "Message": "The SNMP was successfully configured.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSnmpv2Modified": {
+            "Description": "Indicate that the SNMPv2 was successfully configured.",
+            "Message": "The SNMPv2 was successfully configured.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSnmpv3Modified": {
+            "Description": "Indicate that the SNMPv3 was successfully configured.",
+            "Message": "The SNMPv3 was successfully configured.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSnmpv3IllegalKey": {
+            "Description": "Indicate that an invalid key was used.",
+            "Message": "At least 8 characters are necessary and it must contain lowercase letters, uppercase letters, and numbers.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Revise key pattern and try again."
+        },
+        "OemSnmpv3IllegalProtocolType": {
+            "Description": "Indicate that the incorrect protocol type was used.",
+            "Message": "Incorrect protocol type for the SNMPv3.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Revise the SNMPv3 protocol type."
+        },
+        "OemSnmpv3EmptyUser": {
+            "Description": "Indicate that the user field was empty.",
+            "Message": "This user field cannot be empty for the SNMPv3.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Input a valid user name."
+        },
+        "OemSnmpv3IllegalUser": {
+            "Description": "Indicate that there were special characters in the request to set the user name.",
+            "Message": "The user field for SNMPv3 cannot contain: ,;&'\\\"<>=$|^?*~`()[]#%{}.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Do not include special characters in the SNMPv3 user name."
+        },
+        "OemSslcertUploaded": {
+            "Description": "Indicate that the SSL certificate and private key were successfully uploaded.",
+            "Message": "SSL certificate and private key were successfully uploaded.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSslcertMissingItem": {
+            "Description": "Indicate that wrong files were uploaded.",
+            "Message": "Upload files should have the private key and SSL certificate, please put the correct values in the POST key fields.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check the key value of the POST method for those two upload files."
+        },
+        "OemSslcertIllegalPair": {
+            "Description": "Indicate that uploaded files were not matching to activate the SSL.",
+            "Message": "The certificate and private key files should be a pair.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check those two upload files and try again."
+        },
+        "OemHttppushuriErrorMessage": {
+            "Description": "Indicate that something wrong on HttpPushUri.",
+            "Message": "%1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the reason for the error."
+        },
+        "OemActivatelicenseErrorMessage": {
+            "Description": "Indicate that something wrong on ActivateLicense.",
+            "Message": "Error: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the reason for the error."
+        },
+        "OemHttppushuriAcceptedMessage": {
+            "Description": "Indicate that request was accepted and it took some time to update.",
+            "Message": "Please check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemSimpleupdateErrorMessage": {
+            "Description": "Indicate that something wrong on SimpleUpdate.",
+            "Message": "Error: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the error reason."
+        },
+        "OemSimpleupdateAcceptedMessage": {
+            "Description": "Indicate that request was accepted and it took some time to update.",
+            "Message": "Please also check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemSimpleupdatePmemAcceptedMessage": {
+            "Description": "Indicate that request was accepted and it took some time to update.",
+            "Message": "Please also check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please perform system reset in order to finish PMem FW update!"
+        },
+        "OemIndicateDriveLedAcceptedMessage": {
+            "Description": "Indicate that request to turn on/off drive indicator was accepted successfully but it took some time to perform.",
+            "Message": "Please check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemIndicateDriveLedErrorMessage": {
+            "Description": "Indicate that request to turn on/off drive indicator was unsuccessful.",
+            "Message": "Error: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the error for reason(s)."
+        },
+        "OemPortInUse": {
+            "Description": "Indicate that the port number was occupied.",
+            "Message": "The port number %1 was in use.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "number"
+            ],
+            "Resolution": "Please change to another port number."
+        },
+        "OemKvmServiceDisabled": {
+            "Description": "Indicate that current setting was failed to apply due to the KVM service was not enabled.",
+            "Message": "The KVM service was disabled hence %1 can't be enabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please enable the KVM service first and try again."
+        },
+        "OemPlatformNotSupportFanModeModify": {
+            "Description": "Indicate that this FAN mode cannot be modified.",
+            "Message": "This platform doesn't support Fan Mode modify.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "AccountLockup": {
+            "Description": "Indicate that the current account was locked up.",
+            "Message": "The account was locked up.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please wait until the account is unlocked."
+        },
+        "OemBasicAuthApplyIkvmFail": {
+            "Description": "Indicate that it failed at application for the iKVM URI to launch.",
+            "Message": "Application count reaches its limitation.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please check if you have acquired a valid session or wait for previous a validated session being timeout then acquire again."
+        },
+        "OemStorageHaRaidSaved": {
+            "Description": "Indicate that the setting for storage controller was successfully saved.",
+            "Message": "The configuration was successfully saved.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemStorageLocated": {
+            "Description": "Indicate that the drive indicator was successfully located/unlocated.",
+            "Message": "%1.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemStorageVolumeWrongParam": {
+            "Description": "Indicate that the volume creation was failed when wrong parameters were used.",
+            "Message": "Wrong parameters %s were used to create the volume.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please use allowable values to create a volume."
+        },
+        "OemStorageVolumeCreateFail": {
+            "Description": "Indicate that the volume creation was failed.",
+            "Message": "Creation of volume was failed, please check the input parameters.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please verify if input parameters are correct and try again."
+        },
+        "OemStorageConfigPatchFail": {
+            "Description": "Indicate wrong parameters for the configuration of the storage controller.",
+            "Message": "Please check the input parameters.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please check if anything was OK and try it again."
+        },
+        "OemStorageDeleted": {
+            "Description": "Indicate that the volume was successfully deleted.",
+            "Message": "The volume was successfully deleted.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemStorageVolumeCreated": {
+            "Description": "Indicate that the volume was successfully created.",
+            "Message": "The volume was successfully created.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemStorageVolumeDeleted": {
+            "Description": "Indicate that the volume was successfully deleted.",
+            "Message": "The volume was successfully deleted.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemStorageVolumeRebuild": {
+            "Description": "Indicate that the volume was successfully rebuild.",
+            "Message": "The volume was successfully rebuild.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemStorageDriveUnmarkSpare": {
+            "Description": "Indicate that the drive was successfully unmark spare.",
+            "Message": "The drive was successfully unmark spare.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemBiosUpdateIsInProgress": {
+            "Description": "Indicate that there was already one BIOS image was updating.",
+            "Message": "The BIOS Update was in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "The BIOS was updating and please wait till it was finished."
+        },
+        "OemBiosUpdateNoImage": {
+            "Description": "Indicate that there was no BIOS image uploaded to perform image updating.",
+            "Message": "No BIOS image to update, please upload first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload a BIOS image and try again."
+        },
+        "OemBiosUpdateWrongImage": {
+            "Description": "Indicate that a wrong BIOS was uploaded to perform updating.",
+            "Message": "Unable to recognize the BIOS image content.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload a valid BIOS firmware image and try again."
+        },
+        "OemBiosUpdateErrorMessage": {
+            "Description": "Indicate that the BIOS updating was failed due to a possible error below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check this error reason and try again."
+        },
+        "OemUnknownFirmwareType": {
+            "Description": "Indicate that an unknown firmware was chosen to perform updating.",
+            "Message": "Firmware type was unknown.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please verify that the current firmware type is supported to perform updating."
+        },
+        "OemFirmwareUpdateIsInProgress": {
+            "Description": "Indicate that there was already one BMC firmware was updating.",
+            "Message": "The BMC firmware Update was in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "The BMC was updating and please wait until it was finished."
+        },
+        "OemFirmwareUpdateNoImage": {
+            "Description": "Indicate that there was no BMC firmware uploaded to perform updating.",
+            "Message": "No BMC image to update, please upload first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload a BMC firmware and try again."
+        },
+        "OemFirmwareAlreadyInUpdateMode": {
+            "Description": "Indicate that a duplicated Enter Update Mode was performed.",
+            "Message": "The %1 firmware update was already in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check if there was the next step with respective API to execute."
+        },
+        "OemFirmwareNotInUpdateMode": {
+            "Description": "Indicate that the BMC firmware update was not following the correct procedure to perform updating.",
+            "Message": "The BMC firmware update was not in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please execute Enter Update Mode and try again."
+        },
+        "OemFirmwareUpdateWrongImage": {
+            "Description": "Indicate that the BMC firmware image content checking failed thus firmware updating process was stopped.",
+            "Message": "The BMC firmware image content was not recognized so the update was stopped.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload a valid BMC firmware image and try again."
+        },
+        "OemFirmwareUpdateErrorMessage": {
+            "Description": "Indicate that the BMC firmware update fails due to something.",
+            "Message": "BMC firmware update process has failed.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please check if there was anything wrong and try again."
+        },
+        "OemFileDownloaded": {
+            "Description": "Indicate that the file was downloaded successfully. Please keep as a backup.",
+            "Message": "The file %1 was successfully downloaded.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "Resolution": "No resolution was required."
+        },
+        "OemFileDownloadErrorMessage": {
+            "Description": "Indicate that the file was not found and was not downloaded.",
+            "Message": "Failed to download the selected file %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "Resolution": "Please verify everything then try again."
+        },
+        "OemNotFromHostInterfaceErrorMessage": {
+            "Description": "Request should be from Host Interface",
+            "Message": "Failed to access this URI",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Request should be from Host Interface."
+        },
+        "OemIpmiConfigRestored": {
+            "Description": "Indicate that the uploaded IPMI configuration was accepted and restored. It will soon cause BMC automatically to reboot in order to restore the configuration.",
+            "Message": "The IPMI configuration was successfully restored. BMC will be rebooted shortly.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemIpmiConfigRestoreErrorMessage": {
+            "Description": "Indicate that the IPMI configuration could not be restored currently.",
+            "Message": "Failed to restore the selected IPMI configuration.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please try again with a different configuration file."
+        },
+        "OemIpmiConfigMissingItem": {
+            "Description": "Indicate that the necessary key was not uploaded with the IPMI configuration.",
+            "Message": "The uploaded file should be a saved IPMI configuration file. Please put correct value in the POST key field.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check the key value of the POST method for the uploaded file."
+        },
+        "OemLicenseNotPassed": {
+            "Description": "Indicate that the privilege checking was failed.",
+            "Message": "Not licensed to perform this request. The following licenses %1 were needed",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please activate at least one license in the above message."
+        },
+        "OemNmAllPoliciesCleared": {
+            "Description": "Indicate that all NM policies were successfully cleared.",
+            "Message": "NM all policies were successfully cleared.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemNmAllPoliciesClearFail": {
+            "Description": "Indicate that all NM policies clearing were failed.",
+            "Message": "Failed to clear NM all policies.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please make sure CPU types were correct to support clear NM policies."
+        },
+        "OemActiveNmSet": {
+            "Description": "Indicate that active node manager is set.",
+            "Message": "Active node manager is set.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSetActiveNmFailed": {
+            "Description": "Indicate that set active node manager were failed.",
+            "Message": "Failed to set active node manager.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please make sure NM Target types were correct to active.."
+        },
+        "OemSyslockdownModified": {
+            "Description": "Indicate that the System Lockdown was successfully configured.",
+            "Message": "The System Lockdown was successfully modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "Please reset the system for the system lock control operation to take effect."
+        },
+        "OemMemorypfaModified": {
+            "Description": "Indicate that the memory PFA was successfully configured.",
+            "Message": "The memory PFA was successfully modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "Please reset the system for the memory PFA control operation to take effect."
+        },
+        "OemMemoryhealthcompModified": {
+            "Description": "Indicate that the memory health components was successfully configured.",
+            "Message": "The memory health components was successfully modified.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "Please reset the system for the memory health components control operation to take effect."
+        },
+        "OemMarkAsAcknowledged": {
+            "Description": "Indicates that the event was successfully marked to acknowledge.",
+            "Message": "the selected event is acknowledged.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSystemLockdownEnabled": {
+            "Description": "Indicate that the System Lockdown was enabled.",
+            "Message": "System is in lockdown mode. This action is forbidden.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSystemLockdownEnabledPatchValid": {
+            "Description": "Indicate that the System Lockdown was enabled.",
+            "Message": "The System Lockdown was turned on, only support patch %1.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "Resolution": "No resolution was required."
+        },
+        "OemFileoperationErrorMessage": {
+            "Description": "Indicate that the file operation has an error.",
+            "Message": "FileOperation %1 is Error. %2.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "Resolution": "No resolution was required."
+        },
+        "OemPlatformNotSupportNodeManager": {
+            "Description": "Indicate that there is no node manager in this platform.",
+            "Message": "This platform doesn't support Node Manager.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemActionFailDueToIPProtocolStatus": {
+            "Description": "Indicates that IP Protocol Status doesn't allow this change.",
+            "Message": "Due to IP Protocol Status is %1, you can do any changes for %2",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemSecureEraseIsInProgress": {
+            "Description": "Indicate that a secure erase action was in progress.",
+            "Message": "Secure Erase action is in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Secure Erase action is in progress. Please wait until the action is completed."
+        },
+        "OemSecureEraseIsNotInProgress": {
+            "Description": "Indicate that there was no secure erase action was performed.",
+            "Message": "Secure Erase action is not in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSecureEraseIsInProgressWithTaskId": {
+            "Description": "Indicate that a secure erase was being performed.",
+            "Message": "Secure Erase action is in progress and please check Task Resource %1 to see more information.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Secure Erase action is in progress. Please wait until the action is completed."
+        },
+        "OemSecureEraseAcceptedMessage": {
+            "Description": "Indicate that the request to perform secure erase was accepted successfully but it will take some time to perform.",
+            "Message": "Please check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemSecureEraseAbortAcceptedMessage": {
+            "Description": "Indicate that the request to abort secure erase was accepted successfully.",
+            "Message": "Secure Erase action was successfully aborted.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemSecureEraseErrorMessage": {
+            "Description": "Indicate that request to perform or abort secure erase was unable to do.",
+            "Message": "Error: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check error for the reason."
+        },
+        "OemTaskServiceDisabledMessage": {
+            "Description": "Indicate that the TaskService was disabled and the Task Resource was not provided.",
+            "Message": "The TaskService was disabled so the Task Resource was not provided.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "Please enable the TaskService."
+        },
+        "OemReservedIpv4Address": {
+            "Description": "Indicates that a reserved IP address was requested.",
+            "Message": "The value %1 with a subnet mask of %2 for the property %3 is a reserved IP.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Please set a new IP address on another network segment."
+        },
+        "OemCpldAlreadyInUpdateMode": {
+            "Description": "Indicate that a device update is already in progress.",
+            "Message": "BMC is already in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please check if there was the next step with respective API to execute."
+        },
+        "OemCpldUpdateNoImage": {
+            "Description": "Indicate that there is no update image uploaded to perform the device firmware update.",
+            "Message": "No %1 image was uploaded, please upload a firmware image first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please upload an image first."
+        },
+        "OemCpldUpdateNotInUpdateMode": {
+            "Description": "Indicate that device update is not in update mode.",
+            "Message": "The %1 firmware update is not in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please execute Enter Update Mode and try again."
+        },
+        "OemCpldUpdateIsInProgress": {
+            "Description": "Indicate that a device update is already in progress.",
+            "Message": "The %1 Update is already in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "A device is being updated. Please wait until the process is completed."
+        },
+        "OemCpldUpdateErrorMessage": {
+            "Description": "Indicate that the update process failed due to possible errors below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the error and re-run the process again."
+        },
+        "OemHgxAlreadyInUpdateMode": {
+            "Description": "Indicate that a device update is already in progress.",
+            "Message": "BMC is already in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please check if there was the next step with respective API to execute."
+        },
+        "OemHgxUpdateIsInProgress": {
+            "Description": "Indicate that a device update is already in progress.",
+            "Message": "The %1 Update is already in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "A device is updating and please wait till it is finished."
+        },
+        "OemHgxUpdateNotInUpdateMode": {
+            "Description": "Indicate that device update is not in update mode.",
+            "Message": "The %1 firmware update is not in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please execute Enter Update Mode and do it again."
+        },
+        "OemHgxUpdateNoImage": {
+            "Description": "Indicate that there is no update image uploaded to perform the device firmware update.",
+            "Message": "No %1 image uploaded, please upload first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please upload an image first."
+        },
+        "OemHgxTypeNotSupport": {
+            "Description": "Indicate that firmware update on this HGX A100 board type is not supported.",
+            "Message": "Firmware update on HGX A100 %1 board is not supported.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemBrcmUpdateIsInProgress": {
+            "Description": "Indicate that a BRCM image is updating.",
+            "Message": "The BRCM %1 Update is in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "The BRCM is updating. Please wait until the process is completed."
+        },
+        "OemBrcmUpdateNoImage": {
+            "Description": "Indicate that there was no BRCM image was uploaded to perform updating.",
+            "Message": "No BRCM image to update. Please upload a BRCM image first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload a BRCM image and try again."
+        },
+        "OemBrcmUpdateErrorMessage": {
+            "Description": "Indicate that the BRCM updating was failed due to a possible error below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the possible reason and try again."
+        },
+        "OemMrvlUpdateIsInProgress": {
+            "Description": "Indicate that an MRVL image is in the updating process.",
+            "Message": "The MRVL %1 Update was in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "The MRVL storage controller is being updated. Please wait until the process is completed."
+        },
+        "OemMrvlUpdateNoImage": {
+            "Description": "Indicate that there was no MRVL image being uploaded to perform updating.",
+            "Message": "No MRVL image to update, please upload an MRVL image first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload an MRVL image and try again."
+        },
+        "OemMrvlUpdateErrorMessage": {
+            "Description": "Indicate that the MRVL updating process had failed due to a possible error below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the possible reason and try again."
+        },
+        "OemAntiRollForward": {
+            "Description": "Indicates that the Rollback ID of the new firmware is higher than the current one in the system.",
+            "Message": "The Rollback ID of the new firmware is higher than the current one in the system.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemEvidenceDumpErrorMessage": {
+            "Description": "Indicate that the evidence dump process had failed due to a possible error below.",
+            "Message": "Failed to %1 %2 evidence, %3.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Please check the possible reason and try again."
+        },
+        "OemRequestAcceptedMessage": {
+            "Description": "Indicate that request was accepted successfully but it takes time to perform.",
+            "Message": "Please also check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemIpv6DefaultGatewayConfigureFail": {
+            "Description": "Indicates that configuration for IPv6 default gateway is failed",
+            "Message": "Failed to reach this address %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please help to check this address is reachable."
+        },
+        "OemNicUpdateNotInUpdateMode": {
+            "Description": "Indicate that device update is not in update mode.",
+            "Message": "The %1 firmware update is not in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please execute Enter Update Mode and do it again."
+        },
+        "OemNicUpdateIsInProgress": {
+            "Description": "Indicate that there was already one NIC image was updating.",
+            "Message": "The NIC %1 Update was in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "The NIC was updating and please wait till it was finished."
+        },
+        "OemNicUpdateNoImage": {
+            "Description": "Indicate that there was no NIC image being uploaded to continue performing updating.",
+            "Message": "No NIC image to update, please upload first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload an NIC image and do it again."
+        },
+        "OemNicUpdateErrorMessage": {
+            "Description": "Indicate that the NIC updating was failed due to a possible error below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check this error reason and run it again."
+        },
+        "OemGpuUpdateNotInUpdateMode": {
+            "Description": "Indicate that device update is not in update mode.",
+            "Message": "The %1 firmware update is not in update mode.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please execute Enter Update Mode and do it again."
+        },
+        "OemGpuUpdateIsInProgress": {
+            "Description": "Indicate that there was already one GPU image was updating.",
+            "Message": "The GPU %1 Update was in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "The GPU was updating and please wait till it was finished."
+        },
+        "OemGpuUpdateNoImage": {
+            "Description": "Indicate that there was no GPU image being uploaded to continue performing updating.",
+            "Message": "No GPU image to update, please upload first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload an GPU image and do it again."
+        },
+        "OemGpuUpdateErrorMessage": {
+            "Description": "Indicate that the GPU updating was failed due to a possible error below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check this error reason and run it again."
+        },
+        "OemRequestDataDuplicate": {
+            "Description": "Indicates that operation cannot proceed because there are two or more same requested data.",
+            "Message": "The requested data %1 are duplicated.",
+            "Severity": "Critical",
+            "MessageSeverity": "Critical",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Do not repeat the requested data for this resource."
+        },
+        "OemUserNotToDisabledServiceWhenUserLogined": {
+            "Description": "Indicates that the user cannot disable service when there is an directory service user who have logined.",
+            "Message": "Disabled service %1 was not allowed there is an directory service user who have logined.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Kill all related session or Wait these users logout."
+        },
+        "OemUserDisableFail": {
+            "Description": "Indicates that the user cannot be disabled or deleted, because there is an session activated by this user.",
+            "Message": "The User %1 cannot be disabled or deleted, because there is an active session created by this user.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "number"
+            ],
+            "Resolution": "Logout the session and try disable action again."
+        },
+        "OemNetworkProtocolAcceptedMessage": {
+            "Description": "Indicate that request was accepted successfully but it takes time to perform.",
+            "Message": "Please also check Task Resource %1 to see more information.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemPortInTcpWaitTimeState": {
+            "Description": "Indicate that the port number was occupied.",
+            "Message": "TCP WAIT_TIME State: Please wait for a moment until the port %1 becomes available. If problem persists, please check whether port is in the use.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "number"
+            ],
+            "Resolution": "Please change to another port number or wait for few minutes."
+        },
+        "OemSmtpPatchSettingCondition": {
+            "Description": "Indicates that a must require property was not supplied as part of the request.",
+            "Message": "To set the required information to access the SMTP, user must enable SMTP Authentication.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Enable SMTP Authentication."
+        },
+        "OemSmtpSettingNotAllow": {
+            "Description": "Indicates that SMTP Server setting is not allowed.",
+            "Message": "Choosing 'None' for ConnectionProtocol and 'AutoDetect' for AuthenticationProtocol is not supported simultaneously.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Set a specific SMTP AuthenticationProtocol."
+        },
+        "OemBiosUploadFail": {
+            "Description": "Indicates that there's a New BIOS fw is loaded into Staging Region (NAND device) and will be transferred to BIOS NOR Flash region upon system reset.",
+            "Message": "There's a New BIOS fw is loaded into Staging Region and will be transferred to BIOS NOR Flash region upon system reset.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "If want to cancel the staging update for BIOS, to delete the pending task in task service"
+        },
+        "OemAssignSpare": {
+            "Description": "Indicate that the drive was assigned to HotSpare drive.",
+            "Message": "%1.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "Resolution": "No resolution was required."
+        },
+        "OemDeleteSpare": {
+            "Description": "Indicate that the HotSpare drive was removed.",
+            "Message": "%1.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "No resolution was required."
+        },
+        "OemTeeFileUploadMissingItem": {
+            "Description": "Indicate that the necessary key was not uploaded with the Tee File upload.",
+            "Message": "The uploaded file should be a saved binary file. Please put correct value in the POST key field.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check the key value of the POST method for the uploaded file."
+        },
+        "OemTeeFileUpdateErrorMessage": {
+            "Description": "Indicate that the update process failed due to possible errors below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "number"
+            ],
+            "Resolution": "Please check the error and re-run the process again."
+        },
+        "CertainConfigurationNotSet": {
+            "Description": "Indicates that some header settings was not set",
+            "Message": "A certain configuration is required for access resources",
+            "Severity": "Critical",
+            "MessageSeverity": "Critical",
+            "NumberOfArgs": 0,
+            "Resolution": "None"
+        },
+        "SettingsSuccess": {
+            "Description": "Indicates the settings are successfully acceptable.",
+            "Message": "Successfully Applied Settings",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "Resolution": "None"
+        },
+        "SettingsFailed": {
+            "Description": "Indicates some attributes are not acceptable.",
+            "Message": "Check out RelatedProperties",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check if these attributes are acceptable or not"
+        },
+        "NotSupportSecureboot": {
+            "Description": "BIOS not support secureboot.",
+            "Message": "Current BIOS does not support Secureboot functionalities, please use supported BIOS and try again.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Check BIOS version."
+        },
+        "LicenseClearFailed": {
+            "Description": "Indicates the product key doesn't exist.",
+            "Message": "License cannot be deactivated.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please check the product key does exist or not."
+        },
+        "NetworkProtocolServiceConfigureFailed": {
+            "Description": "Indicates that NetworkProtocol configuration is not allowed in current state.",
+            "Message": "%1 %2 Service is not allowed, because user configure it to the same setting as current.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Please check the service current settings."
+        },
+        "OemDrivesmartDumpErrorMessage": {
+            "Description": "Indicate that the smart dump process had failed due to a possible error below.",
+            "Message": "Failed to %1 drive SMART file, %3.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Please check the possible reason and try again."
+        },
+        "OemUpdateActionNotSupported": {
+            "Description": "It indicates that this Redfish API will be removed from X13-and-after platforms.",
+            "Message": "It is NOT recommended to use this API, because this Redfish API is obsolete. Supermicro considers removing this API from X13-and-after platforms.",
+            "Severity": "OK",
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 0,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please use the standard Redfish API to update firmware. URI://redfish/v1/UpdateService/FirmwareInventory/upload."
+        },
+        "OemRaProvisionMessage": {
+            "Description": "Indicate RA Provision message.",
+            "Message": "RA Provision message: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please forward this message to RD."
+        },
+        "OemNvmeUpdateIsInProgress": {
+            "Description": "Indicate that a NVMe drive FW image is updating.",
+            "Message": "The NVMe Drive Update of BPN %1 CPLD %2 SLOT %3 is in progress.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "The NVMe Drive of BPN %1 CPLD %2 SLOT %3 is updating. Please wait until the process is completed."
+        },
+        "OemNvmeUpdateNoImage": {
+            "Description": "Indicate that there was no NVMe drive FW image was uploaded to perform updating.",
+            "Message": "No NVMe drive FW image to update. Please upload a NVMe drive FW image first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 0,
+            "Resolution": "Please upload a NVMe drive FW image and try again."
+        },
+        "OemNvmeUpdateErrorMessage": {
+            "Description": "Indicate that the NVMe drive updating was failed due to a possible error below.",
+            "Message": "Error: Failed to update, reason: %1.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please check the possible reason and try again."
+        },
+        "OemIPMIServiceDisabled": {
+            "Description": "Indicate that current setting was failed to apply due to the IPMI service was not enabled.",
+            "Message": "The IPMI service was disabled hence %1 can't be enabled.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Please enable the IPMI service first and try again."
+        },
+        "OemPropertyModifySuggested": {
+            "Description": "It indicates which Redfish API to modify property is suggested.",
+            "Message": "It is NOT recommended to use this API to modify %1, because this property is inherited from another. Please use the URI:%2 Property:%3 alternative.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Please use the recommended Redfish API to modify"
+        },
+        "OemApiObsolete": {
+            "Description": "It indicates that this Redfish API will be removed.",
+            "Message": "It is NOT recommended to use this API, because this Redfish API is obsolete. Supermicro considers removing this API from %1-and-after platforms. Please use the URI:%2 alternative.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Please use the standard Redfish API."
+        },
+        "OemServiceDisabled": {
+            "Description": "Indicate that the Service was not able to operate when Service disabled.",
+            "Message": "To operate the %1, must enable the %2 first.",
+            "Severity": "Warning",
+            "MessageSeverity": "Warning",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Enable the Service first and try again."
+        }
+    }
+}

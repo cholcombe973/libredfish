@@ -1,0 +1,104 @@
+{
+    "$id": "/redfish/v1/Schemas/DellManagerNetworkProtocol.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellManagerNetworkProtocol": {
+            "additionalProperties": false,
+            "description": "Oem data related to the ManagerNetworkProtocol Instance.",
+            "longDescription": "Oem data related to the ManagerNetworkProtocol Instance.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "PNAC": {
+                    "$ref": "#/definitions/PNACInfo",
+                    "description": "Defines Port-based Network Access Control.",
+                    "longDescription": "This property defines Port-based Network Access Control."
+                }
+            },
+            "type": "object"
+        },
+        "PNACInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AuthenticationServerCertificateValidationStatus": {
+                    "$ref": "/redfish/v1/Schemas/DellManagerNetworkProtocol.json#/definitions/BinaryEnum",
+                    "description": "Validate Authentication Server Certificate.",
+                    "longDescription": "This property defines validation status of Authentication Server Certificate. The default value is Disabled. To Enable this property the ServerCACertificates must contain a valid certificate.",
+                    "readonly": false
+                },
+                "ClientCSC": {
+                    "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection",
+                    "description": "Defines the location of Client CSC Certificates uploaded.",
+                    "longDescription": "This property defines the location of Client CSC Certificates uploaded.",
+                    "readonly": true
+                },
+                "ClientCertificateType": {
+                    "$ref": "/redfish/v1/Schemas/DellManagerNetworkProtocol.json#/definitions/ClientCertificateTypes",
+                    "description": "The type of client certificate the BMC will use.",
+                    "longDescription": "This property defines the type of client certificate the BMC will use.",
+                    "readonly": false
+                },
+                "ClientCertificates": {
+                    "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection",
+                    "description": "Defines the location of Client Certificates uploaded.",
+                    "longDescription": "This property defines the location of the Client Certificates uploaded.",
+                    "readonly": true
+                },
+                "InitialDeviceIDCertificate": {
+                    "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection",
+                    "description": "Defines the location of Factory Identity Certificate.",
+                    "longDescription": "This property defines the location of Factory Identity Certificate.",
+                    "readonly": true
+                },
+                "Protocol": {
+                    "description": "Networking protocol for Port-based Network Access Control.",
+                    "longDescription": "This property defines the networking protocol for Port-based Network Access Control.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ServerCACertificates": {
+                    "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection",
+                    "description": "Defines the location of Server CA Certificates uploaded.",
+                    "longDescription": "This property defines the location of Server CA Certificates uploaded. AuthenticationServerCertificateValidationStatus property value should be set to Enabled to use the Certificate at ServerCACertificates.",
+                    "readonly": true
+                },
+                "ServiceStatus": {
+                    "$ref": "/redfish/v1/Schemas/DellManagerNetworkProtocol.json#/definitions/BinaryEnum",
+                    "description": "Port-based Network Access Control service status.",
+                    "longDescription": "This property defines Port-based Network Access Control service status. The default value is Enabled.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellManagerNetworkProtocol.v1_0_0"
+}

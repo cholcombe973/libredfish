@@ -1,0 +1,225 @@
+{
+    "$id": "/redfish/v1/Schemas/DellOemStorageController.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "BatteryLearnMode": {
+            "enum": [
+                "Automatic",
+                "WarnOnly",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Automatic": "The RAID Adapter will perform a Battery Learn Cycle as needed.",
+                "Disabled": "The RAID Adapter will take no action when a Battery Learn Cycle is needed.",
+                "WarnOnly": "The RAID Adapter will issue a warning when a Battery Learn Cycle is needed, otherwise no action."
+            },
+            "enumLongDescriptions": {
+                "Automatic": "The RAID Adapter will perform a Battery Learn Cycle as needed.",
+                "Disabled": "The RAID Adapter will take no action when a Battery Learn Cycle is needed.",
+                "WarnOnly": "The RAID Adapter will issue a warning when a Battery Learn Cycle is needed, otherwise no action."
+            },
+            "type": "string"
+        },
+        "CheckConsistencyMode": {
+            "enum": [
+                "Normal",
+                "StopOnError"
+            ],
+            "enumDescriptions": {
+                "Normal": "The RAID Adapter supports normal Check Consistency operation.",
+                "StopOnError": "The RAID Adapter supports Check Consistency in which the operation will stop on an error."
+            },
+            "enumLongDescriptions": {
+                "Normal": "The RAID Adapter supports normal Check Consistency operation.",
+                "StopOnError": "The RAID Adapter supports Check Consistency in which the operation will stop on an error."
+            },
+            "type": "string"
+        },
+        "ControllerBootMode": {
+            "enum": [
+                "UserMode",
+                "ContinueBootOnError",
+                "HeadlessModeContinueOnError",
+                "HeadlessSafeMode"
+            ],
+            "enumDescriptions": {
+                "ContinueBootOnError": "Boot Mode is Continue Boot On Error.",
+                "HeadlessModeContinueOnError": "Boot Mode is Headless.",
+                "HeadlessSafeMode": "Boot Mode is Headless Safe.",
+                "UserMode": "Boot Mode is User."
+            },
+            "enumLongDescriptions": {
+                "ContinueBootOnError": "Boot Mode is Continue Boot On Error.",
+                "HeadlessModeContinueOnError": "Boot Mode is Headless.",
+                "HeadlessSafeMode": "Boot Mode is Headless Safe.",
+                "UserMode": "Boot Mode is User."
+            },
+            "type": "string"
+        },
+        "ControllerMode": {
+            "enum": [
+                "EnhancedHBA",
+                "HBA",
+                "None",
+                "RAID"
+            ],
+            "enumDescriptions": {
+                "EnhancedHBA": "Controller mode is EnhancedHBA.",
+                "HBA": "Controller mode is HBA.",
+                "None": "Controller mode is None.",
+                "RAID": "Controller mode is RAID."
+            },
+            "enumLongDescriptions": {
+                "EnhancedHBA": "Controller mode is EnhancedHBA.",
+                "HBA": "Controller mode is HBA.",
+                "None": "Controller mode is None.",
+                "RAID": "Controller mode is RAID."
+            },
+            "type": "string"
+        },
+        "CopybackMode": {
+            "enum": [
+                "Off",
+                "On",
+                "OnWithSMART"
+            ],
+            "enumDescriptions": {
+                "Off": "The Copy Back function is turned off in the RAID Adapter.",
+                "On": "The RAID Adapter will perform a Copy Back after driver replacement.",
+                "OnWithSMART": "The RAID Adapter will perform a Copy Back to a hotspare when a SMART alert is detected."
+            },
+            "enumLongDescriptions": {
+                "Off": "The Copy Back function is turned off in the RAID Adapter.",
+                "On": "The RAID Adapter will perform a Copy Back after driver replacement.",
+                "OnWithSMART": "The RAID Adapter will perform a Copy Back to a hotspare when a SMART alert is detected."
+            },
+            "type": "string"
+        },
+        "DellOemStorageController": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/DellOemStorageController.v1_0_0.json#/definitions/DellOemStorageController"
+                }
+            ],
+            "description": "Oem data related to the Storage Controller.",
+            "longDescription": "Oem data related to the Storage Controller."
+        },
+        "EnhancedAutoImportForeignConfigurationMode": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Enhanced auto import disabled.",
+                "Enabled": "Enhanced auto import enabled."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Enhanced auto import disabled.",
+                "Enabled": "Enhanced auto import enabled."
+            },
+            "type": "string"
+        },
+        "LoadBalanceMode": {
+            "enum": [
+                "Disabled",
+                "Automatic"
+            ],
+            "enumDescriptions": {
+                "Automatic": "Automatic Load Balancing is active.",
+                "Disabled": "Load Balancing is inactive."
+            },
+            "enumLongDescriptions": {
+                "Automatic": "Automatic Load Balancing is active.",
+                "Disabled": "Load Balancing is inactive."
+            },
+            "type": "string"
+        },
+        "PatrolReadMode": {
+            "enum": [
+                "Disabled",
+                "Automatic",
+                "Manual"
+            ],
+            "enumDescriptions": {
+                "Automatic": "Patrol Read is automatically started and stopped by the RAID Adapter.",
+                "Disabled": "Patrol Read Mode is disabled.",
+                "Manual": "Patrol Read must be manually started and stopped on the RAID Adapter."
+            },
+            "enumLongDescriptions": {
+                "Automatic": "Patrol Read is automatically started and stopped by the RAID Adapter.",
+                "Disabled": "Patrol Read Mode is disabled.",
+                "Manual": "Patrol Read must be manually started and stopped on the RAID Adapter."
+            },
+            "type": "string"
+        },
+        "PatrolReadUnconfiguredAreaMode": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Patrol Read unconfigured mode disabled.",
+                "Enabled": "Patrol Read unconfigured mode enabled."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Patrol Read unconfigured mode disabled.",
+                "Enabled": "Patrol Read unconfigured mode enabled."
+            },
+            "type": "string"
+        },
+        "PersistentHotspareMode": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Persistent hotspare mode is disabled.",
+                "Enabled": "Persistent hotspare mode is enabled."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Persistent hotspare mode is disabled.",
+                "Enabled": "Persistent hotspare mode is enabled."
+            },
+            "type": "string"
+        },
+        "RAIDMode": {
+            "enum": [
+                "Linux",
+                "Windows",
+                "Mixed",
+                "None"
+            ],
+            "enumDescriptions": {
+                "Linux": "Current RAID Mode is Linux.",
+                "Mixed": "Current RAID Mode is Mixed.",
+                "None": "Current RAID Mode is None.",
+                "Windows": "Current RAID Mode is Windows."
+            },
+            "enumLongDescriptions": {
+                "Linux": "Current RAID Mode is Linux.",
+                "Mixed": "Current RAID Mode is Mixed.",
+                "None": "Current RAID Mode is None.",
+                "Windows": "Current RAID Mode is Windows."
+            },
+            "type": "string"
+        },
+        "SupportedInitializationTypes": {
+            "enum": [
+                "Fast",
+                "Slow"
+            ],
+            "enumDescriptions": {
+                "Fast": "Volume preparation mode is Fast.",
+                "Slow": "Volume preparation mode is Slow."
+            },
+            "enumLongDescriptions": {
+                "Fast": "Volume preparation mode is Fast.",
+                "Slow": "Volume preparation mode is Slow."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellOemStorageController"
+}

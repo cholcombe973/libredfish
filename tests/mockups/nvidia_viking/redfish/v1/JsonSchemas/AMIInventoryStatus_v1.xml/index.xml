@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIInventoryStatus  v1.0.0                                          -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema Namespace="AMIInventoryStatus" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <EntityType Name="AMIInventoryStatus" BaseType="Resource.v1_0_0.Resource">
+        <Annotation Term="OData.Description" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Annotation Term="OData.LongDescription" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+    </Schema>
+    <Schema Namespace="AMIInventoryStatus.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+      <EntityType Name="AMIInventoryStatus" BaseType="AMIInventoryStatus.AMIInventoryStatus">
+        <Annotation Term="OData.Description" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Annotation Term="OData.LongDescription" String="This is the schema definition for InventoryData Information and Status of the Systems connected to this Manager."/>
+        <Property Name="InventoryData" Type="AMIInventoryStatus.v1_0_0.InventoryData" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This object contains the InventoryData informations."/>
+          <Annotation Term="OData.LongDescription" String="This object contains the InventoryData informations."/>
+        </Property>
+      </EntityType>
+      <ComplexType Name="InventoryData">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This property shall specify a valid odata or Redfish property."/>
+        <Annotation Term="OData.LongDescription" String="This property shall specify a valid odata or Redfish property."/>
+        <Property Name="Messages" Type="Collection(Edm.String)" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is an array messages that is created during Inventory population."/>
+          <Annotation Term="OData.LongDescription" String="This is an array messages that is created during Inventory population."/>
+        </Property>
+        <Property Name="ProcessingTime" Type="Edm.Decimal" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is the time taken to process and populate the Inventory file."/>
+          <Annotation Term="OData.LongDescription" String="This is the time taken to process and populate the Inventory file."/>
+        </Property>
+        <Property Name="Status" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Specifies the status of inventory file processing."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the status of inventory file processing."/>
+        </Property>
+        <Property Name="DeletedModules" Type="Collection(Edm.String)" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Specifies the updated CRC modules in the inventory."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specify the updated CRC modules in the inventory."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

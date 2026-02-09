@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellCertificateCollection  v1.0.0                                   -->
+<!--# This is DELL OEM Schema.                                                      -->
+<!--# Copyright 2014-2016 Dell, Inc. or its subsidiaries.All Rights Reserved.              -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Alias="Redfish" Namespace="RedfishExtensions.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_2_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/DellCertificate_v1.xml">
+    <edmx:Include Namespace="DellCertificate"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificateCollection">
+      <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+
+      <EntityType Name="DellCertificateCollection" BaseType="Resource.v1_0_0.ResourceCollection">
+        <Annotation Term="OData.Description" String="A Collection of Certificate resource instances."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="true"/>
+            <Annotation Term="OData.Description" String="Certificate can be inserted through POST on the SecureBoot Certification Collection."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/SecureBoot/Oem/Dell/Certificates/{CertificateStoreId}</String>
+            <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/HWCertificates</String>
+          </Collection>
+        </Annotation>
+ 
+        <NavigationProperty Name="Certificates" Type="Collection(DellCertificate.DellCertificate)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of type certificates."/>
+          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been deprecated in favor of using the property 'Members'."/>
+        </NavigationProperty>
+        <NavigationProperty Name="Hash" Type="Collection(DellCertificate.DellCertificate)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of type Hash."/>
+          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="Redfish.Deprecated" String="This property has been deprecated in favor of using the property 'Members'."/>
+        </NavigationProperty>
+        <NavigationProperty Name="Members" Type="Collection(DellCertificate.DellCertificate)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Contains the members of type Ceriticates and Hash."/>
+          <Annotation Term="OData.AutoExpand"/>
+          <Annotation Term="Redfish.Required"/>
+        </NavigationProperty>
+      </EntityType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

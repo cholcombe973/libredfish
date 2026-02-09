@@ -1,0 +1,85 @@
+{
+    "definitions": {
+        "Drive": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "Temperature": {
+                    "units": "Deg",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Drive temperature",
+                    "longDescription": "Represent the temperature of this device."
+                },
+                "MediaErrCount": {
+                    "units": "By",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Media error count",
+                    "longDescription": "The number of physical errors detected on the disk media."
+                },
+                "PercentageDriveLifeUsed": {
+                    "units": "%",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Percentage Drive Life Used.",
+                    "longDescription": "Contains a vendor specific estimate of the percentage of NVM Subsystem NVM life used."
+                },
+                "DriveFunctional": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "An indication of whether an NVM Subsystem is functional",
+                    "longDescription": "This property shall indicate whether there is an unrecoverable failure in the NVM Subsystem."
+                },
+                "OtherErrCount": {
+                    "units": "By",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Other error count",
+                    "longDescription": "Transient errors detected, while communicating with this device."
+                },
+                "SmartEventReceived": {
+                    "units": "By",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Predicted fail count",
+                    "longDescription": "A property indicating the number of errors that have been detected on the disk media."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcDriveExtensions.v1_0_0"
+}

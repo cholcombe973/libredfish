@@ -1,0 +1,114 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerPowerSupply",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerPowerSupply object extends the Redfish Power resource with additional HPE power supply functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AveragePowerOutputWatts": {
+            "description": "The latest observed average power being drawn by the power supply (Watts). This is usually updated every 10 seconds but the period can vary in some circumstances.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "BayNumber": {
+            "description": "The power supply bay number.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "HotplugCapable": {
+            "description": "If true, this power supply (and power supply bay) is capable of being hot-plugged.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MaxPowerOutputWatts": {
+            "description": "The latest observed maximum output power being drawn by the power supply (Watts). This is usually updated every 10 seconds but the period can vary in some circumstances.",
+            "etag": true,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "Mismatched": {
+            "description": "If true, this power supply is mismatched with others in the system.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "PowerSupplyStatus": {
+            "$ref": "Resource.json#/definitions/HpePowerSupplyStatus"
+        },
+        "iPDU": {
+            "additionalProperties": false,
+            "properties": {
+                "IPAddress": {
+                    "description": "The IP address of the iPDU connected to this power supply.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "description": "The iPDU ID.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "MacAddress": {
+                    "description": "The Ethernet MAC address of the iPDU connected to this power supply.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Model": {
+                    "description": "The model number of the iPDU connected to this power supply.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SerialNumber": {
+                    "description": "The serial number of the iPDU connected to this power supply.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "iPDUStatus": {
+                    "$ref": "Resource.json#/definitions/HpePowerSupplyStatus"
+                }
+            },
+            "type": "object"
+        },
+        "iPDUCapable": {
+            "description": "If true, this power supply is capable of being connected to an iPDUs.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerPowerSupply.v2_0_0.HpeServerPowerSupply",
+    "type": "object"
+}

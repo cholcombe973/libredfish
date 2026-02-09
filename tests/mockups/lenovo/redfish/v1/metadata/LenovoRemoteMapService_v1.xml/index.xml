@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoRemoteMapService  v1.0.0                               -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference >
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoRemoteMapMediaCollection_v1.xml">
+    <edmx:Include Namespace="LenovoRemoteMapMediaCollection"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteMapService">
+      <EntityType Name="LenovoRemoteMapService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </EntityType>
+
+      <Action Name="Mount" IsBound="true">
+        <Parameter Name="LenovoRemoteMapService" Type="LenovoRemoteMapService.v1_0_0.Actions"/>
+      </Action>
+      
+      <Action Name="UMount" IsBound="true">
+        <Parameter Name="LenovoRemoteMapService" Type="LenovoRemoteMapService.v1_0_0.Actions"/>
+      </Action>
+      
+      <Action Name="Reset" IsBound="true">
+        <Parameter Name="LenovoRemoteMapService" Type="LenovoRemoteMapService.v1_0_0.Actions"/>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteMapService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoRemoteMapService" BaseType="LenovoRemoteMapService.LenovoRemoteMapService">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This resource represents the remote control service properties."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent remote control service properties implementation."/>
+        <Property Name="ServiceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="File path of the map image"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
+        </Property>
+        <NavigationProperty Name="MountImages" Type="LenovoRemoteMapMediaCollection.LenovoRemoteMapMediaCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the remote map media collection, which corresponds to CLI rdmount map list"/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="Actions" Type="LenovoRemoteMapService.v1_0_0.Actions" Nullable="false">
+        </Property>
+      </EntityType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+      </ComplexType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

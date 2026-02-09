@@ -1,0 +1,67 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOSecurityDashboard",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOSecurityDashboard resource describes the BMC security dashboard.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "OverallSecurityStatus": {
+            "Description": "This represents the overall security status of the system.",
+            "additionalProperties": false,
+            "enum": [
+                "Ok",
+                "Risk",
+                "Ignored"
+            ],
+            "enumDescriptions": {
+                "Ignored": "The user has ignored (or suppressed) the risk on all the security parameters (whose Status value is Risk).",
+                "Ok": "The Overall security state of the system is OK.",
+                "Risk": "The Overall security state of the system is Risk."
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "SecurityParameters": {
+            "description": "This property references a resource of type Collection with a MemberType of HpeiLOSecurityParam.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ServerConfigurationLockStatus": {
+            "Description": "This represents the Server Configuration Lock status.",
+            "additionalProperties": false,
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Server Configuration Lock is Disabled.",
+                "Enabled": "Server Configuration Lock is Enabled."
+            },
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOSecurityDashboard.v1_0_0.HpeiLOSecurityDashboard",
+    "type": "object"
+}

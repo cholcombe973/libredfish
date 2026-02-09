@@ -1,0 +1,87 @@
+{
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "@odata.id": "BootOption",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This is the schema definition for the BootOption resource. It represents the properties of a bootable device available in the System.",
+    "longDescription": "This resource shall be used to represent a single boot option contained within a system.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Alias": {
+            "description": "The alias of this Boot Source.",
+            "longDescription": "The value of this property shall contain the string alias of this Boot Source that describes the type of boot that will be performed.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "BootOptionEnabled": {
+            "description": "A flag that shows if the Boot Option is enabled.",
+            "longDescription": "The value of this property shall indicate if the Boot Option is enabled.  If this property is set to false, the Boot Option referenced in the Boot Order array found on the Computer System shall be skipped. In the UEFI context, this property shall influence the Load Option Active flag for the Boot Option.",
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "BootOptionReference": {
+            "description": "The unique boot option string that is referenced in the BootOrder.",
+            "longDescription": "The value of this property shall contain a string that corresponds to the bootable option or device. For UEFI systems, this string shall match the UEFI Boot Option variable name (e.g. Boot####). This value is referenced by the ComputerSystem BootOrder array.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "DisplayName": {
+            "description": "The user-readable display string of the Boot Option.",
+            "longDescription": "The value of this property shall be a user readable string that describes this Boot Option as it should show up in the Boot Order list in user interfaces.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem",
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "longDescription": "The value of this string shall be of the format for the reserved word *Oem*."
+        },
+        "UefiDevicePath": {
+            "description": "The UEFI device path used to access this UEFI Boot Option.",
+            "longDescription": "This property shall contain the UEFI device path used to identify and locate the specific device for this UEFI Boot Option, as defined by the UEFI Specification.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "Id",
+        "Name"
+    ],
+    "title": "#BootOption.v1_0_1.BootOption",
+    "type": "object"
+}

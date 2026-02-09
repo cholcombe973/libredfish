@@ -1,0 +1,52 @@
+{
+    "$ref": "#/definitions/AMILogService",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "definitions": {
+        "AMILogService": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "IPMISELPolicy": {
+                    "description": "This property shall specify the IPMI Log Settings Policy.",
+                    "type": "string"
+                },
+                "IPMISELPolicy@Redfish.AllowableValues": {
+                    "$ref": "#/definitions/SELPolicy",
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SELPolicy": {
+            "enum": [
+                "Circular",
+                "Linear"
+            ],
+            "enumDescriptions": {
+                "Circular": "Sets the IPMI Log Settings Policy to Circular.",
+                "Linear": "Sets the IPMI Log Settings Policy to Linear."
+            },
+            "enumVersionAdded": {
+                "Circular": "v1_0_0",
+                "Linear": "v1_0_0"
+            },
+            "type": "string"
+        }
+    },
+    "title": "#AMILogService.v1_0_0.AMILogService"
+}

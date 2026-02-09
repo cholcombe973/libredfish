@@ -1,0 +1,96 @@
+{
+    "$id": "/redfish/v1/Schemas/ConsistencyGroupCollection.json",
+    "$ref": "#/definitions/ConsistencyGroupCollection",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2023 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "ConsistencyGroupCollection": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "additionalProperties": false,
+                    "description": "A Collection of ConsistencyGroup resource instances.",
+                    "longDescription": "This collection shall contain references to all ConsistencyGroup resource instances sharing the same parent resource.",
+                    "patternProperties": {
+                        "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                            "description": "This property shall specify a valid odata or Redfish property.",
+                            "type": [
+                                "array",
+                                "boolean",
+                                "integer",
+                                "number",
+                                "null",
+                                "object",
+                                "string"
+                            ]
+                        }
+                    },
+                    "properties": {
+                        "@odata.context": {
+                            "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                        },
+                        "@odata.etag": {
+                            "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                        },
+                        "@odata.id": {
+                            "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                        },
+                        "@odata.type": {
+                            "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                        },
+                        "Description": {
+                            "anyOf": [
+                                {
+                                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                                },
+                                {
+                                    "type": "null"
+                                }
+                            ],
+                            "readonly": true
+                        },
+                        "Members": {
+                            "description": "The value of each member references a ConsistencyGroup resource.",
+                            "items": {
+                                "$ref": "/redfish/v1/Schemas/ConsistencyGroup.json#/definitions/ConsistencyGroup"
+                            },
+                            "longDescription": "The value of each member entry shall reference a ConsistencyGroup resource.",
+                            "readonly": true,
+                            "type": "array"
+                        },
+                        "Members@odata.count": {
+                            "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/count"
+                        },
+                        "Members@odata.nextLink": {
+                            "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/nextLink"
+                        },
+                        "Name": {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                            "readonly": true
+                        },
+                        "Oem": {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                            "description": "The OEM extension property.",
+                            "longDescription": "This property shall contain the OEM extensions.  All values for properties contained in this object shall conform to the Redfish Specification-described requirements."
+                        }
+                    },
+                    "required": [
+                        "Members",
+                        "Members@odata.count",
+                        "@odata.id",
+                        "@odata.type",
+                        "Name"
+                    ],
+                    "type": "object"
+                }
+            ],
+            "deletable": false,
+            "insertable": false,
+            "updatable": false
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#ConsistencyGroupCollection.ConsistencyGroupCollection"
+}

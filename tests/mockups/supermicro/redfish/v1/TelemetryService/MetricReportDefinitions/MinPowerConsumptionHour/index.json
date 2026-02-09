@@ -1,0 +1,34 @@
+{
+    "@odata.type": "#MetricReportDefinition.v1_3_3.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/MinPowerConsumptionHour",
+    "Id": "MinPowerConsumptionHour",
+    "Name": "Minimum Power Consumption for 1 hour with sensing interval of 5 minutes.",
+    "MetricReportDefinitionType": "Periodic",
+    "MetricReportDefinitionEnabled": true,
+    "Schedule": {
+        "RecurrenceInterval": "PT5M"
+    },
+    "ReportActions": [
+        "LogToMetricReportsCollection"
+    ],
+    "ReportUpdates": "Overwrite",
+    "MetricReport": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/MinPowerConsumptionHour"
+    },
+    "Status": {
+        "State": "Enabled",
+        "Health": "OK"
+    },
+    "Metrics": [
+        {
+            "MetricId": "MinPowerConsumptionHour",
+            "MetricProperties": [
+                "/redfish/v1/Chassis/1/Power#/PowerControl/0"
+            ],
+            "CollectionFunction": "Minimum",
+            "CollectionTimeScope": "Interval",
+            "CollectionDuration": "PT300.0S"
+        }
+    ],
+    "@odata.etag": "\"027aeb1c1611851450ea818870905536\""
+}

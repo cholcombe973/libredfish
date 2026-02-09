@@ -1,0 +1,87 @@
+{
+    "$id": "/redfish/v1/Schemas/StorageGroup.json",
+    "$ref": "#/definitions/StorageGroup",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2023 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "AccessCapability": {
+            "enum": [
+                "Read",
+                "ReadWrite"
+            ],
+            "enumDescriptions": {
+                "Read": "Endpoints are allowed to perform reads from the specified resource.",
+                "ReadWrite": "Endpoints are allowed to perform reads from and writes to the specified resource."
+            },
+            "type": "string"
+        },
+        "MappedVolume": {
+            "additionalProperties": false,
+            "description": "Relate a SCSI Logical Unit Number to a Volume.",
+            "longDescription": "Relate a SCSI Logical Unit Number to a Volume.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AccessCapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AccessCapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Supported IO access capability.",
+                    "longDescription": "Each entry shall specify the storage access capability for this mapped volume.",
+                    "readonly": false,
+                    "versionAdded": "v1_4_0"
+                },
+                "LogicalUnitNumber": {
+                    "description": "A SCSI Logical Unit Number for a Volume.",
+                    "longDescription": "If present, the value is a SCSI Logical Unit Number for the Volume.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Volume": {
+                    "$ref": "/redfish/v1/Schemas/Volume.json#/definitions/Volume",
+                    "description": "A mapped Volume.",
+                    "longDescription": "The value shall reference a mapped Volume.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "StorageGroup": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/StorageGroup.v1_5_0.json#/definitions/StorageGroup"
+                }
+            ],
+            "deletable": true,
+            "description": "Collection of resources that are managed and exposed to hosts as a group.",
+            "insertable": false,
+            "longDescription": "Collection of resources that the system can make available to one or more host systems. The collection can contain: block, file, or object storage; local system access points through which the collection is made available; hosts, or host access points to which the collection is made available.",
+            "updatable": true
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#StorageGroup.StorageGroup"
+}

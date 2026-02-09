@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoRemoteControlService  v1.0.0                           -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoRemoteControlSessionCollection_v1.xml">
+    <edmx:Include Namespace="LenovoRemoteControlSessionCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoRemoteMountMediaCollection_v1.xml">
+    <edmx:Include Namespace="LenovoRemoteMountMediaCollection"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteControlService">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoRemoteControlService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="The Event Service resource contains properties for managing event subcriptions and generates the events sent to subscribers.  The resource has links to the actual collection of subscriptions (called Event Destinations)."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent an event service for a Redfish implementation."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+            <Annotation Term="OData.Description" String="The Event Service can be updated to enable and disable the service."/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </EntityType>
+
+      <Action Name="UploadMountImage" IsBound="true">
+        <Parameter Name="LenovoRemoteControlService" Type="LenovoRemoteControlService.v1_0_0.Actions"/>
+
+        <Parameter Name="Filename" Type="Edm.String">
+          <Annotation Term="OData.Description" String="name of the file to be uploaded"/>
+        </Parameter>
+
+        <Parameter Name="bytes" Type="Collection(Edm.Decimal)" Nullable="false">
+          <Annotation Term="OData.Description" String="bytes of the image file"/>
+          <Annotation Term="OData.LongDescription" String="The image file contents are transferred in this property. The maximum size of the image file cannot exceed 50 MB"/>
+        </Parameter>
+
+        <Parameter Name="Readonly" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Description" String="It indicates the file status will be readonly or read/write"/>
+        </Parameter>
+      </Action>
+
+      <Action Name="UploadFromURL" IsBound="true">
+        <Parameter Name="LenovoRemoteControlService" Type="LenovoRemoteControlService.v1_0_0.Actions"/>
+
+        <Parameter Name="sourceURL" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Link to the file to be uploaded"/>
+          <Annotation Term="OData.IsURL"/>
+        </Parameter>
+
+        <Parameter Name="Username" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Username to access the source URI"/>
+        </Parameter>
+
+        <Parameter Name="Password" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Password for the username to access the source URI"/>
+        </Parameter>
+
+        <Parameter Name="Readonly" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Description" String="It indicates the file status will be readonly or read/write"/>
+        </Parameter>
+        <Parameter Name="type" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The source URI protocol."/>
+        </Parameter>
+
+        <Parameter Name="Domain" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Domain value for samba protocol."/>
+        </Parameter>
+
+        <Parameter Name="Options" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Description" String="Option string for samba and nfs protocol."/>
+         </Parameter>
+      </Action>
+      
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoRemoteControlService.v1_0_0">
+      <EntityType Name="LenovoRemoteControlService" BaseType="LenovoRemoteControlService.LenovoRemoteControlService">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The schema defines a detailed account setting resource."/>
+
+        <Property Name="ServiceEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates whether this service is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether this service is enabled."/>
+        </Property>
+
+        <NavigationProperty Name="Sessions" Type="LenovoRemoteControlSessionCollection.LenovoRemoteControlSessionCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the remote control sessions."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the remote control sessions."/>
+        </NavigationProperty>
+
+        <NavigationProperty Name="MountImages" Type="LenovoRemoteMountMediaCollection.LenovoRemoteMountMediaCollection" ContainsTarget="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the remote mount media."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a reference to the remote mount media."/>
+        </NavigationProperty>
+
+        <Property Name="Actions" Type="LenovoRemoteControlService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+
+      </EntityType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+      </ComplexType>
+      
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

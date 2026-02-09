@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "TaskService",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The TaskService resource describes the Task service. It represents the properties for the service itself and has links to the actual list of tasks.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "CompletedTaskOverWritePolicy": {
+            "enum": [
+                "Manual",
+                "Oldest"
+            ],
+            "enumDescriptions": {
+                "Manual": "Completed tasks are not automatically overwritten.",
+                "Oldest": "Oldest completed tasks are overwritten."
+            },
+            "type": "string"
+        },
+        "DateTime": {
+            "description": "The current DateTime (with offset) setting that the task service is using.",
+            "format": "date-time",
+            "longDescription": "The value of this property shall represent the current DateTime value for the TaskService, with offset from UTC, in Redfish Timestamp format.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "LifeCycleEventOnTaskStateChange": {
+            "description": "Send an Event upon Task State Change.",
+            "longDescription": "The value of this property, if set to true, shall indicate that the service shall send a Life cycle event to Event Destinations Subscriptions registered for such events upon change of task state. Life cycle events are defined in the Eventing section of the Redfish Specification.",
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "$ref": "Resource.json#/definitions/Oem"
+        },
+        "ServiceEnabled": {
+            "description": "This indicates whether this service is enabled.",
+            "etag": true,
+            "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled.",
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Tasks": {
+            "description": "This property references a resource of type Collection with a MemberType of TaskCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "title": "#TaskService.v1_1_1.TaskService",
+    "type": "object"
+}

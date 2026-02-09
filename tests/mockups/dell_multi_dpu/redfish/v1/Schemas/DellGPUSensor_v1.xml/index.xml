@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellGPUSensor v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellGPUSensor">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellGPUSensor" Abstract="true">
+                <Annotation String="This resource shall represents a Graphical Processor sensor, which a hardware device capable of measuring the characteristics of a physical property. This resource represents a managed sensor device and its properties that returns GPU sensor readings such as Power, Thermal and Temperature" Term="OData.Description"/>
+                <Annotation String="This resource shall represents a Graphical Processor sensor, which a hardware device capable of measuring the characteristics of a physical property. This resource represents a managed sensor device and its properties that returns GPU sensor readings such as Power, Thermal and Temperature" Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellGPUSensors/{GPUSensorId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="BoardPowerSupplyStatus">
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SufficientPower">
+                    <Annotation String="SufficientPower" Term="OData.Description"/>
+                    <Annotation String="SufficientPower" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="UnderPowered">
+                    <Annotation String="UnderPowered" Term="OData.Description"/>
+                    <Annotation String="UnderPowered" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PowerBrakeStatus">
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Released">
+                    <Annotation String="Released" Term="OData.Description"/>
+                    <Annotation String="Released" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Set">
+                    <Annotation String="Set" Term="OData.Description"/>
+                    <Annotation String="Set" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PowerSupplyStatus">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ThermalAlertStatus">
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotPending">
+                    <Annotation String="NotPending" Term="OData.Description"/>
+                    <Annotation String="NotPending" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Pending">
+                    <Annotation String="Pending" Term="OData.Description"/>
+                    <Annotation String="Pending" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellGPUSensor.v1_0_0">
+            <EntityType Name="DellGPUSensor" BaseType="DellGPUSensor.DellGPUSensor">
+                <Annotation Term="OData.Description" String="This resource shall represents a Graphical Processor sensor, which a hardware device capable of measuring the characteristics of a physical property. This resource represents a managed sensor device and its properties that returns GPU sensor readings such as Power, Thermal and Temperature"/>
+                <Annotation Term="OData.LongDescription" String="This resource shall represents a Graphical Processor sensor, which a hardware device capable of measuring the characteristics of a physical property. This resource represents a managed sensor device and its properties that returns GPU sensor readings such as Power, Thermal and Temperature"/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BoardPowerSupplyStatus" Type="DellGPUSensor.BoardPowerSupplyStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates GPU board power supply status."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates GPU board power supply status."/>
+                </Property>
+                <Property Name="BoardTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates temperature on GPU board."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates temperature on GPU board."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="DeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="An address or other identifying information to uniquely name the LogicalDevice."/>
+                    <Annotation Term="OData.LongDescription" String="An address or other identifying information to uniquely name the LogicalDevice."/>
+                </Property>
+                <Property Name="GPUShutdownTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates GPU Shutdown Temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates GPU Shutdown Temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="GPUTargetTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates GPU target temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates GPU target temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="MaximumGPUOperatingTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Maximum GPU Operating Temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Maximum GPU Operating Temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="MaximumMemoryOperatingTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Maximum Memory Operating Temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Maximum Memory Operating Temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="MemoryTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates temperature on GPU memory"/>
+                    <Annotation Term="OData.LongDescription" String="Indicates temperature on GPU memory"/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="MinimumGPUHardwareSlowdownTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Minimum GPU Hardware Slowdown Temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Minimum GPU Hardware Slowdown Temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="PowerBrakeStatus" Type="DellGPUSensor.PowerBrakeStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Power Brake Status."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Power Brake Status."/>
+                </Property>
+                <Property Name="PowerConsumptionmW" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Total GPU board power consumption in mili Watts."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Total GPU board power consumption in mili Watts."/>
+                    <Annotation Term="Measures.Unit" String="mW"/>
+                </Property>
+                <Property Name="PowerSupplyStatus" Type="DellGPUSensor.PowerSupplyStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Power supply (NVVDD, FBVDD etc) status."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Power supply (NVVDD, FBVDD etc) status."/>
+                </Property>
+                <Property Name="PrimaryGPUTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates primary GPU temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates primary GPU temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="SecondaryGPUTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates secondary GPU temperature."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates secondary GPU temperature."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="ThermalAlertStatus" Type="DellGPUSensor.ThermalAlertStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Thermal Alert Status."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Thermal Alert Status."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellGPUSensor.v1_0_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for BoardTemperature,MemoryTemperature,PrimaryGPUTemperature,SecondaryGPUTemperature properties.,DellGPUSensor resource."/>
+            <EntityType Name="DellGPUSensor" BaseType="DellGPUSensor.v1_0_0.DellGPUSensor"/>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellGPUSensor.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add MaximumGPUPowerLimitMilliWatts, MinimumGPUPowerLimitMilliWatts properties."/>
+            <EntityType Name="DellGPUSensor" BaseType="DellGPUSensor.v1_0_1.DellGPUSensor">
+                <Property Name="MaximumGPUPowerLimitMilliWatts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Maximum GPU Power Limit in milli Watts."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Maximum GPU Power Limit in milli Watts."/>
+                    <Annotation Term="Measures.Unit" String="Milliwatts"/>
+                </Property>
+                <Property Name="MinimumGPUPowerLimitMilliWatts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Minimum GPU Power Limit in milli Watts."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Minimum GPU Power Limit in milli Watts."/>
+                    <Annotation Term="Measures.Unit" String="Milliwatts"/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

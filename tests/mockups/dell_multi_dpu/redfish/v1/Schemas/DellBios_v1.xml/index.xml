@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--############################################################################################       -->
+<!--# Redfish Schema:  DellBios  v1.0.0 -->
+<!--# This schema complements to Oem section of Bios. -->
+<!--# Copyright 2014-2019 Dell, Inc. or its subsidiaries.  All Rights Reserved.                                                                     -->
+<!--# See the full Dell copyright policy                                                                                             -->
+<!--#############################################################################################       -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Alias="Redfish" Namespace="RedfishExtensions.v1_0_0"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Bios_v1.xml">
+        <edmx:Include Namespace="Bios"/>
+        <edmx:Include Namespace="Bios.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+
+        <Schema Namespace="DellBios" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <Action Name="RunBIOSLiveScanning" IsBound="true">
+                <Parameter Name="Bios" Type="Bios.v1_0_0.OemActions"/>
+                <Annotation Term="OData.Description" String="Real time BIOS scanning verifies the integrity and authenticity of the BIOS image in the Primary ROM when the host is powered ON, but not in the POST. This feature is available only with iDRAC Datacenter license and user need to have the Debug privilege to perform this operation"/>
+                <Annotation Term="OData.LongDescription" String="Real time BIOS scanning verifies the integrity and authenticity of the BIOS image in the Primary ROM when the host is powered ON, but not in the POST. This feature is available only with iDRAC Datacenter license and user need to have the Debug privilege to perform this operation"/>
+            </Action>
+        </Schema>
+        <Schema Namespace="DellBios.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+        </Schema>
+        <Schema Namespace="DellBios.v1_0_1" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation Term="OData.Description" String="The Description and LongDescription for Parameter DellBios was changed"/>
+            <Annotation Term="OData.LongDescription" String="The Description and LongDescription for Parameter DellBios was changed to a detailed description"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,92 @@
+{
+    "definitions": {
+        "RADIUS": {
+            "description": "The base type for resources and members that can be linked to.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "RadiusServerIP": {
+                    "readonly": false,
+                    "type": "string",
+                    "description": "The IP address of the RADIUS server.",
+                    "longDescription": "The value of this property shall be match the format of IP address."
+                },
+                "RadiusSecret": {
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "A (secret) password for the user to access the Radius server.",
+                    "longDescription": "The value of this property shall not contain special characteristics and its max length is 32."
+                },
+                "RadiusEnabled": {
+                    "readonly": false,
+                    "type": "boolean",
+                    "description": "RADIUS is enabled or not",
+                    "longDescription": "If RADIUS is enabled, a centralized authentication, authorization and accounting management for users is provided"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "RadiusPortNumber": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The port number for RADIUS server.",
+                    "longDescription": "The value of this property shall be in the range between 1~65535."
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/RADIUS",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#RADIUS.v1_0_1.RADIUS"
+}

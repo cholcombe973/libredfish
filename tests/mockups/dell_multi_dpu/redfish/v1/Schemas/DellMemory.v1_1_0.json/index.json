@@ -1,0 +1,162 @@
+{
+    "$id": "/redfish/v1/Schemas/DellMemory.v1_1_0.json",
+    "$ref": "#/definitions/DellMemory",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellMemory": {
+            "additionalProperties": false,
+            "description": "An instance of DellMemory will have Memory Device specific data.",
+            "longDescription": "An instance of DellMemory will have Memory Device specific data.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "BankLabel": {
+                    "description": "The property shall represent a string identifying the physically labeled bank where the memory is located.",
+                    "longDescription": "The property shall represent a string identifying the physically labeled bank where the memory is located.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property provides the last time System Inventory Collection On Reboot (CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the last time System Inventory Collection On Reboot (CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LastUpdateTime": {
+                    "description": "This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "ManufactureDate": {
+                    "description": "The property shall represent manufacture date of the product.",
+                    "longDescription": "The property shall represent manufacture date of the product.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MemoryTechnology": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellMemory.json#/definitions/MemoryTechnology"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates the type of memory technology that the memory device uses.",
+                    "longDescription": "This property indicates the type of memory technology that the memory device uses.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Model": {
+                    "description": "The name by which the PhysicalElement is generally known.",
+                    "longDescription": "The name by which the PhysicalElement is generally known.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "RemainingRatedWriteEndurancePercent": {
+                    "description": "Displays the wear-out percentage of the NVDIMMs. Possible values are between 100% and 0%. The value of 255 indicates that the wear out percentage is Not Applicable.",
+                    "longDescription": "Displays the wear-out percentage of the NVDIMMs. Possible values are between 100% and 0%. The value of 255 indicates that the wear out percentage is Not Applicable.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Percent",
+                    "versionAdded": "v1_1_0"
+                },
+                "SystemEraseCapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellMemory.json#/definitions/SystemEraseCapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property indicates whether or not the device has the capability of being erased through SystemErase() API.",
+                    "longDescription": "The property indicates whether or not the device has the capability of being erased through SystemErase() API.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellMemory.v1_1_0.DellMemory"
+}

@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellPowerSupplyView v1_3_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPowerSupplyView">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellPowerSupplyView" Abstract="true">
+                <Annotation String="An instance of DellPowerSupplyView will have data specific to the Power Supply devices in the managed system." Term="OData.Description"/>
+                <Annotation String="An instance of DellPowerSupplyView will have data specific to the Power Supply devices in the managed system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/Power/Oem/Dell/DellPowerSupplyInventory/{PowerSupplyViewId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="PMBusMonitoring">
+                <Member Name="Capable">
+                    <Annotation String="Capable" Term="OData.Description"/>
+                    <Annotation String="Capable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotCapable">
+                    <Annotation String="Not Capable" Term="OData.Description"/>
+                    <Annotation String="Not Capable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RedTypeOfSet">
+                <Member Name="InputPowerRedundancy">
+                    <Annotation String="Input Power Redundancy" Term="OData.Description"/>
+                    <Annotation String="Input Power Redundancy" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="LimitedSparing">
+                    <Annotation String="Limited Sparing" Term="OData.Description"/>
+                    <Annotation String="Limited Sparing" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="LoadBalanced">
+                    <Annotation String="Load Balanced" Term="OData.Description"/>
+                    <Annotation String="Load Balanced" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="N+1">
+                    <Annotation String="N+1" Term="OData.Description"/>
+                    <Annotation String="N+1" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Sparing">
+                    <Annotation String="Sparing" Term="OData.Description"/>
+                    <Annotation String="Sparing" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RedundancyStatus">
+                <Member Name="DegradedRedundancy">
+                    <Annotation String="Degraded Redundancy" Term="OData.Description"/>
+                    <Annotation String="Degraded Redundancy" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="FullyRedundant">
+                    <Annotation String="Fully Redundant" Term="OData.Description"/>
+                    <Annotation String="Fully Redundant" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OverallFailure">
+                    <Annotation String="Overall Failure" Term="OData.Description"/>
+                    <Annotation String="Overall Failure" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RedundancyLost">
+                    <Annotation String="Redundancy Lost" Term="OData.Description"/>
+                    <Annotation String="Redundancy Lost" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPowerSupplyView.v1_0_0">
+            <EntityType Name="DellPowerSupplyView" BaseType="DellPowerSupplyView.DellPowerSupplyView">
+                <Annotation Term="OData.Description" String="An instance of DellPowerSupplyView will have data specific to the Power Supply devices in the managed system."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellPowerSupplyView will have data specific to the Power Supply devices in the managed system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="DetailedState" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property describes the further status of the power supply as enumerated for IPMI power supply sensor such as: Predictive Failure, Power Supply AC lost, AC lost or out-of-range,  AC out-of-range, but present. Note: DetailedState can be combination of above mentioned power supply status."/>
+                    <Annotation Term="OData.LongDescription" String="This property describes the further status of the power supply as enumerated for IPMI power supply sensor such as: Predictive Failure, Power Supply AC lost, AC lost or out-of-range,  AC out-of-range, but present. Note: DetailedState can be combination of above mentioned power supply status."/>
+                </Property>
+                <Property Name="Range1MaxInputPowerWatts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents the Input rated power of the PowerSupply in Watts. 0 denotes 'unknown'."/>
+                    <Annotation Term="OData.LongDescription" String="Represents the Input rated power of the PowerSupply in Watts. 0 denotes 'unknown'."/>
+                    <Annotation Term="Measures.Unit" String="Watts"/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPowerSupplyView.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add LastSystemInventoryTime, LastUpdateTime, PMBusMonitoring properties."/>
+            <EntityType Name="DellPowerSupplyView" BaseType="DellPowerSupplyView.v1_0_0.DellPowerSupplyView">
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates the time when Collection of System Inventory on Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the time when Collection of System Inventory on Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="PMBusMonitoring" Type="DellPowerSupplyView.PMBusMonitoring">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether the PowerSupply is capable of Power Monitoring."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether the PowerSupply is capable of Power Monitoring."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPowerSupplyView.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DeviceDescription property."/>
+            <EntityType Name="DellPowerSupplyView" BaseType="DellPowerSupplyView.v1_1_0.DellPowerSupplyView">
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellPowerSupplyView.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add RedMinNumberNeeded, RedTypeOfSet, RedundancyStatus properties."/>
+            <EntityType Name="DellPowerSupplyView" BaseType="DellPowerSupplyView.v1_2_0.DellPowerSupplyView">
+                <Property Name="RedMinNumberNeeded" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates the smallest number of elements that must be operational in order to function. For example, in an N+1 redundancy relationship, the RedMinNumberNeeded property is equal to N. In a 'LimitedSparing' environment, this property is not applicable and must be set to Zero."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the smallest number of elements that must be operational in order to function. For example, in an N+1 redundancy relationship, the RedMinNumberNeeded property is equal to N. In a 'LimitedSparing' environment, this property is not applicable and must be set to Zero."/>
+                </Property>
+                <Property Name="RedTypeOfSet" Type="Collection(DellPowerSupplyView.RedTypeOfSet)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="RedTypeOfSet provides information on the type of redundancy. N+1 indicates all members are active, are unaware, and their functions do not dependent on each other. However, at least one extra member is present to achieve functionality. In this state, 'Sparing' is implied, and each member can be a spare for the other(s). An example of N+1 is a system that has 2 power supplies, but needs only 1 power supply to functioning properly. N+1 is a special case of N+M redundancy where M=1. A value of N+1 is used for N+M redundancy. Sparing indicates that all members are active and are aware of other members. However, their functionality is independent until failover. Each member can be a spare for the other(s). 'InputPowerRedundancy' indicates that the power supply redundancy policy is set to 'Input Power Redundancy'."/>
+                    <Annotation Term="OData.LongDescription" String="RedTypeOfSet provides information on the type of redundancy. N+1 indicates all members are active, are unaware, and their functions do not dependent on each other. However, at least one extra member is present to achieve functionality. In this state, 'Sparing' is implied, and each member can be a spare for the other(s). An example of N+1 is a system that has 2 power supplies, but needs only 1 power supply to functioning properly. N+1 is a special case of N+M redundancy where M=1. A value of N+1 is used for N+M redundancy. Sparing indicates that all members are active and are aware of other members. However, their functionality is independent until failover. Each member can be a spare for the other(s). 'InputPowerRedundancy' indicates that the power supply redundancy policy is set to 'Input Power Redundancy'."/>
+                </Property>
+                <Property Name="RedundancyStatus" Type="DellPowerSupplyView.RedundancyStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="RedundancyStatus provides information about the state of the redundancy group. 'FullyRedundant' indicates that all the configured redundancy is still available. 'DegradedRedundancy' indicates that some configured elements are degraded, missing, or failed but that the number of elements in the set is still greater than the minimum required ('RedMinNumberNeeded'). 'RedundancyLost' indicates that sufficient configured elements are missing or have failed, and no redundancy is available. In this state, the next failure causes overall failure. 'OverallFailure' indicates that there is an overall failure of the redundancy set."/>
+                    <Annotation Term="OData.LongDescription" String="RedundancyStatus provides information about the state of the redundancy group. 'FullyRedundant' indicates that all the configured redundancy is still available. 'DegradedRedundancy' indicates that some configured elements are degraded, missing, or failed but that the number of elements in the set is still greater than the minimum required ('RedMinNumberNeeded'). 'RedundancyLost' indicates that sufficient configured elements are missing or have failed, and no redundancy is available. In this state, the next failure causes overall failure. 'OverallFailure' indicates that there is an overall failure of the redundancy set."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

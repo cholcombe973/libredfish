@@ -1,0 +1,92 @@
+{
+    "definitions": {
+        "Syslog": {
+            "description": "The base type for resources and members that can be linked to.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "EnableSyslog": {
+                    "readonly": false,
+                    "type": "boolean",
+                    "description": "Syslog is enabled or not",
+                    "longDescription": "If Syslog is enabled, a centralized authentication, authorization and accounting management for users is provided"
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "SyslogPortNumber": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The port number for Syslog server.",
+                    "longDescription": "The value of this property shall be in the range between 1~65535."
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "SyslogServer": {
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "The Syslog server.",
+                    "longDescription": "The value of this property shall be match the format of FQDN."
+                },
+                "SyslogServerIP": {
+                    "readonly": false,
+                    "type": "string",
+                    "description": "The IP address of the Syslog server.",
+                    "longDescription": "The value of this property shall be match the format of IP address."
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/Syslog",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#Syslog.v1_0_1.Syslog"
+}

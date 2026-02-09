@@ -1,0 +1,196 @@
+{
+    "$ref": "#/definitions/AMIVirtualMedia",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1_1_0.json",
+    "definitions": {
+        "AMIVirtualMedia": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this Resource.",
+                    "longDescription": "This property shall contain the available actions for this Resource."
+                },
+                "BoostMode": {
+                    "description": "This property shall specify the BoostMode of the media instance.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "RedirectionStatus": {
+                    "description": "This property shall specify redirection status of the virtualmedia instance.",
+                    "enum": [
+                        "None",
+                        "Redirection Started",
+                        "Stopped - Connection Denied",
+                        "Stopped - Login Failed",
+                        "Stopped - MAX Session Reached",
+                        "Stopped - Permission Denied",
+                        "Stopped - Unknown Error",
+                        "Media Detach Stage",
+                        "Stopped - All device instances are occupied",
+                        "Stopped - Unable to Connect",
+                        "Stopped - Invalid Image",
+                        "Stopped - Mount Error",
+                        "Stopped - Unable to Open",
+                        "Stopped - Media License Expired",
+                        "Stopped - Connection Lost",
+                        "Stopped - Mount Cancelled By User",
+                        "Stopped - Device Ejected",
+                        "Stopped - Session Terminated",
+                        "Stopped - Session Disconnected",
+                        "Stopped - Unable to Access Mount",
+                        "Stopped - Unable to Access CD Mount",
+                        "Stopped - Unable to Access HD Mount",
+                        "Stopped - Unable to Send",
+                        "Stopped - Image File Not Found",
+                        "Stopped - Link Down",
+                        "Stopped - Restart CD Redirection",
+                        "Stopped - Restart HD Redirection",
+                        "Redirection Started With Media Boost",
+                        "Connection Accepted With Out Media Boost",
+                        "Initiating Redirection"
+                    ],
+                    "enumDescriptions": {
+                        "Initiating Redirection": "Initiating the Redirection",
+                        "Media Detach Stage": "Media Detach Stage",
+                        "None": "No Redirection",
+                        "Redirection Started": "Redirection Started",
+                        "Stopped - All device instances are occupied": "Redirection Stopped - All device instances are occupied",
+                        "Stopped - Connection Accepted With Out Media Boost": "Redirection Stopped - Connection Accepted With Out Media Boost",
+                        "Stopped - Connection Denied": "Redirection Stopped - Connection Denied",
+                        "Stopped - Connection Lost": "Redirection Stopped - Connection Lost",
+                        "Stopped - Device Ejected": "Redirection Stopped - Device Ejected",
+                        "Stopped - Image File Not Found": "Redirection Stopped - Image File Not Found",
+                        "Stopped - Invalid Image": "Redirection Stopped - Invalid Image",
+                        "Stopped - Link Down": "Redirection Stopped - Link Down",
+                        "Stopped - Login Failed": "Redirection Stopped - Login Failed",
+                        "Stopped - MAX Session Reached": "Redirection Stopped - MAX Session Reached",
+                        "Stopped - Media License Expired": "Redirection Stopped -Media License Expired",
+                        "Stopped - Mount Cancelled By User": "Redirection Stopped -Mount Cancelled By User",
+                        "Stopped - Mount Error": "Redirection Stopped - Mount Error",
+                        "Stopped - Permission Denied": "Redirection Stopped - Permission Denied",
+                        "Stopped - Redirection Started With Media Boost": "Redirection Stopped - Redirection Started With Media Boost",
+                        "Stopped - Restart CD Redirection": "Redirection Stopped - Restart CD Redirection",
+                        "Stopped - Restart HD Redirection": "Redirection Stopped - Restart HD Redirection",
+                        "Stopped - Session Disconnected": "Redirection Stopped - Session Disconnected",
+                        "Stopped - Session Terminated": "Redirection Stopped - Session Terminated",
+                        "Stopped - Unable to Access CD Mount": "Redirection Stopped - Unable to Access CD Mount",
+                        "Stopped - Unable to Access HD Mount": "Redirection Stopped - Unable to Access HD Mount",
+                        "Stopped - Unable to Access Mount": "Redirection Stopped - Unable to Access Mount",
+                        "Stopped - Unable to Connect": "Redirection Stopped - Unable to Connect",
+                        "Stopped - Unable to Open": "Redirection Stopped - Unable to Open",
+                        "Stopped - Unable to Send": "Redirection Stopped - Unable to Send",
+                        "Stopped - Unknown Error": "Redirection Stopped - Unknown Error"
+                    },
+                    "type": "string"
+                }
+            }
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this Resource.",
+            "longDescription": "This type shall contain the available actions for this Resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#AMIVirtualMedia.ConfigureCDInstance": {
+                    "$ref": "#/definitions/ConfigureCDInstance"
+                },
+                "#AMIVirtualMedia.EnableRMedia": {
+                    "$ref": "#/definitions/EnableRMedia"
+                }
+            },
+            "type": "object"
+        },
+        "ConfigureCDInstance": {
+            "additionalProperties": false,
+            "description": "This action is used to update the number of CD devices.",
+            "longDescription": "This action is used to update the number of CD devices that are to be supported for CD media redirection",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CDInstance": {
+                    "description": "Number of CD devices",
+                    "type": "number"
+                }
+            },
+            "type": "object"
+        },
+        "EnableRMedia": {
+            "additionalProperties": false,
+            "description": "This action is used to enable or disable the Remote Media state.",
+            "longDescription": "This action is used to enable or disable the Remote Media state.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "RMediaState": {
+                    "description": "State of RMedia",
+                    "enum": [
+                        "Enable",
+                        "Disable"
+                    ],
+                    "enumDescriptions": {
+                        "Disable": "Disable the Remote Media support",
+                        "Enable": "Enable the Remote Media support"
+                    },
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "#AMIVirtualMedia.v1_0_0.AMIVirtualMedia"
+}

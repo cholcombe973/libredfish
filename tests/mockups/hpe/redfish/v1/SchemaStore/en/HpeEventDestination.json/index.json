@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeEventDestination",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeEventDestination object extends the Redfish EventDestination resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "DeliveryRetryAttempts": {
+            "description": "This is the number of attempts an event posting is retried before the subscription is terminated.",
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        },
+        "DeliveryRetryIntervalInSeconds": {
+            "description": "This represents the number of seconds between retry attempts for sending any given Event",
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MutualAuthenticationEnabled": {
+            "description": "This represents if the subscriber and iLO need to perform mutual authentication when an event is sent.",
+            "readonly": false,
+            "type": "boolean"
+        },
+        "RequestedMaxEventsToQueue": {
+            "description": "This represents the number of events the service should queue.",
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        },
+        "RetireOldEventInMinutes": {
+            "description": "This represents the number of minutes until an event is expired.",
+            "minimum": 1,
+            "readonly": false,
+            "type": "integer"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeEventDestination.v2_1_0.HpeEventDestination",
+    "type": "object"
+}

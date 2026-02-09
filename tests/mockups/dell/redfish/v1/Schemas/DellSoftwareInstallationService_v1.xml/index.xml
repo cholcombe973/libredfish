@@ -1,0 +1,623 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellSoftwareInstallationService v1_1_2-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInstallationService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellSoftwareInstallationService" Abstract="true">
+                <Annotation String="The DellSoftwareInstallationService resource provides some actions to support software installation functionality." Term="OData.Description"/>
+                <Annotation String="The DellSoftwareInstallationService resource provides some actions to support software installation functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellSoftwareInstallationService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="ClearUpdateSchedule" IsBound="true">
+                <Annotation String="This method is used for clearing all the periodic updates from the repository." Term="OData.Description"/>
+                <Annotation String="This method is used for clearing all the periodic updates from the repository." Term="OData.LongDescription"/>
+                <Parameter Name="DellSoftwareInstallationService" Type="DellSoftwareInstallationService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="GetRepoBasedUpdateList" IsBound="true">
+                <Annotation String="This method is used for getting the list of packages and a list of devices that will be updated when a particular repository is used. You must run InstallFromRespository command before running GetRepoBasedUpdateList. If Applyupdate is False, no updates are applied or scheduled. If ApplyUpdate is True, the list contains all the packages and devices info that will be updated." Term="OData.Description"/>
+                <Annotation String="This method is used for getting the list of packages and a list of devices that will be updated when a particular repository is used. You must run InstallFromRespository command before running GetRepoBasedUpdateList. If Applyupdate is False, no updates are applied or scheduled. If ApplyUpdate is True, the list contains all the packages and devices info that will be updated." Term="OData.LongDescription"/>
+                <Parameter Name="DellSoftwareInstallationService" Type="DellSoftwareInstallationService.v1_0_0.Actions"/>
+                <ReturnType Type="DellSoftwareInstallationService.v1_0_0.GetRepoBasedUpdateListResponse" Nullable="false"/>
+            </Action>
+            <Action Name="GetUpdateSchedule" IsBound="true">
+                <Annotation String="The GetUpdateSchedule() method is used for retrieving periodic updates from the repository. The property UpdateScheduler is the attribute value for the attribute of the same name." Term="OData.Description"/>
+                <Annotation String="The GetUpdateSchedule() method is used for retrieving periodic updates from the repository. The property UpdateScheduler is the attribute value for the attribute of the same name." Term="OData.LongDescription"/>
+                <Parameter Name="DellSoftwareInstallationService" Type="DellSoftwareInstallationService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <ReturnType Type="DellSoftwareInstallationService.v1_1_0.GetUpdateScheduleResponse" Nullable="false"/>
+            </Action>
+            <Action Name="InstallFromRepository" IsBound="true">
+                <Annotation String="This method creates the list of the updates contained in the repository that are supported by LC and are applicable to the system and installed hardware. The successful execution of this method creates a job. The list is copied to a persistent location so that you can query for the updatable list by using GetRepoBasedUpdateList WSMan Command. If the input parameter ApplyUpdate value is True, only the applicable packages are applied and GetRepoBasedUpdateList gives the JOBIDs for all the jobs queued for the devices." Term="OData.Description"/>
+                <Annotation String="This method creates the list of the updates contained in the repository that are supported by LC and are applicable to the system and installed hardware. The successful execution of this method creates a job. The list is copied to a persistent location so that you can query for the updatable list by using GetRepoBasedUpdateList WSMan Command. If the input parameter ApplyUpdate value is True, only the applicable packages are applied and GetRepoBasedUpdateList gives the JOBIDs for all the jobs queued for the devices." Term="OData.LongDescription"/>
+                <Parameter Name="DellSoftwareInstallationService" Type="DellSoftwareInstallationService.v1_0_0.Actions"/>
+                <Parameter Name="ApplyUpdate" Type="DellSoftwareInstallationService.ApplyUpdate">
+                    <Annotation String="If ApplyUpdate is set to True, the updatable packages from Catalog XML are staged. If it is set to False, no updates are applied. The list of updatable packages can be seen by invoking the GetRepoBasedUpdateList. Default value is True." Term="OData.Description"/>
+                    <Annotation String="If ApplyUpdate is set to True, the updatable packages from Catalog XML are staged. If it is set to False, no updates are applied. The list of updatable packages can be seen by invoking the GetRepoBasedUpdateList. Default value is True." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="CatalogFile" Type="Edm.String">
+                    <Annotation String="Name of the catalog file on the repository. Default is Catalog.xml." Term="OData.Description"/>
+                    <Annotation String="Name of the catalog file on the repository. Default is Catalog.xml." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address for the remote share. If ShareType is FTP, default value is ftp.dell.com" Term="OData.Description"/>
+                    <Annotation String="IP address for the remote share. If ShareType is FTP, default value is ftp.dell.com" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellSoftwareInstallationService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Mountpoint" Type="Edm.String">
+                    <Annotation String="The local directory where the share should be mounted. This is applicable for CIFS." Term="OData.Description"/>
+                    <Annotation String="The local directory where the share should be mounted. This is applicable for CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password for the remote share. This parameter must be provided for CIFS." Term="OData.Description"/>
+                    <Annotation String="Password for the remote share. This parameter must be provided for CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.Int64">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellSoftwareInstallationService.ProxySupport">
+                    <Annotation String="Specifies if a proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if a proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellSoftwareInstallationService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="RebootNeeded" Type="Edm.Boolean">
+                    <Annotation String="This property indicates if a reboot should be performed. True indicates that the system (host) is rebooted during the update process. False indicates that the updates take effect after the system is rebooted the next time. Default value is set to False." Term="OData.Description"/>
+                    <Annotation String="This property indicates if a reboot should be performed. True indicates that the system (host) is rebooted during the update process. False indicates that the updates take effect after the system is rebooted the next time. Default value is set to False." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellSoftwareInstallationService.ShareType">
+                    <Annotation String="Type of the Network Share. Default value is NFS." Term="OData.Description"/>
+                    <Annotation String="Type of the Network Share. Default value is NFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="User name for the remote share. This parameter must be provided for CIFS." Term="OData.Description"/>
+                    <Annotation String="User name for the remote share. This parameter must be provided for CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="InstallFromURI" IsBound="true">
+                <Annotation String="InstallFromURI method is used for creating a job for update service. The successful execution of this method creates a job." Term="OData.Description"/>
+                <Annotation String="InstallFromURI method is used for creating a job for update service. The successful execution of this method creates a job." Term="OData.LongDescription"/>
+                <Parameter Name="DellSoftwareInstallationService" Type="DellSoftwareInstallationService.v1_0_0.Actions"/>
+                <Parameter Name="IgnoreCertWarning" Type="DellSoftwareInstallationService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellSoftwareInstallationService.ProxySupport">
+                    <Annotation String="Specifies if a proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if a proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellSoftwareInstallationService.ProxyType">
+                    <Annotation String="The type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetResource" Type="Edm.String">
+                    <Annotation String="A Link to the DellSoftwareInventory resource whose firmware needs to be updated. It shall be the @odata.id of the DellSoftwareInventory Resource." Term="OData.Description"/>
+                    <Annotation String="A Link to the DellSoftwareInventory resource whose firmware needs to be updated. It shall be the @odata.id of the DellSoftwareInventory Resource." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="URI" Type="Edm.String">
+                    <Annotation String="Network file location of the firmware to be installed. Supported network share types are HTTP, HTTPS, CIFS, NFS, TFTP and FTP. Special characters must be encoded in URI format." Term="OData.Description"/>
+                    <Annotation String="Network file location of the firmware to be installed. Supported network share types are HTTP, HTTPS, CIFS, NFS, TFTP and FTP. Special characters must be encoded in URI format." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SetUpdateSchedule" IsBound="true">
+                <Annotation String="This method is used for setting up periodic updates from repository." Term="OData.Description"/>
+                <Annotation String="This method is used for setting up periodic updates from repository." Term="OData.LongDescription"/>
+                <Parameter Name="DellSoftwareInstallationService" Type="DellSoftwareInstallationService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ApplyReboot" Type="DellSoftwareInstallationService.ApplyReboot">
+                    <Annotation String="This parameter is used for specifying if a reboot is required. Default value is 0 (Reboot Required)." Term="OData.Description"/>
+                    <Annotation String="This parameter is used for specifying if a reboot is required. Default value is 0 (Reboot Required)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="CatalogID" Type="Edm.String">
+                    <Annotation String="The ID of the catalog to be used." Term="OData.Description"/>
+                    <Annotation String="The ID of the catalog to be used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="CatalogName" Type="Edm.String">
+                    <Annotation String="The name of the catalog file. Default is Catalog.xml." Term="OData.Description"/>
+                    <Annotation String="The name of the catalog file. Default is Catalog.xml." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Comment" Type="Edm.String">
+                    <Annotation String="This is an optional text field that supports up to 1024 bytes. This parameter is deprecated." Term="OData.Description"/>
+                    <Annotation String="This is an optional text field that supports up to 1024 bytes. This parameter is deprecated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DayofMonth" Type="Edm.String">
+                    <Annotation String="This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-28. The default value is *." Term="OData.Description"/>
+                    <Annotation String="This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-28. The default value is *." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DayofWeek" Type="Edm.String">
+                    <Annotation String="This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *." Term="OData.Description"/>
+                    <Annotation String="This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Domain" Type="Edm.String">
+                    <Annotation String="The domain of the user name for access to the share, if any. This is prefixed to the user name with a backslash. For example, &quot;DOMAIN\\user_name&quot;." Term="OData.Description"/>
+                    <Annotation String="The domain of the user name for access to the share, if any. This is prefixed to the user name with a backslash. For example, &quot;DOMAIN\\user_name&quot;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address for the remote share." Term="OData.Description"/>
+                    <Annotation String="IP address for the remote share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellSoftwareInstallationService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password for the remote share." Term="OData.Description"/>
+                    <Annotation String="Password for the remote share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyHostName" Type="Edm.String">
+                    <Annotation String="The hostname of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The hostname of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPassword" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellSoftwareInstallationService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellSoftwareInstallationService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUserName" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Repeat" Type="Edm.Int64">
+                    <Annotation String="This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366." Term="OData.Description"/>
+                    <Annotation String="This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellSoftwareInstallationService.ShareType">
+                    <Annotation String="Type of the Network Share." Term="OData.Description"/>
+                    <Annotation String="Type of the Network Share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Time" Type="Edm.String">
+                    <Annotation String="Represents the hour and minute of the day when the update should be performed. Format is hh:mm." Term="OData.Description"/>
+                    <Annotation String="Represents the hour and minute of the day when the update should be performed. Format is hh:mm." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="URI" Type="Edm.String">
+                    <Annotation String="The URI to the repository catalog file. This parameter is deprecated." Term="OData.Description"/>
+                    <Annotation String="The URI to the repository catalog file. This parameter is deprecated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="User name for the remote share." Term="OData.Description"/>
+                    <Annotation String="User name for the remote share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="WeekofMonth" Type="Edm.String">
+                    <Annotation String="This parameter represents the week of the month in which the update is scheduled. The possible values are * (Any), a number between 1 and 4, or L. The default value is *." Term="OData.Description"/>
+                    <Annotation String="This parameter represents the week of the month in which the update is scheduled. The possible values are * (Any), a number between 1 and 4, or L. The default value is *." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="ApplyReboot">
+                <Member Name="NoReboot">
+                    <Annotation String="No Reboot" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RebootRequired">
+                    <Annotation String="Reboot Required" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="ApplyUpdate">
+                <Member Name="False">
+                    <Annotation String="False" Term="OData.Description"/>
+                </Member>
+                <Member Name="True">
+                    <Annotation String="True" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetUpdateScheduleResponseApplyReboot">
+                <Member Name="NoReboot">
+                    <Annotation String="No Reboot" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RebootRequired">
+                    <Annotation String="Reboot Required" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetUpdateScheduleResponseIgnoreCertWarning">
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="On">
+                    <Annotation String="On" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetUpdateScheduleResponseProxySupport">
+                <Member Name="DefaultProxy">
+                    <Annotation String="On-use user default proxy settings" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ParametersProxy">
+                    <Annotation String="On-use passed in parameters for proxy" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="IgnoreCertWarning">
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+                <Member Name="On">
+                    <Annotation String="On" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ProxySupport">
+                <Member Name="DefaultProxy">
+                    <Annotation String="On-use user default proxy settings" Term="OData.Description"/>
+                </Member>
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+                <Member Name="ParametersProxy">
+                    <Annotation String="On-use passed in parameters for proxy" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ProxyType">
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="SOCKS">
+                    <Annotation String="SOCKS" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ShareType">
+                <Member Name="CIFS">
+                    <Annotation String="CIFS" Term="OData.Description"/>
+                </Member>
+                <Member Name="FTP">
+                    <Annotation String="FTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="HTTPS">
+                    <Annotation String="HTTPS" Term="OData.Description"/>
+                </Member>
+                <Member Name="NFS">
+                    <Annotation String="NFS" Term="OData.Description"/>
+                </Member>
+                <Member Name="TFTP">
+                    <Annotation String="TFTP" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInstallationService.v1_0_0">
+            <EntityType Name="DellSoftwareInstallationService" BaseType="DellSoftwareInstallationService.DellSoftwareInstallationService">
+                <Annotation Term="OData.Description" String="The DellSoftwareInstallationService resource provides some actions to support software installation functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellSoftwareInstallationService resource provides some actions to support software installation functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellSoftwareInstallationService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+            <ComplexType Name="GetRepoBasedUpdateListResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetRepoBasedUpdateList action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetRepoBasedUpdateList action."/>
+                <Property Name="PackageList" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides all the packages and devices that will be updated when a particular repository is used."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides all the packages and devices that will be updated when a particular repository is used."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInstallationService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add ClearUpdateSchedule, GetUpdateSchedule, SetUpdateSchedule actions."/>
+            <EntityType Name="DellSoftwareInstallationService" BaseType="DellSoftwareInstallationService.v1_0_0.DellSoftwareInstallationService"> 
+</EntityType>
+            <ComplexType Name="GetUpdateScheduleResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetUpdateSchedule action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetUpdateSchedule action."/>
+                <Property Name="ApplyReboot" Type="DellSoftwareInstallationService.GetUpdateScheduleResponseApplyReboot" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates if a reboot is required after the update."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates if a reboot is required after the update."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="CatalogID" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The ID of the catalog to use."/>
+                    <Annotation Term="OData.LongDescription" String="The ID of the catalog to use."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="CatalogName" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The name of the catalog file. Default is Catalog.xml."/>
+                    <Annotation Term="OData.LongDescription" String="The name of the catalog file. Default is Catalog.xml."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="DayofMonth" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-31. The default value is *."/>
+                    <Annotation Term="OData.LongDescription" String="This parameter represents the day of month on which the update is scheduled. The possible values are * (Any) or a number between 1-31. The default value is *."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="DayofWeek" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *."/>
+                    <Annotation Term="OData.LongDescription" String="This parameter represents the day of week on which the update is scheduled. The possible values are * (Any), Mon, Tue, Wed, Thu, Fri, Sat, Sun. The default value is *."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Domain" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The domain of the user name."/>
+                    <Annotation Term="OData.LongDescription" String="The domain of the user name."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="IPAddress" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="IP address for the remote share."/>
+                    <Annotation Term="OData.LongDescription" String="IP address for the remote share."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="IgnoreCertWarning" Type="DellSoftwareInstallationService.GetUpdateScheduleResponseIgnoreCertWarning" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2(On)."/>
+                    <Annotation Term="OData.LongDescription" String="Specifies if certificate warning should be ignored when HTTPS is used. If IgnoreCertWarning is On, warnings are ignored. Default is 2(On)."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="JobType" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="JobType specifies the type of the job. The value is Auto_Update."/>
+                    <Annotation Term="OData.LongDescription" String="JobType specifies the type of the job. The value is Auto_Update."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="ProxyHostName" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The hostname of the proxy server."/>
+                    <Annotation Term="OData.LongDescription" String="The hostname of the proxy server."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="ProxySupport" Type="DellSoftwareInstallationService.GetUpdateScheduleResponseProxySupport" Nullable="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Specifies if proxy should be used."/>
+                    <Annotation Term="OData.LongDescription" String="Specifies if proxy should be used."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="ProxyUserName" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The user name for the proxy server."/>
+                    <Annotation Term="OData.LongDescription" String="The user name for the proxy server."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Repeat" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366"/>
+                    <Annotation Term="OData.LongDescription" String="This parameter specifies the number of recurrences of the update schedule. Possible values are 1-366"/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="ShareName" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Share name for the network share."/>
+                    <Annotation Term="OData.LongDescription" String="Share name for the network share."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="ShareType" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Type of the share or storage."/>
+                    <Annotation Term="OData.LongDescription" String="Type of the share or storage."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Time" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This parameter represents the hour and minute of the day when the update should be performed."/>
+                    <Annotation Term="OData.LongDescription" String="This parameter represents the hour and minute of the day when the update should be performed."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="UserName" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="User name for the remote share."/>
+                    <Annotation Term="OData.LongDescription" String="User name for the remote share."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="WeekofMonth" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This parameter represents the week of month in which the update is scheduled. The possible value may be *(any) or number between 1 and 4 or L. The default value is *."/>
+                    <Annotation Term="OData.LongDescription" String="This parameter represents the week of month in which the update is scheduled. The possible value may be *(any) or number between 1 and 4 or L. The default value is *."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInstallationService.v1_1_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for Comment,URI parameters."/>
+            <EntityType Name="DellSoftwareInstallationService" BaseType="DellSoftwareInstallationService.v1_1_0.DellSoftwareInstallationService"/>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSoftwareInstallationService.v1_1_2">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for GetRepoBasedUpdateList action."/>
+            <EntityType Name="DellSoftwareInstallationService" BaseType="DellSoftwareInstallationService.v1_1_1.DellSoftwareInstallationService"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

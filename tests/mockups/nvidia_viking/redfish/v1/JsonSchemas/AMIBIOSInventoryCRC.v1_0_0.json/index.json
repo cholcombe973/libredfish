@@ -1,0 +1,203 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/AMIBIOSInventoryCRC.v1_0_0.json",
+    "$ref": "#/definitions/AMIBIOSInventoryCRC",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "definitions": {
+        "AMIBIOSInventoryCRC": {
+            "additionalProperties": false,
+            "description": "This link provides the information related to inventory data",
+            "longDescription": "This link provides the information related to inventory data",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Bios": {
+                    "$ref": "#/definitions/Bios",
+                    "description": "This link provides the information related to inventory data.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "Bios": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "BiosTable": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/AMIBiosTable.v1_0_0.json#/definitions/BiosTable"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This link provides the information related to BiosTable",
+                    "readonly": true
+                },
+                "BiosTableTags": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/AMIBiosTableTags.v1_0_0.jsonn#/definitions/BiosTableTags"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This link provides the information related to BiosTableTags.",
+                    "readonly": true
+                },
+                "Inventory": {
+                    "$ref": "#/definitions/Inventory",
+                    "description": "This link provides the information related to inventory data Crc value.",
+                    "readonly": true
+                },
+                "RedfishVersion": {
+                    "description": "The version of the Redfish service.",
+                    "longDescription": "The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "RtpVersion": {
+                    "description": "RTP Version.",
+                    "longDescription": "The value of this string shall represent the version of the RTP Version.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Crc": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "GroupCrcList": {
+                    "description": "This link provides the information related to inventory data of GroupCrcList value.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/GroupCrcList"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "GroupCrcList": {
+            "additionalProperties": false,
+            "description": "This link provides the information related to inventory data of GroupCrcList value.",
+            "longDescription": "This allows additional configuring of the Redfish service.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CERTIFICATE": {
+                    "description": "Value of the CRC for CERTIFICATE",
+                    "longDescription": "This element corresponds to all data related to CERTIFICATE CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "CPU": {
+                    "description": "Value of the CRC for Processors",
+                    "longDescription": "This element corresponds to all data related to Processor CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "DIMM": {
+                    "description": "Value of the CRC for Memory.",
+                    "longDescription": "This element corresponds to all data related to Memory CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "PCIE": {
+                    "description": "Value of the CRC for PCIE",
+                    "longDescription": "This element corresponds to all data related to Storage, PCIeDevices CRC.",
+                    "readonly": false,
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Inventory": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Crc": {
+                    "$ref": "#/definitions/Crc",
+                    "description": "This link provides the information related to inventory data of Crc value.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMIBIOSInventoryCRC.v1_0_0"
+}

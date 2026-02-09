@@ -1,0 +1,108 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Certificate",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The Certificate resource describes an X509 certificate.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "CertificateString": {
+            "additionalProperties": false,
+            "description": "Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encoded).",
+            "longDescription": "The value of this property shall be the string of the certificate, and the format shall follow the requirements specified by the value of the CertificateType property.  If the certificate contains any private keys, they shall be removed from the string on GET requests.  If the private key for the certificate is not known by the service and is needed to use the certificate, the client shall provide the private key as part of the string in the POST request.",
+            "etag": true,
+            "format": "text",
+            "readonly": false,
+            "type": "string"
+        },
+        "CertificateType": {
+            "enum": [
+                "PEM",
+                "PKCS7"
+            ],
+            "enumDescriptions": {
+                "PEM": "A PEM encoded certificate.",
+                "PKCS7": "A PEM encoded PKCS7 certificate."
+            },
+            "enumLongDescriptions": {
+                "PEM": "The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280.",
+                "PKCS7": "The format of the certificate shall be a Privacy Enhanced Mail (PEM) encoded string, containing structures specified by RFC5280 and RFC2315.  The service may discard additional certificates or other data in the structure."
+            },
+            "readonly": false,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Issuer": {
+            "additionalProperties": false,
+            "description": "The Certificate Authority that issued the certificate.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "SerialNumber": {
+            "additionalProperties": false,
+            "description": "The serial number that the Certificate Authority assigned to the certificate.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Subject": {
+            "additionalProperties": false,
+            "description": "The entity to which the certificate was issued.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "ValidNotAfter": {
+            "additionalProperties": false,
+            "description": "The date on which the certificate validity period ends.",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ValidNotBefore": {
+            "additionalProperties": false,
+            "description": "The date on which the certificate validity period begins.",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "required": [
+        "@odata.id",
+        "@odata.type",
+        "Id",
+        "Name"
+    ],
+    "requiredOnCreate": [
+        "CertificateString",
+        "CertificateType"
+    ],
+    "readonly": false,
+    "title": "#Certificate.v1_1_0.Certificate",
+    "type": "object"
+}

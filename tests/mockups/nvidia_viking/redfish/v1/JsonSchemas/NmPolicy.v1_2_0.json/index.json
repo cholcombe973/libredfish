@@ -1,0 +1,732 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/NmPolicy.v1_2_0.json",
+    "$ref": "#/definitions/Policy",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#NmPolicy.ChangeState": {
+                    "$ref": "#/definitions/ChangeState"
+                },
+                "#NmPolicy.ResetStatistics": {
+                    "$ref": "#/definitions/ResetStatistics"
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/JsonSchemas/NodeManager.v1_0_0.json#/definitions/OemActions",
+                    "description": "The available OEM-specific actions for this resource.",
+                    "longDescription": "This property shall contain the available OEM-specific actions for this resource."
+                }
+            },
+            "type": "object"
+        },
+        "ChangeState": {
+            "additionalProperties": false,
+            "parameters": {
+                "State": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/State",
+                    "description": "The state of the Resource to transition to.",
+                    "longDescription": "This parameter shall contain the state of the Resource to transition to."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ControlKnob": {
+            "description": "Control knob to be used by this policy.",
+            "enum": [
+                "AcpiPstate",
+                "TurboRatioLimit",
+                "ProchotRatio",
+                "HwpmPerfPreference",
+                "HwpmPerfBias",
+                "HwpmPerfPreferenceOverride"
+            ],
+            "enumDescriptions": {
+                "AcpiPstate": "ACPI Pstate number in range {0..Pn}.",
+                "HwpmPerfBias": "HWPM Power-Performance Bias setting.",
+                "HwpmPerfPreference": "HWPM Performance Preference indication setting.",
+                "HwpmPerfPreferenceOverride": "HWPM Performance Preference Override setting.",
+                "ProchotRatio": "CPU ratio value to be set in response to PROCHOT# signal assertion.",
+                "TurboRatioLimit": "Turbo ratio limit for all active threads and all CPU packages."
+            },
+            "longDescription": "This property shall contain definition of a control knob to be used by this policy.",
+            "type": "string"
+        },
+        "CorrectionType": {
+            "description": "Power correction type, which identifies what control knobs will the policy use to enforce the power capping.",
+            "enum": [
+                "Auto",
+                "NonAggressive",
+                "Aggressive"
+            ],
+            "enumDescriptions": {
+                "Aggressive": "Use all available control knobs to meet policy limit.",
+                "Auto": "Node Manager will automatically decide what power correction time will be used.",
+                "NonAggressive": "Use only efficient control knobs (without severely impacting performance)."
+            },
+            "longDescription": "This property shall contain value defining correction type of this policy, which identifies which control knobs will the policy use to enforce the limit.",
+            "type": "string"
+        },
+        "LimitException": {
+            "description": "Exception action to take if the limit is violated.",
+            "enum": [
+                "HardPowerOff",
+                "LogEventOnly",
+                "NoAction",
+                "Oem"
+            ],
+            "enumDescriptions": {
+                "HardPowerOff": "Turn the power off immediately when the limit is exceeded.",
+                "LogEventOnly": "Log an event when the limit is exceeded, but take no further action.",
+                "NoAction": "Take no action when the limit is exceeded.",
+                "Oem": "Take an OEM-defined action."
+            },
+            "longDescription": "This property shall contain value defining action to be taken when limit cannot be maintained.",
+            "type": "string"
+        },
+        "NmState": {
+            "enum": [
+                "Disabled",
+                "Suspended",
+                "Pending",
+                "Ready",
+                "Triggered",
+                "Selected"
+            ],
+            "enumDescriptions": {
+                "Disabled": "When a policy is disabled only its statistics are being calculated.",
+                "Pending": "Pending policy has its statistics computed, and is periodically evaluated to check if it can become ready.",
+                "Ready": "Policy is in the Ready state when both Policy Control and Domain in which policy was created are enabled.",
+                "Selected": "Policy is triggered and policy limit has been chosen to be enforced.",
+                "Suspended": "When a policy is suspended only its statistics are being calculated. Policy become suspended when validaton failed. It can become pending when domain capabilites changed and policy validation succeeded.",
+                "Triggered": "Policy is triggered when its trigger has been activated. Power polices with no trigger are treated as triggered all the time."
+            },
+            "type": "string"
+        },
+        "OemActions": {
+            "additionalProperties": true,
+            "description": "The available OEM-specific actions for this resource.",
+            "longDescription": "This type shall contain the available OEM-specific actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "OemStatus": {
+            "additionalProperties": false,
+            "deprecated": "This type has been deprecated.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "State": {
+                    "$ref": "#/definitions/NmState",
+                    "description": "OEM Status.",
+                    "longDescription": "This property shall contain the known state of the Resource"
+                }
+            },
+            "type": "object",
+            "versionDeprecated": "v1_2_0"
+        },
+        "Policy": {
+            "additionalProperties": false,
+            "description": "The NmPolicy schema contains properties related to monitoring and control of the given policy.",
+            "longDescription": "The NmPolicy schema contains properties related to monitoring and control of the given policy.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this Resource.",
+                    "longDescription": "This property shall contain the available actions for this Resource."
+                },
+                "ComponentId": {
+                    "description": "Identifier of a domain's component this policy limit is to be applied to.",
+                    "longDescription": "This property shall contain definition of a Identifier of a domain's component this policy limit is to be applied to.",
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ControlKnob": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ControlKnob"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "deprecated": "This value has been deprecated.",
+                    "description": "Control knob to be used by this policy.",
+                    "longDescription": "This property shall contain definition of a control knob to be used by this policy.",
+                    "versionDeprecated": "v1_2_0"
+                },
+                "CorrectionInMs": {
+                    "description": "Policy correction time in ms.",
+                    "longDescription": "This property shall contain policy correction time expressed in ms.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "ms"
+                },
+                "CorrectionType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CorrectionType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "deprecated": "This property has been deprecated in favor of PowerCorrectionType.",
+                    "description": "Power correction type, which identifies what control knobs will the policy use to enforce the power capping.",
+                    "longDescription": "This property shall contain value defining correction type of this policy, which identifies which control knobs will the policy use to enforce the limit.",
+                    "readonly": false,
+                    "versionDeprecated": "v1_1_0"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Domain": {
+                    "$ref": "/redfish/v1/JsonSchemas/NmDomain.json#/definitions/Domain",
+                    "description": "The domain in which the policy was created. Only modifiable if the Policy State is Disabled..",
+                    "longDescription": "This property shall contain a link to a domain in which the policy was created. Only modifiable if the Policy State is Disabled.",
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Limit": {
+                    "description": "Limit to be enforced if the policy is triggered.",
+                    "longDescription": "This property shall contain value of limit for controlled parameter of this policy to be enforced on the system if policy is triggered.",
+                    "readonly": false,
+                    "type": "number",
+                    "units": "ms"
+                },
+                "LimitException": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/LimitException"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Exception action to take if the limit is violated.",
+                    "longDescription": "This property shall contain value defining action to be taken when limit cannot be maintained.",
+                    "readonly": false
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "OemStatus": {
+                    "$ref": "#/definitions/NmState",
+                    "description": "The detailed Policy state.",
+                    "longDescription": "This property shall contain detailed state following current Policy state.",
+                    "versionAdded": "v1_2_0"
+                },
+                "PolicyStorage": {
+                    "$ref": "#/definitions/PolicyStorage",
+                    "description": "Storage configuration of policy object.",
+                    "longDescription": "This property shall contain value defining configuration for policy storage option.",
+                    "readonly": false
+                },
+                "PolicyType": {
+                    "$ref": "#/definitions/PolicyType",
+                    "description": "Type of policy object.",
+                    "longDescription": "This property shall contain value defining type of this policy.",
+                    "readonly": false
+                },
+                "PowerCorrectionType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CorrectionType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Power correction type, which identifies what control knobs will the policy use to enforce the power capping.",
+                    "longDescription": "This property shall contain value defining correction type of this policy, which identifies which control knobs will the policy use to enforce the limit.",
+                    "readonly": false,
+                    "versionAdded": "v1_1_0"
+                },
+                "Statistics": {
+                    "description": "Statistics collected for the policy.",
+                    "items": {
+                        "$ref": "#/definitions/Statistics"
+                    },
+                    "longDescription": "This property shall contain statistics of a controlled parameter for the policy.",
+                    "type": "array"
+                },
+                "StatisticsReportingPeriod": {
+                    "description": "Statistics reporting period for this policy.",
+                    "longDescription": "This property shall contain value time period over which statistics will be calculated for this policy.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": false,
+                    "type": "string",
+                    "units": "ms"
+                },
+                "Status": {
+                    "$ref": "#/definitions/Status",
+                    "description": "The status and health of the Resource and its subordinate or dependent Resources.",
+                    "longDescription": "This property shall contain any status or health properties of the Resource."
+                },
+                "SuspendPeriods": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SuspendPeriods"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An array of Suspend Periods created for this policy.",
+                    "longDescription": "This property shall contain an array of Suspend Period configurations created for this policy."
+                },
+                "Thresholds": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Thresholds"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "An array of Thresholds created for this policy.",
+                    "longDescription": "This property shall contain an array of Thresholds created for this policy."
+                },
+                "Trigger": {
+                    "$ref": "#/definitions/Trigger",
+                    "description": "The trigger for this policy.",
+                    "longDescription": "This property shall contain definition of trigger for the policy."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "PolicyStorage": {
+            "enum": [
+                "Volatile",
+                "Persistent"
+            ],
+            "enumDescriptions": {
+                "Persistent": "Policy is stored in non-volatile memory.",
+                "Volatile": "Policy is only stored in volatile memory."
+            },
+            "type": "string"
+        },
+        "PolicyType": {
+            "enum": [
+                "PowerPolicy",
+                "PerformancePolicy"
+            ],
+            "enumDescriptions": {
+                "PerformancePolicy": "Policy is controlling performance of the system or its components.",
+                "PowerPolicy": "Policy is controlling power of the system or its components."
+            },
+            "type": "string"
+        },
+        "ResetStatistics": {
+            "additionalProperties": false,
+            "description": "This ResetStatistics action forces the manager to reset statistics Minimal, Maximal and Average values for a policy.",
+            "longDescription": "This ResetStatistics action forces the manager to reset statistics Minimal, Maximal and Average values for a policy.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Statistics": {
+            "additionalProperties": false,
+            "description": "Min, max, average and current values of statistics.",
+            "longDescription": "This type shall contain min, max, average and current values statistics the resource it is used in.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Average": {
+                    "description": "Average value of collected statistics.",
+                    "longDescription": "This property shall contain an average value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "AveragingDuration": {
+                    "deprecated": "This property has been deprecated in favor of AveragingInterval.",
+                    "description": "Duration over which average value was calculated.",
+                    "longDescription": "This property shall contain duration over which an average value was collected for these statistics. The value shall conform to the Duration format.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string",
+                    "versionDeprecated": "v1_1_0"
+                },
+                "AveragingInterval": {
+                    "description": "Interval over which average value was calculated.",
+                    "longDescription": "This property shall contain interval over which an average value was collected for these statistics. The value shall conform to the Duration format.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": "string",
+                    "versionAdded": "v1_1_0"
+                },
+                "Current": {
+                    "description": "Current value of collected statistics.",
+                    "longDescription": "This property shall contain a current value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Max": {
+                    "description": "Maximal value of collected statistics.",
+                    "longDescription": "This property shall contain a maximal value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "MeasurementState": {
+                    "description": "Flag stating if the measuremt is in progress.",
+                    "longDescription": "This property is a flag telling if the statistics measurement was at progress.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Min": {
+                    "description": "Minimal value of collected statistics.",
+                    "longDescription": "This property shall contain a minimal value of collected statistics.",
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "description": "Statistic name.",
+                    "longDescription": "This property shall contain the statistic name.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Status": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Oem": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OemStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "deprecated": "This property has been deprecated.",
+                    "versionDeprecated": "v1_2_0"
+                },
+                "State": {
+                    "description": "The known state of the Resource, such as, enabled.",
+                    "longDescription": "This property shall contain the known state of the Resource, such as, enabled.",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SuspendPeriods": {
+            "additionalProperties": false,
+            "description": "Suspend periods for policy.",
+            "longDescription": "This type shall contain definition of suspend periods for a policy.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "EnabledDays": {
+                    "description": "Days when the policy will be suspended.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This property shall contain a collection of string indicating days when the policy will be suspended.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "StartTime": {
+                    "description": "Time after which the policy will be suspended.",
+                    "longDescription": "This property shall contain time after which the policy will be suspended.",
+                    "pattern": "([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(.[0-9]{1,12})?",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "StopTime": {
+                    "description": "Time until which the policy will be suspended.",
+                    "longDescription": "This property shall contain time until which the policy will be suspended.",
+                    "pattern": "([01][0-9]|2[0-3]):([0-5][0-9]):([0-5][0-9])(.[0-9]{1,12})?",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Thresholds": {
+            "additionalProperties": false,
+            "description": "Alert thresholds for a policy.",
+            "longDescription": "This type shall contain definition of thresholds for a policy.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ThresholdValue": {
+                    "description": "Policy threshold value.",
+                    "items": {
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "This property shall contain definition of an alert threshold for a policy.",
+                    "readonly": false,
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "Trigger": {
+            "additionalProperties": false,
+            "description": "Trigger for a policy.",
+            "longDescription": "This type shall contain definition of trigger for a policy.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "TriggerLimit": {
+                    "description": "Trigger limit after violation of which the Policy will become triggered.",
+                    "longDescription": "This property shall contain definition of trigger limit after violation of which the Policy will become triggered.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "TriggerType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/JsonSchemas/NmTrigger.json#/definitions/Trigger"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Link to the trigger definition that this policy is using.",
+                    "longDescription": "This property shall contain link to the trigger definition that this policy is using.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "release": "1.2",
+    "title": "#NmPolicy.v1_2_0.Policy"
+}

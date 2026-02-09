@@ -1,0 +1,1262 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLO",
+    "actions": {
+        "actions": {
+            "HpeiLO.ClearHotKeys": {
+                "additionalProperties": false,
+                "description": "Clear hot keys which are used during Remote Console sessions.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.ClearHotKeys"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLO.ClearRestApiState": {
+                "additionalProperties": false,
+                "description": "Clears the persistent state of the REST API.  Some portions of the API may not be available until after the server reboots.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.ClearRestApiState"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLO.DisableiLOFunctionality": {
+                "additionalProperties": false,
+                "description": "This action will disable the iLO network and will terminate communications with operating system drivers.  To re-enable iLO functionality, use the iLO Configuration Utility (in the UEFI System Utilities) to set iLO Functionality to Enabled. For more information see the HPE UEFI System Utilities User Guide.  The action resets/reboots the manager.  iLO functionality cannot be disabled on server blades.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.DisableiLOFunctionality"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLO.RequestFirmwareAndOsRecovery": {
+                "additionalProperties": false,
+                "description": "Requests that the Recovery Install set be invoked, and when complete causes a OS reinstallation.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.RequestFirmwareAndOsRecovery"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLO.ResetToFactoryDefaults": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.ResetToFactoryDefaults"
+                        ],
+                        "enumDescriptions": {
+                            "ResetToFactoryDefaults": "Resets the iLO to Factory Defaults."
+                        },
+                        "type": "string"
+                    },
+                    "ResetType": {
+                        "enum": [
+                            "Default"
+                        ],
+                        "enumDescriptions": {
+                            "Default": "Reset iLO to defaults, clear logs and reboot iLO."
+                        },
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "ResetType"
+                ],
+                "type": "object"
+            },
+            "HpeiLO.EnableCloudConnect": {
+                "additionalProperties": false,
+                "description": "Action to enable cloud connect service.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.EnableCloudConnect"
+                        ],
+                        "type": "string"
+                    },
+                    "ActivationKey": {
+                        "additionalProperties": false,
+                        "description": "The activation key is the customer account ID of HPE GreenLake. Obtain the account ID by visiting HPE GreenLake portal-Manage->Account Details card.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "OverrideManager": {
+                        "additionalProperties": false,
+                        "description": "The property is used to override the existing manager (Example: HPE OneView).",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "boolean"
+                    }
+                },
+                "readonly": false,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLO.DisableCloudConnect": {
+                "additionalProperties": false,
+                "description": "Action to disable cloud connect service.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLO.DisableCloudConnect"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Various HPE OEM-specific actions for Managers."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2021 Distributed Management Task Force. All rights reserved.",
+    "definitions": {
+        "HpeFirmwareVersionBlock": {
+            "additionalProperties": false,
+            "properties": {
+                "Backup": {
+                    "$ref": "#/definitions/HpeFirmwareVersionInfo"
+                },
+                "Bootblock": {
+                    "$ref": "#/definitions/HpeFirmwareVersionInfo"
+                },
+                "Current": {
+                    "$ref": "#/definitions/HpeFirmwareVersionInfo"
+                },
+                "Pending": {
+                    "$ref": "#/definitions/HpeFirmwareVersionInfo"
+                }
+            },
+            "type": "object"
+        },
+        "HpeFirmwareVersionInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "BuildNumber": {
+                    "description": "The build number of the firmware.",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "BuildNumberString": {
+                    "description": "The string version of the build number of the firmware.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Date": {
+                    "description": "The build date of the firmware.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "DebugBuild": {
+                    "description": "True if the firmware is a debug build; False if it is not.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "Family": {
+                    "description": "The family of the firmware.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "MajorVersion": {
+                    "description": "The major version of the firmware.",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "MinorVersion": {
+                    "description": "The minor version of the firmware.",
+                    "etag": true,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "Time": {
+                    "description": "The build time of the firmware.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "VersionString": {
+                    "description": "The version string of the firmware. This value might be null if VersionString is unavailable.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "Keys": {
+            "description": "When a hot key is pressed during a remote console session, the selected key combination (all keys pressed at the same time) will be transmitted in its place.  Each hot key represents a combination of up to five keys that are sent to the host server when the hot key is pressed. Pass 'NONE' for unassigned items.",
+            "items": {
+                "enum": [
+                    "NONE",
+                    "ESC",
+                    "L_ALT",
+                    "R_ALT",
+                    "L_SHIFT",
+                    "R_SHIFT",
+                    "L_CTRL",
+                    "R_CTRL",
+                    "L_GUI",
+                    "R_GUI",
+                    "INS",
+                    "DEL",
+                    "HOME",
+                    "END",
+                    "PG_UP",
+                    "PG_DN",
+                    "ENTER",
+                    "TAB",
+                    "BREAK",
+                    "BACKSPACE",
+                    "NUM_PLUS",
+                    "NUM_MINUS",
+                    "SCRL_LCK",
+                    "SYS_RQ",
+                    "PRINT_SCRN",
+                    "F1",
+                    "F2",
+                    "F3",
+                    "F4",
+                    "F5",
+                    "F6",
+                    "F7",
+                    "F8",
+                    "F9",
+                    "F10",
+                    "F11",
+                    "F12",
+                    "SPACE",
+                    "'",
+                    ",",
+                    "-",
+                    ".",
+                    "/",
+                    ";",
+                    "=",
+                    "[",
+                    "\\",
+                    "]",
+                    "`",
+                    "0",
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                    "6",
+                    "7",
+                    "8",
+                    "9",
+                    "a",
+                    "b",
+                    "c",
+                    "d",
+                    "e",
+                    "f",
+                    "g",
+                    "h",
+                    "i",
+                    "j",
+                    "k",
+                    "l",
+                    "m",
+                    "n",
+                    "o",
+                    "p",
+                    "q",
+                    "r",
+                    "s",
+                    "t",
+                    "u",
+                    "v",
+                    "w",
+                    "x",
+                    "y",
+                    "z"
+                ],
+                "enumDescriptions": {
+                    "'": "Apostrophe key",
+                    ",": "Comma key",
+                    "-": "Hyphen key",
+                    ".": "Period key",
+                    "/": "Slash key",
+                    "0": "0 key",
+                    "1": "1 key",
+                    "2": "2 key",
+                    "3": "3 key",
+                    "4": "4 key",
+                    "5": "5 key",
+                    "6": "6 key",
+                    "7": "7 key",
+                    "8": "8 key",
+                    "9": "9 key",
+                    ";": "Semicolon key",
+                    "=": "Equals key",
+                    "BACKSPACE": "Backspace key",
+                    "BREAK": "Break key",
+                    "DEL": "Delete key",
+                    "END": "End key",
+                    "ENTER": "Enter key",
+                    "ESC": "Escape key",
+                    "F1": "F1 key",
+                    "F10": "F10 key",
+                    "F11": "F11 key",
+                    "F12": "F12 key",
+                    "F2": "F2 key",
+                    "F3": "F3 key",
+                    "F4": "F4 key",
+                    "F5": "F5 key",
+                    "F6": "F6 key",
+                    "F7": "F7 key",
+                    "F8": "F8 key",
+                    "F9": "F9 key",
+                    "HOME": "Home key",
+                    "INS": "Insert key",
+                    "L_ALT": "Left Alt key",
+                    "L_CTRL": "Left Control key",
+                    "L_GUI": "Left Windows key",
+                    "L_SHIFT": "Left Shift key",
+                    "NONE": "No key",
+                    "NUM_MINUS": "Num Minus key",
+                    "NUM_PLUS": "Num Plus key",
+                    "PG_DN": "Page Down key",
+                    "PG_UP": "Page Up key",
+                    "PRINT_SCREEN": "Print Screen key",
+                    "R_ALT": "Right Alt key",
+                    "R_CTRL": "Right Control key",
+                    "R_GUI": "Right Windows key",
+                    "R_SHIFT": "Right Shift key",
+                    "SCRL_LCK": "Scroll Lock key",
+                    "SPACE": "Space key",
+                    "SYS_RQ": "Sys Rq key",
+                    "TAB": "Tab key",
+                    "[": "Left square bracket key",
+                    "\\": "Backslash key",
+                    "]": "Right square bracket key",
+                    "`": "Backtick key",
+                    "a": "a key",
+                    "b": "b key",
+                    "c": "c key",
+                    "d": "d key",
+                    "e": "e key",
+                    "f": "f key",
+                    "g": "g key",
+                    "h": "h key",
+                    "i": "i key",
+                    "j": "j key",
+                    "k": "k key",
+                    "l": "l key",
+                    "m": "m key",
+                    "n": "n key",
+                    "o": "o key",
+                    "p": "p key",
+                    "q": "q key",
+                    "r": "r key",
+                    "s": "s key",
+                    "t": "t key",
+                    "u": "u key",
+                    "v": "v key",
+                    "w": "w key",
+                    "x": "x key",
+                    "y": "y key",
+                    "z": "z key"
+                },
+                "type": "string"
+            },
+            "type": "array"
+        }
+    },
+    "description": "The HpeiLO object extends the Redfish Manager resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLO.ClearHotKeys": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLO.ClearRestApiState": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLO.DisableiLOFunctionality": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLO.RequestFirmwareAndOsRecovery": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLO.ResetToFactoryDefaults": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "ResetType@Redfish.AllowableValues": {
+                            "description": "The supported values for the ResetType parameter.",
+                            "items": {
+                                "enum": [
+                                    "Default"
+                                ],
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the ResetType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLO.EnableCloudConnect": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "ActivationKey@Redfish.AllowableValues": {
+                            "description": "The activation key is the customer account ID of HPE GreenLake. Obtain the account ID by visiting HPE GreenLake portal-Manage->Account Details card.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "string"
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLO.DisableCloudConnect": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ClearRestApiStatus": {
+            "description": "Status of external provider data in NVRAM.",
+            "enum": [
+                null,
+                "DataPresent",
+                "DataCleared"
+            ],
+            "enumDescriptions": {
+                "DataCleared": "External Provider data is not present in NVRAM.",
+                "DataPresent": "External Provider data is present in NVRAM."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ConfigurationLimitations": {
+            "description": "Limitations on configuration change based on node type.",
+            "longDescription": "Managed nodes have required user interfaces that must remain in their default configurations.  This property indicates current limitations that are in effect based on node type.  It can be overwritten with a patch operation if necessary.",
+            "enum": [
+                null,
+                "None",
+                "ManagedNode"
+            ],
+            "enumDescriptions": {
+                "None": "No user interface configuration limitations are in effect.",
+                "ManagedNode": "This is a managed node. User interfaces that are required for management cannot be modified."
+            },
+            "etag": false,
+            "readonly": false,
+            "type": "string"
+        },
+        "ConfigurationSettings": {
+            "description": "State of the currently displayed configuration settings.",
+            "enum": [
+                "Current",
+                "SomePendingReset"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "FederationConfig": {
+            "additionalProperties": false,
+            "properties": {
+                "IPv6MulticastScope": {
+                    "description": "The IPv6 network scope of multicast announcements.",
+                    "enum": [
+                        "Link",
+                        "Site",
+                        "Organization"
+                    ],
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string"
+                    ]
+                },
+                "MulticastAnnouncementInterval": {
+                    "description": "The frequency in Seconds at which the iLO system announces itself on the network. A value of 0 disables multicast announcments.",
+                    "enum": [
+                        0,
+                        30,
+                        60,
+                        120,
+                        300,
+                        600,
+                        900,
+                        1800
+                    ],
+                    "etag": true,
+                    "maximum": 1800,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "MulticastDiscovery": {
+                    "description": "Enables or Disables Multicast Discovery for the local iLO system.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "MulticastTimeToLive": {
+                    "description": "The maximum number of switches a multicast announcement will traverse before being discarded.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "iLOFederationManagement": {
+                    "description": "Enables or Disables iLO Federation features for the local iLO system.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Firmware": {
+            "$ref": "#/definitions/HpeFirmwareVersionBlock"
+        },
+        "FrontPanelUSB": {
+            "additionalProperties": false,
+            "properties": {
+                "State": {
+                    "description": "The state of the front USB port device.",
+                    "enum": [
+                        null,
+                        "Ready",
+                        "Busy",
+                        "Complete",
+                        "Error",
+                        "Disabled"
+                    ],
+                    "enumDescriptions": {
+                        "Busy": "iLO has detected a front panel device and is initializing or executing operations on the device.",
+                        "Complete": "iLO has successfully finished initializing or executing operations on the device.",
+                        "Disabled": "The front panel device is disabled by user configuration.",
+                        "Error": "iLO failed to initialize or execute operations on the device.",
+                        "Ready": "iLO has not detected a front panel device."
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IdleConnectionTimeoutMinutes": {
+            "description": "This setting specifies how long a user can be inactive before an iLO web interface ends automatically.",
+            "enum": [
+                0,
+                15,
+                30,
+                60,
+                120
+            ],
+            "etag": true,
+            "maximum": 120,
+            "minimum": 0,
+            "readonly": false,
+            "type": "integer"
+        },
+        "IntegratedRemoteConsole": {
+            "additionalProperties": false,
+            "description": "Remote Console settings.",
+            "properties": {
+                "HotKeys": {
+                    "description": "This property allows you to define hot keys to use during Remote Console sessions.",
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "KeySequence": {
+                                "$ref": "#/definitions/Keys",
+                                "description": "Each hot key represents a combination of up to five Keys that are sent to the host server when the hot key is pressed. If a hot key is not set - for example, Ctrl-Y is set to NONE, NONE, NONE, NONE, NONE - this hot key is disabled.",
+                                "readonly": false
+                            },
+                            "Name": {
+                                "description": "The name of the hot key.",
+                                "enum": [
+                                    "Ctrl-T",
+                                    "Ctrl-U",
+                                    "Ctrl-V",
+                                    "Ctrl-W",
+                                    "Ctrl-X",
+                                    "Ctrl-Y"
+                                ],
+                                "enumDescriptions": {
+                                    "Ctrl-T": "Control T",
+                                    "Ctrl-U": "Control U",
+                                    "Ctrl-V": "Control V",
+                                    "Ctrl-W": "Control W",
+                                    "Ctrl-X": "Control X",
+                                    "Ctrl-Y": "Control Y"
+                                },
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            }
+                        },
+                        "readonly": false,
+                        "type": "object"
+                    },
+                    "readonly": false,
+                    "type": "array"
+                },
+                "LockKey": {
+                    "additionalProperties": false,
+                    "description": "This feature locks the OS or logs a user out when a Remote Console session ends or the network link to iLO is lost.",
+                    "properties": {
+                        "CustomKeySequence": {
+                            "$ref": "#/definitions/Keys",
+                            "readonly": false
+                        },
+                        "LockOption": {
+                            "description": "Lock option setting.",
+                            "enum": [
+                                "Windows",
+                                "Custom",
+                                "Disabled"
+                            ],
+                            "enumDescriptions": {
+                                "Custom": "This option configures iLO to use a custom key sequence to lock a managed server or log out a user on that server.",
+                                "Disabled": "This option disables the Remote Console Computer Lock feature.",
+                                "Windows": "This option configures iLO to lock a managed server running a Windows operating system."
+                            },
+                            "etag": true,
+                            "readonly": false,
+                            "type": "string"
+                        }
+                    },
+                    "readonly": false,
+                    "type": "object"
+                },
+                "TrustedCertificateRequired": {
+                    "description": "When this setting is enabled and a trusted SSL certificate has been imported into iLO, the .NET IRC is launched by using an HTTPS connection. When this setting is disabled, the .NET IRC is launched by using a non-SSL connection.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "License": {
+            "additionalProperties": false,
+            "properties": {
+                "LicenseKey": {
+                    "description": "The installed license key.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "LicenseString": {
+                    "description": "Describes the type of license installed on management processor.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "LicenseType": {
+                    "description": "Indicates whether the license is Perpetual or Evaluation.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "Links": {
+            "additionalProperties": true,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "ActiveHealthSystem": {
+                    "description": "The URI for this active health system resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "BackupRestoreService": {
+                    "description": "The URI for this backup/restore system resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "DateTimeService": {
+                    "description": "The URI for this date time service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "EmbeddedMediaService": {
+                    "description": "The URI for this embedded media service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "FederationDispatch": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "The URI for this federation dispatch resource.",
+                    "readonly": true
+                },
+                "FederationGroups": {
+                    "description": "The URI for this federation groups resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "FederationPeers": {
+                    "description": "The URI for this federation peers resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "GUIService": {
+                    "description": "The URI for the GUI navigation service.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "LicenseService": {
+                    "description": "The URI for this license service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "RemoteSupport": {
+                    "description": "The URI for this Remote Support service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SecurityService": {
+                    "description": "The URI for this security service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SNMPService": {
+                    "description": "The SNMP Service resource URI.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Thumbnail": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "A link to static images in Manager.",
+                    "readonly": true
+                },
+                "VSPLogLocation": {
+                    "$ref": "Resource.json#/definitions/extref",
+                    "description": "A link to virtual serial port log."
+                }
+            },
+            "type": "object"
+        },
+        "PersistentMouseKeyboardEnabled": {
+            "description": "Persistent mouse and keyboard feature is enabled or not. When this feature is enabled, the iLO virtual mouse and keyboard are always connected to the iLO UHCI USB controller. When this feature is disabled, the iLO virtual mouse and keyboard are connected dynamically to the iLO UHCI controller only when a Remote Console application is open and connected to iLO.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "PhysicalMonitorHealthStatusEnabled": {
+            "description": "This property enables or disables the display of Server Health Status on a physical monitor attached to the system.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "RIBCLEnabled": {
+            "description": "This property enables or disables RIBCL for the management processor. The management processor will require reset when this field is modified.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "RemoteConsoleThumbnailEnabled": {
+            "description": "This property enables or disables the accessibility of remote console thumbnail image in iLO. Disabling this property will not disable remote console feature.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "RequireHostAuthentication": {
+            "description": "Determines whether authentication is required for host-based utilities which use CHIF (typically use of CHIF requires Administrator/root credentials)",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "RequiredLoginForiLORBSU": {
+            "description": "Determines whether a user-credential prompt is displayed when a user accesses the iLO RBSU or the iLO Configuration Utility. The following settings are valid: Enabled-A login dialog box opens when a user accesses the iLO RBSU or the iLO Configuration Utility. Disabled (default)-No login is required when a user accesses the iLO RBSU or the iLO Configuration Utility.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "SerialCLISpeed": {
+            "description": "Serial command line interface speed in bits/second.",
+            "enum": [
+                9600,
+                19200,
+                38400,
+                57600,
+                115200
+            ],
+            "etag": true,
+            "readonly": false,
+            "type": "integer"
+        },
+        "SerialCLIStatus": {
+            "description": "Status of serial command line interface.",
+            "enum": [
+                null,
+                "Disabled",
+                "EnabledNoAuth",
+                "EnabledAuthReq"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Serial command line interface is disabled.",
+                "EnabledAuthReq": "Serial command line interface is enabled with authentication required.",
+                "EnabledNoAuth": "Serial command line interface is enabled with no authentication required."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialCLIUART": {
+            "description": "Indicates presence of UART hardware.",
+            "enum": [
+                "NotPresent",
+                "Present"
+            ],
+            "enumDescriptions": {
+                "NotPresent": "UART hardware present.",
+                "Present": "UART hardware not present."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "VSPDlLoggingEnabled": {
+            "description": "This property enables or disables logging to the downloadable Virtual Serial Port (VSP) log.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "VSPLogDownloadEnabled": {
+            "description": "This property enables or disables download of the downloadable Virtual Serial Port (VSP) log.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "VideoPresenceDetectOverride": {
+            "description": "This property controls video presence detection on the VGA port.  True: firmware workaround detects some KVMs that are not automatically supported.  False: hardware-based automatic video presence detection.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "VideoPresenceDetectOverrideSupported": {
+            "description": "This indicates whether the VideoPresenceDetectOverride property is supported on this type of system.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "VirtualNICEnabled": {
+            "description": "Indicates whether the Virtual Network Interface is enabled or not.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "WebGuiEnabled": {
+            "description": "This property enables or disables WEB GUI access for the management processor. The management processor will require reset when this field is modified.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "iLOFunctionalityEnabled": {
+            "description": "iLO functionality is enabled on this platform.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "iLOFunctionalityRequired": {
+            "description": "iLO functionality is required and can't be disabled on this platform (usually blades).",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "iLOIPduringPOSTEnabled": {
+            "description": "Specifies whether displaying the iLO network IP address during host server POST is enabled(default) or not.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "iLORBSUEnabled": {
+            "description": "Enables or disables the iLO Configuration Utility. The following settings are valid: Enabled (default)-On servers that support the iLO Configuration Utility,  the iLO Configuration Utility is available when you access the UEFI System Utilities by pressing F9 during POST. Disabled-On servers that support the iLO Configuration Utility, the iLO Configuration Utility is not available when you access the UEFI System Utilities by pressing F9 during POST.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "iLOSelfTestResults": {
+            "description": "iLO Self Test Results section displays the results of internal iLO diagnostics.",
+            "etag": true,
+            "items": {
+                "properties": {
+                    "Notes": {
+                        "description": "Additional Information (if any) about the Self Test.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "SelfTestName": {
+                        "description": "iLO Self Test Name.",
+                        "enum": [
+                            "UnknownSelfTest",
+                            "CryptographicHardware",
+                            "Memory",
+                            "WebServerCryptography",
+                            "MiscCryptography",
+                            "UART",
+                            "HoodSense",
+                            "NVRAMInterface",
+                            "NVRAMData",
+                            "NVRAMSpace",
+                            "NIC",
+                            "EmbeddedFlash",
+                            "StaticRAM",
+                            "EEPROM",
+                            "I2C",
+                            "BootBlock",
+                            "ThreadInit",
+                            "Infrastructure",
+                            "HostRom",
+                            "SupportedHost",
+                            "EEPROMContent",
+                            "PowerManagementController",
+                            "CPLDPAL0",
+                            "CPLDPAL1",
+                            "CPLDPAL2",
+                            "CPLDPAL3",
+                            "CPLDPAL4",
+                            "CPLDPAL5",
+                            "ASICFuses"
+                        ],
+                        "enumDescriptions": {
+                            "ASICFuses": "ASIC Fuses self test result.",
+                            "BootBlock": "BootBlock self test result.",
+                            "CPLDPAL0": "CPLD PAL0 self test result.",
+                            "CPLDPAL1": "CPLD PAL1 self test result.",
+                            "CPLDPAL2": "CPLD PAL2 self test result.",
+                            "CPLDPAL3": "CPLD PAL3 self test result.",
+                            "CPLDPAL4": "CPLD PAL4 self test result.",
+                            "CPLDPAL5": "CPLD PAL5 self test result.",
+                            "CryptographicHardware": "CryptographicHardware self test result.",
+                            "EEPROM": "EEPROM self test result.",
+                            "EEPROMContent": "EEPROMContent self test result.",
+                            "EmbeddedFlash": "EmbeddedFlash or SD Card self test result.",
+                            "HoodSense": "Hood Sense self test result.",
+                            "HostROM": "HostROM self test result.",
+                            "I2C": "I2C self test result.",
+                            "Infrastructure": "Infrastructure self test result.",
+                            "Memory": "Memory self test result.",
+                            "MiscCryptography": "MiscCryptography self test result.",
+                            "NIC": "NIC self test result.",
+                            "NVRAMData": "NVRAMData self test result.",
+                            "NVRAMInterface": "NVRAMInterface self test result.",
+                            "NVRAMSpace": "NVRAM space self test result.",
+                            "PowerManagementController": "Power Management Controller self test result.",
+                            "StaticRAM": "StaticRAM self test result.",
+                            "SupportedHost": "Supported Host self test result.",
+                            "ThreadInit": "ThreadInit self test result.",
+                            "UART": "UART self test result.",
+                            "UnknownSelfTest": "UnknownSelfTest self test result.",
+                            "WebServerCryptography": "WebServerCryptography self test result."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Status": {
+                        "description": "Status of the Self Test.",
+                        "enum": [
+                            "NA",
+                            "OK",
+                            "Informational",
+                            "Degraded"
+                        ],
+                        "enumDescriptions": {
+                            "Degraded": "Status Degraded.",
+                            "Informational": "Informational.",
+                            "NA": "Status Not Applicable.",
+                            "OK": "Status OK."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "iLOServicePort": {
+            "additionalProperties": false,
+            "properties": {
+                "MassStorageAuthenticationRequired": {
+                    "description": "Indicates whether mass storage authentication is required or not.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "USBEthernetAdaptersEnabled": {
+                    "description": "Indicates whether the USB Ethernet Adapters are enabled or not.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "USBFlashDriveEnabled": {
+                    "description": "Indicates whether the USB Flash Drive is enabled or not.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "iLOServicePortEnabled": {
+                    "description": "Indicates whether the iLO Service Port is enabled or not.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "CloudConnect": {
+            "additionalProperties": false,
+            "properties": {
+                "ActivationKey": {
+                    "description": "The activation key is the customer account ID of HPE GreenLake. Obtain the account ID by visiting HPE GreenLake portal-Manage->Account Details card.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                },
+                "CloudConnectStatus": {
+                    "description": "Indicates the current status of cloud connection.",
+                    "enum": [
+                        "NotEnabled",
+                        "ConnectionInProgress",
+                        "ConnectionFailed",
+                        "Connected",
+                        "RetryInProgress",
+                        "NotConnected"
+                    ],
+                    "enumDescriptions": {
+                        "NotEnabled": "Indicates the initial state of the system or cloud connect service is disabled.",
+                        "ConnectionInProgress": "Indicates the cloud activation or connection to the communication service is in progress",
+                        "ConnectionFailed": "Indicates the cloud activation could not be completed and and the retry attempts for activation also failed",
+                        "Connected": "Indicates the cloud connect enabled, activation successful and connection to communication service successful",
+                        "RetryInProgress": "Indicates a connection issue with the communication service and being retried for a successful communication",
+                        "NotConnected": "Indicates the connection retries to the communication service has failed and periodic retries will be attempted"
+                    },
+                    "etag": true,
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLO.v2_8_1.HpeiLO",
+    "type": "object"
+}

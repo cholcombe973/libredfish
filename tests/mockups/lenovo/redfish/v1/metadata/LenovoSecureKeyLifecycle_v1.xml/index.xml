@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  LenovoSecureKeyLifecycle   v1.0.0                                   -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/CertificateCollection_v1.xml">
+    <edmx:Include Namespace="CertificateCollection"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoSecureKeyLifecycle">
+      <EntityType Name="LenovoSecureKeyLifecycle" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </EntityType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoSecureKeyLifecycle.v1_0_0">
+      <EntityType Name="LenovoSecureKeyLifecycle" BaseType="LenovoSecureKeyLifecycle.LenovoSecureKeyLifecycle">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is Lenovo extended secure key lifecycle service properties."/>
+        <Property Name="KeyRepoServers" Type="LenovoSecureKeyLifecycle.v1_0_0.KeyRepoServer" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents the key repository servers of the SKLM."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the key repository servers of the SKLM."/>
+        </Property>
+        <Property Name="DeviceGroup" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property is uesd to manage the keys for Self Encrypting Drvies(SED) on multiple servers as a group. The default value for this property is Lenovo_SYSTEM_X_SED."/>
+          <Annotation Term="OData.LongDescription" String="This property is uesd to manage the keys for Self Encrypting Drvies(SED) on multiple servers as a group. The default value for this property is Lenovo_SYSTEM_X_SED."/>
+        </Property>
+        <Property Name="Protocol" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property is server protocol."/>
+          <Annotation Term="OData.LongDescription" String="This optional value is SKLM or KMIP. The valid values for this property are specified through the Redfish. AllowableValues annotation. `SKLM` indicates to Legacy protocol only for IBM SKLM servers. `KMIP` indicates to KMIP supporting servers."/>
+        </Property>
+        <NavigationProperty Name="ClientCertificate" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link to a collection of certificates used for the client of secure key lifecycle service."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a link to a Resource Collection of type CertificateCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="ServerCertificate" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link to a collection of certificates used for the server of secure key lifecycle service."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a link to a Resource Collection of type CertificateCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </EntityType>
+      
+      <ComplexType Name="KeyRepoServer">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is uesd to represent the host name or IP address and port number of SKLM servers."/>
+        <Property Name="HostName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the host name or IP address of the SKLM server."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the host name or IP address of the SKLM server."/>
+        </Property>
+        <Property Name="Port" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents the port number for the SKLM server. The default value is 5695."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the port number for the SKLM server. The default value is 5695."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="Protocol">
+        <Member Name="SKLM"/>
+        <Member Name="KMIP"/>
+      </EnumType>
+      
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

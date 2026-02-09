@@ -1,0 +1,521 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "EthernetInterface",
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "definitions": {
+        "DHCPv4Configuration": {
+            "additionalProperties": false,
+            "description": "DHCPv4 configuration for this interface.",
+            "etag": true,
+            "properties": {
+                "DHCPEnabled": {
+                    "description": "Determines whether DHCPv4 is enabled on this interface.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseDNSServers": {
+                    "description": "Determines whether to use DHCPv4-supplied DNS servers.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseDomainName": {
+                    "description": "Determines whether to use a DHCPv4-supplied domain name.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseGateway": {
+                    "description": "Determines whether to use a DHCPv4-supplied gateway.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseNTPServers": {
+                    "description": "Determines whether to use DHCPv4-supplied NTP servers.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseStaticRoutes": {
+                    "description": "Determines whether to use DHCPv4-supplied static routes.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "DHCPv6Configuration": {
+            "additionalProperties": false,
+            "description": "DHCPv6 configuration for this interface.",
+            "etag": true,
+            "properties": {
+                "OperatingMode": {
+                    "$ref": "#/definitions/DHCPv6OperatingMode",
+                    "description": "Determines the DHCPv6 operating mode for this interface.",
+                    "etag": true,
+                    "readonly": false
+                },
+                "UseDNSServers": {
+                    "description": "When enabled, DNS server addresses supplied through DHCPv6 stateless mode will be used.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseDomainName": {
+                    "description": "When enabled, the domain name supplied through DHCPv6 stateless mode will be used.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseNTPServers": {
+                    "description": "When enabled, NTP server addresses supplied through DHCPv6 stateless mode will be used.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UseRapidCommit": {
+                    "description": "Determines whether to use DHCPv6 rapid commit mode for stateful mode address assignments. Do not enable in networks where more than one DHCPv6 server is configured to provide address assignments.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "DHCPv6OperatingMode": {
+            "enum": [
+                null,
+                "Stateful",
+                "Stateless",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "DHCPv6 is disabled.",
+                "Stateful": "DHCPv6 stateful mode.",
+                "Stateless": "DHCPv6 stateless mode."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "DHCPv6 shall be disabled for this interface.",
+                "Stateful": "DHCPv6 shall operate in stateful mode on this interface. DHCPv6 stateful mode is used to configure addresses, and when it is enabled, stateless mode is also implicitly enabled.",
+                "Stateless": "DHCPv6 shall operate in  stateless mode on this interface.  DHCPv6 stateless mode allows configuring the interface using DHCP options but does not configure addresses. It is always enabled by default whenever DHCPv6 Stateful mode is also enabled."
+            },
+            "etag": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IPv6AddressPolicyEntry": {
+            "additionalProperties": false,
+            "description": "A entry in the RFC 6724 Address Selection Policy Table.",
+            "etag": true,
+            "properties": {
+                "Label": {
+                    "description": "The IPv6 Label (as defined in RFC 6724 section 2.1).",
+                    "etag": true,
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Precedence": {
+                    "description": "The IPv6 Precedence (as defined in RFC 6724 section 2.1.",
+                    "etag": true,
+                    "maximum": 100,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Prefix": {
+                    "description": "The IPv6 Address Prefix (as defined in RFC 6724 section 2.1).",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "StatelessAddressAutoConfiguration": {
+            "additionalProperties": false,
+            "description": "Stateless Address Automatic Configuration (SLAAC) parameters for this interface.",
+            "properties": {
+                "IPv4AutoConfigEnabled": {
+                    "description": "Indicates whether IPv4 SLAAC is enabled for this interface.",
+                    "etag": true,
+                    "longDescription": "This property shall indicate whether IPv4 Stateless Address Auto-Configuration (SLAAC) is enabled for this interface.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "IPv6AutoConfigEnabled": {
+                    "description": "Indicates whether IPv6 SLAAC is enabled for this interface.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "d2LinkStatus": {
+            "enum": [
+                null,
+                "LinkUp",
+                "NoLink",
+                "LinkDown"
+            ],
+            "enumDescriptions": {
+                "LinkDown": "There is no link on this interface, but the interface is connected.",
+                "LinkUp": "The link is available for communication on this interface.",
+                "NoLink": "There is no link or connection detected on this interface."
+            },
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "dLinks": {
+            "additionalProperties": false,
+            "description": "Contains references to other resources that are related to this resource.",
+            "properties": {
+                "HostInterface": {
+                    "description": "This is a reference to a Host Interface that is associated with this Ethernet Interface.",
+                    "etag": true,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid",
+                            "etag": true
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "dMACAddress": {
+            "etag": true,
+            "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
+            "type": "string"
+        }
+    },
+    "description": "The EthernetInterface resource describes a single, logical ethernet interface or network interface controller (NIC).",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AutoNeg": {
+            "description": "This indicates if the speed and duplex are automatically negotiated and configured on this interface.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "DHCPv4": {
+            "$ref": "#/definitions/DHCPv4Configuration",
+            "description": "DHCPv4 configuration for this interface.",
+            "etag": true,
+            "readonly": false
+        },
+        "DHCPv6": {
+            "$ref": "#/definitions/DHCPv6Configuration",
+            "description": "DHCPv6 configuration for this interface.",
+            "etag": true,
+            "readonly": false
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "FQDN": {
+            "description": "This is the complete, fully qualified domain name obtained by DNS for this interface.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "FullDuplex": {
+            "description": "This indicates if the interface is in Full Duplex mode or not.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "HostName": {
+            "description": "The DNS Host Name, without any domain information.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IPv4Addresses": {
+            "description": "Write capability for this array is deprecated and may be removed in future, use IPv4StaticAddresses instead. The IPv4 addresses currently assigned to this interface.",
+            "etag": true,
+            "items": {
+                "$ref": "IPAddresses.json#/definitions/IPv4Address"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "IPv4StaticAddresses": {
+            "description": "The IPv4 static addresses assigned to this interface.",
+            "etag": true,
+            "items": {
+                "$ref": "IPAddresses.json#/definitions/IPv4Address"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "IPv6AddressPolicyTable": {
+            "description": "An array representing the RFC 6724 Address Selection Policy Table.",
+            "etag": true,
+            "items": {
+                "$ref": "#/definitions/IPv6AddressPolicyEntry"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "IPv6Addresses": {
+            "description": "Enumerates in an array all of the currently assigned IPv6 addresses on this interface.",
+            "etag": true,
+            "items": {
+                "$ref": "IPAddresses.json#/definitions/IPv6Address"
+            },
+            "type": "array"
+        },
+        "IPv6DefaultGateway": {
+            "description": "This is the IPv6 default gateway address that is currently in use on this interface.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "IPv6StaticAddresses": {
+            "description": "Represents in an array all of the IPv6 static addresses to be assigned on this interface.",
+            "etag": true,
+            "items": {
+                "$ref": "IPAddresses.json#/definitions/IPv6StaticAddress"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "IPv6StaticDefaultGateways": {
+            "description": "The IPv6 static default gateways for this interface.",
+            "etag": true,
+            "items": {
+                "$ref": "IPAddresses.json#/definitions/IPv6GatewayStaticAddress"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id",
+            "readonly": true
+        },
+        "InterfaceEnabled": {
+            "description": "This indicates whether this interface is enabled.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "LinkStatus": {
+            "$ref": "#/definitions/d2LinkStatus",
+            "description": "The link status of this interface (port).",
+            "etag": true,
+            "readonly": true
+        },
+        "Links": {
+            "$ref": "#/definitions/dLinks",
+            "description": "Contains references to other resources that are related to this resource."
+        },
+        "MACAddress": {
+            "$ref": "#/definitions/dMACAddress",
+            "description": "This is the currently configured MAC address of the (logical port) interface.",
+            "etag": true,
+            "readonly": false
+        },
+        "MTUSize": {
+            "description": "This is the currently configured Maximum Transmission Unit (MTU) in bytes on this interface.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "MaxIPv6StaticAddresses": {
+            "description": "This indicates the maximum number of Static IPv6 addresses that can be configured on this interface.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name",
+            "etag": true,
+            "readonly": true
+        },
+        "NameServers": {
+            "description": "This represents DNS name servers that are currently in use on this interface.",
+            "etag": true,
+            "items": {
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "description": "This is the manufacturer/provider specific extension moniker used to divide the Oem object into sections.",
+            "etag": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOEthernetNetworkInterface.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "PermanentMACAddress": {
+            "$ref": "#/definitions/dMACAddress",
+            "description": "This is the permanent MAC address assigned to this interface (port).",
+            "etag": true,
+            "readonly": true
+        },
+        "SpeedMbps": {
+            "description": "This is the current speed in Mbps of this interface.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "integer",
+                "null"
+            ],
+            "units": "Mbit/s"
+        },
+        "StatelessAddressAutoConfig": {
+            "$ref": "#/definitions/StatelessAddressAutoConfiguration",
+            "description": "Stateless Address Automatic Configuration (SLAAC) parameters for this interface.",
+            "etag": true,
+            "readonly": false
+        },
+        "StaticNameServers": {
+            "description": "A statically defined set of DNS server IP addresses (both IPv4 and IPv6).",
+            "etag": true,
+            "items": {
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status",
+            "description": "This property describes the status and health of the resource and its children.",
+            "etag": true
+        },
+        "UefiDevicePath": {
+            "description": "The UEFI device path for this interface.",
+            "etag": true,
+            "longDescription": "The value of this property shall be the UEFI device path to the device which implements this interface (port).",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "VLAN": {
+            "$ref": "VLanNetworkInterface.json#/definitions/VLAN",
+            "description": "If this Network Interface supports more than one VLAN, this property is not present. VLANs collections appear in the Link section of this resource.",
+            "etag": true,
+            "readonly": false
+        },
+        "VLANs": {
+            "description": "This is a reference to a collection of VLANs and is only used if the interface supports more than one VLANs.",
+            "etag": true,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid",
+                    "etag": true
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        }
+    },
+    "required": [
+        "@odata.id",
+        "@odata.type",
+        "Id",
+        "Name"
+    ],
+    "title": "#EthernetInterface.v1_4_1.EthernetInterface",
+    "type": "object"
+}

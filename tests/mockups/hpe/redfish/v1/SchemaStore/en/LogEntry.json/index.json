@@ -1,0 +1,131 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "LogEntry",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "This resource defines the record format for a log.  It is designed to be used for SEL logs (from IPMI) as well as Event Logs and OEM-specific log formats.  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Created": {
+            "description": "The date and time when the log entry was created, for example, 2014-04-15T00:38:00Z.",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "EntryType": {
+            "description": "The log entry type.",
+            "enum": [
+                "Oem"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "properties": {
+                "OriginOfCondition": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "The link to the resource that caused the log entry.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "description": "The links to other resources that are related to this resource.",
+            "readonly": true,
+            "type": "object"
+        },
+        "Message": {
+            "description": "The log entry details.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeLogEntry.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "OemRecordFormat": {
+            "description": "The format of an OEM record.",
+            "enum": [
+                "Hpe-IML",
+                "Hpe-iLOEventLog",
+                "Hpe-SL",
+                "Hpe-Event"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Severity": {
+            "description": "The log entry severity.",
+            "enum": [
+                "OK",
+                "Warning",
+                "Critical"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "EventId": {
+            "description": "The unique instance identifier for an event.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "EventTimestamp": {
+            "description": "The date and time when the event occurred.",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "MessageArgs": {
+            "description": "The arguments for the message.",
+            "items": {
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "MessageId": {
+            "description": "The MessageId, event data, or OEM-specific information. This property decodes from the entry type.  If the entry type is `Event`, this property contains a Redfish Specification-defined MessageId.  If the entry type is `SEL`, this property contains the Event Data.  Otherwise, this property contains OEM-specific information.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#LogEntry.v1_11_0.LogEntry",
+    "type": "object"
+}

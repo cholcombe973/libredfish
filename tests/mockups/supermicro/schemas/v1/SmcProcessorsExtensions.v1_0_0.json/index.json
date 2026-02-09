@@ -1,0 +1,164 @@
+{
+    "definitions": {
+        "IntelLicense": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "IntelDSAenabled": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Intel DSA feature enabled or not.",
+                    "longDescription": "The value of this property shall indicate Intel DSA feature enabled or not."
+                },
+                "IntelIAXenabled": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Intel IAX feature enabled or not.",
+                    "longDescription": "The value of this property shall indicate Intel IAX feature enabled or not."
+                },
+                "IntelSGXenabled": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Intel SGX feature enabled or not.",
+                    "longDescription": "The value of this property shall indicate Intel SGX feature enabled or not."
+                },
+                "IntelVROCenabled": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Intel VROC feature enabled or not.",
+                    "longDescription": "The value of this property shall indicate Intel VROC feature enabled or not."
+                },
+                "IntelDLBenabled": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Intel DLB feature enabled or not.",
+                    "longDescription": "The value of this property shall indicate Intel DLB feature enabled or not."
+                },
+                "IntelCAPID": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Intel CPU CAP ID.",
+                    "longDescription": "The value of this property shall be Intel CPU CAP ID."
+                },
+                "IntelQATenabled": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Intel QAT feature enabled or not.",
+                    "longDescription": "The value of this property shall indicate Intel QAT feature enabled or not."
+                }
+            }
+        },
+        "SmcProcessorsExtensions": {
+            "description": "The base type for resources and members that can be linked to.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "IntelSDSiSupported": {
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ],
+                    "description": "Indicate if Intel SDSi license feature support or not.",
+                    "longDescription": "The value of this property shall indicate if Intel SDSi license feature support or not."
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "IntelLicense": {
+                    "items": {
+                        "$ref": "#/definitions/IntelLicense"
+                    },
+                    "type": "array",
+                    "description": "This object describes Intel SDSi license detail.",
+                    "longDescription": "This object shall contain properties which describe Intel SDSi license detail."
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/SmcProcessorsExtensions",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcProcessorsExtensions.v1_0_0.SmcProcessorsExtensions"
+}

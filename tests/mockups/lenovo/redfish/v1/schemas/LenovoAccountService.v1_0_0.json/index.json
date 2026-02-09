@@ -1,0 +1,152 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoAccountService.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "CurrentLoggedUsers": {
+            "additionalProperties": false,
+            "description": "A remote service that can provide accounts for this manager to utilize for authentication.",
+            "longDescription": "This type shall be used to represent resources that represent external user account services for this manager.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "IP_Hostname": {
+                    "description": "Indicate valid IP or hostname where the user is from.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "LoginID": {
+                    "description": "The property indicates the user id which is logging on the manager.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "SessionType": {
+                    "$ref": "#/definitions/SessionTypes",
+                    "description": "The property indicates the way by which the user is logging on the manager.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "LenovoAccountServiceProperties": {
+            "additionalProperties": true,
+            "description": "The schema defines a detailed account setting resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ComplexPassword": {
+                    "description": "Refers to the complexity of the password.",
+                    "longDescription": "The complex password must adhere to some rules if this property is checked.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CurrentLoggedUsers": {
+                    "description": "Display users which are currently logged in.",
+                    "items": {
+                        "$ref": "#/definitions/CurrentLoggedUsers"
+                    },
+                    "longDescription": "The info includes user Id, session type and IP address or hostname.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "MinimumPasswordChangeIntervalHours": {
+                    "description": "Indicate how long a user must wait between password changes.",
+                    "longDescription": "This property shall reference the minimum interval that between two continuous password change.",
+                    "maximum": 240,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "number",
+                    "units": "hour"
+                },
+                "MinimumPasswordReuseCycle": {
+                    "description": "Indicate the number of previous password that cannot be reused.",
+                    "longDescription": "This property shall reference the minimum password length that cannot be reused when changing an old password.",
+                    "maximum": 10,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "number"
+                },
+                "PasswordChangeOnFirstAccess": {
+                    "description": "Indicate whether the password for a new created user to be changed when login in firstly.",
+                    "longDescription": "This property shall reference the setting that default password for a new created shall be changed when firstly login in.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "PasswordExpirationPeriodDays": {
+                    "description": "The maximum password age that is permitted before the password must be changed.",
+                    "maximum": 365,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "number",
+                    "units": "day"
+                },
+                "PasswordExpirationWarningPeriod": {
+                    "description": "The days before passord is expired, users will begin to receive warnings.",
+                    "longDescription": "The amount of days, before password expiration that users will begin to receive warnings about the impending expiration of the user password. If set to 0, users are never warned. It must be PasswordExpirationPeriodDays",
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "number",
+                    "units": "day"
+                },
+                "PasswordLength": {
+                    "description": "Indicate the minimum length of the password.",
+                    "longDescription": "The value should be ranged from MinPasswordLength-MaxPasswordLength defined in AccountService.v1_0_0.json.",
+                    "maximum": 32,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "number",
+                    "units": "character"
+                },
+                "WebInactivitySessionTimeout": {
+                    "description": "The user will be logged out after the web session is inactive for the period of time.",
+                    "longDescription": "The amount of time, that a user session established with the management server can be inactive before the user is logged out. If set to 0, web session never expire.",
+                    "maximum": 1440,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "number",
+                    "units": "minute"
+                }
+            },
+            "type": "object"
+        },
+        "SessionTypes": {
+            "enum": [
+                "webgui",
+                "webguis",
+                "SSH",
+                "vKVM",
+                "vMedia"
+            ],
+            "type": "string"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoAccountService.v1_0_0"
+}

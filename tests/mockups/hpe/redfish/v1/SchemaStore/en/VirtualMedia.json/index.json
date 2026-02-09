@@ -1,0 +1,272 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "VirtualMedia",
+    "actions": {
+        "actions": {
+            "VirtualMedia.EjectMedia": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "VirtualMedia.EjectMedia"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "VirtualMedia.InsertMedia": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "VirtualMedia.InsertMedia"
+                        ],
+                        "type": "string"
+                    },
+                    "Image": {
+                        "additionalProperties": false,
+                        "description": "The URI of the remote media to attach to the virtual media.",
+                        "etag": true,
+                        "format": "uri-reference",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "Inserted": {
+                        "additionalProperties": false,
+                        "description": "Indicates if the image is to be treated as inserted upon completion of the action. If this parameter is not provided by the client, the service shall default this value to be true.",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "boolean"
+                    },
+                    "WriteProtected": {
+                        "additionalProperties": false,
+                        "description": "Indicates whether the virtual media is protected against write operations. If this parameter is not provided by the client, the service shall default this value to be true.",
+                        "etag": false,
+                        "readonly": false,
+                        "type": "boolean"
+                    },
+                    "TransferProtocolType": {
+                        "description": "Network Protocol to use with the image",
+                        "enum": [
+                            "CIFS",
+                            "FTP",
+                            "SFTP",
+                            "HTTP",
+                            "HTTPS",
+                            "NFS",
+                            "SCP",
+                            "TFTP",
+                            "OEM"
+                        ],
+                        "enumDescriptions": {
+                            "CIFS": "Common Internet File System protocol.",
+                            "FTP": "File Transfer Protocol.",
+                            "SFTP": "Secure File Transfer Protocol.",
+                            "HTTP": "Hypertext Transfer Protocol.",
+                            "HTTPS": "HTTP Secure protocol.",
+                            "NFS": "Network File System protocol.",
+                            "SCP": "Secure File Copy protocol.",
+                            "TFTP": "Trivial File Transfer Protocol.",
+                            "OEM": "A protocol defined by the manufacturer."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "Image"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Inserting and Ejecting Virtual Media."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The VirtualMedia resource describes the BMC virtual media feature.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#VirtualMedia.EjectMedia": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#VirtualMedia.InsertMedia": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ConnectedVia": {
+            "description": "Specifies how the virtual media is connected to the server.",
+            "enum": [
+                null,
+                "NotConnected",
+                "URI",
+                "Applet"
+            ],
+            "enumDescriptions": {
+                "Applet": "Connected to a client application.",
+                "NotConnected": "No current connection.",
+                "URI": "Connected to a URI location."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Image": {
+            "description": "The valid URI indicating the image that is mounted on this server. A null value indicates that no image exists.",
+            "etag": true,
+            "format": "uri-reference",
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ImageName": {
+            "description": "The name of the image that is mounted on this server. This is usually provided when a URL image is mounted through scripted virtual media.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Inserted": {
+            "description": "Indicates whether the virtual media is mounted on the server.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "MediaTypes": {
+            "items": {
+                "description": "The array of supported media types for this connection.",
+                "enum": [
+                    "CD",
+                    "Floppy",
+                    "USBStick",
+                    "DVD"
+                ],
+                "enumDescriptions": {
+                    "CD": "A CD-ROM format (ISO) image.",
+                    "DVD": "A DVD-ROM format image.",
+                    "Floppy": "A floppy disk image.",
+                    "USBStick": "An emulation of a USB storage device."
+                },
+                "etag": true,
+                "readonly": true,
+                "type": "string"
+            },
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOVirtualMedia.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "WriteProtected": {
+            "description": "Indicates whether the virtual media is protected against write operations.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "TransferProtocolType": {
+            "description": "Network Protocol to use with the image",
+            "enum": [
+                "CIFS",
+                "FTP",
+                "SFTP",
+                "HTTP",
+                "HTTPS",
+                "NFS",
+                "SCP",
+                "TFTP",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "CIFS": "Common Internet File System protocol.",
+                "FTP": "File Transfer Protocol.",
+                "SFTP": "Secure File Transfer Protocol.",
+                "HTTP": "Hypertext Transfer Protocol.",
+                "HTTPS": "HTTP Secure protocol.",
+                "NFS": "Network File System protocol.",
+                "SCP": "Secure File Copy protocol.",
+                "TFTP": "Trivial File Transfer Protocol.",
+                "OEM": "A protocol defined by the manufacturer."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": false,
+    "title": "#VirtualMedia.v1_3_0.VirtualMedia",
+    "type": "object"
+}

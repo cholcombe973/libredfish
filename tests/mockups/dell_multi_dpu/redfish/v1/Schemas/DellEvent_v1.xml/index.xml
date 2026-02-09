@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellEvent  v1.0.0 -->
+<!--# This schema complements to OEM section of DMTF Event Resource                   -->
+<!--# Copyright 2021-2022 Dell, Inc. or its subsidiaries.All Rights Reserved.             -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEvent">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <ComplexType Name="DellEvent" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the complex property for the additional OEM properties."/>
+        <Annotation Term="OData.LongDescription" String="This is the complex property for the additional OEM properties."/>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellEvent.v1_0_0">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <ComplexType Name="DellEvent" BaseType="DellEvent.DellEvent">
+        <Property Name="ServerHostname" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property provides the server hostname for the events."/>
+          <Annotation Term="OData.LongDescription" String="This property provides the server hostname for the events."/>
+        </Property>
+	 </ComplexType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

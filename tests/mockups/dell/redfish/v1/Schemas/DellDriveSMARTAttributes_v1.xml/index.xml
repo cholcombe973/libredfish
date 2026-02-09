@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellDriveSMARTAttributes  v1.0.0                                             -->
+<!--# This is DELL OEM Schema.                                                             -->
+<!--# Copyright 2020 Dell, Inc. or its subsidiaries.All Rights Reserved.              -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+    <edmx:Include Namespace="Resource.v1_2_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellDriveSMARTAttributes">
+      <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+
+      <EntityType Name="DellDriveSMARTAttributes" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="An instance of DellDriveSMARTAttributes will have SAS/SATA SSDs SMARTAttributes specific data."/>
+        <Annotation Term="OData.LongDescription" String="An instance of DellDriveSMARTAttributes will have SAS/SATA SSDs SMAAttributes specific data."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Drives/{DriveId}/Oem/Dell/DellDriveSMARTAttributes</String>
+          </Collection>
+        </Annotation>
+
+      </EntityType>
+
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellDriveSMARTAttributes.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+
+      <EntityType Name="DellDriveSMARTAttributes" BaseType="DellDriveSMARTAttributes.DellDriveSMARTAttributes">
+	    <Property Name="CommandTimeoutCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent number of aborted operations due to disk timeout."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent number of aborted operations due to disk timeout."/>
+        </Property>
+		<Property Name="CRCErrorCountPercent" Type="Edm.Int64" Nullable="ture">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the CRC error count."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the CRC error count."/>
+		  <Annotation String="Percent" Term="Measures.Unit"/>
+        </Property>
+		<Property Name="CurrentPendingSectorCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent current pending sector count"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent current pending sector count"/>
+        </Property>		
+		<Property Name="DriveLifeRemainingPercent" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the percentage life remaining for the drive."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the percentage life remaining for the drive."/>
+        </Property>		
+        <Property Name="DriveTemperatureCelsius" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the Drive temperature in Celsius."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the Drive temperature in Celsius."/>
+		  <Annotation Term="Measures.Unit" String="Cel"/>
+        </Property>
+		<Property Name="ECCERate" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the uncorrected read errors reported"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the uncorrected read errors reported"/>
+        </Property>
+		 <Property Name="EraseFailCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the Erase fail count."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the Erase fail count."/>
+        </Property>
+		<Property Name="ExceptionModeStatus" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the Exception mode status"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the Exception mode status."/>
+        </Property>
+		 <Property Name="MediaWriteCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This propert shall represent the Media (SSD) write count"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the Media (SSD) write count."/>
+        </Property>
+		<Property Name="PowerCycleCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the count of full hard disk power on/off cycles."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the count of full hard disk power on/off cycles.."/>
+        </Property>		
+		<Property Name="PowerOnHours" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the total count of hours (or minutes, or seconds, depending on manufacturer) in power-on state"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the total count of hours (or minutes, or seconds, depending on manufacturer) in power-on state"/>
+        </Property>
+		<Property Name="ProgramFailCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the program fail count since drive was deployed"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the program fail count since drive was deployed."/>
+        </Property>
+		 <Property Name="ReadErrorRate" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the Read error rate."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the Read error rate."/>
+        </Property>
+		<Property Name="ReallocatedBlockCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This propert shall represent the Reallocated block count"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the Reallocated block count"/>
+        </Property>
+		 <Property Name="UncorrectableErrorCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the uncorrectable error count."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the uncorrectable error count"/>
+        </Property>
+		<Property Name="UncorrectableLBACount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent uncorrectable LBA(Logical block addressing) count"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent uncorrectable LBA(Logical block addressing) count"/>
+        </Property>
+		<Property Name="UnusedReservedBlockCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the unused reserved block count"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the unused reserved block count"/>
+        </Property>
+		<Property Name="UsedReservedBlockCount" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the used reserved block count."/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the used reserved block count"/>
+        </Property>
+		<Property Name="VolatileMemoryBackupSourceFailures" Type="Edm.Int64" Nullable="true">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall represent the volatile memory backup source failures"/>
+          <Annotation Term="OData.LongDescription" String="This property shall represent the volatile memory backup source failures"/>
+        </Property>
+	  </EntityType>		
+  </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

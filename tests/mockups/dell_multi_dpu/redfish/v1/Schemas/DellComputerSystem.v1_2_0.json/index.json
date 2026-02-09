@@ -1,0 +1,520 @@
+{
+    "$id": "/redfish/v1/Schemas/DellComputerSystem.v1_2_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellComputerSystem.SecureWipeDPU": {
+                    "$ref": "#/definitions/SecureWipeDPU"
+                }
+            },
+            "type": "object"
+        },
+        "BootStatus": {
+            "enum": [
+                "None",
+                "UEFI",
+                "Reset",
+                "Firmware",
+                "OSBooting",
+                "OSRunning",
+                "OSHalted",
+                "OSUpdating",
+                "OSCrashDumpInProgress",
+                "OSCrashDumpCompleted",
+                "Fault",
+                "FaultComplete"
+            ],
+            "enumDescriptions": {
+                "Fault": "Hardware or Software fault.",
+                "FaultComplete": "Hardware or Software fault complete.",
+                "Firmware": "Boot status is firmware.",
+                "None": "Boot status is unknown.",
+                "OSBooting": "OS is booting.",
+                "OSCrashDumpCompleted": "OS Crash dump is complete.",
+                "OSCrashDumpInProgress": "OS Crash dump in progress.",
+                "OSHalted": "OS is halted.",
+                "OSRunning": "OS is running.",
+                "OSUpdating": "OS update in progess.",
+                "Reset": "DPU is resetting.",
+                "UEFI": "Boot status is UEFI."
+            },
+            "enumLongDescriptions": {
+                "Fault": "Hardware or Software fault.",
+                "FaultComplete": "Hardware or Software fault complete.",
+                "Firmware": "Boot status is firmware. CPU has passed firmware checkpoint.",
+                "None": "Boot status is unknown.",
+                "OSBooting": "OS is booting.",
+                "OSCrashDumpCompleted": "OS Crash dump is complete.",
+                "OSCrashDumpInProgress": "OS Crash dump in progress.",
+                "OSHalted": "OS is halted or shutdown.",
+                "OSRunning": "OS is running.",
+                "OSUpdating": "OS update in progress.",
+                "Reset": "Boot status is reset (CPU is in reset / Boot ROM).",
+                "UEFI": "Boot status is UEFI."
+            },
+            "type": "string"
+        },
+        "DPUBootSynchronization": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Boot synchronization is disabled.",
+                "Enabled": "Boot synchronization is enabled."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Boot synchronization is disabled.",
+                "Enabled": "Boot synchronization is enabled."
+            },
+            "type": "string"
+        },
+        "DPUConfig": {
+            "additionalProperties": false,
+            "description": ".",
+            "longDescription": ".",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "BIOSFirmwareVersion": {
+                    "description": "The property value provides current BIOS Firmware version of DPU device .",
+                    "longDescription": "The property value provides current BIOS Firmware version of DPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                },
+                "BMCFirmwareVersion": {
+                    "description": "The property value provides current BMC Firmware version of DPU device .",
+                    "longDescription": "The property value provides current BMC Firmware version of DPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                },
+                "BootStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BootStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The BootStatus provides the boot status of the pre-OS environment od DPU.",
+                    "longDescription": "The BootStatus provides the boot status of the pre-OS environment od DPU.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "DPUBootSynchronization": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DPUBootSynchronization"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides details whether Boot synchronization is enabled or not.",
+                    "longDescription": "Provides details whether Boot synchronization is enabled or not.",
+                    "readonly": false,
+                    "versionAdded": "v1_1_0"
+                },
+                "DPUFirmwareVersion": {
+                    "description": "The property value provides current DPU Firmware version of device .",
+                    "longDescription": "The property value provides current DPU Firmware version of device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                },
+                "DPUTrust": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DPUTrust"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides details whether Oauth is enabled or not for DPU.",
+                    "longDescription": "Provides details whether Oauth is enabled or not for DPU.",
+                    "readonly": false,
+                    "versionAdded": "v1_1_0"
+                },
+                "DeviceID": {
+                    "description": "PCIe device id of DPU.",
+                    "longDescription": "PCIe device id of DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "FQDD": {
+                    "description": "Fully Qualified Device Descriptor of DPU device.",
+                    "longDescription": "Fully Qualified Device Descriptor of DPU device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "IdenticalSBDF": {
+                    "description": "PCIe Segment, Bus, Device and Function details of DPU.",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "PCIe Segment, Bus, Device and Function details of DPU.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "LastResetReason": {
+                    "description": "The value of this property shall be used to know the cause of the last/recent ungraceful of DPU reset.",
+                    "longDescription": "The value of this property shall be used to know the cause of the last/recent ungraceful of DPU reset.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "OSInstallationTimeout": {
+                    "description": "The property value indicates maximum window period for OS installation timeout (in minutes).",
+                    "longDescription": "The property value indicates maximum window period for OS installation timeout (in minutes). This property refers to global configuration, any change on this property shall be applicable to all DPU devices OS installation timeout",
+                    "maximum": 60,
+                    "minimum": 10,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "OSName": {
+                    "description": "Operating system running on DPU.",
+                    "longDescription": "The property value provides information regarding operating system running on DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "OSReadyTimeout": {
+                    "description": "The property value indicates maximum window period for OS Ready notification (in minutes).",
+                    "longDescription": "The property value indicates maximum window period for OS Ready notification (in minutes).",
+                    "maximum": 30,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "OSStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/OSStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property value provides current state of operating system running on DPU.",
+                    "longDescription": "The property value information regarding current state of operating system running on DPU.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "OSVendor": {
+                    "description": "The property value provides operating system distributor name running on DPU.",
+                    "longDescription": "The property value provides operating system distributor name running on DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "OSVersion": {
+                    "description": "The property value provides current version of operating system running on DPU.",
+                    "longDescription": "The property value provides current version of operating system running on DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PCIeSlotState": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/PCIeSlotState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Provides details whether PCIe Slot is Enabled/Disables.",
+                    "longDescription": "Provides details whether PCIe Slot is Enabled/Disables.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "PostCode": {
+                    "description": "Provides details of Power On Self Test Code.",
+                    "longDescription": "Provides details of Power On Self Test Code.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "Slot": {
+                    "description": "Slot number on which DPU is present.",
+                    "longDescription": "Slot number on which DPU is present.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "SubDeviceID": {
+                    "description": "PCIe sub device id of DPU.",
+                    "longDescription": "PCIe sub device id of DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "SubVendorID": {
+                    "description": "PCIe sub vendor id of DPU.",
+                    "longDescription": "PCIe sub vendor id of DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "VendorID": {
+                    "description": "PCIe vendor id of DPU.",
+                    "longDescription": "PCIe vendor id of DPU.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "type": "object"
+        },
+        "DPUTrust": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "DPU trust is disabled.",
+                "Enabled": "DPU trust is enabled."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "DPU trust is disabled.",
+                "Enabled": "DPU trust is enabled."
+            },
+            "type": "string"
+        },
+        "DellComputerSystem": {
+            "additionalProperties": true,
+            "description": "This resource contains the Dell specific Redfish implementation for ComputerSystem.",
+            "longDescription": "This resource contains the Dell specific Redfish implementation for ComputerSystem.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "BootOrder": {
+                    "$ref": "/redfish/v1/Schemas/DellBootSources.json#/definitions/DellBootSources",
+                    "description": "A reference to the BootSources settings associated with this system.",
+                    "longDescription": "The value of this property shall be a link to a resource of type BootSources that lists the BootSources settings for this system.",
+                    "readonly": true
+                },
+                "DPUConfig": {
+                    "$ref": "#/definitions/DPUConfig",
+                    "description": "The DPU config details.",
+                    "longDescription": "This DPU config details.",
+                    "versionAdded": "v1_1_0"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "OSStatus": {
+            "enum": [
+                "Unknown",
+                "Ready",
+                "Rebooting",
+                "Halting"
+            ],
+            "enumDescriptions": {
+                "Halting": "OS is halting.",
+                "Ready": "OS is ready.",
+                "Rebooting": "OS is booting.",
+                "Unknown": "OS state is unknown or DPU is in power off state."
+            },
+            "enumLongDescriptions": {
+                "Halting": "OS is halting.",
+                "Ready": "OS is ready.",
+                "Rebooting": "OS is booting.",
+                "Unknown": "OS is ready."
+            },
+            "type": "string"
+        },
+        "PCIeSlotState": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "PCIe slot is disabled.",
+                "Enabled": "PCIe slot is enabled."
+            },
+            "enumLongDescriptions": {
+                "Disabled": "PCIe slot is disabled.",
+                "Enabled": "PCIe slot is enabled."
+            },
+            "type": "string"
+        },
+        "SecureWipeDPU": {
+            "additionalProperties": false,
+            "description": "This action is used to erase the DPU.",
+            "longDescription": "This action shall perform a secure wipe on DPU.It will not turn off the system.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellComputerSystem.v1_2_0"
+}

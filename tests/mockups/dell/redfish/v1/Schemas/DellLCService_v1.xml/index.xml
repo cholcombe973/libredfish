@@ -1,0 +1,1957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellLCService v1_3_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellLCService" Abstract="true">
+                <Annotation String="The DellLCService resource provides some actions to support Lifecycle Controller functionality." Term="OData.Description"/>
+                <Annotation String="The DellLCService resource provides some actions to support Lifecycle Controller functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellLCService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="ClearProvisioningServer" IsBound="true">
+                <Annotation String="The ClearProvisioningServer() method is used for clearing the provisioning server values." Term="OData.Description"/>
+                <Annotation String="The ClearProvisioningServer() method is used for clearing the provisioning server values." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+            </Action>
+            <Action Name="DeleteAutoDiscoveryClientCerts" IsBound="true">
+                <Annotation String="The DeleteAutoDiscoveryClientCerts() method is used for wiping all configurations from Lifecycle Controller before the system is retired." Term="OData.Description"/>
+                <Annotation String="The DeleteAutoDiscoveryClientCerts() method is used for wiping all configurations from Lifecycle Controller before the system is retired." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="DeleteAutoDiscoveryServerPublicKey" IsBound="true">
+                <Annotation String="The DeleteAutoDiscoveryServerPublicKey() method is used for deleting the server public key set previously by the auto discovery method." Term="OData.Description"/>
+                <Annotation String="The DeleteAutoDiscoveryServerPublicKey() method is used for deleting the server public key set previously by the auto discovery method." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="DownloadClientCerts" IsBound="true">
+                <Annotation String="DownloadClientCerts() is used for copying a CA certificate and private key to the iDRAC to sign the iDRAC certificate. When this command is issued the iDRAC will generate a new auto-discovery client certificate and sign it using the CA cert and private key. After this, the CA certificate has be added to the provisioning server trusted Root CA list before performing auto-discovery." Term="OData.Description"/>
+                <Annotation String="DownloadClientCerts() is used for copying a CA certificate and private key to the iDRAC to sign the iDRAC certificate. When this command is issued the iDRAC will generate a new auto-discovery client certificate and sign it using the CA cert and private key. After this, the CA certificate has be added to the provisioning server trusted Root CA list before performing auto-discovery." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="CAContent" Type="Edm.String">
+                    <Annotation String="base64 encoded string containing CA Certificate content." Term="OData.Description"/>
+                    <Annotation String="base64 encoded string containing CA Certificate content." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="CAHash" Type="Edm.String">
+                    <Annotation String="Not documented" Term="OData.Description"/>
+                    <Annotation String="Not documented" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="HashType" Type="Edm.Int64">
+                    <Annotation String="Not documented" Term="OData.Description"/>
+                    <Annotation String="Not documented" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="KeyContent" Type="Edm.String">
+                    <Annotation String="base64 encoded string containing the CA private key content." Term="OData.Description"/>
+                    <Annotation String="base64 encoded string containing the CA private key content." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="KeyHash" Type="Edm.String">
+                    <Annotation String="Not documented" Term="OData.Description"/>
+                    <Annotation String="Not documented" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PWHash" Type="Edm.String">
+                    <Annotation String="Not documented" Term="OData.Description"/>
+                    <Annotation String="Not documented" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="CA private key password." Term="OData.Description"/>
+                    <Annotation String="CA private key password." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportCompleteLCLog" IsBound="true">
+                <Annotation String="The ExportCompleteLCLog() method is used for exporting the log from the Lifecycle Controller to a remote share." Term="OData.Description"/>
+                <Annotation String="The ExportCompleteLCLog() method is used for exporting the log from the Lifecycle Controller to a remote share." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="The IP address of the target export server. IP address is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="The IP address of the target export server. IP address is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportFactoryConfiguration" IsBound="true">
+                <Annotation String="The ExportFactoryConfiguration() method is used for exporting the factory configuration from Lifecycle Controller to a remote share." Term="OData.Description"/>
+                <Annotation String="The ExportFactoryConfiguration() method is used for exporting the factory configuration from Lifecycle Controller to a remote share." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the network share. IP address is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="IP address of the network share. IP address is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportHWInventory" IsBound="true">
+                <Annotation String="The ExportHWInventory() method is used for exporting the hardware inventory from the Lifecycle Controller to a remote share." Term="OData.Description"/>
+                <Annotation String="The ExportHWInventory() method is used for exporting the hardware inventory from the Lifecycle Controller to a remote share." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the network share. IPAddress is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="IP address of the network share. IPAddress is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file. ShareName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file. ShareName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="XMLSchema" Type="DellLCService.XMLSchema">
+                    <Annotation String="Type of XML output format. Default is CIM-XML." Term="OData.Description"/>
+                    <Annotation String="Type of XML output format. Default is CIM-XML." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportLCLog" IsBound="true">
+                <Annotation String="The ExportLCLog() method is used for exporting the log from the Lifecycle Controller to a remote share." Term="OData.Description"/>
+                <Annotation String="The ExportLCLog() method is used for exporting the log from the Lifecycle Controller to a remote share." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="The target output file name. FileName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the network share. IP address is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="IP address of the network share. IP address is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS shares (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS shares (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportSVGFile" IsBound="true">
+                <Annotation String="This method is used for exporting the SVG file from the iDRAC." Term="OData.Description"/>
+                <Annotation String="This method is used for exporting the SVG file from the iDRAC." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportServerScreenShot" IsBound="true">
+                <Annotation String="The ExportServerScreenShot() method is used for exporting preview page of server or server screen shot file from the iDRAC to management application local store in encoded base64 format." Term="OData.Description"/>
+                <Annotation String="The ExportServerScreenShot() method is used for exporting preview page of server or server screen shot file from the iDRAC to management application local store in encoded base64 format." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="FileType" Type="DellLCService.FileType">
+                    <Annotation String="Type of screen shot required." Term="OData.Description"/>
+                    <Annotation String="Type of screen shot required." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellLCService.v1_1_0.ExportServerScreenShotResponse" Nullable="false"/>
+            </Action>
+            <Action Name="ExportTechSupportReport" IsBound="true">
+                <Annotation String="This method is used to collect the TSR that incudes hardware, OS, and application data. The data is compressed into a zip file and saved on the remote share (CIFS/NFS )." Term="OData.Description"/>
+                <Annotation String="This method is used to collect the TSR that incudes hardware, OS, and application data. The data is compressed into a zip file and saved on the remote share (CIFS/NFS )." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Parameter Name="DataSelectorArrayIn" Type="Collection(DellLCService.DataSelectorArrayIn)">
+                    <Annotation String="DataSelectorArrayIn to select the data." Term="OData.Description"/>
+                    <Annotation String="DataSelectorArrayIn to select the data." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the network share." Term="OData.Description"/>
+                    <Annotation String="IP address of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportVideoLog" IsBound="true">
+                <Annotation String="This method is used to export the bootcapture or crashcapture from iDRAC to a local folder. The ExportVideoLog() method is used to export the bootcapture or crashcapture from iDRAC to a local folder." Term="OData.Description"/>
+                <Annotation String="This method is used to export the bootcapture or crashcapture from iDRAC to a local folder. The ExportVideoLog() method is used to export the bootcapture or crashcapture from iDRAC to a local folder." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="FileType" Type="DellLCService.FileType">
+                    <Annotation String="FileType is used to select the bootcapture or crashcapture." Term="OData.Description"/>
+                    <Annotation String="FileType is used to select the bootcapture or crashcapture." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExportePSADiagnosticsResult" IsBound="true">
+                <Annotation String="This method exports the result file of the last completed diagnostics to a remote share (CIFS/NFS). The result file includes time stamps to show when the diagnostics was run." Term="OData.Description"/>
+                <Annotation String="This method exports the result file of the last completed diagnostics to a remote share (CIFS/NFS). The result file includes time stamps to show when the diagnostics was run." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="FileName" Type="Edm.String">
+                    <Annotation String="Diagnostic Result File name. FileName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="Diagnostic Result File name. FileName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the network share. IP address is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="IP address of the network share. IP address is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password to login into proxy server." Term="OData.Description"/>
+                    <Annotation String="The password to login into proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file. ShareName is not required if share type is Local." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file. ShareName is not required if share type is Local." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName of the account to access the share." Term="OData.Description"/>
+                    <Annotation String="UserName of the account to access the share." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ExposeiSMInstallerToHostOS" IsBound="true">
+                <Annotation String="This method is used to initiate the iSM install in host OS by exposing the iSM installer to the host OS in a virtual USB device labelled INSTSM. The iSM DUP must be copied to /mmc2/mas028 path on iDRAC." Term="OData.Description"/>
+                <Annotation String="This method is used to initiate the iSM install in host OS by exposing the iSM installer to the host OS in a virtual USB device labelled INSTSM. The iSM DUP must be copied to /mmc2/mas028 path on iDRAC." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_2_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="GetRSStatus" IsBound="true">
+                <Annotation String="The GetRSStatus() method is used for obtaining the Data Manager (Remote Services) status. Note: The GetRemoteServicesAPIStatus() method execution reports more granular and detailed status of the Remote Services API." Term="OData.Description"/>
+                <Annotation String="The GetRSStatus() method is used for obtaining the Data Manager (Remote Services) status. Note: The GetRemoteServicesAPIStatus() method execution reports more granular and detailed status of the Remote Services API." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <ReturnType Type="DellLCService.v1_0_0.GetRSStatusResponse" Nullable="false"/>
+            </Action>
+            <Action Name="GetRemoteServicesAPIStatus" IsBound="true">
+                <Annotation String="The GetRemoteServicesAPIStatus() method is used for obtaining the overall remote services API status that includes host system status, the remote services (Data Manager) status, and real-time status. The overall rolled up status is reflected in the Status output parameter. Note: The LCStatus output parameter value includes the status reported by the DMStatus output parameter in the GetRSStatus() method and the Lifecycle Controller status. Thus, GetRSStatus() method invocation is redundant." Term="OData.Description"/>
+                <Annotation String="The GetRemoteServicesAPIStatus() method is used for obtaining the overall remote services API status that includes host system status, the remote services (Data Manager) status, and real-time status. The overall rolled up status is reflected in the Status output parameter. Note: The LCStatus output parameter value includes the status reported by the DMStatus output parameter in the GetRSStatus() method and the Lifecycle Controller status. Thus, GetRSStatus() method invocation is redundant." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <ReturnType Type="DellLCService.v1_0_0.GetRemoteServicesAPIStatusResponse" Nullable="false"/>
+            </Action>
+            <Action Name="InsertCommentInLCLog" IsBound="true">
+                <Annotation String="This method adds Worknotes and insert Comments into existing LCLog entries. If a LogSequenceNumber is passed, the Comment is inserted into the corresponding entry. If not passed, a new Worknote is created in the LCLogs with the Description given in Comment." Term="OData.Description"/>
+                <Annotation String="This method adds Worknotes and insert Comments into existing LCLog entries. If a LogSequenceNumber is passed, the Comment is inserted into the corresponding entry. If not passed, a new Worknote is created in the LCLogs with the Description given in Comment." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Comment" Type="Edm.String">
+                    <Annotation String="Comment/Worknote message to be inserted in the Lifecycle Controller log." Term="OData.Description"/>
+                    <Annotation String="Comment/Worknote message to be inserted in the Lifecycle Controller log." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="LogSequenceNumber" Type="Edm.Int64">
+                    <Annotation String="SequenceNumber of the LC Log entry into which comment needs to be inserted." Term="OData.Description"/>
+                    <Annotation String="SequenceNumber of the LC Log entry into which comment needs to be inserted." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="LCWipe" IsBound="true">
+                <Annotation String="The LCWipe() method is used for deleting all configurations from Lifecycle Controller before the system is retired. Host must be manually rebooted for the changes to take effect." Term="OData.Description"/>
+                <Annotation String="The LCWipe() method is used for deleting all configurations from Lifecycle Controller before the system is retired. Host must be manually rebooted for the changes to take effect." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+            </Action>
+            <Action Name="ReInitiateAutoDiscovery" IsBound="true">
+                <Annotation String="The ReInitiateAutoDiscovery() method is used for reinitiating the discovery and handshake with static IP configuration. If the method successfully executes, iDRAC is in the static IP mode after the auto-discovery is initiated and thus, does not require DHCP setup. The static IP information for auto-discovery can be set either through the optional input parameters of this method or through the iDRAC attributes in the iDRAC Card Profile. After the successful auto-discovery initiation, if the IPAddress parameter has non-NULL value, the iDRAC IPv4 address is set to that parameter's value, otherwise the iDRAC IPv4 Address is set to the Address attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the Mask parameter has a non-NULL value, the iDRAC IPv4 address net mask is set to that parameter's value, otherwise the iDRAC IPv4 address net mask is set to the to the Netmask attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the Gateway parameter has non-NULL value, then the iDRAC IPv4 gateway address is set to that parameter's value, otherwise the iDRAC IPv4 gateway is set to the to the Gateway attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the DNS parameter has non-NULL value, then the iDRAC IPv4 DNS address is set to that parameter's value, otherwise the iDRAC IPv4 DNS address is set to the to the DNS1 attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the Domain parameter has non-NULL value, then the iDRAC domain name is set to that parameter's value, otherwise the iDRAC domain name is set to the to the DNSDomainName attribute in the NIC Information group in the iDRAC Card Profile." Term="OData.Description"/>
+                <Annotation String="The ReInitiateAutoDiscovery() method is used for reinitiating the discovery and handshake with static IP configuration. If the method successfully executes, iDRAC is in the static IP mode after the auto-discovery is initiated and thus, does not require DHCP setup. The static IP information for auto-discovery can be set either through the optional input parameters of this method or through the iDRAC attributes in the iDRAC Card Profile. After the successful auto-discovery initiation, if the IPAddress parameter has non-NULL value, the iDRAC IPv4 address is set to that parameter's value, otherwise the iDRAC IPv4 Address is set to the Address attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the Mask parameter has a non-NULL value, the iDRAC IPv4 address net mask is set to that parameter's value, otherwise the iDRAC IPv4 address net mask is set to the to the Netmask attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the Gateway parameter has non-NULL value, then the iDRAC IPv4 gateway address is set to that parameter's value, otherwise the iDRAC IPv4 gateway is set to the to the Gateway attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the DNS parameter has non-NULL value, then the iDRAC IPv4 DNS address is set to that parameter's value, otherwise the iDRAC IPv4 DNS address is set to the to the DNS1 attribute in the IPv4 Information group in the iDRAC Card Profile. After the successful auto-discovery initiation, if the Domain parameter has non-NULL value, then the iDRAC domain name is set to that parameter's value, otherwise the iDRAC domain name is set to the to the DNSDomainName attribute in the NIC Information group in the iDRAC Card Profile." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="DNS" Type="Edm.String">
+                    <Annotation String="Specifies the DNS IP address. If not specified, iDRAC static DNS IP address setting is used." Term="OData.Description"/>
+                    <Annotation String="Specifies the DNS IP address. If not specified, iDRAC static DNS IP address setting is used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Domain" Type="Edm.String">
+                    <Annotation String="Specifies the domain name. If not specified, iDRAC static domain name setting is used." Term="OData.Description"/>
+                    <Annotation String="Specifies the domain name. If not specified, iDRAC static domain name setting is used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Gateway" Type="Edm.String">
+                    <Annotation String="Specifies the gateway IP address. If not specified, iDRAC static gateway setting is used." Term="OData.Description"/>
+                    <Annotation String="Specifies the gateway IP address. If not specified, iDRAC static gateway setting is used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="Specifies the static IP address. If not specified, iDRAC static IP address setting is used." Term="OData.Description"/>
+                    <Annotation String="Specifies the static IP address. If not specified, iDRAC static IP address setting is used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Mask" Type="Edm.String">
+                    <Annotation String="Specifies the subnet mask. If not specified, iDRAC static mask setting is used." Term="OData.Description"/>
+                    <Annotation String="Specifies the subnet mask. If not specified, iDRAC static mask setting is used." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PerformAutoDiscovery" Type="DellLCService.PerformAutoDiscovery">
+                    <Annotation String="Specifies the auto discovery mode. &quot;Off&quot;: Disables auto discovery, &quot;Now&quot;: Enables and initiates auto discovery immediately, &quot;NextBoot&quot;: Delays reconfiguration and discovery till next power cycle." Term="OData.Description"/>
+                    <Annotation String="Specifies the auto discovery mode. &quot;Off&quot;: Disables auto discovery, &quot;Now&quot;: Enables and initiates auto discovery immediately, &quot;NextBoot&quot;: Delays reconfiguration and discovery till next power cycle." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProvisioningServer" Type="Edm.String">
+                    <Annotation String="This property specifies the provisioning server addresses and ports used for auto discovery. If omitted, Lifecycle Controller gets the value from DHCP or DNS." Term="OData.Description"/>
+                    <Annotation String="This property specifies the provisioning server addresses and ports used for auto discovery. If omitted, Lifecycle Controller gets the value from DHCP or DNS." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ReInitiateDHS" IsBound="true">
+                <Annotation String="The ReInitiateDHS() method is used for reinitiating the provisioning server discovery and handshake." Term="OData.Description"/>
+                <Annotation String="The ReInitiateDHS() method is used for reinitiating the provisioning server discovery and handshake." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Parameter Name="PerformAutoDiscovery" Type="DellLCService.PerformAutoDiscovery">
+                    <Annotation String="A value of &quot;Off = 1&quot; disables auto discovery. A value of &quot;Now = 2&quot; enables and initiates auto discovery immediately. A value of  &quot;NextBoot = 3&quot; delays reconfiguration and auto discovery until next AC power cycle. Note: If NextBoot has a value of 3, then upon successful execution, the Discovery Factory Defaults attribute is set to &quot;On&quot;." Term="OData.Description"/>
+                    <Annotation String="A value of &quot;Off = 1&quot; disables auto discovery. A value of &quot;Now = 2&quot; enables and initiates auto discovery immediately. A value of  &quot;NextBoot = 3&quot; delays reconfiguration and auto discovery until next AC power cycle. Note: If NextBoot has a value of 3, then upon successful execution, the Discovery Factory Defaults attribute is set to &quot;On&quot;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProvisioningServer" Type="Edm.String">
+                    <Annotation String="This property specifies the provisioning server addresses and ports used for auto discovery. If omitted, Lifecycle Controller gets the value from DHCP or DNS." Term="OData.Description"/>
+                    <Annotation String="This property specifies the provisioning server addresses and ports used for auto discovery. If omitted, Lifecycle Controller gets the value from DHCP or DNS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ResetToFactoryDefaults" Type="Edm.Boolean">
+                    <Annotation String="If ResetToFactoryDefaults is True, all configuration information is replaced with auto-discovery factory defaults. If False, an error is returned." Term="OData.Description"/>
+                    <Annotation String="If ResetToFactoryDefaults is True, all configuration information is replaced with auto-discovery factory defaults. If False, an error is returned." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="RunePSADiagnostics" IsBound="true">
+                <Annotation String="The method is used for running the diagnostics based on the runmode switch and save the report in the Maser partition (MAS002). The diagnostics can be run in either Express or Extended mode or as a long run that encompasses all tests." Term="OData.Description"/>
+                <Annotation String="The method is used for running the diagnostics based on the runmode switch and save the report in the Maser partition (MAS002). The diagnostics can be run in either Express or Extended mode or as a long run that encompasses all tests." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="RebootJobType" Type="DellLCService.RebootJobType">
+                    <Annotation String="The value contains the requested reboot type." Term="OData.Description"/>
+                    <Annotation String="The value contains the requested reboot type." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="RunMode" Type="DellLCService.RunMode">
+                    <Annotation String="RunMode to run the diagnostics." Term="OData.Description"/>
+                    <Annotation String="RunMode to run the diagnostics." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ScheduledStartTime" Type="Edm.String">
+                    <Annotation String="Schedules the job at the time specified. The format is yyyymmddhhmmss. Default value is TIME_NOW, which will start the job immediately." Term="OData.Description"/>
+                    <Annotation String="Schedules the job at the time specified. The format is yyyymmddhhmmss. Default value is TIME_NOW, which will start the job immediately." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UntilTime" Type="Edm.String">
+                    <Annotation String="Scheduled end time for job execution in datetime format:yyyymmddhhmmss. If not specified, there is no end time." Term="OData.Description"/>
+                    <Annotation String="Scheduled end time for job execution in datetime format:yyyymmddhhmmss. If not specified, there is no end time." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SupportAssistAcceptEULA" IsBound="true">
+                <Annotation String="This method is used for accepting the EULA terms and conditions required for SupportAssist registration." Term="OData.Description"/>
+                <Annotation String="This method is used for accepting the EULA terms and conditions required for SupportAssist registration." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="SupportAssistClearAutoCollectSchedule" IsBound="true">
+                <Annotation String="This method is used for clearing all the periodic collections settings for SupportAssist." Term="OData.Description"/>
+                <Annotation String="This method is used for clearing all the periodic collections settings for SupportAssist." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="SupportAssistCollection" IsBound="true">
+                <Annotation String="This method is used for triggering a SupportAssist collection and, optionally, send the collection to Dell or a network share." Term="OData.Description"/>
+                <Annotation String="This method is used for triggering a SupportAssist collection and, optionally, send the collection to Dell or a network share." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="DataSelectorArrayIn" Type="Collection(DellLCService.DataSelectorArrayIn)">
+                    <Annotation String="This property allows to select the different type of logs in the collection. Default value for this parameter is HW Data and MUT logs are part of every collection." Term="OData.Description"/>
+                    <Annotation String="This property allows to select the different type of logs in the collection. Default value for this parameter is HW Data and MUT logs are part of every collection." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Filter" Type="DellLCService.Filter">
+                    <Annotation String="This property specifies whether the collection should be filtered for PII (Personal Identification Information). Filter = 1 indicates that the collection is filtered for PII and excludes all debug logs and storage logs. When this parameter is not passed, default value is 0 (No filtering)." Term="OData.Description"/>
+                    <Annotation String="This property specifies whether the collection should be filtered for PII (Personal Identification Information). Filter = 1 indicates that the collection is filtered for PII and excludes all debug logs and storage logs. When this parameter is not passed, default value is 0 (No filtering)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="The IP address of network share. This parameter is mandatory when ShareType is NFS or CIFS." Term="OData.Description"/>
+                    <Annotation String="The IP address of network share. This parameter is mandatory when ShareType is NFS or CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share. This parameter is mandatory if ShareType is CIFS." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share. This parameter is mandatory if ShareType is CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Port" Type="Edm.Int64">
+                    <Annotation String="Port for FTP server. Default is set to 21." Term="OData.Description"/>
+                    <Annotation String="Port for FTP server. Default is set to 21." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password to login into proxy server." Term="OData.Description"/>
+                    <Annotation String="The password to login into proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share. Default value is based on iDRAC.Embedded.1#SupportAssist.1#DefaultProtocol attribute, when this parameter is not passed." Term="OData.Description"/>
+                    <Annotation String="Type of the network share. Default value is based on iDRAC.Embedded.1#SupportAssist.1#DefaultProtocol attribute, when this parameter is not passed." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Transmit" Type="DellLCService.Transmit">
+                    <Annotation String="This property specifies if collection should be transmitted to Dell. Default value is 0 (No)." Term="OData.Description"/>
+                    <Annotation String="This property specifies if collection should be transmitted to Dell. Default value is 0 (No)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName used to access the share. This parameter is mandatory when ShareType is CIFS." Term="OData.Description"/>
+                    <Annotation String="UserName used to access the share. This parameter is mandatory when ShareType is CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Workgroup" Type="Edm.String">
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.Description"/>
+                    <Annotation String="Workgroup for the CIFS share - optional." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SupportAssistExportLastCollection" IsBound="true">
+                <Annotation String="This method is used for exporting the last SupportAssist collection (stored in iDRAC) to a network share. If no parameters are passed, the default share parameters of iDRAC are used. The default share parameters may be stored by setting the appropriate attributes in iDRAC." Term="OData.Description"/>
+                <Annotation String="This method is used for exporting the last SupportAssist collection (stored in iDRAC) to a network share. If no parameters are passed, the default share parameters of iDRAC are used. The default share parameters may be stored by setting the appropriate attributes in iDRAC." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="The IP address of network share. This parameter is mandatory when ShareType is NFS or CIFS." Term="OData.Description"/>
+                    <Annotation String="The IP address of network share. This parameter is mandatory when ShareType is NFS or CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password of the account to access the share. This parameter is mandatory of ShareType is CIFS." Term="OData.Description"/>
+                    <Annotation String="Password of the account to access the share. This parameter is mandatory of ShareType is CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Port" Type="Edm.Int64">
+                    <Annotation String="Port for FTP server. Default is set to 21." Term="OData.Description"/>
+                    <Annotation String="Port for FTP server. Default is set to 21." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password to login into proxy server." Term="OData.Description"/>
+                    <Annotation String="The password to login into proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. This parameter is mandatory when ShareType is passed." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. This parameter is mandatory when ShareType is passed." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share." Term="OData.Description"/>
+                    <Annotation String="Type of the network share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName used to access the share. This parameter is mandatory when ShareType is CIFS." Term="OData.Description"/>
+                    <Annotation String="UserName used to access the share. This parameter is mandatory when ShareType is CIFS." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SupportAssistGetAutoCollectSchedule" IsBound="true">
+                <Annotation String="This method is used to retrieve the periodic collections schedule for SupportAssist." Term="OData.Description"/>
+                <Annotation String="This method is used to retrieve the periodic collections schedule for SupportAssist." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <ReturnType Type="DellLCService.v1_1_0.SupportAssistGetAutoCollectScheduleResponse" Nullable="false"/>
+            </Action>
+            <Action Name="SupportAssistGetEULAStatus" IsBound="true">
+                <Annotation String="This method is used for getting the acceptance status of the EULA terms and conditions required for SupportAssist registration." Term="OData.Description"/>
+                <Annotation String="This method is used for getting the acceptance status of the EULA terms and conditions required for SupportAssist registration." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <ReturnType Type="DellLCService.v1_1_0.SupportAssistGetEULAStatusResponse" Nullable="false"/>
+            </Action>
+            <Action Name="SupportAssistRegister" IsBound="true">
+                <Annotation String="This method is used registering for SupportAssist features." Term="OData.Description"/>
+                <Annotation String="This method is used registering for SupportAssist features." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="City" Type="Edm.String">
+                    <Annotation String="Contains city name." Term="OData.Description"/>
+                    <Annotation String="Contains city name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="CompanyName" Type="Edm.String">
+                    <Annotation String="Contains company name." Term="OData.Description"/>
+                    <Annotation String="Contains company name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Country" Type="Edm.String">
+                    <Annotation String="Contains Country address." Term="OData.Description"/>
+                    <Annotation String="Contains Country address." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PrimaryAlternateNumber" Type="Edm.String">
+                    <Annotation String="Contains primary alternate number." Term="OData.Description"/>
+                    <Annotation String="Contains primary alternate number." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PrimaryEmail" Type="Edm.String">
+                    <Annotation String="Contains primary email address." Term="OData.Description"/>
+                    <Annotation String="Contains primary email address." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PrimaryFirstName" Type="Edm.String">
+                    <Annotation String="Contains primary first name." Term="OData.Description"/>
+                    <Annotation String="Contains primary first name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PrimaryLastName" Type="Edm.String">
+                    <Annotation String="Contains primary last name." Term="OData.Description"/>
+                    <Annotation String="Contains primary last name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PrimaryPhoneNumber" Type="Edm.String">
+                    <Annotation String="Contains primary phone number." Term="OData.Description"/>
+                    <Annotation String="Contains primary phone number." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyHostName" Type="Edm.String">
+                    <Annotation String="Contains proxy hostname." Term="OData.Description"/>
+                    <Annotation String="Contains proxy hostname." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPassword" Type="Edm.String">
+                    <Annotation String="Contains proxy password." Term="OData.Description"/>
+                    <Annotation String="Contains proxy password." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.Int64">
+                    <Annotation String="Contains proxy port." Term="OData.Description"/>
+                    <Annotation String="Contains proxy port." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUserName" Type="Edm.String">
+                    <Annotation String="Contains proxy username." Term="OData.Description"/>
+                    <Annotation String="Contains proxy username." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SecondaryAlternateNumber" Type="Edm.String">
+                    <Annotation String="Contains secondary alternate phone number." Term="OData.Description"/>
+                    <Annotation String="Contains secondary alternate phone number." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SecondaryEmail" Type="Edm.String">
+                    <Annotation String="Contains secondary email address." Term="OData.Description"/>
+                    <Annotation String="Contains secondary email address." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SecondaryFirstName" Type="Edm.String">
+                    <Annotation String="Contains secondary first name." Term="OData.Description"/>
+                    <Annotation String="Contains secondary first name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SecondaryLastName" Type="Edm.String">
+                    <Annotation String="Contains secondary last name." Term="OData.Description"/>
+                    <Annotation String="Contains secondary last name." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="SecondaryPhoneNumber" Type="Edm.String">
+                    <Annotation String="Contains secondary phone number." Term="OData.Description"/>
+                    <Annotation String="Contains secondary phone number." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="State" Type="Edm.String">
+                    <Annotation String="Contains State address." Term="OData.Description"/>
+                    <Annotation String="Contains State address." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Street1" Type="Edm.String">
+                    <Annotation String="Contains Street Address." Term="OData.Description"/>
+                    <Annotation String="Contains Street Address." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Street2" Type="Edm.String">
+                    <Annotation String="Contains Street2 address." Term="OData.Description"/>
+                    <Annotation String="Contains Street2 address." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Zip" Type="Edm.String">
+                    <Annotation String="Contains Zip code." Term="OData.Description"/>
+                    <Annotation String="Contains Zip code." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SupportAssistSetAutoCollectSchedule" IsBound="true">
+                <Annotation String="This method is used for auto-scheduling the collection of logs." Term="OData.Description"/>
+                <Annotation String="This method is used for auto-scheduling the collection of logs." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="DayOfMonth" Type="Edm.String">
+                    <Annotation String="1-28 : Day of Month, L: Last day of the month 28,29,30 or 31 depending on the month. Default value is *, which indicates any value." Term="OData.Description"/>
+                    <Annotation String="1-28 : Day of Month, L: Last day of the month 28,29,30 or 31 depending on the month. Default value is *, which indicates any value." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DayOfWeek" Type="Edm.String">
+                    <Annotation String="Valid values : single day of week. Mapping for day of week: Mon = 1, Tue = 2, Wed = 3, Thu = 4, Fri = 5, Sat = 6, Sun = 0 or 7(The default is first Sunday of the current month and if that is already past while applying then first Sunday of next month is the first time the job is scheduled). Default value is *, which indicates any value." Term="OData.Description"/>
+                    <Annotation String="Valid values : single day of week. Mapping for day of week: Mon = 1, Tue = 2, Wed = 3, Thu = 4, Fri = 5, Sat = 6, Sun = 0 or 7(The default is first Sunday of the current month and if that is already past while applying then first Sunday of next month is the first time the job is scheduled). Default value is *, which indicates any value." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Recurrence" Type="DellLCService.Recurrence">
+                    <Annotation String="Specifies the collection recurrence. If recurrence is Monthly or Quarterly, then either 1. DayofMonth or 2. WeekOfMonth and DayOfWeek must be passed." Term="OData.Description"/>
+                    <Annotation String="Specifies the collection recurrence. If recurrence is Monthly or Quarterly, then either 1. DayofMonth or 2. WeekOfMonth and DayOfWeek must be passed." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Time" Type="Edm.String">
+                    <Annotation String="Hh:mm AM/PM (hour and minute of day to run)." Term="OData.Description"/>
+                    <Annotation String="Hh:mm AM/PM (hour and minute of day to run)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="WeekOfMonth" Type="Edm.String">
+                    <Annotation String="*: Means any value and this is the default value. Only one of the characters above. Default * (The default is first week of the month and if that is already past while applying then first week of next month is the first time the job is scheduled). 1 4 : Week Number, L : Means the last week of the month, A non * value is mutually exclusive with &quot;DayOfMonth&quot;. If this value is non * then DayOfWeek is required." Term="OData.Description"/>
+                    <Annotation String="*: Means any value and this is the default value. Only one of the characters above. Default * (The default is first week of the month and if that is already past while applying then first week of next month is the first time the job is scheduled). 1 4 : Week Number, L : Means the last week of the month, A non * value is mutually exclusive with &quot;DayOfMonth&quot;. If this value is non * then DayOfWeek is required." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SupportAssistUploadLastCollection" IsBound="true">
+                <Annotation String="This method is used for exporting the last SupportAssist collection to Dell." Term="OData.Description"/>
+                <Annotation String="This method is used for exporting the last SupportAssist collection to Dell." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+            </Action>
+            <Action Name="SystemErase" IsBound="true">
+                <Annotation String="This method is to create granular and user selectable categories to increase flexibility and improve the repurposing aspect of the existing System Wipe feature. This method takes the component name as input. Multiple options can also be provided. Upon successful creation of job , a job ID is returned." Term="OData.Description"/>
+                <Annotation String="This method is to create granular and user selectable categories to increase flexibility and improve the repurposing aspect of the existing System Wipe feature. This method takes the component name as input. Multiple options can also be provided. Upon successful creation of job , a job ID is returned." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Component" Type="Collection(DellLCService.Component)">
+                    <Annotation String="Array to select the components to be erased. The System Components are: BIOS , DIAG, AllApps, DrvPack, LCData, IDRAC. The Storage Components are: PERCNVCache, vFlash, CryptographicErasePD, OverwritePD, NonVolatileMemory. The parameters Component and ComponentBitmap are mutually exclusive. ( Note: SecureErasePD has been renamed to CryptographicErasePD, however, for backwards compatibility SecureErasePD will still work)" Term="OData.Description"/>
+                    <Annotation String="Array to select the components to be erased. The System Components are: BIOS , DIAG, AllApps, DrvPack, LCData, IDRAC. The Storage Components are: PERCNVCache, vFlash, CryptographicErasePD, OverwritePD, NonVolatileMemory. The parameters Component and ComponentBitmap are mutually exclusive. ( Note: SecureErasePD has been renamed to CryptographicErasePD, however, for backwards compatibility SecureErasePD will still work)" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ComponentBitmap" Type="Edm.Int64">
+                    <Annotation String="A composite Bitmap that may be used to select the components to erase. The parameters ComponentBitmap and Component shall be Mutually Exclusive. The following are the masks for the individual components which may be OR-ed together to specify multiple components. The lowest Byte will have 8 bits reserved for the System components. The second lowest byte will have 8 bits reserved for the Storage components. The various component masks in the format (decimal-hexadecimal-component) are as follows. System Component masks: 1-0x1-BIOS, 2-0x2-DIAG, 4-0x4-DrvPack, 8-0x8-LCData, 16-0x10-iDRAC, 128-0x80-AllApps. Storage Component Masks: 256-0x100-PERCNVCache, 512-0x200-vFlash, 1024-0x400-CryptographicErasePD, 2048-0x800-OverwritePD, 4096-0x1000-NonVolatileMemory" Term="OData.Description"/>
+                    <Annotation String="A composite Bitmap that may be used to select the components to erase. The parameters ComponentBitmap and Component shall be Mutually Exclusive. The following are the masks for the individual components which may be OR-ed together to specify multiple components. The lowest Byte will have 8 bits reserved for the System components. The second lowest byte will have 8 bits reserved for the Storage components. The various component masks in the format (decimal-hexadecimal-component) are as follows. System Component masks: 1-0x1-BIOS, 2-0x2-DIAG, 4-0x4-DrvPack, 8-0x8-LCData, 16-0x10-iDRAC, 128-0x80-AllApps. Storage Component Masks: 256-0x100-PERCNVCache, 512-0x200-vFlash, 1024-0x400-CryptographicErasePD, 2048-0x800-OverwritePD, 4096-0x1000-NonVolatileMemory" Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="TestNetworkShare" IsBound="true">
+                <Annotation String="The TestNetworkShare() method is used for testing the network connection for Lifecycle Controller." Term="OData.Description"/>
+                <Annotation String="The TestNetworkShare() method is used for testing the network connection for Lifecycle Controller." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="IPAddress" Type="Edm.String">
+                    <Annotation String="IP address of the NFS or CIFS share such as 192.168.10.12. The parameter is required if the ShareType parameter has value 0 (NFS), 2 (CIFS), 3-TFTP,5-HTTP, 6- HTTPS, or is not specified. For FTP, the default value is ftp.dell.com." Term="OData.Description"/>
+                    <Annotation String="IP address of the NFS or CIFS share such as 192.168.10.12. The parameter is required if the ShareType parameter has value 0 (NFS), 2 (CIFS), 3-TFTP,5-HTTP, 6- HTTPS, or is not specified. For FTP, the default value is ftp.dell.com." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="IgnoreCertWarning" Type="DellLCService.IgnoreCertWarning">
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.Description"/>
+                    <Annotation String="Specifies if certificate warning should be ignored when HTTPS is specified. If IgnoreCertWarning is On, warnings are ignored. Default is 2 (On)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Password" Type="Edm.String">
+                    <Annotation String="Password to access Network Share." Term="OData.Description"/>
+                    <Annotation String="Password to access Network Share." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPasswd" Type="Edm.String">
+                    <Annotation String="The password for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The password for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyPort" Type="Edm.String">
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.Description"/>
+                    <Annotation String="Port for the proxy server. Default is set to 80." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyServer" Type="Edm.String">
+                    <Annotation String="The IP address of the proxy server." Term="OData.Description"/>
+                    <Annotation String="The IP address of the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxySupport" Type="DellLCService.ProxySupport">
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.Description"/>
+                    <Annotation String="Specifies if proxy should be used. Default is 1 (Off)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyType" Type="DellLCService.ProxyType">
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.Description"/>
+                    <Annotation String="The proxy type of the proxy server. Default is 0 (HTTP)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ProxyUname" Type="Edm.String">
+                    <Annotation String="The user name for the proxy server." Term="OData.Description"/>
+                    <Annotation String="The user name for the proxy server." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareName" Type="Edm.String">
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.Description"/>
+                    <Annotation String="Name of the CIFS share or full path to the NFS share. Optional for HTTP/HTTPS share (if supported), this may be treated as the path of the directory containing the file." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="ShareType" Type="DellLCService.ShareType">
+                    <Annotation String="Type of the network share. Default is NFS, when this parameter is not passed." Term="OData.Description"/>
+                    <Annotation String="Type of the network share. Default is NFS, when this parameter is not passed." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="UserName" Type="Edm.String">
+                    <Annotation String="UserName for Network share authentication." Term="OData.Description"/>
+                    <Annotation String="UserName for Network share authentication." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="UpdateOSAppHealthData" IsBound="true">
+                <Annotation String="This method is used for getting the latest OSAppHealth data based on the input parameter UpdateType." Term="OData.Description"/>
+                <Annotation String="This method is used for getting the latest OSAppHealth data based on the input parameter UpdateType." Term="OData.LongDescription"/>
+                <Parameter Name="DellLCService" Type="DellLCService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="UpdateType" Type="DellLCService.UpdateType">
+                    <Annotation String="UpdateType parameter is used for selecting the OSAppHealthData update type." Term="OData.Description"/>
+                    <Annotation String="UpdateType parameter is used for selecting the OSAppHealthData update type." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="Component">
+                <Member Name="AllApps">
+                    <Annotation String="AllApps" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="BIOS">
+                    <Annotation String="BIOS" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="CryptographicErasePD">
+                    <Annotation String="CryptographicErasePD" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="DIAG">
+                    <Annotation String="DIAG" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="DrvPack">
+                    <Annotation String="DrvPack" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="IDRAC">
+                    <Annotation String="IDRAC" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="LCData">
+                    <Annotation String="LCData" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NonVolatileMemory">
+                    <Annotation String="NonVolatileMemory" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OverwritePD">
+                    <Annotation String="OverwritePD" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PERCNVCache">
+                    <Annotation String="PERCNVCache" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="vFlash">
+                    <Annotation String="vFlash" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="DataSelectorArrayIn">
+                <Member Name="DebugLogs">
+                    <Annotation String="Debug Logs" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="HWData">
+                    <Annotation String="HW Data" Term="OData.Description"/>
+                </Member>
+                <Member Name="OSAppData">
+                    <Annotation String="OSApp Data" Term="OData.Description"/>
+                </Member>
+                <Member Name="OSAppDataWithoutPII">
+                    <Annotation String="OSApp Data Without PII" Term="OData.Description"/>
+                </Member>
+                <Member Name="TTYLogs">
+                    <Annotation String="TTY Logs" Term="OData.Description"/>
+                </Member>
+                <Member Name="TelemetryReports">
+                    <Annotation String="Telemetry Reports" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="FileType">
+                <Member Name="BootCaptureVideo">
+                    <Annotation String="Boot Capture Video" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="CrashCaptureVideo">
+                    <Annotation String="Crash Capture Video" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="LastCrashScreenShot">
+                    <Annotation String="Last Crash Screen Shot" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Preview">
+                    <Annotation String="Preview" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ServerScreenShot">
+                    <Annotation String="Server Screen Shot" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="Filter">
+                <Member Name="No">
+                    <Annotation String="No" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Yes">
+                    <Annotation String="Yes" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetRemoteServicesAPIStatusResponseLCStatus">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                </Member>
+                <Member Name="InRecovery">
+                    <Annotation String="In Recovery" Term="OData.Description"/>
+                </Member>
+                <Member Name="InUse">
+                    <Annotation String="In Use" Term="OData.Description"/>
+                </Member>
+                <Member Name="NotInitialized">
+                    <Annotation String="Not Initialized" Term="OData.Description"/>
+                </Member>
+                <Member Name="Ready">
+                    <Annotation String="Ready" Term="OData.Description"/>
+                </Member>
+                <Member Name="ReloadingData">
+                    <Annotation String="Reloading data" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetRemoteServicesAPIStatusResponseRTStatus">
+                <Member Name="NotReady">
+                    <Annotation String="Not Ready" Term="OData.Description"/>
+                </Member>
+                <Member Name="Ready">
+                    <Annotation String="Ready" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetRemoteServicesAPIStatusResponseServerStatus">
+                <Member Name="AutomatedTaskExecution">
+                    <Annotation String="Automated Task Execution" Term="OData.Description"/>
+                </Member>
+                <Member Name="CollectingSystemInventory">
+                    <Annotation String="Collecting System Inventory" Term="OData.Description"/>
+                </Member>
+                <Member Name="EnteredF11BootManager">
+                    <Annotation String="Server has entered F11 Boot Manager menu" Term="OData.Description"/>
+                </Member>
+                <Member Name="EnteredF2Setup">
+                    <Annotation String="Server has entered F2 setup menu" Term="OData.Description"/>
+                </Member>
+                <Member Name="HaltedF1/F2/F11Prompt">
+                    <Annotation String="Server has halted at F1/F2/F11 prompt because there are no bootable devices available" Term="OData.Description"/>
+                </Member>
+                <Member Name="HaltedF1/F2Prompt">
+                    <Annotation String="Server has halted at F1/F2 error prompt because of a POST error" Term="OData.Description"/>
+                </Member>
+                <Member Name="InPOST">
+                    <Annotation String="In POST" Term="OData.Description"/>
+                </Member>
+                <Member Name="LCUSC">
+                    <Annotation String="Lifecycle Controller Unified Server Configurator" Term="OData.Description"/>
+                </Member>
+                <Member Name="OutOfPOST">
+                    <Annotation String="Out of POST" Term="OData.Description"/>
+                </Member>
+                <Member Name="PoweredOff">
+                    <Annotation String="Powered Off" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetRemoteServicesAPIStatusResponseStatus">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                </Member>
+                <Member Name="InRecovery">
+                    <Annotation String="In Recovery" Term="OData.Description"/>
+                </Member>
+                <Member Name="InUse">
+                    <Annotation String="In Use" Term="OData.Description"/>
+                </Member>
+                <Member Name="NotReady">
+                    <Annotation String="Not Ready" Term="OData.Description"/>
+                </Member>
+                <Member Name="Ready">
+                    <Annotation String="Ready" Term="OData.Description"/>
+                </Member>
+                <Member Name="ReloadingData">
+                    <Annotation String="Reloading data" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetRemoteServicesAPIStatusResponseTelemetryServiceStatus">
+                <Member Name="NotReady">
+                    <Annotation String="Not Ready" Term="OData.Description"/>
+                </Member>
+                <Member Name="Ready">
+                    <Annotation String="Ready" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="IgnoreCertWarning">
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+                <Member Name="On">
+                    <Annotation String="On" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PerformAutoDiscovery">
+                <Member Name="NextBoot">
+                    <Annotation String="NextBoot" Term="OData.Description"/>
+                </Member>
+                <Member Name="Now">
+                    <Annotation String="Now" Term="OData.Description"/>
+                </Member>
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ProxySupport">
+                <Member Name="DefaultProxy">
+                    <Annotation String="On-use user default proxy settings" Term="OData.Description"/>
+                </Member>
+                <Member Name="Off">
+                    <Annotation String="Off" Term="OData.Description"/>
+                </Member>
+                <Member Name="ParametersProxy">
+                    <Annotation String="On-use passed in parameters for proxy" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ProxyType">
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="SOCKS">
+                    <Annotation String="SOCKS" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="RebootJobType">
+                <Member Name="GracefulRebootWithForcedShutdown">
+                    <Annotation String="Graceful Reboot with forced shutdown" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="GracefulRebootWithoutForcedShutdown">
+                    <Annotation String="Graceful Reboot without forced shutdown" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PowerCycle">
+                    <Annotation String="PowerCycle" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="Recurrence">
+                <Member Name="Monthly">
+                    <Annotation String="Monthly" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Quarterly">
+                    <Annotation String="Quarterly" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Weekly">
+                    <Annotation String="Weekly" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RunMode">
+                <Member Name="Express">
+                    <Annotation String="Express" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ExpressAndExtended">
+                    <Annotation String="Express&amp;amp;Extended" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Extended">
+                    <Annotation String="Extended" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="ShareType">
+                <Member Name="CIFS">
+                    <Annotation String="CIFS" Term="OData.Description"/>
+                </Member>
+                <Member Name="FTP">
+                    <Annotation String="FTP" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="HTTP">
+                    <Annotation String="HTTP" Term="OData.Description"/>
+                </Member>
+                <Member Name="HTTPS">
+                    <Annotation String="HTTPS" Term="OData.Description"/>
+                </Member>
+                <Member Name="Local">
+                    <Annotation String="Local" Term="OData.Description"/>
+                </Member>
+                <Member Name="NFS">
+                    <Annotation String="NFS" Term="OData.Description"/>
+                </Member>
+                <Member Name="TFTP">
+                    <Annotation String="TFTP" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SupportAssistGetAutoCollectScheduleResponseRecurrence">
+                <Member Name="Monthly">
+                    <Annotation String="Monthly" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Quarterly">
+                    <Annotation String="Quarterly" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Weekly">
+                    <Annotation String="Weekly" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SupportAssistGetEULAStatusResponseInterface">
+                <Member Name="LCUI">
+                    <Annotation String="LC UI" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="REDFISH">
+                    <Annotation String="REDFISH" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Racadm">
+                    <Annotation String="Racadm" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SCP">
+                    <Annotation String="SCP" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="WSMan">
+                    <Annotation String="WSMan" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="iDRACGUI">
+                    <Annotation String="iDRAC GUI" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SupportAssistGetEULAStatusResponseIsRegistered">
+                <Member Name="NotRegistered">
+                    <Annotation String="Not Registered" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Registered">
+                    <Annotation String="Registered" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="Transmit">
+                <Member Name="No">
+                    <Annotation String="No" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Yes">
+                    <Annotation String="Yes" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="UpdateType">
+                <Member Name="Automatic">
+                    <Annotation String="Automatic" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="XMLSchema">
+                <Member Name="CIM-XML">
+                    <Annotation String="CIM-XML" Term="OData.Description"/>
+                </Member>
+                <Member Name="JSON">
+                    <Annotation String="JSON" Term="OData.Description"/>
+                </Member>
+                <Member Name="Simple">
+                    <Annotation String="Simple" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCService.v1_0_0">
+            <EntityType Name="DellLCService" BaseType="DellLCService.DellLCService">
+                <Annotation Term="OData.Description" String="The DellLCService resource provides some actions to support Lifecycle Controller functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellLCService resource provides some actions to support Lifecycle Controller functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellLCService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+            <ComplexType Name="GetRSStatusResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetRSStatus action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetRSStatus action."/>
+                <Property Name="Status" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The status for the Data Manager: Ready, Not Ready, Reloading."/>
+                    <Annotation Term="OData.LongDescription" String="The status for the Data Manager: Ready, Not Ready, Reloading."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="GetRemoteServicesAPIStatusResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetRemoteServicesAPIStatus action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetRemoteServicesAPIStatus action."/>
+                <Property Name="LCStatus" Type="DellLCService.GetRemoteServicesAPIStatusResponseLCStatus" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The Lifecycle Controller status that includes the Data Manager status."/>
+                    <Annotation Term="OData.LongDescription" String="The Lifecycle Controller status that includes the Data Manager status."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="RTStatus" Type="DellLCService.GetRemoteServicesAPIStatusResponseRTStatus" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The RealTime Status of the host server."/>
+                    <Annotation Term="OData.LongDescription" String="The RealTime Status of the host server."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="ServerStatus" Type="DellLCService.GetRemoteServicesAPIStatusResponseServerStatus" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Status of the host server."/>
+                    <Annotation Term="OData.LongDescription" String="Status of the host server."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Status" Type="DellLCService.GetRemoteServicesAPIStatusResponseStatus" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The overall status of the Remote Services API."/>
+                    <Annotation Term="OData.LongDescription" String="The overall status of the Remote Services API."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="TelemetryServiceStatus" Type="DellLCService.GetRemoteServicesAPIStatusResponseTelemetryServiceStatus" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The status of TelemetryService."/>
+                    <Annotation Term="OData.LongDescription" String="The status of TelemetryService."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DeleteAutoDiscoveryClientCerts, DeleteAutoDiscoveryServerPublicKey, DownloadClientCerts, ExportCompleteLCLog, ExportSVGFile, ExportServerScreenShot, ExportVideoLog, ExportePSADiagnosticsResult, InsertCommentInLCLog, ReInitiateAutoDiscovery, RunePSADiagnostics, SupportAssistAcceptEULA, SupportAssistClearAutoCollectSchedule, SupportAssistCollection, SupportAssistExportLastCollection, SupportAssistGetAutoCollectSchedule, SupportAssistGetEULAStatus, SupportAssistRegister, SupportAssistSetAutoCollectSchedule, SupportAssistUploadLastCollection, SystemErase, TestNetworkShare, UpdateOSAppHealthData actions."/>
+            <EntityType Name="DellLCService" BaseType="DellLCService.v1_0_0.DellLCService"> 
+</EntityType>
+            <ComplexType Name="ExportServerScreenShotResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the ExportServerScreenShot action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the ExportServerScreenShot action."/>
+                <Property Name="ServerScreenShotFile" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Exported server screen shot file encoded in base64."/>
+                    <Annotation Term="OData.LongDescription" String="Exported server screen shot file encoded in base64."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="SupportAssistGetAutoCollectScheduleResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the SupportAssistGetAutoCollectSchedule action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the SupportAssistGetAutoCollectSchedule action."/>
+                <Property Name="DayOfMonth" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="1-28 : Day of Month, L: Last day of the month 28,29,30 or 31 depending on the month,*: This means any value and this is the default value."/>
+                    <Annotation Term="OData.LongDescription" String="1-28 : Day of Month, L: Last day of the month 28,29,30 or 31 depending on the month,*: This means any value and this is the default value."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="DayOfWeek" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Valid values : single day of week. Mapping for day of week: Mon = 1, Tue = 2, Wed = 3, Thu = 4, Fri = 5, Sat = 6, Sun = 0 or 7(The default is first Sunday of the current month and if that is already past while applying then first Sunday of next month is the first time the job is scheduled). Default value is *, which indicates any value."/>
+                    <Annotation Term="OData.LongDescription" String="Valid values : single day of week. Mapping for day of week: Mon = 1, Tue = 2, Wed = 3, Thu = 4, Fri = 5, Sat = 6, Sun = 0 or 7(The default is first Sunday of the current month and if that is already past while applying then first Sunday of next month is the first time the job is scheduled). Default value is *, which indicates any value."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Recurrence" Type="DellLCService.SupportAssistGetAutoCollectScheduleResponseRecurrence" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This represents periodicity of collections."/>
+                    <Annotation Term="OData.LongDescription" String="This represents periodicity of collections."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Repeat" Type="Edm.Int64" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Valid values are &quot;N&quot;, &quot;1&quot; and &quot;3&quot;. The default is &quot;1&quot; for weekly and Monthly. It must be set to &quot;3&quot; for quarterly collection"/>
+                    <Annotation Term="OData.LongDescription" String="Valid values are &quot;N&quot;, &quot;1&quot; and &quot;3&quot;. The default is &quot;1&quot; for weekly and Monthly. It must be set to &quot;3&quot; for quarterly collection"/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Time" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Hh:mm AM/ PM (hour and minute of day to run)."/>
+                    <Annotation Term="OData.LongDescription" String="Hh:mm AM/ PM (hour and minute of day to run)."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="WeekOfMonth" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="*: Means any value and this is the default value. Only one of the characters above. Default * (The default is first week of the month and if that is already past while applying then first week of next month is the first time the job is scheduled) . 1 4 : Week Number, L : Means the last week of the month, A non * value is mutually exclusive with &quot;DayOfMonth&quot;. If this value is non * then DayOfWeek is required."/>
+                    <Annotation Term="OData.LongDescription" String="*: Means any value and this is the default value. Only one of the characters above. Default * (The default is first week of the month and if that is already past while applying then first week of next month is the first time the job is scheduled) . 1 4 : Week Number, L : Means the last week of the month, A non * value is mutually exclusive with &quot;DayOfMonth&quot;. If this value is non * then DayOfWeek is required."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="SupportAssistGetEULAStatusResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the SupportAssistGetEULAStatus action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the SupportAssistGetEULAStatus action."/>
+                <Property Name="Interface" Type="DellLCService.SupportAssistGetEULAStatusResponseInterface" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Interface used to accept EULA."/>
+                    <Annotation Term="OData.LongDescription" String="Interface used to accept EULA."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="IsRegistered" Type="DellLCService.SupportAssistGetEULAStatusResponseIsRegistered" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This parameter indicates if iDRAC is registered for SupportAssist."/>
+                    <Annotation Term="OData.LongDescription" String="This parameter indicates if iDRAC is registered for SupportAssist."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="Time" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Date and Time when EULA was accepted, in CIM Standard format."/>
+                    <Annotation Term="OData.LongDescription" String="Date and Time when EULA was accepted, in CIM Standard format."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="User" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The iDRAC user who accepted the EULA."/>
+                    <Annotation Term="OData.LongDescription" String="The iDRAC user who accepted the EULA."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCService.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add ExposeiSMInstallerToHostOS action and to remove the BackupImage,RestoreImage actions and to update the allowable value TelemetryReports for DataSelectorArrayIn parameter under SupportAssistCollection action."/>
+            <EntityType Name="DellLCService" BaseType="DellLCService.v1_1_0.DellLCService"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLCService.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add the new output parameter TelemetryServiceStatus for GetRemoteServicesAPIStatus action."/>
+            <EntityType Name="DellLCService" BaseType="DellLCService.v1_2_0.DellLCService"> 
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

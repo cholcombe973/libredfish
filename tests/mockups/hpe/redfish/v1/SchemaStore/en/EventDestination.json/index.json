@@ -1,0 +1,110 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "EventDestination",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The EventDestination resource describes the target of an event subscription, including the types of events subscribed and context to provide to the target in the Event payload.",
+    "private": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Context": {
+            "description": "A client-supplied string that is stored with the listener destination subscription.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Destination": {
+            "description": "The URI of the destination listener service.",
+            "displayname": "Destination",
+            "etag": true,
+            "format": "uri-reference",
+            "readonly": false,
+            "type": "string"
+        },
+        "EventTypes": {
+            "description": "This property shall contain the types of Events that shall be sent to the desination.",
+            "displayname": "EventTypes",
+            "enumDescriptions": {
+                "Alert": "A condition exists which requires attention",
+                "ResourceAdded": "A resource has been added",
+                "ResourceRemoved": "A resource has been removed",
+                "ResourceUpdated": "The value of this resource has been updated",
+                "StatusChange": "The status of this resource has changed"
+            },
+            "items": {
+                "enum": [
+                    "StatusChange",
+                    "ResourceUpdated",
+                    "ResourceAdded",
+                    "ResourceRemoved",
+                    "Alert"
+                ],
+                "type": "string"
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "HttpHeaders": {
+            "description": "This is for setting HTTP headers, such as authorization information.  This object will be null on a GET.",
+            "displayname": "HttpHeaders",
+            "etag": true,
+            "items": {
+                "patternProperties": {
+                    "^[^:\\s]+$": {
+                        "etag": true,
+                        "type": "string"
+                    }
+                },
+                "readonly": false,
+                "type": [
+                    "object",
+                    "null"
+                ]
+            },
+            "readonly": false,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeEventDestination.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Protocol": {
+            "description": "The protocol type of the event connection.",
+            "enum": [
+                "Redfish"
+            ],
+            "longDescription": "This property shall contain the protocol type that the event will use for sending the event to the destination.  A value of Redfish shall be used to indicate that the event type shall adhere to that defined in the Redfish specification.",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "title": "#EventDestination.v1_0_0.EventDestination",
+    "type": "object"
+}

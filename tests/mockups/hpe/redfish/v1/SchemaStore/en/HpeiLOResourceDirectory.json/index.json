@@ -1,0 +1,72 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOResourceDirectory",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOResourceDirectory resource describes the resource directory.  The resource directory is a selected set of resources and resource types for faster access to resources.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Instances": {
+            "items": {
+                "additionalProperties": false,
+                "description": "This is an array of instances of this major type.",
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    },
+                    "@odata.type": {
+                        "$ref": "Resource.json#/definitions/odatatype"
+                    },
+                    "ETag": {
+                        "description": "This is the last known etag of the resource. The property is omitted if not known.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "HttpMethods": {
+                        "description": "This property lists the set of methods supported by the resource.",
+                        "etag": true,
+                        "items": {
+                            "enum": [
+                                "GET",
+                                "HEAD",
+                                "POST",
+                                "PUT",
+                                "PATCH",
+                                "DELETE"
+                            ],
+                            "type": "string"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "MemberType": {
+                        "$ref": "Resource.json#/definitions/odatatype",
+                        "description": "This property has the type of members for collection resources."
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        }
+    },
+    "title": "#HpeiLOResourceDirectory.v2_0_0.HpeiLOResourceDirectory",
+    "type": "object"
+}

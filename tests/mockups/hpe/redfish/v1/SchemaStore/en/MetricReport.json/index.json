@@ -1,0 +1,97 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "MetricReport",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The metric definitions used to create a metric report.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MetricReportDefinition": {
+            "description": "The metric definitions used to create a metric report.",
+            "longDescription": "The value shall be reference to the definition for this metric report.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "MetricValues": {
+            "description": "An array of metric values for the metered items of this Metric.",
+            "items": {
+                "properties": {
+                    "MetricDefinition": {
+                        "description": "A link to the Metric Definition.",
+                        "longDescription": "The value shall be reference to the Metric Definition resource that describes what this Metric Report is capturing.",
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "MetricId": {
+                        "description": "The metric definitions identifier for this metric.",
+                        "longDescription": "The value shall be the same as the Id property of the source metric within the associated MetricDefinition.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MetricValue": {
+                        "description": "The value identifies this resource.",
+                        "longDescription": "The value of the metric represented as a string.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Timestamp": {
+                        "description": "The time when the value of the metric is obtained.",
+                        "format": "date-time",
+                        "longDescription": "The value shall time when the metric value was obtained.  Note that this may be different from the time when this instance is created.  If Volatile is true for a given metric value instance, the Timestamp changes whenever a new measurement snapshot is taken.  A management application may establish a time series of metric data by retrieving the instances of metric value and sorting them according to their Timestamp.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "longDescription": "The values shall be metric values for this MetricReport.",
+            "type": "array"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        }
+    },
+    "readonly": true,
+    "required": [
+        "Id",
+        "Name"
+    ],
+    "title": "#MetricReport.v1_0_0.MetricReport",
+    "type": "object"
+}

@@ -1,0 +1,188 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoSMTPClient.v1_0_0.json",
+    "$ref": "#/definitions/LenovoSMTPClient",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Authentication": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Method": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Method"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Specify either CRAM-MD5 or LOGIN as the authentication method. Default authentication method is CRAM-MD5.",
+                    "longDescription": "CRAM-MD5 is a challenge-response authentication mechanism based on the HMAC-MD5 MAC algorithm.",
+                    "readonly": false
+                },
+                "Password": {
+                    "description": "This property is used with a PATCH or PUT to write the password for the account. This property is null on a GET.",
+                    "longDescription": "The value of this property shall be the password when authentication required. The value shall be null for GET requests.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Required": {
+                    "description": "Indicates if the authentication is required or not.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this authentication mechanism is required.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "UserName": {
+                    "description": "This property contains the user name for the account.",
+                    "longDescription": "The value of this property shall be the user name for this account.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "LenovoSMTPClient": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the LenovoSMTPClient resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "AccessInfo": {
+                    "description": "Indicates the IP address of the SMTP server expressed in dotted decimal notation or Host Name in a text string.",
+                    "longDescription": "Use this field to specify either the IP address or, if DNS is enabled and configured, the hostname of the SMTP server.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AccessPort": {
+                    "description": "Indicates then port number of the SMTP server.",
+                    "longDescription": "The port number for SMTP server is optional. If left blank, the default value is 25.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Authentication": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Authentication"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This used for SMTP client indicates an authentication mechanism to the server.",
+                    "longDescription": "Users can configure the authentication mechanism for SMTP client."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates if the protocol is enabled or disabled.",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol. The value shall be true if enabled and false if disabled.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "ReversePath": {
+                    "description": "Specify where the mail is from to the SMTP server.",
+                    "longDescription": "Users can modify the setting, the value shall be matched with checking rules.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "Method": {
+            "enum": [
+                "LOGIN",
+                "CRAM_MD5"
+            ],
+            "type": "string"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoSMTPClient.v1_0_0.LenovoSMTPClient"
+}

@@ -1,0 +1,59 @@
+{
+    "$id": "/redfish/v1/Schemas/DellManagerAccount.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellManagerAccount": {
+            "additionalProperties": false,
+            "description": "This is the complex property is for the additional OEM properties to complement DMTF ManagerAccount Schema.",
+            "longDescription": "This is the complex property is for the additional OEM properties to complement DMTF ManagerAccount Schema.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "SNMPv3PassphraseEnabled": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/EnabledStates"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The value of the property, if set to Enabled, will mean that the AuthenticationKey and EncryptionKey properties will used for SNMP authentication",
+                    "longDescription": "The value of the property, if set to Enabled, will mean that the AuthenticationKey and EncryptionKey properties will used for SNMP authentication",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "EnabledStates": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "The property associated with the value is Disabled",
+                "Enabled": "The property associated with the value is Enabled"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "The property associated with the value is Disabled",
+                "Enabled": "The property associated with the value is Enabled"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellManagerAccount.v1_0_0"
+}

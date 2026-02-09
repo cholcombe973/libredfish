@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoChassis  v1.0.0                                        -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/SensorCollection_v1.xml">
+    <edmx:Include Namespace="SensorCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/metadata/LenovoSlotCollection_v1.xml">
+    <edmx:Include Namespace="LenovoSlotCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="//redfish/v1/metadata/LenovoLEDCollection_v1.xml">
+    <edmx:Include Namespace="LenovoLEDCollection"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoChassis">
+      <ComplexType Name="LenovoChassis" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoChassis resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoChassis.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <ComplexType Name="LenovoChassisProperties" BaseType="LenovoChassis.LenovoChassis">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="These properties shall be refered in Lenovo Oem properties for chassis schema"/>
+        
+        <Property Name="HasSwitchBoard" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents if the system has switch borad device in IOT systems."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent if the system has switch borad device in IOT systems."/>
+        </Property>
+        <Property Name="SystemBoardSerialNumber" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents part number of the system's mainboard."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent part number of the system's mainboard."/>
+        </Property>
+        <NavigationProperty Name="Slots" Type="LenovoSlotCollection.LenovoSlotCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This is a reference to a collection of slots in the chassis."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type LenovoSlotCollection."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <NavigationProperty Name="LEDs" Type="LenovoLEDCollection.LenovoLEDCollection" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This object describes the LEDs of the system."/>
+          <Annotation Term="OData.LongDescription" String="This is a reference to LED. This object shall contain properties which describes the LEDs for the current resource."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="ProductName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property describes the product name."/>
+          <Annotation Term="OData.LongDescription" String="This property describes the product name."/>
+        </Property>
+        <Property Name="VPD_ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property describes the vpd id for this BP."/>
+          <Annotation Term="OData.LongDescription" String="This property describes the vpd id for this BP, only used for BP."/>
+        </Property>
+        <Property Name="POS_ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property describe the pos id for this BP."/>
+          <Annotation Term="OData.LongDescription" String="This property describes the pos id for this BP, only used for BP."/>
+        </Property>
+        <Property Name="PRODUCT_ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property describes the product id for this BP."/>
+          <Annotation Term="OData.LongDescription" String="This property describes the product id for this BP, only used for BP."/>
+        </Property>
+        <Property Name="Entity_ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property describes the entity id for this BP."/>
+          <Annotation Term="OData.LongDescription" String="This property describes the entity id for this BP, only used for BP."/>
+        </Property>
+        <Property Name="Device_ID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property describes the device id for this BP."/>
+          <Annotation Term="OData.LongDescription" String="This property describes the device id for this BP, only used for BP."/>
+        </Property>
+        <Property Name="FruPartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property indicates the FRU part number of this system."/>
+          <Annotation Term="OData.LongDescription" String="This property indicates the FRU part number of this system."/>
+        </Property>
+      </ComplexType>
+
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

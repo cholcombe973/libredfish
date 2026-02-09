@@ -1,0 +1,132 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeSecureEraseReport",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeSecureEraseReport resource describes the secure erase status and the other details of the devices during the secure system erase operation.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "description": "This represents the description of the secure erase report parameters.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "DeviceType": {
+            "description": "This indicates the device type being securely erased.",
+            "enum": [
+                "SmartStorage",
+                "SATADrives",
+                "NVMeDrives",
+                "NVDIMM",
+                "TPM",
+                "UEFIStore",
+                "NAND",
+                "NVRAM"
+            ],
+            "enumDescriptions": {
+                "SmartStorage": "This indicates the device type is Smart Storage",
+                "SATADrives": "This indicates the device type is SATA drive",
+                "NVMeDrives": "This indicates the device type is NVMe drive",
+                "NVDIMM": "This indicates the device type is NVDIMM/Persistent Memory",
+                "TPM": "This indicates the device type is TPM (Trusted Platform Module)",
+                "UEFIStore": "This indicates the device type is UEFI Store",
+                "NAND": "This indicates the device type is Embedded NAND Flash",
+                "NVRAM": "This indicates the device type is NVRAM (Battery backed SRAM)"
+            },
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "EraseType": {
+            "description": "This indicates the NIST SP800-88 Rev.1 (National Institute of Standards and Technology) approved techniques to sanitize a particular media or device.",
+            "enum": [
+                "Purge",
+                "Clear"
+            ],
+            "enumDescriptions": {
+                "Purge": "This indicates that Purge technique is used to sanitize the device.",
+                "Clear": "This indicates that Clear technique is used to sanitize the device."
+            },
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "EraseStatus": {
+            "description": "Indicates the secure erase status of the individual components",
+            "enum": [
+                "Idle",
+                "Initiated",
+                "InProgress",
+                "CompletedWithSuccess",
+                "CompletedWithErrors",
+                "Failed"
+            ],
+            "enumDescriptions": {
+                "CompletedWithErrors": "Indicates Secure System Erase process has been completed with some errors",
+                "CompletedWithSuccess": "Indicates Secure System Erase process has been completed with no errors",
+                "Failed": "Indicates Secure System Erase process has failed",
+                "Idle": "Indicates Secure System Erase is not started",
+                "InProgress": "Indicates Secure System Erase process is under progress",
+                "Initiated": "Indicates Secure System Erase process is started"
+            },
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "DeviceIdentifier": {
+            "description": "This represents the unique identifier for the device in the system like it's physical location or the exact device path etc.,",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "This represents the serial number of the device being erased.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "EraseStartTime": {
+            "description": "The date and time of the start of secure erase operation, ISO8601 Redfish-style time",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "EraseEndTime": {
+            "description": "The date and time of the end of secure erase operation, ISO8601 Redfish-style time",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "title": "#HpeSecureEraseReport.v1_0_0.HpeSecureEraseReport",
+    "type": "object"
+}

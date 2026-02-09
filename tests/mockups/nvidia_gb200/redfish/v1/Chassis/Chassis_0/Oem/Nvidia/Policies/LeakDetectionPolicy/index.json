@@ -1,0 +1,36 @@
+{
+    "@odata.id": "/redfish/v1/Chassis/Chassis_0/Oem/Nvidia/Policies/LeakDetectionPolicy",
+    "@odata.type": "#NvidiaPolicy.v1_0_0.NvidiaPolicy",
+    "Id": "LeakDetectionPolicy",
+    "Name": "Policy for Leak Detection",
+    "PolicyConditionLogic": "AnyOf",
+    "PolicyConditions": [
+        {
+            "Property": "/redfish/v1/Chassis/Chassis_0/ThermalSubsystem/LeakDetection/LeakDetectors/Chassis_0_LeakDetector_0_ColdPlate/#DetectorState",
+            "PropertyStringValue": "Critical"
+        },
+        {
+            "Property": "/redfish/v1/Chassis/Chassis_0/ThermalSubsystem/LeakDetection/LeakDetectors/Chassis_0_LeakDetector_0_Manifold/#DetectorState",
+            "PropertyStringValue": "Critical"
+        },
+        {
+            "Property": "/redfish/v1/Chassis/Chassis_0/ThermalSubsystem/LeakDetection/LeakDetectors/Chassis_0_LeakDetector_1_ColdPlate/#DetectorState",
+            "PropertyStringValue": "Critical"
+        },
+        {
+            "Property": "/redfish/v1/Chassis/Chassis_0/ThermalSubsystem/LeakDetection/LeakDetectors/Chassis_0_LeakDetector_1_Manifold/#DetectorState",
+            "PropertyStringValue": "Critical"
+        }
+    ],
+    "PolicyEnabled": false,
+    "PolicyReactions": [
+        {
+            "CommonReaction": "HardPowerOff",
+            "ReactionDelaySeconds": 0.0
+        }
+    ],
+    "Status": {
+        "Health": "OK",
+        "State": "Enabled"
+    }
+}

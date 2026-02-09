@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  LenovoSecurityService   v1.0.0                                      -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoSecurityService">
+      <EntityType Name="LenovoSecurityService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </EntityType>
+      
+      <Action Name="CreateKeyPair" IsBound="true">
+        <Parameter Name="LenovoSecurityService" Type="LenovoSecurityService.v1_0_0.Actions"/>
+        <Parameter Name="Service" Type="LenovoSecurityService.v1_0_0.ServiceName">
+          <Annotation Term="OData.Description" String="Indicates for which Service this certificate applies."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to create a key pair for the specified Service."/>
+      </Action>
+        
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoSecurityService.v1_0_0">  
+      <EntityType Name="LenovoSecurityService" BaseType="LenovoSecurityService.LenovoSecurityService">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is Lenovo extended Security service properties."/>
+        <Property Name="Actions" Type="LenovoSecurityService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="The available actions for this resource."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+        <Property Name="CryptographyManagement" Type="LenovoSecurityService.v1_0_0.CryptographyManagement" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents cryptography management in security service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent cryptography management in security service."/>
+        </Property>
+        <Property Name="Configurator" Type="LenovoSecurityService.v1_0_0.SecureConfigurator" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents security configurations."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the information about security configurations."/>
+        </Property>
+        <Property Name="EncapSettings" Type="LenovoSecurityService.v1_0_0.EncapSettings" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents settings of encapsulation service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the settings of encapsulation service."/>
+        </Property>
+        <Property Name="SSLSettings" Type="LenovoSecurityService.v1_0_0.SSLSettings" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents settings of SSL."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the settings of SSL."/>
+        </Property>
+        <Property Name="SecurityCapabilities" Type="LenovoSecurityService.v1_0_0.SecurityCapability" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents the capabilities of this security service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate the capabilities of this security service."/>
+        </Property>
+      </EntityType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+      </ComplexType>
+      
+      <ComplexType Name="CryptographyManagement">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is used to represent cryptography management in security service."/>
+        <Property Name="MinTLSLevel" Type="LenovoSecurityService.v1_0_0.TLSLevel" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates the enabled minimum TLS level."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a string indicating the enabled minimum TLS level."/>
+        </Property>
+      </ComplexType>
+      <EnumType Name="TLSLevel">
+        <Member Name="TLSLevel1_1">
+        </Member>
+        <Member Name="TLSLevel1_2">
+        </Member>
+        <Member Name="TLSLevel1_3">
+        </Member>
+      </EnumType>
+     
+      <ComplexType Name="SecureConfigurator">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is uesd to represent the host name or IP address and port number of SKLM servers."/>
+        <Property Name="FWRollback" Type="LenovoSecurityService.v1_0_0.FWRollback" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents secure roll back status."/>
+        </Property>
+      </ComplexType>
+      <EnumType Name="FWRollback">
+        <Member Name="Enabled">
+        </Member>
+        <Member Name="Disabled">
+        </Member>
+      </EnumType>
+      <ComplexType Name="EncapSettings">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the settings of encapsulation mode."/>
+        <Property Name="EncapMode" Type="LenovoSecurityService.v1_0_0.EncapMode" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents whether the system is in encapsulation mode, and which encapsulation mode it is."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent whether the system is in encapsulation mode, and which encapsulation mode it is."/>
+        </Property>
+        <Property Name="WhiteList" Type="Collection(Edm.String)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents a white-list of network traffic. Each item of this array shall be an IPv4/IPv6 address."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent a white-list of network traffic. Each item of this array shall be an IPv4/IPv6 address."/>
+        </Property>
+      </ComplexType>
+      <EnumType Name="EncapMode">
+        <Member Name="NormalMode">
+        </Member>
+        <Member Name="EncapsulationLiteMode">
+        </Member>
+      </EnumType>
+      <ComplexType Name="SSLSettings">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the settings of SSL."/>
+        <Property Name="EnableHttps" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents enable or disable SSL for web http."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent enable or disable SSL for web http."/>
+        </Property>
+        <Property Name="EnableLDAPS" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents enable or disable SSL for LDAP-Client."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent enable or disable SSL for LDAP-Client."/>
+        </Property>
+        <Property Name="EnableCIMOverHttps" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Represents enable or disable SSL for CIM-XML-Http server."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent enable or disable SSL for CIM-XML-Http server."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="SecurityCapability">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the capability of this security service."/>
+        <Property Name="SupportedActions" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents all the supported actions in this service."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent all the supported actions in this service."/>
+        </Property>
+      </ComplexType>
+
+      <Action Name="CreateKeyPair" IsBound="true">
+        <Parameter Name="LenovoSecurityService" Type="LenovoSecurityService.v1_0_0.Actions"/>
+        <Parameter Name="Service" Type="LenovoSecurityService.v1_0_0.ServiceName">
+          <Annotation Term="OData.Description" String="Indicates for which Service this certificate applies."/>
+        </Parameter>
+        <Annotation Term="OData.Description" String="This action is used to create a key pair for the specified Service."/>
+      </Action>
+        
+      <EnumType Name="ServiceName">
+        <Member Name="SSH_SVR">
+          <Annotation Term="OData.Description" String="Indicates SSH server."/>
+        </Member>
+      </EnumType>
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

@@ -1,0 +1,208 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerDevice",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerDevice resource describes the properties of FRU devices.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "DeviceInstances": {
+            "description": "An array of references to the instances or ports of this device.",
+            "items": {
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "DeviceType": {
+            "description": "Device type.",
+            "enum": [
+                "GPU",
+                "PLX Controller",
+                "Expansion Riser",
+                "Smart Storage",
+                "SAS/SATA Storage Controller",
+                "IDE Storage controller",
+                "USB Storage Controller",
+                "Storage Controller",
+                "LOM/NIC",
+                "Converged Network Adapter",
+                "Fibre Channel",
+                "Direct Attached NVMe Device",
+                "Backplane PIC",
+                "Smart Storage Battery",
+                "USB",
+                "TPM",
+                "Communication Controller",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Backplane PIC": "Backplane PIC",
+                "Communication Controller": "Communication Controller",
+                "Converged Network Adapter": "Converged Network Adapter",
+                "Direct Attached NVMe Device": "Direct Attached NVMe Device",
+                "Expansion Riser": "Expansion Riser",
+                "Fibre Channel": "Fibre Channel",
+                "GPU": "GPU",
+                "IDE Storage Controller": "IDE Storage Controller",
+                "LOM/NIC": "LOM/NIC",
+                "Other PCI Device": "Other PCI Devices",
+                "PLX Controller": "PLX Controller (Bridge)",
+                "SAS/SATA Storage Controller": "SAS/SATA Storage Controller",
+                "Smart Storage": "Smart Storage",
+                "Smart Storage Battery": "Smart Storage Battery",
+                "Storage Controller": "Storage Controller",
+                "TPM": "Trusted Platform Module",
+                "USB": "Universal Serial Bus",
+                "USB Storage Controller": "USB Storage Controller",
+                "Unknown": "Unknown Device Type"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "FirmwareVersion": {
+            "additionalProperties": true,
+            "description": "The links array contains the related resource URIs.",
+            "properties": {
+                "Current": {
+                    "$ref": "Resource.json#/definitions/FWVersion"
+                },
+                "FirmwareVersions": {
+                    "items": {
+                        "additionalProperties": false,
+                        "description": "FirmwareVersions of GPU cores",
+                        "properties": {
+                            "ComponentName": {
+                                "description": "Name of GPU cores",
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            },
+                            "VersionString": {
+                                "description": "Version String of GPU cores",
+                                "type": [
+                                    "string",
+                                    "null"
+                                ]
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "type": "array"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": true,
+            "description": "The links array contains the related resource URIs.",
+            "properties": {
+                "PCISlots": {
+                    "description": "The PCI Slot associated with this device.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Location": {
+            "description": "Location of the device.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MCTPProtocolDisabled": {
+            "description": "Set to true to disable MCTP on this slot. Once disabled, can be enabled only through MCTP factory reset.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "Manufacturer": {
+            "description": "Device manufacturer.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name",
+            "description": "Product Name."
+        },
+        "PartNumber": {
+            "description": "Board part Number which is HPE PCA Assembly Number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ProductPartNumber": {
+            "description": "Product Part Number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ProductVersion": {
+            "description": "Product Version.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "Product Serial Number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerDevice.v2_1_0.HpeServerDevice",
+    "type": "object"
+}

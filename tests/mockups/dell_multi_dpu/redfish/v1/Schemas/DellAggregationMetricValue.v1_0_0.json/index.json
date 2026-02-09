@@ -1,0 +1,176 @@
+{
+    "$id": "/redfish/v1/Schemas/DellAggregationMetricValue.v1_0_0.json",
+    "$ref": "#/definitions/DellAggregationMetricValue",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellAggregationMetricValue": {
+            "additionalProperties": false,
+            "description": "DellAggregationMetricValue represents the instance value of a metric defined by an instance of DellAggregationMetricDefinition.",
+            "longDescription": "DellAggregationMetricValue represents the instance value of a metric defined by an instance of DellAggregationMetricDefinition.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "AggregationDuration": {
+                    "description": "AggregationDuration represents the time duration over which the aggregation is computed. The start of a monitoring interval, over which the aggregation function is applied, is determined by subtracting the AggregationDuration from the AggregationTimestamp.",
+                    "longDescription": "AggregationDuration represents the time duration over which the aggregation is computed. The start of a monitoring interval, over which the aggregation function is applied, is determined by subtracting the AggregationDuration from the AggregationTimestamp.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "AggregationTimeStamp": {
+                    "description": "AggregationTimeStamp identifies the time when the aggregation function was applied to determine the value of the metric instance. This value is different from the time when the instance is created. For a CIM_AggregationMetricValue instance, the AggregationTimeStamp changes whene the aggregation function is applied to calculate the value.",
+                    "format": "date-time",
+                    "longDescription": "AggregationTimeStamp identifies the time when the aggregation function was applied to determine the value of the metric instance. This value is different from the time when the instance is created. For a CIM_AggregationMetricValue instance, the AggregationTimeStamp changes whene the aggregation function is applied to calculate the value.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BreakdownDimension": {
+                    "description": "BreakdownDimension specifies one BreakdownDimension from the BreakdownDimensions array defined in the associated CIM_ BaseMetricDefinition. This is the dimension along which this set of metric values is broken down. This property value can be null.",
+                    "longDescription": "BreakdownDimension specifies one BreakdownDimension from the BreakdownDimensions array defined in the associated CIM_ BaseMetricDefinition. This is the dimension along which this set of metric values is broken down. This property value can be null.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BreakdownValue": {
+                    "description": "BreakdownValue defines a value of the BreakdownDimension property defined for this metric value instance. For example, if the BreakdownDimension is \"TransactionName\", this property can name the actual transaction to which this particular metric value applies. This property value can be null.",
+                    "longDescription": "BreakdownValue defines a value of the BreakdownDimension property defined for this metric value instance. For example, if the BreakdownDimension is \"TransactionName\", this property can name the actual transaction to which this particular metric value applies. This property value can be null.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "ElementName": {
+                    "description": "ElementName is the user-friendly name for the instance and it can be null for metric instances related to power.",
+                    "longDescription": "ElementName is the user-friendly name for the instance and it can be null for metric instances related to power.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "InstanceID": {
+                    "description": "InstanceID is a unique identifier for the instance.",
+                    "longDescription": "InstanceID is a unique identifier for the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MetricDefinitionId": {
+                    "description": "MetricDefinitionId is the key of the BaseMetricDefinition instance for the CIM_BaseMetricValue instance value.",
+                    "longDescription": "MetricDefinitionId is the key of the BaseMetricDefinition instance for the CIM_BaseMetricValue instance value.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MetricValue": {
+                    "description": "MetricValue is the value of the metric represented as a string. Its original data type is specified in CIM_BaseMetricDefinition.",
+                    "longDescription": "MetricValue is the value of the metric represented as a string. Its original data type is specified in CIM_BaseMetricDefinition.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "TimeInterval": {
+                    "description": "TimeInterval specifies, in seconds, the time interval between two readings. Note: TimeInterval will have valid integer value for metric instances created in history and will be null for other cases.",
+                    "longDescription": "TimeInterval specifies, in seconds, the time interval between two readings. Note: TimeInterval will have valid integer value for metric instances created in history and will be null for other cases.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "TimeStamp": {
+                    "description": "TimeStamp identifies the time when the value of a metric instance is computed. This value is different from the time when the instance is created. For a CIM_BaseMetricValue instance, if Volatile is set to true, the TimeStamp changes when a new measurement snapshot is taken. A management application may establish a time series of metric data by retrieving the instances of CIM_BaseMetricValue and sorting them according to their TimeStamp. Note: TimeStamp can be Null in cases where even though volatile is true the metric instance is created for historical time series data or average time series data. In such cases valid TimeStamp will not be available.",
+                    "format": "date-time",
+                    "longDescription": "TimeStamp identifies the time when the value of a metric instance is computed. This value is different from the time when the instance is created. For a CIM_BaseMetricValue instance, if Volatile is set to true, the TimeStamp changes when a new measurement snapshot is taken. A management application may establish a time series of metric data by retrieving the instances of CIM_BaseMetricValue and sorting them according to their TimeStamp. Note: TimeStamp can be Null in cases where even though volatile is true the metric instance is created for historical time series data or average time series data. In such cases valid TimeStamp will not be available.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Volatile": {
+                    "description": "When Volatile is set to True, it indicates that the value for the next point in time may use the same object and just change its properties (such as the value or timestamp). If set to False, the existing objects remain unchanged and a new object is created for the new point in time.",
+                    "longDescription": "When Volatile is set to True, it indicates that the value for the next point in time may use the same object and just change its properties (such as the value or timestamp). If set to False, the existing objects remain unchanged and a new object is created for the new point in time.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellAggregationMetricValue.v1_0_0.DellAggregationMetricValue"
+}

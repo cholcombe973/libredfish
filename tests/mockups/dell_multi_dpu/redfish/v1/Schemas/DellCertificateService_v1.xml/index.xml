@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellCertificateService  v1.0.0 -->
+<!--# This schema complements to OEM section of certificate service Resource                   -->
+<!--# Copyright 2021-2022 Dell, Inc. or its subsidiaries.All Rights Reserved.             -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/CertificateCollection_v1.xml">
+    <edmx:Include Namespace="CertificateCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Certificate_v1.xml">
+    <edmx:Include Namespace="Certificate"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificateService">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <Action Name="GetLastGeneratedCSR" IsBound="true">
+        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.OemActions"/>
+        <Annotation Term="OData.Description" String="This action returns last generated CSR."/>
+        <Annotation Term="OData.LongDescription" String="This action returns last generated CSR. The response will contain a signing request that a certificate authority (CA) will sign."/>
+        <Parameter Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
+            <Annotation Term="OData.Description" String="The link to the certificate collection where the certificate is expected to be installed after the certificate authority (CA) signs the certificate."/>
+            <Annotation Term="OData.LongDescription" String="This parameter shall contain a link to a resource collection of type CertificateCollection where the certificate is expected to be installed after the certificate authority (CA) signs the certificate."/>
+        </Parameter>
+        <ReturnType Type="DellCertificateService.v1_0_0.GetLastGeneratedCSRResponse" Nullable="false"/>
+      </Action>
+      <Action Name="GenerateCSRAndImport" IsBound="true">
+        <Parameter Name="CertificateService" Type="CertificateService.v1_0_0.OemActions"/>
+        <Annotation Term="OData.Description" String="This action generates Certificate Singing Request(CSR), signs and imports the singed certificate."/>
+        <Annotation Term="OData.LongDescription" String="This action will generate a Certificate Singing Request(CSR), sign the certificate using the uploaded Custom Signing Certificate(CSC) and will import the singed certificate."/>
+        <EntityType Name="DellCertificateService" BaseType="DellCertificateService.v1_0_0.DellCertificateService"/>
+        <Parameter Name="CommonName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The fully qualified domain name of the component to secure."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the fully qualified domain name of the component to secure, as defined by the RFC5280 'commonName' attribute."/>
+        </Parameter>
+        <Parameter Name="AlternativeNames" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Description" String="The additional host names of the component to secure."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain an array of additional host names of the component to secure, as defined by the RFC5280 'subjectAltName' attribute."/>
+        </Parameter>
+        <Parameter Name="Organization" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The name of the organization making the request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the name of the organization making the request, as defined by the RFC5280 'organizationName' attribute."/>
+        </Parameter>
+        <Parameter Name="OrganizationalUnit" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The name of the unit or division of the organization making the request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the name of the unit or division of the organization making the request, as defined by the RFC5280 'organizationalUnitName' attribute."/>
+        </Parameter>
+        <Parameter Name="City" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The city or locality of the organization making the request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the city or locality of the organization making the request, as defined by the RFC5280 'localityName' attribute."/>
+        </Parameter>
+        <Parameter Name="State" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The state, province, or region of the organization making the request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the state, province, or region of the organization making the request, as defined by the RFC5280 'stateOrProvinceName' attribute."/>
+        </Parameter>
+        <Parameter Name="Country" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The two-letter country code of the organization making the request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the two-letter ISO code for the country of the organization making the request, as defined by the RFC5280 'countryName' attribute."/>
+        </Parameter>
+        <Parameter Name="Email" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The email address of the contact within the organization making the request."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the email address of the contact within the organization making the request, as defined by the RFC2985 'emailAddress' attribute."/>
+        </Parameter>
+        <Parameter Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
+          <Annotation Term="OData.Description" String="The link to the certificate collection where the certificate is installed after the certificate authority (CA) signs the certificate."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a link to a resource collection of type CertificateCollection where the certificate is installed after the certificate authority (CA) signs the certificate."/>
+        </Parameter>
+        <Parameter Name="CustomSigningCertificate" Type="Certificate.Certificate" Nullable="false">
+          <Annotation Term="OData.Description" String="The link to the Custom Sigining Certificate(CSC) which is used to sign the certificate."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain a link the Custom Sigining Certificate(CSC) which is used to sign the certificate."/>
+        </Parameter>
+      </Action>
+	</Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificateService.v1_0_0">
+    <ComplexType Name="GetLastGeneratedCSRResponse">
+      <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+      <Annotation Term="OData.Description" String="The response body for the GetLastGeneratedCSR action."/>
+      <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetLastGeneratedCSR action."/>
+      <NavigationProperty Name="CertificateCollection" Type="CertificateCollection.CertificateCollection" Nullable="false">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="The link to the certificate collection where the certificate is expected to be installed."/>
+        <Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource collection of type CertificateCollection where the certificate is expected to be installed after the certificate authority (CA) has signed the certificate."/>
+        <Annotation Term="Redfish.Required"/>
+      </NavigationProperty>
+      <Property Name="CSRString" Type="Edm.String" Nullable="false">
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="The string for the certificate signing request."/>
+        <Annotation Term="OData.LongDescription" String="This property shall contain the Privacy Enhanced Mail (PEM)-encoded string, which contains RFC2986-specified structures, of the certificate signing request.  The private key should not be part of the string."/>
+        <Annotation Term="Redfish.Required"/>
+      </Property>
+    </ComplexType>
+  </Schema>
+  <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellCertificateService.v1_1_0">
+        <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+        <Annotation Term="OData.Description" String="This version was added for GenerateCSRAndImport action."/>
+        <Annotation Term="OData.LongDescription" String="This version was created to add GenerateCSRAndImport action."/>
+  </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

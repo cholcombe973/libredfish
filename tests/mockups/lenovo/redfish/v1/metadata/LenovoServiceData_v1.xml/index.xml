@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoServiceData  v1.0.0                                    -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoServiceData">
+      <EntityType Name="LenovoServiceData" BaseType="Resource.v1_0_0.Resource" Abstract="true">       
+      </EntityType>
+      
+      <Action Name="ExportFFDCData" IsBound="true">
+        <Parameter Name="LenovoServiceData" Type="LenovoServiceData.v1_0_0.Actions"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="If 'ExportURI,Username,Password' are all NULL, the action will directly return the content of FFDC."/>
+        <Parameter Name="DataCollectionType" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The FFDC data collection type."/>
+        </Parameter>
+        <Parameter Name="InitializationNeeded" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Description" String="Indicate whether the FFDC shall do initialization before collection."/>
+        </Parameter>
+        <Parameter Name="Username" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The username for security credential to the URI. It can be NULL if not required."/>
+        </Parameter>
+        <Parameter Name="Password" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The password for security credential to the URI. It can be NULL if not required."/>
+        </Parameter>
+        <Parameter Name="ExportURI" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Indicates the location to which FFDC shall be exported."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="ExportLatestOSFailureScreen" IsBound="true">
+        <Parameter Name="LenovoServiceData" Type="LenovoServiceData.v1_0_0.Actions"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The OS watchdog feature must be enabled to capture the OS failure screen."/>
+      </Action>
+      
+      <Action Name="ExportHealthReport" IsBound="true">
+        <Parameter Name="LenovoServiceData" Type="LenovoServiceData.v1_0_0.Actions"/>
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The action to export system health report."/>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoServiceData.v1_0_0">
+      <EntityType Name="LenovoServiceData" BaseType="LenovoServiceData.LenovoServiceData">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This schema defines a resource for user to collect service Data."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that is used to collect service Data,including FFDC and latest OS failure screen. "/>
+        <Property Name="FileTransferTimeout" Type="Edm.Decimal" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The duration of maximum time for exporting the FFDC collected data."/>
+        </Property>
+        <Property Name="DataCollectionType" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The supported collection type."/>
+        </Property>
+        <Property Name="ExportingSchemes" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The supported file transfer mode."/>
+        </Property>
+        <Property Name="IsScreenAvailable" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates whether an OS Failure Screen has been captured or not."/>
+        </Property>
+        <Property Name="Actions" Type="LenovoServiceData.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The manufacturer of the firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the manufacturer of the firmware."/>
+        </Property>
+        <Property Name="Screenshot" Type="LenovoServiceData.v1_0_0.Screenshot" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The method to do the screenshot."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the method to do the screenshot of System."/>
+        </Property>
+      </EntityType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+        <Annotation Term="OData.Description" String="The Actions object contains the available custom actions on this resource."/>
+      </ComplexType>
+      
+      <ComplexType Name="FFDCData">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is uesd to represent the action response data."/>
+        <Property Name="DownloadURI" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="Indicates a URI for downloading file"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate a URI for downloading file of FFDC data"/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="Screenshot">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="ThroughFEH" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates doing screenshot through FEH"/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall indicate whether to do screenshot through FEH"/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="CollectionType">
+        <Member Name="ProcessorDump"/>
+        <Member Name="ServiceDataFile"/>
+        <Member Name="BootPOSTDump"/>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

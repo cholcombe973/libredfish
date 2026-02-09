@@ -1,0 +1,38 @@
+{
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/CPUTempEvent",
+    "Status": {
+        "State": "Enabled"
+    },
+    "MetricReportDefinitionType": "Periodic",
+    "Wildcards": [
+        {
+            "Name": "PWild",
+            "Values": [
+                "1",
+                "2"
+            ]
+        }
+    ],
+    "Description": "A set of metrics that are collected into a metric report.",
+    "ReportTimespan": "PT10M",
+    "Metrics": [
+        {
+            "CollectionTimeScope": "Interval",
+            "MetricProperties": [
+                "/redfish/v1/Systems/1/Processors/{PWild}/ProcessorMetrics#/TemperatureCelsius"
+            ],
+            "CollectionDuration": "PT1M"
+        }
+    ],
+    "ReportActions": [
+        "RedfishEvent"
+    ],
+    "Schedule": {
+        "RecurrenceInterval": "PT10M"
+    },
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.etag": "\"61abd217400227eb209\"",
+    "Id": "CPUTempEvent",
+    "Name": "CPUTempEvent",
+    "@odata.type": "#MetricReportDefinition.v1_4_1.MetricReportDefinition"
+}

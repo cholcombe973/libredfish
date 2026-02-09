@@ -1,0 +1,483 @@
+{
+    "$id": "/redfish/v1/Schemas/DellController.json",
+    "$ref": "#/definitions/DellController",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "AlarmState": {
+            "enum": [
+                "AlarmDisabled",
+                "AlarmEnabled",
+                "AlarmNotPresent",
+                "AlarmNotSupported"
+            ],
+            "enumDescriptions": {
+                "AlarmDisabled": "Alarm disabled",
+                "AlarmEnabled": "Alarm enabled",
+                "AlarmNotPresent": "Alarm Not present",
+                "AlarmNotSupported": "Alarm Not supported"
+            },
+            "enumLongDescriptions": {
+                "AlarmDisabled": "Alarm disabled",
+                "AlarmEnabled": "Alarm enabled",
+                "AlarmNotPresent": "Alarm Not present",
+                "AlarmNotSupported": "Alarm Not supported"
+            },
+            "enumVersionAdded": {
+                "AlarmDisabled": "v1_1_0",
+                "AlarmEnabled": "v1_1_0",
+                "AlarmNotPresent": "v1_1_0",
+                "AlarmNotSupported": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "AutoConfigBehavior": {
+            "enum": [
+                "Non-RAIDDisk",
+                "NotApplicable",
+                "Off",
+                "RAID0",
+                "RAID0WriteBack",
+                "RAID0WriteThrough",
+                "SecuredNonRAIDDisk",
+                "SecuredRAID0WriteBack",
+                "SecuredRAID0WriteThrough"
+            ],
+            "enumDescriptions": {
+                "Non-RAIDDisk": "Non-RAIDDisk",
+                "NotApplicable": "NotApplicable",
+                "Off": "Off",
+                "RAID0": "RAID0",
+                "RAID0WriteBack": "RAID0WriteBack",
+                "RAID0WriteThrough": "RAID0WriteThrough",
+                "SecuredNonRAIDDisk": "SecuredNonRAIDDisk",
+                "SecuredRAID0WriteBack": "SecuredRAID0WriteBack",
+                "SecuredRAID0WriteThrough": "SecuredRAID0WriteThrough"
+            },
+            "enumLongDescriptions": {
+                "Non-RAIDDisk": "Non-RAIDDisk",
+                "NotApplicable": "NotApplicable",
+                "Off": "Off",
+                "RAID0": "RAID0",
+                "RAID0WriteBack": "RAID0WriteBack",
+                "RAID0WriteThrough": "RAID0WriteThrough",
+                "SecuredNonRAIDDisk": "SecuredNonRAIDDisk",
+                "SecuredRAID0WriteBack": "SecuredRAID0WriteBack",
+                "SecuredRAID0WriteThrough": "SecuredRAID0WriteThrough"
+            },
+            "enumVersionAdded": {
+                "Non-RAIDDisk": "v1_2_0",
+                "NotApplicable": "v1_2_0",
+                "Off": "v1_2_0",
+                "RAID0": "v1_2_0",
+                "RAID0WriteBack": "v1_4_0",
+                "RAID0WriteThrough": "v1_4_0",
+                "SecuredNonRAIDDisk": "v1_4_0",
+                "SecuredRAID0WriteBack": "v1_4_0",
+                "SecuredRAID0WriteThrough": "v1_4_0"
+            },
+            "type": "string"
+        },
+        "CachecadeCapability": {
+            "enum": [
+                "NotSupported",
+                "Supported"
+            ],
+            "enumDescriptions": {
+                "NotSupported": "Cachecade Virtual Disk not supported",
+                "Supported": "Cachecade Virtual Disk supported"
+            },
+            "enumLongDescriptions": {
+                "NotSupported": "Cachecade Virtual Disk not supported",
+                "Supported": "Cachecade Virtual Disk supported"
+            },
+            "type": "string"
+        },
+        "CurrentControllerMode": {
+            "enum": [
+                "EnhancedHBA",
+                "HBA",
+                "None",
+                "NotSupported",
+                "RAID"
+            ],
+            "enumDescriptions": {
+                "EnhancedHBA": "EnhancedHBA",
+                "HBA": "HBA",
+                "None": "None",
+                "NotSupported": "NotSupported",
+                "RAID": "RAID"
+            },
+            "enumLongDescriptions": {
+                "EnhancedHBA": "EnhancedHBA",
+                "HBA": "HBA",
+                "None": "None",
+                "NotSupported": "NotSupported",
+                "RAID": "RAID"
+            },
+            "enumVersionAdded": {
+                "EnhancedHBA": "v1_2_0",
+                "HBA": "v1_2_0",
+                "None": "v1_2_0",
+                "NotSupported": "v1_2_0",
+                "RAID": "v1_2_0"
+            },
+            "type": "string"
+        },
+        "DellController": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/DellController.v1_4_1.json#/definitions/DellController"
+                }
+            ],
+            "deletable": false,
+            "description": "An instance of DellController will have RAID Controller specific data.",
+            "insertable": false,
+            "longDescription": "An instance of DellController will have RAID Controller specific data.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Systems/{ComputerSystemId}/Storage/Oem/Dell/DellControllers/{ControllerId}",
+                "/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Oem/Dell/DellControllers/{ControllerId}"
+            ]
+        },
+        "DeviceCardSlotLength": {
+            "enum": [
+                "LongLength",
+                "Other",
+                "ShortLength",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "LongLength": "LongLength",
+                "Other": "Other",
+                "ShortLength": "ShortLength",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "LongLength": "LongLength",
+                "Other": "Other",
+                "ShortLength": "ShortLength",
+                "Unknown": "Unknown"
+            },
+            "enumVersionAdded": {
+                "LongLength": "v1_1_0",
+                "Other": "v1_1_0",
+                "ShortLength": "v1_1_0",
+                "Unknown": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "EncryptionCapability": {
+            "enum": [
+                "Capable",
+                "LocalKeyManagementAndSecureEnterpriseKeyManagerCapable",
+                "LocalKeyManagementCapable",
+                "None",
+                "NotCapable",
+                "SecureEnterpriseKeyManagerCapable"
+            ],
+            "enumDescriptions": {
+                "Capable": "Capable",
+                "LocalKeyManagementAndSecureEnterpriseKeyManagerCapable": "Local Key Management and Secure Enterprise Key Manager Capable",
+                "LocalKeyManagementCapable": "Local Key Management Capable",
+                "None": "None",
+                "NotCapable": "Not Capable",
+                "SecureEnterpriseKeyManagerCapable": "Secure Enterprise Key Manager Capable"
+            },
+            "enumLongDescriptions": {
+                "Capable": "Capable",
+                "LocalKeyManagementAndSecureEnterpriseKeyManagerCapable": "Local Key Management and Secure Enterprise Key Manager Capable",
+                "LocalKeyManagementCapable": "Local Key Management Capable",
+                "None": "None",
+                "NotCapable": "Not Capable",
+                "SecureEnterpriseKeyManagerCapable": "Secure Enterprise Key Manager Capable"
+            },
+            "enumVersionAdded": {
+                "Capable": "v1_3_0",
+                "NotCapable": "v1_3_0"
+            },
+            "type": "string"
+        },
+        "EncryptionMode": {
+            "enum": [
+                "LocalKeyManagement",
+                "None",
+                "NotApplicable",
+                "SecureEnterpriseKeyManager",
+                "SecureEnterpriseKeyManagerFailed",
+                "SecureEnterpriseKeyManagerPending",
+                "Unsupported"
+            ],
+            "enumDescriptions": {
+                "LocalKeyManagement": "Local Key Management",
+                "None": "None",
+                "NotApplicable": "Not Applicable",
+                "SecureEnterpriseKeyManager": "Secure Enterprise Key Manager",
+                "SecureEnterpriseKeyManagerFailed": "Secure Enterprise Key Manager Failed",
+                "SecureEnterpriseKeyManagerPending": "Secure Enterprise Key Manager Pending",
+                "Unsupported": "Unsupported"
+            },
+            "enumLongDescriptions": {
+                "LocalKeyManagement": "Local Key Management",
+                "None": "None",
+                "NotApplicable": "Not Applicable",
+                "SecureEnterpriseKeyManager": "Secure Enterprise Key Manager",
+                "SecureEnterpriseKeyManagerFailed": "Secure Enterprise Key Manager Failed",
+                "SecureEnterpriseKeyManagerPending": "Secure Enterprise Key Manager Pending",
+                "Unsupported": "Unsupported"
+            },
+            "enumVersionAdded": {
+                "NotApplicable": "v1_3_0",
+                "Unsupported": "v1_3_0"
+            },
+            "type": "string"
+        },
+        "PatrolReadState": {
+            "enum": [
+                "Running",
+                "Stopped",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Running": "Running",
+                "Stopped": "Stopped",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "Running": "Running",
+                "Stopped": "Stopped",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "PersistentHotspare": {
+            "enum": [
+                "Disabled",
+                "Enabled",
+                "NotApplicable"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "NotApplicable": "Not Applicable"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "NotApplicable": "Not Applicable"
+            },
+            "enumVersionAdded": {
+                "Disabled": "v1_1_0",
+                "Enabled": "v1_1_0",
+                "NotApplicable": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "RealtimeCapability": {
+            "enum": [
+                "Capable",
+                "Incapable"
+            ],
+            "enumDescriptions": {
+                "Capable": "Capable",
+                "Incapable": "Incapable"
+            },
+            "enumLongDescriptions": {
+                "Capable": "Capable",
+                "Incapable": "Incapable"
+            },
+            "enumVersionAdded": {
+                "Capable": "v1_1_0",
+                "Incapable": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "RollupStatus": {
+            "enum": [
+                "Degraded",
+                "Error",
+                "OK",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Degraded": "Degraded",
+                "Error": "Error",
+                "OK": "OK",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "Degraded": "Degraded",
+                "Error": "Error",
+                "OK": "OK",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "SecurityStatus": {
+            "enum": [
+                "Disabled",
+                "Enabled",
+                "EncryptionCapable",
+                "EncryptionNotCapable",
+                "SecurityKeyAssigned"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "EncryptionCapable": "Encryption Capable",
+                "EncryptionNotCapable": "Encryption Not Capable",
+                "SecurityKeyAssigned": "Security Key Assigned"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "EncryptionCapable": "Encryption Capable",
+                "EncryptionNotCapable": "Encryption Not Capable",
+                "SecurityKeyAssigned": "Security Key Assigned"
+            },
+            "enumVersionAdded": {
+                "Disabled": "v1_3_0",
+                "Enabled": "v1_3_0"
+            },
+            "type": "string"
+        },
+        "SharedSlotAssignmentAllowed": {
+            "enum": [
+                "Allowed",
+                "NotAllowed",
+                "NotApplicable"
+            ],
+            "enumDescriptions": {
+                "Allowed": "Allowed",
+                "NotAllowed": "Not Allowed",
+                "NotApplicable": "Not Applicable"
+            },
+            "enumLongDescriptions": {
+                "Allowed": "Allowed",
+                "NotAllowed": "Not Allowed",
+                "NotApplicable": "Not Applicable"
+            },
+            "enumVersionAdded": {
+                "Allowed": "v1_1_0",
+                "NotAllowed": "v1_1_0",
+                "NotApplicable": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SlicedVDCapability": {
+            "enum": [
+                "NotSupported",
+                "Supported"
+            ],
+            "enumDescriptions": {
+                "NotSupported": "Sliced Virtual Disk creation not supported",
+                "Supported": "Sliced Virtual Disk creation supported"
+            },
+            "enumLongDescriptions": {
+                "NotSupported": "Sliced Virtual Disk creation not supported",
+                "Supported": "Sliced Virtual Disk creation supported"
+            },
+            "type": "string"
+        },
+        "SupportControllerBootMode": {
+            "enum": [
+                "NotSupported",
+                "Supported"
+            ],
+            "enumDescriptions": {
+                "NotSupported": "Not Supported",
+                "Supported": "Supported"
+            },
+            "enumLongDescriptions": {
+                "NotSupported": "Not Supported",
+                "Supported": "Supported"
+            },
+            "enumVersionAdded": {
+                "NotSupported": "v1_1_0",
+                "Supported": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SupportEnhancedAutoForeignImport": {
+            "enum": [
+                "NotSupported",
+                "Supported"
+            ],
+            "enumDescriptions": {
+                "NotSupported": "Not Supported",
+                "Supported": "Supported"
+            },
+            "enumLongDescriptions": {
+                "NotSupported": "Not Supported",
+                "Supported": "Supported"
+            },
+            "enumVersionAdded": {
+                "NotSupported": "v1_1_0",
+                "Supported": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SupportRAID10UnevenSpans": {
+            "enum": [
+                "NotSupported",
+                "Supported"
+            ],
+            "enumDescriptions": {
+                "NotSupported": "Not supported",
+                "Supported": "Supported"
+            },
+            "enumLongDescriptions": {
+                "NotSupported": "Not supported",
+                "Supported": "Supported"
+            },
+            "enumVersionAdded": {
+                "NotSupported": "v1_1_0",
+                "Supported": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "SupportsLKMtoSEKMTransition": {
+            "enum": [
+                "No",
+                "Yes"
+            ],
+            "enumDescriptions": {
+                "No": "No",
+                "Yes": "Yes"
+            },
+            "enumLongDescriptions": {
+                "No": "No",
+                "Yes": "Yes"
+            },
+            "enumVersionAdded": {
+                "No": "v1_3_0",
+                "Yes": "v1_3_0"
+            },
+            "type": "string"
+        },
+        "T10PICapability": {
+            "enum": [
+                "NotSupported",
+                "Supported"
+            ],
+            "enumDescriptions": {
+                "NotSupported": "Not supported",
+                "Supported": "Supported"
+            },
+            "enumLongDescriptions": {
+                "NotSupported": "Not supported",
+                "Supported": "Supported"
+            },
+            "enumVersionAdded": {
+                "NotSupported": "v1_1_0",
+                "Supported": "v1_1_0"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellController.DellController"
+}

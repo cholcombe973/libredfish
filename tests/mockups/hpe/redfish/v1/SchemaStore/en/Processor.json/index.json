@@ -1,0 +1,257 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Processor",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The Processor resource describes the Processor resource.  It represents the properties of a processor attached to a System.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "InstructionSet": {
+            "description": "The instruction set of the processor",
+            "enum": [
+                "x86",
+                "x86-64",
+                "IA-64",
+                "ARM-A32",
+                "ARM-A64",
+                "MIPS32",
+                "MIPS64",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "ARM-A32": "ARM 32-bit",
+                "ARM-A64": "ARM 64-bit",
+                "IA-64": "Intel IA-64",
+                "MIPS32": "MIPS 32-bit",
+                "MIPS64": "MIPS 64-bit",
+                "OEM": "OEM-defined",
+                "x86": "x86 32-bit",
+                "x86-64": "x86 64-bit"
+            },
+            "longDescription": "This property shall contain the string which identifies the instruction set of the processor contained in this socket.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Manufacturer": {
+            "description": "The processor manufacturer",
+            "etag": true,
+            "longDescription": "This property shall contain a string which identifies the manufacturer of the processor.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "MaxSpeedMHz": {
+            "description": "The maximum clock speed of the processor",
+            "longDescription": "This property shall indicate the maximum rated clock speed of the processor in MHz.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "Model": {
+            "description": "The product model number of this device",
+            "longDescription": "This property shall indicate the model information as provided by the manufacturer of this processor.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeProcessorExt.json#",
+                    "readonly": true
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ProcessorArchitecture": {
+            "description": "The architecture of the processor",
+            "enum": [
+                "x86",
+                "IA-64",
+                "ARM",
+                "MIPS",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "ARM": "ARM",
+                "IA-64": "Intel Itanium",
+                "MIPS": "MIPS",
+                "OEM": "OEM-defined",
+                "x86": "x86 or x86-64"
+            },
+            "longDescription": "This property shall contain the string which identifies the architecture of the processor contained in this Socket.",
+            "readonly": true,
+            "type": "string"
+        },
+        "ProcessorId": {
+            "additionalProperties": false,
+            "description": "Identification information for this processor.",
+            "etag": true,
+            "longDescription": "This object shall contain identification information for this processor.",
+            "properties": {
+                "EffectiveFamily": {
+                    "description": "The effective Family for this processor",
+                    "etag": true,
+                    "longDescription": "This property shall indicate the effective Family information as provided by the manufacturer of this processor.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "EffectiveModel": {
+                    "description": "The effective Model for this processor",
+                    "etag": true,
+                    "longDescription": "This property shall indicate the effective Model information as provided by the manufacturer of this processor.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "IdentificationRegisters": {
+                    "description": "The contents of the Identification Registers (CPUID) for this processor",
+                    "etag": true,
+                    "longDescription": "This property shall include the raw CPUID instruction output as provided by the manufacturer of this processor.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MicrocodeInfo": {
+                    "description": "The Microcode Information for this processor",
+                    "etag": true,
+                    "longDescription": "This property shall indicate the Microcode Information as provided by the manufacturer of this processor.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Step": {
+                    "description": "The Step value for this processor",
+                    "etag": true,
+                    "longDescription": "This property shall indicate the Step or revision string information as provided by the manufacturer of this processor.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "VendorId": {
+                    "description": "The Vendor Identification for this processor",
+                    "etag": true,
+                    "longDescription": "This property shall indicate the Vendor Identification string information as provided by the manufacturer of this processor.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "ProcessorType": {
+            "description": "The type of processor",
+            "enum": [
+                "CPU",
+                "GPU",
+                "FPGA",
+                "DSP",
+                "Accelerator",
+                "OEM"
+            ],
+            "enumDescriptions": {
+                "Accelerator": "An Accelerator",
+                "CPU": "A Central Processing Unit",
+                "DSP": "A Digital Signal Processor",
+                "FPGA": "A Field Programmable Gate Array",
+                "GPU": "A Graphics Processing Unit",
+                "OEM": "An OEM-defined Processing Unit"
+            },
+            "longDescription": "This property shall contain the string which identifies the type of processor contained in this Socket.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Socket": {
+            "description": "The socket or location of the processor",
+            "longDescription": "This property shall contain the string which identifies the physical location or socket of the processor.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "TotalCores": {
+            "description": "The total number of cores contained in this processor",
+            "longDescription": "This property shall indicate the total count of independent processor cores contained within this processor.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "TotalThreads": {
+            "description": "The total number of execution threads supported by this processor",
+            "longDescription": "This property shall indicate the total count of independent execution threads supported by this processor.",
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "PartNumber": {
+            "description": "The processor part number.",
+            "displayname": "PartNumber",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "The processor serial number.",
+            "displayname": "SerialNumber",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "title": "#Processor.v1_7_2.Processor",
+    "type": "object"
+}

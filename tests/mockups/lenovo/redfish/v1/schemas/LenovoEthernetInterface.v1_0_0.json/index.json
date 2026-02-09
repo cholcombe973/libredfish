@@ -1,0 +1,369 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoEthernetInterface.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AddressModeItem": {
+            "enum": [
+                "IPv4",
+                "IPv4LLA",
+                "IPv6LLA"
+            ],
+            "enumDescriptions": {
+                "IPv4": "User configured IPv4 address mode.",
+                "IPv4LLA": "IPv4 link-local address mode.",
+                "IPv6LLA": "IPv6 link-local address mode."
+            },
+            "type": "string"
+        },
+        "FailoverModeItem": {
+            "enum": [
+                "None",
+                "Shared",
+                "SharedNic"
+            ],
+            "type": "string"
+        },
+        "InterfaceFailoverMode": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FailoverMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/FailoverModeItem"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The failver mode of this NIC port.",
+                    "longDescription": "The value of the property indicates the failver mode of this NIC port.",
+                    "readonly": false
+                },
+                "InterfaceSharedNicPortSupported": {
+                    "description": "All shared NIC ports supported in this interface.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/SharedNicPortItem"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "The value of the property indicates all shared NIC ports supported in this interface.",
+                    "type": "array"
+                },
+                "NicValue": {
+                    "description": "The NIC index number in this interface.",
+                    "longDescription": "The value of the property indicates the NIC index number in this interface.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "InterfaceNicMode": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "InterfaceSharedNicPortSettings": {
+                    "description": "The setting of shared NIC port for this interface.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/SharedNicPortSetting"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "The value of the property indicates the setting of shared NIC port for this interface.",
+                    "type": "array"
+                },
+                "NicMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/NicModeItem"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The NIC mode of this interface.",
+                    "longDescription": "The value of the property indicates the NIC mode of this interface.",
+                    "readonly": false
+                },
+                "NicValue": {
+                    "description": "The NIC value of this interface.",
+                    "longDescription": "The value of the property indicates the NIC mode of this interface.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "LenovoEthernetInterfaceProperties": {
+            "additionalProperties": true,
+            "description": "This is the schema definition for the LenovoEthernetInterface resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AddressMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/AddressModeItem"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Select address mode for ethernet over USB interface: IPv4, IPv4 LLA or IPv6 LLA.",
+                    "readonly": false
+                },
+                "DomainName": {
+                    "description": "The domain name of this interface.",
+                    "longDescription": "The value of the property indicates the domain name of this interface.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "IPv4AddressAssignedby": {
+                    "description": "This indicates where the IPv4 addresses are obtained from.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv4AddressOrigin"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "The value of the property indicates where the IPv4 addresses are obtained from.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "IPv4Enabled": {
+                    "description": "This indicates whether the IPv4 support is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this IPv4 support is enabled.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "IPv6AddressAssignedby": {
+                    "description": "This indicates where the IPv6 addresses are obtained from.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "http://redfish.dmtf.org/schemas/v1/IPAddresses.v1_0_0.json#/definitions/IPv6AddressOrigin"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "The value of the property indicates where the IPv6 addresses are obtained from.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "IPv6Enabled": {
+                    "description": "This indicates whether the IPv6 support is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this IPv6 support is enabled.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "InterfaceFailoverMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/InterfaceFailoverMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The failover mode in this interface.",
+                    "longDescription": "The value of the property indicates the failover mode in this interface."
+                },
+                "InterfaceNicMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/InterfaceNicMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The NIC mode in this interface.",
+                    "longDescription": "The value of the property indicates the NIC mode in this interface."
+                },
+                "NetworkSettingSync": {
+                    "description": "Network setting synchronization.",
+                    "longDescription": "The value of the property directs to use the same network settings that are used on the dedicated management network port for the shared network port if the failover mode is enabled.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "OSIPv4Address": {
+                    "description": "This is the IPv4 Address of the Ethernet Over USB.",
+                    "longDescription": "Use this field to define the IP address of the Ethernet Over USB. The default value is 169.254.95.120.",
+                    "pattern": "^(?:[0-9]{1,3}\\\\.){3}[0-9]{1,3}$",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PortForwarding": {
+                    "$ref": "/redfish/v1/metadata/LenovoPortForwarding.json#/definitions/LenovoPortForwarding",
+                    "description": "A reference to the port forwarding property for this ethernet over usb interface.",
+                    "longDescription": "Display and configure ethernet to ethernet over usb port mapping, Allows user to map an external Ethernet port number to a different port number for Ethernet over USB.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "NicModeItem": {
+            "enum": [
+                "Dedicated",
+                "Shared",
+                "SharedNic"
+            ],
+            "type": "string"
+        },
+        "SharedNicPortItem": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ID": {
+                    "description": "The ID of this shared NIC.",
+                    "longDescription": "The value of the property indicates the ID of this shared NIC.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MaxPorts": {
+                    "description": "The max support ports in this shared NIC.",
+                    "longDescription": "The value of the property indicates the max support ports in this shared NIC.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "SharedNicPortSetting": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ID": {
+                    "description": "The ID of this shared NIC port.",
+                    "longDescription": "The value of the property indicates the ID of this shared NIC port.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Port": {
+                    "description": "The shared NIC port number.",
+                    "longDescription": "The value of the property indicates the shared NIC port number.",
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoEthernetInterface.v1_0_0"
+}

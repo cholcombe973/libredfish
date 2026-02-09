@@ -1,0 +1,143 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoWatchdog.v1_0_0.json",
+    "$ref": "#/definitions/LenovoWatchdog",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "LenovoWatchdog": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the watch dog resource. It represents the properties of a watch dog of a System.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "State": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/WatchdogState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The watch dog state.",
+                    "readonly": true
+                },
+                "TimeoutIntervalInSec": {
+                    "description": "The watchdog timeout interval. The time unit of timeout interval for OS Boot Process watchdog is second, for OS watchdog is second, for BIOS Boot Process watchdog is second, and for IPMI watchdog is second * 0.1. The valid values for OS watchdog timeout interval are 0/180/210/240/600 seconds. The valid values for OS Boot Process watchdog timeout interval are 0/30/60/90/150/180/210/240/270/300/450/600/900/1200/1800/3600/7200 seconds.",
+                    "readonly": false,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "TimerExpired": {
+                    "description": "It represents watchdog timer is expired.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "TimerValueInSec": {
+                    "description": "The watch dog timer value.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "Type": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/WatchdogType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "WatchdogState": {
+            "enum": [
+                "Enabled",
+                "Disabled",
+                "EnabledButOffline"
+            ],
+            "type": "string"
+        },
+        "WatchdogType": {
+            "enum": [
+                "OSBootProcess",
+                "OS",
+                "BIOSBootProcess",
+                "IPMI"
+            ],
+            "enumDescriptions": {
+                "BIOSBootProcess": "BIOS Boot Process watchdog",
+                "IPMI": "IPMI watchdog",
+                "OS": "OS watchdog",
+                "OSBootProcess": "OS Boot Process watchdog"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoWatchdog.v1_0_0.LenovoWatchdog"
+}

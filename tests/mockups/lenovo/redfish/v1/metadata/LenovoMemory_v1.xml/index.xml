@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoMemory  v1.0.0                                         -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoMemory">
+      <ComplexType Name="LenovoMemory" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoMemory resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoMemory.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <ComplexType Name="LenovoMemoryProperties" BaseType="LenovoMemory.LenovoMemory">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoMemory resource."/>
+        
+        <Property Name="FruPartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The FRU part number of this memory."/>
+        </Property>
+        <Property Name="PredictedMediaLifeLeftPercent" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Percentage for remaining life of the memory. Only available for persistent memory."/>
+        </Property>
+        <Property Name="SecurityStateString" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The security state of the memory. Only available for persistent memory."/>
+        </Property>
+        <Property Name="HealthStatusString" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Health status of the memory. Only available for persistent memory."/>
+        </Property>
+        <Property Name="MPFA" Type="LenovoMemory.v1_0_0.MPFA" Nullable="false">
+          <Annotation Term="OData.Description" String="The MPFA data of this memory. Only available when MPFA function is enabled."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="MPFA">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+
+        <Property Name="MPFA_HealthStatus" Type="LenovoMemory.v1_0_0.MPFA_HealthStatus" Nullable="false">
+          <Annotation Term="OData.Description" String="The MPFA health status of this memory."/>
+        </Property>
+
+        <Property Name="MPFA_SevereFaults" Type="LenovoMemory.v1_0_0.MPFA_SevereFaults">
+          <Annotation Term="OData.Description" String="The most 5 MPFA severe faults of this memory in history."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="MPFA_HealthStatus">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+
+        <Property Name="Major" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The Major MPFA Health status of the memory."/>
+        </Property>
+        <Property Name="Minor" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The minor(sub) MPFA Health status of the memory."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="MPFA_SevereFaults">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+
+        <Property Name="FaultType" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The type of this memory fault."/>
+        </Property>
+        <Property Name="ErrorCnt" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The error count of this memory fault."/>
+        </Property>
+        <Property Name="Timestamp" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The timestamp of this memory fault."/>
+        </Property>
+        <Property Name="Location" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The location of this memory fault."/>
+        </Property>
+      </ComplexType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

@@ -1,0 +1,74 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/AMIManagerBoot.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AMIManagerBoot": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the AMIManagerBoot.",
+            "longDescription": "This schemas defines the properties which is used in the Systems.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ManagerBootConfiguration": {
+                    "$ref": "#/definitions/ManagerBootConfiguration",
+                    "description": "Indicates the properties related to ManagerBoot",
+                    "longDescription": "Indicates the properties related to ManagerBoot",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "ManagerBootConfiguration": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ManagerBootMode": {
+                    "$ref": "#/definitions/ManagerBootMode",
+                    "description": "This property shall specify the enum supported by ManagerBootMode.",
+                    "longDescription": "This property shall specify the enum supported by ManagerBootMode.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "ManagerBootMode": {
+            "enum": [
+                "SoftReset",
+                "ResetTimeout"
+            ],
+            "enumDescriptions": {
+                "ResetTimeout": "ResetTimeout support is Boot Option",
+                "SoftReset": "Added SoftReset in Boot Option"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMIManagerBoot.v1_0_0"
+}

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  NmThrottlingStatus v1.0.0                                                        -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmThrottlingStatus">
+            <EntityType Name="ThrottlingStatus" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+                <Annotation Term="OData.Description" String="The Throttling Status resource provides information about any power capping enforced by Node Manager on the system."/>
+                <Annotation Term="OData.LongDescription" String="The Throttling Status resource provides information about any power capping enforced by Node Manager on the system."/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/NodeManager/ThrottlingStatus</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmThrottlingStatus.v1_0_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+            <Annotation Term="Redfish.Release" String="1.0"/>
+            <EntityType Name="ThrottlingStatus" BaseType="NmThrottlingStatus.ThrottlingStatus">
+                <Property Name="ThrottlingEvents" Type="Collection(NmThrottlingStatus.v1_0_0.ThrottlingEvent)">
+                    <Annotation Term="OData.Description" String="An array of any power capping occurrences enforced by Node Manager."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain an array of any power capping occurrences enforced by Node Manager."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="ThrottlingEvent">
+                <NavigationProperty Name="Policy" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Copy (JSON representation) of the Policy that enforced throttling."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a copy (JSON representation) of the Policy that enforced throttling."/>
+                </NavigationProperty>
+                <Property Name="StartTimestamp" Type="Edm.DateTimeOffset" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Timestamp indicating when this ThrottlingEvent started. Format shall follow EDM DateTimeOffset schema."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a timestamp indicating when this ThrottlingEvent started. Format shall follow EDM DateTimeOffset schema."/>
+                </Property>
+                <Property Name="ThrottlingDuration" Type="Edm.Duration" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Approximate duration of the throttling."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain an approximate duration of the throttling of this ThrottlingEvent."/>
+                </Property>
+                <Property Name="ThrottlingSource" Type="NmThrottlingStatus.v1_0_0.ThrottlingSource" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Source of the throttling."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain information about the Node Manager domain or mechanism that enforced the power capping."/>
+                </Property>
+                <Property Name="ThrottlingReason" Type="NmThrottlingStatus.v1_0_0.ThrottlingReason" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Reason of the throttling."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain information on the reason why the ThrottlingSource enforced the throttling."/>
+                </Property>
+                <Property Name="ThrottlingMethod" Type="NmThrottlingStatus.v1_0_0.ThrottlingMethod" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Logs method used to throttle the system in this event."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain information on how the ThrottlingSource enforced the throttling in system."/>
+                </Property>
+                <Property Name="ThrottlingInProgress" Type="Edm.Boolean" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates that event is still in progress. ThrottlingDuration is expeted to be updated."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain information on whether or not this ThrottlingEvent is still in progress."/>
+                </Property>
+            </ComplexType>
+            <EnumType Name="ThrottlingSource">
+                <Member Name="ACTotalPlatformDomain">
+                    <Annotation Term="OData.Description" String="Wall (AC) power consumption of entire node, including expansion cards, drives, etc."/>
+                </Member>
+                <Member Name="CPUSubsystem">
+                    <Annotation Term="OData.Description" String="All host CPUs populated in the node. Includes all devices embedded in CPU package."/>
+                </Member>
+                <Member Name="MemorySubsystem">
+                    <Annotation Term="OData.Description" String="All DIMM modules present in the node."/>
+                </Member>
+                <Member Name="HWProtection">
+                    <Annotation Term="OData.Description" String="Node power envelope limitations defined by power delivery constraints."/>
+                </Member>
+                <Member Name="PCISubsystem">
+                    <Annotation Term="OData.Description" String="PCIe-attached expansion cards (accelerators, graphic cards, etc.)."/>
+                </Member>
+                <Member Name="DCTotalPlatformDomain">
+                    <Annotation Term="OData.Description" String="DC power consumption of an entire node."/>
+                </Member>
+                <Member Name="SmaRTCLST">
+                    <Annotation Term="OData.Description" String="Node Manager SmartCLST hardware protection mechanism."/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ThrottlingReason">
+                <Member Name="AlwaysOn">
+                    <Annotation Term="OData.Description" String="Node Manager Always On policy enforced throttling on the system."/>
+                </Member>
+                <Member Name="InletAirTemperature">
+                    <Annotation Term="OData.Description" String="Policy throttled system due to exceeding defined threshold for inlet air temperature."/>
+                </Member>
+                <Member Name="MissingReadingsTimeout">
+                    <Annotation Term="OData.Description" String="Policy throttled system because defined time has elapsed since obtaining a valid reading of Controlled Parameter in a domain."/>
+                </Member>
+                <Member Name="TimeAfterHostReset">
+                    <Annotation Term="OData.Description" String="Policy was activated because a defined period of time after host reset has elapsed."/>
+                </Member>
+                <Member Name="GPIO">
+                    <Annotation Term="OData.Description" String="Policy was activated due to assertion of specified GPIO pin."/>
+                </Member>
+                <Member Name="CPUUtilization">
+                    <Annotation Term="OData.Description" String="Policy throttled the system because average CPU utilization dropped below specified threshold."/>
+                </Member>
+                <Member Name="Host Reset">
+                    <Annotation Term="OData.Description" String="Policy was activated due to host reset."/>
+                </Member>
+                <Member Name="OCWarning">
+                    <Annotation Term="OData.Description" String="One of the PSUs reported output current exceeds its capability."/>
+                </Member>
+                <Member Name="OTWarning">
+                    <Annotation Term="OData.Description" String="One of the PSUs reported exceeded max hot spot temperature."/>
+                </Member>
+                <Member Name="UVFault">
+                    <Annotation Term="OData.Description" String="One of the PSUs reported that AC Voltage dropped below fault limit."/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ThrottlingMethod">
+                <Member Name="PowerLimit">
+                    <Annotation Term="OData.Description" String="Policy used power limits in systems's hardware to throttle the system" />
+                </Member>
+                <Member Name="ACPIPstate">
+                    <Annotation Term="OData.Description" String="Policy used ACPI P-state setting to throttle the system." />
+                </Member>
+                <Member Name="ACPThreads">
+                    <Annotation Term="OData.Description" String="Policy requested the host's operating system to de-allocate CPU threads." />
+                </Member>
+                <Member Name="TurboRatioLimit">
+                    <Annotation Term="OData.Description" String="Policy created a limit for available Turbo frequencies." />
+                </Member>
+                <Member Name="PROCHOT">
+                    <Annotation Term="OData.Description" String="Policy triggered PROCHOT# signal to throttle the system." />
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NmThrottlingStatus.v1_0_1">
+            <Annotation Term="Redfish.OwningEntity" String="AMI" />
+            <EntityType Name="ThrottlingStatus" BaseType="NmThrottlingStatus.v1_0_0.ThrottlingStatus"/>
+            <Property Name="ThrottlingSource" Type="NmThrottlingStatus.v1_0_1.ThrottlingSource" Nullable="false">
+                <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                <Annotation Term="OData.Description" String="Source of the throttling."/>
+                <Annotation Term="OData.LongDescription" String="This property shall contain information about the Node Manager domain or mechanism that enforced the power capping."/>
+            </Property>
+            <EnumType Name="ThrottlingSource">
+                <Member Name="ACTotalPlatformDomain">
+                    <Annotation Term="OData.Description" String="Wall (AC) power consumption of entire node, including expansion cards, drives, etc."/>
+                </Member>
+                <Member Name="CPUSubsystem">
+                    <Annotation Term="OData.Description" String="All host CPUs populated in the node. Includes all devices embedded in CPU package."/>
+                </Member>
+                <Member Name="MemorySubsystem">
+                    <Annotation Term="OData.Description" String="All DIMM modules present in the node."/>
+                </Member>
+                <Member Name="HWProtection">
+                    <Annotation Term="OData.Description" String="Node power envelope limitations defined by power delivery constraints."/>
+                </Member>
+                <Member Name="PCISubsystem">
+                    <Annotation Term="OData.Description" String="PCIe-attached expansion cards (accelerators, graphic cards, etc.)."/>
+                </Member>
+                <Member Name="DCTotalPlatformDomain">
+                    <Annotation Term="OData.Description" String="DC power consumption of an entire node."/>
+                </Member>
+                <Member Name="Performance">
+                    <Annotation Term="OData.Description" String="Performance (frequency) related constraints."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added" />
+                                <PropertyValue Property="Version" String="v1_0_1" />
+                                <PropertyValue Property="Description" String="This value has been added as a fix in NmThrottlingStatus v1.0.1."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SmaRTCLST">
+                    <Annotation Term="OData.Description" String="Node Manager SmartCLST hardware protection mechanism."/>
+                </Member>
+            </EnumType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

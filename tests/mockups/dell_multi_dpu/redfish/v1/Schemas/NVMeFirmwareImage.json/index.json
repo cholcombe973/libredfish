@@ -1,0 +1,43 @@
+{
+    "$id": "/redfish/v1/Schemas/NVMeFirmwareImage.json",
+    "$ref": "#/definitions/NVMeFirmwareImage",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2023 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "NVMeDeviceType": {
+            "enum": [
+                "Drive",
+                "JBOF",
+                "FabricAttachArray"
+            ],
+            "enumDescriptions": {
+                "Drive": "Specifies an  device type of Drive, indicating a NVMe device that presents as an NVMe SSD device.",
+                "FabricAttachArray": "Specifies an  NVMe device type of FabricAttachArray, indicating a NVMe device that presents an NVMe front-end that abstracts the back end storage, typically with multiple options for availability and protection.",
+                "JBOF": "Specifies an  device type of JBOF, indicating a NVMe device that presents as an NVMe smart enclosure for NVMe devices, typically NVMe Drives."
+            },
+            "enumLongDescriptions": {
+                "Drive": "Specifies an  device type of Drive, indicating a NVMe device that presents as an NVMe SSD device.",
+                "FabricAttachArray": "Specifies an  NVMe device type of FabricAttachArray, indicating a NVMe device that presents an NVMe front-end that abstracts the back end storage, typically with multiple options for availability and protection.",
+                "JBOF": "Specifies an  device type of JBOF, indicating a NVMe device that presents as an NVMe smart enclosure for NVMe devices, typically NVMe Drives."
+            },
+            "type": "string"
+        },
+        "NVMeFirmwareImage": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/NVMeFirmwareImage.v1_1_0.json#/definitions/NVMeFirmwareImage"
+                }
+            ],
+            "deletable": true,
+            "description": "This is the schema definition for NVMe Domain firmware image properties.",
+            "insertable": false,
+            "longDescription": "This resource shall be used to represent a the NVMe Domain firmware image properties.",
+            "updatable": false
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#NVMeFirmwareImage.NVMeFirmwareImage"
+}

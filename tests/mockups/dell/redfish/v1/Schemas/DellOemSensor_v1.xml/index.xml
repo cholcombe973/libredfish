@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellOemSensor  v1.0.0 -->
+<!--#  -->
+<!--# Copyright 2020-2021 Dell, Inc. or its subsidiaries.All Rights Reserved.             -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Alias="Redfish" Namespace="RedfishExtensions.v1_0_0"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/DellNumericSensor_v1.xml">
+        <edmx:Include Namespace="DellNumericSensor"/>
+    </edmx:Reference>
+	<edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOemSensor">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <ComplexType Name="DellOemSensor" Abstract="true">
+	    <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the complex property for the additional OEM properties to complement DMTF Sensor Schema."/>
+        <Annotation Term="OData.LongDescription" String="This is the complex property for the additional OEM properties to complement DMTF Sensor Schema. This shall be used to represent an OEM Sensor for a Redfish implementation."/>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellOemSensor.v1_0_0">
+		<Annotation String="Dell" Term="Redfish.OwningEntity"/>
+
+	<ComplexType Name="DellOemSensor" BaseType="DellOemSensor.DellOemSensor">
+		<Property Name="DeviceID" Type="Edm.String">
+			<Annotation EnumMember="OData.Permission/Read" Term="OData.Permissions"/>
+			<Annotation String="An address or other identifying information to uniquely name the LogicalDevice." Term="OData.Description"/>
+			<Annotation String="An address or other identifying information to uniquely name the LogicalDevice." Term="OData.LongDescription"/>
+		</Property>
+		<Property Name="PossibleStates" Type="Collection(Edm.String)">
+			<Annotation EnumMember="OData.Permission/Read" Term="OData.Permissions"/>
+			<Annotation String="PossibleStates enumerates the string outputs of the Sensor. For example, a &quot;Switch&quot; Sensor may output the states &quot;On&quot;, or &quot;Off&quot;. Another implementation of the Switch may output the states &quot;Open&quot;, and &quot;Close&quot;. Another example is a NumericSensor that supports thresholds. This sensor can report states such as &quot;Normal&quot;, &quot;Upper Fatal&quot;, &quot;Lower Non-Critical&quot;, and so on. A NumericSensor that does not publish readings and thresholds, but stores this data internally, can still report its states." Term="OData.Description"/>
+			<Annotation String="PossibleStates enumerates the string outputs of the Sensor. For example, a &quot;Switch&quot; Sensor may output the states &quot;On&quot;, or &quot;Off&quot;. Another implementation of the Switch may output the states &quot;Open&quot;, and &quot;Close&quot;. Another example is a NumericSensor that supports thresholds. This sensor can report states such as &quot;Normal&quot;, &quot;Upper Fatal&quot;, &quot;Lower Non-Critical&quot;, and so on. A NumericSensor that does not publish readings and thresholds, but stores this data internally, can still report its states." Term="OData.LongDescription"/>
+		</Property>
+		<Property Name="RequestedState" Type="DellNumericSensor.RequestedState">
+			<Annotation EnumMember="OData.Permission/Read" Term="OData.Permissions"/>
+			<Annotation String="RequestedState is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested." Term="OData.Description"/>
+			<Annotation String="RequestedState is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested." Term="OData.LongDescription"/>
+		</Property>
+		<Property Name="CurrentState" Type="Edm.String">
+			<Annotation EnumMember="OData.Permission/Read" Term="OData.Permissions"/>
+			<Annotation String="The current state indicated by the Sensor. This value is always one of the PossibleStates." Term="OData.Description"/>
+			<Annotation String="The current state indicated by the Sensor. This value is always one of the PossibleStates." Term="OData.LongDescription"/>
+		</Property>
+	</ComplexType>    
+	</Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>

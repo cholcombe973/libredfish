@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellFRUAssembly v1_1_0-->
+<!--# -->
+<!--# Copyright 2021-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.1.0.0" Alias="Validation"/>
+    </edmx:Reference>
+
+    <edmx:DataServices>
+
+        <Schema Namespace="DellFRUAssembly" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellFRUAssembly" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="FRU Assembly data"/>
+                <Annotation Term="OData.LongDescription" String="This property shall represent the FRU Assembly data"/>
+            </ComplexType>
+            <Action Name="UpdateOemFRUData" IsBound="true">
+                <Annotation Term="OData.Description" String="This action is used to write oem fru data"/>
+                <Annotation Term="OData.LongDescription" String="This action shall perform the write of oem fru data"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Assembly" Type="Assembly.v1_0_0.OemActions"/>
+                <Parameter Name="Area" Type="DellFRUAssembly.Area" Nullable="false">
+                    <Annotation Term="OData.Description" String="Represents FRU Field"/>
+                    <Annotation Term="OData.LongDescription" String="This parameter shall represent FRU Area Field"/>
+                </Parameter>
+                <Parameter Name="Index" Type="Edm.Int64">
+                    <Annotation Term="OData.Description" String="Represents index value for Custom Types"/>
+                    <Annotation Term="OData.LongDescription" String="This parameter shall represent index value for Custom Types"/>
+                    <Annotation Term="Validation.Minimum" Int="0"/>
+                    <Annotation Term="Validation.Maximum" Int="15"/>
+                </Parameter>
+                <Parameter Name="Data" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Description" String="Represents the FRU data"/>
+                    <Annotation Term="OData.LongDescription" String="This parameter represents the FRU data"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="Area">
+                    <Member Name="BoardManufacturer">
+                        <Annotation Term="OData.Description" String="Represents board manufacturer"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="BoardProductName">
+                        <Annotation Term="OData.Description" String="Represents board product name"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="BoardSerialNumber">
+                        <Annotation Term="OData.Description" String="Represents board serial number"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="BoardPartNumber">
+                        <Annotation Term="OData.Description" String="Represents board part number"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="BoardCustomData">
+                        <Annotation Term="OData.Description" String="Represents the board custom data"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="Vendor">
+                        <Annotation Term="OData.Description" String="Represents the product manufacturer"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="Model">
+                        <Annotation Term="OData.Description" String="Represents the product name"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="Version">
+                        <Annotation Term="OData.Description" String="Represents the product version"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="ProductSerialNumber">
+                        <Annotation Term="OData.Description" String="Represents the product serial number"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="SKU">
+                        <Annotation Term="OData.Description" String="Represents the product asset tag"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="ProductCustomData">
+                        <Annotation Term="OData.Description" String="Represents the product custom data"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="ChassisPartNumber">
+                        <Annotation Term="OData.Description" String="Represents the chassis part number"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="ChassisSerialNumber">
+                        <Annotation Term="OData.Description" String="Represents the chassis serial number"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+                    <Member Name="ChassisCustomData">
+                        <Annotation Term="OData.Description" String="Represents the chassis custom data"/>
+                        <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                        </Annotation>
+                    </Member>
+            </EnumType>
+        </Schema>
+
+        <Schema Namespace="DellFRUAssembly.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellFRUAssembly" BaseType="DellFRUAssembly.DellFRUAssembly">
+                <Property Name="DellFRUAssembly" Type="DellFRUAssembly.v1_0_0.DellFRUAssemblyInfo">
+                    <Annotation Term="OData.Description" String="Represents the link to FRU Assembly Information"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the link to FRU Assembly Information"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="DellFRUAssemblyInfo">
+                <Property Name="DeviceFQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents Fully Qualified Device Description (FQDD)"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent Fully Qualified Device Description (FQDD)"/>
+                </Property>
+                 <Property Name="ChassisType" Type="DellFRUAssembly.v1_0_0.ChassisType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents chassis type"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent chassis type"/>
+                </Property>
+                <Property Name="ChassisPartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents chassis part number"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent chassis part number"/>
+                </Property>
+                <Property Name="ChassisSerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents chassis serial number"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent chassis serial number"/>
+                </Property>
+                <Property Name="BoardDateOfManufacture" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents date of board manufacture"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent Date of board manufacture"/>
+                </Property>
+                <Property Name="BoardManufacturer" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents board manufacturer"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent manufacturer/vendor of the board"/>
+                </Property>
+                <Property Name="BoardPartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents board part number"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the board part number"/>
+                </Property>
+                <Property Name="BoardProductName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents board product name"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the board product name"/>
+                </Property>
+                <Property Name="BoardSerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents board serial number"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the serial number of the board"/>
+                </Property>
+                <Property Name="ProductSerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents the product serial number"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the serial number of the product"/>
+                </Property>
+                <Property Name="ChassisCustomData" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents the chassis custom data"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the array of chassis custom data"/>
+                </Property>
+                <Property Name="BoardCustomData" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents the board custom data"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the array of board custom data"/>
+                </Property>
+                <Property Name="ProductCustomData" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Represents the product custom data"/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the array of product custom data"/>
+                </Property>
+            </ComplexType>
+
+            <EnumType Name="ChassisType">
+                <Member Name="Other">
+                    <Annotation Term="OData.Description" String="Represents other chassis type"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation Term="OData.Description" String="Represents  unknown chassis type"/>
+                </Member>
+                <Member Name="MiniTower">
+                    <Annotation Term="OData.Description" String="Represents mini tower chassis type"/>
+                </Member>
+                <Member Name="Tower">
+                    <Annotation Term="OData.Description" String="Represents tower chassis type"/>
+                </Member>
+                <Member Name="AllInOne">
+                    <Annotation Term="OData.Description" String="Represents all in one chassis type"/>
+                </Member>
+                <Member Name="MainServerChassis">
+                    <Annotation Term="OData.Description" String="Represents main server chassis type"/>
+                </Member>
+                <Member Name="ExpansionChassis">
+                    <Annotation Term="OData.Description" String="Represents expansion chassis type"/>
+                </Member>
+                <Member Name="SubChassis">
+                    <Annotation Term="OData.Description" String="Represents sub chassis type"/>
+                </Member>
+                <Member Name="BusExpansionChassis">
+                    <Annotation Term="OData.Description" String="Represents bus expansion chassis type"/>
+                </Member>
+                <Member Name="PeripheralChassis">
+                    <Annotation Term="OData.Description" String="Represents peripheral chassis type"/>
+                </Member>
+                <Member Name="RAIDChassis">
+                    <Annotation Term="OData.Description" String="Represents raid chassis type"/>
+                </Member>
+                <Member Name="RackMountChassis">
+                    <Annotation Term="OData.Description" String="Represents rack mount chassis type"/>
+                </Member>
+            </EnumType>
+
+        </Schema>
+
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellFRUAssembly.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was added for UpdateOemFRUData action"/>
+	        <Annotation Term="OData.LongDescription" String="This version was created to add UpdateOemFRUData action"/>
+            <ComplexType Name="DellFRUAssembly" BaseType="DellFRUAssembly.v1_0_0.DellFRUAssembly"/>
+	    </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

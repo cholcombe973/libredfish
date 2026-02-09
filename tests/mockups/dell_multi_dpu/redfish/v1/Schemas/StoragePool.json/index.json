@@ -1,0 +1,63 @@
+{
+    "$id": "/redfish/v1/Schemas/StoragePool.json",
+    "$ref": "#/definitions/StoragePool",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2016-2023 Storage Networking Industry Association (SNIA), USA. All rights reserved. For the full SNIA copyright policy, see http://www.snia.org/about/corporate_info/copyright",
+    "definitions": {
+        "NVMePoolType": {
+            "enum": [
+                "EnduranceGroup",
+                "NVMSet"
+            ],
+            "enumDescriptions": {
+                "EnduranceGroup": "This pool is of type EnduranceGroup, used by NVMe devices.",
+                "NVMSet": "This pool is of type NVMSet, used by NVMe devices."
+            },
+            "enumLongDescriptions": {
+                "EnduranceGroup": "This type shall be used to specify a pool of type EnduranceGroup, used by NVMe devices.",
+                "NVMSet": "This type shall be used to specify a pool of type NVMSet, used by NVMe devices."
+            },
+            "type": "string",
+            "versionAdded": "v1_6_0"
+        },
+        "PoolType": {
+            "enum": [
+                "Block",
+                "File",
+                "Object",
+                "Pool"
+            ],
+            "enumDescriptions": {
+                "Block": "This pool is of type block.",
+                "File": "This pool is of type file.",
+                "Object": "This pool is of type object.",
+                "Pool": "This pool is of type pool, indicating a hierarchy."
+            },
+            "enumLongDescriptions": {
+                "Block": "This type shall be used to specify a pool of type block. This is used when the pool serves block storage.",
+                "File": "This type shall be used to specify a pool of type file. This setting is used when the pool serves file storage.",
+                "Object": "This type shall be used to specify a pool of type object.",
+                "Pool": "This type shall be used to specify a pool of type pool. This setting is used to indicate a 'pool of pools' hierarchy."
+            },
+            "type": "string",
+            "versionAdded": "v1_6_0"
+        },
+        "StoragePool": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/StoragePool.v1_8_0.json#/definitions/StoragePool"
+                }
+            ],
+            "deletable": true,
+            "description": "A container of data storage.",
+            "insertable": false,
+            "longDescription": "A container of data storage capable of providing capacity conforming to one of its supported classes of service. The storage pool does not support IO to its data storage.",
+            "updatable": true
+        }
+    },
+    "owningEntity": "SNIA",
+    "title": "#StoragePool.StoragePool"
+}

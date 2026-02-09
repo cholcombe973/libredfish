@@ -1,0 +1,43 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/AMISMTP.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AMISMTP": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the AMISMTP.",
+            "longDescription": "This resource shall be used to represent Oem.Ami properties in CertificateLocation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "PrimarySMTP": {
+                    "$ref": "/redfish/v1/JsonSchemas/AMISMTPCertificate.v1_0_0.json#/definitions/AMISMTPCertificate",
+                    "description": "Indicates the properties related to Certificate SMTP",
+                    "longDescription": "Indicates the properties related to Primary SMTP Certificate",
+                    "readonly": true
+                },
+                "SecondarySMTP": {
+                    "$ref": "/redfish/v1/JsonSchemas/AMISMTPCertificate.v1_0_0.json#/definitions/AMISMTPCertificate",
+                    "description": "Indicates the properties related to Certificate SMTP",
+                    "longDescription": "Indicates the properties related to Secondary SMTP Certificate",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMISMTP.v1_0_0"
+}

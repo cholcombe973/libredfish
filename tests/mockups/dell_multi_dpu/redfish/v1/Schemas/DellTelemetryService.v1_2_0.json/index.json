@@ -1,0 +1,191 @@
+{
+    "$id": "/redfish/v1/Schemas/DellTelemetryService.v1_2_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellTelemetryService.SubmitMetricValue": {
+                    "$ref": "#/definitions/SubmitMetricValue"
+                }
+            },
+            "type": "object"
+        },
+        "DellTelemetryService": {
+            "additionalProperties": false,
+            "description": "This is telemetryservice oem property schemas.",
+            "longDescription": "This is telemetryservice oem property schemas",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "D4D": {
+                    "$ref": "/redfish/v1/Schemas/DellD4D.json#/definitions/DellD4D",
+                    "description": "The link to the d4d service.",
+                    "longDescription": "This property shall contain a link to the d4d service.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "FQDDList": {
+                    "description": "The FQDD list available for Telemetry Configuration (MetricReportDefinition).",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The value of this property is a DELL defined FQDDList.",
+                    "type": "array"
+                },
+                "SourceList": {
+                    "description": "The SourceList available for Telemetry Configuration (MetricReportDefinition).",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The value of this property is an available list of sources that can be retrieved for Telemetry.",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "MetricValue": {
+            "additionalProperties": false,
+            "description": "This is Metric Value.",
+            "longDescription": "This is Metric Value",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Timestamp": {
+                    "description": "The time in epoch when the metric is obtained. A management application can establish a time series of metric data by retrieving the instances of metric value and sorting them according to their timestamp.",
+                    "longDescription": "The value shall time when the metric value was obtained in epoch time. Note that this value might be different from the time when this instance is created.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                },
+                "Value": {
+                    "description": "The metric value, as a string.",
+                    "longDescription": "This property shall contain the metric value, as a string.",
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0"
+                }
+            },
+            "type": "object"
+        },
+        "SubmitMetricValue": {
+            "additionalProperties": false,
+            "description": "This is telemetryservice Action oem property schemas",
+            "longDescription": "This is telemetryservice Action oem property schemas",
+            "parameters": {
+                "ContextId": {
+                    "description": "The Context Id is a user friendly way to read the metric source.",
+                    "longDescription": "The value of this property is a Context Id of the metric source.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "Label": {
+                    "description": "The Label is a user friendly representation of the metric.",
+                    "longDescription": "The value of this property is a friendly representation of the device description associated with the Metric Id.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "MetricId": {
+                    "description": "The Report metric ID.",
+                    "longDescription": "The Report's metric ID.",
+                    "readonly": true,
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "MetricValues": {
+                    "description": "This is Metric Values of the complex type .",
+                    "items": {
+                        "$ref": "/redfish/v1/Schemas/DellTelemetryService.json#/definitions/MetricValue"
+                    },
+                    "longDescription": "This is Metric Values of the complex type.",
+                    "requiredParameter": true,
+                    "type": "array"
+                },
+                "Source": {
+                    "description": "This field shows the data source name that the metric value was obtained from.",
+                    "longDescription": "The value of this property shows the data source name that the metric value was obtained from.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellTelemetryService.v1_2_0"
+}

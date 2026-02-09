@@ -1,0 +1,133 @@
+{
+    "$id": "/redfish/v1/Schemas/DellPowerSupply.v1_1_0.json",
+    "$ref": "#/definitions/DellPowerSupply",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellPowerSupply": {
+            "additionalProperties": true,
+            "description": "An instance of DellPowerSupply will have data specific to the Power Supply devices in the managed system.",
+            "longDescription": "An instance of DellPowerSupply will have data specific to the Power Supply devices in the managed system.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "ActiveInputVoltage": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPowerSupply.json#/definitions/ActiveInputVoltage"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates the input voltage range that is currently in use.",
+                    "longDescription": "This property indicates the input voltage range that is currently in use.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "IsSwitchingSupply": {
+                    "description": "Boolean indicating that the PowerSupply is a switching (instead of linear) supply.",
+                    "longDescription": "Boolean indicating that the PowerSupply is a switching (instead of linear) supply.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Links": {
+                    "$ref": "/redfish/v1/Schemas/DellPowerSupply.json#/definitions/Links",
+                    "description": "Contains references to other resources that are related to this resource.",
+                    "longDescription": "The Links property, as described by the Redfish Specification, shall contain references to resources that are related to, but not contained by (subordinate to), this resource."
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "OperationalStatus": {
+                    "description": "Indicates the operational status of the resource represented.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "/redfish/v1/Schemas/DellPowerSupply.json#/definitions/OperationalStatus"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "Indicates the operational status of the resource represented.",
+                    "readonly": true,
+                    "type": "array",
+                    "versionAdded": "v1_1_0"
+                },
+                "RequestedState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellPowerSupply.json#/definitions/RequestedState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested. The actual state of the element is represented by EnabledState. This property is provided to compare the last requested and current enabled or disabled states.",
+                    "longDescription": "This property is an integer enumeration that indicates the last requested or desired state for the element, irrespective of the mechanism through which it was requested. The actual state of the element is represented by EnabledState. This property is provided to compare the last requested and current enabled or disabled states.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellPowerSupply.v1_1_0.DellPowerSupply"
+}

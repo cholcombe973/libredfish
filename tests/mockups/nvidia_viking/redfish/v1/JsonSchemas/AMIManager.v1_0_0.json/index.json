@@ -1,0 +1,370 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/AMIManager.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "definitions": {
+        "AMIManager": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the AMIManager.",
+            "longDescription": "This schemas defines the properties and actions which is used in the Managers.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this Resource.",
+                    "longDescription": "The actions property shall contain the available actions for this Resource."
+                },
+                "DebugLogs": {
+                    "description": "The URI at which to access the BMC Information and Debug Logs",
+                    "format": "uri-reference",
+                    "longDescription": "This property shall contain the URI at which to access BMC Information and Debug Logs for diagnostic purposes",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ManagerServiceInfo": {
+                    "$ref": "#/definitions/ManagerServiceInfo",
+                    "description": "Indicates the properties related to ManagerServiceInfo",
+                    "longDescription": "Indicates the properties related to ManagerServiceInfo",
+                    "readonly": true
+                },
+                "NodeManager": {
+                    "$ref": "/redfish/v1/JsonSchemas/NodeManager.v1_0_0.json#/definitions/NodeManager",
+                    "description": "The NodeManager schema contains properties related to monitoring and control of the given power capping node.",
+                    "longDescription": "The NodeManager schema contains properties related to monitoring and control of the given power capping node.",
+                    "readonly": true
+                },
+                "PowerSaveMode": {
+                    "$ref": "#/definitions/PowerSaveMode",
+                    "description": "The PowerSave mode is used to disable USB-Interfaces - When power save is on USB ifaces will be disabled.",
+                    "longDescription": "PowerSave mode is used to disable USB-Interfaces - When power save is on USB ifaces will be disabled.",
+                    "readonly": false
+                },
+                "PreserveConfigurations": {
+                    "$ref": "/redfish/v1/JsonSchemas/AMIPreserveConfigurations.v1_0_0.json#/definitions/PreserveConfigurations",
+                    "description": "Link to the AMIPreserveConfigurations URI",
+                    "longDescription": "This property shall contain the link to the AMIPreserveConfigurations URI.",
+                    "readonly": true
+                },
+                "SecureBoot": {
+                    "$ref": "/redfish/v1/JsonSchemas/AMIManagerSecureBoot.v1_0_0.json#/definitions/AMIManagerSecureBoot",
+                    "description": "Link to the AMIManagerSecureBoot URI",
+                    "longDescription": "This property shall contain the link to the AMIManagerSecureBoot URI.",
+                    "readonly": true
+                },
+                "VirtualMedia": {
+                    "$ref": "#/definitions/VirtualMedia",
+                    "description": "Indicates the properties related to VirtualMedia",
+                    "longDescription": "Indicates the properties related to VirtualMedia",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "Actions": {
+            "additionalProperties": true,
+            "description": "The available  actions for this Resource.",
+            "longDescription": "This type shall contain the available actions for this Resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#AMIManager.RedfishDBReset": {
+                    "$ref": "#/definitions/RedfishDBReset"
+                }
+            },
+            "type": "object"
+        },
+        "CommandShellServiceInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "IPMI": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IPMI"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The settings for this manager's IPMI MaxConcurrentSessions support."
+                },
+                "SSH": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/SSH"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The settings for this manager's SSH MaxConcurrentSessions support."
+                }
+            },
+            "type": "object"
+        },
+        "IPMI": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "MaxConcurrentSessions": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "NetworkProtocol": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.json#/definitions/ManagerNetworkProtocol",
+                    "description": "The link to the network services and their settings that the manager controls.",
+                    "longDescription": "This property shall contain a link to a resource of type ManagerNetworkProtocol, which represents the network services for this manager.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "ManagerServiceInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CommandShellServiceInfo": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/CommandShellServiceInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property shall specify the command shell properties command that this manager provides.",
+                    "longDescription": "This property shall specify the command shell properties command that this manager provides.",
+                    "readonly": true
+                },
+                "Links": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/Links"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This link provides the information related to inventory data."
+                }
+            },
+            "type": "object"
+        },
+        "PowerSaveMode": {
+            "enum": [
+                "Enable",
+                "Disable"
+            ],
+            "enumDescriptions": {
+                "Disable": "Disable Power Save Mode.",
+                "Enable": "Enable Power Save Mode."
+            },
+            "enumLongDescriptions": {
+                "Disable": "Disable Power Save Mode.",
+                "Enable": "Enable Power Save Mode."
+            },
+            "type": "string"
+        },
+        "RMediaStatus": {
+            "enum": [
+                "Enabled",
+                "Disabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "RMedia support is disabled",
+                "Enabled": "RMedia support is enabled"
+            },
+            "type": "string"
+        },
+        "RedfishDBReset": {
+            "additionalProperties": false,
+            "description": "This action is used to reset the Redis DataBase.",
+            "longDescription": "This action shall perform a reset Redis DataBase.  For systems which implement ACPI Power Button functionality, the PushPowerButton value shall perform or emulate an ACPI Power Button push.  The ResetAll value shall remove all the RedisDB keys from the database.",
+            "parameters": {
+                "RedfishDBResetType": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/RedfishDBResetType",
+                    "description": "The type of reset to be performed.",
+                    "longDescription": "This parameter shall define the type of reset to be performed."
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "SSH": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "MaxConcurrentSessions": {
+                    "type": "integer"
+                }
+            },
+            "type": "object"
+        },
+        "VirtualMedia": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CDInstances": {
+                    "description": "This property shall specify the number of CD instances available for redirection",
+                    "longDescription": "This property shall specify the number of CD instances available for redirection",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "RMediaStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/RMediaStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property shall specify the status of Remote Media Settings",
+                    "longDescription": "This property shall specify the status of Remote Media Settings",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMIManager.v1_0_0"
+}

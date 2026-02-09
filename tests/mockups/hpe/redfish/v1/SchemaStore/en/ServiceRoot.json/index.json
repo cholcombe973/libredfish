@@ -1,0 +1,285 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "ServiceRoot",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The ServiceRoot resource describes the Redfish API service root.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AccountService": {
+            "description": "The URI to this account service resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Chassis": {
+            "description": "The URI to this chassis resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "EventService": {
+            "description": "The URI to the event service resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "CertificateService": {
+            "description": "The URI to the certificate service resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "JsonSchemas": {
+            "description": "The URI to this registries resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The object contains references to other resources.",
+            "displayname": "links",
+            "properties": {
+                "Sessions": {
+                    "description": "This is a reference to a collection of Session resources.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Managers": {
+            "description": "The URI to this managers resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeiLOServiceExt.json#"
+                }
+            },
+            "type": "object"
+        },
+        "Product": {
+            "description": "The product associated with this Redfish service.",
+            "longDescription": "The value of this string shall include the name of the product represented by this Redfish service.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ProtocolFeaturesSupported": {
+            "additionalProperties": false,
+            "description": "Contains information about protocol features supported by the service.",
+            "longDescription": "This type contains information about protocol features supported by the service.",
+            "properties": {
+                "ExpandQuery": {
+                    "description": "Contains information about the use of $expand in the service.",
+                    "longDescription": "This type, as described by the Redfish Specification, shall contain information about the support of the $expand query parameter by the service.",
+                    "properties": {
+                        "ExpandAll": {
+                            "description": "This indicates whether the expand support of asterisk (expand all entries) is supported.",
+                            "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of asterisk (expand all entries) as a value for the expand query parameter as described by the specification.",
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "Levels": {
+                            "description": "This indicates whether the expand support of the $levels qualifier is supported by the service.",
+                            "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of $levels as a value for the expand query parameter as described by the specification.",
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "Links": {
+                            "description": "This indicates whether the expand support of tilde (expand only entries in the Links section) is supported.",
+                            "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of tilde (expand only entries in the Links section) as a value for the expand query parameter as described by the specification.",
+                            "readonly": true,
+                            "type": "boolean"
+                        },
+                        "MaxLevels": {
+                            "description": "This indicates the maximum number value of the $levels qualifier in expand operations.",
+                            "longDescription": "The value of this property shall be the maximum value of the $levels qualifier supported by the service and shall only be included if the value of the Levels property is true.",
+                            "maximum": 6,
+                            "minimum": 1,
+                            "readonly": true,
+                            "type": "number"
+                        },
+                        "NoLinks": {
+                            "description": "This indicates whether the expand support of period (expand only entries not in the Links section) is supported.",
+                            "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of period (expand only entries not in the Links section) as a value for the expand query parameter as described by the specification.",
+                            "readonly": true,
+                            "type": "boolean"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "FilterQuery": {
+                    "description": "This indicates whether the filter query parameter is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of th filter query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SelectQuery": {
+                    "description": "This indicates whether the select query parameter is supported.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of th select query parameter as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "OnlyMemberQuery": {
+                    "description": "This indicates whether Management Processor supports the only query option.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service supports the use of the only Member Query as described by the specification.",
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "RedfishVersion": {
+            "description": "The version of the Redfish service",
+            "longDescription": "The value of this string shall represent the version of the Redfish service.  The format of this string shall be of the format majorversion.minorversion.errata in compliance with Protocol Version section of the Redfish specification. ",
+            "pattern": "^\\d+\\.\\d+\\.\\d+$",
+            "readonly": true,
+            "type": "string"
+        },
+        "Registries": {
+            "description": "The URI to this registries resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "SessionService": {
+            "description": "The URI to this sessions service resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Systems": {
+            "description": "The URI to this systems resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Tasks": {
+            "description": "The URI to this tasks service resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "TelemetryService": {
+            "description": "The URI to the TelemetryService resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "UUID": {
+            "description": "Unique identifier for a service instance.  This value should be an exact match of the UUID value returned in a 200OK from an SSDP M-SEARCH request during discovery.",
+            "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "UpdateService": {
+            "description": "The URI to this UpdateService resource.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Vendor": {
+            "description": "The vendor of the product associated with this Redfish service.",
+            "longDescription": "The value of this string shall include the vendor name of the product represented by this Redfish service.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "required": [
+        "Product",
+        "Vendor"
+    ],
+    "title": "#ServiceRoot.v1_5_1.ServiceRoot",
+    "type": "object"
+}

@@ -1,0 +1,203 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerAccPowerZone",
+    "actions": {
+        "actions": {
+            "HpeServerAccPowerZone.ConfigureZone": {
+                "additionalProperties": false,
+                "description": "Execute the Apollo Chassis Controller power regulation zone configuration.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeServerAccPowerZone.ConfigureZone"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "Zone": {
+                        "items": {
+                            "properties": {
+                                "Node": {
+                                    "items": {
+                                        "properties": {
+                                            "NodeNumber": {
+                                                "readonly": false,
+                                                "type": "integer"
+                                            },
+                                            "NodePriority": {
+                                                "readonly": false,
+                                                "type": "integer"
+                                            }
+                                        },
+                                        "readonly": true,
+                                        "type": "object"
+                                    },
+                                    "readonly": false,
+                                    "type": "array"
+                                },
+                                "ZoneNumber": {
+                                    "readonly": false,
+                                    "type": "integer"
+                                },
+                                "ZonePriority": {
+                                    "readonly": false,
+                                    "type": "integer"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "readonly": false,
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "Zone"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "POST custom actions defined for this type. (The implemented actions may be a subset of these.)"
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerAccPowerZone resource describes the properties for management of shared power in an enclosure.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeServerAccPowerZone.ConfigureZone": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Zone@Redfish.AllowableValues": {
+                            "description": "Fill Zone array to depoly zone configuration or fill empty Zone array to remove zone configuration.",
+                            "items": {
+                                "items": {
+                                    "properties": {
+                                        "Node": {
+                                            "items": {
+                                                "properties": {
+                                                    "NodeNumber": {
+                                                        "readonly": false,
+                                                        "type": "integer"
+                                                    },
+                                                    "NodePriority": {
+                                                        "readonly": false,
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "readonly": true,
+                                                "type": "object"
+                                            },
+                                            "readonly": false,
+                                            "type": "array"
+                                        },
+                                        "ZoneNumber": {
+                                            "readonly": false,
+                                            "type": "integer"
+                                        },
+                                        "ZonePriority": {
+                                            "readonly": false,
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "type": "object"
+                                },
+                                "readonly": false,
+                                "type": "object"
+                            },
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "ZoneConfiguration": {
+            "additionalProperties": false,
+            "deprecated": "This indicates zone configurations of ACC power service.",
+            "properties": {
+                "Zone": {
+                    "description": "Contains the zone configuration for each zone.",
+                    "items": {
+                        "properties": {
+                            "Node": {
+                                "description": "Contains the node configuration for each node.",
+                                "items": {
+                                    "properties": {
+                                        "NodeNumber": {
+                                            "description": "The node number of zone configuration.",
+                                            "etag": true,
+                                            "readonly": true,
+                                            "type": "integer"
+                                        },
+                                        "NodePriority": {
+                                            "description": "The power regulation node priority, the range must between 1 - 5. 5 is default and lowest priority.",
+                                            "etag": true,
+                                            "readonly": true,
+                                            "type": "integer"
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "type": "object"
+                                },
+                                "readonly": true,
+                                "type": "array"
+                            },
+                            "ZoneNumber": {
+                                "description": "The zone number of zone configuration.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "integer"
+                            },
+                            "ZonePriority": {
+                                "description": "The power regulation zone priority, the range must between 1 - 5. 5 is default and lowest priority.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "integer"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerAccPowerZone.v1_0_0.HpeServerAccPowerZone",
+    "type": "object"
+}

@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellInfiniBandCapabilities v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBandCapabilities">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellInfiniBandCapabilities" Abstract="true">
+                <Annotation String="An instance of DellInfiniBandCapabilities will have data specific to InfiniBand and its port and partitions capabilities." Term="OData.Description"/>
+                <Annotation String="An instance of DellInfiniBandCapabilities will have data specific to InfiniBand and its port and partitions capabilities." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/Oem/Dell/DellInfiniBandCapabilities/{InfiniBandCapabilitiesId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/{NetworkDeviceId}/Oem/Dell/DellInfiniBandCapabilities/{InfiniBandCapabilitiesId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="BPESupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="CongestionNotification">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DCBExchangeProtocol">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ETS">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="EVBModesSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="EnergyEfficientEthernet">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="FeatureLicensingSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="FlexAddressingSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="IPSecOffloadSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="MACSecSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="NWManagementPassThrough">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="NicPartitioningSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="OSBMCManagementPassThrough">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="OnChipThermalSensor">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="OpenFlowSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PXEBootSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PartitionWOLSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PersistencePolicySupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PriorityFlowControl">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="RDMASupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="RXFlowControl">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="RemotePHY">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TCPChimneySupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TXBandwidthControlMaximum">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TXBandwidthControlMinimum">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TXFlowControl">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VEB">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VEBVEPAMultiChannel">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VEBVEPASingleChannel">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VFSRIOVSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VirtualLinkControl">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="WOLSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="iSCSIBootSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="iSCSIOffloadSupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="uEFISupport">
+                <Member Name="NotSupported">
+                    <Annotation String="Not Supported" Term="OData.Description"/>
+                    <Annotation String="Not Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Supported">
+                    <Annotation String="Supported" Term="OData.Description"/>
+                    <Annotation String="Supported" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellInfiniBandCapabilities.v1_0_0">
+            <EntityType Name="DellInfiniBandCapabilities" BaseType="DellInfiniBandCapabilities.DellInfiniBandCapabilities">
+                <Annotation Term="OData.Description" String="An instance of DellInfiniBandCapabilities will have data specific to InfiniBand and its port and partitions capabilities."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellInfiniBandCapabilities will have data specific to InfiniBand and its port and partitions capabilities."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BPESupport" Type="DellInfiniBandCapabilities.BPESupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents Bridge Port Extension (BPE) for the ports of the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents Bridge Port Extension (BPE) for the ports of the InfiniBand."/>
+                </Property>
+                <Property Name="CongestionNotification" Type="DellInfiniBandCapabilities.CongestionNotification">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents congestion notification support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents congestion notification support for a InfiniBand port."/>
+                </Property>
+                <Property Name="DCBExchangeProtocol" Type="DellInfiniBandCapabilities.DCBExchangeProtocol">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents DCB Exchange protocol support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents DCB Exchange protocol support for a InfiniBand port."/>
+                </Property>
+                <Property Name="ETS" Type="DellInfiniBandCapabilities.ETS">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents Enhanced Transmission Selection support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents Enhanced Transmission Selection support for a InfiniBand port."/>
+                </Property>
+                <Property Name="EVBModesSupport" Type="DellInfiniBandCapabilities.EVBModesSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents EVB Edge Virtual Bridging) mode support for the ports of the InfiniBand. Possible values are 0 Unknown, 2 Supported, 3 Not Supported."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents EVB Edge Virtual Bridging) mode support for the ports of the InfiniBand. Possible values are 0 Unknown, 2 Supported, 3 Not Supported."/>
+                </Property>
+                <Property Name="EnergyEfficientEthernet" Type="DellInfiniBandCapabilities.EnergyEfficientEthernet">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents energy-efficient ethernet support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents energy-efficient ethernet support for a InfiniBand port."/>
+                </Property>
+                <Property Name="FeatureLicensingSupport" Type="DellInfiniBandCapabilities.FeatureLicensingSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents feature licensing support for the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents feature licensing support for the InfiniBand."/>
+                </Property>
+                <Property Name="FlexAddressingSupport" Type="DellInfiniBandCapabilities.FlexAddressingSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents flex-addressing support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents flex-addressing support for a InfiniBand port."/>
+                </Property>
+                <Property Name="IPSecOffloadSupport" Type="DellInfiniBandCapabilities.IPSecOffloadSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents IPSec offload support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents IPSec offload support for a InfiniBand port."/>
+                </Property>
+                <Property Name="LinkSupportedSpeed" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property specifies the supported link speed of InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the supported link speed of InfiniBand port."/>
+                </Property>
+                <Property Name="LinkSupportedWidth" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property specifies the supported link width of InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies the supported link width of InfiniBand port."/>
+                </Property>
+                <Property Name="MACSecSupport" Type="DellInfiniBandCapabilities.MACSecSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents secure MAC support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents secure MAC support for a InfiniBand port."/>
+                </Property>
+                <Property Name="NWManagementPassThrough" Type="DellInfiniBandCapabilities.NWManagementPassThrough">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents network management passthrough support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents network management passthrough support for a InfiniBand port."/>
+                </Property>
+                <Property Name="NicPartitioningSupport" Type="DellInfiniBandCapabilities.NicPartitioningSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents partitioning support for the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents partitioning support for the InfiniBand."/>
+                </Property>
+                <Property Name="OSBMCManagementPassThrough" Type="DellInfiniBandCapabilities.OSBMCManagementPassThrough">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents OS-inband to BMC-out-of-band management passthrough support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents OS-inband to BMC-out-of-band management passthrough support for a InfiniBand port."/>
+                </Property>
+                <Property Name="OnChipThermalSensor" Type="DellInfiniBandCapabilities.OnChipThermalSensor">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents on-chip thermal sensor support for the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents on-chip thermal sensor support for the InfiniBand."/>
+                </Property>
+                <Property Name="OpenFlowSupport" Type="DellInfiniBandCapabilities.OpenFlowSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents open-flow support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents open-flow support for a InfiniBand port."/>
+                </Property>
+                <Property Name="PXEBootSupport" Type="DellInfiniBandCapabilities.PXEBootSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents PXE-boot support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents PXE-boot support for a InfiniBand port."/>
+                </Property>
+                <Property Name="PartitionWOLSupport" Type="DellInfiniBandCapabilities.PartitionWOLSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents Wake-On-LAN support for a InfiniBand partition."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents Wake-On-LAN support for a InfiniBand partition."/>
+                </Property>
+                <Property Name="PersistencePolicySupport" Type="DellInfiniBandCapabilities.PersistencePolicySupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property specifies whether the card supports persistence policy."/>
+                    <Annotation Term="OData.LongDescription" String="This property specifies whether the card supports persistence policy."/>
+                </Property>
+                <Property Name="PriorityFlowControl" Type="DellInfiniBandCapabilities.PriorityFlowControl">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents priority flow-control support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents priority flow-control support for a InfiniBand port."/>
+                </Property>
+                <Property Name="RDMASupport" Type="DellInfiniBandCapabilities.RDMASupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents RDMA support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents RDMA support for a InfiniBand port."/>
+                </Property>
+                <Property Name="RXFlowControl" Type="DellInfiniBandCapabilities.RXFlowControl">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents RX flow-control support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents RX flow-control support for a InfiniBand port."/>
+                </Property>
+                <Property Name="RemotePHY" Type="DellInfiniBandCapabilities.RemotePHY">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents remote PHY support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents remote PHY support for a InfiniBand port."/>
+                </Property>
+                <Property Name="TCPChimneySupport" Type="DellInfiniBandCapabilities.TCPChimneySupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents TCP Chimney support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents TCP Chimney support for a InfiniBand port."/>
+                </Property>
+                <Property Name="TXBandwidthControlMaximum" Type="DellInfiniBandCapabilities.TXBandwidthControlMaximum">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents open-flow support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents open-flow support for a InfiniBand port."/>
+                </Property>
+                <Property Name="TXBandwidthControlMinimum" Type="DellInfiniBandCapabilities.TXBandwidthControlMinimum">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents open-flow support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents open-flow support for a InfiniBand port."/>
+                </Property>
+                <Property Name="TXFlowControl" Type="DellInfiniBandCapabilities.TXFlowControl">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents TX flow-control support for a InfiniBand partition."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents TX flow-control support for a InfiniBand partition."/>
+                </Property>
+                <Property Name="VEB" Type="DellInfiniBandCapabilities.VEB">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides details about the VEB (Virtual Ethernet Bridging) - single channel support for the ports of the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides details about the VEB (Virtual Ethernet Bridging) - single channel support for the ports of the InfiniBand."/>
+                </Property>
+                <Property Name="VEBVEPAMultiChannel" Type="DellInfiniBandCapabilities.VEBVEPAMultiChannel">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides details about the VEB-VEPA (Virtual Ethernet Bridging and Virtual Ethernet Port Aggregator) multichannel support for the ports of the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides details about the VEB-VEPA (Virtual Ethernet Bridging and Virtual Ethernet Port Aggregator) multichannel support for the ports of the InfiniBand."/>
+                </Property>
+                <Property Name="VEBVEPASingleChannel" Type="DellInfiniBandCapabilities.VEBVEPASingleChannel">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides details about the VEB-VEPA (Virtual Ethernet Bridging and Virtual Ethernet Port Aggregator) - single channel support for the ports of the InfiniBand."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides details about the VEB-VEPA (Virtual Ethernet Bridging and Virtual Ethernet Port Aggregator) - single channel support for the ports of the InfiniBand."/>
+                </Property>
+                <Property Name="VFSRIOVSupport" Type="DellInfiniBandCapabilities.VFSRIOVSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents support for Virtual Function of Single Root I/O Virtualization for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents support for Virtual Function of Single Root I/O Virtualization for a InfiniBand port."/>
+                </Property>
+                <Property Name="VirtualLinkControl" Type="DellInfiniBandCapabilities.VirtualLinkControl">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents virtual link-control support for a InfiniBand partition."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents virtual link-control support for a InfiniBand partition."/>
+                </Property>
+                <Property Name="WOLSupport" Type="DellInfiniBandCapabilities.WOLSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents Wake-On-LAN support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents Wake-On-LAN support for a InfiniBand port."/>
+                </Property>
+                <Property Name="iSCSIBootSupport" Type="DellInfiniBandCapabilities.iSCSIBootSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents iSCSI boot support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents iSCSI boot support for a InfiniBand port."/>
+                </Property>
+                <Property Name="iSCSIOffloadSupport" Type="DellInfiniBandCapabilities.iSCSIOffloadSupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents iSCSI offload support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents iSCSI offload support for a InfiniBand port."/>
+                </Property>
+                <Property Name="uEFISupport" Type="DellInfiniBandCapabilities.uEFISupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents UEFI support for a InfiniBand port."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents UEFI support for a InfiniBand port."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

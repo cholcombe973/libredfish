@@ -1,0 +1,298 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Triggers",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The Triggers resource describes the a metric trigger, which apply to metrics.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "MetricProperties": {
+            "description": "A collection of URI for the properties on which this metric definition is defined.",
+            "format": "uri-reference",
+            "items": {
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "longDescription": "Each value may contain one or more Wildcard names enclosed in curly braces.  Wildcard value entries shall be substituted for each Wildcard name found.  If two or more wild names are found, the same Wildcard index is used for each in one substitution pass.  After substituting the WildCard values entries, each value shall be a URI for a property in a resource that matches a property declaration in the corresponding MetricDefinition.  Property identifiers in the URI shall follow JSON fragment notation rules defined by RFC6901.",
+            "readonly": false,
+            "type": "array"
+        },
+        "MetricType": {
+            "description": "Specifies the type of metric for which the trigger is configured.",
+            "enum": [
+                "Numeric",
+                "Discrete"
+            ],
+            "enumDescriptions": {
+                "Discrete": "The trigger is for a discrete sensor.",
+                "Numeric": "The trigger is for numeric sensor."
+            },
+            "longDescription": "The value shall specify the type of metric for which the trigger is configured.",
+            "type": "string"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NumericThresholds": {
+            "description": "The set of thresholds defined for a sensor.",
+            "longDescription": "This structure shall contain a set of thresholds defined for a sensor.",
+            "properties": {
+                "LowerCritical": {
+                    "description": "Below normal range and requires attention.",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range and may require attention.  The units shall be the same units as the Reading.",
+                    "properties": {
+                        "Activation": {
+                            "description": "The direction of crossing that activates this threshold.",
+                            "enum": [
+                                "Increasing",
+                                "Decreasing",
+                                "Either"
+                            ],
+                            "enumDescriptions": {
+                                "Decreasing": "Value decreases below the threshold.",
+                                "Either": "Value crosses the threshold in either direction.",
+                                "Increasing": "Value increases above the threshold."
+                            },
+                            "enumLongDescriptions": {
+                                "Decreasing": "This threshold is activated when the value of Reading changes from a value higher than the threshold to a value lower than the threshold.",
+                                "Either": "This threshold is activated when either the Increasing or Decreasing conditions are met.",
+                                "Increasing": "This threshold is activated when the value of Reading changes from a value lower than the threshold to a value higher than the threshold."
+                            },
+                            "longDescription": "This property shall indicate the direction of crossing of the Reading valuefor this Sensor that triggers the threshold.",
+                            "type": "string"
+                        },
+                        "DwellTime": {
+                            "description": "The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "longDescription": "This property shall indicate the time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "Reading": {
+                            "description": "The threshold value.",
+                            "longDescription": "This property shall indicate the Reading value of this Sensor that triggers the threshold.  The units of this property shall follow the same units as the property described by MetricProperties.",
+                            "readonly": false,
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    },
+                    "readonly": false,
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                },
+                "LowerWarning": {
+                    "description": "Below normal range.",
+                    "longDescription": "The value of this property shall indicate the Reading is below the normal range.  The units shall be the same units as the Reading.",
+                    "properties": {
+                        "Activation": {
+                            "description": "The direction of crossing that activates this threshold.",
+                            "enum": [
+                                "Increasing",
+                                "Decreasing",
+                                "Either"
+                            ],
+                            "enumDescriptions": {
+                                "Decreasing": "Value decreases below the threshold.",
+                                "Either": "Value crosses the threshold in either direction.",
+                                "Increasing": "Value increases above the threshold."
+                            },
+                            "enumLongDescriptions": {
+                                "Decreasing": "This threshold is activated when the value of Reading changes from a value higher than the threshold to a value lower than the threshold.",
+                                "Either": "This threshold is activated when either the Increasing or Decreasing conditions are met.",
+                                "Increasing": "This threshold is activated when the value of Reading changes from a value lower than the threshold to a value higher than the threshold."
+                            },
+                            "longDescription": "This property shall indicate the direction of crossing of the Reading value for this Sensor that triggers the threshold.",
+                            "type": "string"
+                        },
+                        "DwellTime": {
+                            "description": "The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "longDescription": "This property shall indicate the time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "Reading": {
+                            "description": "The threshold value.",
+                            "longDescription": "This property shall indicate the Reading value of this Sensor that triggers the threshold.  The units of this property shall follow the same units as the property described by MetricProperties.",
+                            "readonly": false,
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    },
+                    "readonly": false,
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                },
+                "UpperCritical": {
+                    "description": "Above normal range and requires attention.",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range and may require attention.  The units shall be the same units as the Reading.",
+                    "properties": {
+                        "Activation": {
+                            "description": "The direction of crossing that activates this threshold.",
+                            "enum": [
+                                "Increasing",
+                                "Decreasing",
+                                "Either"
+                            ],
+                            "enumDescriptions": {
+                                "Decreasing": "Value decreases below the threshold.",
+                                "Either": "Value crosses the threshold in either direction.",
+                                "Increasing": "Value increases above the threshold."
+                            },
+                            "enumLongDescriptions": {
+                                "Decreasing": "This threshold is activated when the value of Reading changes from a value higher than the threshold to a value lower than the threshold.",
+                                "Either": "This threshold is activated when either the Increasing or Decreasing conditions are met.",
+                                "Increasing": "This threshold is activated when the value of Reading changes from a value lower than the threshold to a value higher than the threshold."
+                            },
+                            "longDescription": "This property shall indicate the direction of crossing of the Reading value for this Sensor that triggers the threshold.",
+                            "type": "string"
+                        },
+                        "DwellTime": {
+                            "description": "The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "longDescription": "This property shall indicate the time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "Reading": {
+                            "description": "The threshold value.",
+                            "longDescription": "This property shall indicate the Reading value of this Sensor that triggers the threshold.  The units of this property shall follow the same units as the property described by MetricProperties.",
+                            "readonly": false,
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    },
+                    "readonly": false,
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                },
+                "UpperWarning": {
+                    "description": "Above normal range.",
+                    "longDescription": "The value of this property shall indicate the Reading is above the normal range.  The units shall be the same units as the Reading.",
+                    "properties": {
+                        "Activation": {
+                            "description": "The direction of crossing that activates this threshold.",
+                            "enum": [
+                                "Increasing",
+                                "Decreasing",
+                                "Either"
+                            ],
+                            "enumDescriptions": {
+                                "Decreasing": "Value decreases below the threshold.",
+                                "Either": "Value crosses the threshold in either direction.",
+                                "Increasing": "Value increases above the threshold."
+                            },
+                            "enumLongDescriptions": {
+                                "Decreasing": "This threshold is activated when the value of Reading changes from a value higher than the threshold to a value lower than the threshold.",
+                                "Either": "This threshold is activated when either the Increasing or Decreasing conditions are met.",
+                                "Increasing": "This threshold is activated when the value of Reading changes from a value lower than the threshold to a value higher than the threshold."
+                            },
+                            "longDescription": "This property shall indicate the direction of crossing of the Reading value for this Sensor that triggers the threshold.",
+                            "type": "string"
+                        },
+                        "DwellTime": {
+                            "description": "The time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "longDescription": "This property shall indicate the time interval over which the sensor reading must have passed through this Threshold value before the threshold is considered to be violated.",
+                            "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                            "readonly": false,
+                            "type": [
+                                "string",
+                                "null"
+                            ]
+                        },
+                        "Reading": {
+                            "description": "The threshold value.",
+                            "longDescription": "This property shall indicate the Reading value of this Sensor that triggers the threshold.  The units of this property shall follow the same units as the property described by MetricProperties.",
+                            "readonly": false,
+                            "type": [
+                                "number",
+                                "null"
+                            ]
+                        }
+                    },
+                    "readonly": false,
+                    "type": [
+                        "object",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": [
+                "object",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "TriggerActions": {
+            "description": "This property specifies the actions to perform when the trigger occurs.",
+            "items": {
+                "enum": [
+                    "LogToLogService",
+                    "RedfishEvent"
+                ],
+                "enumDescriptions": {
+                    "LogToLogService": "Upon a trigger, record in a log.",
+                    "RedfishEvent": "Upon a trigger, send a Redfish Event message of type MetricReport."
+                },
+                "enumLongDescriptions": {
+                    "LogToLogService": "When a trigger condition is met, the service shall log the occurrence of the condition to the log indicated by the LogService property in the TelemetryService resource.",
+                    "RedfishEvent": "When a trigger condition is met, the service shall produce a Redfish Event of type Event to matching subscribers indicated in the EventSubscription collection found on the EventService."
+                },
+                "type": "string"
+            },
+            "longDescription": "The value of this property shall specify the actions to perform when the trigger occurs.",
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "readonly": false,
+    "required": [
+        "Id",
+        "Name"
+    ],
+    "title": "#Triggers.v1_0_0.Triggers",
+    "type": "object"
+}

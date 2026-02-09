@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellVideo v1_2_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVideo">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellVideo" Abstract="true">
+                <Annotation String="DellVideo provides Video specific data which includes supported GPU properties if supported." Term="OData.Description"/>
+                <Annotation String="DellVideo provides Video specific data which includes supported GPU properties if supported." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellVideo/{VideoId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="DataBusWidth">
+                <Member Name="128Bit">
+                    <Annotation String="128 bit" Term="OData.Description"/>
+                    <Annotation String="128 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="12XOrX12">
+                    <Annotation String="12x or x12" Term="OData.Description"/>
+                    <Annotation String="12x or x12" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="16Bit">
+                    <Annotation String="16 bit" Term="OData.Description"/>
+                    <Annotation String="16 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="16XOrX16">
+                    <Annotation String="16x or x16" Term="OData.Description"/>
+                    <Annotation String="16x or x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="1XOrX1">
+                    <Annotation String="1x or x1" Term="OData.Description"/>
+                    <Annotation String="1x or x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="2XOrX2">
+                    <Annotation String="2x or x2" Term="OData.Description"/>
+                    <Annotation String="2x or x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="32Bit">
+                    <Annotation String="32 bit" Term="OData.Description"/>
+                    <Annotation String="32 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="32XOrX32">
+                    <Annotation String="32x or x32" Term="OData.Description"/>
+                    <Annotation String="32x or x32" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="4XOrX4">
+                    <Annotation String="4x or x4" Term="OData.Description"/>
+                    <Annotation String="4x or x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="64Bit">
+                    <Annotation String="64 bit" Term="OData.Description"/>
+                    <Annotation String="64 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="8Bit">
+                    <Annotation String="8 bit" Term="OData.Description"/>
+                    <Annotation String="8 bit" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="8XOrX8">
+                    <Annotation String="8x or x8" Term="OData.Description"/>
+                    <Annotation String="8x or x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GPUHealth">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GPUState">
+                <Member Name="Available">
+                    <Annotation String="Available" Term="OData.Description"/>
+                    <Annotation String="Available" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unavailable">
+                    <Annotation String="Unavailable" Term="OData.Description"/>
+                    <Annotation String="Unavailable" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotLength">
+                <Member Name="LongLength">
+                    <Annotation String="Long Length" Term="OData.Description"/>
+                    <Annotation String="Long Length" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ShortLength">
+                    <Annotation String="Short Length" Term="OData.Description"/>
+                    <Annotation String="Short Length" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotType">
+                <Member Name="AGP">
+                    <Annotation String="AGP" Term="OData.Description"/>
+                    <Annotation String="AGP" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="AGP2X">
+                    <Annotation String="AGP 2X" Term="OData.Description"/>
+                    <Annotation String="AGP 2X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="AGP4X">
+                    <Annotation String="AGP 4X" Term="OData.Description"/>
+                    <Annotation String="AGP 4X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="AGP8X">
+                    <Annotation String="AGP 8X" Term="OData.Description"/>
+                    <Annotation String="AGP 8X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="EISA">
+                    <Annotation String="EISA" Term="OData.Description"/>
+                    <Annotation String="EISA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="I/ORiserCardSlot">
+                    <Annotation String="I/O Riser Card Slot" Term="OData.Description"/>
+                    <Annotation String="I/O Riser Card Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ISA">
+                    <Annotation String="ISA" Term="OData.Description"/>
+                    <Annotation String="ISA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="MCA">
+                    <Annotation String="MCA" Term="OData.Description"/>
+                    <Annotation String="MCA" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NuBus">
+                    <Annotation String="NuBus" Term="OData.Description"/>
+                    <Annotation String="NuBus" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/C20">
+                    <Annotation String="PC-98/C20" Term="OData.Description"/>
+                    <Annotation String="PC-98/C20" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/C24">
+                    <Annotation String="PC-98/C24" Term="OData.Description"/>
+                    <Annotation String="PC-98/C24" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/Card">
+                    <Annotation String="PC-98/Card" Term="OData.Description"/>
+                    <Annotation String="PC-98/Card" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/E">
+                    <Annotation String="PC-98/E" Term="OData.Description"/>
+                    <Annotation String="PC-98/E" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PC-98/LocalBus">
+                    <Annotation String="PC-98/Local Bus" Term="OData.Description"/>
+                    <Annotation String="PC-98/Local Bus" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCCard(PCMCIA)">
+                    <Annotation String="PC Card (PCMCIA)" Term="OData.Description"/>
+                    <Annotation String="PC Card (PCMCIA)" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI">
+                    <Annotation String="PCI" Term="OData.Description"/>
+                    <Annotation String="PCI" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-66MHzCapable">
+                    <Annotation String="PCI - 66MHz Capable" Term="OData.Description"/>
+                    <Annotation String="PCI - 66MHz Capable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCI-X">
+                    <Annotation String="PCI-X" Term="OData.Description"/>
+                    <Annotation String="PCI-X" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpress">
+                    <Annotation String="PCI Express" Term="OData.Description"/>
+                    <Annotation String="PCI Express" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2">
+                    <Annotation String="PCI Express Gen 2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2SFF-8639">
+                    <Annotation String="PCI Express Gen 2 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 SFF-8639" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X1">
+                    <Annotation String="PCI Express Gen 2 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X16">
+                    <Annotation String="PCI Express Gen 2 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X2">
+                    <Annotation String="PCI Express Gen 2 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X4">
+                    <Annotation String="PCI Express Gen 2 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen2X8">
+                    <Annotation String="PCI Express Gen 2 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3">
+                    <Annotation String="PCI Express Gen 3" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3SFF-8639">
+                    <Annotation String="PCI Express Gen 3 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 SFF-8639" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X1">
+                    <Annotation String="PCI Express Gen 3 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X16">
+                    <Annotation String="PCI Express Gen 3 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X2">
+                    <Annotation String="PCI Express Gen 3 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X4">
+                    <Annotation String="PCI Express Gen 3 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen3X8">
+                    <Annotation String="PCI Express Gen 3 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4">
+                    <Annotation String="PCI Express Gen 4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4SFF-8639">
+                    <Annotation String="PCI Express Gen 4 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 SFF-8639" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4X1">
+                    <Annotation String="PCI Express Gen 4 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X16">
+                    <Annotation String="PCI Express Gen 4 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X2">
+                    <Annotation String="PCI Express Gen 4 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X4">
+                    <Annotation String="PCI Express Gen 4 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen4X8">
+                    <Annotation String="PCI Express Gen 4 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressGen5">
+                    <Annotation String="PCI Express Gen 5" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen5SFF-8639">
+                    <Annotation String="PCI Express Gen 5 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5 SFF-8639" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX1">
+                    <Annotation String="PCI Express x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express x1" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX16">
+                    <Annotation String="PCI Express x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express x16" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX2">
+                    <Annotation String="PCI Express x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express x2" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX4">
+                    <Annotation String="PCI Express x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express x4" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="PCIExpressX8">
+                    <Annotation String="PCI Express x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express x8" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ProcessorCardSlot">
+                    <Annotation String="Processor Card Slot" Term="OData.Description"/>
+                    <Annotation String="Processor Card Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Proprietary">
+                    <Annotation String="Proprietary" Term="OData.Description"/>
+                    <Annotation String="Proprietary" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="ProprietaryMemoryCardSlot">
+                    <Annotation String="Proprietary Memory Card Slot" Term="OData.Description"/>
+                    <Annotation String="Proprietary Memory Card Slot" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="VL-VESA">
+                    <Annotation String="VL-VESA" Term="OData.Description"/>
+                    <Annotation String="VL-VESA" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVideo.v1_0_0">
+            <EntityType Name="DellVideo" BaseType="DellVideo.DellVideo">
+                <Annotation Term="OData.Description" String="DellVideo provides Video specific data which includes supported GPU properties if supported."/>
+                <Annotation Term="OData.LongDescription" String="DellVideo provides Video specific data which includes supported GPU properties if supported."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BoardPartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represent Board Part Number of GPU device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represent Board Part Number of GPU device."/>
+                </Property>
+                <Property Name="BuildDate" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents BuildDate of the GPU device in yyyymmdd format."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents BuildDate of the GPU device in yyyymmdd format."/>
+                </Property>
+                <Property Name="BusNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The bus number where this video device resides."/>
+                    <Annotation Term="OData.LongDescription" String="The bus number where this video device resides."/>
+                </Property>
+                <Property Name="DataBusWidth" Type="DellVideo.DataBusWidth">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Data-bus width of the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="Data-bus width of the PCI device."/>
+                </Property>
+                <Property Name="Description" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Description of the object."/>
+                    <Annotation Term="OData.LongDescription" String="Description of the object."/>
+                </Property>
+                <Property Name="Name" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description - a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description - a property that describes the device and its location."/>
+                </Property>
+                <Property Name="DeviceNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The device number assigned to this video for this bus."/>
+                    <Annotation Term="OData.LongDescription" String="The device number assigned to this video for this bus."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD) - a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD) - a user-friendly name for the object."/>
+                </Property>
+                <Property Name="FirmwareVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the software version of GPU Device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the software version of GPU Device."/>
+                </Property>
+                <Property Name="FunctionNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The function number for this video device."/>
+                    <Annotation Term="OData.LongDescription" String="The function number for this video device."/>
+                </Property>
+                <Property Name="GPUGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the GPU GUID of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the GPU GUID of the device."/>
+                </Property>
+                <Property Name="GPUHealth" Type="DellVideo.GPUHealth">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the GPU Health status."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the GPU Health status."/>
+                </Property>
+                <Property Name="GPUPartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents Part Number of GPU device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents Part Number of GPU device."/>
+                </Property>
+                <Property Name="GPUState" Type="DellVideo.GPUState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the GPU state."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the GPU state."/>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the last time System Inventory Collection On Reboot (CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the last time System Inventory Collection On Reboot (CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="Manufacturer" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The name of the organization responsible for producing the PhysicalElement. This organization might be the entity from whom the Element is purchased, but this is not necessarily true."/>
+                    <Annotation Term="OData.LongDescription" String="The name of the organization responsible for producing the PhysicalElement. This organization might be the entity from whom the Element is purchased, but this is not necessarily true."/>
+                </Property>
+                <Property Name="MarketingName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates Marketing name of the GPU device."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates Marketing name of the GPU device."/>
+                </Property>
+                <Property Name="OEMInfo" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indicates OEM information of the GPU device."/>
+                    <Annotation Term="OData.LongDescription" String="Indicates OEM information of the GPU device."/>
+                </Property>
+                <Property Name="PCIDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property contains a value assigned by the device manufacturer used to identify the type of device."/>
+                    <Annotation Term="OData.LongDescription" String="This property contains a value assigned by the device manufacturer used to identify the type of device."/>
+                </Property>
+                <Property Name="PCISubDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Register that contains a value assigned by the device manufacturer used to identify the type of device."/>
+                    <Annotation Term="OData.LongDescription" String="Register that contains a value assigned by the device manufacturer used to identify the type of device."/>
+                </Property>
+                <Property Name="PCISubVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Subsystem vendor ID."/>
+                    <Annotation Term="OData.LongDescription" String="Subsystem vendor ID."/>
+                </Property>
+                <Property Name="PCIVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Register that contains a value assigned by the Video SIG used to identify the manufacturer of the device."/>
+                    <Annotation Term="OData.LongDescription" String="Register that contains a value assigned by the Video SIG used to identify the manufacturer of the device."/>
+                </Property>
+                <Property Name="SerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represent Serial Number of GPU device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represent Serial Number of GPU device."/>
+                </Property>
+                <Property Name="SlotLength" Type="DellVideo.SlotLength">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Slot length of the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="Slot length of the PCI device."/>
+                </Property>
+                <Property Name="SlotType" Type="DellVideo.SlotType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Slot type of the PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="Slot type of the PCI device."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVideo.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable values PCIExpressGen4SFF-8639,PCIExpressGen5SFF-8639 for SlotType property."/>
+            <EntityType Name="DellVideo" BaseType="DellVideo.v1_0_0.DellVideo"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellVideo.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable value PCIExpressGen5 for SlotType property."/>
+            <EntityType Name="DellVideo" BaseType="DellVideo.v1_1_0.DellVideo"> 
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,469 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Thermal",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The Thermal resource describes the system thermal metrics. It represents the properties for temperature and cooling.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Fans": {
+            "description": "The fan details.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    },
+                    "CorrelatableID": {
+                        "description": "The CorrelatableID for this fan.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "LowerThresholdCritical": {
+                        "description": "Below normal range but not yet fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "LowerThresholdFatal": {
+                        "description": "Below normal range and is fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "LowerThresholdNonCritical": {
+                        "description": "Below normal range.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "MaximumValue": {
+                        "description": "Maximum value for CurrentReading.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "MemberId": {
+                        "description": "This is the identifier for the member within the collection.",
+                        "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                        "type": "string"
+                    },
+                    "MinimumValue": {
+                        "description": "Minimum value for CurrentReading.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Name": {
+                        "description": "The name of the fan sensor.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Oem": {
+                        "additionalProperties": true,
+                        "properties": {
+                            "Hpe": {
+                                "$ref": "HpeServerFan.json#"
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "PhysicalContext": {
+                        "enum": [
+                            "Room",
+                            "Intake",
+                            "Exhaust",
+                            "Front",
+                            "Back",
+                            "Upper",
+                            "Lower",
+                            "CPU",
+                            "GPU",
+                            "Backplane",
+                            "SystemBoard",
+                            "PowerSupply",
+                            "VoltageRegulator",
+                            "StorageDevice",
+                            "NetworkingDevice",
+                            "ComputeBay",
+                            "StorageBay",
+                            "NetworkBay",
+                            "ExpansionBay",
+                            "PowerSupplyBay"
+                        ],
+                        "enumDescriptions": {
+                            "Back": "The back of the chassis",
+                            "Backplane": "A backplane within the chassis",
+                            "CPU": "A Processor (CPU)",
+                            "ComputeBay": "Within a compute bay",
+                            "Exhaust": "The exhaust point of the chassis",
+                            "ExpansionBay": "Within an expansion bay",
+                            "Front": "The front of the chassis",
+                            "GPU": "A Graphics Processor (GPU)",
+                            "Intake": "The intake point of the chassis",
+                            "Lower": "The lower portion of the chassis",
+                            "NetworkBay": "Within a networking bay",
+                            "NetworkingDevice": "A networking device",
+                            "PowerSupply": "A power supply",
+                            "PowerSupplyBay": "Within a power supply bay",
+                            "Room": "The room",
+                            "StorageBay": "Within a storage bay",
+                            "StorageDevice": "A storage device",
+                            "SystemBoard": "The system board (PCB)",
+                            "Upper": "The upper portion of the chassis",
+                            "VoltageRegulator": "A voltage regulator device"
+                        },
+                        "type": "string"
+                    },
+                    "Reading": {
+                        "description": "The current speed of the fan.",
+                        "etag": false,
+                        "minimum": 0,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ReadingUnits": {
+                        "description": "Units for the CurrentReading.",
+                        "enum": [
+                            null,
+                            "Percent"
+                        ],
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    },
+                    "UpperThresholdCritical": {
+                        "description": "Above normal range but not yet fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "UpperThresholdFatal": {
+                        "description": "Above normal range and is fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "UpperThresholdNonCritical": {
+                        "description": "Above normal range.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Temperatures": {
+            "description": "The details for the array of temperature sensors.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    },
+                    "CorrelatableID": {
+                        "description": "The CorrelatableID for this temperature sensor.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "LowerThresholdCritical": {
+                        "description": "Below normal range but not yet fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "LowerThresholdFatal": {
+                        "description": "Below normal range and is fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "LowerThresholdNonCritical": {
+                        "description": "Below normal range.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "MaximumValue": {
+                        "description": "Maximum value for CurrentReading.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "MemberId": {
+                        "description": "This is the identifier for the member within the collection.",
+                        "longDescription": "The value of this string shall uniquely identify the member within the collection.",
+                        "type": "string"
+                    },
+                    "MinimumValue": {
+                        "description": "Minimum value for CurrentReading.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Name": {
+                        "description": "The temperature sensor name.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Oem": {
+                        "additionalProperties": true,
+                        "properties": {
+                            "Hpe": {
+                                "$ref": "HpeSeaOfSensors.json#"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "PhysicalContext": {
+                        "enum": [
+                            "Room",
+                            "Intake",
+                            "Exhaust",
+                            "LiquidInlet",
+                            "LiquidOutlet",
+                            "Front",
+                            "Back",
+                            "Upper",
+                            "Lower",
+                            "CPU",
+                            "CPUSubsystem",
+                            "GPU",
+                            "GPUSubsystem",
+                            "FPGA",
+                            "Accelerator",
+                            "ASIC",
+                            "Backplane",
+                            "SystemBoard",
+                            "PowerSupply",
+                            "PowerSubsystem",
+                            "VoltageRegulator",
+                            "Rectifier",
+                            "StorageDevice",
+                            "NetworkingDevice",
+                            "ComputeBay",
+                            "StorageBay",
+                            "NetworkBay",
+                            "ExpansionBay",
+                            "PowerSupplyBay",
+                            "Memory",
+                            "MemorySubsystem",
+                            "Chassis",
+                            "Fan",
+                            "CoolingSubsystem",
+                            "Motor",
+                            "Transformer",
+                            "ACUtilityInput",
+                            "ACStaticBypassInput",
+                            "ACMaintenanceBypassInput",
+                            "DCBus",
+                            "ACOutput",
+                            "ACInput",
+                            "TrustedModule",
+                            "Board",
+                            "Transceiver",
+                            "Battery",
+                            "Pump"
+                        ],
+                        "enumDescriptions": {
+                            "ACInput": "An AC input.",
+                            "ACMaintenanceBypassInput": "An AC maintenance bypass input.",
+                            "ACOutput": "An AC output.",
+                            "ACStaticBypassInput": "An AC static bypass input.",
+                            "ACUtilityInput": "An AC utility input.",
+                            "ASIC": "An ASIC device, such as a networking chip or chipset component.",
+                            "Accelerator": "An accelerator.",
+                            "Back": "The back of the chassis.",
+                            "Backplane": "A backplane within the chassis.",
+                            "Battery": "A battery.",
+                            "Board": "A circuit board.",
+                            "CPU": "A processor (CPU).",
+                            "CPUSubsystem": "The entire processor (CPU) subsystem.",
+                            "Chassis": "The entire chassis.",
+                            "ComputeBay": "Within a compute bay.",
+                            "CoolingSubsystem": "The entire cooling, or air and liquid, subsystem.",
+                            "DCBus": "A DC bus.",
+                            "Exhaust": "The air exhaust point or points or region of the chassis.",
+                            "ExpansionBay": "Within an expansion bay.",
+                            "FPGA": "An FPGA.",
+                            "Fan": "A fan.",
+                            "Front": "The front of the chassis.",
+                            "GPU": "A graphics processor (GPU).",
+                            "GPUSubsystem": "The entire graphics processor (GPU) subsystem.",
+                            "Intake": "The air intake point or points or region of the chassis.",
+                            "LiquidInlet": "The liquid inlet point of the chassis.",
+                            "LiquidOutlet": "The liquid outlet point of the chassis.",
+                            "Lower": "The lower portion of the chassis.",
+                            "Memory": "A memory device.",
+                            "MemorySubsystem": "The entire memory subsystem.",
+                            "Motor": "A motor.",
+                            "NetworkBay": "Within a networking bay.",
+                            "NetworkingDevice": "A networking device.",
+                            "PowerSubsystem": "The entire power subsystem.",
+                            "PowerSupply": "A power supply.",
+                            "PowerSupplyBay": "Within a power supply bay.",
+                            "Pump": "A pump.",
+                            "Rectifier": "A rectifier device.",
+                            "Room": "The room.",
+                            "StorageBay": "Within a storage bay.",
+                            "StorageDevice": "A storage device.",
+                            "SystemBoard": "The system board (PCB).",
+                            "Transceiver": "A transceiver.",
+                            "Transformer": "A transformer.",
+                            "TrustedModule": "A trusted module.",
+                            "Upper": "The upper portion of the chassis.",
+                            "VoltageRegulator": "A voltage regulator device."
+                        },
+                        "type": "string"
+                    },
+                    "ReadingCelsius": {
+                        "description": "The current reading of the temperature sensor.",
+                        "etag": false,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "SensorNumber": {
+                        "description": "A numerical identifier to represent the temperature sensor.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    },
+                    "UpperThresholdCritical": {
+                        "description": "Above normal range but not yet fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "UpperThresholdFatal": {
+                        "description": "Above normal range and is fatal.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "UpperThresholdNonCritical": {
+                        "description": "The noncritical temperature threshold.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": false,
+                "type": "object"
+            },
+            "readonly": false,
+            "type": "array"
+        }
+    },
+    "readonly": false,
+    "title": "#Thermal.v1_7_1.Thermal",
+    "type": "object"
+}

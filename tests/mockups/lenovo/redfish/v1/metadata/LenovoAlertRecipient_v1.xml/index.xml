@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoAlertRecipient  v1.0.0                                 -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoAlertRecipient">
+      <EntityType Name="LenovoAlertRecipient" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoAlertRecipient resource."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/1/Oem/Lenovo/Recipients/{RecipientId}</String>
+          </Collection>
+        </Annotation>
+      </EntityType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoAlertRecipient.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <EntityType Name="LenovoAlertRecipient" BaseType="LenovoAlertRecipient.LenovoAlertRecipient">
+        <Annotation Term="OData.Description" String="This schema defines the group profiles to be used in conjunction with a manager."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that represent the group profiles for the manager."/>
+
+        <Property Name="RecipientSettings" Type="LenovoAlertRecipient.v1_0_0.RecipientSettings" Nullable="false">
+          <Annotation Term="OData.Description" String="This property contains the privilege for this group."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be settings for each alert recipient."/>
+        </Property>
+      </EntityType>
+      
+      <ComplexType Name="RecipientSettings">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent recipient settings."/>
+        
+        <Property Name="RecipientName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Identifies the name of recipient."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property identifies the name of recipient."/>
+          <Annotation Term="Redfish.RequiredOnCreate"/>
+        </Property>
+        <Property Name="Enabledstate" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property contains the user name for the group."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for this group."/>
+          <Annotation Term="Redfish.RequiredOnCreate"/>
+        </Property>
+        <Property Name="AlertType" Type="LenovoAlertRecipient.v1_0_0.AlertType" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Event notification have two types recipient including E-mail and Syslog."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be event notification have two types recipient including E-mail and Syslog."/>
+          <Annotation Term="Redfish.RequiredOnCreate"/>
+        </Property>
+        <Property Name="Address" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The address which alert service sends the alerts. The format of this property depends on the value of AlertType."/>
+          <Annotation Term="OData.LongDescription" String="The value of property shall be a string indicating the address which alert service sends the alerts. The format of this property should be email when AlertType is E-mail while the format should be ip:port or hostname:port when AlertType is Syslog."/>
+          <Annotation Term="Redfish.RequiredOnCreate"/>
+        </Property>
+        <Property Name="IncludeEventLog" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Whether send the event log with the OOB alert."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property indicates whether send the event log with the OOB alert."/>
+        </Property>
+        <Property Name="EnabledAlerts" Type="LenovoAlertRecipient.v1_0_0.EnabledAlert" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Specifies the enabled OOB alerts enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall specifies the enabled OOB alerts enabled."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="EnabledAlert">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the enabled alert filters."/>
+        <Property Name="CriticalEvents" Type="LenovoAlertRecipient.v1_0_0.CriticalEvents" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents enabled critical events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent enabled critical events."/>
+        </Property>
+        <Property Name="WarningEvents" Type="LenovoAlertRecipient.v1_0_0.WarningEvents" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents enabled warning events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent enabled warning events."/>
+        </Property>
+        <Property Name="SystemEvents" Type="LenovoAlertRecipient.v1_0_0.SystemEvents" Nullable="false">
+          <Annotation Term="OData.Description" String="Represents enabled system events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent enabled system events."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="CriticalEvents">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the critical events."/>
+        
+        <Property Name="Enabled" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the recipient receives critical events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean indicating whether the recipient receives critical events."/>
+        </Property>
+        <Property Name="AcceptedEvents" Type="Collection(LenovoAlertRecipient.v1_0_0.CriticalEvent)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the recipient receives critical events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean indicating whether the recipient receives critical events."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="WarningEvents">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the warning events."/>
+        
+        <Property Name="Enabled" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the recipient receives warning events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean indicating whether the recipient receives warning events."/>
+        </Property>
+        <Property Name="AcceptedEvents" Type="Collection(LenovoAlertRecipient.v1_0_0.WarningEvent)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the recipient receives warning events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean indicating whether the recipient receives warning events."/>
+        </Property>
+      </ComplexType>
+
+      <ComplexType Name="SystemEvents">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This object is used to represent the system events."/>
+        
+        <Property Name="Enabled" Type="Edm.Boolean" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the recipient receives system events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean indicating whether the recipient receives system events."/>
+        </Property>
+        <Property Name="AcceptedEvents" Type="Collection(LenovoAlertRecipient.v1_0_0.SystemEvent)" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicates whether the recipient receives system events."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be boolean indicating whether the recipient receives system events."/>
+        </Property>
+      </ComplexType>
+
+      <EnumType Name="AlertType">
+        <Member Name="Email"/>
+        <Member Name="Syslog"/>
+      </EnumType>
+
+      <EnumType Name="CriticalEvent">
+        <Member Name="All"/>
+        <Member Name="AllOtherCriticalEvents"/>
+        <Member Name="CriticalTemperatureThresholdExceeded"/>
+        <Member Name="CriticalVoltageThresholdExceeded"/>
+        <Member Name="CriticalPowerFailure"/>
+        <Member Name="HardDiskDriveFailure"/>
+        <Member Name="FanFailure"/>
+        <Member Name="CPUFailure"/>
+        <Member Name="MemoryFailure"/>
+        <Member Name="HardwareIncompatibility"/>
+        <Member Name="PowerRedundancyFailure"/>
+      </EnumType>
+
+      <EnumType Name="WarningEvent">
+        <Member Name="All"/>
+        <Member Name="AllOtherWarningEvents"/>
+        <Member Name="WarningTemperatureThresholdExceeded"/>
+        <Member Name="WarningVoltageThresholdExceeded"/>
+        <Member Name="WarningPowerThresholdExceeded"/>
+        <Member Name="NoncriticalFanevents"/>
+        <Member Name="CPUinDegradedState"/>
+        <Member Name="MemoryWarning"/>
+        <Member Name="PowerRedundancyWarning"/>
+      </EnumType>
+
+      <EnumType Name="SystemEvent">
+        <Member Name="All"/>
+        <Member Name="AllOtherEvents"/>
+        <Member Name="SuccessfulRemoteLogin"/>
+        <Member Name="OperatingSystemTimeout"/>
+        <Member Name="SystemPowerSwitch"/>
+        <Member Name="OperatingSystemBootFailure"/>
+        <Member Name="OperatingSystemLoaderWatchdogTimeout"/>
+        <Member Name="PredictedFailure"/>
+        <Member Name="EventLog75PercentFull"/>
+        <Member Name="NetworkChange"/>
+        <Member Name="AllAuditEvents"/>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

@@ -1,0 +1,75 @@
+{
+    "@odata.type": "#MetricReportDefinition.v1_4_1.MetricReportDefinition",
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/FanSensor",
+    "Id": "FanSensor",
+    "Name": "Fan Sensor Metric Report",
+    "Description": "Fan sensor",
+    "AppendLimit": 2400,
+    "MetricReportDefinitionEnabled": false,
+    "MetricReportDefinitionType": "Periodic",
+    "MetricReportHeartbeatInterval": "PT0H0M0S",
+    "SuppressRepeatedMetricValue": false,
+    "ReportTimespan": "PT0H0M0S",
+    "ReportUpdates": "Overwrite",
+    "Wildcards": [],
+    "MetricReportDefinitionType@Redfish.AllowableValues": [
+        "Periodic",
+        "OnChange",
+        "OnRequest"
+    ],
+    "ReportUpdates@Redfish.AllowableValues": [
+        "AppendStopsWhenFull",
+        "AppendWrapsWhenFull",
+        "NewReport",
+        "Overwrite"
+    ],
+    "ReportActions": [
+        "RedfishEvent",
+        "LogToMetricReportsCollection"
+    ],
+    "ReportActions@Redfish.AllowableValues": [
+        "LogToMetricReportsCollection",
+        "RedfishEvent"
+    ],
+    "Status": {
+        "State": "Disabled"
+    },
+    "Schedule": {
+        "RecurrenceInterval": "PT0H1M0S"
+    },
+    "Metrics": [
+        {
+            "MetricId": "RPMReading",
+            "MetricProperties": [],
+            "CollectionFunction": null,
+            "CollectionDuration": null,
+            "CollectionTimeScope": "Point",
+            "Oem": {
+                "Dell": {
+                    "@odata.type": "#DellMetric.v1_1_0.DellMetric",
+                    "CustomLabel": null,
+                    "FQDD": null,
+                    "Source": "fan"
+                }
+            }
+        }
+    ],
+    "Links": {
+        "Triggers": [
+            {
+                "@odata.id": "/redfish/v1/TelemetryService/Triggers/FANCriticalTrigger"
+            },
+            {
+                "@odata.id": "/redfish/v1/TelemetryService/Triggers/FANWarnTrigger"
+            }
+        ]
+    },
+    "Oem": {
+        "Dell": {
+            "@odata.type": "#DellMetricReportDefinition.v1_1_0.DellMetricReportDefinition",
+            "Digest": "a783359e36beb82b66617992bde46f56ce7437a9e8cc1ff7aa5319e8652423a0",
+            "iDRACFirmwareVersion": "6.00.30.00"
+        }
+    }
+}

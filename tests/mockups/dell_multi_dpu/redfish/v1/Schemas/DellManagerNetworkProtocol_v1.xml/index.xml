@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellManagerNetworkProtocol v1_0_0-->
+<!--# -->
+<!--# Copyright 2022-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/CertificateCollection_v1.xml">
+        <edmx:Include Namespace="CertificateCollection"/>
+    </edmx:Reference>
+
+
+    <edmx:DataServices>
+        <Schema Namespace="DellManagerNetworkProtocol" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellManagerNetworkProtocol" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="Oem data related to the ManagerNetworkProtocol Instance."/>
+                <Annotation Term="OData.LongDescription" String="Oem data related to the ManagerNetworkProtocol Instance."/>
+            </ComplexType>
+            <EnumType Name="BinaryEnum">
+                <Member Name="Enabled">
+                  <Annotation Term="OData.Description" String="Associated functionality is enabled."/>
+                </Member>
+                <Member Name="Disabled">
+                  <Annotation Term="OData.Description" String="Associated functionality is disabled."/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ClientCertificateTypes">
+                <Member Name="CustomLDEVID">
+                  <Annotation Term="OData.Description" String="The Certificate(s) located under the Certificate Collection at ClientCertificates shall be used for Port-based Network Access Control."/>
+                </Member>
+                <Member Name="DefaultIDEVID">
+                  <Annotation Term="OData.Description" String="The Certificate located at InitialDeviceIDCertificate shall be used for Port-based Network Access Control."/>
+                </Member>
+                <Member Name="SigningLDEVID">
+                  <Annotation Term="OData.Description" String="The Certificate(s) located under the Certificate Collection at ClientCertificates shall be used for Port-based Network Access Control."/>
+                </Member>
+            </EnumType>
+        </Schema>
+
+        <Schema Namespace="DellManagerNetworkProtocol.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellManagerNetworkProtocol" BaseType="DellManagerNetworkProtocol.DellManagerNetworkProtocol">
+                <Property Name="PNAC" Type="DellManagerNetworkProtocol.v1_0_0.PNACInfo" Nullable="false">
+                    <Annotation Term="OData.Description" String="Defines Port-based Network Access Control."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines Port-based Network Access Control."/>
+                </Property>
+            </ComplexType>
+
+            <ComplexType Name="PNACInfo">
+                <Property Name="Protocol" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Networking protocol for Port-based Network Access Control."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the networking protocol for Port-based Network Access Control."/>
+                </Property>
+                <Property Name="ServiceStatus" Type="DellManagerNetworkProtocol.BinaryEnum" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Port-based Network Access Control service status."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines Port-based Network Access Control service status. The default value is Enabled."/>
+                </Property>
+                <!--<Property Name="MACsecCapability" Type="DellManagerNetworkProtocol.BinaryEnum" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Media Access Control Security status."/>
+                    <Annotation Term="OData.LongDescription" String="This property tells Media Access Control Security status. The default value is Enabled."/>
+                </Property>-->
+                <Property Name="ClientCertificateType" Type="DellManagerNetworkProtocol.ClientCertificateTypes" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="The type of client certificate the BMC will use."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the type of client certificate the BMC will use."/>
+                </Property>
+                <Property Name="AuthenticationServerCertificateValidationStatus" Type="DellManagerNetworkProtocol.BinaryEnum" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+                    <Annotation Term="OData.Description" String="Validate Authentication Server Certificate."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines validation status of Authentication Server Certificate. The default value is Disabled. To Enable this property the ServerCACertificates must contain a valid certificate."/>
+                </Property>
+                <NavigationProperty Name="ClientCertificates" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Defines the location of Client Certificates uploaded."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the location of the Client Certificates uploaded."/>
+                </NavigationProperty>
+                <NavigationProperty Name="ServerCACertificates" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Defines the location of Server CA Certificates uploaded."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the location of Server CA Certificates uploaded. AuthenticationServerCertificateValidationStatus property value should be set to Enabled to use the Certificate at ServerCACertificates."/>
+                </NavigationProperty>
+                <NavigationProperty Name="ClientCSC" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Defines the location of Client CSC Certificates uploaded."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the location of Client CSC Certificates uploaded."/>
+                </NavigationProperty>
+                <NavigationProperty Name="InitialDeviceIDCertificate" Type="CertificateCollection.CertificateCollection" ContainsTarget="true" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Defines the location of Factory Identity Certificate."/>
+                    <Annotation Term="OData.LongDescription" String="This property defines the location of Factory Identity Certificate."/>
+                </NavigationProperty>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

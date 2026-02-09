@@ -1,0 +1,102 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLODriveExt",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLODriveExt object extends the Redfish Drive resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "CriticalWarning": {
+            "description": "Failure information reported by the drive.",
+            "enum": [
+                "AvailableSpareSpace",
+                "TemperatureTheshold",
+                "ReliabilityError",
+                "ReadOnlyMode",
+                "VolatileBackupFailure"
+            ],
+            "enumDescriptions": {
+                "AvailableSpareSpace": "Available spare space has fallen below the threshold.",
+                "ReadOnlyMode": "The media has been placed in read only mode.",
+                "ReliabilityError": "The NVM subsystem reliability has been degraded due to significant media related errors or any internal error that degrades NVM subsystem reliability.",
+                "TemperatureTheshold": "A temperature is above an over temperature threshold or below an under temperature threshold.",
+                "VolatileBackupFailure": "The volatile memory backup device has failed. This field is only valid if the controller has a volatile memory backup solution"
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "CurrentTemperatureCelsius": {
+            "description": "The current temperature of the drive",
+            "etag": false,
+            "readonly": true,
+            "type": "integer"
+        },
+        "DriveStatus": {
+            "$ref": "Resource.json#/definitions/Status",
+            "description": "Drive status as reported by drive or System BIOS, depending on HealthUpdated."
+        },
+        "HealthUpdated": {
+            "description": "Describes how drive health related data (FailurePredicted, PredictedMediaLifeLeftPercent, Status, DriveStatus, CriticalWarning, WearStatus) are updated.",
+            "enum": [
+                "Boot",
+                "Dynamic"
+            ],
+            "enumDescriptions": {
+                "Boot": "The health related properties are updated when the system boot and are not updated at runtime.",
+                "Dynamic": "The health related properties are updated periodically at runtime."
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "NVMeId": {
+            "description": "NVMe Identifier:  ModelName, SerialNumber, PCI-Vendor-ID.",
+            "readonly": true,
+            "type": "string"
+        },
+        "PowerOnHours": {
+            "description": "The number of lifetime hours that the drive has been powered on. The value is null if the disk power on hours cannot be determined or is not supported.",
+            "etag": false,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "TemperatureStatus": {
+            "$ref": "Resource.json#/definitions/Status",
+            "description": "Drive temperature status."
+        },
+        "WearStatus": {
+            "description": "The wear status of the drive, an estimation of remaining life span.",
+            "enum": [
+                "OK",
+                "FiftySixDayThreshold",
+                "FivePercentThreshold",
+                "TwoPercentThreshold",
+                "SSDWearOut",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "FiftySixDayThreshold": "Indicates that based upon the current workload, the solid state disk will reach the maximum usage limit for writes (wear out) within fifty-six days. You should modify your write workload or begin preparing to replace your SSD drive",
+                "FivePercentThreshold": "Indicates that the solid state disk has passed the five percent threshold and is at or below five percent of reaching the maximum usage limit for writes (wear out). You should begin to prepare to replace your SSD drive.",
+                "OK": "The SSD is not in any imminent danger of wear out.",
+                "SSDWearOut": "Indicates that a solid state drive is approaching the maximum usage limit for writes (wear out) and should be replaced as soon as possible.",
+                "TwoPercentThreshold": "Indicates that the solid state disk has passed the two percent threshold and is at or below two percent of reaching the maximum usage limit for writes (wear out). You should begin to prepare to replace your SSD drive.",
+                "Unknown": "The SSD wear status cannot be determined."
+            },
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "required": [],
+    "title": "#HpeiLODriveExt.v2_0_1.HpeiLODriveExt",
+    "type": "object"
+}

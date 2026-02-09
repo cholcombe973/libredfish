@@ -1,0 +1,41 @@
+{
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetricsEvent",
+    "Id": "PowerMetricsEvent",
+    "Status": {
+        "State": "Enabled"
+    },
+    "Description": "A set of metrics that are collected into a metric report.",
+    "Wildcards": [
+        {
+            "Name": "PWild",
+            "Values": [
+                "0",
+                "1",
+                "2"
+            ]
+        }
+    ],
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "Schedule": {
+        "RecurrenceInterval": "PT10M"
+    },
+    "ReportTimespan": "PT10M",
+    "ReportActions": [
+        "RedfishEvent"
+    ],
+    "MetricReportDefinitionType": "Periodic",
+    "@odata.etag": "\"766b02d4f5232aee50b\"",
+    "Metrics": [
+        {
+            "MetricProperties": [
+                "/redfish/v1/Chassis/1/Power#/PowerControl/{PWild}/PowerMetrics/MaxConsumedWatts",
+                "/redfish/v1/Chassis/1/Power#/PowerControl/{PWild}/PowerMetrics/AverageConsumedWatts",
+                "/redfish/v1/Chassis/1/Power#/PowerControl/{PWild}/PowerMetrics/MinConsumedWatts"
+            ],
+            "CollectionTimeScope": "Interval",
+            "CollectionDuration": "PT30S"
+        }
+    ],
+    "Name": "PowerMetricsEvent",
+    "@odata.type": "#MetricReportDefinition.v1_4_1.MetricReportDefinition"
+}

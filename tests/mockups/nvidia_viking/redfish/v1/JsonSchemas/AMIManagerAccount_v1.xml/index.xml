@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIManagerAccount  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/ManagerAccount_v1.xml">
+    <edmx:Include Namespace="ManagerAccount"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIManagerAccount">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+
+      <ComplexType Name="AMIManagerAccount" Abstract="true">
+        <Annotation Term="OData.Description" String="This schemas defines the properties and actions which is used in the ManagerAccount."/>
+        <Annotation Term="OData.LongDescription" String="This schemas defines the properties and actions which is used in the ManagerAccount."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIManagerAccount.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+      <ComplexType Name="AMIManagerAccount" BaseType="AMIManagerAccount.AMIManagerAccount">
+        <Annotation Term="OData.Description" String="This is the schema definition for the AMIManagerAccount."/>
+        <Property Name="SNMP" Type="AMIManagerAccount.v1_0_0.SNMP" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the properties related to SNMP"/>
+          <Annotation Term="OData.LongDescription" String="Indicates the properties related to SNMP"/>
+        </Property>       
+      </ComplexType>
+      <ComplexType Name="SNMP" Abstract="true">
+		<Property Name="AuthenticationProtocol" Type="AMIManagerAccount.v1_0_0.AuthenticationProtocol" Nullable="false">
+		<Annotation Term="OData.Description" String="AuthenticationProtocol for the SNMP."/>
+		</Property>
+		<Property Name="EncryptionProtocol" Type="AMIManagerAccount.v1_0_0.EncryptionProtocol" Nullable="false">
+		<Annotation Term="OData.Description" String="EncryptionProtocol for SNMP."/>
+		</Property>
+		<Property Name="Access" Type="AMIManagerAccount.v1_0_0.Access" Nullable="false">
+		<Annotation Term="OData.Description" String="Access for the SNMP."/>
+		</Property>
+      </ComplexType>
+		<EnumType Name="AuthenticationProtocol">
+              <Member Name="SHA256">
+                <Annotation Term="OData.Description" String="SHA256 Authentication."/>
+                <Annotation Term="OData.LongDescription" String="SHA256 Authentication."/>
+              </Member>
+			  <Member Name="SHA384">
+                <Annotation Term="OData.Description" String="SHA384 Authentication."/>
+                <Annotation Term="OData.LongDescription" String="SHA384 Authentication."/>
+              </Member>
+              <Member Name="SHA512">
+                <Annotation Term="OData.Description" String="SHA512 Authentication."/>
+                <Annotation Term="OData.LongDescription" String="SHA512 Authentication."/>
+              </Member>
+        </EnumType>
+		<EnumType Name="EncryptionProtocol">
+              <Member Name="DES">
+                <Annotation Term="OData.Description" String="DES Encryption."/>
+                <Annotation Term="OData.LongDescription" String="DES Encryption."/>
+              </Member>
+              <Member Name="AES">
+                <Annotation Term="OData.Description" String="AES Encryption."/>
+                <Annotation Term="OData.LongDescription" String="AES Encryption."/>
+              </Member>
+        </EnumType>
+		<EnumType Name="Access">
+              <Member Name="ReadOnly">
+                <Annotation Term="OData.Description" String="ReadOnly Access."/>
+                <Annotation Term="OData.LongDescription" String="ReadOnly Access."/>
+              </Member>
+              <Member Name="ReadWrite">
+                <Annotation Term="OData.Description" String="ReadWrite Access."/>
+                <Annotation Term="OData.LongDescription" String="ReadWrite Access."/>
+              </Member>
+        </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

@@ -1,0 +1,497 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2021 DMTF in cooperation with the Storage Networking Industry Association (SNIA). All rights reserved.",
+    "Description": "This registry defines the messages to use for resource events.",
+    "OwningEntity": "DMTF",
+    "@odata.type": "#MessageRegistry.v1_5_0.MessageRegistry",
+    "Language": "en",
+    "Messages": {
+        "LicenseChanged": {
+            "LongDescription": "This message shall be used to indicate that a license has changed.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a license has changed.",
+            "MessageSeverity": "Warning",
+            "Deprecated": "This message has been deprecated in favor of `ResourceChanged`.",
+            "Resolution": "See vendor specific instructions for specific actions.",
+            "VersionDeprecated": "1.1.0",
+            "Severity": "Warning",
+            "Message": "A license for '%1' has changed.  The following message was returned: '%2'."
+        },
+        "ResourcePoweringOff": {
+            "LongDescription": "This message shall be used to indicate that the value of the PowerState property of a resource has changed to `PoweringOff`.  This message should not be used if the PowerState transition to `Off` will occur immediately.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the power state of a resource has changed to powering off.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource."
+            ],
+            "MessageSeverity": "OK",
+            "ArgDescriptions": [
+                "The relevant resource."
+            ],
+            "Resolution": "None.",
+            "VersionAdded": "1.1.0",
+            "Severity": "OK",
+            "Message": "The resource `%1` is powering off."
+        },
+        "LicenseExpired": {
+            "LongDescription": "This message shall be used to indicate that a license has expired.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a license has expired.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant resource or service affected by the software license.",
+                "This argument shall contain the message returned from the license validation process or software."
+            ],
+            "MessageSeverity": "Warning",
+            "Deprecated": "This message has been deprecated in favor of `LicenseExpired` in the License Message Registry.",
+            "Resolution": "See vendor specific instructions for specific actions.",
+            "VersionDeprecated": "1.1.0",
+            "ArgDescriptions": [
+                "The relevant resource.",
+                "The message returned from the license validation process."
+            ],
+            "Severity": "Warning",
+            "Message": "A license for '%1' has expired.  The following message was returned: '%2'."
+        },
+        "ResourceSelfTestFailed": {
+            "LongDescription": "This message shall be used to indicate that a self-test has failed.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that a self-test has failed.  Suggested resolution may be provided as OEM data.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the error message received as a result from the self-test."
+            ],
+            "MessageSeverity": "Critical",
+            "Resolution": "See vendor specific instructions for specific actions.",
+            "ArgDescriptions": [
+                "The self-test error message."
+            ],
+            "Severity": "Critical",
+            "Message": "A self-test has failed.  The following message was returned: '%1'."
+        },
+        "ResourceCreated": {
+            "MessageSeverity": "OK",
+            "LongDescription": "This message shall be used to indicates that all conditions of a successful creation operation have been met.",
+            "Resolution": "None",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that all conditions of a successful creation operation have been met.",
+            "Severity": "OK",
+            "Message": "The resource has been created successfully."
+        },
+        "URIForResourceChanged": {
+            "MessageSeverity": "OK",
+            "LongDescription": "This message shall be used to indicate that the URI for a resource has changed.",
+            "Resolution": "None.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that the URI for a resource has changed.  Examples for this would be physical component replacement or redistribution.",
+            "Severity": "OK",
+            "Message": "The URI for the resource has changed."
+        },
+        "ResourceSelfTestCompleted": {
+            "MessageSeverity": "OK",
+            "ClearingLogic": {
+                "ClearsIf": "SameOriginOfCondition",
+                "ClearsMessage": [
+                    "ResourceSelfTestFailed"
+                ]
+            },
+            "LongDescription": "This message shall be used to indicate that a self-test has completed.",
+            "Resolution": "None.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that a self-test has completed.",
+            "Severity": "OK",
+            "Message": "A self-test has completed."
+        },
+        "ResourcePoweringOn": {
+            "LongDescription": "This message shall be used to indicate that the value of the PowerState property of a resource has changed to `PoweringOn`.  This message should not be used if the PowerState transition to `On` will occur immediately.",
+            "ParamTypes": [
+                "string"
+            ],
+            "ArgDescriptions": [
+                "The relevant resource."
+            ],
+            "Description": "Indicates that the power state of a resource has changed to powering on.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource."
+            ],
+            "MessageSeverity": "OK",
+            "VersionAdded": "1.1.0",
+            "Resolution": "None.",
+            "NumberOfArgs": 1,
+            "Severity": "OK",
+            "Message": "The resource `%1` is powering on."
+        },
+        "ResourceStatusChangedOK": {
+            "LongDescription": "This message shall be used to indicate that the health of a resource has changed to OK.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "ArgDescriptions": [
+                "The relevant resource.",
+                "The state of the resource."
+            ],
+            "Description": "Indicates that the health of a resource has changed to OK.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource.",
+                "This argument shall contain the value of the `Health` property for the relevant Redfish resource.  The values shall be used from the definition of the `Health` enumeration in the `Resource` schema."
+            ],
+            "MessageSeverity": "OK",
+            "Message": "The health of resource '%1' has changed to %2.",
+            "Resolution": "None.",
+            "NumberOfArgs": 2,
+            "Severity": "OK",
+            "ClearingLogic": {
+                "ClearsIf": "SameOriginOfCondition",
+                "ClearsMessage": [
+                    "ResourceStatusChangedCritical",
+                    "ResourceStatusChangedWarning"
+                ]
+            }
+        },
+        "ResourceWarningThresholdCleared": {
+            "LongDescription": "This message shall be used to indicate that a specified resource property has cleared its warning threshold.",
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a specified resource property has cleared its warning threshold.  Examples would be drive I/O errors, or network link errors.  Suggested resolution may be provided as OEM data.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant property from a Redfish resource.",
+                "This argument shall contain the value of the relevant error threshold."
+            ],
+            "MessageSeverity": "OK",
+            "ArgDescriptions": [
+                "The name of the property.",
+                "The value of the threshold."
+            ],
+            "Resolution": "None.",
+            "ClearingLogic": {
+                "ClearsIf": "SameOriginOfCondition",
+                "ClearsMessage": [
+                    "ResourceWarningThresholdExceeded"
+                ]
+            },
+            "Severity": "OK",
+            "Message": "The resource property %1 has cleared the warning threshold of value %2."
+        },
+        "ResourceRemoved": {
+            "MessageSeverity": "OK",
+            "Resolution": "None",
+            "LongDescription": "This message shall be used to indicates that all conditions of a successful remove operation have been met.",
+            "ClearingLogic": {
+                "ClearsAll": true,
+                "ClearsIf": "SameOriginOfCondition"
+            },
+            "NumberOfArgs": 0,
+            "Description": "Indicates that all conditions of a successful remove operation have been met.",
+            "Severity": "OK",
+            "Message": "The resource has been removed successfully."
+        },
+        "ResourceStatusChangedWarning": {
+            "LongDescription": "This message shall be used to indicate that the health of a resource has changed to Warning.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that the health of a resource has changed to Warning.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource.",
+                "This argument shall contain the value of the `Health` property for the relevant Redfish resource.  The values shall be used from the definition of the `Health` enumeration in the `Resource` schema."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ArgDescriptions": [
+                "The relevant resource.",
+                "The state of the resource."
+            ],
+            "Severity": "Warning",
+            "Message": "The health of resource `%1` has changed to %2."
+        },
+        "LicenseAdded": {
+            "LongDescription": "This message shall be used to indicate that a license has been added.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a license has been added.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant resource or service affected by the software license.",
+                "This argument shall contain the message returned from the license validation process or software."
+            ],
+            "MessageSeverity": "OK",
+            "Deprecated": "This message has been deprecated in favor of `LicenseAdded` in the License Message Registry.",
+            "Resolution": "See vendor specific instructions for specific actions.",
+            "VersionDeprecated": "1.1.0",
+            "ArgDescriptions": [
+                "The relevant resource.",
+                "The message returned from the license validation process."
+            ],
+            "Severity": "OK",
+            "Message": "A license for '%1' has been added.  The following message was returned: '%2'."
+        },
+        "ResourcePoweredOn": {
+            "LongDescription": "This message shall be used to indicate that the value of the PowerState property of a resource has changed to `On`.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the power state of a resource has changed to powered on.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource."
+            ],
+            "MessageSeverity": "OK",
+            "ArgDescriptions": [
+                "The relevant resource."
+            ],
+            "Resolution": "None.",
+            "VersionAdded": "1.1.0",
+            "Severity": "OK",
+            "Message": "The resource `%1` has powered on."
+        },
+        "ResourceErrorsCorrected": {
+            "LongDescription": "This message shall be used to indicate that a specified resource property has corrected errors.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "ArgDescriptions": [
+                "The name of the property.",
+                "The type of error encountered."
+            ],
+            "Description": "Indicates that a specified resource property has corrected errors.  Examples would be drive I/O errors, or network link errors.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant property from a Redfish resource.",
+                "This argument shall contain a description of the type of error encountered."
+            ],
+            "MessageSeverity": "OK",
+            "Message": "The resource property %1 has corrected errors of type '%2'.",
+            "Resolution": "None.",
+            "NumberOfArgs": 2,
+            "Severity": "OK",
+            "ClearingLogic": {
+                "ClearsIf": "SameOriginOfCondition",
+                "ClearsMessage": [
+                    "ResourceErrorsDetected"
+                ]
+            }
+        },
+        "ResourcePoweredOff": {
+            "LongDescription": "This message shall be used to indicate that the value of the PowerState property of a resource has changed to `Off`.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the power state of a resource has changed to powered off.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource."
+            ],
+            "MessageSeverity": "OK",
+            "ArgDescriptions": [
+                "The relevant resource."
+            ],
+            "Resolution": "None.",
+            "VersionAdded": "1.1.0",
+            "Severity": "OK",
+            "Message": "The resource `%1` has powered off."
+        },
+        "ResourceWarningThresholdExceeded": {
+            "LongDescription": "This message shall be used to indicate that a specified resource property has exceeded its warning threshold.",
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a specified resource property has exceeded its warning threshold.  Examples would be drive I/O errors, or network link errors.  Suggested resolution may be provided as OEM data.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant property from a Redfish resource.",
+                "This argument shall contain the value of the relevant error threshold."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ArgDescriptions": [
+                "The name of the property.",
+                "The value of the threshold."
+            ],
+            "Severity": "Warning",
+            "Message": "The resource property %1 has exceeded its warning threshold of value %2."
+        },
+        "ResourceErrorsDetected": {
+            "LongDescription": "This message shall be used to indicate that a specified resource property has detected errors.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a specified resource property has detected errors.  Examples would be drive I/O errors, or network link errors.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant property from a Redfish resource.",
+                "This argument shall contain a description of the type of error encountered."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Resolution dependent upon error type.",
+            "ArgDescriptions": [
+                "The name of the property.",
+                "The type of error encountered."
+            ],
+            "Severity": "Warning",
+            "Message": "The resource property %1 has detected errors of type '%2'."
+        },
+        "ResourceErrorThresholdExceeded": {
+            "LongDescription": "This message shall be used to indicate that a specified resource property has exceeded its error threshold.",
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a specified resource property has exceeded its error threshold.  Examples would be drive I/O errors, or network link errors.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant property from a Redfish resource.",
+                "This argument shall contain the value of the relevant error threshold."
+            ],
+            "MessageSeverity": "Critical",
+            "Resolution": "None.",
+            "ArgDescriptions": [
+                "The name of the property.",
+                "The value of the threshold."
+            ],
+            "Severity": "Critical",
+            "Message": "The resource property %1 has exceeded error threshold of value %2."
+        },
+        "ResourceVersionIncompatible": {
+            "LongDescription": "This message shall be used to indicate that an incompatible version of software has been detected.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that an incompatible version of software has been detected.  Examples may be after a component or system level software update.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant software component or package.  This might include both name and version information."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Compare the version of the resource with the compatible version of the software.",
+            "ArgDescriptions": [
+                "The name of the software component."
+            ],
+            "Severity": "Warning",
+            "Message": "An incompatible version of software '%1' has been detected."
+        },
+        "ResourceErrorThresholdCleared": {
+            "LongDescription": "This message shall be used to indicate that a specified resource property has cleared its error threshold.",
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "ArgDescriptions": [
+                "The name of the property.",
+                "The value of the threshold."
+            ],
+            "Description": "Indicates that a specified resource property has cleared its error threshold.  Examples would be drive I/O errors, or network link errors.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant property from a Redfish resource.",
+                "This argument shall contain the value of the relevant error threshold."
+            ],
+            "MessageSeverity": "OK",
+            "Message": "The resource property %1 has cleared the error threshold of value %2.",
+            "Resolution": "None.",
+            "NumberOfArgs": 2,
+            "Severity": "OK",
+            "ClearingLogic": {
+                "ClearsIf": "SameOriginOfCondition",
+                "ClearsMessage": [
+                    "ResourceErrorThresholdExceeded"
+                ]
+            }
+        },
+        "ResourcePaused": {
+            "LongDescription": "This message shall be used to indicate that the value of the PowerState property of a resource has changed to `Paused`.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates that the power state of a resource has changed to paused.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource."
+            ],
+            "MessageSeverity": "OK",
+            "VersionAdded": "1.1.0",
+            "Resolution": "None.",
+            "ArgDescriptions": [
+                "The relevant resource."
+            ],
+            "Severity": "OK",
+            "Message": "The resource `%1` has been paused."
+        },
+        "ResourceStatusChangedCritical": {
+            "LongDescription": "This message shall be used to indicate that the health of a resource has changed to Critical.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that the health of a resource has changed to Critical.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource.",
+                "This argument shall contain the value of the `Health` property for the relevant Redfish resource.  The values shall be used from the definition of the `Health` enumeration in the `Resource` schema."
+            ],
+            "MessageSeverity": "Critical",
+            "Resolution": "None.",
+            "ArgDescriptions": [
+                "The relevant resource.",
+                "The state of the resource."
+            ],
+            "Severity": "Critical",
+            "Message": "The health of resource `%1` has changed to %2."
+        },
+        "ResourceStateChanged": {
+            "LongDescription": "This message shall be used to indicate that the value of the State property of a resource has changed.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "ArgDescriptions": [
+                "The relevant resource.",
+                "The state of the resource."
+            ],
+            "Description": "Indicates that the state of a resource has changed.",
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the relevant Redfish resource.",
+                "This argument shall contain the value of the `State` property for the relevant Redfish resource.  The values shall be used from the definition of the `State` enumeration in the `Resource` schema."
+            ],
+            "MessageSeverity": "OK",
+            "NumberOfArgs": 2,
+            "Resolution": "None.",
+            "VersionAdded": "1.1.0",
+            "Severity": "OK",
+            "Message": "The state of resource `%1` has changed to %2."
+        },
+        "ResourceChanged": {
+            "MessageSeverity": "OK",
+            "LongDescription": "This message shall be used to indicate that one or more resource properties have changed.",
+            "Resolution": "None.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that one or more resource properties have changed.  This is not used whenever there is another event message for that specific change, such as only the state has changed.",
+            "Severity": "OK",
+            "Message": "One or more resource properties have changed."
+        }
+    },
+    "@Redfish.License": "Creative Commons Attribution 4.0 License.  For full text see link: https://creativecommons.org/licenses/by/4.0/",
+    "RegistryVersion": "1.2.0",
+    "Id": "ResourceEvent.1.2.0",
+    "Name": "Resource Event Message Registry",
+    "RegistryPrefix": "ResourceEvent"
+}

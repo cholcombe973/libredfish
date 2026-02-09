@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoDateTimeService  v1.0.0                                -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoDateTimeService">
+      <EntityType Name="LenovoDateTimeService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This schema defines a resource for user to get the Date and Time about the manager."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent resources that indicate the manager Date and Time setting."/>
+      </EntityType>
+            
+      <Action Name="ImmediatelySync" IsBound="true">
+        <Parameter Name="LenovoDateTimeService" Type="LenovoDateTimeService.v1_0_0.Actions"/>
+        <Annotation Term="OData.Description" String="Use the action to request an immediate synchronization with NTP server."/>
+        <Annotation Term="OData.LongDescription" String="If select to synchronize the date and time with NTP server, the action can be used to make an immediate request."/>
+      </Action>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoDateTimeService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoDateTimeService" BaseType="LenovoDateTimeService.LenovoDateTimeService">
+        <Annotation Term="OData.Description" String="This resource represents the Date and Time service for the resource or service to which it is associated."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a date/time service of BMC."/>
+        <Property Name="SettingMethod" Type="LenovoDateTimeService.v1_0_0.DateTimeSettingMethod">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicate how the manager Date and Time are updated."/>
+          <Annotation Term="OData.LongDescription" String="Indicate how the manager Date and Time should be set."/>
+        </Property>
+        <Property Name="DateTime" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicate current Date and Time of manager, the format should be Month/Day/Year Hour:Minute:Second."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the current DateTime value of Manager, with offset from UTC."/>
+        </Property>
+        <Property Name="HostTimeFormat" Type="LenovoDateTimeService.v1_0_0.HostTimeFormat">
+          <Annotation Term="OData.Description" String="Format of time obtained from host."/>
+          <Annotation Term="OData.LongDescription" String="The optional values are 'Local(example:Windows)' or 'UTC(example:Linux)'. If the value is 'UTC', the UTCOffset can update."/>
+        </Property>
+        <Property Name="UTCOffset" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicate UTC offset for the manager."/>
+          <Annotation Term="OData.LongDescription" String="Specify the offset from Universal Time Coordinated(UTC) corresponding to the time zone where this system is located.The format  should be UTC +/- Hour:Mintue."/>
+        </Property>
+        <Property Name="AutoDST" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Specify whether the manager clock will automatically adjust when Daylight Saving Time(DST) changes."/>
+          <Annotation Term="OData.LongDescription" String="The optional values are 'true' or 'false'. If the value is 'true', the manager will perform an automatic Daylight Saving Time update."/>
+        </Property>
+        <Property Name="NTPServerAddresses" Type="Collection(Edm.String)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Indicate the NTP server for lock synchronization, the address should be at least valid in format"/>
+          <Annotation Term="OData.LongDescription" String="TUse this field to specify the names of up to 4 NTP servers to be used for clock synchronization when 'Synchronize with an NTP server' is selected."/>
+        </Property>
+        <Property Name="Frequency" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="Specify the Synchronization frequency in Munites."/>
+          <Annotation Term="OData.LongDescription" String="Specify the interval between synchronization requests when 'Synchronize with an NTP server' is selected."/>
+        </Property>
+        <Property Name="Actions" Type="LenovoDateTimeService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Description" String="This object is used to define Lenovo date/time actions."/>
+          <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+        </Property>
+      </EntityType>
+
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+      </ComplexType>
+
+      <EnumType Name="DateTimeSettingMethod">
+        <Member Name="SyncwithHost">
+          <Annotation Term="OData.Description" String="The time is got from the host."/>
+        </Member>
+        <Member Name="SyncwithNTP">
+          <Annotation Term="OData.Description" String="User gives out the NTP server to synchronize the data and time."/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="HostTimeFormat">
+        <Member Name="Local">
+          <Annotation Term="OData.Description" String="The time is got from the host is local(example:Windows) time."/>
+        </Member>
+        <Member Name="UTC">
+          <Annotation Term="OData.Description" String="The time is got from the host is UTC(example:Linux) time."/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+
+  </edmx:DataServices>
+</edmx:Edmx>
+

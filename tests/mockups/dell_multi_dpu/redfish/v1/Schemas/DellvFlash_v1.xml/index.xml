@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellvFlash v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellvFlash">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellvFlash" Abstract="true">
+                <Annotation String="An instance of DellvFlash will have VFlash specific data." Term="OData.Description"/>
+                <Annotation String="An instance of DellvFlash will have VFlash specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellvFlash/{vFlashId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellvFlash.v1_0_0">
+            <EntityType Name="DellvFlash" BaseType="DellvFlash.DellvFlash">
+                <Annotation Term="OData.Description" String="An instance of DellvFlash will have VFlash specific data."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellvFlash will have VFlash specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="AvailableSizeMB" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property value shall be in MB. This property specifies the available size on the media."/>
+                    <Annotation Term="OData.LongDescription" String="The property value shall be in MB. This property specifies the available size on the media."/>
+                    <Annotation Term="Measures.Unit" String="MB"/>
+                </Property>
+                <Property Name="CapacityMB" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property value shall be in MB. This property specifies the total size on the media."/>
+                    <Annotation Term="OData.LongDescription" String="The property value shall be in MB. This property specifies the total size on the media."/>
+                    <Annotation Term="Measures.Unit" String="MB"/>
+                </Property>
+                <Property Name="ComponentName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the media."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the media."/>
+                </Property>
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string containing the friendly Fully Qualified Device Description,a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string containing the friendly Fully Qualified Device Description,a property that describes the device and its location."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string containing the Fully Qualified Device Description, a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string containing the Fully Qualified Device Description, a user-friendly name for the object."/>
+                </Property>
+                <Property Name="HealthStatus" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The HealthStatus property represents the health status of the virtual flash media."/>
+                    <Annotation Term="OData.LongDescription" String="The HealthStatus property represents the health status of the virtual flash media."/>
+                </Property>
+                <Property Name="InitializedState" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The InitializedState property represents the initialization state of the virtual flash media."/>
+                    <Annotation Term="OData.LongDescription" String="The InitializedState property represents the initialization state of the virtual flash media."/>
+                </Property>
+                <Property Name="Licensed" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents whether the virtue flash media is licensed or not."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents whether the virtue flash media is licensed or not."/>
+                </Property>
+                <Property Name="VFlashEnabledState" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The EnabledState property indicates whether VFlash is enabled."/>
+                    <Annotation Term="OData.LongDescription" String="The EnabledState property indicates whether VFlash is enabled."/>
+                </Property>
+                <Property Name="WriteProtected" Type="Edm.Boolean">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether the virtue flash media is write protected (latch is on) or not."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether the virtue flash media is write protected (latch is on) or not."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellvFlash.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add InstanceID, LastSystemInventoryTime, LastUpdateTime properties."/>
+            <EntityType Name="DellvFlash" BaseType="DellvFlash.v1_0_0.DellvFlash">
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the last time System Inventory Collection On Reboot(CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the last time System Inventory Collection On Reboot(CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the last time the data was updaed. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the last time the data was updaed. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

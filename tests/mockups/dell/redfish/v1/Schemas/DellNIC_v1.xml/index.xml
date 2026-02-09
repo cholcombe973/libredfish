@@ -1,0 +1,1450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellNIC v1_5_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellNIC" Abstract="true">
+                <Annotation String="An instance of DellNIC will have NIC device specific data." Term="OData.Description"/>
+                <Annotation String="An instance of DellNIC will have NIC device specific data." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/Oem/Dell/DellNIC/{NICId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/{NetworkDeviceId}/Oem/Dell/DellNIC/{NICId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="NicMode">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DataBusWidth">
+                <Member Name="128Bit">
+                    <Annotation String="128 bit" Term="OData.Description"/>
+                    <Annotation String="128 bit" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="12XOrX12">
+                    <Annotation String="12x or x12" Term="OData.Description"/>
+                    <Annotation String="12x or x12" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="16Bit">
+                    <Annotation String="16 bit" Term="OData.Description"/>
+                    <Annotation String="16 bit" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="16XOrX16">
+                    <Annotation String="16x or x16" Term="OData.Description"/>
+                    <Annotation String="16x or x16" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="1XOrX1">
+                    <Annotation String="1x or x1" Term="OData.Description"/>
+                    <Annotation String="1x or x1" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="2XOrX2">
+                    <Annotation String="2x or x2" Term="OData.Description"/>
+                    <Annotation String="2x or x2" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="32Bit">
+                    <Annotation String="32 bit" Term="OData.Description"/>
+                    <Annotation String="32 bit" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="32XOrX32">
+                    <Annotation String="32x or x32" Term="OData.Description"/>
+                    <Annotation String="32x or x32" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="4XOrX4">
+                    <Annotation String="4x or x4" Term="OData.Description"/>
+                    <Annotation String="4x or x4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="64Bit">
+                    <Annotation String="64 bit" Term="OData.Description"/>
+                    <Annotation String="64 bit" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="8Bit">
+                    <Annotation String="8 bit" Term="OData.Description"/>
+                    <Annotation String="8 bit" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="8XOrX8">
+                    <Annotation String="8x or x8" Term="OData.Description"/>
+                    <Annotation String="8x or x8" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="IdentifierType">
+                <Member Name="QSFP">
+                    <Annotation String="QSFP" Term="OData.Description"/>
+                    <Annotation String="QSFP" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="QSFP+OrLater">
+                    <Annotation String="QSFP+ or later" Term="OData.Description"/>
+                    <Annotation String="QSFP+ or later" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="QSFP28OrLater">
+                    <Annotation String="QSFP28 or later" Term="OData.Description"/>
+                    <Annotation String="QSFP28 or later" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SFP/SFP+/SFP28">
+                    <Annotation String="SFP/SFP+/SFP28" Term="OData.Description"/>
+                    <Annotation String="SFP/SFP+/SFP28" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="LinkDuplex">
+                <Member Name="FullDuplex">
+                    <Annotation String="Full Duplex" Term="OData.Description"/>
+                    <Annotation String="Full Duplex" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="HalfDuplex">
+                    <Annotation String="Half Duplex" Term="OData.Description"/>
+                    <Annotation String="Half Duplex" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotLength">
+                <Member Name="LongLength">
+                    <Annotation String="Long Length" Term="OData.Description"/>
+                    <Annotation String="Long Length" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ShortLength">
+                    <Annotation String="Short Length" Term="OData.Description"/>
+                    <Annotation String="Short Length" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SlotType">
+                <Member Name="AGP">
+                    <Annotation String="AGP" Term="OData.Description"/>
+                    <Annotation String="AGP" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="AGP2X">
+                    <Annotation String="AGP 2X" Term="OData.Description"/>
+                    <Annotation String="AGP 2X" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="AGP4X">
+                    <Annotation String="AGP 4X" Term="OData.Description"/>
+                    <Annotation String="AGP 4X" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="AGP8X">
+                    <Annotation String="AGP 8X" Term="OData.Description"/>
+                    <Annotation String="AGP 8X" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="EISA">
+                    <Annotation String="EISA" Term="OData.Description"/>
+                    <Annotation String="EISA" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="I/ORiserCardSlot">
+                    <Annotation String="I/O Riser Card Slot" Term="OData.Description"/>
+                    <Annotation String="I/O Riser Card Slot" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ISA">
+                    <Annotation String="ISA" Term="OData.Description"/>
+                    <Annotation String="ISA" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="MCA">
+                    <Annotation String="MCA" Term="OData.Description"/>
+                    <Annotation String="MCA" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NuBus">
+                    <Annotation String="NuBus" Term="OData.Description"/>
+                    <Annotation String="NuBus" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/C20">
+                    <Annotation String="PC-98/C20" Term="OData.Description"/>
+                    <Annotation String="PC-98/C20" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/C24">
+                    <Annotation String="PC-98/C24" Term="OData.Description"/>
+                    <Annotation String="PC-98/C24" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/Card">
+                    <Annotation String="PC-98/Card" Term="OData.Description"/>
+                    <Annotation String="PC-98/Card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/E">
+                    <Annotation String="PC-98/E" Term="OData.Description"/>
+                    <Annotation String="PC-98/E" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/LocalBus">
+                    <Annotation String="PC-98/Local Bus" Term="OData.Description"/>
+                    <Annotation String="PC-98/Local Bus" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCCard(PCMCIA)">
+                    <Annotation String="PC Card (PCMCIA)" Term="OData.Description"/>
+                    <Annotation String="PC Card (PCMCIA)" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCI">
+                    <Annotation String="PCI" Term="OData.Description"/>
+                    <Annotation String="PCI" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCI-66MHzCapable">
+                    <Annotation String="PCI - 66MHz Capable" Term="OData.Description"/>
+                    <Annotation String="PCI - 66MHz Capable" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCI-X">
+                    <Annotation String="PCI-X" Term="OData.Description"/>
+                    <Annotation String="PCI-X" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpress">
+                    <Annotation String="PCI Express" Term="OData.Description"/>
+                    <Annotation String="PCI Express" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2">
+                    <Annotation String="PCI Express Gen 2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2SFF-8639">
+                    <Annotation String="PCI Express Gen 2 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 SFF-8639" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2X1">
+                    <Annotation String="PCI Express Gen 2 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x1" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2X16">
+                    <Annotation String="PCI Express Gen 2 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x16" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2X2">
+                    <Annotation String="PCI Express Gen 2 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x2" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2X4">
+                    <Annotation String="PCI Express Gen 2 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen2X8">
+                    <Annotation String="PCI Express Gen 2 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 2 x8" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3">
+                    <Annotation String="PCI Express Gen 3" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3SFF-8639">
+                    <Annotation String="PCI Express Gen 3 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 SFF-8639" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3X1">
+                    <Annotation String="PCI Express Gen 3 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x1" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3X16">
+                    <Annotation String="PCI Express Gen 3 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x16" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3X2">
+                    <Annotation String="PCI Express Gen 3 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x2" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3X4">
+                    <Annotation String="PCI Express Gen 3 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen3X8">
+                    <Annotation String="PCI Express Gen 3 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 3 x8" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4">
+                    <Annotation String="PCI Express Gen 4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4SFF-8639">
+                    <Annotation String="PCI Express Gen 4 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 SFF-8639" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4X1">
+                    <Annotation String="PCI Express Gen 4 x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x1" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4X16">
+                    <Annotation String="PCI Express Gen 4 x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x16" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4X2">
+                    <Annotation String="PCI Express Gen 4 x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x2" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4X4">
+                    <Annotation String="PCI Express Gen 4 x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen4X8">
+                    <Annotation String="PCI Express Gen 4 x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 4 x8" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen5">
+                    <Annotation String="PCI Express Gen 5" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_5_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressGen5SFF-8639">
+                    <Annotation String="PCI Express Gen 5 SFF-8639" Term="OData.Description"/>
+                    <Annotation String="PCI Express Gen 5 SFF-8639" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX1">
+                    <Annotation String="PCI Express x1" Term="OData.Description"/>
+                    <Annotation String="PCI Express x1" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX16">
+                    <Annotation String="PCI Express x16" Term="OData.Description"/>
+                    <Annotation String="PCI Express x16" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX2">
+                    <Annotation String="PCI Express x2" Term="OData.Description"/>
+                    <Annotation String="PCI Express x2" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX4">
+                    <Annotation String="PCI Express x4" Term="OData.Description"/>
+                    <Annotation String="PCI Express x4" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIExpressX8">
+                    <Annotation String="PCI Express x8" Term="OData.Description"/>
+                    <Annotation String="PCI Express x8" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ProcessorCardSlot">
+                    <Annotation String="Processor Card Slot" Term="OData.Description"/>
+                    <Annotation String="Processor Card Slot" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Proprietary">
+                    <Annotation String="Proprietary" Term="OData.Description"/>
+                    <Annotation String="Proprietary" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ProprietaryMemoryCardSlot">
+                    <Annotation String="Proprietary Memory Card Slot" Term="OData.Description"/>
+                    <Annotation String="Proprietary Memory Card Slot" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="VL-VESA">
+                    <Annotation String="VL-VESA" Term="OData.Description"/>
+                    <Annotation String="VL-VESA" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="iScsiOffloadMode">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SNAPIState">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SNAPISupport">
+                <Member Name="Available">
+                    <Annotation String="Available" Term="OData.Description"/>
+                    <Annotation String="Available" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotAvailable">
+                    <Annotation String="Not Available" Term="OData.Description"/>
+                    <Annotation String="Not Available" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="VPISupport">
+                <Member Name="Available">
+                    <Annotation String="Available" Term="OData.Description"/>
+                    <Annotation String="Available" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NotAvailable">
+                    <Annotation String="Not Available" Term="OData.Description"/>
+                    <Annotation String="Not Available" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_3_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="FCoEOffloadMode">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_0_0">
+            <EntityType Name="DellNIC" BaseType="DellNIC.DellNIC">
+                <Annotation Term="OData.Description" String="An instance of DellNIC will have NIC device specific data."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellNIC will have NIC device specific data."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BusNumber" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The bus number where this PCI device resides."/>
+                    <Annotation Term="OData.LongDescription" String="The bus number where this PCI device resides."/>
+                </Property>
+                <Property Name="FamilyVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents family version of firmware."/>
+                    <Annotation Term="OData.LongDescription" String="Represents family version of firmware."/>
+                </Property>
+                <Property Name="MediaType" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the drive media type."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the drive media type."/>
+                </Property>
+                <Property Name="NicMode" Type="DellNIC.NicMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents if network interface card personality is enabled or disabled on current partition in a Converged Network Adaptor device."/>
+                    <Annotation Term="OData.LongDescription" String="Represents if network interface card personality is enabled or disabled on current partition in a Converged Network Adaptor device."/>
+                </Property>
+                <Property Name="PermanentFCOEMACAddress" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="PermanentFCOEMACAddress defines the network address that is hardcoded into a port for FCoE."/>
+                    <Annotation Term="OData.LongDescription" String="PermanentFCOEMACAddress defines the network address that is hardcoded into a port for FCoE."/>
+                </Property>
+                <Property Name="PermanentiSCSIMACAddress" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="PermanentAddress defines the network address that is hardcoded into a port for iSCSI. This 'hardcoded' address can be changed using a firmware upgrade or a software configuration. When this change is made, the field should be updated at the same time. PermanentAddress should be left blank if no 'hardcoded' address exists for the NetworkAdapter."/>
+                    <Annotation Term="OData.LongDescription" String="PermanentAddress defines the network address that is hardcoded into a port for iSCSI. This 'hardcoded' address can be changed using a firmware upgrade or a software configuration. When this change is made, the field should be updated at the same time. PermanentAddress should be left blank if no 'hardcoded' address exists for the NetworkAdapter."/>
+                </Property>
+                <Property Name="ProductName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string containing the product name."/>
+                    <Annotation Term="OData.LongDescription" String="A string containing the product name."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add CableLengthMetres, ControllerBIOSVersion, DataBusWidth, DeviceDescription, EFIVersion, FQDD, IdentifierType, InstanceID, LastSystemInventoryTime, LastUpdateTime, LinkDuplex, PCIDeviceID, PCISubDeviceID, PCISubVendorID, PCIVendorID, PartNumber, Protocol, Revision, SerialNumber, SlotLength, SlotType, VendorName, iScsiOffloadMode properties."/>
+            <EntityType Name="DellNIC" BaseType="DellNIC.v1_0_0.DellNIC">
+                <Property Name="CableLengthMetres" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the cable length of Small Form Factor pluggable(SFP) Transceiver. Note: This property will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.20.20.20 or later."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the cable length of Small Form Factor pluggable(SFP) Transceiver. Note: This property will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.20.20.20 or later."/>
+                    <Annotation Term="Measures.Unit" String="Metres"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_1_1"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated. Property is preserved to support backward comapatibilty. This property has no significance."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="ControllerBIOSVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the firmware version of Controller BIOS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the firmware version of Controller BIOS."/>
+                </Property>
+                <Property Name="DataBusWidth" Type="DellNIC.DataBusWidth">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the data-bus width of the NIC PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the data-bus width of the NIC PCI device."/>
+                </Property>
+                <Property Name="DeviceDescription" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location."/>
+                </Property>
+                <Property Name="EFIVersion" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the firmware version of EFI."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the firmware version of EFI."/>
+                </Property>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object."/>
+                </Property>
+                <Property Name="IdentifierType" Type="DellNIC.IdentifierType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the type of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the type of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of IdentifierType under DellNetworkTransceiver."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the time when the data was last updated. The value is represented in the format yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the time when the data was last updated. The value is represented in the format yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LinkDuplex" Type="DellNIC.LinkDuplex">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether the Link is full-duplex or half-duplex."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether the Link is full-duplex or half-duplex."/>
+                </Property>
+                <Property Name="PCIDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property contains a value assigned by the device manufacturer used to identify the type of device."/>
+                    <Annotation Term="OData.LongDescription" String="This property contains a value assigned by the device manufacturer used to identify the type of device."/>
+                </Property>
+                <Property Name="PCISubDeviceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents PCI sub device ID."/>
+                    <Annotation Term="OData.LongDescription" String="Represents PCI sub device ID."/>
+                </Property>
+                <Property Name="PCISubVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the subsystem vendor ID. ID information is reported from a PCIDevice through protocol-specific requests."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the subsystem vendor ID. ID information is reported from a PCIDevice through protocol-specific requests."/>
+                </Property>
+                <Property Name="PCIVendorID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the register that contains a value assigned by the PCI SIG used to identify the manufacturer of the device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the register that contains a value assigned by the PCI SIG used to identify the manufacturer of the device."/>
+                </Property>
+                <Property Name="PartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The part number assigned by the organization that is responsible for producing or manufacturing the NIC device."/>
+                    <Annotation Term="OData.LongDescription" String="The part number assigned by the organization that is responsible for producing or manufacturing the NIC device."/>
+                </Property>
+                <Property Name="Protocol" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Supported Protocol Types."/>
+                    <Annotation Term="OData.LongDescription" String="Supported Protocol Types."/>
+                </Property>
+                <Property Name="Revision" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the revision number of the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the revision number of the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of Revision under DellNetworkTransceiver."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="SerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A manufacturer-allocated number used to identify the NIC device."/>
+                    <Annotation Term="OData.LongDescription" String="A manufacturer-allocated number used to identify the NIC device."/>
+                </Property>
+                <Property Name="SlotLength" Type="DellNIC.SlotLength">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the represents the slot length of the NIC PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the represents the slot length of the NIC PCI device."/>
+                </Property>
+                <Property Name="SlotType" Type="DellNIC.SlotType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates the slot type of the NIC PCI device."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the slot type of the NIC PCI device."/>
+                </Property>
+                <Property Name="VendorName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the vendor name."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the vendor name."/>
+                </Property>
+                <Property Name="iScsiOffloadMode" Type="DellNIC.iScsiOffloadMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates if Internet Small Computer System Interface (iSCSI) personality is enabled or disabled on current partition in a Converged Network Adaptor device."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates if Internet Small Computer System Interface (iSCSI) personality is enabled or disabled on current partition in a Converged Network Adaptor device."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_1_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to deprecate the CableLengthMetres property."/>
+            <EntityType Name="DellNIC" BaseType="DellNIC.v1_1_0.DellNIC"/>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add TransceiverPartNumber, TransceiverSerialNumber, TransceiverVendorName properties. It was also created to update descriptions for PartNumber,SerialNumber properties and to update the allowable values PCIExpressGen4SFF-8639,PCIExpressGen5SFF-8639 for SlotType property."/>
+            <EntityType Name="DellNIC" BaseType="DellNIC.v1_1_1.DellNIC">
+                <Property Name="TransceiverPartNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The part number assigned by the organization that is responsible for producing or manufacturing the Small Form Factor pluggable(SFP) Transceivers. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="The part number assigned by the organization that is responsible for producing or manufacturing the Small Form Factor pluggable(SFP) Transceivers. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of PartNumber under DellNetworkTransceiver."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TransceiverSerialNumber" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A manufacturer-allocated number used to identify the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="A manufacturer-allocated number used to identify the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of SerialNumber under DellNetworkTransceiver."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+                <Property Name="TransceiverVendorName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the vendor name of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the vendor name of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions."/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Deprecated"/>
+                                <PropertyValue Property="Version" String="v1_4_0"/>
+                                <PropertyValue Property="Description" String="This property has been deprecated in favor of VendorName under DellNetworkTransceiver."/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add SNAPIState, SNAPISupport, VPISupport properties."/>
+            <EntityType Name="DellNIC" BaseType="DellNIC.v1_2_0.DellNIC">
+                <Property Name="SNAPIState" Type="DellNIC.SNAPIState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the SNAPI state."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the SNAPI state."/>
+                </Property>
+                <Property Name="SNAPISupport" Type="DellNIC.SNAPISupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the SNAPI support."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the SNAPI support."/>
+                </Property>
+                <Property Name="VPISupport" Type="DellNIC.VPISupport">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the VPI support."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the VPI support."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_4_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add FCoEOffloadMode property. It was also created to deprecate the IdentifierType,Revision,TransceiverPartNumber,TransceiverSerialNumber,TransceiverVendorName properties. It was also created to update descriptions for CableLength,IdentifierType,Revision,TransceiverPartNumber,TransceiverSerialNumber,TransceiverVendorName properties"/>
+            <EntityType Name="DellNIC" BaseType="DellNIC.v1_3_0.DellNIC">
+                <Property Name="FCoEOffloadMode" Type="DellNIC.FCoEOffloadMode">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates if Fibre Channel over Ethernet (FCoE) personality is enabled or disabled on current partition in a Converged Network Adaptor device."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates if Fibre Channel over Ethernet (FCoE) personality is enabled or disabled on current partition in a Converged Network Adaptor device."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNIC.v1_5_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable value PCIExpressGen5 for SlotType property."/>
+            <EntityType Name="DellNIC" BaseType="DellNIC.v1_4_0.DellNIC"> 
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

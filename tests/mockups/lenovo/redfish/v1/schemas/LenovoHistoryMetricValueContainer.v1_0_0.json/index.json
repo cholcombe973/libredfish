@@ -1,0 +1,187 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoHistoryMetricValueContainer.v1_0_0.json",
+    "$ref": "#/definitions/LenovoHistoryMetricValueContainer",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "ContainerName": {
+            "enum": [
+                "SystemInputPower",
+                "SystemOutputPower",
+                "CPUSubsystemPower",
+                "MemorySubsystemPower",
+                "PowerSupplyInputPower",
+                "PowerSupplyOutputPower",
+                "SystemPerformance",
+                "CPUSubsystemPerformance",
+                "MemorySubsystemPerformance",
+                "IOSubsystemPerformance",
+                "InletAirTemp",
+                "OutletAirTemp",
+                "ExpansionInletAirTemp",
+                "ExpansionOutletAirTemp"
+            ],
+            "type": "string"
+        },
+        "HistoryMetricValueItem": {
+            "additionalProperties": true,
+            "description": "Lenovo extended history metric value definition. Each metric value is contained in history metric value array.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "Duration": {
+                    "description": "The duration of this metric value. The precision of duration shall reach to second and the format shall be: mm:ss",
+                    "longDescription": "The value of this property shall represent the duration of metric value. The precision of duration shall reach to second and  the format shall be: mm:ss",
+                    "pattern": "{[0-5][0-9]:[0-5][0-9]}",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "MetricType": {
+                    "$ref": "#/definitions/MetricType",
+                    "description": "Three types for metric value: max, avg, min.",
+                    "longDescription": "The value of this property shall represent the type of metric value.",
+                    "readonly": true
+                },
+                "MetricValue": {
+                    "description": "Metric value.",
+                    "longDescription": "The value of this property shall represent the metric value.",
+                    "readonly": true,
+                    "type": "number"
+                },
+                "Timestamp": {
+                    "description": "The timestamp of this metric value. The precision of timestamp shall reach to millisecond and the format shall be: 14 Jan 2016, 10:00:00.123 AM",
+                    "longDescription": "The value of this property shall represent the timestamp of this metric value. The precision of timestamp shall reach to millisecond and the format shall be: 14 Jan 2016, 10:00:00.123 AM",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "TimestampWithTZ": {
+                    "description": "The timestamp of this metric value, which connforms to the ISO 8601 extended format, with time offset or UTC suffix included.",
+                    "longDescription": "The value of this property shall represent the timestamp of this metric value, which connforms to the ISO 8601 extended format, with time offset or UTC suffix included. The time representing by this property is the same as property Timestamp, just format difference.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "LenovoHistoryMetricValueContainer": {
+            "additionalProperties": true,
+            "description": "An array represents history metric values which are contained in specified history metric value container.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Container": {
+                    "description": "A reference to history metric value array.",
+                    "items": {
+                        "$ref": "#/definitions/HistoryMetricValueItem"
+                    },
+                    "longDescription": "The value of this property shall be a reference used to indicating history metric array.",
+                    "readonly": false,
+                    "type": "array"
+                },
+                "ContainerName": {
+                    "$ref": "#/definitions/ContainerName",
+                    "description": "The name of history metric values container.",
+                    "longDescription": "The value of this property shall represent the name of history metric values container.",
+                    "readonly": true
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "TimeScope": {
+                    "$ref": "#/definitions/TimeScopeItem",
+                    "description": "Specifies the scope of time scope over which the function is applied.",
+                    "longDescription": "The value shall specify the scope of time over which the function is applied.",
+                    "readonly": false
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "MetricType": {
+            "enum": [
+                "Min",
+                "Avg",
+                "Max"
+            ],
+            "enumDescriptions": {
+                "Avg": "The average metric value in duration.",
+                "Max": "The maximal metric value in duration.",
+                "Min": "The minimum metric value in duration."
+            },
+            "type": "string"
+        },
+        "TimeScopeItem": {
+            "enum": [
+                "Previous_hour",
+                "Previous_6_hours",
+                "Previous_12_hours",
+                "Previous_24_hours"
+            ],
+            "type": "string"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoHistoryMetricValueContainer.v1_0_0.LenovoHistoryMetricValueContainer"
+}

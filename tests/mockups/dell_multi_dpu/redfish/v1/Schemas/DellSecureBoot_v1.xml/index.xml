@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  DellSecureBoot  v1.0.0                                             -->
+<!--# This is DELL OEM Schema.                                                             -->
+<!--# Copyright 2014-2016 Dell, Inc. or its subsidiaries.All Rights Reserved.              -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/cs01/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0" />
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/Schemas/DellCertificateStoreCollection_v1.xml">
+    <edmx:Include Namespace="DellCertificateStoreCollection"/>
+</edmx:Reference>
+<edmx:Reference Uri="/redfish/v1/Schemas/DellFirmwareImageHashCollection_v1.xml">
+    <edmx:Include Namespace="DellFirmwareImageHashCollection"/>
+</edmx:Reference>
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSecureBoot">
+	  <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+	  <ComplexType Name="DellSecureBoot" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This resource contains the Dell specific Redfish implementation for SecureBoot."/>
+        <Annotation Term="OData.LongDescription" String="This resource contains the Dell specific Redfish implementation for SecureBoot."/>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSecureBoot.v1_0_0">
+	  <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+	  <ComplexType Name="DellSecureBoot" BaseType="DellSecureBoot.DellSecureBoot">
+        <NavigationProperty Name="Certificates" Type="DellCertificateStoreCollection.DellCertificateStoreCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of SecureBoot Certificates associated with this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of type SecureBoot Certificates."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSecureBoot.v1_1_0">
+      <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+      <Annotation Term="OData.Description" String="This version was created to add FirmwareImageHashes Navigation Property."/>
+      <Annotation Term="OData.LongDescription" String="This version was created to add FirmwareImageHashes Navigation Property."/>
+      <ComplexType Name="DellSecureBoot" BaseType="DellSecureBoot.v1_0_0.DellSecureBoot">
+        <NavigationProperty Name="FirmwareImageHashes" Type="DellFirmwareImageHashCollection.DellFirmwareImageHashCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="A reference to the collection of FirmwareImageHash associated with this system."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a link to a collection of FirmwareImageHash."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+
+</edmx:DataServices>
+</edmx:Edmx>

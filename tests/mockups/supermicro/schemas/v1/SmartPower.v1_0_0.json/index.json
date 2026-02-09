@@ -1,0 +1,112 @@
+{
+    "definitions": {
+        "SmartPower": {
+            "description": "The base type for resources and members that can be linked to.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "PowerStatus": {
+                    "readonly": true,
+                    "type": "number",
+                    "description": "Power Status.",
+                    "longDescription": "The value of this property shall be power status."
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "PowerConsumption": {
+                    "readonly": true,
+                    "type": "number",
+                    "description": "Power Consumption of this node.",
+                    "longDescription": "The value of this property shall be power consumption."
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "MaxPower": {
+                    "readonly": true,
+                    "type": "number",
+                    "description": "Max Power of this node.",
+                    "longDescription": "The value of this property shall be max power."
+                },
+                "Option": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be the Smart Power mode.",
+                    "description": "Smart Power Mode.",
+                    "$ref": "#/definitions/SmartPowerMode"
+                },
+                "ReservedPower": {
+                    "readonly": true,
+                    "type": "number",
+                    "description": "Reserve power value of this chassis component.",
+                    "longDescription": "The value of this property shall be reserve power."
+                },
+                "PowerCapping": {
+                    "readonly": true,
+                    "type": "number",
+                    "description": "Power Capping value of this node.",
+                    "longDescription": "The value of this property shall be power capping."
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        },
+        "SmartPowerMode": {
+            "enumDescriptions": {
+                "ON": "Enable",
+                "OFF": "Disable"
+            },
+            "enum": [
+                "ON",
+                "OFF"
+            ],
+            "type": "string"
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/SmartPower",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmartPower.v1_0_0.SmartPower"
+}

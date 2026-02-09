@@ -1,0 +1,109 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeWorkloadPerformanceAdvisor",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeWorkloadPerformanceAdvisor resource describes the properties for managing the HPE Workload Performance Advisor.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Duration": {
+            "description": "Specifies the duration over which the workload performance advisor is computed.",
+            "longDescription": "The value shall specify the duration over which the workload performance advisor is computed.  The value shall conform to the Duration format.",
+            "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "PerformanceTuningOption": {
+            "description": "Specifies a list of bios attribute settings with recommended values as part of workload performance advisor.",
+            "items": {
+                "properties": {
+                    "BIOSAttributeName": {
+                        "description": "The attribute name of the BIOS settings.",
+                        "longDescription": "This property shall indicate attribute name of the BIOS Settings. Please refer to BIOS attribute registry schema for more information.",
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "RecommendedValue": {
+                        "description": "Recommended value for the corresponding BIOS attribute. Please refer to BIOS attribute registry schema for more information.",
+                        "longDescription": "Recommended value for the corresponding BIOS setting calculated for specific duration mentioned in DurationInMin property.",
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "longDescription": "The property shall specify a list of Workload Characteristics for metrics.",
+            "type": "array"
+        },
+        "WorkloadCharacteristics": {
+            "description": "Specifies a list of Workload Characteristics for metrics.",
+            "items": {
+                "properties": {
+                    "MetricId": {
+                        "description": "The id of the metric.",
+                        "longDescription": "This property shall indicate id of the metric.Please refer to MetricDefination schema file for more information.",
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MetricValue": {
+                        "description": "The workload utilization of the metric.",
+                        "enum": [
+                            "Low",
+                            "Medium",
+                            "High"
+                        ],
+                        "enumDescriptions": {
+                            "High": "Utilization is high.",
+                            "Low": "Utilization is low.",
+                            "Medium": "Utilization is medium."
+                        },
+                        "longDescription": "This property shall indicate workload utilization of the metric calculated for specific duration mentioned in Duration property.",
+                        "readonly": false,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "longDescription": "The property shall specify a list of Workload Characteristics for metrics.",
+            "type": "array"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeWorkloadPerformanceAdvisor.v1_0_0.HpeWorkloadPerformanceAdvisor",
+    "type": "object"
+}

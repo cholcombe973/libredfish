@@ -1,0 +1,358 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "Chassis",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2020 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2020 Distributed Management Task Force. All rights reserved.",
+    "description": "The Chassis resource describes the physical components for a system. This object represents rack mount servers, blades, and all other containers. The non-CPU/device-centric parts of the schema are accessed either directly or indirectly through this resource.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AssetTag": {
+            "description": "The chassis user-assigned asset tag.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "ChassisType": {
+            "description": "This property indicates the physical form factor type of this resource.",
+            "enum": [
+                "Rack",
+                "Blade",
+                "Enclosure",
+                "StandAlone",
+                "RackMount",
+                "Card",
+                "Cartridge",
+                "Row",
+                "Pod",
+                "Expansion",
+                "Sidecar",
+                "Zone",
+                "Sled",
+                "Shelf",
+                "Other"
+            ],
+            "enumDescriptions": {
+                "Blade": "An enclosed or semi-enclosed, typically vertically-oriented, system chassis that must be plugged into a multi-system chassis to function normally.",
+                "Card": "A loose device or circuit board intended to be installed in a system or other enclosure.",
+                "Cartridge": "A small self-contained system intended to be plugged into a multi-system chassis.",
+                "Enclosure": "A generic term for a chassis that does not fit any other description.",
+                "Expansion": "A chassis that expands the capabilities or capacity of another chassis.",
+                "Other": "A chassis that does not fit any of these definitions.",
+                "Pod": "A collection of equipment racks in a large, likely transportable, container.",
+                "Rack": "An equipment rack, typically a 19-inch wide freestanding unit.",
+                "RackMount": "A single system chassis designed specifically for mounting in an equipment rack.",
+                "Row": "A collection of equipment racks.",
+                "Shelf": "An enclosed or semi-enclosed, typically horizontally-oriented, system chassis that must be plugged into a multi-system chassis to function normally.",
+                "Sidecar": "A chassis that mechanically connects with another chassis to expand its capabilities or capacity.",
+                "Sled": "TBD",
+                "StandAlone": "A single, free-standing system, commonly called a tower or desktop chassis.",
+                "Zone": "A logical division or portion of a physical chassis that contains multiple devices or systems that cannot be physically separated."
+            },
+            "readonly": true,
+            "type": "string"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "IndicatorLED": {
+            "description": "The chassis indicator LED that is used to identify the chassis. The user can manipulate this LED.",
+            "enum": [
+                null,
+                "Unknown",
+                "Lit",
+                "Blinking",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Blinking": "The Indicator LED is blinking.",
+                "Lit": "The Indicator LED is on.",
+                "Off": "The Indicator LED is off.",
+                "Unknown": "The state of the Indicator LED cannot be determined."
+            },
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The links array contains links to related resources.",
+            "properties": {
+                "ComputerSystems": {
+                    "description": "An array of references to the computer systems contained in this chassis. This will only reference ComputerSystems that are directly and wholly contained in this chassis.",
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ContainedBy": {
+                    "description": "A reference to the chassis that contains this chassis.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "Contains": {
+                    "description": "An array of references to any other chassis contained in this chassis.",
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Drives": {
+                    "description": "An array of references to the drives contained in this chassis.",
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "LogServices": {
+                    "description": "A reference to the logs for this chassis.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "ManagedBy": {
+                    "description": "An array of references to the managers contained in this chassis.",
+                    "items": {
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Oem": {
+                    "$ref": "Resource.json#/definitions/Oem"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Manufacturer": {
+            "description": "The chassis manufacturer.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Model": {
+            "description": "The chassis model number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "NetworkAdapters": {
+            "additionalProperties": false,
+            "description": "The collection of network adapters contained within this chassis.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeServerChassis.json#"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PartNumber": {
+            "description": "The chassis part number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PCIeDevices": {
+            "description": "The link to the collection of PCIe devices located in this chassis.",
+            "longDescription": "This property shall contain a link to a Resource Collection of type PCIeDeviceCollection.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PCIeSlots": {
+            "description": "The link to the PCIe slot properties for this chassis.",
+            "longDescription": "This property shall contain a link to the Resource that represents the PCIe slot information for this chassis and shall be of the PCIeSlot type.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PhysicalSecurity": {
+            "additionalProperties": false,
+            "properties": {
+                "IntrusionSensor": {
+                    "description": "This indicates the known state of the physical security sensor, such as if it is hardware intrusion detected.",
+                    "enum": [
+                        "Normal",
+                        "HardwareIntrusion",
+                        "TamperingDetected"
+                    ],
+                    "enumDescriptions": {
+                        "HardwareIntrusion": "A door, lock, or other mechanism protecting the internal system hardware from being accessed is detected as being in an insecure state.",
+                        "Normal": "No abnormal physical security conditions are detected at this time.",
+                        "TamperingDetected": "Physical tampering of the monitored entity is detected."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "IntrusionSensorReArm": {
+                    "description": "This indicates how the Normal state to be restored.",
+                    "enum": [
+                        "Manual",
+                        "Automatic"
+                    ],
+                    "enumDescriptions": {
+                        "Automatic": "This sensor would be restored to the Normal state automatically as no abnormal physical security conditions are detected.",
+                        "Manual": "This sensor would be restored to the Normal state by a manual re-arm."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Power": {
+            "description": "A reference to the thermal metrics (power supplies, power policies, sensors) for this chassis.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "PowerState": {
+            "description": "This is the current power state of the chassis.",
+            "enum": [
+                null,
+                "On",
+                "Off",
+                "Unknown",
+                "Reset"
+            ],
+            "longDescription": "The value of this property shall contain the power state of the chassis.",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SKU": {
+            "description": "The chassis SKU.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "SerialNumber": {
+            "description": "The chassis serial number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Thermal": {
+            "description": "A reference to the thermal metrics (fans, cooling, sensors) for this chassis.",
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Location": {
+            "$ref": "Resource.json#/definitions/Location"
+        }
+    },
+    "readonly": false,
+    "title": "#Chassis.v1_11_2.Chassis",
+    "type": "object"
+}

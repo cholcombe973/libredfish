@@ -1,0 +1,102 @@
+{
+    "$ref": "#/definitions/AMIRADIUS",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "copyright": "Copyright American Megatrends, Inc. (AMI).",
+    "definitions": {
+        "AMIRADIUS": {
+            "additionalProperties": false,
+            "description": "AMIRADIUS schema contains properties to enable RADIUS Authentication in Redfish and configuring RADIUS server.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "Integer",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.4.0.0.json#/definitions/type"
+                },
+                "AdvancedRADIUSSetting": {
+                    "$ref": "/redfish/v1/JsonSchemas/AMIAdvanceRADIUSSetting.v1_0_0.json#/definitions/AMIAdvanceRADIUSSetting",
+                    "description": "Advanced RADIUS Settings.",
+                    "longDescription": "The value of this property shall be a link to a resource of type AdvancedRADIUSSetting.",
+                    "readonly": true
+                },
+                "ExtendedPrivilege": {
+                    "$ref": "#/definitions/ExtendedPrivilege",
+                    "description": "Extended privileges for RADIUS users.",
+                    "longDescription": "This object shall contain details of the extended privileges allowed for RADIUS users."
+                },
+                "Secret": {
+                    "description": "A text string that serves as a password between hosts.",
+                    "longDescription": "This property shall contain the text string that serves as a password between hosts.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ServiceAddress": {
+                    "description": "IPv4/IPv6 address assigned to the RADIUS server.",
+                    "longDescription": "This property shall contain the IPv4/IPv6 address assigned to the RADIUS server.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ServicePort": {
+                    "description": "Port on which RADIUS Server is running.",
+                    "longDescription": "This property shall contain the port on which RADIUS Server is running.",
+                    "readonly": false,
+                    "type": [
+                        "Interger",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "ExtendedPrivilege": {
+            "description": "Extended privilages for RADIUS users.",
+            "longDescription": "This object shall contain details of the extended privilages allowed for RADIUS users.",
+            "properties": {
+                "KVMAccess": {
+                    "description": "KVM access to RADIUS user.",
+                    "longDescription": "The value of this property shall be a boolean indicating the KVM access to the RADIUS user.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "VMediaAccess": {
+                    "description": "Vmedia access to RADIUS user.",
+                    "longDescription": "The value of this property shall be a boolean indicating the VMedia access to the RADIUS user.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            }
+        }
+    },
+    "title": "#AMIRADIUS.v1_0_0.AMIRADIUS"
+}

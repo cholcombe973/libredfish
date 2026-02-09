@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoFirmwareService  v1.0.0                                -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/LogService_v1.xml">
+    <edmx:Include Namespace="LogService"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoFirmwareService">
+      <EntityType Name="LenovoFirmwareService" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoFirmwareService resource."/>
+      </EntityType>
+            
+      <Action Name="StartBareMetalConnection" IsBound="true">
+        <Parameter Name="LenovoFirmwareService" Type="LenovoFirmwareService.v1_0_0.Actions"/>
+        <Parameter Name="BareMetalUpdateData" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Optional data from FSM, up to 32KB."/>
+        </Parameter>
+        <Parameter Name="ImageName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The filename of RDOC image uploaded to XCC sftp server."/>
+        </Parameter>
+        <Parameter Name="TargetServerIP" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The target server IP which will be used by SALIE OS to download the rootfs image. If this is not specified, only uni-direction (external-BMU OS) port forwarding is enabled; If specified, bi-direction port forwarding will be enabled."/>
+        </Parameter>
+        <Parameter Name="USBPort" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="The port on the Ethernet over USB interface IMM will forward traffic to, default 6990."/>
+        </Parameter>
+        <Parameter Name="ExternalPort" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="The port IMM listens to on the management network, default 6990."/>
+        </Parameter>
+        <Parameter Name="TimeoutInMin" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="The communication watchdog timeout after bmu ready(by minutes)."/>
+        </Parameter>
+        <Parameter Name="BootTimeoutInMin" Type="Edm.Int64">
+          <Annotation Term="OData.Description" String="The communication boot timeout when bmu is booting(by minutes)."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="RestartToBareMetal" IsBound="true">
+        <Parameter Name="LenovoFirmwareService" Type="LenovoFirmwareService.v1_0_0.Actions"/>
+      </Action>
+      
+      <Action Name="CompleteBareMetal" IsBound="true">
+        <Parameter Name="LenovoFirmwareService" Type="LenovoFirmwareService.v1_0_0.Actions"/>
+        <Parameter Name="NeedRestorePower" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="Whether to restore power when complete bare metal."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="StartDeferredUpdateActivation" IsBound="true">
+        <Parameter Name="LenovoFirmwareService" Type="LenovoFirmwareService.v1_0_0.Actions"/>
+        <Parameter Name="BareMetalUpdateData" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Optional data from FSM, up to 32KB."/>
+        </Parameter>
+        <Parameter Name="ImageName" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Description" String="The filename of RDOC image uploaded to XCC sftp server."/>
+        </Parameter>
+        <Parameter Name="TargetServerIP" Type="Edm.String">
+          <Annotation Term="OData.Description" String="The target server IP which will be used by SALIE OS to download the rootfs image. If this is not specified, only uni-direction (external-BMU OS) port forwarding is enabled; If specified, bi-direction port forwarding will be enabled."/>
+        </Parameter>
+        <Parameter Name="USBPort" Type="Edm.Decimal">
+          <Annotation Term="OData.Description" String="The port on the Ethernet over USB interface IMM will forward traffic to, default 6990."/>
+        </Parameter>
+        <Parameter Name="ExternalPort" Type="Edm.Decimal">
+          <Annotation Term="OData.Description" String="The port IMM listens to on the management network, default 6990."/>
+        </Parameter>
+        <Parameter Name="TimeoutInMin" Type="Edm.Decimal">
+          <Annotation Term="OData.Description" String="The communication watchdog timeout after bmu ready(by minutes)."/>
+        </Parameter>
+        <Parameter Name="BootTimeoutInMin" Type="Edm.Decimal">
+          <Annotation Term="OData.Description" String="The communication boot timeout when bmu is booting(by minutes)."/>
+        </Parameter>
+        <Parameter Name="CoreFirmwareOnly" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="Only IMM core firmware is deferred activation or not."/>
+        </Parameter>
+      </Action>
+      
+      <Action Name="UEFIRecoveryOperation" IsBound="true">
+        <Parameter Name="LenovoFirmwareService" Type="LenovoFirmwareService.v1_0_0.Actions"/>
+        <Parameter Name="ParamInput" Type="Edm.String">
+          <Annotation Term="OData.Description" String="Input parameter for trust image operations."/>
+        </Parameter>
+      </Action>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoFirmwareService.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoFirmwareService" BaseType="LenovoFirmwareService.LenovoFirmwareService">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="These properties shall be refered Lenovo Oem properties for Firmware Service schema."/>
+        <NavigationProperty Name="ChangeHistory" Type="LogService.LogService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents firmware change history."/>
+          <Annotation Term="OData.LongDescription" String="This property shall be a reference to LogService.json used to represent firmware change history."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+        <Property Name="BMAppStatus" Type="LenovoFirmwareService.v1_0_0.BMAppStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Represents the bare metal application status."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the bare metal application status."/>
+        </Property>
+        <Property Name="FreeRdocSpaceInKB" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Specify the available size of RDOC space(KBytes)."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall reresent the available size of RDOC space(KBytes)."/>
+        </Property>
+        <Property Name="Started" Type="Edm.Boolean">
+          <Annotation Term="OData.Description" String="Indicate whether the bare metal update action started."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall represent the bare metal update action started or not."/>
+        </Property>
+        <Property Name="BMU_Credential" Type="LenovoFirmwareService.v1_0_0.BMU_Credential" Nullable="false">
+          <Annotation Term="OData.Description" String="The manufacturer of the firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the manufacturer of the firmware."/>
+        </Property>
+        <Property Name="Actions" Type="LenovoFirmwareService.v1_0_0.Actions" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The manufacturer of the firmware."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the manufacturer of the firmware."/>
+        </Property>
+      </EntityType>
+      
+      <ComplexType Name="BMU_Credential">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="RemoteID" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property contains the user name for credential."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the user name for credential."/>
+        </Property>
+        <Property Name="Secret" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This property is used with a PATCH to write the password for the credential. This property is null on a GET."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be the password for credential. The value shall be null for GET requests."/>
+        </Property>
+      </ComplexType>
+      
+      <ComplexType Name="Actions">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="The available actions for this resource."/>
+        <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+      </ComplexType>
+      
+      <EnumType Name="BMAppStatus">
+        <Member Name="NotReady">
+        </Member>
+        <Member Name="Booting">
+        </Member>
+        <Member Name="FullyBooted">
+        </Member>
+        <Member Name="PendingAndAwaitingNextServerBoot">
+        </Member>
+        <Member Name="NetworkAvailable">
+        </Member>
+        <Member Name="FileSystemInit">
+        </Member>
+        <Member Name="FailedToBootBMU">
+        </Member>
+        <Member Name="Unknown">
+        </Member>
+      </EnumType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

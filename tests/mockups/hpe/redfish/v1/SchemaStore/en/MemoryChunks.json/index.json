@@ -1,0 +1,148 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "MemoryChunks",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The MemoryChunks resource describes a Memory Chunk and its configuration.",
+    "longDescription": "This resource shall be used to represent Memory Chunks and Interleave Sets in a Redfish implementation.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AddressRangeType": {
+            "description": "Memory type of this memory chunk",
+            "enum": [
+                "PMEM"
+            ],
+            "enumDescriptions": {
+                "PMEM": "Byte accessible persistent memory"
+            },
+            "longDescription": "The value of this property shall be the type of memory chunk.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "InterleaveSets": {
+            "description": "This is the interleave sets for the memory chunk.",
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "Memory": {
+                        "description": "Describes a memory device of the interleave set. ",
+                        "longDescription": "The value of this property shall be the memory device to which these settings apply.",
+                        "properties": {
+                            "@odata.id": {
+                                "$ref": "Resource.json#/definitions/odataid"
+                            }
+                        },
+                        "readonly": true,
+                        "type": "object"
+                    },
+                    "MemoryLevel": {
+                        "description": "Level of the interleave set for multi-level tiered memory.",
+                        "longDescription": "The value of this property shall be the level of this interleave set for multi-level tiered memory.",
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "OffsetMiB": {
+                        "description": "Offset within the DIMM that corresponds to the start of this memory region, with units in MiB",
+                        "longDescription": "The value of this property shall be the offset within the DIMM that corresponds to the start of this memory region, with units in MiB.",
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    },
+                    "RegionId": {
+                        "description": "DIMM region identifier",
+                        "longDescription": "The value of this property shall be the DIMM region identifier.",
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "SizeMiB": {
+                        "description": "Size of this memory region in MiB",
+                        "longDescription": "The value of this property shall be the size of this memory region, with units in MiB.",
+                        "readonly": true,
+                        "type": [
+                            "number",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "longDescription": "These properties shall represent the interleave sets for the memory chunk.",
+            "readonly": true,
+            "type": "array"
+        },
+        "IsMirrorEnabled": {
+            "description": "Mirror Enabled status",
+            "longDescription": "The value of this property shall indicate if memory mirroring is enabled for this MemoryChunk.",
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "IsSpare": {
+            "description": "Spare enabled status",
+            "longDescription": "The value of this property shall indicate if sparing is enabled for this MemoryChunk.",
+            "readonly": true,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "MemoryChunkSizeMiB": {
+            "description": "Size of the memory chunk in MiB",
+            "longDescription": "The value of this property shall be the size of the memory chunk in MiB.",
+            "readonly": true,
+            "type": [
+                "number",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "Oem": {
+            "additionalProperties": true,
+            "properties": {
+                "Hpe": {
+                    "$ref": "HpeMemoryChunksExt.json#",
+                    "readonly": false
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        }
+    },
+    "requiredOnCreate": [
+        "InterleaveSets"
+    ],
+    "title": "#MemoryChunks.v1_2_3.MemoryChunks",
+    "type": "object"
+}

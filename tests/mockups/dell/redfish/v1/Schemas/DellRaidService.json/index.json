@@ -1,0 +1,247 @@
+{
+    "$id": "/redfish/v1/Schemas/DellRaidService.json",
+    "$ref": "#/definitions/DellRaidService",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "BlockSizeInBytes": {
+            "enum": [
+                "4096",
+                "512",
+                "All"
+            ],
+            "enumDescriptions": {
+                "4096": "Include 4096 bytes block size disks",
+                "512": "Include 512 bytes block size disks only",
+                "All": "Include all block size disks"
+            },
+            "type": "string"
+        },
+        "DellRaidService": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/DellRaidService.v1_5_1.json#/definitions/DellRaidService"
+                }
+            ],
+            "deletable": false,
+            "description": "The DellRaidService resource provides some actions to support RAID functionality.",
+            "insertable": false,
+            "longDescription": "The DellRaidService resource provides some actions to support RAID functionality.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellRaidService"
+            ]
+        },
+        "DiskEncrypt": {
+            "enum": [
+                "All",
+                "FDE",
+                "NonFDE"
+            ],
+            "enumDescriptions": {
+                "All": "Include FDE capable and non encryption capable disks",
+                "FDE": "Include FDE disks only",
+                "NonFDE": "Include only non FDE disks"
+            },
+            "type": "string"
+        },
+        "DiskType": {
+            "enum": [
+                "All",
+                "HDD",
+                "SSD"
+            ],
+            "enumDescriptions": {
+                "All": "Include all Types",
+                "HDD": "Include Hard Disk only",
+                "SSD": "Include Solid State Only"
+            },
+            "type": "string"
+        },
+        "Diskprotocol": {
+            "enum": [
+                "AllProtocols",
+                "NVMe",
+                "SAS",
+                "SATA"
+            ],
+            "enumDescriptions": {
+                "AllProtocols": "All Protocols",
+                "NVMe": "NVMe",
+                "SAS": "SAS",
+                "SATA": "SATA"
+            },
+            "type": "string"
+        },
+        "ForceRemove": {
+            "enum": [
+                "No",
+                "Yes"
+            ],
+            "enumDescriptions": {
+                "No": "No",
+                "Yes": "Yes"
+            },
+            "enumVersionAdded": {
+                "No": "v1_5_0",
+                "Yes": "v1_5_0"
+            },
+            "type": "string"
+        },
+        "FormFactor": {
+            "enum": [
+                "All",
+                "M.2"
+            ],
+            "enumDescriptions": {
+                "All": "Include all",
+                "M.2": "Include only M.2"
+            },
+            "type": "string"
+        },
+        "GetRAIDLevelsResponseVDRAIDEnumArray": {
+            "enum": [
+                "RAID0",
+                "RAID1",
+                "RAID10",
+                "RAID5",
+                "RAID50",
+                "RAID6",
+                "RAID60"
+            ],
+            "enumDescriptions": {
+                "RAID0": "RAID0",
+                "RAID1": "RAID1",
+                "RAID10": "RAID10",
+                "RAID5": "RAID5",
+                "RAID50": "RAID50",
+                "RAID6": "RAID6",
+                "RAID60": "RAID60"
+            },
+            "type": "string"
+        },
+        "Mode": {
+            "enum": [
+                "DKM",
+                "LKM",
+                "LKM_TO_SEKM",
+                "SEKM"
+            ],
+            "enumDescriptions": {
+                "DKM": "DKM",
+                "LKM": "LKM",
+                "LKM_TO_SEKM": "LKM_TO_SEKM",
+                "SEKM": "SEKM"
+            },
+            "type": "string"
+        },
+        "NewRaidLevel": {
+            "enum": [
+                "NoRAID",
+                "RAID0",
+                "RAID1",
+                "RAID10",
+                "RAID5",
+                "RAID50",
+                "RAID6",
+                "RAID60"
+            ],
+            "enumDescriptions": {
+                "NoRAID": "No RAID",
+                "RAID0": "RAID0",
+                "RAID1": "RAID1",
+                "RAID10": "RAID10",
+                "RAID5": "RAID5",
+                "RAID50": "RAID50",
+                "RAID6": "RAID6",
+                "RAID60": "RAID60"
+            },
+            "enumVersionAdded": {
+                "NoRAID": "v1_1_0",
+                "RAID0": "v1_1_0",
+                "RAID1": "v1_1_0",
+                "RAID10": "v1_1_0",
+                "RAID5": "v1_1_0",
+                "RAID50": "v1_1_0",
+                "RAID6": "v1_1_0",
+                "RAID60": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "RaidLevel": {
+            "enum": [
+                "NoRAID",
+                "RAID0",
+                "RAID1",
+                "RAID10",
+                "RAID5",
+                "RAID50",
+                "RAID6",
+                "RAID60"
+            ],
+            "enumDescriptions": {
+                "NoRAID": "No RAID",
+                "RAID0": "RAID0",
+                "RAID1": "RAID1",
+                "RAID10": "RAID10",
+                "RAID5": "RAID5",
+                "RAID50": "RAID50",
+                "RAID6": "RAID6",
+                "RAID60": "RAID60"
+            },
+            "type": "string"
+        },
+        "State": {
+            "enum": [
+                "Offline",
+                "Online"
+            ],
+            "enumDescriptions": {
+                "Offline": "Offline",
+                "Online": "Online"
+            },
+            "enumVersionAdded": {
+                "Offline": "v1_1_0",
+                "Online": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "T10PIStatus": {
+            "enum": [
+                "All",
+                "T10PICapable",
+                "T10PIIncapable"
+            ],
+            "enumDescriptions": {
+                "All": "All disks",
+                "T10PICapable": "T10PI capable disks",
+                "T10PIIncapable": "Non T10PI capable disks"
+            },
+            "type": "string"
+        },
+        "VDPropNameArrayIn": {
+            "enum": [
+                "RAIDLevel",
+                "Size",
+                "SpanDepth",
+                "SpanLength",
+                "StartingLBA",
+                "T10PIStatus"
+            ],
+            "enumDescriptions": {
+                "RAIDLevel": "RAIDLevel, mandatory value",
+                "Size": "Size of the VD in MB",
+                "SpanDepth": "Number of Spans in the VD",
+                "SpanLength": "Number of Physical Disks per span",
+                "StartingLBA": "Starting Logical Block Address",
+                "T10PIStatus": "T10PIStatus 0=Disabled, 1=Enabled"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellRaidService.DellRaidService"
+}

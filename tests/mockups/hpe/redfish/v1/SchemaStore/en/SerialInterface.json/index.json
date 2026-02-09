@@ -1,0 +1,70 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "SerialInterfaces",
+    "additionalProperties": false,
+    "copyright": "Copyright 2020 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2020 Distributed Management Task Force. All rights reserved.",
+    "description": "This is the schema definition for the Serial Interface.",
+    "definitions": {
+        "BitRate": {
+            "enum": [
+                "9600",
+                "19200",
+                "38400",
+                "57600",
+                "115200"
+            ],
+            "enumDescriptions": {
+                "115200": "A bit rate of 115200 bit/s.",
+                "19200": "A bit rate of 19200 bit/s.",
+                "38400": "A bit rate of 38400 bit/s.",
+                "57600": "A bit rate of 57600 bit/s.",
+                "9600": "A bit rate of 9600 bit/s."
+            },
+            "type": "string"
+        }
+    },
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "BitRate": {
+            "$ref": "#/definitions/BitRate",
+            "description": "The receive and transmit rate of data flow, typically in bits per second (bit/s), over the serial connection.",
+            "longDescription": "This property shall indicate the transmit and receive speed of the serial connection.",
+            "etag": true,
+            "readonly": false
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description"
+        },
+        "InterfaceEnabled": {
+            "description": "An indication of whether this interface is enabled.",
+            "longDescription": "This property shall indicate whether this interface is enabled.",
+            "etag": true,
+            "readonly": false,
+            "type": [
+                "boolean",
+                "null"
+            ]
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name",
+            "readonly": true
+        }
+    },
+    "readonly": false,
+    "title": "#SerialInterface.v1_1_7.SerialInterface",
+    "type": "object"
+}

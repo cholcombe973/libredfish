@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish OEM Schema:  NvidiaLogEntry  v1.1.0                                          -->
+<!--#                                                                                      -->
+<!--# Copyright 2021-2024 NVIDIA.                                                          -->
+<!--# For the full NVIDIA copyright policy, see LICENSE.md                                 -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    </edmx:Reference>
+
+    <edmx:DataServices>
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaLogEntry">
+        <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      </Schema>
+
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaLogEntry.v1_0_0">
+        <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+
+        <ComplexType Name="CPER">
+          <Property Name="SectionType" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The section type of the event."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the section type to indicate the CPER event class."/>
+          </Property>
+          <Property Name="FruID" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The FRU ID in UUID format."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the Field Replaceable Unit(FRU) ID in Universally Unique Identifier(UUID) format for the CPER event. RFC4122 describes methods to use to create the value. The value should be considered to be opaque. Client software should only treat the overall value as a universally unique identifier and should not interpret any sub-fields within the UUID."/>
+          </Property>
+          <Property Name="Severity" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The severity of the CPER event."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the severity of the condition that created the CPER event. Services can replace the value defined in the ACPI or the message registry with a value more applicable to the implementation."/>
+          </Property>
+          <Property Name="NvIpSignature" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The IP signature."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the IP signature to identify the IP for common vendor specific records."/>
+          </Property>
+          <Property Name="NvSeverity" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The ACPI severity of the CPER event."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the ACPI-defined severity of the condition that created the CPER event. Services can replace the value defined in the ACPI with a value more applicable to the implementation."/>
+          </Property>
+          <Property Name="NvSocketNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The socket number."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the socket number to indicate where the error occurred."/>
+          </Property>
+          <Property Name="PCIeVendorId" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The vendor ID of this PCIe function."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the PCIe vendor ID of the PCIe device function."/>
+          </Property>
+          <Property Name="PCIeDeviceId" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The device ID of this PCIe function."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the PCIe device ID of the PCIe device function."/>
+          </Property>
+          <Property Name="PCIeClassCode" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The class code of this PCIe function."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the PCIe class code of the PCIe device function."/>
+          </Property>
+          <Property Name="PCIeFunctionNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The PCIe function number."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the PCIe function number within a given PCIe device."/>
+          </Property>
+          <Property Name="PCIeDeviceNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The PCIe device number."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the PCIe device number within a given PCIe device."/>
+          </Property>
+          <Property Name="PCIeSegmentNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The PCIe segment number."/>
+            <Annotation Term="OData.LongDescription" String="The PCIe segment number is used to distinguish segments in the topology of the PCIe bus."/>
+          </Property>
+          <Property Name="PCIeDeviceBusNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The PCIe device bus number."/>
+            <Annotation Term="OData.LongDescription" String="The PCIe device bus number is a numeric identifier assigned to individual devices within the PCIe bus for effective differentiation and management."/>
+          </Property>
+          <Property Name="PCIeSecondaryBusNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The PCIe secondary bus number."/>
+            <Annotation Term="OData.LongDescription" String="The PCIe secondary bus number is an identifier assigned to distinguish secondary buses in the PCIe architecture."/>
+          </Property>
+          <Property Name="PCIeSlotNumber" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The PCIe slot number."/>
+            <Annotation Term="OData.LongDescription" String="The PCIe slot number is a unique identifier for efficient recognition and management of connected devices."/>
+          </Property>
+        </ComplexType>
+      </Schema>
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaLogEntry.v1_1_0">
+        <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+
+        <ComplexType Name="NvidiaLogEntry">
+          <Property Name="Device" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The name of the device that caused this log entry."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the name of the device the error occurred on."/>
+          </Property>
+          <Property Name="ErrorId" Type="Edm.String">
+            <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+            <Annotation Term="OData.Description" String="The Error ID of the event from the Error Catalog."/>
+            <Annotation Term="OData.LongDescription" String="This property shall contain the Error ID, an identifier from the Error Catalog that identifies the specific error that occurred."/>
+          </Property>
+        </ComplexType>
+      </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

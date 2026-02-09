@@ -1,0 +1,145 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoFoDKey.v1_0_0.json",
+    "$ref": "#/definitions/LenovoFoDKey",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "IdentifierType": {
+            "enum": [
+                "MTSN",
+                "MAC",
+                "EmulexASIC"
+            ],
+            "enumDescriptions": {
+                "EmulexASIC": "The type of Emulex ASIC",
+                "MAC": "MAC address",
+                "MTSN": "The machine type and serial number"
+            },
+            "type": "string"
+        },
+        "KeyStatus": {
+            "enum": [
+                "Valid",
+                "Invalid",
+                "Validating",
+                "Expired",
+                "ReachUseLimit",
+                "NeedValidationElsewhere"
+            ],
+            "type": "string"
+        },
+        "LenovoFoDKey": {
+            "additionalProperties": false,
+            "description": "This is the schema definition for the FoDKey resource. It represents the properties of a FoDKey.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Bytes": {
+                    "description": "Content of FoD activation key.",
+                    "items": {
+                        "type": "number"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "DescTypeCode": {
+                    "description": "The feature description type code",
+                    "readonly": true,
+                    "type": "number"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Expires": {
+                    "description": "The expire time of the FoD key",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "IdTypes": {
+                    "description": "The identifier types of the FoD key",
+                    "items": {
+                        "$ref": "#/definitions/IdentifierType"
+                    },
+                    "readonly": true,
+                    "type": "array"
+                },
+                "Identifier": {
+                    "description": "The identifier of the FoD key",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "Status": {
+                    "$ref": "#/definitions/KeyStatus",
+                    "description": "The key status of the FoD key",
+                    "readonly": true
+                },
+                "UseCount": {
+                    "description": "The use count of the FoD key",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "UseLimit": {
+                    "description": "The use limit of the FoD key",
+                    "readonly": true,
+                    "type": "number"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "requiredOnCreate": [
+                "Bytes"
+            ],
+            "type": "object"
+        }
+    },
+    "title": "#LenovoFoDKey.v1_0_0.LenovoFoDKey"
+}

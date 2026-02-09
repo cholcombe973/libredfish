@@ -1,0 +1,153 @@
+{
+    "definitions": {
+        "VolumeConfig": {
+            "description": "VolumeConfig contains properties used to setup a volume for any system.",
+            "required": [
+                "Id",
+                "Name"
+            ],
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This resource shall be used to represent a volume config for a Redfish implementation.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/type"
+                },
+                "DiskCachePolicy": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of Disk Cache Policy of volume config.(Default: Unchanged)",
+                    "description": "The Disk Cache Policy of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/DiskCachePolicy"
+                },
+                "Raid": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of RaidLevel of volume config.",
+                    "description": "The raid level of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/RaidLevel"
+                },
+                "Description": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                },
+                "LdWritePolicy": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of LD Write Policy of volume config.(Default: Write Back)",
+                    "description": "The LD Write Policy of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/LdWritePolicy"
+                },
+                "LdReadPolicy": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of LD Read Policy of volume config.(Default: No Read Ahead)",
+                    "description": "The LD Read Policy of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/LdReadPolicy"
+                },
+                "LogicalDriveCount": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The new logical drive count of the volume config.",
+                    "longDescription": "The value of this property shall be match the format of new logical drive count of volume config.(Max LDs: 16)"
+                },
+                "ControllerId": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The controller id of the volume config.",
+                    "longDescription": "The value of this property shall be match the format of controller id of volume config."
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/id"
+                },
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata.v4_0_2.json#/definitions/context"
+                },
+                "StripSizePerDDF": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of Strip size per DDF of volume config.(Default: 256K)",
+                    "description": "The Strip size per DDF of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/StripSize"
+                },
+                "AccessPolicy": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of Access Policy of volume config.(Default: Read Write)",
+                    "description": "The Access Policy of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/AccessPolicy"
+                },
+                "LdIOPolicy": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of LD IO Policy of volume config.(Default: Direct IO)",
+                    "description": "The LD IO Policy of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/LdIOPolicy"
+                },
+                "UsePercentage": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The percentage of the disk to be used.",
+                    "longDescription": "The value of this property shall be match the format of disk percentage use."
+                },
+                "VdName": {
+                    "readonly": false,
+                    "type": "string",
+                    "description": "The VD name of the volume config.",
+                    "longDescription": "The value of this property shall be match the format of RaidLevel of volume config.(alphabet or number(Max Chars: 15; Keep blank for none)):"
+                },
+                "Oem": {
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements.",
+                    "description": "The OEM extension property.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem"
+                },
+                "InitState": {
+                    "readonly": false,
+                    "longDescription": "The value of this property shall be match the format of Init State of volume config.(Default: No Init)",
+                    "description": "The Init State of the volume config.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/InitState"
+                },
+                "Span": {
+                    "readonly": false,
+                    "type": "number",
+                    "description": "The physical disk per span.",
+                    "longDescription": "The value of this property shall be match the format of physical disk per span of volume config."
+                },
+                "PhysicalDrives": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "readonly": false,
+                    "type": "array",
+                    "description": "The disk index collection of the volume config.",
+                    "longDescription": "The value of this property shall be match the format of disk index collection of volume config."
+                },
+                "Id": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id"
+                },
+                "Name": {
+                    "readonly": true,
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name"
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "$ref": "#/definitions/VolumeConfig",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#VolumeConfig.v1_0_0.VolumeConfig"
+}

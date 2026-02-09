@@ -1,0 +1,44 @@
+{
+    "definitions": {
+        "Sensor": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "SensorNumber": {
+                    "readonly": true,
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "The numerical identifier for this sensor.",
+                    "longDescription": "This property shall contain a numerical identifier for this sensor that is unique within this resource."
+                },
+                "SensorValue": {
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "Sensor Value .",
+                    "longDescription": "This property shall contain the sensor value."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcSensorExtensions.v1_0_0"
+}

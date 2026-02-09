@@ -1,0 +1,283 @@
+{
+    "$id": "/redfish/v1/Schemas/DellVolume.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellVolume": {
+            "additionalProperties": false,
+            "description": "Oem data related to the Volume Instance.",
+            "longDescription": "Oem data related to the Volume Instance.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DellVirtualDisk": {
+                    "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/DellVirtualDisk",
+                    "autoExpand": true,
+                    "description": "A resource representation of DellVirtualDisk.",
+                    "longDescription": "A resource representation of DellVirtualDisk.",
+                    "readonly": true
+                },
+                "DellVolume": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DellVolumeInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Oem data related to the Volume Instance.",
+                    "longDescription": "Oem data related to the Volume Instance."
+                }
+            },
+            "type": "object"
+        },
+        "DellVolumeInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "BusProtocol": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/BusProtocol"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the bus protocol.",
+                    "longDescription": "The property shall represent the bus protocol.",
+                    "readonly": true
+                },
+                "Cachecade": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/Cachecade"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property represents the Cachecade capabilities of a Controller. It can have a value of CachecadeVD or NonCachecadeVD. If a Controller is Cachecade Capable, for creating VD as CachecadeVD, only RAIDType = RAID0 or VolumeType = NonRedundant is supported. Only the properties RAIDType/VolumeType, Name/DisplayName, Links/Drives, Cachecade are consumed. Any other valid Schema supported property is ignored. During CachecadeVD creation, if the user passes any value other than RAIDType = RAID0 or VolumeType = NonRedundant, incoming values will get overwritten with RAIDType = RAID0 or VolumeType = NonRedundant.",
+                    "longDescription": "The property represents the Cachecade capabilities of a Controller. It can have a value of CachecadeVD or NonCachecadeVD. If a Controller is Cachecade Capable, for creating VD as CachecadeVD, only RAIDType = RAID0 or VolumeType = NonRedundant is supported. Only the properties RAIDType/VolumeType, Name/DisplayName, Links/Drives, Cachecade are consumed. Any other valid Schema supported property is ignored. During CachecadeVD creation, if the user passes any value other than RAIDType = RAID0 or VolumeType = NonRedundant, incoming values will get overwritten with RAIDType = RAID0 or VolumeType = NonRedundant.",
+                    "readonly": false
+                },
+                "DiskCachePolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/DiskCachePolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the policy for physical disks included in the virtual disk.",
+                    "longDescription": "The property shall represent the policy for physical disks included in the virtual disk.",
+                    "readonly": false
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastUpdateTime": {
+                    "description": "This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the time when the data was last updated. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LockStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/LockStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent if this Virtual Disk is locked.",
+                    "longDescription": "The property shall represent if this Virtual Disk is locked.",
+                    "readonly": true
+                },
+                "MediaType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/MediaType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the drive media type.",
+                    "longDescription": "The property shall represent the drive media type.",
+                    "readonly": true
+                },
+                "ObjectStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/ObjectStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the virtual disk configuration state.",
+                    "longDescription": "This property represents the virtual disk configuration state.",
+                    "readonly": true
+                },
+                "OperationName": {
+                    "description": "This property represents the operation that is running on a virtual disk in background. If no operation is running, the value is \"None\".",
+                    "longDescription": "This property represents the operation that is running on a virtual disk in background. If no operation is running, the value is \"None\".",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "OperationPercentComplete": {
+                    "description": "This property represents the percentage of completion of the operation that is represented by the OperationName property.",
+                    "longDescription": "This property represents the percentage of completion of the operation that is represented by the OperationName property.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PrimaryStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/PrimaryStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the status of the device.",
+                    "longDescription": "This property represents the status of the device.",
+                    "readonly": true
+                },
+                "RaidStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/RaidStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the RAID specific status.",
+                    "longDescription": "This property represents the RAID specific status.",
+                    "readonly": true
+                },
+                "RemainingRedundancy": {
+                    "description": "This property provides information about the remaining redundancy of the virtual disk.",
+                    "longDescription": "This property provides information about the remaining redundancy of the virtual disk.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "SpanDepth": {
+                    "description": "The property shall represent the number of spans in virtual disk.",
+                    "longDescription": "The property shall represent the number of spans in virtual disk.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "SpanLength": {
+                    "description": "The property shall represent the number of physical disks per span.",
+                    "longDescription": "The property shall represent the number of physical disks per span.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "StartingLBAinBlocks": {
+                    "description": "This property represents the starting logical block address in blocks for virtual disk.",
+                    "longDescription": "This property represents the starting logical block address in blocks for virtual disk.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "StripeSize": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/StripeSize"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the current strip size.",
+                    "longDescription": "This property represents the current strip size.",
+                    "readonly": true
+                },
+                "T10PIStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellVirtualDisk.json#/definitions/T10PIStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "T10PIStatus indicates whether T10 Protection Information is enabled on the virtual disk.",
+                    "longDescription": "T10PIStatus indicates whether T10 Protection Information is enabled on the virtual disk.",
+                    "readonly": true
+                },
+                "VirtualDiskTargetID": {
+                    "description": "The property shall represent the virtual disk target number.",
+                    "longDescription": "The property shall represent the virtual disk target number.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellVolume.v1_0_0"
+}

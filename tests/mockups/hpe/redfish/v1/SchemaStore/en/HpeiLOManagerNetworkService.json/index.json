@@ -1,0 +1,308 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOManagerNetworkService",
+    "actions": {
+        "actions": {
+            "HpeiLOManagerNetworkService.SendTestAlertMail": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "description": "Sends test alert mail to configured AlertMail email address.",
+                        "enum": [
+                            "HpeiLOManagerNetworkService.SendTestAlertMail"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOManagerNetworkService.SendTestSyslog": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOManagerNetworkService.SendTestSyslog"
+                        ],
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "These describe the POST custom actions defined for this type (although the implemented actions may be a subset of these)."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOManagerNetworkService object extends the Redfish ManagerNetworkProtocol resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOManagerNetworkService.SendTestAlertMail": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOManagerNetworkService.SendTestSyslog": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AlertMailEmail": {
+            "description": "The destination email address for email alerts.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "AlertMailEnabled": {
+            "description": "Indicates whether AlertMail is enabled. This can be enabled only when the properties AlertMailEmail, AlertMailSenderDomain and AlertMailSMTPServer are set or not empty.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "AlertMailSMTPAuthEnabled": {
+            "description": "Indicates whether AlertMail SMTP Authentication is enabled. This can be enabled only when the properties AlertMailSMTPSecureEnabled, AlertMailSMTPAuthUser and AlertMailSMTPAuthPw are set or not empty.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "AlertMailSMTPAuthPw": {
+            "description": "The password credential for SMTP server Authentication.",
+            "etag": true,
+            "maxLength": 63,
+            "readonly": false,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "AlertMailSMTPAuthUser": {
+            "description": "The username credential for SMTP server Authentication.",
+            "etag": true,
+            "maxLength": 63,
+            "readonly": false,
+            "type": "string"
+        },
+        "AlertMailSMTPPort": {
+            "default": 25,
+            "description": "The SMTP server port number.",
+            "etag": true,
+            "maximum": 65535,
+            "minimum": 1,
+            "readonly": false,
+            "type": "integer"
+        },
+        "AlertMailSMTPSecureEnabled": {
+            "description": "Indicates whether AlertMail SMTP Secure Connection (SSL/TLS) is enabled.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "AlertMailSMTPServer": {
+            "description": "The IP address or DNS name of the SMTP server or the Mail Submission Agent (MSA).",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "AlertMailSenderDomain": {
+            "description": "The domain name for the sender email address.",
+            "etag": true,
+            "maxLength": 63,
+            "readonly": false,
+            "type": "string"
+        },
+        "ConfigurationSettings": {
+            "description": "State of the currently displayed configuration settings.",
+            "enum": [
+                "Current",
+                "SomePendingReset"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "FederationEnabled": {
+            "description": "Indicates whether management processor federation management is enabled or disabled.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "FederationSupported": {
+            "description": "Indicates whether management processor federation is supported.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The resource URIs related to the network services managed by this manager.",
+            "properties": {
+                "EthernetInterfaces": {
+                    "description": "The URIs of the Ethernet NICs.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SNMPService": {
+                    "description": "The SNMP Service resource URI.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "RemoteSyslogEnabled": {
+            "description": "Indicates whether Remote Syslog is enabled. When enabled, management processor sends notification messages to the specified Syslog server. This can be enabled only when the property RemoteSyslogServer is set or not empty.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "RemoteSyslogPort": {
+            "default": 514,
+            "description": "The port number through which the Syslog servers are listening.",
+            "etag": true,
+            "maximum": 65535,
+            "minimum": 1,
+            "readonly": false,
+            "type": "integer"
+        },
+        "RemoteSyslogServer": {
+            "description": "The IP address, FQDN, IPv6 name, or short name of the servers running the Syslog service.",
+            "etag": true,
+            "readonly": false,
+            "type": "string"
+        },
+        "SNMPTrapPort": {
+            "description": "The SNMP trap port number.",
+            "etag": true,
+            "maximum": 65535,
+            "minimum": 1,
+            "readonly": false,
+            "type": "integer"
+        },
+        "SerialOverLanLogging": {
+            "description": "Indicates whether Serial Over LAN (SOL) or Virtual Serial Port (VSP) logging is enabled.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "VirtualMediaEncryptionEnabled": {
+            "description": "Enables or disables encryption on virtual media connections.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "XMLResponseEnabled": {
+            "description": "Determines whether management processor responds to anonymous XML discovery requests.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "IEEE_8021X_Support": {
+            "description": "Indicates whether 802.1X feature is enabled or not.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "EnhancedDownloadPerformanceEnabled": {
+            "description": "Indicates whether enhanced download for virtual media and firmware update is enabled or disabled.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "WebProxyConfiguration": {
+            "additionalProperties": false,
+            "properties": {
+                "ProxyServer": {
+                    "description": "Indicates the hostname or IP address of proxy server.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ProxyPort": {
+                    "description": "Indicates the proxy port.",
+                    "etag": true,
+                    "maximum": 65535,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ProxyUserName": {
+                    "description": "Indicates the proxy username (optional)",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ProxyPassword": {
+                    "description": "Indicates the proxy password (optional)",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOManagerNetworkService.v2_2_0.HpeiLOManagerNetworkService",
+    "type": "object"
+}

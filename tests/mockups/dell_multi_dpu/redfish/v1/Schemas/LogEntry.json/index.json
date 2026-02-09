@@ -1,0 +1,30 @@
+{
+    "$id": "/redfish/v1/Schemas/LogEntry.json",
+    "$ref": "#/definitions/LogEntry",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "LogEntry": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/LogEntry.v1_15_0.json#/definitions/LogEntry"
+                }
+            ],
+            "deletable": false,
+            "description": "The LogEntry schema defines the record format for a log.  It is designed for Redfish event logs, OEM-specific log formats, and the IPMI System Event Log (SEL).  The EntryType field indicates the type of log and the resource includes several additional properties dependent on the EntryType.",
+            "insertable": false,
+            "longDescription": "This resource shall represent the log format for log services in a Redfish implementation.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Managers/{ManagerId}/LogServices/Sel/Entries/{LogEntryId}",
+                "/redfish/v1/Managers/{ManagerId}/LogServices/Lclog/Entries/{LogEntryId}",
+                "/redfish/v1/Managers/{ManagerId}/LogServices/FaultList/Entries/{LogEntryId}"
+            ]
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#LogEntry.LogEntry"
+}

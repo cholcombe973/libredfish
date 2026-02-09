@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoLED  v1.0.0                                            -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+    <edmx:Include Namespace="Resource.v1_1_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLED">
+      <EntityType Name="LenovoLED" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoLED resource."/>
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoLED.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <EntityType Name="LenovoLED" BaseType="LenovoLED.LenovoLED">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This resource represents the sensor."/>
+        <Annotation Term="OData.LongDescription" String="This resource shall be used to represent a sensor for an OEM implementation."/>
+        <Property Name="Color" Type="LenovoLED.v1_0_0.LEDColor">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED color."/>
+        </Property>
+        <Property Name="State" Type="LenovoLED.v1_0_0.LEDState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED state."/>
+          <Annotation Term="OData.LongDescription" String="The LED state. Only states of Check Log LED and Enclosure Identify LED are modifiable. Check Log LED can be turned off only, and Enclosure Identify LED can be turned on/off/blink."/>
+        </Property>
+        <Property Name="DutyCycle" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED duty cycle blinking ratio."/>
+        </Property>
+        <Property Name="PeriodInMillSec" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The blinking ratio period in millisecond units."/>
+        </Property>
+        <Property Name="Location" Type="Edm.String" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED location according to LED SDR."/>
+        </Property>
+        <Property Name="EntityID" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED related device entity ID."/>
+        </Property>
+        <Property Name="EntityInstance" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED related device entity instance."/>
+        </Property>
+        <Property Name="DeviceEntity" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The LED related device entity."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="LEDState">
+        <Member Name="Off"/>
+        <Member Name="On"/>
+        <Member Name="Blink"/>
+      </EnumType>
+      
+      <EnumType Name="LEDColor">
+        <Member Name="Red"/>
+        <Member Name="Orange"/>
+        <Member Name="Yellow"/>
+        <Member Name="Green"/>
+        <Member Name="Blue"/>
+        <Member Name="White"/>
+      </EnumType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

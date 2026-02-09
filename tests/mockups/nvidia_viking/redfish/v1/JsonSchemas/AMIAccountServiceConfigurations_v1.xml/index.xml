@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIAccountServiceConfigurations  v1.0.0                             -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+      <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData" />
+   </edmx:Reference>
+   <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+      <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities" />
+   </edmx:Reference>
+   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource" />
+      <edmx:Include Namespace="Resource.v1_0_0" />
+   </edmx:Reference>
+   <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+      <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation" />
+      <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish" />
+   </edmx:Reference>
+   <edmx:DataServices>
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIAccountServiceConfigurations">
+         <Annotation Term="Redfish.OwningEntity" String="AMI" />
+         <EntityType Name="AMIAccountServiceConfigurations" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+            <Annotation Term="OData.Description" String="This is the schema definition for the AMIAccountService. It represents the properties PAMEnable and PAMOrder that specifies the authentication of PAM." />
+            <Annotation Term="OData.LongDescription" String="This is the schema definition for the AMIAccountService. It represents the properties PAMEnable and PAMOrder that specifies the authentication of PAM." />
+            <Annotation Term="Capabilities.InsertRestrictions">
+               <Record>
+                  <PropertyValue Property="Insertable" Bool="false" />
+               </Record>
+            </Annotation>
+            <Annotation Term="Capabilities.UpdateRestrictions">
+               <Record>
+                  <PropertyValue Property="Updatable" Bool="true" />
+               </Record>
+            </Annotation>
+            <Annotation Term="Capabilities.DeleteRestrictions">
+               <Record>
+                  <PropertyValue Property="Deletable" Bool="false" />
+               </Record>
+            </Annotation>
+         </EntityType>
+      </Schema>
+      <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIAccountServiceConfigurations.v1_0_0">
+         <Annotation Term="Redfish.OwningEntity" String="AMI" />
+         <EntityType Name="AMIAccountServiceConfigurations" BaseType="AMIAccountServiceConfigurations.AMIAccountServiceConfigurations">
+            <Annotation Term="OData.Description" String="This allows additional configuring of the Redfish AccountService." />
+            <Annotation Term="OData.LongDescription" String="This allows additional configuring of the Redfish AccountService." />
+            <Property Name="PAMEnabled" Type="Edm.Boolean" Nullable="false">
+               <Annotation Term="OData.Description" String="Indicates whether or not PAM authentication should be used when authenticating Redfish requests." />
+               <Annotation Term="OData.LongDescription" String="Indicates whether or not PAM authentication should be used when authenticating Redfish requests." />
+            </Property>
+            <Property Name="PAMOrder" Type="Collection(AMIAccountServiceConfigurations.v1_0_0.PAMOrder)" Nullable="false">
+               <Annotation Term="OData.Description" String="An array that represents the order the PAM modules will be checked for authentication." />
+               <Annotation Term="OData.LongDescription" String="An array that represents the order the PAM modules will be checked for authentication." />
+            </Property>
+         </EntityType>
+         <EnumType Name="PAMOrder">
+            <Annotation Term="OData.AdditionalProperties" Bool="false" />
+            <Annotation Term="OData.Description" String="Array that represents the order the PAM modules will be checked for authentication." />
+            <Annotation Term="OData.LongDescription" String="Array that represents the order the PAM modules will be checked for authentication." />
+            <Member Name="IPMI">
+               <Annotation Term="OData.Description" String="This Member specifies IPMI authentication." />
+               <Annotation Term="OData.LongDescription" String="This Member specifies IPMI authentication." />
+            </Member>
+            <Member Name="LDAP">
+               <Annotation Term="OData.Description" String="This Member specifies LDAP authentication." />
+               <Annotation Term="OData.LongDescription" String="This Member specifies LDAP authentication." />
+            </Member>
+            <Member Name="ACTIVE DIRECTORY">
+               <Annotation Term="OData.Description" String="This Member specifies ACTIVE DIRECTORY authentication ." />
+               <Annotation Term="OData.LongDescription" String="This Member specifies ACTIVE DIRECTORY authentication." />
+            </Member>
+            <Member Name="RADIUS">
+               <Annotation Term="OData.Description" String=" This Member specifies RADIUS authentication." />
+               <Annotation Term="OData.LongDescription" String="This Member specifies RADIUS authentication." />
+            </Member>
+         </EnumType>
+      </Schema>
+   </edmx:DataServices>
+</edmx:Edmx>

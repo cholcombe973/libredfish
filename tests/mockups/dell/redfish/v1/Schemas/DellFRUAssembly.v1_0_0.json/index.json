@@ -1,0 +1,225 @@
+{
+    "$id": "/redfish/v1/Schemas/DellFRUAssembly.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "ChassisType": {
+            "enum": [
+                "Other",
+                "Unknown",
+                "MiniTower",
+                "Tower",
+                "AllInOne",
+                "MainServerChassis",
+                "ExpansionChassis",
+                "SubChassis",
+                "BusExpansionChassis",
+                "PeripheralChassis",
+                "RAIDChassis",
+                "RackMountChassis"
+            ],
+            "enumDescriptions": {
+                "AllInOne": "Represents all in one chassis type",
+                "BusExpansionChassis": "Represents bus expansion chassis type",
+                "ExpansionChassis": "Represents expansion chassis type",
+                "MainServerChassis": "Represents main server chassis type",
+                "MiniTower": "Represents mini tower chassis type",
+                "Other": "Represents other chassis type",
+                "PeripheralChassis": "Represents peripheral chassis type",
+                "RAIDChassis": "Represents raid chassis type",
+                "RackMountChassis": "Represents rack mount chassis type",
+                "SubChassis": "Represents sub chassis type",
+                "Tower": "Represents tower chassis type",
+                "Unknown": "Represents  unknown chassis type"
+            },
+            "type": "string"
+        },
+        "DellFRUAssembly": {
+            "additionalProperties": false,
+            "description": "FRU Assembly data",
+            "longDescription": "This property shall represent the link to FRU Assembly data",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DellFRUAssembly": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DellFRUAssemblyInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Represents the link to FRU Assembly Information",
+                    "longDescription": "The property shall represent the link to FRU Assembly Information",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "DellFRUAssemblyInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "BoardCustomData": {
+                    "description": "Represents the board custom data",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The property shall represent the array of board custom data",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "BoardDateOfManufacture": {
+                    "description": "Represents date of board manufacture",
+                    "longDescription": "The property shall represent Date of board manufacture",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BoardManufacturer": {
+                    "description": "Represents board manufacturer",
+                    "longDescription": "The property shall represent manufacturer/vendor of the board",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BoardPartNumber": {
+                    "description": "Represents board part number",
+                    "longDescription": "The property shall represent the board part number",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BoardProductName": {
+                    "description": "Represents board product name",
+                    "longDescription": "The property shall represent the board product name",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "BoardSerialNumber": {
+                    "description": "Represents board serial number",
+                    "longDescription": "The property shall represent the serial number of the board",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChassisCustomData": {
+                    "description": "Represents the chassis custom data",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The property shall represent the array of chassis custom data",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ChassisPartNumber": {
+                    "description": "Represents chassis part number",
+                    "longDescription": "The property shall represent chassis part number",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChassisSerialNumber": {
+                    "description": "Represents chassis serial number",
+                    "longDescription": "The property shall represent chassis serial number",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ChassisType": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/ChassisType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Represents chassis type",
+                    "longDescription": "The property shall represent chassis type",
+                    "readonly": true
+                },
+                "DeviceFQDD": {
+                    "description": "Represents Fully Qualified Device Description (FQDD)",
+                    "longDescription": "The property shall represent Fully Qualified Device Description (FQDD)",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ProductCustomData": {
+                    "description": "Represents the product custom data",
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "longDescription": "The property shall represent the array of product custom data",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "ProductSerialNumber": {
+                    "description": "Represents the product serial number",
+                    "longDescription": "The property shall represent the serial number of the product",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellFRUAssembly.v1_0_0"
+}

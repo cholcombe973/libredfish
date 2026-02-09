@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  NVIDIAEventDestination  v1.0.0                                      -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/EventDestination_v1.xml">
+    <edmx:Include Namespace="EventDestination"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NVIDIAEventDestination">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+
+      <ComplexType Name="NVIDIAEventDestination" Abstract="true">
+        <Annotation Term="OData.Description" String="This schemas defines the properties and actions which is used in the EventDestination."/>
+        <Annotation Term="OData.LongDescription" String="This schemas defines the properties and actions which is used in the EventDestination."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NVIDIAEventDestination.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NVIDIAEventDestination" BaseType="NVIDIAEventDestination.NVIDIAEventDestination">
+        <Annotation Term="OData.Description" String="This is the schema definition for the NVIDIAEventDestination."/>
+        <Property Name="NvidiaEventProxyService" Type="NVIDIAEventDestination.v1_0_0.NvidiaEventProxyService" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the properties related to NvidiaEventProxyService"/>
+          <Annotation Term="OData.LongDescription" String="Indicates the properties related to NvidiaEventProxyService"/>
+        </Property>       
+      </ComplexType>
+      <ComplexType Name="NvidiaEventProxyService">
+		<Property Name="Target" Type="NVIDIAEventDestination.v1_0_0.Target" Nullable="false">
+		<Annotation Term="OData.Description" String="Target for the Destination."/>
+		</Property>
+      </ComplexType>
+	  <EnumType Name="Target">
+		<Member Name="BMC">
+			<Annotation Term="OData.Description" String="HOSTBMC Destination."/>
+			<Annotation Term="OData.LongDescription" String="HOSTBMC Destination."/>
+		</Member>
+		<Member Name="HGX_BMC_0">
+			<Annotation Term="OData.Description" String="HMC Destination."/>
+			<Annotation Term="OData.LongDescription" String="HMC Destination."/>
+		</Member>
+	  </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

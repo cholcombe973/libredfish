@@ -1,0 +1,165 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeComponent",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeComponent resource describes a software or firmware update component.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Activates": {
+            "description": "Indicates when a component becomes active after being updated.",
+            "enum": [
+                "Immediately",
+                "AfterReboot",
+                "AfterDeviceReset",
+                "AfterHardPowerCycle"
+            ],
+            "enumDescriptions": {
+                "AfterDeviceReset": "The update activates after a device reset.",
+                "AfterHardPowerCycle": "The update activates after a full power supply disconnect or E-Fuse reset.",
+                "AfterReboot": "The update activates after a host server reboot.",
+                "Immediately": "The update activates immediately."
+            },
+            "minLength": 0,
+            "readonly": true,
+            "type": "string"
+        },
+        "ComponentType": {
+            "description": "HTTP-style content-type of binary",
+            "readonly": true,
+            "type": "string"
+        },
+        "ComponentUri": {
+            "description": "URI of the component binary.",
+            "format": "uri-reference",
+            "readonly": true,
+            "type": "string"
+        },
+        "Configuration": {
+            "description": "string defining customized parameters for some components provided by client at upload time and given to the component at execution time (Type D only).",
+            "maxLength": 1280,
+            "minLength": 0,
+            "readonly": false,
+            "type": "string"
+        },
+        "Created": {
+            "description": "ISO 8601 time string indicating when this component was added to the NAND.",
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "Criticality": {
+            "description": "Indicates the criticality of the component.",
+            "oneOf": [
+                {
+                    "type": "null"
+                },
+                {
+                    "enum": [
+                        "Optional",
+                        "Recommended",
+                        "Critical"
+                    ],
+                    "type": "string"
+                }
+            ],
+            "readonly": false
+        },
+        "DeviceClass": {
+            "description": "Device type GUID from iLO secure flash header",
+            "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+            "readonly": true,
+            "type": "string"
+        },
+        "ExecutionParameters": {
+            "description": "Client supplied execution parameters.  These are supplied at upload time and given to the component at execution time (Type D only).",
+            "maxLength": 256,
+            "minLength": 0,
+            "readonly": false,
+            "type": "string"
+        },
+        "Filename": {
+            "description": "The unique filename of the component.",
+            "maxLength": 127,
+            "pattern": "^[A-Za-z0-9-._]+$",
+            "readonly": true,
+            "type": "string"
+        },
+        "Filepath": {
+            "description": "Path of file on the USB LUN if you mount the repo as USB.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Locked": {
+            "description": "If true, this component cannot be removed with DELETE because it is referenced by an Install Set",
+            "readonly": true,
+            "type": [
+                "boolean"
+            ]
+        },
+        "Name": {
+            "description": "Name of the component.",
+            "maxLength": 64,
+            "readonly": true,
+            "type": "string"
+        },
+        "SizeBytes": {
+            "description": "Size of the component file in bytes.",
+            "minimum": 0,
+            "readonly": true,
+            "type": [
+                "integer",
+                "null"
+            ]
+        },
+        "Targets": {
+            "items": {
+                "description": "Target GUIDs from secure flash header or sidecar file.",
+                "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "UpdatableBy": {
+            "items": {
+                "description": "Describes which types of update agents may apply this component.",
+                "enum": [
+                    "Uefi",
+                    "RuntimeAgent",
+                    "Bmc"
+                ],
+                "enumDescriptions": {
+                    "Bmc": "This component may be scheduled for update by iLO.",
+                    "RuntimeAgent": "This component may be scheduled for update by a runtime update agent such as Smart Update Manager or Smart Update Tool.",
+                    "Uefi": "This component may be scheduled for update by UEFI BIOS."
+                },
+                "readonly": true,
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Version": {
+            "description": "Version of the component from secure flash header or sidecar file.",
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "title": "#HpeComponent.v1_0_1.HpeComponent",
+    "type": "object"
+}

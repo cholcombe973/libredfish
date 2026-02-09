@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoPort  v1.0.0                                           -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPort">
+      <ComplexType Name="LenovoPort" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPort.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      <ComplexType Name="LenovoPort" BaseType="LenovoPort.LenovoPort">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Property Name="PhysicalPortNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The physical port number label for this port."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the physical port number on the network adapter hardware that this network port corresponds to. This value should match a value visible on the hardware."/>
+        </Property>
+        <Property Name="PortMaximumMTU" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The largest maximum transmission unit (MTU) that can be configured for this network port."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the largest maximum transmission unit (MTU) that can be configured for this network port."/>
+        </Property>
+        <Property Name="PhysicalPortMacAddress" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Mac address of this port."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the MAC address of the physical port on the network adapter hardware."/>
+        </Property>
+      </ComplexType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

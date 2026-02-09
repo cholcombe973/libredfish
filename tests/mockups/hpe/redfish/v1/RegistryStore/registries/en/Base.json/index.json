@@ -1,0 +1,566 @@
+{
+    "@Redfish.Copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2022 Distributed Management Task Force. All rights reserved.",
+    "@odata.type": "#MessageRegistry.v1_2_0.MessageRegistry",
+    "Description": "This registry contains the basic API response messages for the HPE RESTful API.",
+    "Id": "Base.json",
+    "Language": "en",
+    "Messages": {
+        "AccessDenied": {
+            "Description": "While attempting to access, connect to, or transfer to/from another resource, the service was denied access.",
+            "Message": "While attempting to establish a connection to %1, the service was denied access.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Verify that the URI is correct and that the service has the appropriate credentials.",
+            "Severity": "Critical"
+        },
+        "AccountForSessionNoLongerExists": {
+            "Description": "The account for the current session is removed, and the current session is also removed.",
+            "Message": "The account for the current session is removed, and the current session is also removed.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Attempt to connect using a valid account.",
+            "Severity": "OK"
+        },
+        "AccountModified": {
+            "Description": "The account was modified successfully.",
+            "Message": "The account was modified successfully.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "None.",
+            "Severity": "OK"
+        },
+        "AccountNotModified": {
+            "Description": "The request was unable to modify the account.",
+            "Message": "The account modification request did not complete.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, check the authorization or the request body for issues and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "AccountRemoved": {
+            "Description": "The account was removed successfully.",
+            "Message": "The account was removed successfully.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "None.",
+            "Severity": "OK"
+        },
+        "ActionNotSupported": {
+            "Description": "The action supplied in the POST operation is not supported by the resource.",
+            "Message": "The action %1 is not supported by the resource.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "The action was invalid or the wrong resource was the target. See the implementation documentation for assistance.",
+            "Severity": "Critical"
+        },
+        "ActionParameterDuplicate": {
+            "Description": "The action was submitted with a duplicate parameter in the request body.",
+            "Message": "The action %1 was submitted with more than one value for the parameter %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Resubmit the action with only one instance of the parameter in the request body.",
+            "Severity": "Warning"
+        },
+        "ActionParameterMissing": {
+            "Description": "The requested action is missing a parameter that is required to process the action.",
+            "Message": "The action %1 requires that the parameter %2 be present in the request body.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Resubmit the action with the required parameter in the request body.",
+            "Severity": "Critical"
+        },
+        "ActionParameterNotSupported": {
+            "Description": "The action parameter is not supported on the target resource.",
+            "Message": "The parameter %1 for the action %2 is not supported on the target resource.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, remove the parameter and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "ActionParameterUnknown": {
+            "Description": "An action was submitted, but a supplied parameter did not match any of the known parameters.",
+            "Message": "The action %1 was submitted with the invalid parameter %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the invalid parameter and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "ActionParameterValueFormatError": {
+            "Description": "The value type is correct, but the format is not supported or the size/length is exceeded.",
+            "Message": "The value %1 for the parameter %2 in the action %3 is in a format that is not supported by the parameter.",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the parameter value in the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "ActionParameterValueTypeError": {
+            "Description": "The parameter contains an incorrect value type. For example, a number value for a string parameter type.",
+            "Message": "The value %1 for the parameter %2 in the action %3 is the incorrect parameter type.",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the parameter value in the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "CouldNotEstablishConnection": {
+            "Description": "An attempt to access the resource, image, or file at the URI was unsuccessful because a session could not be established.",
+            "Message": "The service was unable to establish a connection with the URI %1.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Verify that the URI contains a valid and reachable node name, protocol information, and other URI components.",
+            "Severity": "Critical"
+        },
+        "CreateFailedMissingReqProperties": {
+            "Description": "A create operation was attempted on a resource, but a required property was missing from the request.",
+            "Message": "The create operation did not complete because the required property %1 was missing from the request.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, include the required property with a valid value in the request body and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "CreateLimitReachedForResource": {
+            "Description": "Additional resources cannot be created.",
+            "Message": "Additional resources cannot be created.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, delete resources and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "Created": {
+            "Description": "The resource has been created successfully.",
+            "Message": "The resource has been created successfully.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "None",
+            "Severity": "OK"
+        },
+        "EmptyJSON": {
+            "Description": "Indicates that the request body contained an empty JSON object when one or more properties are expected in the body.",
+            "Message": "The request body submitted contained an empty JSON object and the service is unable to process it.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Add properties in the JSON object and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "EventSubscriptionLimitExceeded": {
+            "Description": "The event subscription establishment has been requested, but the operation did not complete. The number of simultaneous subscriptions exceeded the maximum number allowed by the implementation.",
+            "Message": "The event subscription did not complete because the number of simultaneous subscriptions exceeded the maximum number allowed by the implementation.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Before attempting to establish the event subscription, reduce the number of subscriptions or increase the maximum number of simultaneous subscriptions allowed (if supported).",
+            "Severity": "Critical"
+        },
+        "GeneralError": {
+            "Description": "Indicates that a general error has occurred.  Use in ExtendedInfo is discouraged.  When used in ExtendedInfo, implementations are expected to include a Resolution property with this error to indicate how to resolve the problem.",
+            "Message": "A general error has occurred. See Resolution for information on how to resolve the error.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "None.",
+            "Severity": "Critical"
+        },
+        "InsufficientPrivilege": {
+            "Description": "The account or credentials associated with the current session are not authorized to perform the requested operation.",
+            "Message": "The account or credentials associated with the current session are not authorized to perform the requested operation.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Retry the operation with an authorized account or credentials.",
+            "Severity": "Critical"
+        },
+        "InternalError": {
+            "Description": "The request did not complete due to an unknown internal error, but the service is still operational.",
+            "Message": "The request failed due to an internal service error, but the service is still operational.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Resubmit the request. If the problem persists, consider resetting the service.",
+            "Severity": "Critical"
+        },
+        "InvalidIndex": {
+            "Description": "The Index is not valid.",
+            "Message": "The Index %1 is not a valid offset into the array.",
+            "Severity": "Warning",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "number"
+            ],
+            "Resolution": "Verify the index value provided is within the bounds of the array."
+        },
+        "InvalidObject": {
+            "Description": "The object is not valid.",
+            "Message": "The object at %1 is not valid.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, the object is malformed or the URI is incorrect. Make the appropriate corrections and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "MalformedJSON": {
+            "Description": "The request body contains malformed JSON.",
+            "Message": "The request body submitted is malformed JSON and cannot be parsed by the receiving service.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Verify that the request body is valid JSON and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "NoOperation": {
+            "Description": "Indicates that the requested operation will not perform any changes on the service.",
+            "Message": "The request body submitted contain no data to act upon and no changes to the resource took place.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Add properties in the JSON object and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "NoValidSession": {
+            "Description": "The operation did not complete because a valid session is required in order to access resources.",
+            "Message": "There is no valid session established with the implementation.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Establish a session before attempting any operations.",
+            "Severity": "Critical"
+        },
+        "PropertyDuplicate": {
+            "Description": "A duplicate property is in the request body.",
+            "Message": "The property %1 is duplicated in the request.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, remove the duplicate property from the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "PropertyMissing": {
+            "Description": "The request does not include a required property.",
+            "Message": "The property %1 is a required property and must be included in the request.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, verify the property is in the request body and has a valid value.",
+            "Severity": "Warning"
+        },
+        "PropertyNotWritable": {
+            "Description": "The request included a value for a read-only property.",
+            "Message": "The property %1 is a read-only property and cannot be assigned a value.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, remove the property from the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "PropertyUnknown": {
+            "Description": "An unknown property is in the request body.",
+            "Message": "The property %1 is not valid for this resource.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, remove the unknown property from the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "PropertyValueFormatError": {
+            "Description": "The value type is correct, but the format is not supported or the size/length is exceeded.",
+            "Message": "The value %1 for the property %2 is in a format that is not supported by the property.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the property value in the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "PropertyValueModified": {
+            "Description": "Indicates that a property was given the correct value type but the value of that property was modified.  Examples are truncated or rounded values.",
+            "Message": "The property %1 was assigned the value %2 due to modification by the service.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "No resolution is required.",
+            "Severity": "Warning"
+        },
+        "PropertyValueNotInList": {
+            "Description": "The value type is correct, but the value is not supported.",
+            "Message": "The value %1 for the property %2 is not valid.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, choose a value from the enumeration list and resubmit your request.",
+            "Severity": "Warning"
+        },
+        "PropertyValueTypeError": {
+            "Description": "The property value contains an incorrect property type. For example, a number value for a string property type.",
+            "Message": "The value %1 for the property %2 is the incorrect property type.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the property value in the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "QueryNotSupported": {
+            "Description": "The query is not supported by the implementation.",
+            "Message": "Querying is not supported by the implementation.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, remove the query parameter and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "QueryNotSupportedOnResource": {
+            "Description": "The query is not supported on the resource. For example, a start/count query is attempted on a resource that is not a collection.",
+            "Message": "Querying is not supported on the requested resource.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, remove the query parameters and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "QueryParameterOutOfRange": {
+            "Description": "The query parameter value is out of range for the resource. For example, a page is requested that is outside the valid page range.",
+            "Message": "The value %1 for the query parameter %2 is out of range %3.",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Specify a query parameter value that is within range. For example, a page that is within the valid range of pages.",
+            "Severity": "Warning"
+        },
+        "QueryParameterValueFormatError": {
+            "Description": "The value type is correct, but the format is not supported or the size/length was exceeded.",
+            "Message": "The value %1 for the parameter %2 is in a format that is not supported by the parameter.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the value for the query parameter in the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "QueryParameterValueTypeError": {
+            "Description": "The query parameter contains an incorrect value type. For example, a number supplied for a query parameter that requires a string.",
+            "Message": "The value %1 for the query parameter %2 is the incorrect type of value for the query parameter.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "If the operation did not complete, correct the value for the query parameter in the request body and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "ResourceAlreadyExists": {
+            "Description": "Indicates that a resource change or creation was attempted but that the operation cannot proceed because the resource already exists.",
+            "Message": "The requested resource of type %1 with the property %2 with the value %3 already exists.",
+            "Severity": "Critical",
+            "NumberOfArgs": 3,
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "Resolution": "Do not repeat the create operation as the resource has already been created."
+        },
+        "ResourceNotFound": {
+            "Description": "Indicates that the operation expected a resource identifier that corresponds to an existing resource but one was not found.",
+            "Message": "The requested resource of type %1 named %2 was not found.",
+            "Severity": "Critical",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Provide a valid resource identifier and resubmit the request."
+        },
+        "ResourceAtUriInUnknownFormat": {
+            "Description": "The URI is valid, but the resource or image at that URI is in a format that is not supported by the service.",
+            "Message": "The resource at %1 is in a format that is not supported by the service.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Place a resource, image, or file that is supported by the service at the URI.",
+            "Severity": "Critical"
+        },
+        "ResourceAtUriUnauthorized": {
+            "Description": "An attempt to access the resource, image, or file at the URI is unauthorized.",
+            "Message": "While accessing the resource at %1, the service received an authorization error %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Verify that the appropriate access is provided for the service to access the URI.",
+            "Severity": "Critical"
+        },
+        "ResourceCannotBeDeleted": {
+            "Description": "A delete operation was attempted on a resource that cannot be deleted.",
+            "Message": "The delete request did not complete because the resource cannot be deleted.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Do not attempt to delete a resource that does not support the REST API DELETE operation.",
+            "Severity": "Critical"
+        },
+        "ResourceExhaustion": {
+            "Description": "Indicates that a resource could not satisfy the request due to some unavailability of resources.  An example is that available capacity has been allocated.",
+            "Message": "The resource %1 was unable to satisfy the request due to unavailability of resources.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Ensure that the resources are available and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "ResourceInStandby": {
+            "Description": "Indicates that the request could not be performed because the resource is in standby.",
+            "Message": "The request could not be performed because the resource is in standby.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Ensure that the resource is in the correct power state and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "ResourceInUse": {
+            "Description": "The request to change the resource was rejected because the resource was in use or in transition.",
+            "Message": "The change to the resource did not complete because the resource is in use or in transition.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, wait until the resource is free and resubmit the request.",
+            "Severity": "Warning"
+        },
+        "ResourceMissingAtURI": {
+            "Description": "The operation expected an image or resource at the provided URI, but found none.",
+            "Message": "The resource at the URI %1 was not found.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Place a valid resource at the URI or correct the URI and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "ResourceTypeIncompatible": {
+            "Description": "Indicates that the resource type of the operation does not match that for the operation destination.  Examples of when this can happen include during a POST to a collection using the wrong resource type, an update where the @odata.types do not match or on a major version incompatability.",
+            "Message": "The @odata.type of the request body %1 is incompatible with the @odata.type of the resource which is %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Resubmit the request with a payload compatible with the resource's schema.",
+            "Severity": "Critical"
+        },
+        "ServiceInUnknownState": {
+            "Description": "The operation did not complete because the service is in an unknown state and cannot take incoming requests.",
+            "Message": "The operation did not complete because the service is in an unknown state and cannot take incoming requests.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, restart the service and resubmit the request.",
+            "Severity": "Critical"
+        },
+        "ServiceShuttingDown": {
+            "Description": "The operation did not complete because the service is shutting down.",
+            "Message": "The operation did not complete because the service is shutting down and cannot take incoming requests.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, resubmit the request when the service is available.",
+            "Severity": "Critical"
+        },
+        "ServiceTemporarilyUnavailable": {
+            "Description": "The service is temporarily unavailable.",
+            "Message": "The service is temporarily unavailable.  Retry in %1 seconds.",
+            "NumberOfArgs": 1,
+            "ParamTypes": [
+                "string"
+            ],
+            "Resolution": "Wait for the indicated retry duration and retry the operation.",
+            "Severity": "Critical"
+        },
+        "SessionLimitExceeded": {
+            "Description": "Session establishment has been requested, but the operation did not complete because the number of simultaneous sessions exceeded the maximum number allowed by the implementation.",
+            "Message": "The session establishment did not complete because the number of simultaneous sessions exceeded the maximum number allowed by the implementation.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "Before attempting to establish the session, reduce the number of sessions or increase the maximum number of simultaneous sessions allowed (if supported).",
+            "Severity": "Critical"
+        },
+        "SessionTerminated": {
+            "Description": "Indicates that the DELETE operation on the Session resource resulted in the successful termination of the session.",
+            "Message": "The session was successfully terminated.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "No resolution is required.",
+            "Severity": "OK"
+        },
+        "SourceDoesNotSupportProtocol": {
+            "Description": "While attempting to access, connect to, or transfer from another location, the other end of the connection did not support the specified protocol.",
+            "Message": "The other end of the connection at %1 does not support the specified protocol %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "Resolution": "Change protocols or URIs. ",
+            "Severity": "Critical"
+        },
+        "StringValueTooLong": {
+            "Description": "Indicates that a string value passed to the given resource exceeded its length limit. An example is when a shorter limit is imposed by an implementation than that allowed by the specification.",
+            "Message": "The string %1 exceeds the length limit %2.",
+            "NumberOfArgs": 2,
+            "ParamTypes": [
+                "string",
+                "number"
+            ],
+            "Resolution": "Resubmit the request with an appropriate string length.",
+            "Severity": "Warning"
+        },
+        "Success": {
+            "Description": "The operation completed successfully.",
+            "Message": "The operation completed successfully.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "None",
+            "Severity": "OK"
+        },
+        "UnrecognizedRequestBody": {
+            "Description": "The service detected a request body with malformed JSON.",
+            "Message": "The service detected a request body with malformed JSON.",
+            "NumberOfArgs": 0,
+            "ParamTypes": [],
+            "Resolution": "If the operation did not complete, correct the request body and resubmit the request.",
+            "Severity": "Warning"
+        }
+    },
+    "Name": "Base Message Registry",
+    "OwningEntity": "Hewlett Packard Enterprise",
+    "RegistryPrefix": "Base",
+    "RegistryVersion": "1.4.0"
+}

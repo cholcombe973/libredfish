@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  NodeManager                                                         -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+        <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NmDomainCollection_v1.xml">
+        <edmx:Include Namespace="NmDomainCollection"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NmPolicyCollection_v1.xml">
+        <edmx:Include Namespace="NmPolicyCollection"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NmTriggerCollection_v1.xml">
+        <edmx:Include Namespace="NmTriggerCollection"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/JsonSchemas/NmThrottlingStatus_v1.xml">
+        <edmx:Include Namespace="NmThrottlingStatus"/>
+		<edmx:Include Namespace="NmThrottlingStatus.v1_0_0"/>
+		<edmx:Include Namespace="NmThrottlingStatus.v1_0_1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NodeManager">
+            <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+            <EntityType Name="NodeManager" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+                <Annotation Term="OData.Description" String="The Node Manager schema describes metrics and control properties for Node Manager application."/>
+                <Annotation Term="OData.LongDescription" String="The Node Manager schema contains resources describing objects used by Node Manager to monitor and control node's power and performance."/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Property="Insertable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Property="Updatable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Property="Deletable" Bool="false"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/NodeManager</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="ChangeState" IsBound="true">
+                <Parameter Name="NodeManager" Type="NodeManager.Actions"/>
+                <Parameter Name="State" Type="Resource.State">
+                    <Annotation Term="OData.Description" String="The state of the Resource to transition to. When policy control is disabled globally, no policy can enter 'Operating', 'Triggered', or 'Enabled' state."/>
+                    <Annotation Term="OData.LongDescription" String="This parameter shall contain the state of the Resource to transition to. When policy control is disabled globally, no policy can enter 'Operating', 'Triggered', or 'Enabled' state."/>
+                </Parameter>
+            </Action>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NodeManager.v1_0_0">
+            <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+            <Annotation Term="Redfish.Release" String="1.0"/>
+            <EntityType Name="NodeManager" BaseType="NodeManager.NodeManager">
+                <NavigationProperty Name="Domains" Type="NmDomainCollection.DomainCollection" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The Domain schema contains properties related to monitoring and control of the given power capping domain."/>
+                    <Annotation Term="OData.LongDescription" String="The Domain schema contains properties related to monitoring and control of the given power capping domain."/>
+                    <Annotation Term="OData.AutoExpandReferences"/>
+                </NavigationProperty>
+                <NavigationProperty Name="Policies" Type="NmPolicyCollection.PolicyCollection" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Policies created for this domain."/>
+                    <Annotation Term="OData.LongDescription" String="This type shall contain policies created for this domain."/>
+                    <Annotation Term="OData.AutoExpandReferences"/>
+                </NavigationProperty>
+                <NavigationProperty Name="Triggers" Type="NmTriggerCollection.TriggerCollection" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Policies created for this domain."/>
+                    <Annotation Term="OData.LongDescription" String="This type shall contain available triggers for policies in a domain."/>
+                    <Annotation Term="OData.AutoExpandReferences"/>
+                </NavigationProperty>
+                <Property Name="MaxNumberOfPolicies" Type="Edm.Decimal" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Maximal number of policies supported by this manager."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a maximal number of policies of all types which can be created and maintained by this manager."/>
+                    <Annotation Term="Validation.Maximum" Int="64"/>
+                </Property>
+                <Property Name="NmVersion" Type="Edm.String" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Application version running on this manager."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the firmware version as defined by the manufacturer for the associated manager."/>
+                    <Annotation Term="Validation.Maximum" Int="64"/>
+                </Property>
+                <Property Name="Status" Type="Resource.Status" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The status and health of the Resource and its subordinate or dependent Resources."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain any status or health properties of the Resource."/>
+                </Property>
+                <NavigationProperty Name="ThrottlingStatus" Type="NmThrottlingStatus.ThrottlingStatus" ContainsTarget="true">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The link to the throttling status reported by this manager."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain a link to a Resource type ThrottlingStatus."/>
+                    <Annotation Term="OData.AutoExpandReferences"/>
+                </NavigationProperty>
+                <Property Name="Actions" Type="NodeManager.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the available actions for this resource."/>
+                <Property Name="Oem" Type="NodeManager.v1_0_0.OemActions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available OEM-specific actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="This property shall contain the available OEM-specific actions for this resource."/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="OemActions">
+                <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+                <Annotation Term="OData.Description" String="The available OEM-specific actions for this resource."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the available OEM-specific actions for this resource."/>
+            </ComplexType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

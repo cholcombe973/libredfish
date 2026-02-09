@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoWatchdog  v1.0.0                                       -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoWatchdog">
+      <EntityType Name="LenovoWatchdog" BaseType="Resource.v1_0_0.Resource" Abstract="true">
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoWatchdog resource."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Redfish.Uris">
+          <Collection>
+            <String>/redfish/v1/Managers/1/Oem/Lenovo/Watchdogs/{LenovoWatchdogId}</String>
+          </Collection>
+        </Annotation>
+      </EntityType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoWatchdog.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+
+      <EntityType Name="LenovoWatchdog" BaseType="LenovoWatchdog.LenovoWatchdog">
+        <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the watch dog resource. It represents the properties of a watch dog of a System."/>
+        <Property Name="TimerValueInSec" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The watch dog timer value."/>
+        </Property>
+        <Property Name="State" Type="LenovoWatchdog.v1_0_0.WatchdogState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="The watch dog state."/>
+        </Property>
+        <Property Name="Type" Type="LenovoWatchdog.v1_0_0.WatchdogType">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+        </Property>
+        <Property Name="TimeoutIntervalInSec" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The watchdog timeout interval. The time unit of timeout interval for OS Boot Process watchdog is second, for OS watchdog is second, for BIOS Boot Process watchdog is second, and for IPMI watchdog is second * 0.1. The valid values for OS watchdog timeout interval are 0/180/210/240/600 seconds. The valid values for OS Boot Process watchdog timeout interval are 0/30/60/90/150/180/210/240/270/300/450/600/900/1200/1800/3600/7200 seconds."/>
+        </Property>
+        <Property Name="TimerExpired" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="It represents watchdog timer is expired."/>
+        </Property>
+      </EntityType>
+      
+      <EnumType Name="WatchdogType">
+        <Member Name="OSBootProcess">
+          <Annotation Term="OData.Description" String="OS Boot Process watchdog"/>
+        </Member>
+        <Member Name="OS">
+          <Annotation Term="OData.Description" String="OS watchdog"/>
+        </Member>
+        <Member Name="BIOSBootProcess">
+          <Annotation Term="OData.Description" String="BIOS Boot Process watchdog"/>
+        </Member>
+        <Member Name="IPMI">
+          <Annotation Term="OData.Description" String="IPMI watchdog"/>
+        </Member>
+      </EnumType>
+      
+      <EnumType Name="WatchdogState">
+        <Member Name="Enabled"/>
+        <Member Name="Disabled"/>
+        <Member Name="EnabledButOffline"/>
+      </EnumType>
+      
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

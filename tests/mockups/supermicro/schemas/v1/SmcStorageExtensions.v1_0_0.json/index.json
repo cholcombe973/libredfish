@@ -1,0 +1,319 @@
+{
+    "definitions": {
+        "StorageController": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "BIOSBootMode": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "BIOS boot mode of the storage controller."
+                },
+                "JBODMode": {
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "description": "JBOD mode(Enable/Disable) of the storage controller."
+                },
+                "BBU": {
+                    "readonly": true,
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BBU"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            }
+        },
+        "BBUStatus": {
+            "enum": [
+                "Missing",
+                "Charging",
+                "Discharging",
+                "Optimal",
+                "Needs To Be Replaced",
+                "Voltage Low",
+                "UnKnown",
+                "Not Install",
+                "Error"
+            ],
+            "type": "string"
+        },
+        "ClearVolumes": {
+            "description": "This action is used to clear all the volumes.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This defines the name of the custom action supported on this resource.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action",
+                    "format": "uri"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                }
+            }
+        },
+        "Storage": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "DiskCachePolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/DiskCachePolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Disk cache policy.",
+                    "longDescription": "This defines the disk cache policy for the action. Default: Enable."
+                },
+                "Span": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Physical disk per span.",
+                    "longDescription": "This defines the physical disk per span for the action."
+                },
+                "LdWritePolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/LdWritePolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Logical disk write policy.",
+                    "longDescription": "This defines the logical disk write policy for the action. Default: WriteBack."
+                },
+                "LdIOPolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/LdIOPolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Logical disk IO policy.",
+                    "longDescription": "This defines the logical disk IO policy for the action. Default: DirectIO."
+                },
+                "LogicalDriveCount": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "New logical drive count.",
+                    "longDescription": "This defines the new logical drive count for the action. Max LDs: 16."
+                },
+                "ControllerId": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "The controller ID to set on the storage subsytem.",
+                    "longDescription": "This defines the property name for the action."
+                },
+                "StripSizePerDDF": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/StripSize"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Strip size per DDF.",
+                    "longDescription": "This defines the strip size per DDF for the action. Default: 256K."
+                },
+                "AccessPolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/AccessPolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Access policy.",
+                    "longDescription": "This defines the access policy for the action. Default: ReadWrite."
+                },
+                "UsePercentage": {
+                    "type": [
+                        "number",
+                        "null"
+                    ],
+                    "description": "Disk percentage to use.",
+                    "longDescription": "This defines the disk percentage to use for the action. Positive integer only."
+                },
+                "LdReadPolicy": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/LdReadPolicy"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Logical disk read policy.",
+                    "longDescription": "This defines the logical disk read polilcy for the action. Default: NoReadAhead."
+                },
+                "InitState": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/InitState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Init state.",
+                    "longDescription": "This defines the init state for the action. Default: NoInit."
+                },
+                "Raid": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/VolumeConfig.json#/definitions/RaidLevel"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The raid level for the created volume.",
+                    "longDescription": "This defines the property name for the action."
+                },
+                "PhysicalDrives": {
+                    "items": {
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "type": "array",
+                    "description": "The disk index collection to create volume",
+                    "longDescription": "This defines the property name for the action."
+                }
+            }
+        },
+        "CreateVolume": {
+            "description": "This action is used to create a new volume.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This defines the name of the custom action supported on this resource.",
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+                "target": {
+                    "type": "string",
+                    "description": "Link to invoke action",
+                    "format": "uri"
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Friendly action name"
+                }
+            }
+        },
+        "BBU": {
+            "description": "Current status of BBU.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "longDescription": "This information contains its real situation and brief status.",
+            "additionalProperties": true,
+            "type": "object",
+            "properties": {
+                "Status": {
+                    "longDescription": "This property shall contain any status or health properties of the resource.",
+                    "description": "This property describes the status and health of the resource and its children.",
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Status"
+                },
+                "BBUStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/BBUStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcStorageExtensions.v1_0_0"
+}

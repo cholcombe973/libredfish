@@ -1,0 +1,139 @@
+{
+    "$id": "/redfish/v1/Schemas/DellBaseMetricValue.v1_0_0.json",
+    "$ref": "#/definitions/DellBaseMetricValue",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellBaseMetricValue": {
+            "additionalProperties": false,
+            "description": "DellBaseMetricValue represents the instance value of a metric.",
+            "longDescription": "DellBaseMetricValue represents the instance value of a metric.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Duration": {
+                    "description": "The Duration property is in W3C representation in WS-CIM with the corresponding value equal to current timestamp minus start time of the metric. Duration can be null for power related metrics.",
+                    "longDescription": "The Duration property is in W3C representation in WS-CIM with the corresponding value equal to current timestamp minus start time of the metric. Duration can be null for power related metrics.",
+                    "pattern": "-?P(\\d+D)?(T(\\d+H)?(\\d+M)?(\\d+(.\\d+)?S)?)?",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ElementName": {
+                    "description": "ElementName is the user-friendly name for the instance and it can be null for power related metrics.",
+                    "longDescription": "ElementName is the user-friendly name for the instance and it can be null for power related metrics.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "InstanceID": {
+                    "description": "InstanceID is a unique identifier for the instance.",
+                    "longDescription": "InstanceID is a unique identifier for the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MetricDefinitionId": {
+                    "description": "MetricDefinitionId is the key of the BaseMetricDefinition instance for the CIM_BaseMetricValue instance value.",
+                    "longDescription": "MetricDefinitionId is the key of the BaseMetricDefinition instance for the CIM_BaseMetricValue instance value.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MetricValue": {
+                    "description": "MetricValue is the value of the metric represented as a string. Its original data type is specified in CIM_BaseMetricDefinition.",
+                    "longDescription": "MetricValue is the value of the metric represented as a string. Its original data type is specified in CIM_BaseMetricDefinition.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "TimeStamp": {
+                    "description": "TimeStamp identifies the time when the value of a metric instance is computed. This is different from the time when the instance is created. For a CIM_BaseMetricValue instance, if Volatile is set to True, the TimeStamp changes whene a new measurement snapshot is taken. A management application may establish a time series of metric data by retrieving the instances of CIM_BaseMetricValue and sorting them according to their TimeStamp.",
+                    "format": "date-time",
+                    "longDescription": "TimeStamp identifies the time when the value of a metric instance is computed. This is different from the time when the instance is created. For a CIM_BaseMetricValue instance, if Volatile is set to True, the TimeStamp changes whene a new measurement snapshot is taken. A management application may establish a time series of metric data by retrieving the instances of CIM_BaseMetricValue and sorting them according to their TimeStamp.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Volatile": {
+                    "description": "When Volatile is set to True, it indicates that the value for the next point in time may use the same object and just change its properties (such as the value or timestamp). If set to False, the existing objects remain unchanged and a new object is created for the new point in time.",
+                    "longDescription": "When Volatile is set to True, it indicates that the value for the next point in time may use the same object and just change its properties (such as the value or timestamp). If set to False, the existing objects remain unchanged and a new object is created for the new point in time.",
+                    "readonly": true,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellBaseMetricValue.v1_0_0.DellBaseMetricValue"
+}

@@ -1,0 +1,258 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoRemoteControlService.v1_0_0.json",
+    "$ref": "#/definitions/LenovoRemoteControlService",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "description": "The available actions for this resource.",
+            "longDescription": "This type shall contain the available actions for this resource.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#LenovoRemoteControlService.UploadFromURL": {
+                    "$ref": "#/definitions/UploadFromURL"
+                },
+                "#LenovoRemoteControlService.UploadMountImage": {
+                    "$ref": "#/definitions/UploadMountImage"
+                }
+            },
+            "type": "object"
+        },
+        "LenovoRemoteControlService": {
+            "additionalProperties": false,
+            "description": "The schema defines a detailed account setting resource.",
+            "longDescription": "This resource shall be used to represent an event service for a Redfish implementation.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/type"
+                },
+                "Actions": {
+                    "$ref": "#/definitions/Actions",
+                    "description": "The available actions for this resource.",
+                    "longDescription": "The Actions property shall contain the available actions for this resource."
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "Id": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "MountImages": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/metadata/LenovoRemoteMountMediaCollection.json#/definitions/LenovoRemoteMountMediaCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A reference to the remote mount media.",
+                    "longDescription": "The value of this property shall be a reference to the remote mount media.",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "ServiceEnabled": {
+                    "description": "This indicates whether this service is enabled.",
+                    "longDescription": "The value of this property shall be a boolean indicating whether this service is enabled.",
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "Sessions": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/metadata/LenovoRemoteControlSessionCollection.json#/definitions/LenovoRemoteControlSessionCollection"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "A reference to the remote control sessions.",
+                    "longDescription": "The value of this property shall be a reference to the remote control sessions.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        },
+        "UploadFromURL": {
+            "additionalProperties": false,
+            "parameters": {
+                "Domain": {
+                    "description": "Domain value for samba protocol.",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "Options": {
+                    "description": "Option string for samba and nfs protocol.",
+                    "requiredParameter": true,
+                    "type": "boolean"
+                },
+                "Password": {
+                    "description": "Password for the username to access the source URI",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "Readonly": {
+                    "description": "It indicates the file status will be readonly or read/write",
+                    "requiredParameter": true,
+                    "type": "boolean"
+                },
+                "Username": {
+                    "description": "Username to access the source URI",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "sourceURL": {
+                    "description": "Link to the file to be uploaded",
+                    "format": "uri-reference",
+                    "requiredParameter": true,
+                    "type": "string"
+                },
+                "type": {
+                    "description": "The source URI protocol.",
+                    "requiredParameter": true,
+                    "type": "string"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "UploadMountImage": {
+            "additionalProperties": false,
+            "parameters": {
+                "Filename": {
+                    "description": "name of the file to be uploaded",
+                    "type": "string"
+                },
+                "Readonly": {
+                    "description": "It indicates the file status will be readonly or read/write",
+                    "requiredParameter": true,
+                    "type": "boolean"
+                },
+                "bytes": {
+                    "description": "bytes of the image file",
+                    "items": {
+                        "type": "number"
+                    },
+                    "longDescription": "The image file contents are transferred in this property. The maximum size of the image file cannot exceed 50 MB",
+                    "requiredParameter": true,
+                    "type": "array"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoRemoteControlService.v1_0_0.LenovoRemoteControlService"
+}

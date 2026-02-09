@@ -1,0 +1,1106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellRaidService v1_5_1-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellRaidService" Abstract="true">
+                <Annotation String="The DellRaidService resource provides some actions to support RAID functionality." Term="OData.Description"/>
+                <Annotation String="The DellRaidService resource provides some actions to support RAID functionality." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellRaidService</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <Action Name="AssignSpare" IsBound="true">
+                <Annotation String="The AssignSpare() method is used to assign a physical disk as a dedicated hot spare for a virtual disk, or as a global hot spare." Term="OData.Description"/>
+                <Annotation String="The AssignSpare() method is used to assign a physical disk as a dedicated hot spare for a virtual disk, or as a global hot spare." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This Parameter is the FQDD of the target device (physical disk)." Term="OData.Description"/>
+                    <Annotation String="This Parameter is the FQDD of the target device (physical disk)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="VirtualDiskArray" Type="Collection(Edm.String)">
+                    <Annotation String="Array of ElementName(s) where each identifies a different VD Currently only one Vd can be passed. Array of ElementName(s) where each ElementName identifies a different virtual disk." Term="OData.Description"/>
+                    <Annotation String="Array of ElementName(s) where each identifies a different VD Currently only one Vd can be passed. Array of ElementName(s) where each ElementName identifies a different virtual disk." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="BlinkTarget" IsBound="true">
+                <Annotation String="The BlinkTarget() method is used to Identify a single physical disk by blinking the disk  slot LED for the physical disk / Virtual disk. The successful execution of this method results in setting the LED to blink the identify pattern or turns off the blinking of the identify pattern.  The method is real time, blink cannot be scheduled as part of a job." Term="OData.Description"/>
+                <Annotation String="The BlinkTarget() method is used to Identify a single physical disk by blinking the disk  slot LED for the physical disk / Virtual disk. The successful execution of this method results in setting the LED to blink the identify pattern or turns off the blinking of the identify pattern.  The method is real time, blink cannot be scheduled as part of a job." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This Parameter is the FQDD of the Physical Disk,SSD or Virtual Disk." Term="OData.Description"/>
+                    <Annotation String="This Parameter is the FQDD of the Physical Disk,SSD or Virtual Disk." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CancelBackgroundInitialization" IsBound="true">
+                <Annotation String="The CancelBackgroundInitialization() method cancels the background initialization of the virtual disk." Term="OData.Description"/>
+                <Annotation String="The CancelBackgroundInitialization() method cancels the background initialization of the virtual disk." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CancelCheckConsistency" IsBound="true">
+                <Annotation String="This method cancels Check Consistency operation that is in progress." Term="OData.Description"/>
+                <Annotation String="This method cancels Check Consistency operation that is in progress." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CancelRebuildPhysicalDisk" IsBound="true">
+                <Annotation String="The CancelRebuildPhysicalDisk() method cancel the rebuild or reconstruct operation of the failed disk to a new disk or a hot spare." Term="OData.Description"/>
+                <Annotation String="The CancelRebuildPhysicalDisk() method cancel the rebuild or reconstruct operation of the failed disk to a new disk or a hot spare." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ChangePDState" IsBound="true">
+                <Annotation String="This method changes the state of physical disk that is part of virtual disk. Note:- This operation is not applicable on direct attached NVMe drives in Software RAID mode." Term="OData.Description"/>
+                <Annotation String="This method changes the state of physical disk that is part of virtual disk. Note:- This operation is not applicable on direct attached NVMe drives in Software RAID mode." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="State" Type="DellRaidService.State">
+                    <Annotation String="The desired state of the Physical Disk." Term="OData.Description"/>
+                    <Annotation String="The desired state of the Physical Disk." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of the physical disk." Term="OData.Description"/>
+                    <Annotation String="FQDD of the physical disk." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CheckVDValues" IsBound="true">
+                <Annotation String="The CheckVDValues() method is used to determine the possible sizes of Virtual disks and the default settings, proviced a RAID level and set of physical disks. The VDPropArray property is filled with Size and other values, so that the method is successfully executed. If the SpanDepth is not provided, a default value of 2 shall be used for RAID levels 10, 50, and 60. NOTE: For certain numbers of disks such as nine or fifteen, it may be necessary for the user to provide another SpanDepth." Term="OData.Description"/>
+                <Annotation String="The CheckVDValues() method is used to determine the possible sizes of Virtual disks and the default settings, proviced a RAID level and set of physical disks. The VDPropArray property is filled with Size and other values, so that the method is successfully executed. If the SpanDepth is not provided, a default value of 2 shall be used for RAID levels 10, 50, and 60. NOTE: For certain numbers of disks such as nine or fifteen, it may be necessary for the user to provide another SpanDepth." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="PDArray" Type="Collection(Edm.String)">
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.Description"/>
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="VDPropNameArrayIn" Type="Collection(DellRaidService.VDPropNameArrayIn)">
+                    <Annotation String="Indexed array of Virtual Disk property names. The property names can be Size, SpanDepth, SpanLength, RAIDLevel ,StartingLBA or T10PIStatus. The values for the property needs to be provided in VDPropValueArrayIn in the same order." Term="OData.Description"/>
+                    <Annotation String="Indexed array of Virtual Disk property names. The property names can be Size, SpanDepth, SpanLength, RAIDLevel ,StartingLBA or T10PIStatus. The values for the property needs to be provided in VDPropValueArrayIn in the same order." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="VDPropValueArrayIn" Type="Collection(Edm.String)">
+                    <Annotation String="Indexed array of Virtual Disk property values for the respective VDPropNameArrayIn parameter." Term="OData.Description"/>
+                    <Annotation String="Indexed array of Virtual Disk property values for the respective VDPropNameArrayIn parameter." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellRaidService.v1_0_0.CheckVDValuesResponse" Nullable="false"/>
+            </Action>
+            <Action Name="ClearControllerPreservedCache" IsBound="true">
+                <Annotation String="The ClearControllerPreservedCache() method clears the controller cache." Term="OData.Description"/>
+                <Annotation String="The ClearControllerPreservedCache() method clears the controller cache." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (FQDD of the controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (FQDD of the controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ClearForeignConfig" IsBound="true">
+                <Annotation String="The ClearForeignConfig() method is used to prepare any foreign physical disks for inclusion in the local configuration." Term="OData.Description"/>
+                <Annotation String="The ClearForeignConfig() method is used to prepare any foreign physical disks for inclusion in the local configuration." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ConvertToNonRAID" IsBound="true">
+                <Annotation String="The ConvertToNonRAID() method is used to convert a physical disks in RAID state of &quot;Ready&quot; to a Non-RAID state. After the method is successfully executed, the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state." Term="OData.Description"/>
+                <Annotation String="The ConvertToNonRAID() method is used to convert a physical disks in RAID state of &quot;Ready&quot; to a Non-RAID state. After the method is successfully executed, the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="PDArray" Type="Collection(Edm.String)">
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.Description"/>
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ConvertToRAID" IsBound="true">
+                <Annotation String="The ConvertToRAID() method is used to convert a physical disks in Non-RAID state to a state usable for RAID. After the method is successfully executed the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state." Term="OData.Description"/>
+                <Annotation String="The ConvertToRAID() method is used to convert a physical disks in Non-RAID state to a state usable for RAID. After the method is successfully executed the DellPhysicalDisk.RAIDStatus property of that physical disk should reflect the new state." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="PDArray" Type="Collection(Edm.String)">
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.Description"/>
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="CryptographicEraseWithPSID" IsBound="true">
+                <Annotation String="The CryptographicEraseWithPSID() method is used to enable secure erase drive using PSID." Term="OData.Description"/>
+                <Annotation String="The CryptographicEraseWithPSID() method is used to enable secure erase drive using PSID." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="DriveFQDD" Type="Edm.String">
+                    <Annotation String="The string for the Drive Fqdd." Term="OData.Description"/>
+                    <Annotation String="The string for the Drive Fqdd." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PSID" Type="Edm.String">
+                    <Annotation String="The string for the PSID" Term="OData.Description"/>
+                    <Annotation String="The string for the PSID" Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="DisableSecurity" IsBound="true">
+                <Annotation String="The DisableSecurity() method is used to disable secure mode on a controller other than PERC." Term="OData.Description"/>
+                <Annotation String="The DisableSecurity() method is used to disable secure mode on a controller other than PERC." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ControllerFQDD" Type="Edm.String">
+                    <Annotation String="The string for the ControllerFqdd." Term="OData.Description"/>
+                    <Annotation String="The string for the ControllerFqdd." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="EnableControllerEncryption" IsBound="true">
+                <Annotation String="The EnableControllerEncryption() method sets either Local Key Management (LKM) or Secure Enterprise Key Manager (SEKM) on controllers that support encryption of the drives." Term="OData.Description"/>
+                <Annotation String="The EnableControllerEncryption() method sets either Local Key Management (LKM) or Secure Enterprise Key Manager (SEKM) on controllers that support encryption of the drives." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="Key" Type="Edm.String">
+                    <Annotation String="Key is the passcode. This parameter is required if the  mode is set to Local Key Management. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.  Upper Case,  Lower Case, Number,  Special Character. The special characters in the following set need to be passed as mentioned below. &amp;-&gt;&amp;amp;, &lt; -&gt;&amp;lt;, &gt;-&gt;&amp;gt;,  &quot;-&gt;&amp;quot;,  ' -&gt;&amp;apos;." Term="OData.Description"/>
+                    <Annotation String="Key is the passcode. This parameter is required if the  mode is set to Local Key Management. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.  Upper Case,  Lower Case, Number,  Special Character. The special characters in the following set need to be passed as mentioned below. &amp;-&gt;&amp;amp;, &lt; -&gt;&amp;lt;, &gt;-&gt;&amp;gt;,  &quot;-&gt;&amp;quot;,  ' -&gt;&amp;apos;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Keyid" Type="Edm.String">
+                    <Annotation String="Key Identifier describes the Key. This parameter is required if the mode is set to Local Key Management. The Keyid shall be maximum of 32 characters in length and shoutd not have any spaces." Term="OData.Description"/>
+                    <Annotation String="Key Identifier describes the Key. This parameter is required if the mode is set to Local Key Management. The Keyid shall be maximum of 32 characters in length and shoutd not have any spaces." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Mode" Type="DellRaidService.Mode">
+                    <Annotation String="Mode of the controller 1 - Local Key Management (LKM), 2- Dell Key Management (DKM), 3 - Secure Enterprise Key Manager(SEKM). Note: DKM will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.50.50.50 or later." Term="OData.Description"/>
+                    <Annotation String="Mode of the controller 1 - Local Key Management (LKM), 2- Dell Key Management (DKM), 3 - Secure Enterprise Key Manager(SEKM). Note: DKM will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.50.50.50 or later." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="EnableSecurity" IsBound="true">
+                <Annotation String="The EnableSecurity() method is used to enable secure mode on a drive or a controller." Term="OData.Description"/>
+                <Annotation String="The EnableSecurity() method is used to enable secure mode on a drive or a controller." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_4_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="The string for the Controller/Drive Fqdd." Term="OData.Description"/>
+                    <Annotation String="The string for the Controller/Drive Fqdd." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="GetAvailableDisks" IsBound="true">
+                <Annotation String="The GetAvailableDisks () method is used to determine minimum number of drives required to create virtual disks." Term="OData.Description"/>
+                <Annotation String="The GetAvailableDisks () method is used to determine minimum number of drives required to create virtual disks." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="BlockSizeInBytes" Type="DellRaidService.BlockSizeInBytes">
+                    <Annotation String="The parameter specifies the physical disk block size in bytes." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the physical disk block size in bytes." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DiskEncrypt" Type="DellRaidService.DiskEncrypt">
+                    <Annotation String="The parameter specifies the disk encryption capability." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the disk encryption capability." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DiskType" Type="DellRaidService.DiskType">
+                    <Annotation String="The property represents the disk type." Term="OData.Description"/>
+                    <Annotation String="The property represents the disk type." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Diskprotocol" Type="DellRaidService.Diskprotocol">
+                    <Annotation String="The parameter specifies the type of disk protocol." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the type of disk protocol." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="FormFactor" Type="DellRaidService.FormFactor">
+                    <Annotation String="This parameter is used to specify the form factor of drives and shall be one of the following 0 - Include all 1 - Include only M.2." Term="OData.Description"/>
+                    <Annotation String="This parameter is used to specify the form factor of drives and shall be one of the following 0 - Include all 1 - Include only M.2." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="RaidLevel" Type="DellRaidService.RaidLevel">
+                    <Annotation String="The parameter represents the type of RAID configuration." Term="OData.Description"/>
+                    <Annotation String="The parameter represents the type of RAID configuration." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="T10PIStatus" Type="DellRaidService.T10PIStatus">
+                    <Annotation String="The parameter specifies the T10-Protection Information(PI) capability status." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the T10-Protection Information(PI) capability status." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This Parameter is the FQDD of the target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="This Parameter is the FQDD of the target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellRaidService.v1_0_0.GetAvailableDisksResponse" Nullable="false"/>
+            </Action>
+            <Action Name="GetDHSDisks" IsBound="true">
+                <Annotation String="The GetDHSDisks() method is used to determine possible choices of physical drives that can used to set a dedicated hotspare for the identified virtual disk. GetDHSDisks() returns success if it has evaluated the physical disks for potential hot spares, the PDArray return list can be empty if no physical disks are suitable for hot spares." Term="OData.Description"/>
+                <Annotation String="The GetDHSDisks() method is used to determine possible choices of physical drives that can used to set a dedicated hotspare for the identified virtual disk. GetDHSDisks() returns success if it has evaluated the physical disks for potential hot spares, the PDArray return list can be empty if no physical disks are suitable for hot spares." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This Parameter is the FQDD of the target device (virtual disk)." Term="OData.Description"/>
+                    <Annotation String="This Parameter is the FQDD of the target device (virtual disk)." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellRaidService.v1_0_0.GetDHSDisksResponse" Nullable="false"/>
+            </Action>
+            <Action Name="GetRAIDLevels" IsBound="true">
+                <Annotation String="The GetRAIDLevels() method is used to determine the possible choices of RAID Levels to create virtual disks. If the list of physical disks is not provided, this method accesses information for all the connected disks." Term="OData.Description"/>
+                <Annotation String="The GetRAIDLevels() method is used to determine the possible choices of RAID Levels to create virtual disks. If the list of physical disks is not provided, this method accesses information for all the connected disks." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="BlockSizeInBytes" Type="DellRaidService.BlockSizeInBytes">
+                    <Annotation String="The parameter specifies the physical disk block size in bytes." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the physical disk block size in bytes." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DiskEncrypt" Type="DellRaidService.DiskEncrypt">
+                    <Annotation String="The parameter specifies the disk encryption capability." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the disk encryption capability." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="DiskType" Type="DellRaidService.DiskType">
+                    <Annotation String="The parameter specifies the type of the disk." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the type of the disk." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Diskprotocol" Type="DellRaidService.Diskprotocol">
+                    <Annotation String="The parameter specifies the type of disk protocol." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the type of disk protocol." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="FormFactor" Type="DellRaidService.FormFactor">
+                    <Annotation String="This parameter is used to specify the form factor of drives 0 - Include all 1 - Include only M.2." Term="OData.Description"/>
+                    <Annotation String="This parameter is used to specify the form factor of drives 0 - Include all 1 - Include only M.2." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PDArray" Type="Collection(Edm.String)">
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.Description"/>
+                    <Annotation String="Array of FQDDs where each identifies a physical disk." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="T10PIStatus" Type="DellRaidService.T10PIStatus">
+                    <Annotation String="The parameter specifies the T10-Protection Information(PI) capability status." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the T10-Protection Information(PI) capability status." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+                <ReturnType Type="DellRaidService.v1_0_0.GetRAIDLevelsResponse" Nullable="false"/>
+            </Action>
+            <Action Name="ImportForeignConfig" IsBound="true">
+                <Annotation String="This method imports or recovers a foreign configuration." Term="OData.Description"/>
+                <Annotation String="This method imports or recovers a foreign configuration." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="LockVirtualDisk" IsBound="true">
+                <Annotation String="The LockVirtualDisk() method encrypts the virtual disk." Term="OData.Description"/>
+                <Annotation String="The LockVirtualDisk() method encrypts the virtual disk." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="OnlineCapacityExpansion" IsBound="true">
+                <Annotation String="Online Capacity Expansion feature enables you to increase the storage capacity of selected virtual disk by adding a new physical disk or with the existing physical disk if the virtual disk size is less than the actual size of physical disk size. This feature enables you to add new drives to the array while the system is in use. OCE feature are not available when the disk group has more than one VD. OCE feature is not supported on RAID 50 and RAID 60 virtual disks." Term="OData.Description"/>
+                <Annotation String="Online Capacity Expansion feature enables you to increase the storage capacity of selected virtual disk by adding a new physical disk or with the existing physical disk if the virtual disk size is less than the actual size of physical disk size. This feature enables you to add new drives to the array while the system is in use. OCE feature are not available when the disk group has more than one VD. OCE feature is not supported on RAID 50 and RAID 60 virtual disks." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="PDArray" Type="Collection(Edm.String)">
+                    <Annotation String="Specify the disks to increase the virtual disk capacity. Note: Either Size or NewPDArray input parameter is mandatory." Term="OData.Description"/>
+                    <Annotation String="Specify the disks to increase the virtual disk capacity. Note: Either Size or NewPDArray input parameter is mandatory." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Size" Type="Edm.Int64">
+                    <Annotation String="New VD size in MB. If a new drive is added for OCE, this parameter is not required. Note: 1. Minimum size must be greater than 100 MB. 2. Either Size or NewPDArray input parameter is mandatory." Term="OData.Description"/>
+                    <Annotation String="New VD size in MB. If a new drive is added for OCE, this parameter is not required. Note: 1. Minimum size must be greater than 100 MB. 2. Either Size or NewPDArray input parameter is mandatory." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="PrepareToRemove" IsBound="true">
+                <Annotation String="PCIe SSDs support hot plug of devices allowing the user to add or remove a device without halting or rebooting the system. To prevent data loss when a PCIe SSDs device is being removed, it is mandatory to use the Prepare To Remove operation before physically removing a device. The CreateTargetedConfigJob() method is used to apply the pending values set by different methods under DellRAIDService class." Term="OData.Description"/>
+                <Annotation String="PCIe SSDs support hot plug of devices allowing the user to add or remove a device without halting or rebooting the system. To prevent data loss when a PCIe SSDs device is being removed, it is mandatory to use the Prepare To Remove operation before physically removing a device. The CreateTargetedConfigJob() method is used to apply the pending values set by different methods under DellRAIDService class." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ForceRemove" Type="DellRaidService.ForceRemove">
+                    <Annotation String="Indicates forcefuly doing PrepareToRemove operation or not,irrespective of the NVME sanitize status. The value is one of the following: Yes- forefully perform the operation without checking the NVMe sanitize status, No - perform the operation after checking the NVMe sanitize status and allow the operation only when the status is not in either NVME cryptographic erase in progress or failure. If this property is not given then as default the ForceRemove will be taken as ForceRemove=No" Term="OData.Description"/>
+                    <Annotation String="Indicates forcefuly doing PrepareToRemove operation or not,irrespective of the NVME sanitize status. The value is one of the following: Yes- forefully perform the operation without checking the NVMe sanitize status, No - perform the operation after checking the NVMe sanitize status and allow the operation only when the status is not in either NVME cryptographic erase in progress or failure. If this property is not given then as default the ForceRemove will be taken as ForceRemove=No" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Physical Disk/SSD)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Physical Disk/SSD)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="RAIDLevelMigration" IsBound="true">
+                <Annotation String="This feature enables you to add additional hard drives to the existing RAID-Level to migrate to a new RAID-level. This feature increases the data protection without any downtime. When VD is migrated to a different RAID level, the user data is redistributed in the new configuration. This redistribution is a background process. RLM feature is not available when the Disk group has more than one VD." Term="OData.Description"/>
+                <Annotation String="This feature enables you to add additional hard drives to the existing RAID-Level to migrate to a new RAID-level. This feature increases the data protection without any downtime. When VD is migrated to a different RAID level, the user data is redistributed in the new configuration. This redistribution is a background process. RLM feature is not available when the Disk group has more than one VD." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="NewRaidLevel" Type="DellRaidService.NewRaidLevel">
+                    <Annotation String="The parameter specific the new RAID Level to be Migrated." Term="OData.Description"/>
+                    <Annotation String="The parameter specific the new RAID Level to be Migrated." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="PDArray" Type="Collection(Edm.String)">
+                    <Annotation String="Specify the disks to be included in the New RAID-Level." Term="OData.Description"/>
+                    <Annotation String="Specify the disks to be included in the New RAID-Level." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ReKey" IsBound="true">
+                <Annotation String="The ReKey () method resets the key on the controller that support encryption of the of drives." Term="OData.Description"/>
+                <Annotation String="The ReKey () method resets the key on the controller that support encryption of the of drives." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="Keyid" Type="Edm.String">
+                    <Annotation String="Key identifier describes the key. The Keyid shall be maximum 32 characters in length and shoutd not have any spaces." Term="OData.Description"/>
+                    <Annotation String="Key identifier describes the key. The Keyid shall be maximum 32 characters in length and shoutd not have any spaces." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Mode" Type="DellRaidService.Mode">
+                    <Annotation String="Mode of the controller: 1 - Local Key Management (LKM), 2 - Secure Enterprise Key Manager(SEKM)." Term="OData.Description"/>
+                    <Annotation String="Mode of the controller: 1 - Local Key Management (LKM), 2 - Secure Enterprise Key Manager(SEKM)." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="NewKey" Type="Edm.String">
+                    <Annotation String="New controller key. The key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.Upper Case, Lower Case,  Number, Special Character. The special characters in the following set need to be passed as mentioned below and are counted as a single character for the maximum length of the key.  &amp;-&gt;&amp;amp;, &lt; -&gt;&amp;lt;, &gt;-&gt;&amp;gt;,  &quot;-&gt;&amp;quot;,  '-&gt;&amp;apos;." Term="OData.Description"/>
+                    <Annotation String="New controller key. The key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have one character from each of the following set.Upper Case, Lower Case,  Number, Special Character. The special characters in the following set need to be passed as mentioned below and are counted as a single character for the maximum length of the key.  &amp;-&gt;&amp;amp;, &lt; -&gt;&amp;lt;, &gt;-&gt;&amp;gt;,  &quot;-&gt;&amp;quot;,  '-&gt;&amp;apos;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="OldKey" Type="Edm.String">
+                    <Annotation String="Old controller key." Term="OData.Description"/>
+                    <Annotation String="Old controller key." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="RebuildPhysicalDisk" IsBound="true">
+                <Annotation String="The RebuildPhysicalDisk() method reconstructs the contents of failed disk of the virtual disk to a new disk or to a hot spare." Term="OData.Description"/>
+                <Annotation String="The RebuildPhysicalDisk() method reconstructs the contents of failed disk of the virtual disk to a new disk or to a hot spare." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (FQDD of the physical disk which is hot spare of the virtual disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="RemoveControllerKey" IsBound="true">
+                <Annotation String="The RemoveControllerKey() method erases the encryption key on controller. CAUTION: All encrypted drives shall be erased." Term="OData.Description"/>
+                <Annotation String="The RemoveControllerKey() method erases the encryption key on controller. CAUTION: All encrypted drives shall be erased." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="RenameVD" IsBound="true">
+                <Annotation String="The RenameVD() method renames the existing virtual disk name. Maximum length of the name is dependent on the PERC. Only System Privilege is required to change the name of the virtual disk." Term="OData.Description"/>
+                <Annotation String="The RenameVD() method renames the existing virtual disk name. Maximum length of the name is dependent on the PERC. Only System Privilege is required to change the name of the virtual disk." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Name" Type="Edm.String">
+                    <Annotation String="Name to be entered for the target device (Virtual Disk). The maximum length of name is 15 characters and it cannot start with a space, end with a space, or be blank." Term="OData.Description"/>
+                    <Annotation String="Name to be entered for the target device (Virtual Disk). The maximum length of name is 15 characters and it cannot start with a space, end with a space, or be blank." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Virtual Disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ReplacePhysicalDisk" IsBound="true">
+                <Annotation String="This method replaces a physical disk in a virtual disk with a new Ready physical disk" Term="OData.Description"/>
+                <Annotation String="This method replaces a physical disk in a virtual disk with a new Ready physical disk" Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ReplacementDisk" Type="Edm.String">
+                    <Annotation String="FQDD of the replacement physical disk." Term="OData.Description"/>
+                    <Annotation String="FQDD of the replacement physical disk." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of the physical disk to be replaced." Term="OData.Description"/>
+                    <Annotation String="FQDD of the physical disk to be replaced." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="ResetConfig" IsBound="true">
+                <Annotation String="The ResetConfig() method is used to delete all the virtual disks and unassign all hot spare physical disks.  CAUTION: All data on the existing virtual disks will be lost." Term="OData.Description"/>
+                <Annotation String="The ResetConfig() method is used to delete all the virtual disks and unassign all hot spare physical disks.  CAUTION: All data on the existing virtual disks will be lost." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SetAssetName" IsBound="true">
+                <Annotation String="The SetAssetName() method is used to set the Asset Name of the enclosure. Invoke the CreateTargetedConfigJob method to apply the pending changes performed by SetAssetName. The &quot;Set Asset Name&quot; operation is cancelled once the configuration job completes successfully." Term="OData.Description"/>
+                <Annotation String="The SetAssetName() method is used to set the Asset Name of the enclosure. Invoke the CreateTargetedConfigJob method to apply the pending changes performed by SetAssetName. The &quot;Set Asset Name&quot; operation is cancelled once the configuration job completes successfully." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="AssetName" Type="Edm.String">
+                    <Annotation String="Asset Name value. This value can be maximum of 32 ASCII alpha-numeric characters long." Term="OData.Description"/>
+                    <Annotation String="Asset Name value. This value can be maximum of 32 ASCII alpha-numeric characters long." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (FQDD of enclosure) Note: Set Asset Name is applicable to the external enclosures and not for the internal enclosures." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (FQDD of enclosure) Note: Set Asset Name is applicable to the external enclosures and not for the internal enclosures." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SetBootVD" IsBound="true">
+                <Annotation String="This method sets a virtual disk as boot virtual disk" Term="OData.Description"/>
+                <Annotation String="This method sets a virtual disk as boot virtual disk" Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="ControllerFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of the Controller" Term="OData.Description"/>
+                    <Annotation String="FQDD of the Controller" Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="VirtualDiskFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of the virtual disk to be set as BootVD. Any existing configuration is overwritten." Term="OData.Description"/>
+                    <Annotation String="FQDD of the virtual disk to be set as BootVD. Any existing configuration is overwritten." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="SetControllerKey" IsBound="true">
+                <Annotation String="The SetControllerKey() method is used to set the key on controllers and set the controller in Local key Management (LKM) to encrypt the drives." Term="OData.Description"/>
+                <Annotation String="The SetControllerKey() method is used to set the key on controllers and set the controller in Local key Management (LKM) to encrypt the drives." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="Key" Type="Edm.String">
+                    <Annotation String="The parameter specifies the key passcode. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have at least one character from each of the following sets.  Upper Case, Lower Case,  Number, Special Character, The special characters in the following set need to be passed as mentioned below. &amp;-&gt;&amp;amp;, &lt; -&gt;&amp;lt;, &gt;-&gt;&amp;gt;,  &quot;-&gt;&amp;quot;,  ' -&gt;&amp;apos;." Term="OData.Description"/>
+                    <Annotation String="The parameter specifies the key passcode. The Key shall be maximum of 32 characters in length, where the expanded form of the special character is counted as a single character. The Key shall have at least one character from each of the following sets.  Upper Case, Lower Case,  Number, Special Character, The special characters in the following set need to be passed as mentioned below. &amp;-&gt;&amp;amp;, &lt; -&gt;&amp;lt;, &gt;-&gt;&amp;gt;,  &quot;-&gt;&amp;quot;,  ' -&gt;&amp;apos;." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Keyid" Type="Edm.String">
+                    <Annotation String="Key Identifier that describes the key. The Keyid shall be maximum of 32 characters in length and should not have any spaces." Term="OData.Description"/>
+                    <Annotation String="Key Identifier that describes the key. The Keyid shall be maximum of 32 characters in length and should not have any spaces." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="StartPatrolRead" IsBound="true">
+                <Annotation String="This method is used to Start the Patrol Read Operation Manually." Term="OData.Description"/>
+                <Annotation String="This method is used to Start the Patrol Read Operation Manually." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This parameter is the FQDD of the RAID Controller Device." Term="OData.Description"/>
+                    <Annotation String="This parameter is the FQDD of the RAID Controller Device." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="StopPatrolRead" IsBound="true">
+                <Annotation String="StopPatrolRead() Method is used to Stop the Patrol Read Operation Manually." Term="OData.Description"/>
+                <Annotation String="StopPatrolRead() Method is used to Stop the Patrol Read Operation Manually." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This parameter is the FQDD of the RAID Controller Device." Term="OData.Description"/>
+                    <Annotation String="This parameter is the FQDD of the RAID Controller Device." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="UnBlinkTarget" IsBound="true">
+                <Annotation String="The UnblinkTarget () method is used to stop blinking the light present on the physical disk represented by the Target FQDD. The method is real time, unblink cannot be scheduled as part of a job." Term="OData.Description"/>
+                <Annotation String="The UnblinkTarget () method is used to stop blinking the light present on the physical disk represented by the Target FQDD. The method is real time, unblink cannot be scheduled as part of a job." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This Parameter is the FQDD of the Physical Disk, SSD and Virtual Disk." Term="OData.Description"/>
+                    <Annotation String="This Parameter is the FQDD of the Physical Disk, SSD and Virtual Disk." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="UnLockSecureForeignConfig" IsBound="true">
+                <Annotation String="This method unlocks secured drives with passphrase and Keyid" Term="OData.Description"/>
+                <Annotation String="This method unlocks secured drives with passphrase and Keyid" Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="Key" Type="Edm.String">
+                    <Annotation String="Passphrase of the security key that is used to secure the drives on the source controller." Term="OData.Description"/>
+                    <Annotation String="Passphrase of the security key that is used to secure the drives on the source controller." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="Keyid" Type="Edm.String">
+                    <Annotation String="Key Identifier that describes the key of the migrated secure foreign configuration on PERC controller." Term="OData.Description"/>
+                    <Annotation String="Key Identifier that describes the key of the migrated secure foreign configuration on PERC controller." Term="OData.LongDescription"/>
+                </Parameter>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.Description"/>
+                    <Annotation String="FQDD of target device (Controller)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <Action Name="UnassignSpare" IsBound="true">
+                <Annotation String="The UnassignSpare() method is used to unassign a physical disk as a dedicated hot spare from a virtual disk, or as a global hot spare. After the method executes successfully, the physical disk is available for use." Term="OData.Description"/>
+                <Annotation String="The UnassignSpare() method is used to unassign a physical disk as a dedicated hot spare from a virtual disk, or as a global hot spare. After the method executes successfully, the physical disk is available for use." Term="OData.LongDescription"/>
+                <Parameter Name="DellRaidService" Type="DellRaidService.v1_0_0.Actions"/>
+                <Annotation Term="Redfish.Revisions">
+                    <Collection>
+                        <Record>
+                            <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                            <PropertyValue Property="Version" String="v1_1_0"/>
+                        </Record>
+                    </Collection>
+                </Annotation>
+                <Parameter Name="TargetFQDD" Type="Edm.String">
+                    <Annotation String="This parameter is the FQDD of the target device (physical disk)." Term="OData.Description"/>
+                    <Annotation String="This parameter is the FQDD of the target device (physical disk)." Term="OData.LongDescription"/>
+                </Parameter>
+            </Action>
+            <EnumType Name="BlockSizeInBytes">
+                <Member Name="4096">
+                    <Annotation String="Include 4096 bytes block size disks" Term="OData.Description"/>
+                </Member>
+                <Member Name="512">
+                    <Annotation String="Include 512 bytes block size disks only" Term="OData.Description"/>
+                </Member>
+                <Member Name="All">
+                    <Annotation String="Include all block size disks" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DiskEncrypt">
+                <Member Name="All">
+                    <Annotation String="Include FDE capable and non encryption capable disks" Term="OData.Description"/>
+                </Member>
+                <Member Name="FDE">
+                    <Annotation String="Include FDE disks only" Term="OData.Description"/>
+                </Member>
+                <Member Name="NonFDE">
+                    <Annotation String="Include only non FDE disks" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="DiskType">
+                <Member Name="All">
+                    <Annotation String="Include all Types" Term="OData.Description"/>
+                </Member>
+                <Member Name="HDD">
+                    <Annotation String="Include Hard Disk only" Term="OData.Description"/>
+                </Member>
+                <Member Name="SSD">
+                    <Annotation String="Include Solid State Only" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="Diskprotocol">
+                <Member Name="AllProtocols">
+                    <Annotation String="All Protocols" Term="OData.Description"/>
+                </Member>
+                <Member Name="NVMe">
+                    <Annotation String="NVMe" Term="OData.Description"/>
+                </Member>
+                <Member Name="SAS">
+                    <Annotation String="SAS" Term="OData.Description"/>
+                </Member>
+                <Member Name="SATA">
+                    <Annotation String="SATA" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="ForceRemove">
+                <Member Name="No">
+                    <Annotation String="No" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_5_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Yes">
+                    <Annotation String="Yes" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_5_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="FormFactor">
+                <Member Name="All">
+                    <Annotation String="Include all" Term="OData.Description"/>
+                </Member>
+                <Member Name="M.2">
+                    <Annotation String="Include only M.2" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="GetRAIDLevelsResponseVDRAIDEnumArray">
+                <Member Name="RAID0">
+                    <Annotation String="RAID0" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID1">
+                    <Annotation String="RAID1" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID10">
+                    <Annotation String="RAID10" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID5">
+                    <Annotation String="RAID5" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID50">
+                    <Annotation String="RAID50" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID6">
+                    <Annotation String="RAID6" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID60">
+                    <Annotation String="RAID60" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="Mode">
+                <Member Name="DKM">
+                    <Annotation String="DKM" Term="OData.Description"/>
+                </Member>
+                <Member Name="LKM">
+                    <Annotation String="LKM" Term="OData.Description"/>
+                </Member>
+                <Member Name="LKM_TO_SEKM">
+                    <Annotation String="LKM_TO_SEKM" Term="OData.Description"/>
+                </Member>
+                <Member Name="SEKM">
+                    <Annotation String="SEKM" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="NewRaidLevel">
+                <Member Name="NoRAID">
+                    <Annotation String="No RAID" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID0">
+                    <Annotation String="RAID0" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID1">
+                    <Annotation String="RAID1" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID10">
+                    <Annotation String="RAID10" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID5">
+                    <Annotation String="RAID5" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID50">
+                    <Annotation String="RAID50" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID6">
+                    <Annotation String="RAID6" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="RAID60">
+                    <Annotation String="RAID60" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="RaidLevel">
+                <Member Name="NoRAID">
+                    <Annotation String="No RAID" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID0">
+                    <Annotation String="RAID0" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID1">
+                    <Annotation String="RAID1" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID10">
+                    <Annotation String="RAID10" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID5">
+                    <Annotation String="RAID5" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID50">
+                    <Annotation String="RAID50" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID6">
+                    <Annotation String="RAID6" Term="OData.Description"/>
+                </Member>
+                <Member Name="RAID60">
+                    <Annotation String="RAID60" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="State">
+                <Member Name="Offline">
+                    <Annotation String="Offline" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Online">
+                    <Annotation String="Online" Term="OData.Description"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="T10PIStatus">
+                <Member Name="All">
+                    <Annotation String="All disks" Term="OData.Description"/>
+                </Member>
+                <Member Name="T10PICapable">
+                    <Annotation String="T10PI capable disks" Term="OData.Description"/>
+                </Member>
+                <Member Name="T10PIIncapable">
+                    <Annotation String="Non T10PI capable disks" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VDPropNameArrayIn">
+                <Member Name="RAIDLevel">
+                    <Annotation String="RAIDLevel, mandatory value" Term="OData.Description"/>
+                </Member>
+                <Member Name="Size">
+                    <Annotation String="Size of the VD in MB" Term="OData.Description"/>
+                </Member>
+                <Member Name="SpanDepth">
+                    <Annotation String="Number of Spans in the VD" Term="OData.Description"/>
+                </Member>
+                <Member Name="SpanLength">
+                    <Annotation String="Number of Physical Disks per span" Term="OData.Description"/>
+                </Member>
+                <Member Name="StartingLBA">
+                    <Annotation String="Starting Logical Block Address" Term="OData.Description"/>
+                </Member>
+                <Member Name="T10PIStatus">
+                    <Annotation String="T10PIStatus 0=Disabled, 1=Enabled" Term="OData.Description"/>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_0_0">
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.DellRaidService">
+                <Annotation Term="OData.Description" String="The DellRaidService resource provides some actions to support RAID functionality."/>
+                <Annotation Term="OData.LongDescription" String="The DellRaidService resource provides some actions to support RAID functionality."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="Actions" Type="DellRaidService.v1_0_0.Actions" Nullable="false">
+                    <Annotation Term="OData.Description" String="The available actions for this resource."/>
+                    <Annotation Term="OData.LongDescription" String="The Actions property shall contain the available actions for this resource."/>
+                </Property>
+            </EntityType>
+            <ComplexType Name="Actions">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation String="The available actions for this resource." Term="OData.Description"/>
+                <Annotation String="This type shall contain the available actions for this resource." Term="OData.LongDescription"/>
+            </ComplexType>
+            <ComplexType Name="CheckVDValuesResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the CheckVDValues action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the CheckVDValues action."/>
+                <Property Name="VDPropNameArray" Type="Collection(Edm.String)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indexed array of Virtual Disk property names with relative values contained in VDPropValueArray parameter."/>
+                    <Annotation Term="OData.LongDescription" String="Indexed array of Virtual Disk property names with relative values contained in VDPropValueArray parameter."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+                <Property Name="VDPropValueArray" Type="Collection(Edm.String)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indexed array of Virtual Disk property values relative to VDPropValueName parameter."/>
+                    <Annotation Term="OData.LongDescription" String="Indexed array of Virtual Disk property values relative to VDPropValueName parameter."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="GetAvailableDisksResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetAvailableDisks action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetAvailableDisks action."/>
+                <Property Name="PDArray" Type="Collection(Edm.String)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Array of FQDD(s) identifies physical disk(s).."/>
+                    <Annotation Term="OData.LongDescription" String="Array of FQDD(s) identifies physical disk(s).."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="GetDHSDisksResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetDHSDisks action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetDHSDisks action."/>
+                <Property Name="PDArray" Type="Collection(Edm.String)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Array of FQDDs where each entry identifies a physical disk."/>
+                    <Annotation Term="OData.LongDescription" String="Array of FQDDs where each entry identifies a physical disk."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="GetRAIDLevelsResponse">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="The response body for the GetRAIDLevels action."/>
+                <Annotation Term="OData.LongDescription" String="This type shall contain the properties found in the response body for the GetRAIDLevels action."/>
+                <Property Name="VDRAIDEnumArray" Type="Collection(DellRaidService.GetRAIDLevelsResponseVDRAIDEnumArray)" Nullable="false">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Indexed array of Virtual Disk RAID level enum values."/>
+                    <Annotation Term="OData.LongDescription" String="Indexed array of Virtual Disk RAID level enum values."/>
+                    <Annotation Term="Redfish.Required"/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add CancelBackgroundInitialization, CancelCheckConsistency, CancelRebuildPhysicalDisk, ChangePDState, ClearControllerPreservedCache, ImportForeignConfig, OnlineCapacityExpansion, PrepareToRemove, RAIDLevelMigration, RebuildPhysicalDisk, RenameVD, ReplacePhysicalDisk, SetAssetName, SetBootVD, StartPatrolRead, StopPatrolRead, UnLockSecureForeignConfig, UnassignSpare actions."/>
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.v1_0_0.DellRaidService"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable values NoRAID,RAID0,RAID1,RAID10,RAID5,RAID50,RAID6,RAID60 for NewRaidLevel parameter under RAIDLevelMigration action."/>
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.v1_1_0.DellRaidService"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for EnableControllerEncryption,ReKey actions,Mode parameter and to update the allowable value SEKM for Mode parameter under EnableControllerEncryption action."/>
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.v1_2_0.DellRaidService"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_4_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add CryptographicEraseWithPSID, DisableSecurity, EnableSecurity actions and to update the allowable value LKM_TO_SEKM for Mode parameter under EnableControllerEncryption action."/>
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.v1_3_0.DellRaidService"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_5_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add the new input parameter ForceRemove for PrepareToRemove action."/>
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.v1_4_0.DellRaidService"> 
+</EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellRaidService.v1_5_1">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update descriptions for EnableSecurity action."/>
+            <EntityType Name="DellRaidService" BaseType="DellRaidService.v1_5_0.DellRaidService"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

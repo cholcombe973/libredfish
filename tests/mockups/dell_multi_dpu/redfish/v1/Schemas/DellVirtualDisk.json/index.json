@@ -1,0 +1,371 @@
+{
+    "$id": "/redfish/v1/Schemas/DellVirtualDisk.json",
+    "$ref": "#/definitions/DellVirtualDisk",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "BusProtocol": {
+            "enum": [
+                "FIBRE",
+                "PATA",
+                "PCIE",
+                "SAS",
+                "SATA",
+                "SCSI",
+                "USB",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "FIBRE": "FIBRE",
+                "PATA": "PATA",
+                "PCIE": "PCIE",
+                "SAS": "SAS",
+                "SATA": "SATA",
+                "SCSI": "SCSI",
+                "USB": "USB",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "FIBRE": "FIBRE",
+                "PATA": "PATA",
+                "PCIE": "PCIE",
+                "SAS": "SAS",
+                "SATA": "SATA",
+                "SCSI": "SCSI",
+                "USB": "USB",
+                "Unknown": "Unknown"
+            },
+            "enumVersionAdded": {
+                "PCIE": "v1_2_0"
+            },
+            "type": "string"
+        },
+        "Cachecade": {
+            "enum": [
+                "CachecadeVD",
+                "NonCachecadeVD"
+            ],
+            "enumDescriptions": {
+                "CachecadeVD": "Cachecade Virtual Disk",
+                "NonCachecadeVD": "Not a Cachecade Virtual Disk"
+            },
+            "enumLongDescriptions": {
+                "CachecadeVD": "Cachecade Virtual Disk",
+                "NonCachecadeVD": "Not a Cachecade Virtual Disk"
+            },
+            "type": "string"
+        },
+        "DellVirtualDisk": {
+            "anyOf": [
+                {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "/redfish/v1/Schemas/DellVirtualDisk.v1_2_0.json#/definitions/DellVirtualDisk"
+                }
+            ],
+            "deletable": false,
+            "description": "An instance of DellVirtualDisk will have data specific to the Virtual Disks in the system.",
+            "insertable": false,
+            "longDescription": "An instance of DellVirtualDisk will have data specific to the Virtual Disks in the system.",
+            "updatable": false,
+            "uris": [
+                "/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes/Oem/Dell/DellVolumes/{VirtualDiskId}",
+                "/redfish/v1/Systems/{ComputerSystemId}/Storage/{StorageId}/Volumes/{VolumeId}/Oem/Dell/DellVolumes/{VirtualDiskId}"
+            ]
+        },
+        "DiskCachePolicy": {
+            "enum": [
+                "Default",
+                "Disabled",
+                "Enabled",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Default": "Default",
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "Default": "Default",
+                "Disabled": "Disabled",
+                "Enabled": "Enabled",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "LockStatus": {
+            "enum": [
+                "Locked",
+                "Unlocked"
+            ],
+            "enumDescriptions": {
+                "Locked": "Locked",
+                "Unlocked": "Unlocked"
+            },
+            "enumLongDescriptions": {
+                "Locked": "Locked",
+                "Unlocked": "Unlocked"
+            },
+            "type": "string"
+        },
+        "MediaType": {
+            "enum": [
+                "HardDiskDrive",
+                "SolidStateDrive",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "HardDiskDrive": "Hard Disk Drive",
+                "SolidStateDrive": "Solid State Drive",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "HardDiskDrive": "Hard Disk Drive",
+                "SolidStateDrive": "Solid State Drive",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "ObjectStatus": {
+            "enum": [
+                "Current",
+                "CurrentVirtualDiskPendingDelete",
+                "Pending",
+                "PendingCreate"
+            ],
+            "enumDescriptions": {
+                "Current": "Current",
+                "CurrentVirtualDiskPendingDelete": "Current Virtual Disk Pending Delete",
+                "Pending": "Pending",
+                "PendingCreate": "Pending Create"
+            },
+            "enumLongDescriptions": {
+                "Current": "Current",
+                "CurrentVirtualDiskPendingDelete": "Current Virtual Disk Pending Delete",
+                "Pending": "Pending",
+                "PendingCreate": "Pending Create"
+            },
+            "enumVersionAdded": {
+                "Current": "v1_1_0",
+                "CurrentVirtualDiskPendingDelete": "v1_1_0",
+                "Pending": "v1_1_0",
+                "PendingCreate": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "PrimaryStatus": {
+            "enum": [
+                "Degraded",
+                "Error",
+                "OK",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Degraded": "Degraded",
+                "Error": "Error",
+                "OK": "OK",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "Degraded": "Degraded",
+                "Error": "Error",
+                "OK": "OK",
+                "Unknown": "Unknown"
+            },
+            "enumVersionAdded": {
+                "Degraded": "v1_1_0",
+                "Error": "v1_1_0",
+                "OK": "v1_1_0",
+                "Unknown": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "RaidStatus": {
+            "enum": [
+                "Blocked",
+                "Degraded",
+                "Failed",
+                "Foreign",
+                "Offline",
+                "Online",
+                "Ready",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "Blocked": "Blocked",
+                "Degraded": "Degraded",
+                "Failed": "Failed",
+                "Foreign": "Foreign",
+                "Offline": "Offline",
+                "Online": "Online",
+                "Ready": "Ready",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "Blocked": "Blocked",
+                "Degraded": "Degraded",
+                "Failed": "Failed",
+                "Foreign": "Foreign",
+                "Offline": "Offline",
+                "Online": "Online",
+                "Ready": "Ready",
+                "Unknown": "Unknown"
+            },
+            "enumVersionAdded": {
+                "Blocked": "v1_1_0",
+                "Degraded": "v1_1_0",
+                "Failed": "v1_1_0",
+                "Foreign": "v1_1_0",
+                "Offline": "v1_1_0",
+                "Online": "v1_1_0",
+                "Ready": "v1_1_0",
+                "Unknown": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "ReadCachePolicy": {
+            "enum": [
+                "AdaptiveReadAhead",
+                "NoReadAhead",
+                "ReadAhead",
+                "Unknown"
+            ],
+            "enumDescriptions": {
+                "AdaptiveReadAhead": "Adaptive Read Ahead",
+                "NoReadAhead": "No Read Ahead",
+                "ReadAhead": "Read Ahead",
+                "Unknown": "Unknown"
+            },
+            "enumLongDescriptions": {
+                "AdaptiveReadAhead": "Adaptive Read Ahead",
+                "NoReadAhead": "No Read Ahead",
+                "ReadAhead": "Read Ahead",
+                "Unknown": "Unknown"
+            },
+            "type": "string"
+        },
+        "StripeSize": {
+            "enum": [
+                "128KB",
+                "16KB",
+                "16MB",
+                "1KB",
+                "1MB",
+                "256KB",
+                "2KB",
+                "2MB",
+                "32KB",
+                "4KB",
+                "4MB",
+                "512B",
+                "512KB",
+                "64KB",
+                "8KB",
+                "8MB",
+                "Default"
+            ],
+            "enumDescriptions": {
+                "128KB": "128KB",
+                "16KB": "16KB",
+                "16MB": "16MB",
+                "1KB": "1KB",
+                "1MB": "1MB",
+                "256KB": "256KB",
+                "2KB": "2KB",
+                "2MB": "2MB",
+                "32KB": "32KB",
+                "4KB": "4KB",
+                "4MB": "4MB",
+                "512B": "512B",
+                "512KB": "512KB",
+                "64KB": "64KB",
+                "8KB": "8KB",
+                "8MB": "8MB",
+                "Default": "Default"
+            },
+            "enumLongDescriptions": {
+                "128KB": "128KB",
+                "16KB": "16KB",
+                "16MB": "16MB",
+                "1KB": "1KB",
+                "1MB": "1MB",
+                "256KB": "256KB",
+                "2KB": "2KB",
+                "2MB": "2MB",
+                "32KB": "32KB",
+                "4KB": "4KB",
+                "4MB": "4MB",
+                "512B": "512B",
+                "512KB": "512KB",
+                "64KB": "64KB",
+                "8KB": "8KB",
+                "8MB": "8MB",
+                "Default": "Default"
+            },
+            "enumVersionAdded": {
+                "128KB": "v1_1_0",
+                "16KB": "v1_1_0",
+                "16MB": "v1_1_0",
+                "1KB": "v1_1_0",
+                "1MB": "v1_1_0",
+                "256KB": "v1_1_0",
+                "2KB": "v1_1_0",
+                "2MB": "v1_1_0",
+                "32KB": "v1_1_0",
+                "4KB": "v1_1_0",
+                "4MB": "v1_1_0",
+                "512B": "v1_1_0",
+                "512KB": "v1_1_0",
+                "64KB": "v1_1_0",
+                "8KB": "v1_1_0",
+                "8MB": "v1_1_0",
+                "Default": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "T10PIStatus": {
+            "enum": [
+                "Disabled",
+                "Enabled"
+            ],
+            "enumDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "enumLongDescriptions": {
+                "Disabled": "Disabled",
+                "Enabled": "Enabled"
+            },
+            "enumVersionAdded": {
+                "Disabled": "v1_1_0",
+                "Enabled": "v1_1_0"
+            },
+            "type": "string"
+        },
+        "WriteCachePolicy": {
+            "enum": [
+                "Unknown",
+                "WriteBack",
+                "WriteBackForce",
+                "WriteThrough"
+            ],
+            "enumDescriptions": {
+                "Unknown": "Unknown",
+                "WriteBack": "Write Back",
+                "WriteBackForce": "Write Back Force",
+                "WriteThrough": "Write Through"
+            },
+            "enumLongDescriptions": {
+                "Unknown": "Unknown",
+                "WriteBack": "Write Back",
+                "WriteBackForce": "Write Back Force",
+                "WriteThrough": "Write Through"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellVirtualDisk.DellVirtualDisk"
+}

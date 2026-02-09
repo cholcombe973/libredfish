@@ -1,0 +1,165 @@
+{
+    "$ref": "#/definitions/AMIAccountService",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_1_0.json",
+    "definitions": {
+        "AMIAccountService": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "description": "This allows additional configuring of the AMI AccountService Configurations.",
+                    "longDescription": "This allows additional configuring of the AMI AccountService Configurations.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "integer",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CACertificateId": {
+                    "description": "Indicates the certificate id of root CA certificate used for LDAP Configuration.",
+                    "longDescription": "The value of this property shall represent the certificate id of root CA certificate used for LDAP Configuration.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "CertificateId": {
+                    "description": "Indicates the certificate id of certificate key used for LDAP Configuration.",
+                    "longDescription": "The value of this property shall represent the certificate id of certificate key used for LDAP Configuration.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "CommonNameType": {
+                    "$ref": "#/definitions/CommonNameType",
+                    "description": "Indicates the CommonNameType.",
+                    "longDescription": "The value of this string shall represent the CommonNameType.",
+                    "readonly": false
+                },
+                "Configuration": {
+                    "$ref": "/redfish/v1/JsonSchemas/AMIAccountServiceConfigurations.v1_0_0.json#/definitions/AMIAccountServiceConfigurations",
+                    "description": "This property Navigate to AMIAccountServiceConfigurations.",
+                    "longDescription": "This property Navigate to AMIAccountServiceConfigurations.",
+                    "readonly": true
+                },
+                "DomainControllerServerAddr1": {
+                    "description": "Indicates the first Domain Controller Server Address of the Active Directory Configuration.",
+                    "longDescription": "The value of this string shall represent the first Domain Controller Server Address of the Active Directory Configuration , which is mandatory.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DomainControllerServerAddr2": {
+                    "description": "Indicates the second Domain Controller Server Address of the Active Directory Configuration if any.",
+                    "longDescription": "The value of this string shall represent the second Domain Controller Server Address of the Active Directory Configuration if any.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DomainControllerServerAddr3": {
+                    "description": "Indicates the third Domain Controller Server Address of the Active Directory Configuration if any.",
+                    "longDescription": "The value of this string shall represent the third Domain Controller Server Address of the Active Directory if any.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DomainName": {
+                    "description": "Indicates the DomainName of the Active Directory Configuration.",
+                    "longDescription": "The value of this string shall represent the DomainName of the Active Directory Configuration.",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "EncryptionType": {
+                    "$ref": "#/definitions/EncryptionType",
+                    "description": "Indicates the Encryption Type of the LDAP Configuration.",
+                    "longDescription": "The value of this string shall represent the Encryption Type of the LDAP Configuration.",
+                    "readonly": false
+                },
+                "GroupID": {
+                    "description": "Indicates the Group ID of the Active Directory Role Settings.",
+                    "longDescription": "The value of this string shall represent the Group ID of the Active Directory Role Settings.",
+                    "readonly": false,
+                    "type": "string"
+                },
+                "KVMAccess": {
+                    "$ref": "#/definitions/KVMAccess",
+                    "description": "Indicates the KVM access privilege for the given LDAP/ActiveDirectory user with this GroupID/RoleID.",
+                    "longDescription": "The value of this string shall represent the KVM access privilege for the given LDAP/ActiveDirectory user with this GroupID/RoleID.",
+                    "readonly": false
+                },
+                "RoleID": {
+                    "description": "Specifies the ID of the Role.",
+                    "longDescription": "The value of this property Specifies the ID of the Role and it ranges from 1 to 5.",
+                    "readonly": false,
+                    "type": "number"
+                },
+                "VMediaAccess": {
+                    "$ref": "#/definitions/VMediaAccess",
+                    "description": "Indicates the VMedia acesss privilege for the given LDAP/ActiveDirectory user with this GroupID/RoleID.",
+                    "longDescription": "The value of this string shall represent the VMedia access privilege for the given LDAP/ActiveDirectory user with this GroupID/RoleID.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "CommonNameType": {
+            "enum": [
+                "IPAddress",
+                "FQDN"
+            ],
+            "enumDescriptions": {
+                "FQDN": "FQDN",
+                "IPAddress": "IPAddress"
+            },
+            "type": "string"
+        },
+        "EncryptionType": {
+            "enum": [
+                "NoEncryption",
+                "SSL",
+                "StartTLS"
+            ],
+            "enumDescriptions": {
+                "NoEncryption": "No Encryption",
+                "SSL": "Indicates the Encryption Type used for LDAP Configuration is SSL",
+                "StartTLS": "Indicates the Encryption Type used for LDAP Configuration is StartTLS"
+            },
+            "type": "string"
+        },
+        "KVMAccess": {
+            "enum": [
+                "Enable",
+                "Disable"
+            ],
+            "enumDescriptions": {
+                "Disable": "To Disable the KVMAccess configuration",
+                "Enable": "To Enable the KVMAccess configuration"
+            },
+            "type": "string"
+        },
+        "VMediaAccess": {
+            "enum": [
+                "Enable",
+                "Disable"
+            ],
+            "enumDescriptions": {
+                "Disable": "To Disable the VMediaAccess configuration",
+                "Enable": "To Enable the VMediaAccess configuration"
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "AMI",
+    "title": "#AMIAccountService.v1_0_0.AMIAccountService"
+}

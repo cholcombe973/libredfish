@@ -1,0 +1,112 @@
+{
+    "$id": "/redfish/v1/Schemas/DellCertificateService.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellCertificateService.GetLastGeneratedCSR": {
+                    "$ref": "#/definitions/GetLastGeneratedCSR"
+                }
+            },
+            "type": "object"
+        },
+        "GetLastGeneratedCSR": {
+            "actionResponse": {
+                "$ref": "#/definitions/GetLastGeneratedCSRResponse"
+            },
+            "additionalProperties": false,
+            "description": "This action returns last generated CSR.",
+            "longDescription": "This action returns last generated CSR. The response will contain a signing request that a certificate authority (CA) will sign.",
+            "parameters": {
+                "CertificateCollection": {
+                    "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection",
+                    "description": "The link to the certificate collection where the certificate is expected to be installed after the certificate authority (CA) signs the certificate.",
+                    "longDescription": "This parameter shall contain a link to a resource collection of type CertificateCollection where the certificate is expected to be installed after the certificate authority (CA) signs the certificate.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "GetLastGeneratedCSRResponse": {
+            "additionalProperties": false,
+            "description": "The response body for the GetLastGeneratedCSR action.",
+            "longDescription": "This type shall contain the properties found in the response body for the GetLastGeneratedCSR action.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CSRString": {
+                    "description": "The string for the certificate signing request.",
+                    "longDescription": "This property shall contain the Privacy Enhanced Mail (PEM)-encoded string, which contains RFC2986-specified structures, of the certificate signing request.  The private key should not be part of the string.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "CertificateCollection": {
+                    "$ref": "/redfish/v1/Schemas/CertificateCollection.json#/definitions/CertificateCollection",
+                    "description": "The link to the certificate collection where the certificate is expected to be installed.",
+                    "longDescription": "This property shall contain a link to a resource collection of type CertificateCollection where the certificate is expected to be installed after the certificate authority (CA) has signed the certificate.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "CertificateCollection",
+                "CSRString"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellCertificateService.v1_0_0"
+}

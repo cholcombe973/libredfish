@@ -1,0 +1,52 @@
+{
+    "definitions": {
+        "IPProtocolStatus": {
+            "enumDescriptions": {
+                "IPv4": "The IPv4 assigned to this interface.",
+                "Dual": "The IPv4 and IPv6 assigned to this interface.",
+                "IPv6": "The IPv6 assigned to this interface."
+            },
+            "enum": [
+                "IPv4",
+                "IPv6",
+                "Dual"
+            ],
+            "type": "string"
+        },
+        "EthernetInterface": {
+            "additionalProperties": true,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message|Privileges)\\.[a-zA-Z_][a-zA-Z0-9_.]+$": {
+                    "type": [
+                        "array",
+                        "boolean",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ],
+                    "description": "This property shall specify a valid odata or Redfish property."
+                }
+            },
+            "type": "object",
+            "properties": {
+                "IPProtocolStatus": {
+                    "readonly": false,
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/IPProtocolStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This indicates the status of IP protocol.",
+                    "longDescription": "The value of this property shall indicate which IP protocol can be accessed."
+                }
+            }
+        }
+    },
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema.v1_4_0.json",
+    "copyright": "Copyright 2014-2017 Distributed Management Task Force, Inc. (DMTF). For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "title": "#SmcEthernetInterfaceExtensions.v1_0_0"
+}

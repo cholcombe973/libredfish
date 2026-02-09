@@ -1,0 +1,496 @@
+{
+    "$id": "/redfish/v1/Schemas/DellNIC.v1_5_0.json",
+    "$ref": "#/definitions/DellNIC",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellNIC": {
+            "additionalProperties": false,
+            "description": "An instance of DellNIC will have NIC device specific data.",
+            "longDescription": "An instance of DellNIC will have NIC device specific data.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "BusNumber": {
+                    "description": "The bus number where this PCI device resides.",
+                    "longDescription": "The bus number where this PCI device resides.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "CableLengthMetres": {
+                    "deprecated": "This property has been deprecated. Property is preserved to support backward comapatibilty. This property has no significance.",
+                    "description": "This property represents the cable length of Small Form Factor pluggable(SFP) Transceiver. Note: This property will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.20.20.20 or later.",
+                    "longDescription": "This property represents the cable length of Small Form Factor pluggable(SFP) Transceiver. Note: This property will be deprecated in Poweredge systems with model YX5X and iDRAC firmware version 4.20.20.20 or later.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "Metres",
+                    "versionAdded": "v1_1_0",
+                    "versionDeprecated": "v1_1_1"
+                },
+                "ControllerBIOSVersion": {
+                    "description": "This property represents the firmware version of Controller BIOS.",
+                    "longDescription": "This property represents the firmware version of Controller BIOS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "DataBusWidth": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/DataBusWidth"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the data-bus width of the NIC PCI device.",
+                    "longDescription": "This property represents the data-bus width of the NIC PCI device.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "DeviceDescription": {
+                    "description": "A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location.",
+                    "longDescription": "A string that contains the friendly Fully Qualified Device Description (FQDD), which is a property that describes the device and its location.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "EFIVersion": {
+                    "description": "This property represents the firmware version of EFI.",
+                    "longDescription": "This property represents the firmware version of EFI.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "FCoEOffloadMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/FCoEOffloadMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates if Fibre Channel over Ethernet (FCoE) personality is enabled or disabled on current partition in a Converged Network Adaptor device.",
+                    "longDescription": "This property indicates if Fibre Channel over Ethernet (FCoE) personality is enabled or disabled on current partition in a Converged Network Adaptor device.",
+                    "readonly": true,
+                    "versionAdded": "v1_4_0"
+                },
+                "FQDD": {
+                    "description": "A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object.",
+                    "longDescription": "A string that contains the Fully Qualified Device Description (FQDD), which is a user-friendly name for the object.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "FamilyVersion": {
+                    "description": "Represents family version of firmware.",
+                    "longDescription": "Represents family version of firmware.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "IdentifierType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/IdentifierType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "deprecated": "This property has been deprecated in favor of IdentifierType under DellNetworkTransceiver.",
+                    "description": "This property represents the type of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "longDescription": "This property represents the type of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0",
+                    "versionDeprecated": "v1_4_0"
+                },
+                "InstanceID": {
+                    "description": "A unique identifier for the instance.",
+                    "longDescription": "A unique identifier for the instance.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property represents the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property represents the time when System Inventory Collection On Reboot (CSIOR) was last performed or the object was last updated on iDRAC. The value is represented in the format yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LastUpdateTime": {
+                    "description": "This property represents the time when the data was last updated. The value is represented in the format yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property represents the time when the data was last updated. The value is represented in the format yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "LinkDuplex": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/LinkDuplex"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether the Link is full-duplex or half-duplex.",
+                    "longDescription": "This property indicates whether the Link is full-duplex or half-duplex.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "MediaType": {
+                    "description": "The property shall represent the drive media type.",
+                    "longDescription": "The property shall represent the drive media type.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "NicMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/NicMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Represents if network interface card personality is enabled or disabled on current partition in a Converged Network Adaptor device.",
+                    "longDescription": "Represents if network interface card personality is enabled or disabled on current partition in a Converged Network Adaptor device.",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "PCIDeviceID": {
+                    "description": "This property contains a value assigned by the device manufacturer used to identify the type of device.",
+                    "longDescription": "This property contains a value assigned by the device manufacturer used to identify the type of device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PCISubDeviceID": {
+                    "description": "Represents PCI sub device ID.",
+                    "longDescription": "Represents PCI sub device ID.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PCISubVendorID": {
+                    "description": "This property represents the subsystem vendor ID. ID information is reported from a PCIDevice through protocol-specific requests.",
+                    "longDescription": "This property represents the subsystem vendor ID. ID information is reported from a PCIDevice through protocol-specific requests.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PCIVendorID": {
+                    "description": "This property represents the register that contains a value assigned by the PCI SIG used to identify the manufacturer of the device.",
+                    "longDescription": "This property represents the register that contains a value assigned by the PCI SIG used to identify the manufacturer of the device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PartNumber": {
+                    "description": "The part number assigned by the organization that is responsible for producing or manufacturing the NIC device.",
+                    "longDescription": "The part number assigned by the organization that is responsible for producing or manufacturing the NIC device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "PermanentFCOEMACAddress": {
+                    "description": "PermanentFCOEMACAddress defines the network address that is hardcoded into a port for FCoE.",
+                    "longDescription": "PermanentFCOEMACAddress defines the network address that is hardcoded into a port for FCoE.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "PermanentiSCSIMACAddress": {
+                    "description": "PermanentAddress defines the network address that is hardcoded into a port for iSCSI. This 'hardcoded' address can be changed using a firmware upgrade or a software configuration. When this change is made, the field should be updated at the same time. PermanentAddress should be left blank if no 'hardcoded' address exists for the NetworkAdapter.",
+                    "longDescription": "PermanentAddress defines the network address that is hardcoded into a port for iSCSI. This 'hardcoded' address can be changed using a firmware upgrade or a software configuration. When this change is made, the field should be updated at the same time. PermanentAddress should be left blank if no 'hardcoded' address exists for the NetworkAdapter.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ProductName": {
+                    "description": "A string containing the product name.",
+                    "longDescription": "A string containing the product name.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Protocol": {
+                    "description": "Supported Protocol Types.",
+                    "longDescription": "Supported Protocol Types.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "Revision": {
+                    "deprecated": "This property has been deprecated in favor of Revision under DellNetworkTransceiver.",
+                    "description": "This property represents the revision number of the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "longDescription": "This property represents the revision number of the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0",
+                    "versionDeprecated": "v1_4_0"
+                },
+                "SNAPIState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/SNAPIState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the SNAPI state.",
+                    "longDescription": "This property represents the SNAPI state.",
+                    "readonly": true,
+                    "versionAdded": "v1_3_0"
+                },
+                "SNAPISupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/SNAPISupport"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the SNAPI support.",
+                    "longDescription": "This property represents the SNAPI support.",
+                    "readonly": true,
+                    "versionAdded": "v1_3_0"
+                },
+                "SerialNumber": {
+                    "description": "A manufacturer-allocated number used to identify the NIC device.",
+                    "longDescription": "A manufacturer-allocated number used to identify the NIC device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "SlotLength": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/SlotLength"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the represents the slot length of the NIC PCI device.",
+                    "longDescription": "This property represents the represents the slot length of the NIC PCI device.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "SlotType": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/SlotType"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates the slot type of the NIC PCI device.",
+                    "longDescription": "This property indicates the slot type of the NIC PCI device.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                },
+                "TransceiverPartNumber": {
+                    "deprecated": "This property has been deprecated in favor of PartNumber under DellNetworkTransceiver.",
+                    "description": "The part number assigned by the organization that is responsible for producing or manufacturing the Small Form Factor pluggable(SFP) Transceivers. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "longDescription": "The part number assigned by the organization that is responsible for producing or manufacturing the Small Form Factor pluggable(SFP) Transceivers. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0",
+                    "versionDeprecated": "v1_4_0"
+                },
+                "TransceiverSerialNumber": {
+                    "deprecated": "This property has been deprecated in favor of SerialNumber under DellNetworkTransceiver.",
+                    "description": "A manufacturer-allocated number used to identify the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "longDescription": "A manufacturer-allocated number used to identify the Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0",
+                    "versionDeprecated": "v1_4_0"
+                },
+                "TransceiverVendorName": {
+                    "deprecated": "This property has been deprecated in favor of VendorName under DellNetworkTransceiver.",
+                    "description": "This property represents the vendor name of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "longDescription": "This property represents the vendor name of Small Form Factor pluggable(SFP) Transceiver. Note: This property is deprecated and not supported in iDRAC firmware version 4.40.00.00 or later versions.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_2_0",
+                    "versionDeprecated": "v1_4_0"
+                },
+                "VPISupport": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/VPISupport"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the VPI support.",
+                    "longDescription": "This property represents the VPI support.",
+                    "readonly": true,
+                    "versionAdded": "v1_3_0"
+                },
+                "VendorName": {
+                    "description": "This property represents the vendor name.",
+                    "longDescription": "This property represents the vendor name.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ],
+                    "versionAdded": "v1_1_0"
+                },
+                "iScsiOffloadMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellNIC.json#/definitions/iScsiOffloadMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates if Internet Small Computer System Interface (iSCSI) personality is enabled or disabled on current partition in a Converged Network Adaptor device.",
+                    "longDescription": "This property indicates if Internet Small Computer System Interface (iSCSI) personality is enabled or disabled on current partition in a Converged Network Adaptor device.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellNIC.v1_5_0.DellNIC"
+}

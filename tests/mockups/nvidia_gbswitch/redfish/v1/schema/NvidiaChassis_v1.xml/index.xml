@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish OEM Schema:  NvidiaChassis  v1.8.0                                           -->
+<!--#                                                                                      -->
+<!--# Copyright 2021-2024 NVIDIA.                                                          -->
+<!--# For the full NVIDIA copyright policy, see LICENSE.md                                 -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+    <edmx:Include Namespace="Resource"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Chassis_v1.xml">
+    <edmx:Include Namespace="Chassis"/>
+    <edmx:Include Namespace="Chassis.v1_0_0"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/PCIeDevice_v1.xml">
+    <edmx:Include Namespace="PCIeDevice"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/schema/NvidiaRoTProtectedComponentCollection_v1.xml">
+    <edmx:Include Namespace="NvidiaRoTProtectedComponentCollection"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/schema/NvidiaDebugToken_v1.xml">
+    <edmx:Include Namespace="NvidiaDebugToken"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="/redfish/v1/schema/NvidiaPolicyCollection_v1.xml">
+    <edmx:Include Namespace="NvidiaPolicyCollection"/>
+  </edmx:Reference>
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <Action Name="AuxPowerReset" IsBound="true">
+        <Annotation Term="OData.Description" String="This action is used to manage and reset auxiliary power modules or power paths without shutting down the main system power, as specified by NVIDIA."/>
+        <Annotation Term="OData.LongDescription" String="This action is used to manage and reset auxiliary power modules or power paths without shutting down the main system power, as specified by NVIDIA."/>
+        <Parameter Name="Chassis" Type="Chassis.v1_0_0.OemActions"/>
+        <Parameter Name="ResetType" Type="NvidiaChassis.v1_6_0.AuxPowerResetType" Nullable="false">
+          <Annotation Term="OData.Description" String="The type of auxiliary power reset."/>
+          <Annotation Term="OData.LongDescription" String="This parameter shall contain the type of auxiliary power reset."/>
+        </Parameter>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_6_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Action>
+      <Action Name="BootProtectedDevice" IsBound="true">
+        <Annotation Term="OData.Description" String="This action is used to send an ap boot signal when manual boot is enabled."/>
+        <Annotation Term="OData.LongDescription" String="This action shall send an ap boot signal when manual boot is enabled."/>
+        <Parameter Name="NvidiaChassis" Type="Chassis.v1_0_0.OemActions"/>
+        <Annotation Term="Redfish.Revisions">
+          <Collection>
+            <Record>
+              <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+              <PropertyValue Property="Version" String="v1_8_0"/>
+            </Record>
+          </Collection>
+        </Annotation>
+      </Action>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaChassis">
+        <Property Name="HardwareWriteProtected" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An indication whether the hardware write protection jumper is present."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the hardware write protection jumper status, where a value `true` shall indicate that the hardware write protection jumper is present, and all requests for software write protection will be ignored."/>
+        </Property>
+        <Property Name="HardwareWriteProtectedControl" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An indication whether the hardware write protection is enabled."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the status of WP_HW_CTRL_N, where a value `true` shall indicate that the status of WP_HW_CTRL_N is enabled, and all requests for software write protection will be ignored."/>
+        </Property>
+        <Property Name="PCIeReferenceClockCount" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The number of PCIe reference clock and reset pairs on this baseboard."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the number of PCIe reference clock and reset pairs on this baseboard."/>
+        </Property>
+        <Property Name="SerialNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The chassis serial number."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the chassis serial number that allows partners to populate."/>
+        </Property>
+        <Property Name="PartNumber" Type="Edm.String">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The chassis part number."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the chassis part number that allows partners to populate."/>
+        </Property>
+        <Property Name="AutomaticBackgroundCopyEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An indication whether automatic copy policy is enabled for this ERoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether automatic copy policy is enabled for this ERoT."/>
+        </Property>
+        <Property Name="BackgroundCopyStatus" Type="NvidiaChassis.v1_0_0.BackgroundCopyStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of background copy operation as indicated by this ERoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the status of background copy operation as indicated by this ERoT."/>
+        </Property>
+        <Property Name="InbandUpdatePolicyEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An indication whether inband update policy is enabled by this ERoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether inband update policy is enabled by this ERoT.  If `false`, inband update policy is disabled, meaning both AP_FW and EC_FW are not allowed to update from the host."/>
+        </Property>
+        <NavigationProperty Name="ComponentsProtected" Type="Collection(Resource.Item)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of links to resources that this component provides integrity protection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of links to resources that this component provides integrity protection."/>
+        </NavigationProperty>
+      </ComplexType>
+      <EnumType Name="BackgroundCopyStatus">
+        <Member Name="Pending">
+          <Annotation Term="OData.Description" String="No background copy is in progress.  This value shall represent that the background copy operation is pending and has not yet begun to execute."/>
+        </Member>
+        <Member Name="InProgress">
+          <Annotation Term="OData.Description" String="Background copy is in progress.  This value shall represent that the background copy operation is in progress."/>
+        </Member>
+        <Member Name="Completed">
+          <Annotation Term="OData.Description" String="Background copy is completed.  This value shall represent that the background copy operation is completed successfully."/>
+        </Member>
+        <Member Name="Failed">
+          <Annotation Term="OData.Description" String="Background copy has failed.  This value shall represent that the background copy operation has failed."/>
+          <Annotation Term="Redfish.Revisions">
+            <Collection>
+              <Record>
+                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                <PropertyValue Property="Version" String="v1_7_0"/>
+              </Record>
+            </Collection>
+          </Annotation>
+        </Member>
+      </EnumType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_1_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <EnumType Name="StaticPowerHintOutputState">
+        <Member Name="Completed">
+          <Annotation Term="OData.Description" String="The power estimate request is completed"/>
+        </Member>
+        <Member Name="InProgress">
+          <Annotation Term="OData.Description" String="The power estimate request is in progress"/>
+        </Member>
+        <Member Name="Failed">
+          <Annotation Term="OData.Description" String="The power estimate request is failed"/>
+        </Member>
+        <Member Name="InvalidArgument">
+          <Annotation Term="OData.Description" String="The input arguments are invalid"/>
+        </Member>
+        <Member Name="Invalid">
+          <Annotation Term="OData.Description" String="The output reading is invalid"/>
+        </Member>
+      </EnumType>
+      <ComplexType Name="NvidiaChassis" BaseType="NvidiaChassis.v1_0_0.NvidiaChassis">
+        <Property Name="StaticPowerHint" Type="NvidiaChassis.v1_1_0.StaticPowerHint">
+          <Annotation Term="OData.Description" String="Static Power Hint calculator."/>
+          <Annotation Term="OData.LongDescription" String="Static Power Hint calculator for querying TDP of CPU to setting it ahead of running the application."/>
+        </Property>
+      </ComplexType>
+      <ComplexType Name="StaticPowerHint">
+        <Property Name="PowerEstimationWatts" Type="NvidiaChassis.v1_1_0.StaticPowerHintOutput">
+          <Annotation Term="OData.Description" String="Estimated power in Watts."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the result of estimated power in Watts."/>
+        </Property>
+        <Property Name="CpuClockFrequencyHz" Type="NvidiaChassis.v1_1_0.StaticPowerHintInput">
+          <Annotation Term="OData.Description" String="The CPU clock frequency parameter for this estimation."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the CPU clock frequency parameter for this estimation."/>
+        </Property>
+        <Property Name="TemperatureCelsius" Type="NvidiaChassis.v1_1_0.StaticPowerHintInput">
+          <Annotation Term="OData.Description" String="The temperature parameter for this estimation."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the temperature parameter for this estimation."/>
+        </Property>
+        <Property Name="WorkloadFactor" Type="NvidiaChassis.v1_1_0.StaticPowerHintInput">
+          <Annotation Term="OData.Description" String="The workload factor parameter for this estimation."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the workload factor parameter for this estimation."/>
+        </Property>
+      </ComplexType>
+      <ComplexType Name="StaticPowerHintInput">
+        <Property Name="AllowableMax" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Maximum allowable input value."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the maximum allowable input value."/>
+        </Property>
+        <Property Name="AllowableMin" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Minimum allowable input value."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the minimum allowable input value."/>
+        </Property>
+        <Property Name="SetPoint" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="The input value for this estimation."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the input value for this estimation."/>
+        </Property>
+      </ComplexType>
+      <ComplexType Name="StaticPowerHintOutput">
+        <Property Name="Reading" Type="Edm.Decimal">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Estimated power consumption in Watts."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the estimated power consumption in Watts."/>
+        </Property>
+        <Property Name="State" Type="NvidiaChassis.v1_1_0.StaticPowerHintOutputState">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicating the power value is valid."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether the value of power estimation is valid or not."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_2_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaRoTChassis">
+        <Property Name="AutomaticBackgroundCopyEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An indication whether automatic copy policy is enabled for this ERoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether automatic copy policy is enabled for this ERoT."/>
+        </Property>
+        <Property Name="BackgroundCopyStatus" Type="NvidiaChassis.v1_0_0.BackgroundCopyStatus">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The status of background copy operation as indicated by this ERoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain the status of background copy operation as indicated by this ERoT."/>
+        </Property>
+        <Property Name="InbandUpdatePolicyEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An indication whether inband update policy is enabled by this ERoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate whether inband update policy is enabled by this ERoT.  If `false`, inband update policy is disabled, meaning both AP_FW and EC_FW are not allowed to update from the host."/>
+        </Property>
+        <NavigationProperty Name="ComponentsProtected" Type="Collection(Resource.Item)">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="An array of links to resources that this component provides integrity protection."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain an array of links to resources that this component provides integrity protection."/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_3_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaRoTChassis" BaseType="NvidiaChassis.v1_2_0.NvidiaRoTChassis">
+        <Property Name="IrreversibleConfigEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the irreversible configuration state."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the irreversible configuration state. If `true`, it is enabled. If `false`, it is disabled and configurations cannot be updated in the hardware or EFUSE."/>
+        </Property>
+        <NavigationProperty Name="RoTProtectedComponents" Type="NvidiaRoTProtectedComponentCollection.NvidiaRoTProtectedComponentCollection" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link to the collection of protected comonents associated with this RoT."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource collection of type `NvidiaRoTProtectedComponentCollection`."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+      <ComplexType Name="NvidiaChassis" BaseType="NvidiaChassis.v1_1_0.NvidiaChassis">
+        <NavigationProperty Name="DebugToken" Type="NvidiaDebugToken.NvidiaDebugToken" ContainsTarget="true" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link to the debug token resource for this component."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource of type `NvidiaDebugToken`."/>
+          <Annotation Term="OData.AutoExpandReferences"/>
+        </NavigationProperty>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_4_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaCBCChassis">
+        <Property Name="RevisionId" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the revision of the cable cartridge backplane FRU data information."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the revision of the cable cartridge backplane FRU data information."/>
+        </Property>
+        <Property Name="ChassisPhysicalSlotNumber" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the chassis physical slot Number of the compute tray."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the chassis physical slot Number of the compute tray."/>
+        </Property>
+        <Property Name="ComputeTrayIndex" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the compute tray index within the chassis."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the compute tray index within the chassis."/>
+        </Property>
+        <Property Name="TopologyId" Type="Edm.Int64">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="Indicates the topology of the chassis."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the topology of the chassis."/>
+        </Property>
+      </ComplexType>
+      <ComplexType Name="NvidiaChassis" BaseType="NvidiaChassis.v1_3_0.NvidiaChassis">
+        <Property Name="HardwareWriteProtectEnable" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An indication whether the hardware write protection control is active."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate the hardware write protection control status, where a value `true` shall indicate that the hardware write protection control is active."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_5_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaRoTChassis" BaseType="NvidiaChassis.v1_3_0.NvidiaRoTChassis">
+        <Property Name="ManualBootModeEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/ReadWrite"/>
+          <Annotation Term="OData.Description" String="An indication that the AP will be held in reset until the BootProtectedDevice action is executed."/>
+          <Annotation Term="OData.LongDescription" String="This property shall indicate that the BootProtectedDevice action is required to boot the device behind the ERoT. Default state is false."/>
+        </Property>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_6_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaChassis" BaseType="NvidiaChassis.v1_4_0.NvidiaChassis">
+        <NavigationProperty Name="Policies" Type="NvidiaPolicyCollection.NvidiaPolicyCollection">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="The link to the collection of policies for this chassis."/>
+          <Annotation Term="OData.LongDescription" String="This property shall contain a link to a resource collection of type NvidiaPolicyCollection."/>
+        </NavigationProperty>
+      </ComplexType>
+      <EnumType Name="AuxPowerResetType">
+        <Member Name="AuxPowerCycle">
+          <Annotation Term="OData.Description" String="Perform auxiliary power reset."/>
+        </Member>
+      </EnumType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_7_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaRoTChassis" BaseType="NvidiaChassis.v1_5_0.NvidiaRoTChassis"/>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="NvidiaChassis.v1_8_0">
+      <Annotation Term="Redfish.OwningEntity" String="NVIDIA"/>
+      <ComplexType Name="NvidiaChassis" BaseType="NvidiaChassis.v1_7_0"/>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

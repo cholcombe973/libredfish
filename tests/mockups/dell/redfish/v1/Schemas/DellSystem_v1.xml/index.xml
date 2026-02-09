@@ -1,0 +1,1132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellSystem v1_3_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSystem">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellSystem" Abstract="true">
+                <Annotation String="An instance of DellSystem will have data representing the overall system devices in the managed system." Term="OData.Description"/>
+                <Annotation String="An instance of DellSystem will have data representing the overall system devices in the managed system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/Oem/Dell/DellSystem/{SystemId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="BatteryRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="BladeGeometry">
+                <Member Name="1UFullWidth">
+                    <Annotation String="1UFullWidth" Term="OData.Description"/>
+                    <Annotation String="1UFullWidth" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="1UHalfWidth">
+                    <Annotation String="1UHalf Width" Term="OData.Description"/>
+                    <Annotation String="1UHalf Width" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="1UQuarterWidth">
+                    <Annotation String="1UQuarterWidth" Term="OData.Description"/>
+                    <Annotation String="1UQuarterWidth" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DualWidth,FullHeight">
+                    <Annotation String="Dual width, full height" Term="OData.Description"/>
+                    <Annotation String="Dual width, full height" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="DualWidth,HalfHeight">
+                    <Annotation String="Dual width, half height" Term="OData.Description"/>
+                    <Annotation String="Dual width, half height" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="NotApplicable">
+                    <Annotation String="Not Applicable" Term="OData.Description"/>
+                    <Annotation String="Not Applicable" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SingleWidth,FullHeight">
+                    <Annotation String="Single width, full height" Term="OData.Description"/>
+                    <Annotation String="Single width, full height" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SingleWidth,HalfHeight">
+                    <Annotation String="Single width, half height" Term="OData.Description"/>
+                    <Annotation String="Single width, half height" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="SingleWidth,QuarterHeight">
+                    <Annotation String="Single width, quarter height" Term="OData.Description"/>
+                    <Annotation String="Single width, quarter height" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="CPURollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="FanRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="IntrusionRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="LicensingRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PSRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="PowerCapEnabledState">
+                <Member Name="Disabled">
+                    <Annotation String="Disabled" Term="OData.Description"/>
+                    <Annotation String="Disabled" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Enabled">
+                    <Annotation String="Enabled" Term="OData.Description"/>
+                    <Annotation String="Enabled" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="StorageRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="SysMemPrimaryStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="TempRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="VoltRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="CurrentRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="IDSDMRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="IsOEMBranded">
+                <Member Name="False">
+                    <Annotation String="False" Term="OData.Description"/>
+                    <Annotation String="False" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="True">
+                    <Annotation String="True" Term="OData.Description"/>
+                    <Annotation String="True" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SDCardRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SELRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SysMemErrorMethodology">
+                <Member Name="CRC">
+                    <Annotation String="CRC" Term="OData.Description"/>
+                    <Annotation String="CRC" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Multi-bitECC">
+                    <Annotation String="Multi-bit ECC" Term="OData.Description"/>
+                    <Annotation String="Multi-bit ECC" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="None">
+                    <Annotation String="None" Term="OData.Description"/>
+                    <Annotation String="None" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Parity">
+                    <Annotation String="Parity" Term="OData.Description"/>
+                    <Annotation String="Parity" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Single-bitECC">
+                    <Annotation String="Single-bit ECC" Term="OData.Description"/>
+                    <Annotation String="Single-bit ECC" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SysMemLocation">
+                <Member Name="EISAAdd-OnCard">
+                    <Annotation String="EISA add-on card" Term="OData.Description"/>
+                    <Annotation String="EISA add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ISAAdd-OnCard">
+                    <Annotation String="ISA add-on card" Term="OData.Description"/>
+                    <Annotation String="ISA add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="MCAAdd-OnCard">
+                    <Annotation String="MCA add-on card" Term="OData.Description"/>
+                    <Annotation String="MCA add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="NuBus">
+                    <Annotation String="NuBus" Term="OData.Description"/>
+                    <Annotation String="NuBus" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Other">
+                    <Annotation String="Other" Term="OData.Description"/>
+                    <Annotation String="Other" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/C20Add-OnCard">
+                    <Annotation String="PC-98/C20 add-on card" Term="OData.Description"/>
+                    <Annotation String="PC-98/C20 add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/C24Add-OnCard">
+                    <Annotation String="PC-98/C24 add-on card" Term="OData.Description"/>
+                    <Annotation String="PC-98/C24 add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/EAdd-OnCard">
+                    <Annotation String="PC-98/E add-on card" Term="OData.Description"/>
+                    <Annotation String="PC-98/E add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PC-98/LocalBusAdd-OnCard">
+                    <Annotation String="PC-98/Local bus add-on card" Term="OData.Description"/>
+                    <Annotation String="PC-98/Local bus add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCIAdd-OnCard">
+                    <Annotation String="PCI add-on card" Term="OData.Description"/>
+                    <Annotation String="PCI add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="PCMCIAAdd-OnCard">
+                    <Annotation String="PCMCIA add-on card" Term="OData.Description"/>
+                    <Annotation String="PCMCIA add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ProprietaryAdd-OnCard">
+                    <Annotation String="Proprietary add-on card" Term="OData.Description"/>
+                    <Annotation String="Proprietary add-on card" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="SystemBoardOrMotherboard">
+                    <Annotation String="System board or motherboard" Term="OData.Description"/>
+                    <Annotation String="System board or motherboard" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="SystemRevision">
+                <Member Name="I">
+                    <Annotation String="I" Term="OData.Description"/>
+                    <Annotation String="I" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="II">
+                    <Annotation String="II" Term="OData.Description"/>
+                    <Annotation String="II" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="III">
+                    <Annotation String="III" Term="OData.Description"/>
+                    <Annotation String="III" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="IV">
+                    <Annotation String="IV" Term="OData.Description"/>
+                    <Annotation String="IV" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+            <EnumType Name="TempStatisticsRollupStatus">
+                <Member Name="Degraded">
+                    <Annotation String="Degraded" Term="OData.Description"/>
+                    <Annotation String="Degraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Error">
+                    <Annotation String="Error" Term="OData.Description"/>
+                    <Annotation String="Error" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSystem.v1_0_0">
+            <EntityType Name="DellSystem" BaseType="DellSystem.DellSystem">
+                <Annotation Term="OData.Description" String="An instance of DellSystem will have data representing the overall system devices in the managed system."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellSystem will have data representing the overall system devices in the managed system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="BIOSReleaseDate" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="BIOSReleaseDate represents the BIOS release date. The date string, if supplied, is in mm/dd/yyyy format."/>
+                    <Annotation Term="OData.LongDescription" String="BIOSReleaseDate represents the BIOS release date. The date string, if supplied, is in mm/dd/yyyy format."/>
+                </Property>
+                <Property Name="BaseBoardChassisSlot" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the modular chassis slot numbers that the server blade occupies in the modular enclosure. This property is only applicable for modular server blades."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the modular chassis slot numbers that the server blade occupies in the modular enclosure. This property is only applicable for modular server blades."/>
+                </Property>
+                <Property Name="BatteryRollupStatus" Type="DellSystem.BatteryRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="BatteryRollupStatus provides the battery rollup status of all the system components. This field is Null if the corresponding sensor is not supported. BatteryRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="BatteryRollupStatus provides the battery rollup status of all the system components. This field is Null if the corresponding sensor is not supported. BatteryRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="BladeGeometry" Type="DellSystem.BladeGeometry">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the geometric dimension of the server blade enclosure in modular enclosure described. The property defines value maps for the geometry description in slot height and width. This property is applicable only for modular server blades."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the geometric dimension of the server blade enclosure in modular enclosure described. The property defines value maps for the geometry description in slot height and width. This property is applicable only for modular server blades."/>
+                </Property>
+                <Property Name="CMCIP" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the IP address for the enclosures Chassis Management Controller (CMC). This property is represented for modular server blades."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the IP address for the enclosures Chassis Management Controller (CMC). This property is represented for modular server blades."/>
+                </Property>
+                <Property Name="CPURollupStatus" Type="DellSystem.CPURollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property contains the rollup status of all the CPUs. This property is Null if the corresponding sensor is not supported. CPURollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="The property contains the rollup status of all the CPUs. This property is Null if the corresponding sensor is not supported. CPURollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="ChassisServiceTag" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the Service Tag of the modular enclosure chassis. For monolithic servers, this shall be same as the ServiceTag property."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the Service Tag of the modular enclosure chassis. For monolithic servers, this shall be same as the ServiceTag property."/>
+                </Property>
+                <Property Name="ExpressServiceCode" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="ExpressServiceCode of the system."/>
+                    <Annotation Term="OData.LongDescription" String="ExpressServiceCode of the system."/>
+                </Property>
+                <Property Name="FanRollupStatus" Type="DellSystem.FanRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="FanRollupStatus provides the fan rollup status of all the system components. This property is null if the corresponding sensor is not supported. FanRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="FanRollupStatus provides the fan rollup status of all the system components. This property is null if the corresponding sensor is not supported. FanRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="IntrusionRollupStatus" Type="DellSystem.IntrusionRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="IntrusionRollupStatus provides the live status of chassis intrusion sensors. This property is null if the corresponding sensor is not supported. IntrusionRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="IntrusionRollupStatus provides the live status of chassis intrusion sensors. This property is null if the corresponding sensor is not supported. IntrusionRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="LicensingRollupStatus" Type="DellSystem.LicensingRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="LicensingRollupStatus provides the licensing rollup status of all the system components. LicensingRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="LicensingRollupStatus provides the licensing rollup status of all the system components. LicensingRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="MaxDIMMSlots" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The number of slots or sockets available for memory devices in the array. This value represents the number of memory device structures that comprise the memory array. Each memory device has a reference to the memory array that it belongs to."/>
+                    <Annotation Term="OData.LongDescription" String="The number of slots or sockets available for memory devices in the array. This value represents the number of memory device structures that comprise the memory array. Each memory device has a reference to the memory array that it belongs to."/>
+                </Property>
+                <Property Name="MaxPCIeSlots" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Maximum PCIe slots in the system."/>
+                    <Annotation Term="OData.LongDescription" String="Maximum PCIe slots in the system."/>
+                </Property>
+                <Property Name="NodeID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="NodeID is a unique property of the blade, based on the Service Tag."/>
+                    <Annotation Term="OData.LongDescription" String="NodeID is a unique property of the blade, based on the Service Tag."/>
+                </Property>
+                <Property Name="PSRollupStatus" Type="DellSystem.PSRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property contains the power-supply rollup status of all the system components. This property is Null if the corresponding sensor is not supported. PSRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="The property contains the power-supply rollup status of all the system components. This property is Null if the corresponding sensor is not supported. PSRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="PowerCapEnabledState" Type="DellSystem.PowerCapEnabledState">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates the current state of the power-cap setting of the associated managed system element."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the current state of the power-cap setting of the associated managed system element."/>
+                </Property>
+                <Property Name="StorageRollupStatus" Type="DellSystem.StorageRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="StorageRollupStatus provides the storage rollup status of all the storage components. StorageRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="StorageRollupStatus provides the storage rollup status of all the storage components. StorageRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="SysMemPrimaryStatus" Type="DellSystem.SysMemPrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="SystemMemoryPrimaryStatus provides a high-level status value that is intended to align with Red-Yellow-Green type representation of status for the system memory."/>
+                    <Annotation Term="OData.LongDescription" String="SystemMemoryPrimaryStatus provides a high-level status value that is intended to align with Red-Yellow-Green type representation of status for the system memory."/>
+                </Property>
+                <Property Name="SystemGeneration" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="SystemGeneration represents the generation of the Dell system."/>
+                    <Annotation Term="OData.LongDescription" String="SystemGeneration represents the generation of the Dell system."/>
+                </Property>
+                <Property Name="SystemID" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="System ID describes the model of the system in integer value. The SystemID property is generally used for identifying the compatibility of the updateable software and firmware."/>
+                    <Annotation Term="OData.LongDescription" String="System ID describes the model of the system in integer value. The SystemID property is generally used for identifying the compatibility of the updateable software and firmware."/>
+                </Property>
+                <Property Name="TempRollupStatus" Type="DellSystem.TempRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property contains the temperature rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="The property contains the temperature rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="UUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="UUID uniquely identifies the system. The property is also known as BIOS GUID. The UUID value matches with the WMI representation of the UUID or GUID."/>
+                    <Annotation Term="OData.LongDescription" String="UUID uniquely identifies the system. The property is also known as BIOS GUID. The UUID value matches with the WMI representation of the UUID or GUID."/>
+                </Property>
+                <Property Name="VoltRollupStatus" Type="DellSystem.VoltRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property contains the voltage rollup status of all the system components. This property is Null if the corresponding sensor is not supported. VoltRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="The property contains the voltage rollup status of all the system components. This property is Null if the corresponding sensor is not supported. VoltRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSystem.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add ChassisModel, ChassisName, ChassisSystemHeightUnit, CurrentRollupStatus, EstimatedExhaustTemperatureCelsius, EstimatedSystemAirflowCFM, IDSDMRollupStatus, IsOEMBranded, LastSystemInventoryTime, LastUpdateTime, MaxCPUSockets, MemoryOperationMode, PopulatedDIMMSlots, PopulatedPCIeSlots, SDCardRollupStatus, SELRollupStatus, ServerAllocationWatts, SysMemErrorMethodology, SysMemFailOverState, SysMemLocation, SystemRevision, TempStatisticsRollupStatus, smbiosGUID properties."/>
+            <EntityType Name="DellSystem" BaseType="DellSystem.v1_0_0.DellSystem">
+                <Property Name="ChassisModel" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the chassis model for the modular enclosure chassis."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the chassis model for the modular enclosure chassis."/>
+                </Property>
+                <Property Name="ChassisName" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents name of the Chassis."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents name of the Chassis."/>
+                </Property>
+                <Property Name="ChassisSystemHeightUnit" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the system height in units of rack space (U).Note: This property is deprecated, refer ManagedSystemSize property or System.Embedded.1#ServerTopology.1#ManagedSystemSizeInU attribute."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the system height in units of rack space (U).Note: This property is deprecated, refer ManagedSystemSize property or System.Embedded.1#ServerTopology.1#ManagedSystemSizeInU attribute."/>
+                    <Annotation Term="Measures.Unit" String="Unit"/>
+                </Property>
+                <Property Name="CurrentRollupStatus" Type="DellSystem.CurrentRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="CurrentRollupStatus provides the current rollup status of all the system components. This property is Null if the corresponding sensor is not supported. CurrentRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="CurrentRollupStatus provides the current rollup status of all the system components. This property is Null if the corresponding sensor is not supported. CurrentRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="EstimatedExhaustTemperatureCelsius" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Calculated, not measured, exhaust temperature in Degree Celsius. A value of 255 indicates that the value is not applicable."/>
+                    <Annotation Term="OData.LongDescription" String="Calculated, not measured, exhaust temperature in Degree Celsius. A value of 255 indicates that the value is not applicable."/>
+                    <Annotation Term="Measures.Unit" String="Cel"/>
+                </Property>
+                <Property Name="EstimatedSystemAirflowCFM" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="EstimatedSystemAirflow provides the estimated airflow over the chassis in Cubic Feet per Minute (CFM). A value of 255 indicates that the value is not applicable."/>
+                    <Annotation Term="OData.LongDescription" String="EstimatedSystemAirflow provides the estimated airflow over the chassis in Cubic Feet per Minute (CFM). A value of 255 indicates that the value is not applicable."/>
+                    <Annotation Term="Measures.Unit" String="CFM"/>
+                </Property>
+                <Property Name="IDSDMRollupStatus" Type="DellSystem.IDSDMRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="IDSDMRollupStatus provides the live status of IDSDM (Internal Dual SD Mode) sensors. This property is null if the corresponding sensor is not supported. IDSDMRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="IDSDMRollupStatus provides the live status of IDSDM (Internal Dual SD Mode) sensors. This property is null if the corresponding sensor is not supported. IDSDMRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="IsOEMBranded" Type="DellSystem.IsOEMBranded">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property is used to identify if the system is OEM branded."/>
+                    <Annotation Term="OData.LongDescription" String="This property is used to identify if the system is OEM branded."/>
+                </Property>
+                <Property Name="LastSystemInventoryTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the last time System Inventory Collection On Reboot(CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the last time System Inventory Collection On Reboot(CSIOR) was performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="LastUpdateTime" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS."/>
+                    <Annotation Term="OData.LongDescription" String="This property provides the last time the data was updated. The value is represented as yyyymmddHHMMSS."/>
+                </Property>
+                <Property Name="MaxCPUSockets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Maximum CPU sockets in the system."/>
+                    <Annotation Term="OData.LongDescription" String="Maximum CPU sockets in the system."/>
+                </Property>
+                <Property Name="MemoryOperationMode" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="MemoryOperationMode denotes the mode of operation for system memory, such as mirrored, advanced ECC, or optimized mode. Note: &quot;Memory Operation mode is not supported by UDIMMs and the value displayed is Unknown&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="MemoryOperationMode denotes the mode of operation for system memory, such as mirrored, advanced ECC, or optimized mode. Note: &quot;Memory Operation mode is not supported by UDIMMs and the value displayed is Unknown&quot;."/>
+                </Property>
+                <Property Name="PopulatedDIMMSlots" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates the memory sockets in the system that are populated."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates the memory sockets in the system that are populated."/>
+                </Property>
+                <Property Name="PopulatedPCIeSlots" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Populated PCIe slots in the system."/>
+                    <Annotation Term="OData.LongDescription" String="Populated PCIe slots in the system."/>
+                </Property>
+                <Property Name="SDCardRollupStatus" Type="DellSystem.SDCardRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="SDCardRollupStatus provides the SD-card rollup status.This property is Null if the corresponding sensor is not supported. SDCardRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="SDCardRollupStatus provides the SD-card rollup status.This property is Null if the corresponding sensor is not supported. SDCardRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="SELRollupStatus" Type="DellSystem.SELRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="SELRollupStatus provides the SEL rollup status. This property is Null if the corresponding sensor is not supported. SELRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="SELRollupStatus provides the SEL rollup status. This property is Null if the corresponding sensor is not supported. SELRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="ServerAllocationWatts" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the power, in Watt, that is allocated by the chassis manager to the blade systems. This property is applicable for modular server blades and AMD Roadster systems."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the power, in Watt, that is allocated by the chassis manager to the blade systems. This property is applicable for modular server blades and AMD Roadster systems."/>
+                    <Annotation Term="Measures.Unit" String="Watts"/>
+                </Property>
+                <Property Name="SysMemErrorMethodology" Type="DellSystem.SysMemErrorMethodology">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The primary hardware error correction or detection method supported by the memory array."/>
+                    <Annotation Term="OData.LongDescription" String="The primary hardware error correction or detection method supported by the memory array."/>
+                </Property>
+                <Property Name="SysMemFailOverState" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Represents the failover state of the system memory."/>
+                    <Annotation Term="OData.LongDescription" String="Represents the failover state of the system memory."/>
+                </Property>
+                <Property Name="SysMemLocation" Type="DellSystem.SysMemLocation">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The physical location of the memory array; whether on the system board or on an add-in board."/>
+                    <Annotation Term="OData.LongDescription" String="The physical location of the memory array; whether on the system board or on an add-in board."/>
+                </Property>
+                <Property Name="SystemRevision" Type="DellSystem.SystemRevision">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="System revision indicates the revision of the system from a hardware perspective."/>
+                    <Annotation Term="OData.LongDescription" String="System revision indicates the revision of the system from a hardware perspective."/>
+                </Property>
+                <Property Name="TempStatisticsRollupStatus" Type="DellSystem.TempStatisticsRollupStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="TempStatisticsRollupStatus provides the temperature statistics rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempStatisticsRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                    <Annotation Term="OData.LongDescription" String="TempStatisticsRollupStatus provides the temperature statistics rollup status of all the system components. This property is Null if the corresponding sensor is not supported. TempStatisticsRollupStatus provides a high-level status value, intended to align with Red-Yellow-Green type representation of status."/>
+                </Property>
+                <Property Name="smbiosGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="System GUID uniquely identifies the system. The property is also known as BIOS GUID. The smbiosGUID value matches exactly with the SMBIOS representation of the GUID."/>
+                    <Annotation Term="OData.LongDescription" String="System GUID uniquely identifies the system. The property is also known as BIOS GUID. The smbiosGUID value matches exactly with the SMBIOS representation of the GUID."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSystem.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add PlatformGUID property. It was also created to update descriptions for ServerAllocation property"/>
+            <EntityType Name="DellSystem" BaseType="DellSystem.v1_1_0.DellSystem">
+                <Property Name="PlatformGUID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="System GUID."/>
+                    <Annotation Term="OData.LongDescription" String="System GUID."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSystem.v1_3_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add ManagedSystemSize property. It was also created to update descriptions for ChassisSystemHeight property"/>
+            <EntityType Name="DellSystem" BaseType="DellSystem.v1_2_0.DellSystem">
+                <Property Name="ManagedSystemSize" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property represents the system height in units of rack space (U)."/>
+                    <Annotation Term="OData.LongDescription" String="The property represents the system height in units of rack space (U)."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

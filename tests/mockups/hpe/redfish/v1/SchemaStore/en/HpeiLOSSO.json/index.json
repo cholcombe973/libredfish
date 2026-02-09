@@ -1,0 +1,610 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOSSO",
+    "actions": {
+        "actions": {
+            "HpeiLOSSO.DeleteAllSSORecords": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOSSO.DeleteAllSSORecords"
+                        ],
+                        "enumDescriptions": {
+                            "DeleteSSORecord": "Delete all the SSO records."
+                        },
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action"
+                ],
+                "type": "object"
+            },
+            "HpeiLOSSO.DeleteSSORecordbyNumber": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOSSO.DeleteSSORecordbyNumber"
+                        ],
+                        "enumDescriptions": {
+                            "DeleteSSORecordbyNumber": "Delete SSO record by record number."
+                        },
+                        "type": "string"
+                    },
+                    "RecordNumber": {
+                        "description": "Index of the SSO record to be deleted.",
+                        "readonly": false,
+                        "type": "integer"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "RecordNumber"
+                ],
+                "type": "object"
+            },
+            "HpeiLOSSO.ImportCertificate": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOSSO.ImportCertificate"
+                        ],
+                        "enumDescriptions": {
+                            "ImportCertificate": "Import the HPE SSO Certificate."
+                        },
+                        "type": "string"
+                    },
+                    "CertInput": {
+                        "description": "PEM formatted X509 certificate (Base64 encoded)/DNS name or IP address to import the certificate.",
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    },
+                    "CertType": {
+                        "description": "Specifies the type of certificate imported.",
+                        "enum": [
+                            "DirectImportCert",
+                            "ImportCertUri"
+                        ],
+                        "enumDescriptions": {
+                            "DirectImportCert": "iLO directly imports the Certificate.",
+                            "ImportCertUri": "iLO imports the certificate from the HPE SSO compliant application over the network."
+                        },
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "CertType",
+                    "CertInput"
+                ],
+                "type": "object"
+            },
+            "HpeiLOSSO.ImportDNSName": {
+                "additionalProperties": false,
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeiLOSSO.ImportDNSName"
+                        ],
+                        "enumDescriptions": {
+                            "ImportDNSName": "Add DNS Name to the record list."
+                        },
+                        "type": "string"
+                    },
+                    "DNSName": {
+                        "description": "DNS Name of the HPE SSO Trusted Server.",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "readonly": true,
+                "required": [
+                    "Action",
+                    "DNSName"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Import the HPE SSO Certificate or DNSName."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOSSO resource describes the configuration of the HPE BMC single-sign-on trusted server feature.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeiLOSSO.DeleteAllSSORecords": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOSSO.DeleteSSORecordbyNumber": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "RecordNumber@Redfish.AllowableValues": {
+                            "description": "The supported values for the RecordNumber parameter.",
+                            "items": {
+                                "description": "Index of the SSO record to be deleted.",
+                                "readonly": false,
+                                "type": "integer"
+                            },
+                            "longDescription": "The supported values for the RecordNumber parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOSSO.ImportCertificate": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "CertInput@Redfish.AllowableValues": {
+                            "description": "The supported values for the CertInput parameter.",
+                            "items": {
+                                "description": "PEM formatted X509 certificate (Base64 encoded)/DNS name or IP address to import the certificate.",
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the CertInput parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "CertType@Redfish.AllowableValues": {
+                            "description": "The supported values for the CertType parameter.",
+                            "items": {
+                                "description": "Specifies the type of certificate imported.",
+                                "enum": [
+                                    "DirectImportCert",
+                                    "ImportCertUri"
+                                ],
+                                "enumDescriptions": {
+                                    "DirectImportCert": "iLO directly imports the Certificate.",
+                                    "ImportCertUri": "iLO imports the certificate from the HPE SSO compliant application over the network."
+                                },
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the CertType parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "#HpeiLOSSO.ImportDNSName": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "DNSName@Redfish.AllowableValues": {
+                            "description": "The supported values for the DNSName parameter.",
+                            "items": {
+                                "description": "DNS Name of the HPE SSO Trusted Server.",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the DNSName parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "ManagerTrustedCertificates": {
+            "description": "Contains the status of trusted certificates and records.",
+            "etag": true,
+            "items": {
+                "properties": {
+                    "@odata.id": {
+                        "$ref": "Resource.json#/definitions/odataid"
+                    },
+                    "@odata.type": {
+                        "$ref": "Resource.json#/definitions/odatatype"
+                    },
+                    "Certificate": {
+                        "description": "Contains PEM formatted X509 certificate (Base64 encoded).",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "CertificateDetails": {
+                        "additionalProperties": false,
+                        "description": "Contains X509 certificate information.",
+                        "etag": true,
+                        "properties": {
+                            "Issuer": {
+                                "additionalProperties": false,
+                                "description": "The Certificate Authority that issued the certificate.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "Subject": {
+                                "additionalProperties": false,
+                                "description": "The entity to which the certificate was issued.",
+                                "etag": true,
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "ValidNotAfter": {
+                                "additionalProperties": false,
+                                "description": "The date on which the certificate validity period ends.",
+                                "etag": true,
+                                "format": "date-time",
+                                "readonly": true,
+                                "type": "string"
+                            },
+                            "ValidNotBefore": {
+                                "additionalProperties": false,
+                                "description": "The date on which the certificate validity period begins.",
+                                "etag": true,
+                                "format": "date-time",
+                                "readonly": true,
+                                "type": "string"
+                            }
+                        },
+                        "readonly": true,
+                        "type": [
+                            "object",
+                            "null"
+                        ]
+                    },
+                    "Id": {
+                        "$ref": "Resource.json#/definitions/Id"
+                    },
+                    "RecordType": {
+                        "description": "Specifies the type of SSO record imported.",
+                        "enum": [
+                            "Certificate",
+                            "DNSName"
+                        ],
+                        "enumDescriptions": {
+                            "Certificate": "It is a PEM formatted X509 certificate (Base64 encoded).",
+                            "DNSName": "It is a DNS name or an IP address of the HPE SSO-compliant application."
+                        },
+                        "readonly": "true",
+                        "type": "string"
+                    },
+                    "SerialNumber": {
+                        "description": "Contains the Serial number for the SSO records.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "ServerName": {
+                        "description": "The Server name (or certificate subject).",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Status": {
+                        "enum": [
+                            null,
+                            "OK",
+                            "Degraded",
+                            "Failed"
+                        ],
+                        "enumDescriptions": {
+                            "Degraded": "There is a problem with trust settings or iLO license.",
+                            "Failed": "The record is not valid.",
+                            "OK": "The record is valid."
+                        },
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "SSOsettings": {
+            "description": "Describes the SSO Settings.",
+            "etag": true,
+            "properties": {
+                "AdminPrivilege": {
+                    "additionalProperties": false,
+                    "description": "Represents the Administrator Privileges.",
+                    "etag": true,
+                    "properties": {
+                        "HostBIOSConfigPriv": {
+                            "description": "Host BIOS Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "HostNICConfigPriv": {
+                            "description": "Host NIC Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "HostStorageConfigPriv": {
+                            "description": "Host Storage Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "LoginPriv": {
+                            "description": "Login Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "RemoteConsolePriv": {
+                            "description": "Remote Console Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "SystemRecoveryConfigPriv": {
+                            "description": "System Recovery Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "UserConfigPriv": {
+                            "description": "User Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "VirtualMediaPriv": {
+                            "description": "Virtual Media Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "VirtualPowerAndResetPriv": {
+                            "description": "Power and Reset Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "iLOConfigPriv": {
+                            "description": "iLO Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        }
+                    },
+                    "readonly": false,
+                    "type": "object"
+                },
+                "OperatorPrivilege": {
+                    "additionalProperties": false,
+                    "description": "Represents the Operator Privileges.",
+                    "etag": true,
+                    "properties": {
+                        "HostBIOSConfigPriv": {
+                            "description": "Host BIOS Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "HostNICConfigPriv": {
+                            "description": "Host NIC Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "HostStorageConfigPriv": {
+                            "description": "Host Storage Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "LoginPriv": {
+                            "description": "Login Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "RemoteConsolePriv": {
+                            "description": "Remote Console Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "SystemRecoveryConfigPriv": {
+                            "description": "System Recovery Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "UserConfigPriv": {
+                            "description": "User Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "VirtualMediaPriv": {
+                            "description": "Virtual Media Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "VirtualPowerAndResetPriv": {
+                            "description": "Power and Reset Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "iLOConfigPriv": {
+                            "description": "iLO Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        }
+                    },
+                    "readonly": false,
+                    "type": "object"
+                },
+                "SSOTrustMode": {
+                    "additionalProperties": false,
+                    "description": "Represents the SSO Trust Mode.",
+                    "enum": [
+                        "TrustNone",
+                        "TrustAll",
+                        "TrustbyName",
+                        "TrustbyCert"
+                    ],
+                    "enumDescriptions": {
+                        "TrustAll": "Accepts any SSO connection initiated from any HPE SSO compliant application.",
+                        "TrustNone": "Rejects all SSO connection request.",
+                        "TrustbyCert": "Enables SSO connections from an HPE SSO compliant application by matching a certificate previously imported to iLO.",
+                        "TrustbyName": "Enables SSO connections from an HPE SSO compliant application by matching a directly imported IP address or DNS name."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "UserPrivilege": {
+                    "additionalProperties": false,
+                    "description": "Represents the User Privileges.",
+                    "etag": true,
+                    "properties": {
+                        "HostBIOSConfigPriv": {
+                            "description": "Host BIOS Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "HostNICConfigPriv": {
+                            "description": "Host NIC Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "HostStorageConfigPriv": {
+                            "description": "Host Storage Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "LoginPriv": {
+                            "description": "Login Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "RemoteConsolePriv": {
+                            "description": "Remote Console Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "SystemRecoveryConfigPriv": {
+                            "description": "System Recovery Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "UserConfigPriv": {
+                            "description": "User Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "VirtualMediaPriv": {
+                            "description": "Virtual Media Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "VirtualPowerAndResetPriv": {
+                            "description": "Power and Reset Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        },
+                        "iLOConfigPriv": {
+                            "description": "iLO Configuration Privileges.",
+                            "etag": true,
+                            "readonly": false,
+                            "type": "boolean"
+                        }
+                    },
+                    "readonly": false,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeiLOSSO.v2_0_0.HpeiLOSSO",
+    "type": "object"
+}

@@ -1,0 +1,212 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "copyright": "Copyright 2021 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2021 Distributed Management Task Force. All rights reserved.",
+    "@odata.id": "HpeAutomaticCertEnrollment",
+    "actions": {
+        "actions": {
+            "HpeAutomaticCertEnrollment.ImportCACertificate": {
+                "additionalProperties": false,
+                "description": "Imports a CA Certificate.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeAutomaticCertEnrollment.ImportCACertificate"
+                        ],
+                        "type": "string"
+                    },
+                    "Certificate": {
+                        "description": "Contains PEM formatted X509 certificate (Base64 encoded).",
+                        "etag": true,
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "Certificate"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Importing CA Certificate."
+    },
+    "additionalProperties": false,
+    "description": "The HpeAutomaticCertEnrollment resource describes the properties of automatic Certificate Enrollment feature support.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeAutomaticCertEnrollment.ImportCACertificate": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Certificate@Redfish.AllowableValues": {
+                            "description": "The supported values for the Certificate parameter.",
+                            "etag": true,
+                            "items": {
+                                "enum": [
+                                    "Certificate"
+                                ],
+                                "description": "Contains PEM formatted X509 certificate (Base64 encoded).",
+                                "etag": true,
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Certificate parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AutomaticCertificateEnrollmentSettings": {
+            "description": "Automatic Certificate Enrollment settings information.",
+            "etag": true,
+            "properties": {
+                "ServerUrl": {
+                    "additionalProperties": false,
+                    "description": "Link to Certificate Enrollment Server.",
+                    "format": "uri-reference",
+                    "maxLength": 1024,
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "ChallengePassword": {
+                    "additionalProperties": false,
+                    "description": "Challenge Password required to complete certificate Enrollment.",
+                    "etag": true,
+                    "maxLength": 64,
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ServiceEnabled": {
+                    "additionalProperties": false,
+                    "description": "This indicates whether this Automatic Certificate Enrollment(ACE) service is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                },
+                "CertificateEnrollmentStatus": {
+                    "description": "Enrollment Status of SSL certificate",
+                    "enum": [
+                        "InProgress",
+                        "Success",
+                        "Failed",
+                        "Disabled",
+                        "Unknown"
+                    ],
+                    "enumDescriptions": {
+                        "Disable": "Enrollment Service is disabled.",
+                        "Failed": "Enrollment request has failed.",
+                        "InProgress": "Enrollment request is in progress.",
+                        "Success": "Enrollment has completed successfully.",
+                        "Unknown": "Enrollment request status is Unknown."
+                    },
+                    "readonly": true,
+                    "type": "string"
+                },
+                "CACertificateName": {
+                    "description": "This is the name of imported CA(Certificate Authority) Certificate which is used to sign the SSL certificate.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "HttpsCertCSRSubjectValue": {
+            "description": "CSR Values for SSL Certificate.",
+            "etag": true,
+            "properties": {
+                "City": {
+                    "additionalProperties": false,
+                    "description": "The city or locality where the company or organization that owns this iLO subsystem is located.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "CommonName": {
+                    "additionalProperties": false,
+                    "description": "The FQDN of this iLO subsystem.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "Country": {
+                    "additionalProperties": false,
+                    "description": "The two-character country code where the company or organization that owns this Manager subsystem is located. Eg: US",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "IncludeIP": {
+                    "additionalProperties": false,
+                    "description": "Include the IP Addresses in the CSR.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "OrgName": {
+                    "additionalProperties": false,
+                    "description": "The name of the company or organization that owns this iLO subsystem.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "OrgUnit": {
+                    "additionalProperties": false,
+                    "description": "The unit within the company or organization that owns this iLO subsystem.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "State": {
+                    "additionalProperties": false,
+                    "description": "The state where the company or organization that owns this iLO subsystem is located.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeAutomaticCertEnrollment.v1_0_0.HpeAutomaticCertEnrollment",
+    "type": "object"
+}

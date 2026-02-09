@@ -1,0 +1,91 @@
+{
+    "$id": "/redfish/v1/Schemas/DellD4D.v1_0_0.json",
+    "$ref": "#/definitions/DellD4D",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellD4D": {
+            "additionalProperties": false,
+            "description": "The DellD4D schema is the D4D service page providing D4D actions report definitions and reports.",
+            "longDescription": "This resource shall represent the D4D Service page.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "@odata.context": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/context"
+                },
+                "@odata.etag": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/etag"
+                },
+                "@odata.id": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/id"
+                },
+                "@odata.type": {
+                    "$ref": "/redfish/v1/Schemas/odata-v4.json#/definitions/type"
+                },
+                "Description": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Description"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "readonly": true
+                },
+                "HistoricalReports": {
+                    "description": "The value is a URI.  The URI will provide all D4D Reports.",
+                    "longDescription": "The value is a link that will provide all D4D Reports.  The link will provide data in tar or zip content-types.  Zip is set by default.  To change the content type,  the request header shall update key Accept to either application/x-tar or to application/zip",
+                    "type": "string"
+                },
+                "Id": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Id",
+                    "readonly": true
+                },
+                "Name": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Name",
+                    "readonly": true
+                },
+                "Oem": {
+                    "$ref": "/redfish/v1/Schemas/Resource.json#/definitions/Oem",
+                    "description": "The OEM extension property.",
+                    "longDescription": "This property shall contain the OEM extensions.  All values for properties that this object contains shall conform to the Redfish Specification-described requirements."
+                },
+                "ReportDefinitions": {
+                    "$ref": "/redfish/v1/Schemas/MetricReportDefinitionCollection.json#/definitions/MetricReportDefinitionCollection",
+                    "description": "The link to the collection of metric report definitions.",
+                    "longDescription": "This property shall contain a link to a resource collection of type MetricReportDefinitionCollection.",
+                    "readonly": true
+                },
+                "Reports": {
+                    "$ref": "/redfish/v1/Schemas/DellD4DReportCollection.json#/definitions/DellD4DReportCollection",
+                    "description": "The link to the collection of d4d reports.",
+                    "longDescription": "This property shall contain a link to a resource collection of type DellD4DReportCollection.",
+                    "readonly": true
+                }
+            },
+            "required": [
+                "@odata.id",
+                "@odata.type",
+                "Id",
+                "Name"
+            ],
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellD4D.v1_0_0.DellD4D"
+}

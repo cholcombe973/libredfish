@@ -1,0 +1,135 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeEventService",
+    "actions": {
+        "actions": {
+            "HpeEventService.ImportCACertificate": {
+                "additionalProperties": false,
+                "description": "Imports a Trusted CA Certificate",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeEventService.ImportCACertificate"
+                        ],
+                        "type": "string"
+                    },
+                    "Certificate": {
+                        "description": "Contains PEM formatted X509 certificate or PKCS7 certificate chain (Base64 encoded).",
+                        "etag": true,
+                        "format": "text",
+                        "readonly": false,
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "Certificate"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "Importing CA certificates for mutual authentication."
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeEventService object extends the Redfish EventService resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeEventService.ImportCACertificate": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "Certificate@Redfish.AllowableValues": {
+                            "description": "The supported values for the Certificate parameter.",
+                            "etag": true,
+                            "items": {
+                                "description": "Contains PEM formatted X509 certificate (Base64 encoded).",
+                                "etag": true,
+                                "format": "text",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "longDescription": "The supported values for the Certificate parameter.",
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CACertificates": {
+            "description": "The value of this property shall be a reference to a Collection of HpeCertificate resources.",
+            "etag": false,
+            "properties": {
+                "@odata.id": {
+                    "$ref": "Resource.json#/definitions/odataid"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "RequestedMaxEventsToQueueDefault": {
+            "description": "This represents the default number of events the service should queue.",
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "RetireOldEventInMinutesDefault": {
+            "description": "This represents the default number of minutes until an event is expired.",
+            "minimum": 1,
+            "readonly": true,
+            "type": "integer"
+        },
+        "TTLCountDefault": {
+            "description": "The default number of TTLUnits until this listener destination subscription expires.  It may be renewed prior to expire to reset the Time to Live counter.  The value 999999 is reserved to mean a perpetual subscription.",
+            "maximum": 999999,
+            "minimum": 0,
+            "readonly": true,
+            "type": "integer"
+        },
+        "TTLUnitsDefault": {
+            "description": "The default time unit used to measure the subscription time of this listener destination.  This is the units for TTLCount and is used to express the subscription lifetime of the listener destination.",
+            "enum": [
+                "seconds",
+                "minutes",
+                "days"
+            ],
+            "enumDescriptions": {
+                "days": "Time to Live (TTL) in Days",
+                "minutes": "Time to Live (TTL) in Minutes",
+                "seconds": "Time to Live (TTL) in Seconds"
+            },
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeEventService.v2_1_0.HpeEventService",
+    "type": "object"
+}

@@ -1,0 +1,444 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeSecurityService",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2022 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeSecurityService resource describes the properties for management of the security configuration of the BMC.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "CurrentCipher": {
+            "description": "Current cipher in use.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The links array contains the links to other resources that are related to this resource.",
+            "properties": {
+                "CertAuth": {
+                    "description": "The value of this property shall be a reference to a resource of Type HpeCertAuth.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "ESKM": {
+                    "description": "The value of this property shall be a reference to a resource of Type HpeESKM.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "HttpsCert": {
+                    "description": "The value of this property shall be a reference to a resource of Type HpeHttpsCert.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SSO": {
+                    "description": "The value of this property shall be a reference to a resource of Type HpeiLOSSO.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "SecurityDashboard": {
+                    "description": "The value of this property shall be a reference to a resource of Type HpeiLOSecurityDashboard.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "TrustedOSSecurityModules": {
+                    "description": "The value of this property shall be a reference to HPETrustedOSSecurityModules resource.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                },
+                "AutomaticCertificateEnrollment": {
+                    "description": "The value of this property shall be a reference to a resource of Type HpeAutomaticCertEnroll.",
+                    "etag": false,
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "LoginSecurityBanner": {
+            "additionalProperties": false,
+            "description": "This object describes the security banner displayed on the iLO login page and iLO SSH pre-authentication banner.",
+            "etag": true,
+            "properties": {
+                "IsEnabled": {
+                    "description": "Login security banner is enabled or not.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "SecurityMessage": {
+                    "description": "Text message to appear on the iLO login page and iLO SSH pre-authentication banner when login security banner is enabled.",
+                    "etag": true,
+                    "maxLength": 1500,
+                    "readonly": false,
+                    "type": "string"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "TrustedOSSecurity": {
+            "additionalProperties": false,
+            "properties": {
+                "EnableBackgroundScan": {
+                    "description": "Enables or disables background scan of host OS software.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "LastScanResult": {
+                    "description": "Health of the host after the last scan done by Trusted OS Security scan engine.",
+                    "enum": [
+                        "OK",
+                        "Critical",
+                        "Unknown"
+                    ],
+                    "enumDescriptions": {
+                        "OK": "The last Trusted OS Security scan completed without finding any issues.",
+                        "Critical": "The last Trusted OS Security scan completed finding issue(s). Refer to the SL log for details.",
+                        "Unknown": "The health is Unknown because either the scan data is unavailable or scan is not enabled or last scan failed to complete."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastScanTime": {
+                    "description": "The time stamp of the last Trusted OS Security scan.",
+                    "format": "date-time",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "OnIntegrityFailure": {
+                    "description": "Sets the policy for how the Trusted OS Security check handles integrity failures.",
+                    "enum": [
+                        "NoAction",
+                        "Alert",
+                        "PowerOff",
+                        "PowerOffForce",
+                        "Reset",
+                        "ColdBoot",
+                        "ForceNMI"
+                    ],
+                    "enumDescriptions": {
+                        "NoAction": "No action will be taken when a failure is detected.",
+                        "Alert": "Generate an alert when a failure is detected.",
+                        "PowerOff": "Gracefully power system off when a failure is detected.",
+                        "PowerOffForce": "Force system power off when a failure is detected.",
+                        "Reset": "Reset system power off when a failure is detected.",
+                        "ColdBoot": "ColdBoot system power off when a failure is detected.",
+                        "ForceNMI": "ForceNMI system power off when a failure is detected."
+                    },
+                    "readonly": true,
+                    "type": "string"
+                },
+                "ScanEverySeconds": {
+                    "description": "Sets the interval between Trusted OS Security scans in second increments.",
+                    "max": 3600,
+                    "min": 10,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SSHHostKey": {
+            "description": "SSH Host Key identifying the service.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "SecurityState": {
+            "description": "The operational security level of this Manager.",
+            "enum": [
+                "Wipe",
+                "Production",
+                "HighSecurity",
+                "FIPS",
+                "CNSA",
+                "SuiteB",
+                "SynergySecurityMode"
+            ],
+            "enumDescriptions": {
+                "CNSA": "Same as FIPS. Additionally meets the criteria for NSA Commercial National Security Algorithm suite.  Must be in FIPS mode to transition to CNSA.",
+                "FIPS": "Similar to High Security. This mode is intended to meet the FIPS 140-2 level 1 and Common Criteria security requirements. A reset to defaults is required to exit this mode.",
+                "HighSecurity": "Manager is operating in high security mode, requiring extra authentication on host interface(s), and stronger encryption on network interfaces.",
+                "Production": "Manager is operating in a normal security mode.  Default state for new systems.",
+                "SuiteB": "Same as FIPS. Additionally meets the criteria for NSA SuiteB Top Secret installations.  Must be in FIPS mode to transition to SuiteB.",
+                "SynergySecurityMode": "Synergy Security Mode is the mode supported by the Synergy Composer.",
+                "Wipe": "Manager is currently wiping security related content and returning to a lower security mode.  This state will transition automatically when finished."
+            },
+            "etag": true,
+            "longDescription": "The operational security level of this Manager. The valid values for this property are specified through the Redfish.AllowableValues annotation.",
+            "readonly": false,
+            "type": "string"
+        },
+        "SecurityState@Redfish.AllowableValues": {
+            "description": "The supported values for the SecurityState parameter.",
+            "items": {
+                "enum": [
+                    "Wipe",
+                    "Production",
+                    "HighSecurity",
+                    "FIPS",
+                    "CNSA",
+                    "SuiteB"
+                ],
+                "type": "string"
+            },
+            "longDescription": "The supported values for the SecurityState parameter.",
+            "type": "array",
+            "uniqueItems": true
+        },
+        "iLOIDevID": {
+            "additionalProperties": false,
+            "description": "This is a reference to a collection of certificates used for iLO IDevId by this manager.",
+            "etag": true,
+            "properties": {
+                "Certificates": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "This is a reference to a collection of certificates used for iLO IDevId by this manager.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "iLOLDevID": {
+            "additionalProperties": false,
+            "description": "This is a reference to a collection of certificates used for iLO LDevId by this manager.",
+            "etag": true,
+            "properties": {
+                "Certificates": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "This is a reference to a collection of certificates used for iLO LDevId by this manager.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SystemIDevID": {
+            "additionalProperties": false,
+            "description": "This is a reference to a collection of certificates used for System IDevId by this manager.",
+            "etag": true,
+            "properties": {
+                "Certificates": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "This is a reference to a collection of certificates used for System IDevId by this manager.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SystemIAK": {
+            "additionalProperties": false,
+            "description": "This is a reference to a collection of certificates used for System IAK by this manager.",
+            "etag": true,
+            "properties": {
+                "Certificates": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "This is a reference to a collection of certificates used for System IAK by this manager.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "PlatformCert": {
+            "additionalProperties": false,
+            "description": "This is a reference to a collection of certificates used for PlatformCert by this manager.",
+            "etag": true,
+            "properties": {
+                "Certificates": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "This is a reference to a collection of certificates used for PlatformCert by this manager.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "PlatformCertUpdate": {
+            "additionalProperties": false,
+            "description": "This is a reference to a collection of certificates used for PlatformCert Updates by this manager.",
+            "etag": true,
+            "properties": {
+                "Certificates": {
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "description": "This is a reference to a collection of certificates used for PlatformCert Updates by this manager.",
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "TLSVersion": {
+            "additionalProperties": false,
+            "properties": {
+                "TLS1_0": {
+                    "description": "This Indicate whether the TLS 1.0 is Enabled or disabled.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "enumDescriptions": {
+                        "Enabled": "Enabled TLS 1.0.",
+                        "Disabled": "Disabled TLS 1.0."
+                    },
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "TLS1_1": {
+                    "description": "This Indicate whether the TLS 1.1 is Enabled or disabled.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "enumDescriptions": {
+                        "Enabled": "Enabled TLS 1.1.",
+                        "Disabled": "Disabled TLS 1.1."
+                    },
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "TLS1_2": {
+                    "description": "This Indicate whether the TLS 1.2 is Enabled or disabled.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "enumDescriptions": {
+                        "Enabled": "Enabled TLS 1.2.",
+                        "Disabled": "Disabled TLS 1.2."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "TLS1_3": {
+                    "description": "This Indicate whether the TLS 1.3 is Enabled or disabled.",
+                    "enum": [
+                        "Enabled",
+                        "Disabled"
+                    ],
+                    "enumDescriptions": {
+                        "Enabled": "Enabled TLS 1.3.",
+                        "Disabled": "Disabled TLS 1.3."
+                    },
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        }
+    },
+    "readonly": false,
+    "title": "#HpeSecurityService.v2_3_1.HpeSecurityService",
+    "type": "object"
+}

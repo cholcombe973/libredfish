@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellNICStatistics v1_0_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNICStatistics">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellNICStatistics" Abstract="true">
+                <Annotation String="An instance of DellNICStatistics will have the statistics of the NIC, NIC port or partition." Term="OData.Description"/>
+                <Annotation String="An instance of DellNICStatistics will have the statistics of the NIC, NIC port or partition." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/Oem/Dell/DellNICStatistics/{NICStatisticsId}</String>
+                        <String>/redfish/v1/Chassis/{ComputerSystemId}/NetworkAdapters/{NetworkId}/NetworkDeviceFunctions/{NetworkDeviceId}/Oem/Dell/DellNICStatistics/{NICStatisticsId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellNICStatistics.v1_0_0">
+            <EntityType Name="DellNICStatistics" BaseType="DellNICStatistics.DellNICStatistics">
+                <Annotation Term="OData.Description" String="An instance of DellNICStatistics will have the statistics of the NIC, NIC port or partition."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellNICStatistics will have the statistics of the NIC, NIC port or partition."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="RxBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Counts the total number of bytes received, including host and remote management pass through traffic (remote management pass through traffic is applicable to LOMs only)."/>
+                    <Annotation Term="OData.LongDescription" String="Counts the total number of bytes received, including host and remote management pass through traffic (remote management pass through traffic is applicable to LOMs only)."/>
+                    <Annotation Term="Measures.Unit" String="Bytes"/>
+                </Property>
+                <Property Name="RxMutlicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Counts the total number of good multicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Counts the total number of good multicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="RxUnicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Counts the total number of good unicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Counts the total number of good unicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="TxBytes" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Counts the total number of bytes transmitted, including host and remote management pass through traffic (remote management pass through traffic is applicable to LOMs only)."/>
+                    <Annotation Term="OData.LongDescription" String="Counts the total number of bytes transmitted, including host and remote management pass through traffic (remote management pass through traffic is applicable to LOMs only)."/>
+                    <Annotation Term="Measures.Unit" String="Bytes"/>
+                </Property>
+                <Property Name="TxMutlicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Counts the total number of good multicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Counts the total number of good multicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+                <Property Name="TxUnicastPackets" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="Counts the total number of good unicast packets transmitted."/>
+                    <Annotation Term="OData.LongDescription" String="Counts the total number of good unicast packets transmitted."/>
+                    <Annotation Term="Measures.Unit" String="Packets"/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

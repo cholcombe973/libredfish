@@ -1,0 +1,171 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoManagerNetworkProtocol.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "AddressType": {
+            "enum": [
+                "Multicast",
+                "Broadcast"
+            ],
+            "enumDescriptions": {
+                "Broadcast": "A limited broadcast SLP discovery.",
+                "Multicast": "Multicast SLP discovery."
+            },
+            "type": "string"
+        },
+        "LenovoManagerNetworkProtocolProperties": {
+            "additionalProperties": true,
+            "description": "These properties shall be refered in /schemas/v1/ManagerNetworkProtocol.v1_0_2.json#/definitions/ManagerNetworkProtocol/properties/Oem.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "CimOverHTTP": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.v1_0_0.json#/definitions/Protocol",
+                    "description": "Settings for this Manager's CIM over HTTP protocol support.",
+                    "longDescription": "This object shall contain information for the CIM over HTTP protocol settings for this manager. The default value of the Port property should be 5988 for compatibility with established client implementations."
+                },
+                "CimOverHTTPS": {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/ManagerNetworkProtocol.v1_0_0.json#/definitions/Protocol",
+                    "description": "Settings for this Manager's CIM over HTTPS protocol support.",
+                    "longDescription": "This object shall contain information for the CIM over HTTPS protocol settings for this manager. The default value of the Port property should be 5989 for compatibility with established client implementations."
+                },
+                "DNS": {
+                    "$ref": "/redfish/v1/metadata/LenovoDNS.json#/definitions/LenovoDNS",
+                    "description": "A reference to the DNS properties.",
+                    "longDescription": "The value of this property shall be a reference to the resource that represents the power characteristics of this manager and shall be of type LenovoDNS.",
+                    "readonly": true
+                },
+                "LDAPClient": {
+                    "$ref": "/redfish/v1/metadata/LenovoLDAPClient.json#/definitions/LenovoLDAPClient",
+                    "description": "Settings for this Manager's LDAP Client support.",
+                    "longDescription": "Configure the Lightweight Directory Access Protocol (LDAP) Client settings for this manager.",
+                    "readonly": true
+                },
+                "OpenPorts": {
+                    "description": "Currently open ports.",
+                    "items": {
+                        "type": "number"
+                    },
+                    "longDescription": "The value of this property shall indicate currently open port numbers.",
+                    "type": "array"
+                },
+                "SLP": {
+                    "$ref": "#/definitions/SLProtocol",
+                    "description": "Settings for this Manager's SLP support.",
+                    "longDescription": "This object shall contain information for the Service Location Protocol (SLP) settings for this manager. The default value of the Port property should be 1847 for compatibility with established client implementations."
+                },
+                "SMTPClient": {
+                    "$ref": "/redfish/v1/metadata/LenovoSMTPClient.json#/definitions/LenovoSMTPClient",
+                    "description": "Settings for this Manager's SMTP Client support.",
+                    "longDescription": "Configure the Simple Mail Transfer Protocol (SMTP) Client settings for this manager.",
+                    "readonly": true
+                },
+                "SNMP": {
+                    "$ref": "/redfish/v1/metadata/LenovoSNMPProtocol.json#/definitions/LenovoSNMPProtocol",
+                    "description": "Settings for this Manager's SNMP support.",
+                    "longDescription": "Configure the Simple Network Management Protocol (SNMP) settings for this manager.",
+                    "readonly": true
+                },
+                "WebOverHTTPS": {
+                    "$ref": "#/definitions/WebOverHTTPS",
+                    "description": "Settings for this Manager's WEB over HTTPS protocol support.",
+                    "longDescription": "This object shall contain information for the WEB over HTTPS protocol settings for this manager.",
+                    "readonly": false
+                }
+            },
+            "type": "object"
+        },
+        "SLProtocol": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AddressType": {
+                    "$ref": "#/definitions/AddressType",
+                    "description": "Indicate whether the SLP in the hosting System listens for and responds to a broadcast or a multicast address. Modification of the AddressType property by a client shall be supported.",
+                    "longDescription": "In order for the address type to transition from Broadcast to Multicast, the MulticastAddress property must be configured with a valid multicast IP address."
+                },
+                "MulticastAddress": {
+                    "description": "Indicates the multicast address to be used for SLP when the AddressType value equals Multicast. The property shall contain a valid IP address.",
+                    "longDescription": "The default value for the MulticastAddress property shall be 239.255.255.253 and may be updated by the client with a valid multicast address.",
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "Port": {
+                    "description": "Indicates the protocol port.",
+                    "longDescription": "The value of this property shall contain the port assigned for the protocol.",
+                    "minimum": 0,
+                    "type": [
+                        "number",
+                        "null"
+                    ]
+                },
+                "ProtocolEnabled": {
+                    "description": "Indicates if the protocol is enabled or disabled",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol. The value shall be true if enabled and false if disabled.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "WebOverHTTPS": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "ProtocolEnabled": {
+                    "description": "Indicates if the protocol is enabled or disabled",
+                    "longDescription": "The value of this property shall contain the enabled status of the protocol. The value shall be true if enabled and false if disabled.",
+                    "type": [
+                        "boolean",
+                        "null"
+                    ]
+                }
+            },
+            "type": "object"
+        }
+    },
+    "title": "#LenovoManagerNetworkProtocol.v1_0_0"
+}

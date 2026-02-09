@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Lenovo Redfish Schema:  LenovoPowerSubsystem  v1.0.0                                 -->
+<!--#                                                                                      -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Measures.V1.xml">
+    <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+    <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+    <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/Resource_v1.xml">
+      <edmx:Include Namespace="Resource"/>
+    <edmx:Include Namespace="Resource.v1_0_0"/>
+  </edmx:Reference>
+  
+  <edmx:DataServices>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPowerSubsystem">
+      <ComplexType Name="LenovoPowerSubsystem" Abstract="true">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for the LenovoPowerSubsystem resource."/>
+      </ComplexType>
+    </Schema>
+    
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="LenovoPowerSubsystem.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="Lenovo"/>
+      
+      <ComplexType Name="LenovoPowerSubsystem" BaseType="LenovoPowerSubsystem.LenovoPowerSubsystem">
+        <Annotation Term="OData.AdditionalProperties" Bool="true"/>
+        <Annotation Term="OData.Description" String="This is the schema definition for Oem Lenovo extended Power subsystem resource."/>
+        <Property Name="PowerRestorePolicy" Type="LenovoPowerSubsystem.v1_0_0.PowerRestorePolicy">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/ReadWrite"/>
+          <Annotation Term="OData.Description" String="This indicates current power policy of the system."/>
+          <Annotation Term="OData.LongDescription" String="The power policy specifies that the system's power behavior after AC returns."/>
+        </Property>
+        <Property Name="WakeOnLANEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether Wake on LAN is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether Wake on LAN is enabled."/>
+        </Property>
+        <Property Name="PowerOnPermissionEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether power on permission is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether power on permission is enabled."/>
+        </Property>
+        <Property Name="LocalPowerControlEnabled" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether local power control is enabled."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether local power control is enabled."/>
+        </Property>
+        <Property Name="RandomDelay" Type="Edm.Boolean">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permissions/Read"/>
+          <Annotation Term="OData.Description" String="This indicates whether random delay before power on."/>
+          <Annotation Term="OData.LongDescription" String="The value of this property shall be a boolean indicating whether there is a random delay between 1 and 15 seconds for power on."/>
+        </Property>
+      </ComplexType>
+      
+      <EnumType Name="PowerRestorePolicy">
+        <Member Name="AlwaysOff">
+          <Annotation Term="OData.Description" String="system stays powered off after AC/mains returns"/>
+        </Member>
+        <Member Name="Restore">
+          <Annotation Term="OData.Description" String="after AC returns, power is restored to the state that was in effect when AC/mains was lost"/>
+        </Member>
+        <Member Name="AlwaysOn">
+          <Annotation Term="OData.Description" String="system always powers on after AC/mains returns"/>
+        </Member>
+        <Member Name="Unknown">
+          <Annotation Term="OData.Description" String="unknown"/>
+        </Member>
+      </EnumType>
+
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>
+

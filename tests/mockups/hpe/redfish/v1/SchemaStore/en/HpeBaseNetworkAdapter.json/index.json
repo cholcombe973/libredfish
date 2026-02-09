@@ -1,0 +1,257 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeBaseNetworkAdapter",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeBaseNetworkAdapter resource describes an Ethernet Adapter and its ports.  Clients should use the Redfish NetworkAdapter and NetworkInterface resources when available instead of this.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "FcPorts": {
+            "description": "Information about the Fiber Channel Ports in the server.",
+            "etag": true,
+            "items": {
+                "additionalProperties": false,
+                "properties": {
+                    "PortNumber": {
+                        "description": "Port Number.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "WWNN": {
+                        "description": "World Wide Node Name.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "WWPN": {
+                        "description": "World Wide Port Name.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Firmware": {
+            "$ref": "Resource.json#/definitions/CurrentFirmwareVersion"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "description": "This is the schema definition for the System NIC. It represents the properties and has links associated with System NIC.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Location": {
+            "description": "Location of the device.",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "PartNumber": {
+            "description": "The device part number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "PhysicalPorts": {
+            "items": {
+                "additionalProperties": false,
+                "description": "Information about the integrated and add-in NICs in the server.",
+                "etag": true,
+                "properties": {
+                    "FullDuplex": {
+                        "description": "Full-duplex data transmission means that data can be transmitted in both directions on a signal carrier at the same time.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "IPv4Addresses": {
+                        "description": "This array of objects is used to represent the IPv4 connection characteristics for this interface.",
+                        "etag": true,
+                        "items": {
+                            "additionalProperties": false,
+                            "description": "This object describes the IPv4 portions for this NIC.",
+                            "etag": true,
+                            "properties": {
+                                "Address": {
+                                    "description": "This is the IPv4 Address.",
+                                    "etag": true,
+                                    "pattern": "^(?:[0-9]{1,3}\\.){3}[0-9]{1,3}$",
+                                    "readonly": true,
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "IPv6Addresses": {
+                        "description": "This array of objects enumerates all of the currently assigned IPv6 addresses on this interface.",
+                        "etag": true,
+                        "items": {
+                            "additionalProperties": false,
+                            "description": "This object describes a single IPv6 address currently assigned on this interface.",
+                            "etag": true,
+                            "properties": {
+                                "Address": {
+                                    "description": "This is the IPv6 Address.",
+                                    "etag": true,
+                                    "format": "ipv6",
+                                    "readonly": true,
+                                    "type": [
+                                        "string",
+                                        "null"
+                                    ]
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "readonly": true,
+                        "type": "array"
+                    },
+                    "LinkStatus": {
+                        "description": "The link status of this interface (port).",
+                        "enum": [
+                            "LinkUp",
+                            "NoLink",
+                            "LinkDown",
+                            null
+                        ],
+                        "enumDescription": {
+                            "LinkDown": "There is no link on this interface, but the interface is connected.",
+                            "LinkUp": "The link is available for communication on this interface.",
+                            "NoLink": "There is no link or connection detected on this interface."
+                        },
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "MacAddress": {
+                        "description": "The port MAC address.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Name": {
+                        "description": "The configured network port name.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    },
+                    "Oem": {
+                        "additionalProperties": true,
+                        "properties": {
+                            "Hpe": {
+                                "$ref": "HpeBaseNetworkAdapterExt.json#"
+                            }
+                        },
+                        "type": "object"
+                    },
+                    "SpeedMbps": {
+                        "description": "An estimate of the interface's current bandwidth in Megabits per second.  For interfaces which do not vary in bandwidth or for those where no accurate estimation can be made, this object should contain the nominal bandwidth.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    },
+                    "UEFIDevicePath": {
+                        "description": "UEFIDevice Path for correlation purposes",
+                        "etag": true,
+                        "readonly": true,
+                        "type": [
+                            "string",
+                            "null"
+                        ]
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "type": "array"
+        },
+        "SerialNumber": {
+            "description": "The device serial number.",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "Status": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "StructuredName": {
+            "description": "PCI device structured name in UTF-8 format (e.g. 'NIC.LOM.1.1' - see PCIDevices in /rest/v1/Systems/x/PCIDevices - this comes from SMBIOS",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "UEFIDevicePath": {
+            "description": "UEFIDevice Path for correlation purposes",
+            "etag": true,
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        }
+    },
+    "readonly": true,
+    "title": "#HpeBaseNetworkAdapter.v2_0_0.HpeBaseNetworkAdapter",
+    "type": "object"
+}

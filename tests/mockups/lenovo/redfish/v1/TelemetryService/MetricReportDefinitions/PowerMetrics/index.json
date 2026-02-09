@@ -1,0 +1,43 @@
+{
+    "@odata.id": "/redfish/v1/TelemetryService/MetricReportDefinitions/PowerMetrics",
+    "@odata.type": "#MetricReportDefinition.v1_4_1.MetricReportDefinition",
+    "MetricReport": {
+        "@odata.id": "/redfish/v1/TelemetryService/MetricReports/PowerMetrics"
+    },
+    "AppendLimit": 25920,
+    "Wildcards": [
+        {
+            "Name": "PWild",
+            "Values": [
+                "0",
+                "1",
+                "2"
+            ]
+        }
+    ],
+    "Description": "A set of metrics that are collected into a metric report.",
+    "@odata.context": "/redfish/v1/$metadata#MetricReportDefinition.MetricReportDefinition",
+    "Metrics": [
+        {
+            "MetricProperties": [
+                "/redfish/v1/Chassis/1/Power#/PowerControl/{PWild}/PowerMetrics/MaxConsumedWatts",
+                "/redfish/v1/Chassis/1/Power#/PowerControl/{PWild}/PowerMetrics/AverageConsumedWatts",
+                "/redfish/v1/Chassis/1/Power#/PowerControl/{PWild}/PowerMetrics/MinConsumedWatts"
+            ],
+            "CollectionDuration": "PT30S",
+            "CollectionTimeScope": "Interval"
+        }
+    ],
+    "ReportTimespan": "PT24H",
+    "ReportActions": [
+        "LogToMetricReportsCollection"
+    ],
+    "ReportUpdates": "AppendWrapsWhenFull",
+    "MetricReportDefinitionType": "OnRequest",
+    "@odata.etag": "\"858f84793b7827309c0\"",
+    "Id": "PowerMetrics",
+    "Name": "PowerMetrics",
+    "Status": {
+        "State": "Enabled"
+    }
+}

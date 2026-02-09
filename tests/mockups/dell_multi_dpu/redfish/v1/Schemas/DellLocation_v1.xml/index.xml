@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellLocation v1_1_0-->
+<!--# -->
+<!--# Copyright 2022-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+        <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        <edmx:Include Namespace="Validation.v1_0_0" Alias="Validation"/>
+    </edmx:Reference>
+
+    <edmx:DataServices>
+        <Schema Namespace="DellLocation" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellLocation" Abstract="true">
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Annotation Term="OData.Description" String="Oem data related to the location details."/>
+                <Annotation Term="OData.LongDescription" String="Oem data related to the location details."/>
+            </ComplexType>
+            <EnumType Name="ExtendedReference">
+              <Member Name="Front">
+                <Annotation Term="OData.Description" String="Location of Backplane is Front."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Front Backplane."/>
+              </Member>
+              <Member Name="FrontRight">
+                <Annotation Term="OData.Description" String="Location of Backplane is Front Right."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Front Right."/>
+              </Member>
+              <Member Name="FrontCenter">
+                <Annotation Term="OData.Description" String="Location of Backplane is Front Center."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Front Center."/>
+              </Member>
+              <Member Name="FrontLeft">
+                <Annotation Term="OData.Description" String="Location of Backplane is Front Left."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Front Left."/>
+              </Member>
+              <Member Name="FrontTop">
+                <Annotation Term="OData.Description" String="Location of Backplane is Front Top."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Front Top."/>
+              </Member>
+              <Member Name="FrontBottom">
+                <Annotation Term="OData.Description" String="Location of Backplane is Front Bottom."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Front Bottom."/>
+              </Member>
+              <Member Name="Middle">
+                <Annotation Term="OData.Description" String="Location of Backplane is Middle."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Middle."/>
+              </Member>
+              <Member Name="MiddleRight">
+                <Annotation Term="OData.Description" String="Location of Backplane is Middle Right."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Middle Right."/>
+              </Member>
+              <Member Name="MiddleCenter">
+                <Annotation Term="OData.Description" String="Location of Backplane is Middle Center."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Middle Center."/>
+              </Member>
+              <Member Name="MiddleLeft">
+                <Annotation Term="OData.Description" String="Location of Backplane is Middle Left."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Middle Left."/>
+              </Member>
+              <Member Name="Rear">
+                <Annotation Term="OData.Description" String="Location of Backplane is Rear."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Rear."/>
+              </Member>
+              <Member Name="RearRight">
+                <Annotation Term="OData.Description" String="Location of Backplane is Rear Right."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Rear Right."/>
+              </Member>
+              <Member Name="RearCenter">
+                <Annotation Term="OData.Description" String="Location of Backplane is Rear Center."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Rear Center."/>
+              </Member>
+              <Member Name="RearLeft">
+                <Annotation Term="OData.Description" String="Location of Backplane is Rear Left."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Rear Left."/>
+              </Member>
+
+             <Member Name="FanSide">
+                 <Annotation Term="OData.Description" String="Location of Backplane is Fan Side."/>
+                 <Annotation Term="OData.LongDescription" String="Location of Backplane is Fan Side."/>
+                 <Annotation Term="Redfish.Revisions">
+                   <Collection>
+                     <Record>
+                       <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                       <PropertyValue Property="Version" String="v_1_2_0"/>
+                      </Record>
+                   </Collection>
+                  </Annotation>
+               </Member>
+
+            <Member Name="PortSide">
+                <Annotation Term="OData.Description" String="Location of Backplane is Port Side."/>
+                <Annotation Term="OData.LongDescription" String="Location of Backplane is Port Side."/>
+                <Annotation Term="Redfish.Revisions">
+                   <Collection>
+                     <Record>
+                       <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                       <PropertyValue Property="Version" String="v_1_2_0"/>
+                     </Record>
+                   </Collection>
+                 </Annotation>
+            </Member>
+
+            </EnumType>
+        </Schema>
+
+        <Schema Namespace="DellLocation.v1_0_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <ComplexType Name="DellLocation" BaseType="DellLocation.DellLocation">
+                <Property Name="PartLocation" Type="DellLocation.v1_0_0.PartLocation">>
+                    <Annotation Term="OData.Description" String="Oem data related to the DellLocation."/>
+                    <Annotation Term="OData.LongDescription" String="Oem data related to the DellLocation."/>
+                </Property>
+            </ComplexType>
+            <ComplexType Name="PartLocation">
+                <Property Name="ExtendedReference" Type="DellLocation.ExtendedReference">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the extended reference info."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the extended reference info."/>
+                </Property>
+            </ComplexType>
+        </Schema>
+        <Schema Namespace="DellLocation.v1_1_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <Annotation Term="OData.Description" String="This version was created to correct the Property name to PartLocation."/>
+        </Schema>
+
+        <Schema Namespace="DellLocation.v1_2_0" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <Annotation String="Dell" Term="Redfish.OwningEntity"/>
+            <Annotation Term="OData.Description" String="This version was created to add new location types fanside and portside"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

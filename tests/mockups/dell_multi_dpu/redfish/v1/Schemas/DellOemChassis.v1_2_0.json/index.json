@@ -1,0 +1,275 @@
+{
+    "$id": "/redfish/v1/Schemas/DellOemChassis.v1_2_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#DellOemChassis.ExtendedReset": {
+                    "$ref": "#/definitions/ExtendedReset"
+                },
+                "#DellOemChassis.ResetFilterLife": {
+                    "$ref": "#/definitions/ResetFilterLife"
+                }
+            },
+            "type": "object"
+        },
+        "BezelAirFilter": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "FilterChangeIntervalInMonths": {
+                    "description": "Specifies the air filter count down mode in months.",
+                    "longDescription": "This property shall contain the air filter count down mode in months.",
+                    "maximum": 36,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "FilterCheckInterval": {
+                    "$ref": "#/definitions/FilterCheckIntervalDay",
+                    "description": "Active mode starting day.",
+                    "longDescription": "This property shall indicate the active mode starting day.",
+                    "readonly": false
+                },
+                "FilterCheckIntervalTimeInHours": {
+                    "description": "Active mode starting hour.",
+                    "longDescription": "This property shall indicate the active mode starting hour.",
+                    "maximum": 23,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "FilterLifeRemainingInDays": {
+                    "description": "Specifies the remaining life of the filter in days.",
+                    "longDescription": "This property shall contain the remaining life of the filter in days.",
+                    "maximum": 864,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "FilterMonitorMethod": {
+                    "$ref": "#/definitions/FilterMonitorMethod",
+                    "description": "Air filter monitoring modes.",
+                    "longDescription": "This property shall indicate the air filter monitoring mode.",
+                    "readonly": false
+                },
+                "Sensors": {
+                    "$ref": "/redfish/v1/Schemas/DellSensor.json#/definitions/DellSensor",
+                    "description": "A resource representation of DellSensor.",
+                    "longDescription": "A resource representation of DellSensor.",
+                    "readonly": true,
+                    "versionAdded": "v1_1_0"
+                }
+            },
+            "type": "object"
+        },
+        "DellOemChassis": {
+            "additionalProperties": false,
+            "description": "Oem data related to DellOemChassis.",
+            "longDescription": "Oem data related to DellOemChassis.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "BezelAirFilter": {
+                    "$ref": "#/definitions/BezelAirFilter",
+                    "description": "Bezel Air Filter related properties.",
+                    "longDescription": "This property shall contain Bezel Air Filter related properties."
+                },
+                "DellChassis": {
+                    "$ref": "/redfish/v1/Schemas/DellChassis.json#/definitions/DellChassis",
+                    "autoExpand": true,
+                    "description": "A resource representation of DellChassis.",
+                    "longDescription": "A resource representation of DellChassis.",
+                    "readonly": true
+                },
+                "DellEnclosure": {
+                    "$ref": "/redfish/v1/Schemas/DellEnclosure.json#/definitions/DellEnclosure",
+                    "autoExpand": true,
+                    "description": "A resource representation of DellEnclosure.",
+                    "longDescription": "A resource representation of DellEnclosure.",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        },
+        "ExtendedReset": {
+            "additionalProperties": false,
+            "description": "This action performs an extended chassis reset action.",
+            "longDescription": "This action performs a chassis reset. It let's the user set the targeted power state after the reset is completed.",
+            "parameters": {
+                "FinalPowerState": {
+                    "$ref": "#/definitions/FinalPowerState",
+                    "description": "This parameter shall contain the final power state of the system. In case the parameter is not provided, the system will be set to the power 'Off' state by default.",
+                    "longDescription": "This parameter shall contain the final power state of the system."
+                },
+                "ResetType": {
+                    "$ref": "#/definitions/ResetType",
+                    "description": "The type of reset.",
+                    "longDescription": "This parameter shall contain the type of reset.",
+                    "requiredParameter": true
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object",
+            "versionAdded": "v1_2_0"
+        },
+        "FilterCheckIntervalDay": {
+            "enum": [
+                "Sunday",
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday"
+            ],
+            "enumDescriptions": {
+                "Friday": "Friday",
+                "Monday": "Monday",
+                "Saturday": "Saturday",
+                "Sunday": "Sunday",
+                "Thursday": "Thursday",
+                "Tuesday": "Tuesday",
+                "Wednesday": "Wednesday"
+            },
+            "type": "string"
+        },
+        "FilterMonitorMethod": {
+            "enum": [
+                "CountDownMode",
+                "ActiveSensingMode"
+            ],
+            "enumDescriptions": {
+                "ActiveSensingMode": "Air filter monitoring mode is Active Sensing mode.",
+                "CountDownMode": "Air filter monitoring mode is CountDown mode."
+            },
+            "type": "string"
+        },
+        "FinalPowerState": {
+            "enum": [
+                "On",
+                "Off"
+            ],
+            "enumDescriptions": {
+                "Off": "Turn off the unit.",
+                "On": "Turn on the unit."
+            },
+            "enumLongDescriptions": {
+                "Off": "This value shall indicate the resource will transition to a power off state. The transition will start immediately. Upon successful completion, the PowerState property, if supported, shall contain the value `Off`.",
+                "On": "This value shall indicate the resource will transition to a power on state. Upon successful completion, the PowerState property, if supported, shall contain the value `On`."
+            },
+            "type": "string"
+        },
+        "ResetFilterLife": {
+            "additionalProperties": false,
+            "description": "This action is used to reset Bezel air filter.",
+            "longDescription": "This action shall perform reset of Bezel air filter.",
+            "parameters": {},
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "ResetType": {
+            "enum": [
+                "PowerCycle"
+            ],
+            "enumDescriptions": {
+                "PowerCycle": "Power cycle the unit. Behaves like a full power removal, followed by a power restore to the resource."
+            },
+            "enumLongDescriptions": {
+                "PowerCycle": "This value shall indicate the resource will perform a power cycle. Resource needs to in power off state to perform full power removal follwed by power restore to the resource."
+            },
+            "type": "string"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellOemChassis.v1_2_0"
+}

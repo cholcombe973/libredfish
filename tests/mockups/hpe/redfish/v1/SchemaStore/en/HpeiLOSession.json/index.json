@@ -1,0 +1,179 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOSession",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOSession object extends the Redfish Session resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AccessTime": {
+            "description": "User session last-access time",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "LoginTime": {
+            "description": "User session login time",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "MySession": {
+            "description": "Indicates whether this is a session I own.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "Privileges": {
+            "additionalProperties": false,
+            "description": "Account privileges available for the user",
+            "properties": {
+                "HostBIOSConfigPriv": {
+                    "description": "This privilege enables a user to configure Host Bios Settings.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "HostNICConfigPriv": {
+                    "description": "This privilege enables a user to configure Host NIC Settings.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "HostStorageConfigPriv": {
+                    "description": "This privilege enables a user to configure Host Storage Settings.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "LoginPriv": {
+                    "description": "This privilege enables a user to log in to the management processor. All local accounts have the login privilege. This privilege is added automatically if it is not specified.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "RemoteConsolePriv": {
+                    "description": "This privilege enables a user to remotely access the host system Remote Console, including video, keyboard, and mouse control.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "SystemRecoveryConfigPriv": {
+                    "description": "This privilege enables a user to manage the critical recovery firmware images on the iLO Repository.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "UserConfigPriv": {
+                    "description": "This privilege enables a user to add, edit, and delete local management processor user accounts. A user with this privilege can change privileges for all users.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "VirtualMediaPriv": {
+                    "description": "This privilege enables a user to use the Virtual Media feature on the host system.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "VirtualPowerAndResetPriv": {
+                    "description": "This privilege enables a user to power-cycle or reset the host system. These activities interrupt system availability. A user with this privilege can diagnose the system by using the Generate NMI to System button.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                },
+                "iLOConfigPriv": {
+                    "description": "This privilege enables a user to configure most management processor settings, including security settings, and to remotely update the management processor firmware. This privilege does not enable local user account administration.",
+                    "etag": true,
+                    "readonly": true,
+                    "type": "boolean"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "UserAccount": {
+            "description": "Login details of the user",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UserDistinguishedName": {
+            "description": "LDAP user is identified by its distinguished name (DN).",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UserExpires": {
+            "description": "User session expire time",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "UserIP": {
+            "description": "IP address of the user",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UserTag": {
+            "description": "Session source",
+            "enum": [
+                "Web UI",
+                "RBSU",
+                "Remote Console",
+                "SSH",
+                "IPMI/RMCP",
+                "SM-CLP",
+                "RIBCL",
+                "RESTHost",
+                "RIBCLHost",
+                "WSMgmt",
+                "Telnet",
+                "Federation",
+                "USBFrontPort",
+                "REST",
+                "Unknown"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "UserType": {
+            "description": "User type",
+            "enum": [
+                "Local",
+                "Directory",
+                "Single Sign On",
+                "Kerberos",
+                "Trusted Key",
+                "Security Override",
+                "System",
+                "Federation"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeiLOSession.v2_1_0.HpeiLOSession",
+    "type": "object"
+}

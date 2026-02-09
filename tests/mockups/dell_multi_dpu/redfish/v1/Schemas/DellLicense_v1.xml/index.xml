@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellLicense v1_2_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="/redfish/v1/Schemas/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicense">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellLicense" Abstract="true">
+                <Annotation String="An instance of DellLicense represents a feature license installed on a system." Term="OData.Description"/>
+                <Annotation String="An instance of DellLicense represents a feature license installed on a system." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Managers/{ManagerId}/Oem/Dell/DellLicenses/{LicenseId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="LicensePrimaryStatus">
+                <Member Name="Critical">
+                    <Annotation String="Critical" Term="OData.Description"/>
+                    <Annotation String="Critical" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="OK">
+                    <Annotation String="OK" Term="OData.Description"/>
+                    <Annotation String="OK" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Unknown">
+                    <Annotation String="Unknown" Term="OData.Description"/>
+                    <Annotation String="Unknown" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Warning">
+                    <Annotation String="Warning" Term="OData.Description"/>
+                    <Annotation String="Warning" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="LicenseType">
+                <Member Name="Evaluation">
+                    <Annotation String="Evaluation" Term="OData.Description"/>
+                    <Annotation String="Evaluation" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Leased">
+                    <Annotation String="Leased" Term="OData.Description"/>
+                    <Annotation String="Leased" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="None">
+                    <Annotation String="None" Term="OData.Description"/>
+                    <Annotation String="None" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_2_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Perpetual">
+                    <Annotation String="Perpetual" Term="OData.Description"/>
+                    <Annotation String="Perpetual" Term="OData.LongDescription"/>
+                </Member>
+                <Member Name="Site">
+                    <Annotation String="Site" Term="OData.Description"/>
+                    <Annotation String="Site" Term="OData.LongDescription"/>
+                </Member>
+            </EnumType>
+            <EnumType Name="LicenseAttributes">
+                <Member Name="Bound">
+                    <Annotation String="Bound" Term="OData.Description"/>
+                    <Annotation String="Bound" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Bound_ValidSubcomponent">
+                    <Annotation String="Bound_Valid Subcomponent" Term="OData.Description"/>
+                    <Annotation String="Bound_Valid Subcomponent" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Unbound">
+                    <Annotation String="Unbound" Term="OData.Description"/>
+                    <Annotation String="Unbound" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Upgraded">
+                    <Annotation String="Upgraded" Term="OData.Description"/>
+                    <Annotation String="Upgraded" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Upgraded_ValidSubcomponent">
+                    <Annotation String="Upgraded_Valid Subcomponent" Term="OData.Description"/>
+                    <Annotation String="Upgraded_Valid Subcomponent" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="ValidSubcomponent">
+                    <Annotation String="Valid Subcomponent" Term="OData.Description"/>
+                    <Annotation String="Valid Subcomponent" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicense.v1_0_0">
+            <EntityType Name="DellLicense" BaseType="DellLicense.DellLicense">
+                <Annotation Term="OData.Description" String="An instance of DellLicense represents a feature license installed on a system."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellLicense represents a feature license installed on a system."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="AssignedDevices" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property array shall have values set to FQDDs of devices that have been assigned to this license."/>
+                    <Annotation Term="OData.LongDescription" String="The property array shall have values set to FQDDs of devices that have been assigned to this license."/>
+                </Property>
+                <Property Name="EntitlementID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall have the value of the entitlement ID of the license which is a license unique ID."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall have the value of the entitlement ID of the license which is a license unique ID."/>
+                </Property>
+                <Property Name="EvalLicenseTimeRemainingDays" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the license period remaining in days and is counted only during the uptime of the system. The property shall be implemented, if the LicenseType property has value 3(Evaluation)."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the license period remaining in days and is counted only during the uptime of the system. The property shall be implemented, if the LicenseType property has value 3(Evaluation)."/>
+                    <Annotation Term="Measures.Unit" String="Days"/>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="LicenseDescription" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the licenses solution set in multiple languages."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the licenses solution set in multiple languages."/>
+                </Property>
+                <Property Name="LicenseDurationDays" Type="Edm.Int64">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the license period in days, and is counted only during the uptime of the system. Note: LicenseDuration will be 0 for Permanent and Perpetual license since these licenses are not time bound."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the license period in days, and is counted only during the uptime of the system. Note: LicenseDuration will be 0 for Permanent and Perpetual license since these licenses are not time bound."/>
+                    <Annotation Term="Measures.Unit" String="Days"/>
+                </Property>
+                <Property Name="LicenseEndDate" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the end date of the license. The property shall be implemented, if the LicenseType property has value 2 (Leased) and 4 (Site)."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the end date of the license. The property shall be implemented, if the LicenseType property has value 2 (Leased) and 4 (Site)."/>
+                </Property>
+                <Property Name="LicenseInstallDate" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the date on which the license was installed."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the date on which the license was installed."/>
+                </Property>
+                <Property Name="LicensePrimaryStatus" Type="DellLicense.LicensePrimaryStatus">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the license status."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the license status."/>
+                </Property>
+                <Property Name="LicenseSoldDate" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the date the factory created the license."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the date the factory created the license."/>
+                </Property>
+                <Property Name="LicenseStartDate" Type="Edm.DateTimeOffset">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the license start date."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the license start date."/>
+                </Property>
+                <Property Name="LicenseType" Type="DellLicense.LicenseType">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="The property shall represent the license type."/>
+                    <Annotation Term="OData.LongDescription" String="The property shall represent the license type."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicense.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add DeviceFamilyDeviceID, DeviceFamilySubsystemID, DeviceFamilySubsystemVendorID, DeviceFamilyVendorID, LicenseAttributes, LicenseStatusMessage, LicenseStatusMessageID properties."/>
+            <EntityType Name="DellLicense" BaseType="DellLicense.v1_0_0.DellLicense">
+                <Property Name="DeviceFamilyDeviceID" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the device IDs of PCI devices supported by this license."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the device IDs of PCI devices supported by this license."/>
+                </Property>
+                <Property Name="DeviceFamilySubsystemID" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the subsystem IDs of PCI devices supported by this license."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the subsystem IDs of PCI devices supported by this license."/>
+                </Property>
+                <Property Name="DeviceFamilySubsystemVendorID" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the subsystem vendor IDs of PCI devices supported by this license."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the subsystem vendor IDs of PCI devices supported by this license."/>
+                </Property>
+                <Property Name="DeviceFamilyVendorID" Type="Collection(Edm.String)">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the vendor IDs of PCI devices supported by this license."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the vendor IDs of PCI devices supported by this license."/>
+                </Property>
+                <Property Name="LicenseAttributes" Type="DellLicense.LicenseAttributes">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents bound-state to a device."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents bound-state to a device."/>
+                </Property>
+                <Property Name="LicenseStatusMessage" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property has the message string associated with the license status. If the property has a NULL value, no message is associated with the license status."/>
+                    <Annotation Term="OData.LongDescription" String="This property has the message string associated with the license status. If the property has a NULL value, no message is associated with the license status."/>
+                </Property>
+                <Property Name="LicenseStatusMessageID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the message ID associated with the license status. If the property has a NULL value, no message is associated with the license status."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the message ID associated with the license status. If the property has a NULL value, no message is associated with the license status."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellLicense.v1_2_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to update the allowable value None for LicenseType property."/>
+            <EntityType Name="DellLicense" BaseType="DellLicense.v1_1_0.DellLicense">
+</EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

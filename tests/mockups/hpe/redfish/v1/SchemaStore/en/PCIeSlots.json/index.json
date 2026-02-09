@@ -1,0 +1,113 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "PCIeSlots",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The PCIeSlots schema describes PCIe slot properties.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Description": {
+            "$ref": "Resource.json#/definitions/Description",
+            "readonly": true
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id",
+            "readonly": true
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name",
+            "readonly": true
+        },
+        "Slots": {
+            "description": "An array of PCI Slot information.",
+            "longDescription": "This array shall contain an entry for each PCIe slot, including empty slots (with no device or card installed).",
+            "items": {
+                "properties": {
+                    "HotPluggable": {
+                        "description": "An indication of whether this PCIe slot supports hotplug.",
+                        "longDescription": "This property shall contain indicating whether this PCIe slot supports hotplug.",
+                        "readonly": true,
+                        "type": [
+                            "boolean",
+                            "null"
+                        ]
+                    },
+                    "Lanes": {
+                        "description": "The number of PCIe lanes supported by this slot.",
+                        "longDescription": "This property shall contain the maximum number of PCIe lanes supported by the slot.",
+                        "maximum": 32,
+                        "readonly": true,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "Location": {
+                        "$ref": "Resource.json#/definitions/Location",
+                        "description": "The location of the PCIe slot.",
+                        "longDescription": "This property shall contain part location information, including a ServiceLable of the associated PCIe Slot."
+                    },
+                    "PCIeType": {
+                        "description": "The PCIe specification supported by this slot.",
+                        "longDescription": "This property shall contain the maximum PCIe specification that this slot supports.",
+                        "$ref": "Resource.json#/definitions/PCIeTypes",
+                        "readonly": true
+                    },
+                    "SlotType": {
+                        "description": "The PCIe slot type for this slot.",
+                        "longDescription": "This property shall contain the slot type as specified by the PCIe specification.",
+                        "enum": [
+                            "FullLength",
+                            "HalfLength",
+                            "LowProfile",
+                            "Mini",
+                            "M2",
+                            "OEM",
+                            "OCP3Small",
+                            "OCP3Large",
+                            "U2"
+                        ],
+                        "enumDescriptions": {
+                            "FullLength": "Full-Length PCIe slot.",
+                            "HalfLength": "Half-Length PCIe slot.",
+                            "LowProfile": "Low-Profile or Slim PCIe slot.",
+                            "M2": "PCIe M.2 slot.",
+                            "Mini": "Mini PCIe slot.",
+                            "OCP3Large": "Open Compute Project 3.0 large form factor slot.",
+                            "OCP3Small": "Open Compute Project 3.0 small form factor slot.",
+                            "OEM": "An OEM-specific slot.",
+                            "U2": "PCIe U.2 slot or bay"
+                        },
+                        "type": "string",
+                        "readonly": true
+                    },
+                    "Status": {
+                        "$ref": "Resource.json#/definitions/Status"
+                    }
+                },
+                "type": "object"
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "@odata.id",
+        "@odata.type",
+        "Id",
+        "Name"
+    ],
+    "readonly": true,
+    "type": "object",
+    "title": "#PCIeSlots.v1_3_0.PCIeSlots"
+}

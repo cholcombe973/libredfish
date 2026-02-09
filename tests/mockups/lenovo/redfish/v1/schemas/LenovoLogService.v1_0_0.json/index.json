@@ -1,0 +1,216 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/LenovoLogService.v1_0_0.json",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2019 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "Actions": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "#LenovoLogService.GetLogEntriesBySequenceNumber": {
+                    "$ref": "#/definitions/GetLogEntriesBySequenceNumber"
+                }
+            },
+            "type": "object"
+        },
+        "AuditLogCapability": {
+            "enum": [
+                "IPMICmd",
+                "None"
+            ],
+            "type": "string"
+        },
+        "GetLogEntriesBySequenceNumber": {
+            "additionalProperties": true,
+            "description": "This action shall return all matched Log entries, based on the two input parameters. The return code of this action shall be an unsigned int type.",
+            "parameters": {
+                "FirstEventSequenceNumber": {
+                    "description": "This is the first (or only) sequence number value being requested. If it is not found, then no records will be output.",
+                    "requiredParameter": true,
+                    "type": "integer"
+                },
+                "HiddenType": {
+                    "$ref": "#/definitions/HiddenTypeItem",
+                    "description": "Hidden log entries will be returned if it's hidden. Default value is none-hidden."
+                },
+                "NumberOfEntries": {
+                    "description": "This is the number of entries requested to be returned. If there are not enough entries in the log to satisfy NumberOfEntries input, then the available entries are returned with no error. A value of 0 for NmberOfEntries is invalid and fails with Invalid Parameter and no output.",
+                    "requiredParameter": true,
+                    "type": "integer"
+                }
+            },
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "target": {
+                    "description": "Link to invoke action",
+                    "format": "uri-reference",
+                    "type": "string"
+                },
+                "title": {
+                    "description": "Friendly action name",
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        },
+        "HiddenTypeItem": {
+            "enum": [
+                "hidden",
+                "none_hidden"
+            ],
+            "type": "string"
+        },
+        "LenovoLogServiceProperties": {
+            "additionalProperties": true,
+            "description": "This is Lenovo extended details of Log service properties.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AuditLogCapabilities": {
+                    "description": "Represents the capabilities of audit log service.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "#/definitions/AuditLogCapability"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "The value of this property shall be an array to indicate the capabilities of audit log service.",
+                    "type": "array"
+                },
+                "DesiredCategories": {
+                    "description": "Represents that the desired PFA event categories which are to be processed by the system.",
+                    "longDescription": "The value of this property shall represent the desired PFA event categories which are to be processed by the system.",
+                    "readonly": false,
+                    "type": "integer"
+                },
+                "EnableSELWrapping": {
+                    "description": "Represents SEL log service is allowed to wrapping or not.",
+                    "longDescription": "The value of this property indicates SEL log service is allowed to wrapping or not. Only available in SEL log service.",
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "FirstSeqNum": {
+                    "description": "The first sequence number of log entry in this log service.",
+                    "longDescription": "The value of this property shall be a number used to represent the first sequence number of this log service.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "HiddenFirstSeqNum": {
+                    "description": "The first sequence number of hidden log entry in this log service.",
+                    "longDescription": "The value of this property shall be a number used to represent the first sequence number of hidden log entry in this log service.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "HiddenLastSeqNum": {
+                    "description": "The last sequence number of hidden log entry in this log service.",
+                    "longDescription": "The value of this property shall be a number used to represent the last sequence number of hidden log entry in this log service.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "LastSeqNum": {
+                    "description": "The last sequence number of log entry in this log service.",
+                    "longDescription": "The value of this property shall be a number used to represent the last sequence number of  log entry in this log service.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "SupportedCategories": {
+                    "description": "Represents that the PFA (Predictable Failure Alert) event categories supported by the server.",
+                    "longDescription": "The value of this property shall represent the PFA (Predictable Failure Alert) event categories supported by the server.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "VMMoveCategory": {
+                    "description": "Represents the PFA (Predictable Failure Alert) event categories supported by IMM no matter these events are supported on not by the server",
+                    "items": {
+                        "$ref": "#/definitions/VMMoveCategoryItem"
+                    },
+                    "longDescription": "The value of this property shall be an array of objects used to represent the PFA event categories supported by IMM no matter these events are supported on not by the server",
+                    "type": "array"
+                }
+            },
+            "type": "object"
+        },
+        "VMMoveCategoryItem": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "VMMoveCategoryBit": {
+                    "description": "Represents bits of each PFA event categories supported by IMM.",
+                    "longDescription": "The value of this property shall represent bits of the PFA event categories.",
+                    "readonly": true,
+                    "type": "integer"
+                },
+                "VMMoveCategoryName": {
+                    "description": "Represents name of the PFA event categories supported by IMM.",
+                    "longDescription": "The value of this property shall represent name of the PFA event categories.",
+                    "readonly": true,
+                    "type": "string"
+                },
+                "VMMoveCategoryType": {
+                    "description": "Represents type of the PFA event categories supported by IMM.",
+                    "longDescription": "The value of this property shall represent type of the PFA event categories.",
+                    "readonly": true,
+                    "type": "string"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Lenovo",
+    "title": "#LenovoLogService.v1_0_0"
+}

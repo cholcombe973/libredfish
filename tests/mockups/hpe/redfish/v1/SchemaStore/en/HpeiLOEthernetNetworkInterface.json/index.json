@@ -1,0 +1,441 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOEthernetNetworkInterface",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOEthernetNetworkInterface object extends the Redfish EthernetInterface resource with additional BMC network functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "ConfigurationSettings": {
+            "description": "The state of the currently displayed configuration settings.",
+            "enum": [
+                "Current",
+                "SomePendingReset"
+            ],
+            "enumDescriptions": {
+                "Current": "All configuration settings for this NIC are currently in use.",
+                "SomePendingReset": "One or more configuration settings on this NIC are not yet in use.  They require a reset of this management processor in order to take effect."
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "DHCPv4": {
+            "additionalProperties": false,
+            "description": "DHCPv4 options.",
+            "properties": {
+                "ClientId": {
+                    "description": "The client ID to override the default used in iLO.",
+                    "pattern": "^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$",
+                    "readonly": false,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ClientIdType": {
+                    "description": "The type of client id in use or to be selected.",
+                    "enum": [
+                        "Custom",
+                        "Default",
+                        "Hostname",
+                        "MacAddress"
+                    ],
+                    "enumDescriptions": {
+                        "Custom": "Allows user to enter any value.",
+                        "Default": "Use the default iLO5 value - MAC Address + Instance number.",
+                        "Hostname": "Use the hostname.",
+                        "MacAddress": "Use the default iLO4 value - MAC Address."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "Enabled": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv4.DHCPEnabled, and will be removed in a future release. Determines whether DHCPv4 is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseDNSServers": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv4.UseDNSServers, and will be removed in a future release. Determines whether to use DHCPv4-supplied DNS servers. Can only be enabled when DHCPv4 is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseDomainName": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv4.UseDomainName, and will be removed in a future release. Determines whether to use a DHCPv4-supplied domain name. Can only be enabled when DHCPv4 is also enabled; otherwis,e this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseGateway": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv4.UseGateway, and will be removed in a future release. Determines whether to use a DHCPv4-supplied gateway. Can only be enabled when DHCPv4 is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseNTPServers": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv4.UseNTPServers, and will be removed in a future release. Determines whether to use DHCPv4-supplied NTP servers. Can only be enabled when DHCPv4 is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseStaticRoutes": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv4.UseStaticRoutes, and will be removed in a future release. Determines whether to use DHCPv4-supplied static routes. Can only be enabled when DHCPv4 is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseWINSServers": {
+                    "description": "Determines whether to use DHCPv4-supplied WINS servers. Can only be enabled when DHCPv4 is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "DHCPv6": {
+            "additionalProperties": false,
+            "description": "Management processor DHCPv6 Configuration Settings",
+            "properties": {
+                "StatefulModeEnabled": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv6Configuration.OperatingMode, and will be removed in a future release.Determines whether DHCPv6 Stateful mode is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "StatelessModeEnabled": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv6Configuration.OperatingMode, and will be removed in a future release. Determines whether DHCPv6 Stateless mode is enabled.  Always enabled by default whenever DHCPv6 Stateful mode is also enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseDNSServers": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv6Configuration.UseDNSServers, and will be removed in a future release. Determines whether to use DHCPv6-supplied DNS servers. Can only be enabled when DHCPv6 Stateless mode is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseDomainName": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv6Configuration.UseDomainName, and will be removed in a future release. Determines whether to use a DHCPv6-supplied domain name. Can only be enabled when DHCPv6 Stateless mode is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseNTPServers": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv6Configuration.UseNTPServers, and will be removed in a future release. Determines whether to use DHCPv6-supplied NTP servers. Can only be enabled when DHCPv6 Stateless mode is also enabled; otherwise, this property will be set to false and will be read-only.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "UseRapidCommit": {
+                    "description": "Deprecated, replaced by DMTF standard property DHCPv6Configuration.UseRapidCommit, and will be removed in a future release. Determines whether to use DHCPv6 rapid commit mode. Can only be enabled when DHCPv6 Stateful mode is also enabled; otherwise, this property will be set to false and will be read-only. Do not enable in networks where more than one DHCPv6 server is configured to provide address assignments.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "DomainName": {
+            "description": "Domain name of the network to which this management processor belongs. This property can only be modified when the management processor is not configured to use a DHCP supplied domain name; otherwise this property is read-only indicating the value is provided by DHCP.",
+            "etag": true,
+            "maxLength": 64,
+            "readonly": false,
+            "type": "string"
+        },
+        "HostName": {
+            "description": "Deprecated, replaced by DMTF standard property HostName, and will be removed in a future release. The management processor host name.",
+            "etag": true,
+            "format": "hostname",
+            "maxLength": 49,
+            "readonly": false,
+            "type": "string"
+        },
+        "IPv4": {
+            "additionalProperties": false,
+            "description": "The Management Processor IPv4 Configuration Settings.",
+            "properties": {
+                "DDNSRegistration": {
+                    "description": "Determines whether DDNS registration is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "DNSServers": {
+                    "description": "Deprecated, replaced by DMTF standard array property StaticNameServers, and will be removed in a future release. Currently configured IPv4 DNS servers in order of descending preference. Static values when not configured to use DHCPv4-supplied DNS servers; otherwise this property is read-only indicating the values are provided by DHCPv4.",
+                    "etag": true,
+                    "items": {
+                        "format": "ipv4",
+                        "type": "string"
+                    },
+                    "maxItems": 3,
+                    "readonly": false,
+                    "type": "array"
+                },
+                "StaticRoutes": {
+                    "description": "The current configured IPv4 static routes.",
+                    "etag": true,
+                    "items": {
+                        "additionalProperties": false,
+                        "properties": {
+                            "Destination": {
+                                "description": "An IPv4 static route destination. Only writeable when use of DHCPv4-supplied static routes is disabled; otherwise this property is read-only indicating the value is provided by DHCPv4.",
+                                "format": "ipv4",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "Gateway": {
+                                "description": "An IPv4 static route gateway. Only writeable when use of DHCPv4-supplied static routes is disabled; otherwise this property is read-only indicating the value is provided by DHCPv4.",
+                                "format": "ipv4",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "SubnetMask": {
+                                "description": "An IPv4 static route subnet mask. Only writeable when use of DHCPv4-supplied static routes is disabled; otherwise this property is read-only indicating the value is provided by DHCPv4.",
+                                "format": "ipv4",
+                                "readonly": false,
+                                "type": "string"
+                            }
+                        },
+                        "readonly": false,
+                        "type": "object"
+                    },
+                    "maxItems": 3,
+                    "readonly": false,
+                    "type": "array"
+                },
+                "WINSRegistration": {
+                    "description": "Determines whether WINS registration is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "WINSServers": {
+                    "description": "Currently configured WINS servers in order of descending preference. Static values when not configured to use DHCPv4-supplied WINS servers; otherwise this property is read-only indicating the values are provided by DHCPv4",
+                    "etag": true,
+                    "items": {
+                        "format": "ipv4",
+                        "type": "string"
+                    },
+                    "maxItems": 2,
+                    "readonly": false,
+                    "type": "array"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "IPv6": {
+            "additionalProperties": false,
+            "description": "The management processor IPv6 Network Configuration Settings.",
+            "properties": {
+                "DDNSRegistration": {
+                    "description": "Determines whether IPv6 DDNS registration is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "DNSServers": {
+                    "description": "Deprecated, replaced by DMTF standard array property StaticNameServers, and will be removed in a future release. Currently configured IPv6 DNS servers in order of descending preference. Static values when not configured to use DHCPv6-supplied DNS servers; otherwise this property is read-only indicating the values are provided by DHCPv6.",
+                    "etag": true,
+                    "items": {
+                        "format": "ipv6",
+                        "type": "string"
+                    },
+                    "maxItems": 3,
+                    "readonly": false,
+                    "type": "array"
+                },
+                "SLAACEnabled": {
+                    "description": "Deprecated, replaced by DMTF standard property StatelessAddressAutoConfig.IPv6AutoConfigEnabled, and will be removed in a future release. Determines whether StateLess Address Auto-Configuration is enabled.",
+                    "etag": true,
+                    "readonly": false,
+                    "type": "boolean"
+                },
+                "StaticDefaultGateway": {
+                    "description": "Deprecated, replaced by DMTF standard property IPv6StaticDefaultGateways[].Address, and will be removed in a future release. The IPv6 static default gateway entry.",
+                    "etag": true,
+                    "format": "ipv6",
+                    "readonly": false,
+                    "type": "string"
+                },
+                "StaticRoutes": {
+                    "description": "The management processor IPv6 static routes.",
+                    "items": {
+                        "additionalProperties": false,
+                        "etag": true,
+                        "properties": {
+                            "Destination": {
+                                "description": "The IPv6 static route destination address.",
+                                "format": "ipv6",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "Gateway": {
+                                "description": "The IPv6 static route gateway.",
+                                "format": "ipv6",
+                                "readonly": false,
+                                "type": "string"
+                            },
+                            "PrefixLength": {
+                                "description": "The prefix length of the IPv6 static route destination address.",
+                                "maximum": 128,
+                                "minimum": 1,
+                                "readonly": false,
+                                "type": [
+                                    "integer",
+                                    "null"
+                                ]
+                            },
+                            "Status": {
+                                "description": "Status of this static route entry.",
+                                "enum": [
+                                    "Unknown",
+                                    "Pending",
+                                    "Active",
+                                    "Failed"
+                                ],
+                                "enumDescriptions": {
+                                    "Active": "This static route entry was successfully added to the route table.",
+                                    "Failed": "This static route entry could not be added to the route table.",
+                                    "Pending": "This static route entry has not yet been added to the route table.",
+                                    "Unknown": "The status of this static route entry in the route table is unknown."
+                                },
+                                "readonly": true,
+                                "type": "string"
+                            }
+                        },
+                        "readonly": false,
+                        "required": [
+                            "Destination",
+                            "PrefixLength",
+                            "Gateway"
+                        ],
+                        "type": "object"
+                    },
+                    "maxItems": 3,
+                    "readonly": false,
+                    "type": "array"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "InterfaceType": {
+            "description": "Describes the network interface type.",
+            "enum": [
+                "Dedicated",
+                "Shared",
+                "HostInterface"
+            ],
+            "enumDescription": {
+                "Dedicated": "Dedicated Network Interface",
+                "HostInterface": "Virtual Ethernet Host Interface",
+                "Shared": "Shared Network Interface"
+            },
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Links": {
+            "additionalProperties": false,
+            "description": "The URIs for the resources related to the date time service resource.",
+            "properties": {
+                "DateTimeService": {
+                    "description": "The URI for this date time service resource.",
+                    "properties": {
+                        "@odata.id": {
+                            "$ref": "Resource.json#/definitions/odataid"
+                        }
+                    },
+                    "readonly": true,
+                    "type": "object"
+                }
+            },
+            "readonly": true,
+            "type": "object"
+        },
+        "NICEnabled": {
+            "description": "Deprecated, replaced by DMTF standard property InterfaceEnabled, and will be removed in a future release. Determines whether this NIC is enabled or disabled. Enabling one NIC will disable the others. If no NIC is enabled, this management processor is not accessible over the network.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "NICSupportsIPv6": {
+            "description": "Indicates whether or not this NIC can support the IPv6 protocol.",
+            "readonly": true,
+            "type": "boolean"
+        },
+        "PingGatewayOnStartup": {
+            "description": "Determines whether to ping the IPv4 gateway on startup.",
+            "etag": true,
+            "readonly": false,
+            "type": "boolean"
+        },
+        "SharedNetworkPortOptions": {
+            "additionalProperties": false,
+            "description": "The shared network port options. Only applies to Shared Network Port.",
+            "properties": {
+                "NIC": {
+                    "description": "Selects the system NIC that is to be shared with this management processor.",
+                    "enum": [
+                        "LOM",
+                        "FlexibleLOM",
+                        "FlexibleLOM/OCP"
+                    ],
+                    "enumDescriptions": {
+                        "FlexibleLOM": "The FlexibleLOM NIC is configured to be shared.",
+                        "LOM": "The LOM NIC is configured to be shared.",
+                        "FlexibleLOM/OCP": "The FlexibleLOM/OCP is configured to be shared."
+                    },
+                    "etag": true,
+                    "readonly": false,
+                    "type": "string"
+                },
+                "Port": {
+                    "description": "The network adapter port number that is used for sharing. This feature is only applicable on systems and network adapters that support it.",
+                    "etag": true,
+                    "maximum": 2,
+                    "minimum": 1,
+                    "readonly": false,
+                    "type": "integer"
+                }
+            },
+            "readonly": false,
+            "type": "object"
+        },
+        "SupportsFlexibleLOM": {
+            "description": "Indicates whether this system supports FlexibleLOM. Only applies to Shared Network Port.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        },
+        "SupportsLOM": {
+            "description": "Indicates whether this system supports LOM. Only applies to Shared Network Port.",
+            "etag": true,
+            "readonly": true,
+            "type": "boolean"
+        }
+    },
+    "title": "#HpeiLOEthernetNetworkInterface.v2_2_1.HpeiLOEthernetNetworkInterface",
+    "type": "object"
+}

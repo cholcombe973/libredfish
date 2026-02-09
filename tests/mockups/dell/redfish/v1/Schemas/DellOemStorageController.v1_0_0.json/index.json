@@ -1,0 +1,692 @@
+{
+    "$id": "/redfish/v1/Schemas/DellOemStorageController.v1_0_0.json",
+    "$schema": "/redfish/v1/Schemas/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2021 Dell, Inc. or its subsidiaries. All Rights Reserved.",
+    "definitions": {
+        "DellOemStorageController": {
+            "additionalProperties": false,
+            "description": "Oem data related to the Storage Controller.",
+            "longDescription": "Oem data related to the Storage Controller.",
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "DellController": {
+                    "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/DellController",
+                    "autoExpand": true,
+                    "description": "A resource representation of DellController.",
+                    "longDescription": "A resource representation of DellController.",
+                    "readonly": true
+                },
+                "DellStorageController": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/definitions/DellStorageControllerInfo"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "Oem data related to the Storage Controller.",
+                    "longDescription": "Oem data related to the Storage Controller."
+                }
+            },
+            "type": "object"
+        },
+        "DellStorageControllerInfo": {
+            "additionalProperties": false,
+            "patternProperties": {
+                "^([a-zA-Z_][a-zA-Z0-9_]*)?@(odata|Redfish|Message)\\.[a-zA-Z_][a-zA-Z0-9_]*$": {
+                    "description": "This property shall specify a valid odata or Redfish property.",
+                    "type": [
+                        "array",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "null",
+                        "object",
+                        "string"
+                    ]
+                }
+            },
+            "properties": {
+                "AlarmState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/AlarmState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the state of Alarm if it is present.",
+                    "longDescription": "This property represents the state of Alarm if it is present.",
+                    "readonly": true
+                },
+                "AutoConfigBehavior": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/AutoConfigBehavior"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property provides the current Auto config behavior of the controller.RAID0 is applicble only for PERC 10.4.x or earlier releases.",
+                    "longDescription": "This property provides the current Auto config behavior of the controller.RAID0 is applicble only for PERC 10.4.x or earlier releases.",
+                    "readonly": true
+                },
+                "BackgroundInitializationRatePercent": {
+                    "description": "The percentage of controller resources used for background initialization rate volumes.",
+                    "longDescription": "This property shall contain the percentage of controller resources used for background initialization rate of volumes.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "BatteryLearnMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/BatteryLearnMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the Battery learning cycle mode of the controller.",
+                    "longDescription": "This property specifies the Battery learning cycle mode of the controller.",
+                    "readonly": false
+                },
+                "BootVirtualDiskFQDD": {
+                    "description": "This property indicates FQDD of BootVD. If no VD is set as BootVD in the controller, this property is an empty string.",
+                    "longDescription": "This property indicates FQDD of BootVD. If no VD is set as BootVD in the controller, this property is an empty string.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "CacheSizeInMB": {
+                    "description": "This property shall represent the controller cache size in MB.",
+                    "longDescription": "This property shall represent the controller cache size in MB.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ],
+                    "units": "MB"
+                },
+                "CachecadeCapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/CachecadeCapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the controllers support of cachecade virtual disk creation.",
+                    "longDescription": "The property shall represent the controllers support of cachecade virtual disk creation.",
+                    "readonly": true
+                },
+                "CheckConsistencyMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/CheckConsistencyMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the check consistency mode of the controller.",
+                    "longDescription": "This property specifies the check consistency mode of the controller.",
+                    "readonly": false
+                },
+                "ConnectorCount": {
+                    "description": "This property represents the count of SAS connectors.",
+                    "longDescription": "This property represents the count of SAS connectors.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "ControllerBootMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/ControllerBootMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates the controller boot mode.",
+                    "longDescription": "This property indicates the controller boot mode.",
+                    "readonly": false
+                },
+                "ControllerFirmwareVersion": {
+                    "description": "This property gives information about the Firmware Version installed on the Controller.",
+                    "longDescription": "This property gives information about the Firmware Version installed on the Controller.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "ControllerMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/ControllerMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the personality mode of the controller.",
+                    "longDescription": "This property specifies the personality mode of the controller.",
+                    "readonly": false
+                },
+                "CopybackMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/CopybackMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the copy back mode of the adapter.",
+                    "longDescription": "This property specifies the copy back mode of the adapter.",
+                    "readonly": false
+                },
+                "CurrentControllerMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/CurrentControllerMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property of the controller provides information to the user regarding the mode in which the controller is currently on.",
+                    "longDescription": "This property of the controller provides information to the user regarding the mode in which the controller is currently on.",
+                    "readonly": true
+                },
+                "Device": {
+                    "description": "This property represents the PCI device.",
+                    "longDescription": "This property represents the PCI device.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeviceCardDataBusWidth": {
+                    "description": "This property represents the bus width.",
+                    "longDescription": "This property represents the bus width.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DeviceCardSlotLength": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/DeviceCardSlotLength"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the controller slot length.",
+                    "longDescription": "This property represents the controller slot length.",
+                    "readonly": true
+                },
+                "DeviceCardSlotType": {
+                    "description": "This property represents the controller slot type. The possible values of the string can be Other, Unknown, PCI Express x8, PCI Express Gen 3, PCI Express Gen 3x1, PCI Express Gen 3x2, PCI Express Gen 3x4, PCI Express Gen 3x8, PCI Express Gen 3x16, or PCI Express Gen4.",
+                    "longDescription": "This property represents the controller slot type. The possible values of the string can be Other, Unknown, PCI Express x8, PCI Express Gen 3, PCI Express Gen 3x1, PCI Express Gen 3x2, PCI Express Gen 3x4, PCI Express Gen 3x8, PCI Express Gen 3x16, or PCI Express Gen4.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "DriverVersion": {
+                    "description": "This property shall represent the controller driver version.",
+                    "longDescription": "This property shall represent the controller driver version.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "EncryptionCapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/EncryptionCapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the possible encryption states on the controller.",
+                    "longDescription": "The property shall represent the possible encryption states on the controller.",
+                    "readonly": true
+                },
+                "EncryptionMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/EncryptionMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the current encryption state on the controller.",
+                    "longDescription": "The property shall represent the current encryption state on the controller.",
+                    "readonly": true
+                },
+                "EnhancedAutoImportForeignConfigurationMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/EnhancedAutoImportForeignConfigurationMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the controller supports automatic foreign import operation when the device is in foreign import mode.",
+                    "longDescription": "This property represents the controller supports automatic foreign import operation when the device is in foreign import mode.",
+                    "readonly": false
+                },
+                "KeyID": {
+                    "description": "KeyID provides details about the Key identification on the controller when the controller is in Local Key Management mode.",
+                    "longDescription": "KeyID provides details about the Key identification on the controller when the controller is in Local Key Management mode.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastSystemInventoryTime": {
+                    "description": "This property provides the time when System Inventory Collection On Reboot(CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the time when System Inventory Collection On Reboot(CSIOR) was last performed or the object was last updated on iDRAC. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LastUpdateTime": {
+                    "description": "This property provides the time the data was last updated. The value is represented as yyyymmddHHMMSS.",
+                    "format": "date-time",
+                    "longDescription": "This property provides the time the data was last updated. The value is represented as yyyymmddHHMMSS.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "LoadBalanceMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/LoadBalanceMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the load balancing mode of the controller.",
+                    "longDescription": "This property specifies the load balancing mode of the controller.",
+                    "readonly": false
+                },
+                "MaxAvailablePCILinkSpeed": {
+                    "description": "This property represents the maximum PCI link speed that the controller is set to allow.",
+                    "longDescription": "This property represents the maximum PCI link speed that the controller is set to allow.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MaxDrivesInSpanCount": {
+                    "description": "The property shall represent the maximum number of drives that can be present in a Span.",
+                    "longDescription": "The property shall represent the maximum number of drives that can be present in a Span.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxPossiblePCILinkSpeed": {
+                    "description": "This property represents the maximum possible PCI link speed, which is the speed this device is capable of.",
+                    "longDescription": "This property represents the maximum possible PCI link speed, which is the speed this device is capable of.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "MaxSpansInVolumeCount": {
+                    "description": "The property shall represent the maximum number of Spans that a Volume can have in a multi-span Raid Level.",
+                    "longDescription": "The property shall represent the maximum number of Spans that a Volume can have in a multi-span Raid Level.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "MaxSupportedVolumesCount": {
+                    "description": "The property shall represent the maximum number of Volumes that can be created and managed by adapter.",
+                    "longDescription": "The property shall represent the maximum number of Volumes that can be created and managed by adapter.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PCISlot": {
+                    "description": "The property shall represent the associated PCI slot.",
+                    "longDescription": "The property shall represent the associated PCI slot.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PatrolReadIterationsCount": {
+                    "description": "The property shall represent the number of patrol read runs performed by adapter.",
+                    "longDescription": "The property shall represent the number of patrol read runs performed by adapter.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PatrolReadMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/PatrolReadMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the patrol read mode of the controller.",
+                    "longDescription": "This property specifies the patrol read mode of the controller.",
+                    "readonly": false
+                },
+                "PatrolReadRatePercent": {
+                    "description": "The percentage of controller resources used for patrol read rate.",
+                    "longDescription": "This property shall contain the percentage of controller resources used for patrol read rate.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "PatrolReadState": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/PatrolReadState"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property shall represent the current state of the patrol read operation.",
+                    "longDescription": "This property shall represent the current state of the patrol read operation.",
+                    "readonly": true
+                },
+                "PatrolReadUnconfiguredAreaMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/PatrolReadUnconfiguredAreaMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the patrol read unconfigured area setting mode on the adapter.",
+                    "longDescription": "This property specifies the patrol read unconfigured area setting mode on the adapter.",
+                    "readonly": false
+                },
+                "PersistentHotspare": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/PersistentHotspare"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates status of the persistent hotspare slot of the controller.",
+                    "longDescription": "This property indicates status of the persistent hotspare slot of the controller.",
+                    "readonly": true
+                },
+                "PersistentHotspareMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/PersistentHotspareMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates mode of the persistent hotspare slot of the controller.",
+                    "longDescription": "This property indicates mode of the persistent hotspare slot of the controller.",
+                    "readonly": false
+                },
+                "RAIDMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/RAIDMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property specifies the current RAID mode.",
+                    "longDescription": "This property specifies the current RAID mode.",
+                    "readonly": true
+                },
+                "RealtimeCapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/RealtimeCapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether this controller supports Realtime.",
+                    "longDescription": "This property indicates whether this controller supports Realtime.",
+                    "readonly": true
+                },
+                "ReconstructRatePercent": {
+                    "description": "The property specifies the reconstruction rate.",
+                    "longDescription": "The property specifies the reconstruction rate.",
+                    "maximum": 100,
+                    "minimum": 0,
+                    "readonly": false,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "RollupStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/RollupStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "RollupStatus provides overall health status of the system by considering their sub-component health statuses, e.g RollupStatus will be degraded if any one of the sub-component is degraded.",
+                    "longDescription": "RollupStatus provides overall health status of the system by considering their sub-component health statuses, e.g RollupStatus will be degraded if any one of the sub-component is degraded.",
+                    "readonly": true
+                },
+                "SASAddress": {
+                    "description": "The property provides the unique ID of the controller and is in hexadecimal form.",
+                    "longDescription": "The property provides the unique ID of the controller and is in hexadecimal form.",
+                    "readonly": true,
+                    "type": [
+                        "string",
+                        "null"
+                    ]
+                },
+                "SecurityStatus": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SecurityStatus"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the controller security configuration information.",
+                    "longDescription": "The property shall represent the controller security configuration information.",
+                    "readonly": true
+                },
+                "SharedSlotAssignmentAllowed": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SharedSlotAssignmentAllowed"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether the controller allows shared assignments of slots, that is, whether the controller can access slots that are shared with other controllers.",
+                    "longDescription": "This property indicates whether the controller allows shared assignments of slots, that is, whether the controller can access slots that are shared with other controllers.",
+                    "readonly": true
+                },
+                "SlicedVDCapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SlicedVDCapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "The property shall represent the controllers support of sliced virtual disk creation and shall have one of the following values:0 - Sliced Virtual Disk not supported, 1-Sliced Virtual Disk supported.",
+                    "longDescription": "The property shall represent the controllers support of sliced virtual disk creation and shall have one of the following values:0 - Sliced Virtual Disk not supported, 1-Sliced Virtual Disk supported.",
+                    "readonly": true
+                },
+                "SpindownIdleTimeSeconds": {
+                    "description": "The property shall represent the amount of inactive time before a drive is considered idle and the disk spin down occurs.",
+                    "longDescription": "The property shall represent the amount of inactive time before a drive is considered idle and the disk spin down occurs.",
+                    "readonly": true,
+                    "type": [
+                        "integer",
+                        "null"
+                    ]
+                },
+                "SupportControllerBootMode": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SupportControllerBootMode"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether this controller supports setting of controller boot mode.",
+                    "longDescription": "This property indicates whether this controller supports setting of controller boot mode.",
+                    "readonly": true
+                },
+                "SupportEnhancedAutoForeignImport": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SupportEnhancedAutoForeignImport"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents the controller supports automatic foreign import operation when the device is in foreign import mode.",
+                    "longDescription": "This property represents the controller supports automatic foreign import operation when the device is in foreign import mode.",
+                    "readonly": true
+                },
+                "SupportRAID10UnevenSpans": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SupportRAID10UnevenSpans"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether this controller supports uneven spans for RAID 10.",
+                    "longDescription": "This property indicates whether this controller supports uneven spans for RAID 10.",
+                    "readonly": true
+                },
+                "SupportedInitializationTypes": {
+                    "description": "This property specifies the supported initialization types of the controller.",
+                    "items": {
+                        "anyOf": [
+                            {
+                                "$ref": "/redfish/v1/Schemas/DellOemStorageController.json#/definitions/SupportedInitializationTypes"
+                            },
+                            {
+                                "type": "null"
+                            }
+                        ]
+                    },
+                    "longDescription": "This property specifies the supported initialization of the controller.",
+                    "readonly": true,
+                    "type": "array"
+                },
+                "SupportsLKMtoSEKMTransition": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/SupportsLKMtoSEKMTransition"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property represents whether a controller supports LKM to SEKM transition or not.",
+                    "longDescription": "This property represents whether a controller supports LKM to SEKM transition or not.",
+                    "readonly": true
+                },
+                "T10PICapability": {
+                    "anyOf": [
+                        {
+                            "$ref": "/redfish/v1/Schemas/DellController.json#/definitions/T10PICapability"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "description": "This property indicates whether this controller supports T10 Protection Information (T10 PI).",
+                    "longDescription": "This property indicates whether this controller supports T10 Protection Information (T10 PI).",
+                    "readonly": true
+                }
+            },
+            "type": "object"
+        }
+    },
+    "owningEntity": "Dell",
+    "title": "#DellOemStorageController.v1_0_0"
+}

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################ -->
+<!--# Redfish Schema: DellSwitchConnection v1_1_0-->
+<!--# -->
+<!--# Schema copyright info to be put here-->
+<!--################################################################################ -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="OData" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+        <edmx:Reference Uri="http://redfish.dmtf.org/schemas/v1/RedfishExtensions_v1.xml">
+            <edmx:Include Namespace="RedfishExtensions.v1_0_0" Alias="Redfish"/>
+        </edmx:Reference>
+    </edmx:Reference>
+    <edmx:Reference Uri="/redfish/v1/Schemas/Resource_v1.xml">
+        <edmx:Include Namespace="Resource"/>
+        <edmx:Include Namespace="Resource.v1_0_0"/>
+        <edmx:Include Namespace="Resource.v1_2_0"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSwitchConnection">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <EntityType BaseType="Resource.v1_0_0.Resource" Name="DellSwitchConnection" Abstract="true">
+                <Annotation String="An instance of DellSwitchConnection will have the switch connection view information of all the ports." Term="OData.Description"/>
+                <Annotation String="An instance of DellSwitchConnection will have the switch connection view information of all the ports." Term="OData.LongDescription"/>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Insertable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Updatable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.DeleteRestrictions">
+                    <Record>
+                        <PropertyValue Bool="false" Property="Deletable"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Redfish.Uris">
+                    <Collection>
+                        <String>/redfish/v1/Systems/{ComputerSystemId}/NetworkPorts/Oem/Dell/DellSwitchConnections/{SwitchConnectionId}</String>
+                    </Collection>
+                </Annotation>
+            </EntityType>
+            <EnumType Name="StaleData">
+                <Member Name="NotStale">
+                    <Annotation String="NotStale" Term="OData.Description"/>
+                    <Annotation String="NotStale" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+                <Member Name="Stale">
+                    <Annotation String="Stale" Term="OData.Description"/>
+                    <Annotation String="Stale" Term="OData.LongDescription"/>
+                    <Annotation Term="Redfish.Revisions">
+                        <Collection>
+                            <Record>
+                                <PropertyValue Property="Kind" EnumMember="Redfish.RevisionKind/Added"/>
+                                <PropertyValue Property="Version" String="v1_1_0"/>
+                            </Record>
+                        </Collection>
+                    </Annotation>
+                </Member>
+            </EnumType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSwitchConnection.v1_0_0">
+            <EntityType Name="DellSwitchConnection" BaseType="DellSwitchConnection.DellSwitchConnection">
+                <Annotation Term="OData.Description" String="An instance of DellSwitchConnection will have the switch connection view information of all the ports."/>
+                <Annotation Term="OData.LongDescription" String="An instance of DellSwitchConnection will have the switch connection view information of all the ports."/>
+                <Annotation Term="OData.AdditionalProperties" Bool="false"/>
+                <Property Name="FQDD" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A string containing the Fully Qualified Device Description, a user-friendly name for the object."/>
+                    <Annotation Term="OData.LongDescription" String="A string containing the Fully Qualified Device Description, a user-friendly name for the object."/>
+                </Property>
+                <Property Name="InstanceID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="A unique identifier for the instance."/>
+                    <Annotation Term="OData.LongDescription" String="A unique identifier for the instance."/>
+                </Property>
+                <Property Name="SwitchConnectionID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the Chassis ID information of the switch port.It can contain one of the mentioned value &quot;Not Available&quot;,&quot;Feature Disabled&quot;,&quot;No Link&quot;,&quot;Not Supported&quot; and Chassis ID information extracted from LLDP packet."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the Chassis ID information of the switch port.It can contain one of the mentioned value &quot;Not Available&quot;,&quot;Feature Disabled&quot;,&quot;No Link&quot;,&quot;Not Supported&quot; and Chassis ID information extracted from LLDP packet."/>
+                </Property>
+                <Property Name="SwitchPortConnectionID" Type="Edm.String">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property represents the port description information of the switch.It can contain one of the mentioned value &quot;Not Available&quot;,&quot;Feature Disabled&quot;,&quot;No Link&quot;,&quot;Not Support&quot; and &quot;Port description information extracted from LLDP packet&quot;."/>
+                    <Annotation Term="OData.LongDescription" String="This property represents the port description information of the switch.It can contain one of the mentioned value &quot;Not Available&quot;,&quot;Feature Disabled&quot;,&quot;No Link&quot;,&quot;Not Support&quot; and &quot;Port description information extracted from LLDP packet&quot;."/>
+                </Property>
+            </EntityType>
+        </Schema>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="DellSwitchConnection.v1_1_0">
+            <Annotation Term="Redfish.OwningEntity" String="Dell"/>
+            <Annotation Term="OData.Description" String="This version was created to add StaleData property."/>
+            <EntityType Name="DellSwitchConnection" BaseType="DellSwitchConnection.v1_0_0.DellSwitchConnection">
+                <Property Name="StaleData" Type="DellSwitchConnection.StaleData">
+                    <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+                    <Annotation Term="OData.Description" String="This property indicates whether the information in this instance is stale or not."/>
+                    <Annotation Term="OData.LongDescription" String="This property indicates whether the information in this instance is stale or not."/>
+                </Property>
+            </EntityType>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

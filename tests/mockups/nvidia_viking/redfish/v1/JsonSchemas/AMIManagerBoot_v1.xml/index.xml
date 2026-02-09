@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!---->
+<!--################################################################################       -->
+<!--# Redfish Schema:  AMIManagerBoot  v1.0.0                                              -->
+<!--#                                                                                      -->
+<!--# Copyright American Megatrends, Inc. (AMI).                                           -->
+<!--################################################################################       -->
+<!---->
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Core.V1.xml">
+    <edmx:Include Namespace="Org.OData.Core.V1" Alias="OData"/>
+  </edmx:Reference>
+  <edmx:Reference Uri="http://docs.oasis-open.org/odata/odata/v4.0/errata03/csd01/complete/vocabularies/Org.OData.Capabilities.V1.xml">
+    <edmx:Include Namespace="Org.OData.Capabilities.V1" Alias="Capabilities"/>
+  </edmx:Reference>
+
+  <edmx:DataServices>
+
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIManagerBoot">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+
+      <ComplexType Name="AMIManagerBoot" Abstract="true">
+        <Annotation Term="OData.Description" String="This schemas defines the properties which is used in the Systems."/>
+        <Annotation Term="OData.LongDescription" String="This schemas defines the properties which is used in the Systems."/>
+        <Annotation Term="Capabilities.InsertRestrictions">
+          <Record>
+            <PropertyValue Property="Insertable" Bool="false"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.UpdateRestrictions">
+          <Record>
+            <PropertyValue Property="Updatable" Bool="true"/>
+          </Record>
+        </Annotation>
+        <Annotation Term="Capabilities.DeleteRestrictions">
+          <Record>
+            <PropertyValue Property="Deletable" Bool="false"/>
+          </Record>
+        </Annotation>
+      </ComplexType>
+    </Schema>
+    <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="AMIManagerBoot.v1_0_0">
+      <Annotation Term="Redfish.OwningEntity" String="AMI"/>
+      <ComplexType Name="AMIManagerBoot" BaseType="AMIManagerBoot.AMIManagerBoot">
+        <Annotation Term="OData.Description" String="This is the schema definition for the AMIManagerBoot."/>
+        <Property Name="ManagerBootConfiguration" Type="AMIManagerBoot.v1_0_0.ManagerBootConfiguration" Nullable="false">
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/write"/>
+          <Annotation Term="OData.Description" String="Indicates the properties related to ManagerBoot"/>
+          <Annotation Term="OData.LongDescription" String="Indicates the properties related to ManagerBoot"/>
+        </Property>
+      </ComplexType>
+	  <ComplexType Name="ManagerBootConfiguration" Abstract="true">
+        <Property Name="ManagerBootMode" Type="AMIManagerBoot.v1_0_0.ManagerBootMode" Nullable="false"> 
+          <Annotation Term="OData.Permissions" EnumMember="OData.Permission/Read"/>
+          <Annotation Term="OData.Description" String="This property shall specify the enum supported by ManagerBootMode."/>
+          <Annotation Term="OData.LongDescription" String="This property shall specify the enum supported by ManagerBootMode."/>
+        </Property>
+      </ComplexType>
+      <EnumType Name="ManagerBootMode">
+        <Member Name="SoftReset">
+          <Annotation Term="OData.Description" String="Added SoftReset in Boot Option"/>
+        </Member>
+        <Member Name="ResetTimeout">
+          <Annotation Term="OData.Description" String="ResetTimeout support is Boot Option"/>
+        </Member>
+      </EnumType>
+    </Schema>
+  </edmx:DataServices>
+</edmx:Edmx>

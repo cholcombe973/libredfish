@@ -1,0 +1,101 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeEvent",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeEvent object extends the Redfish Event resource with additional HPE functionality.",
+    "displayname": "HpEvent",
+    "private": false,
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "AdvancedDiagnostics": {
+            "items": {
+                "additionalProperties": true,
+                "description": "This is a an object that represenets Advanced Diagnostic information.  It is currently schemed to allow anything in the object.",
+                "displayname": "Advanced Diagnostics Information",
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "CorrelatedEventNumber": {
+            "description": "This indicates the unique identification number for the event log type specified in CorrelatedEventType, according to the definitions of EventNumber in the HpeLogEntry.",
+            "displayname": "CorrelatedEventNumber",
+            "etag": true,
+            "readonly": true,
+            "type": "integer"
+        },
+        "CorrelatedEventTimeStamp": {
+            "description": "This indicates the date and time of the latest log entry update, according to the definitions of Updated in the HpeLogEntry.",
+            "displayname": "CorrelatedEventTimeStamp",
+            "etag": true,
+            "format": "date-time",
+            "readonly": true,
+            "type": "string"
+        },
+        "CorrelatedEventType": {
+            "description": "This indicates the corresponding event log type specific to the management processor.",
+            "displayname": "CorrelatedEventType",
+            "enum": [
+                "Hpe-IML",
+                "Hpe-iLOEventLog",
+                "Hpe-SecurityLog"
+            ],
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "CorrelatedIndications": {
+            "description": "A list of identifiers whose notifications are correlated with (related to) this one.",
+            "displayname": "Correlated Indications",
+            "items": {
+                "type": "string"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "CurrentStatus": {
+            "$ref": "Resource.json#/definitions/Status"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "OriginalResourceEtag": {
+            "description": "This indicates the ETag of the affected resource specified in OriginOfCondition.",
+            "displayname": "OriginalResourceEtag",
+            "etag": true,
+            "readonly": true,
+            "type": "string"
+        },
+        "Resource": {
+            "description": "This is a link of the resource that has changed (post-change).",
+            "displayname": "Related Resource",
+            "etag": true,
+            "format": "uri-reference",
+            "readonly": true,
+            "type": "string"
+        },
+        "ServiceEvent": {
+            "description": "This indicates a service ticket to be raised for the corresponding event log.",
+            "displayname": "ServiceEvent",
+            "etag": false,
+            "readonly": true,
+            "type": "string"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeEvent.v2_1_0.HpeEvent",
+    "type": "object"
+}

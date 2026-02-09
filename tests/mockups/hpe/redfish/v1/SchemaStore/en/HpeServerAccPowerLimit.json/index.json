@@ -1,0 +1,217 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeServerAccPowerLimit",
+    "actions": {
+        "actions": {
+            "HpeServerAccPowerLimit.ConfigurePowerLimit": {
+                "additionalProperties": false,
+                "description": "Deploy the Apollo Chassis Controller power limit configuration.",
+                "properties": {
+                    "Action": {
+                        "enum": [
+                            "HpeServerAccPowerLimit.ConfigurePowerLimit"
+                        ],
+                        "readonly": true,
+                        "type": "string"
+                    },
+                    "PowerLimits": {
+                        "items": {
+                            "properties": {
+                                "PowerLimitInWatts": {
+                                    "readonly": false,
+                                    "type": [
+                                        "integer",
+                                        "null"
+                                    ]
+                                },
+                                "ZoneNumber": {
+                                    "readonly": false,
+                                    "type": "integer"
+                                }
+                            },
+                            "readonly": true,
+                            "type": "object"
+                        },
+                        "readonly": false,
+                        "type": "array"
+                    }
+                },
+                "required": [
+                    "Action",
+                    "PowerLimits"
+                ],
+                "type": "object"
+            }
+        },
+        "description": "POST custom actions defined for this type. (The implemented actions may be a subset of these.)"
+    },
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeServerAccPowerLimit resource describes the properties for management of shared power in an enclosure.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "Actions": {
+            "additionalProperties": false,
+            "properties": {
+                "#HpeServerAccPowerLimit.ConfigurePowerLimit": {
+                    "additionalProperties": false,
+                    "properties": {
+                        "PowerLimits@Redfish.AllowableValues": {
+                            "description": "The zone number either on the entire chassis or specific zone. 0 is for entire chassis, other number is for specific zone.",
+                            "items": {
+                                "items": {
+                                    "properties": {
+                                        "PowerLimits": {
+                                            "items": {
+                                                "properties": {
+                                                    "PowerLimitInWatts": {
+                                                        "readonly": false,
+                                                        "type": [
+                                                            "integer",
+                                                            "null"
+                                                        ]
+                                                    },
+                                                    "ZoneNumber": {
+                                                        "readonly": false,
+                                                        "type": "integer"
+                                                    }
+                                                },
+                                                "readonly": true,
+                                                "type": "object"
+                                            },
+                                            "readonly": false,
+                                            "type": "array"
+                                        }
+                                    },
+                                    "readonly": true,
+                                    "type": "object"
+                                },
+                                "readonly": false,
+                                "type": "object"
+                            },
+                            "type": "array",
+                            "uniqueItems": true
+                        },
+                        "target": {
+                            "description": "Link to invoke action",
+                            "type": "string"
+                        },
+                        "title": {
+                            "description": "Friendly action name",
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ActualPowerLimits": {
+            "items": {
+                "additionalProperties": false,
+                "description": "The list of actual PowerLimits.",
+                "etag": true,
+                "properties": {
+                    "PowerLimitInWatts": {
+                        "description": "The actual power limit (in watts) for the zone, it will be set to null when power limit disabled.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ZoneNumber": {
+                        "description": "The zone number either on the entire chassis or specific zone. 0 for entire chassis, other number is for specific zone.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "Id": {
+            "$ref": "Resource.json#/definitions/Id"
+        },
+        "Name": {
+            "$ref": "Resource.json#/definitions/Name"
+        },
+        "PowerLimitRanges": {
+            "items": {
+                "additionalProperties": false,
+                "description": "The list of PowerLimitRanges.",
+                "etag": true,
+                "properties": {
+                    "MaximumPowerLimit": {
+                        "description": "The Maximum power limit (in watts) for the zone.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "MinimumPowerLimit": {
+                        "description": "The Minimum power limit (in watts) for the zone.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    },
+                    "ZoneNumber": {
+                        "description": "The zone number either on the entire chassis or specific zone. 0 for entire chassis, other number is for specific zone.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        },
+        "PowerLimits": {
+            "items": {
+                "additionalProperties": false,
+                "description": "The list of target PowerLimits.",
+                "etag": true,
+                "properties": {
+                    "PowerLimitInWatts": {
+                        "description": "The target power limit (in watts) for the zone, it will be set to null when power limit disabled.",
+                        "etag": true,
+                        "readonly": false,
+                        "type": [
+                            "integer",
+                            "null"
+                        ]
+                    },
+                    "ZoneNumber": {
+                        "description": "The zone number either on the entire chassis or specific zone. 0 for entire chassis, other number is for specific zone.",
+                        "etag": true,
+                        "readonly": true,
+                        "type": "integer"
+                    }
+                },
+                "readonly": true,
+                "type": "object"
+            },
+            "readonly": true,
+            "type": "array"
+        }
+    },
+    "readonly": true,
+    "title": "#HpeServerAccPowerLimit.v1_0_0.HpeServerAccPowerLimit",
+    "type": "object"
+}

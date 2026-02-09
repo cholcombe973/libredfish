@@ -1,0 +1,953 @@
+{
+    "Description": "This registry defines the standard extended error messages for Redfish.",
+    "Id": "ExtendedError.1.2.2",
+    "Messages": {
+        "Conflict": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because a conflict with the current state of the resource.",
+            "Resolution": "Eliminate the conflict and resubmit the request.",
+            "NumberOfArgs": 0,
+            "Description": "A creation or update request could not be completed, because it would cause a conflict in the current state of the resources supported by the platform.",
+            "Severity": "Critical",
+            "Message": "The request could not be completed due to a conflict with the current state of the resource."
+        },
+        "ArrayItemDuplicated": {
+            "LongDescription": "The request is not applied because a resource with array items has been requested but the operation failed due to the duplicated array item.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "ArgDescriptions": [
+                "Name of the array that contains duplicated items in the request.",
+                "Name of the duplicated array item in the request."
+            ],
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the array that contains duplicated items in the request.",
+                "This argument shall contain the name of the duplicated array item in the request."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Resubmit the request without duplicated array item in the request body if the operation failed.",
+            "Description": "Indicates that the request was supplied with a duplicated array item in the request body.",
+            "Severity": "Warning",
+            "Message": "The array %1 does not allow duplicate items but %2 repeats."
+        },
+        "Gone": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "Access to the target resource is no longer available at the server and this condition is likely to be permanent.",
+            "Resolution": "Stop accessing the resource.",
+            "NumberOfArgs": 0,
+            "Description": "The requested resource is no longer available at the server and no forwarding address is known.",
+            "Severity": "Critical",
+            "Message": "The requested resource is no longer available at the server."
+        },
+        "ResourceLocked": {
+            "LongDescription": "The request cannot apply to the locked resource because the device or service represented by this URI is changing or initializing.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "Number of waiting seconds."
+            ],
+            "ArgLongDescriptions": [
+                "This argument shall contain the number of seconds to wait for retry."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Wait for the indicated retry duration and retry the operation.",
+            "Description": "The request cannot be performed because the resource is temporarily locked.",
+            "Severity": "Warning",
+            "Message": "The resource is temporarily locked.  Retry in %1 seconds."
+        },
+        "ChannelMessageLimitExceeded": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because the channel messages generated for triggering resource backend exceeded the limit of the implementation.",
+            "Resolution": "Please use query parameters to reduce messages being generated.",
+            "NumberOfArgs": 0,
+            "Description": "The channel messages generated for triggering resource backend exceeded the limit of the implementation.",
+            "Severity": "Warning",
+            "Message": "The channel messages generated for triggering resource backend exceeded the limit of the implementation."
+        },
+        "InsufficientStorage": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The method cannot be performed on the resource because the server is unable to store the representation needed to successfully complete the request.",
+            "Resolution": "Please try another request or use query parameter to reduce representation size.",
+            "NumberOfArgs": 0,
+            "Description": "The method could not be performed on the resource because the server is unable to store the representation needed to successfully complete the request.",
+            "Severity": "Warning",
+            "Message": "The Web Server has not enough storage to complete the request."
+        },
+        "ModuleError": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the service module may be broken or inactive and cause no backend to process incoming requests.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request.  If the problem persists, consider resetting the service.",
+            "Description": "The service module may be broken or inactive and cause no backend to process incoming requests.",
+            "Severity": "Critical",
+            "Message": "The service module may be broken or inactive and cause no backend to process incoming requests."
+        },
+        "ActionNotSupportedOnReference": {
+            "LongDescription": "The request is not applied because the reference resource is not supported on the action.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "ArgDescriptions": [
+                "Value of the parameter that is not supported for the action.",
+                "Name of the parameter in the request for the action.",
+                "Name of the action that was requested."
+            ],
+            "ArgLongDescriptions": [
+                "This argument shall contain the value of the parameter that is not supported for the action.",
+                "This argument shall contain the name of the parameter in the request for the action.",
+                "This argument shall contain the name of the action that was requested."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Correct the reference resource in the request body and resubmit the request.",
+            "Description": "Indicates that the action is identified by the service but is not supported on the reference resource specified by the parameter.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 in the action %3 is not supported."
+        },
+        "UnprocessableEntity": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The server understands the content type of the request entity, and the syntax of the request entity is correct but was unable to process the contained instructions.",
+            "Resolution": "Correct the value in the request body and resubmit the request if the operation fails.",
+            "NumberOfArgs": 0,
+            "Description": "422 Unprocessable Entity.",
+            "Severity": "Critical",
+            "Message": "The request was well-formed but was unable to be followed due to semantic errors."
+        },
+        "TooManyRequests": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the user has sent too many requests in a given amount of time.",
+            "Resolution": "Try again later.",
+            "NumberOfArgs": 0,
+            "Description": "429 Too Many Requests.",
+            "Severity": "Critical",
+            "Message": "The user has sent too many requests in a given amount of time."
+        },
+        "ContentDispositionHeaderNotSatisfied": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because Content-Disposition header in request is not satisfied.",
+            "Resolution": "Modify the Content-Disposition header to a value that is acceptable by the server.",
+            "NumberOfArgs": 0,
+            "Description": "The Content-Disposition header in request is not satisfied.",
+            "Severity": "Warning",
+            "Message": "The Content-Disposition header in request is not satisfied."
+        },
+        "ServiceUnavailable": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the server is currently unable to handle the request due to temporary overloading or maintenance of the server.",
+            "Resolution": "Resubmit the request later.",
+            "NumberOfArgs": 0,
+            "Description": "The server is currently unable to handle the request due to temporary overloading or maintenance of the server.",
+            "Severity": "Critical",
+            "Message": "The server is currently unable to handle the request due to temporary overloading or maintenance of the server."
+        },
+        "RebootRequired": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Reboot the computer system for the changes to take effect.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that one or more properties were changed, and/or actions completed successfully. However, these changes will not take effect until the next system reboot.",
+            "Severity": "Warning",
+            "Message": "Changes completed successfully, but these changes will not take effect until next reboot."
+        },
+        "NotImplementedHttpMethod": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The server does not support the functionality to fulfill the request.",
+            "Resolution": "Make sure your request respects the HTTP protocol completely.",
+            "NumberOfArgs": 0,
+            "Description": "501 Not Implemented.",
+            "Severity": "Critical",
+            "Message": "The Web Server does not support the request method."
+        },
+        "TooManyInstances": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because there are too many instances in the request body.",
+            "Resolution": "Make sure the number of instances is within limit.",
+            "NumberOfArgs": 0,
+            "Description": "The server is unwilling to process the request because there are too many instances in the deep operation request body.",
+            "Severity": "Warning",
+            "Message": "The server is unwilling to process the request because there are too many instances in the deep operation request body."
+        },
+        "DeepOperationFormatError": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request could not be understood by the server due to semantic errors.",
+            "Resolution": "Correct the request body and resubmit the request if the operation failed.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates the request body does not match the format of the deep operation request.",
+            "Severity": "Critical",
+            "Message": "The Web Server cannot understand the deep operation request due to semantic errors."
+        },
+        "PhysicalPresenceError": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Attempt asserting Physical Presence or Remote Physical Presence, and retry the operation.",
+            "NumberOfArgs": 0,
+            "Description": "The operation failed because Physical Presence or Remote Physical Presence was not asserted.",
+            "Severity": "Warning",
+            "Message": "The operation failed because of Remote Physical Presence security requirements."
+        },
+        "Processing": {
+            "MessageSeverity": "OK",
+            "LongDescription": "The server has accepted the complete request and is processing the request, but has not yet completed it.",
+            "Resolution": "None",
+            "NumberOfArgs": 0,
+            "Description": "The server has accepted the complete request, but has not yet completed it.",
+            "Severity": "OK",
+            "Message": "Please check the request state later."
+        },
+        "ServiceTemporarilyUnavailable": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Wait for the indicated retry duration and retry the operation.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "Description": "Indicates the service is temporarily unavailable.",
+            "Severity": "Critical",
+            "Message": "The service is temporarily unavailable.  Retry in %1 seconds."
+        },
+        "NoContent": {
+            "MessageSeverity": "OK",
+            "LongDescription": "The request succeeded and server did response, but no content is returned in the body of the response.",
+            "Resolution": "None",
+            "NumberOfArgs": 0,
+            "Description": "The request succeeded, but no content is returned in the body of the response.",
+            "Severity": "OK",
+            "Message": "The Web Server does not return a response body."
+        },
+        "DeepOperationNotSupportedOnResource": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because the resource doesn't support the requested deep operation.",
+            "Resolution": "Correct the URI and resubmit the request.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that deep operation is not supported on the given resource.",
+            "Severity": "Warning",
+            "Message": "Deep operation is not supported on the requested resource."
+        },
+        "PropertyNotPatched": {
+            "LongDescription": "The specified property is not patched",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The property which is not patched."
+            ],
+            "ArgLongDescriptions": [
+                "The specified property is not patched by the request."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Make sure the resource backend supports patching this property.",
+            "Description": "Property is not patched.",
+            "Severity": "Warning",
+            "Message": "Property %1 of the request body is not patched."
+        },
+        "CancelAsyncTaskFailed": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The requested asynchronous task is not canceled because the backend of the async task refuses the cancellation.",
+            "Resolution": "None",
+            "NumberOfArgs": 0,
+            "Description": "The requested asynchronous task is not canceled.",
+            "Severity": "Critical",
+            "Message": "The backend of the async task refuses the cancellation."
+        },
+        "OperationFailedOnResource": {
+            "LongDescription": "The internal operations on the resources cannot be performed.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The resource URI."
+            ],
+            "ArgLongDescriptions": [
+                "This argument shall contain the URI of the resource failed to be processed."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Correct the request body and resubmit the request if the operation failed.",
+            "Description": "Indicates that the internal operations on the resources failed.  An example would be the subordinate resource doesn't support the request method.",
+            "Severity": "Warning",
+            "Message": "An error occurred when processing an internal request on the resource %1."
+        },
+        "DownloadingFailure": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Ensure that the network status and the server are in a good condition.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a failure occurs when downloading the specified file from the server.",
+            "Severity": "Warning",
+            "Message": "Download %1 from the server %2 failed."
+        },
+        "CancelAsyncTaskTimeout": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request had been timed out because resource backend did not respond.",
+            "Resolution": "Makes sure the resource backend either support the canceling of asynchronous tasks or is running correctly.",
+            "NumberOfArgs": 0,
+            "Description": "The resource backend does not respond.",
+            "Severity": "Critical",
+            "Message": "The request had been timed out."
+        },
+        "FirmwareImageNotMatchTarget": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Correct the value for the parameter in the request body and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 5,
+            "Description": "Indicates that the firmware image does not match the specified target.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 does not match the value %3 for the parameter %4 in the action %5."
+        },
+        "TaskCreationLimitExceeded": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "A task creation has been requested but the operation failed due to the number of created tasks exceeding the limit of the implementation.",
+            "Resolution": "Cancel other task to reduce the number of tasks or enlarge the max count of allowable tasks in server before trying to create the task",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that a task creation has been requested but the operation failed due to the number of created tasks exceeding the limit of the implementation.",
+            "Severity": "Critical",
+            "Message": "The task creation failed due to the number of created tasks exceeding the limit of the implementation."
+        },
+        "PayloadTooLarge": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The Web Server is refusing to process the request because the request payload is larger than the server is willing or able to process.",
+            "Resolution": "Please reduce the request payload size.",
+            "NumberOfArgs": 0,
+            "Description": "The Web Server is refusing to process the request because the request payload is larger than the server is willing or able to process.",
+            "Severity": "Warning",
+            "Message": "Request payload is larger than the server is able to process."
+        },
+        "AccountLockout": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the account which user logged in has been banned.",
+            "Resolution": "Please contact the IT personnel for technical support.",
+            "NumberOfArgs": 0,
+            "Description": "The account had been banned.",
+            "Severity": "Critical",
+            "Message": "The login account is blocked."
+        },
+        "PropertyMissing": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because an updatable property was not supplied as part of the request.",
+            "Resolution": "Ensure that the property is in the request body and has a valid value and resubmit the request if the operation fails.",
+            "NumberOfArgs": 0,
+            "Description": "Indicates that an updatable property was not supplied as part of the request.",
+            "Severity": "Warning",
+            "Message": "At least an updatable property must be included in the request."
+        },
+        "NotImplemented": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the server does not support the functionality required to fulfill the request.",
+            "Resolution": "The request supplied cannot be resubmitted to the implementation.  The implementation documentation may be of assistance.",
+            "NumberOfArgs": 0,
+            "Description": "501 Not Implemented.",
+            "Severity": "Critical",
+            "Message": "The server does not (currently) support the functionality required to fulfill the request."
+        },
+        "FirmwareUpdateNeedHostPowerOff": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Power off the host and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the service is unable to update the specified target for the host is in the power-on state.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is unable to be updated in the action %3 for the host is in the power-on state."
+        },
+        "FirmwareMinVersionViolation": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Use firmware which is higher than the minimum version and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the version of the specified firmware image is earlier than the permitted minimum version.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is unable to be updated in the action %3 for violating the permitted minimum version."
+        },
+        "SessionNotExist": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the session object does not exist.",
+            "Resolution": "Please try to login again to create a new session and get a new X-Auth-Token.",
+            "NumberOfArgs": 0,
+            "Description": "The session object does not exist.",
+            "Severity": "Critical",
+            "Message": "The login session does not exist or is expired."
+        },
+        "FirmwareRollbackNotAllowed": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Use higher version of firmware than current or enable rollback in security setting and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the service does not allow to rollback firmware.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is unable to be installed in the action %3 for not allowing rollback firmware."
+        },
+        "AcceptHeaderNotSatisfied": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because server cannot accept the media type specified in the Accept header.",
+            "Resolution": "Modify the Accept header to a value that is acceptable by the server.",
+            "NumberOfArgs": 0,
+            "Description": "Server cannot accept the media type specified in the Accept header.",
+            "Severity": "Warning",
+            "Message": "Server cannot accept the media type specified in the Accept header."
+        },
+        "TargetInvalid": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Correct the target and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the specified target is invalid.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is invalid in the action %3."
+        },
+        "OdataVerHeaderNotSatisfied": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because OData related header(s) in request is not satisfied.",
+            "Resolution": "Modify OData related header(s) that can be accepted by server.",
+            "NumberOfArgs": 0,
+            "Description": "The OData related header(s) in request is not satisfied.",
+            "Severity": "Warning",
+            "Message": "The OData header(s) in request is not satisfied."
+        },
+        "FirmwareUpdateNeedRedundantMode": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Enable the related redundant mode and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the service is unable to update the specified target for the related redundant mode is not enabled.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is unable to be updated in the action %3 for the related redundant mode is not enabled."
+        },
+        "TrafficControlError": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because unexpected error occurs while evaluating traffic limitations.",
+            "NumberOfArgs": 0,
+            "Resolution": "Please reset the service.",
+            "Description": "Unexpected error occurs while evaluating traffic limitations.",
+            "Severity": "Critical",
+            "Message": "The traffic control for incoming requests does not work."
+        },
+        "ContentRangeHeaderNotAllowed": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because header Content-Range is not allowed by the PUT method.",
+            "Resolution": "Remove Content-Range header and resubmit the request.",
+            "NumberOfArgs": 0,
+            "Description": "The header Content-Range is not allowed by the PUT method.",
+            "Severity": "Warning",
+            "Message": "The header Content-Range is not allowed by the PUT method."
+        },
+        "ResourceTransferComplete": {
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates data transfer step complete.",
+            "Severity": "OK",
+            "Message": "The task with id %1 completed transfer of %2 to %3."
+        },
+        "TargetFileNotReadyForUpload": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because unexpected error occurs while opening the target file for upload.",
+            "NumberOfArgs": 0,
+            "Resolution": "Please make sure the upload folder is accessible.",
+            "Description": "Unexpected error occurs while opening the target file for upload.",
+            "Severity": "Critical",
+            "Message": "The target file is not ready for upload."
+        },
+        "SystemWillReboot": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Will automatically reboot the computer system for the changes to take effect.",
+            "NumberOfArgs": 0,
+            "Description": "Triggered to update UEFI trust image, system will reboot to complete the update.",
+            "Severity": "Warning",
+            "Message": "Has triggered to update the UEFI trust image to the system, and system will automatically reboot to complete the update of UEFI trust image, please make sure system AC power is not removed during the update and system reboot."
+        },
+        "ResourceTransferStarted": {
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates data transfer step started.",
+            "Severity": "OK",
+            "Message": "The task with id %1 started transfer %2 to %3."
+        },
+        "ResourceUnstable": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The resource is returned but the data may be changed because the underlying component is initializing or changing.",
+            "NumberOfArgs": 0,
+            "Resolution": "This extended info will be removed once the resource and the underlying component are synchronized.",
+            "Description": "Indicates that the resource data is unstable and may change in a short time.",
+            "Severity": "Warning",
+            "Message": "The resource is returned but the data is unstable because the underlying component is initializing or changing."
+        },
+        "PropertyConflict": {
+            "LongDescription": "The request is not applied because the request data contains two mutually exclusive properties.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "ArgDescriptions": [
+                "Name of the property that conflicts with the other property.",
+                "Name of the property that conflicts with the other property."
+            ],
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the property that conflicts with the other property.",
+                "This argument shall contain the name of the property that conflicts with the other property."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Remove one property in the request body and resubmit the request if the operation failed.",
+            "Description": "Indicates that the property should not be supplied because there is a mutually exclusive property.",
+            "Severity": "Warning",
+            "Message": "Properties '%1' and '%2' should not be supplied together."
+        },
+        "DeleteAsyncTaskFailed": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the backend of the async task refuses the deletion.",
+            "Resolution": "Makes sure the resource backend either support the deleting of asynchronous tasks or is running correctly.",
+            "NumberOfArgs": 0,
+            "Description": "The requested asynchronous task is not deleted.",
+            "Severity": "Critical",
+            "Message": "The backend of the async task refuses the deletion."
+        },
+        "ResetRequired": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Perform the required Reset action on the specified component.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that a component reset is required for changes or operations to complete.",
+            "Severity": "Warning",
+            "Message": "In order to complete the operation, a component reset is required with the Reset action URI '%1' and ResetType '%2'."
+        },
+        "FirmwareImageInvalid": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Ensure that the image is not damaged and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the specified firmware image failed in verification.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is invalid in the action %3."
+        },
+        "HeaderRequired": {
+            "LongDescription": "The request is not applied because the server refuses to accept the request without a required request header.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The header field required in request."
+            ],
+            "ArgLongDescriptions": [
+                "The header field required but missing in request which results in server refusing to accept the request."
+            ],
+            "MessageSeverity": "Critical",
+            "Resolution": "Add a valid header and resubmit the request.",
+            "Description": "The server refuses to accept the request without a required request header.",
+            "Severity": "Critical",
+            "Message": "The request method requires the %1 header."
+        },
+        "BadActionRequestMethod": {
+            "LongDescription": "The request is not applied because the action can only be triggered by POST method.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The argument is an action and can only be triggered by a POST request."
+            ],
+            "ArgLongDescriptions": [
+                "The specified argument is an action and can only be triggered by a POST request."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Trigger an action by a POST method.",
+            "Description": "An action only supports POST method.",
+            "Severity": "Warning",
+            "Message": "%1 is an action and can only be triggered by a POST request."
+        },
+        "DatabaseOperationError": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because a service module fails to operate a database command.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request. If the problem persists, consider resetting the service.",
+            "Description": "A service module fails to connect to a database or invoke database commands.",
+            "Severity": "Critical",
+            "Message": "A service module fails to operate a database command."
+        },
+        "TooManyProperties": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because there are too many properties in the request body.",
+            "NumberOfArgs": 0,
+            "Resolution": "Make sure the number of properties is within limit.",
+            "Description": "The server is unwilling to process the request because there are too many properties in the request body.",
+            "Severity": "Warning",
+            "Message": "The server is unwilling to process the request because there are too many properties in the request body."
+        },
+        "DataFormationError": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because unexpected error occurs while comprising request data to backend.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request. If the problem persists, consider resetting the service.",
+            "Description": "Unexpected error occurs while comprising request data to backend.",
+            "Severity": "Critical",
+            "Message": "The service is unable to construct the data needed for further handling."
+        },
+        "ScheduledPowerActionStartedSuccessfully": {
+            "MessageSeverity": "OK",
+            "Resolution": "None",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that scheduled power action occurred successfully.",
+            "Severity": "OK",
+            "Message": "Scheduled %1 occurred successfully at %2."
+        },
+        "InvalidBasicAuthorizationString": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the basic authorization string is invalid.",
+            "Resolution": "Please correct the basic authorization string to conform to Basic authorization format.",
+            "NumberOfArgs": 0,
+            "Description": "The basic authorization string is invalid.",
+            "Severity": "Critical",
+            "Message": "The Basic authorization string is not a valid Base64 string."
+        },
+        "FirmwareUpdateIntention": {
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 4,
+            "Description": "Indicates the purpose of the Update.",
+            "Severity": "OK",
+            "Message": "The task with id %1 updates softwareid %2 from version %3 to version %4."
+        },
+        "ScheduledPowerActionStartedFailed": {
+            "MessageSeverity": "OK",
+            "Resolution": "Resubmit the request. If the problem persists, consider resetting the service.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "Description": "Indicates that scheduled power action occurred failed.",
+            "Severity": "OK",
+            "Message": "Scheduled %1 occurred failed at %2."
+        },
+        "ContentTypeHeaderNotSatisfied": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because server cannot accept the media type specified in the Content-Type header.",
+            "Resolution": "Modify related header(s) that can be accepted by server.",
+            "NumberOfArgs": 0,
+            "Description": "Server cannot accept the media type specified in the Content-Type header.",
+            "Severity": "Warning",
+            "Message": "Server cannot accept the media type specified in the Content-Type header."
+        },
+        "FirmwareUpdateNeedHostPowerOn": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Power on the host and stay in OS or UEFI setup and resubmit the request if the operation failed.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that the service is unable to update the specified target for the host is in the power-off state.",
+            "Severity": "Warning",
+            "Message": "The value %1 for the parameter %2 is unable to be updated in the action %3 for the host is in the power-off state."
+        },
+        "BadRequest": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request could not be understood by the server due to malformed syntax.",
+            "Resolution": "Make sure your request respects the HTTP protocol.",
+            "NumberOfArgs": 0,
+            "Description": "400 Bad Request.",
+            "Severity": "Critical",
+            "Message": "The Web Server cannot understand the request due to malformed syntax."
+        },
+        "QueryParameterUnknown": {
+            "LongDescription": "The request is not applied because an unknown query parameter was supplied.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The unknown query parameter."
+            ],
+            "ArgLongDescriptions": [
+                "The specified query is not a valid query parameter for the resource."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Remove the unknown query parameter and resubmit the request if the operation fails.",
+            "Description": "Indicates that an unknown query parameter was supplied.",
+            "Severity": "Warning",
+            "Message": "The query parameter %1 is not a valid query parameter for the resource."
+        },
+        "InvalidCredentials": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because it lacks valid credentials for the target resource.",
+            "Resolution": "Please request again with correct credentials.",
+            "NumberOfArgs": 0,
+            "Description": "Login failed.",
+            "Severity": "Critical",
+            "Message": "The login credentials is invalid."
+        },
+        "ResourceTransferInProgress": {
+            "MessageSeverity": "Warning",
+            "Resolution": "None.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates data transfer in progress.",
+            "Severity": "OK",
+            "Message": "The task with id %1 is transferring %2 to %3."
+        },
+        "TransferError": {
+            "LongDescription": "The request is not applied because an error occured during the transfer.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The URI which the server failed to transfer."
+            ],
+            "ArgLongDescriptions": [
+                "The URI which the server failed to transfer, and results in error."
+            ],
+            "MessageSeverity": "Critical",
+            "Resolution": "Ensure that the the resource/file/image is valid and the target URI exists and is valid.",
+            "Description": "Indicates that the attempt to transfer the resource/file/image from/to the URI was unsuccessful because an error occured during the transfer.",
+            "Severity": "Critical",
+            "Message": "The service failed to transfer the resource from/to URI %1."
+        },
+        "InvalidLoginBody": {
+            "LongDescription": "The request is not applied because some fields in the request body is invalid.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The invalid field in request body."
+            ],
+            "ArgLongDescriptions": [
+                "The invalid field in request body which results in the request failed."
+            ],
+            "MessageSeverity": "Critical",
+            "Resolution": "Please request again with correct request body.",
+            "Description": "Login with invalid request body.",
+            "Severity": "Critical",
+            "Message": "The field %1 of the request body is invalid."
+        },
+        "Unauthorized": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the request requires user authentication which has not yet been provided or invalid.",
+            "Resolution": "You are required to log on Web Server with valid credentials first.",
+            "NumberOfArgs": 0,
+            "Description": "401 Unauthorized.",
+            "Severity": "Critical",
+            "Message": "The request requires user authentication which has not yet been provided or invalid."
+        },
+        "LengthRequired": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the server refuses to accept the request without a defined Content-Length.",
+            "Resolution": "Add a valid Content-Length header and resubmit the request.",
+            "NumberOfArgs": 0,
+            "Description": "The server refuses to accept the request without a defined Content-Length.",
+            "Severity": "Critical",
+            "Message": "The requested resource requires the Content-Length header."
+        },
+        "QueryNotSupported": {
+            "LongDescription": "The request is not applied because the query parameter is not supported on the implementation.",
+            "ParamTypes": [
+                "string"
+            ],
+            "NumberOfArgs": 1,
+            "ArgDescriptions": [
+                "The query parameter which is not implemented."
+            ],
+            "ArgLongDescriptions": [
+                "The specified query parameter which is not implemented."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Remove the query parameter and resubmit the request if the operation fails.",
+            "Description": "Indicates that query is not supported on the implementation.",
+            "Severity": "Warning",
+            "Message": "Querying %1 is not supported by the implementation."
+        },
+        "TransferringTimeout": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Ensure that the network status and the server are in a good condition.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates that timeout occurs when transferring the specified file.",
+            "Severity": "Warning",
+            "Message": "Transfer %1 from/to %2 timeout for %3 seconds."
+        },
+        "ServiceDisabled": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because the service is disabled or not working and cannot handle the request.",
+            "Resolution": "Resubmit the request after the service is working and enabled.",
+            "NumberOfArgs": 0,
+            "Description": "The service is disabled or not working and cannot handle the request.",
+            "Severity": "Critical",
+            "Message": "The service is disabled or not working and cannot handle the request."
+        },
+        "ArrayItemLimitExceeded": {
+            "LongDescription": "The request is not applied because a resource with array items has been requested but the operation failed due to the number of array items exceeding or not reaching the limit of the implementation.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 4,
+            "ArgDescriptions": [
+                "Name of the property that contains out of range array items.",
+                "Number of items in the array.",
+                "Minimum number of items that should be present in the array.",
+                "Maximum number of items that should be present in the array."
+            ],
+            "ArgLongDescriptions": [
+                "This argument shall contain the name of the property that contains out of range array items.",
+                "This argument shall contain the number of items in the array.",
+                "This argument shall contain the minimum number of items that should be present in the array.",
+                "This argument shall contain the maximum number of items that should be present in the array."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Increase or reduce array items to make the count within the range.",
+            "Description": "Indicates that a resource with array items has been requested but the operation failed due to the number of array items exceeding or not reaching the limit of the implementation.",
+            "Severity": "Warning",
+            "Message": "The number of items in the property %1 is %2, which is outside the range between %3 and %4."
+        },
+        "ResourceTransferFailed": {
+            "MessageSeverity": "Warning",
+            "Resolution": "Resubmit the request. If the problem persists, consider resetting the service.",
+            "ParamTypes": [
+                "string",
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 3,
+            "Description": "Indicates data transfer step failed.",
+            "Severity": "Warning",
+            "Message": "The task with id %1 transfer of %2 to %3 failed."
+        },
+        "MethodNotAllowed": {
+            "LongDescription": "The request is not applied because the resource does not support specified HTTP method.",
+            "ParamTypes": [
+                "string",
+                "string"
+            ],
+            "NumberOfArgs": 2,
+            "ArgDescriptions": [
+                "The URI of the resource.",
+                "The HTTP method not supported."
+            ],
+            "ArgLongDescriptions": [
+                "The URI of the resource which does not support certain method.",
+                "The HTTP method which is not supported by the resource."
+            ],
+            "MessageSeverity": "Warning",
+            "Resolution": "Please specify a HTTP method that the resource supports.",
+            "Description": "The resource does not support the current method.",
+            "Severity": "Warning",
+            "Message": "The resource %1 doesn't support %2 method."
+        },
+        "AcceptEncodingHeaderNotSatisfied": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because server cannot accept the content-coding specified in the Accept-Encoding header.",
+            "NumberOfArgs": 0,
+            "Resolution": "Modify the Accept-Encoding header to a value that is acceptable by the server.",
+            "Description": "Server cannot accept the content-coding specified in the Accept-Encoding header.",
+            "Severity": "Warning",
+            "Message": "Server cannot accept the content-coding specified in the Accept-Encoding header."
+        },
+        "RequestUriNotFound": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The origin server did not find a current representation for the target resource or is not willing to disclose that one exists.",
+            "Resolution": "Correct the URI and resubmit the request.",
+            "NumberOfArgs": 0,
+            "Description": "404 Not Found.",
+            "Severity": "Critical",
+            "Message": "The request specified a URI of a resource that does not exist."
+        },
+        "RequestHeaderFieldTooLarge": {
+            "MessageSeverity": "Warning",
+            "LongDescription": "The request is not applied because server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.",
+            "NumberOfArgs": 0,
+            "Resolution": "Make sure the size of a header, or all headers collectively, are within limit.",
+            "Description": "The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large.",
+            "Severity": "Warning",
+            "Message": "The server is unwilling to process the request because either an individual header field, or all the header fields collectively, are too large."
+        },
+        "ModuleInitializationError": {
+            "MessageSeverity": "Critical",
+            "LongDescription": "The request is not applied because a module in the service fails to initiate.",
+            "NumberOfArgs": 0,
+            "Resolution": "Resubmit the request. If the problem persists, consider resetting the service.",
+            "Description": "A module in the service fails to initiate.",
+            "Severity": "Critical",
+            "Message": "A service module fails to initiate."
+        }
+    },
+    "OwningEntity": "Lenovo",
+    "Language": "en",
+    "@odata.type": "#MessageRegistry.v1_4_2.MessageRegistry",
+    "@odata.context": "/redfish/v1/$metadata#MessageRegistry.MessageRegistry",
+    "RegistryVersion": "1.2.2",
+    "Name": "Extended Error Message Registry",
+    "RegistryPrefix": "ExtendedError"
+}

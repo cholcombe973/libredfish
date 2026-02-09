@@ -1,0 +1,57 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "@odata.id": "HpeiLOSoftwareInventory",
+    "additionalProperties": false,
+    "copyright": "Copyright 2014-2019 Hewlett Packard Enterprise Development, LP.  Portions Copyright 2014-2019 Distributed Management Task Force. All rights reserved.",
+    "description": "The HpeiLOSoftwareInventory object extends the Redfish SoftwareInventory resource with additional HPE functionality.",
+    "properties": {
+        "@odata.context": {
+            "$ref": "Resource.json#/definitions/odatacontext"
+        },
+        "@odata.etag": {
+            "$ref": "Resource.json#/definitions/odataetag"
+        },
+        "@odata.id": {
+            "$ref": "Resource.json#/definitions/odataid"
+        },
+        "@odata.type": {
+            "$ref": "Resource.json#/definitions/odatatype"
+        },
+        "DeviceClass": {
+            "description": "DeviceType GUID rendered by iLO for certain items iLO knows how to flash, and omitted for all other items.",
+            "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+            "readonly": true,
+            "type": [
+                "string",
+                "null"
+            ]
+        },
+        "DeviceContext": {
+            "description": "Friendly text string - same as 'Location' in fw inventory - omitted if not available.",
+            "readonly": true,
+            "type": "string"
+        },
+        "DeviceInstance": {
+            "description": "UEFI Device Path if a PCI Device - omitted otherwise.",
+            "readonly": true,
+            "type": "string"
+        },
+        "Targets": {
+            "description": "An array of possible target GUIDs (basically iLO makes educated guesses).  A client can match any one of these to a GUID in a component item to link current/available version information.",
+            "items": {
+                "description": "A GUID indicating iLO's knowledge of a possible correlation GUIDs vs. components.",
+                "pattern": "([0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12})",
+                "type": [
+                    "string",
+                    "null"
+                ]
+            },
+            "type": "array"
+        }
+    },
+    "required": [
+        "DeviceClass"
+    ],
+    "title": "#HpeiLOSoftwareInventory.v2_0_0.HpeiLOSoftwareInventory",
+    "type": "object"
+}
