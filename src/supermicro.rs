@@ -157,7 +157,10 @@ impl Redfish for Bmc {
         &self,
         values: HashMap<String, serde_json::Value>,
     ) -> Result<(), RedfishError> {
-        self.s.set_bios(values).await
+        let body = HashMap::from([("Attributes", values)]);
+        let url = format!("Systems/{}/Bios", self.s.system_id());
+        self.s.client.patch(&url, body).await?;
+        Ok(())
     }
 
     async fn reset_bios(&self) -> Result<(), RedfishError> {
